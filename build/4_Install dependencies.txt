@@ -1,0 +1,50 @@
+﻿2026-10-04T07:11:28.0827535Z ##[group]Run python -m pip install --upgrade pip
+2026-10-04T07:11:28.0828339Z [36;1mpython -m pip install --upgrade pip[0m
+2026-10-04T07:11:28.0828963Z [36;1mpip install flake8 pytest[0m
+2026-10-04T07:11:28.0829705Z [36;1mif [ -f requirements.txt ]; then pip install -r requirements.txt; fi[0m
+2026-10-04T07:11:28.1138053Z shell: /usr/bin/bash -e {0}
+2026-10-04T07:11:28.1138693Z env:
+2026-10-04T07:11:28.1139263Z   pythonLocation: /opt/hostedtoolcache/Python/3.10.21/x64
+2026-10-04T07:11:28.1140105Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.10.21/x64/lib
+2026-10-04T07:11:28.1140821Z ##[endgroup]
+2026-10-04T07:11:28.8544302Z Requirement already satisfied: pip in /opt/hostedtoolcache/Python/3.10.21/x64/lib/python3.10/site-packages (26.2.1)
+2026-10-04T07:11:29.4808235Z Collecting flake8
+2026-10-04T07:11:29.5368868Z   Downloading flake8-7.4.1-py2.py3-none-any.whl.metadata (3.8 kB)
+2026-10-04T07:11:29.6047742Z Collecting pytest
+2026-10-04T07:11:29.6122914Z   Downloading pytest-9.1.1-py3-none-any.whl.metadata (7.6 kB)
+2026-10-04T07:11:29.6297599Z Collecting mccabe<0.8.0,>=0.7.0 (from flake8)
+2026-10-04T07:11:29.6370749Z   Downloading mccabe-0.7.0-py2.py3-none-any.whl.metadata (5.0 kB)
+2026-10-04T07:11:29.6527736Z Collecting pycodestyle<2.16.0,>=2.15.0 (from flake8)
+2026-10-04T07:11:29.6617836Z   Downloading pycodestyle-2.15.0-py2.py3-none-any.whl.metadata (4.5 kB)
+2026-10-04T07:11:29.6790583Z Collecting pyflakes<4.1.0,>=4.0.0 (from flake8)
+2026-10-04T07:11:29.6862020Z   Downloading pyflakes-4.0.2-py2.py3-none-any.whl.metadata (3.7 kB)
+2026-10-04T07:11:29.7046920Z Collecting exceptiongroup>=1 (from pytest)
+2026-10-04T07:11:29.7118962Z   Downloading exceptiongroup-1.3.1-py3-none-any.whl.metadata (6.7 kB)
+2026-10-04T07:11:29.7259088Z Collecting iniconfig>=1.0.1 (from pytest)
+2026-10-04T07:11:29.7332415Z   Downloading iniconfig-2.3.0-py3-none-any.whl.metadata (2.5 kB)
+2026-10-04T07:11:29.7536252Z Collecting packaging>=22 (from pytest)
+2026-10-04T07:11:29.7609008Z   Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+2026-10-04T07:11:29.7773463Z Collecting pluggy<2,>=1.5 (from pytest)
+2026-10-04T07:11:29.7848172Z   Downloading pluggy-1.6.0-py3-none-any.whl.metadata (4.8 kB)
+2026-10-04T07:11:29.8095219Z Collecting pygments>=2.7.2 (from pytest)
+2026-10-04T07:11:29.8168954Z   Downloading pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+2026-10-04T07:11:29.8473802Z Collecting tomli>=1 (from pytest)
+2026-10-04T07:11:29.8549854Z   Downloading tomli-2.4.1-py3-none-any.whl.metadata (10 kB)
+2026-10-04T07:11:29.8777106Z Collecting typing-extensions>=4.6.0 (from exceptiongroup>=1->pytest)
+2026-10-04T07:11:29.8849717Z   Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+2026-10-04T07:11:29.8960889Z Downloading flake8-7.4.1-py2.py3-none-any.whl (57 kB)
+2026-10-04T07:11:29.9102401Z Downloading mccabe-0.7.0-py2.py3-none-any.whl (7.3 kB)
+2026-10-04T07:11:29.9196366Z Downloading pycodestyle-2.15.0-py2.py3-none-any.whl (31 kB)
+2026-10-04T07:11:29.9292350Z Downloading pyflakes-4.0.2-py2.py3-none-any.whl (66 kB)
+2026-10-04T07:11:29.9391448Z Downloading pytest-9.1.1-py3-none-any.whl (386 kB)
+2026-10-04T07:11:29.9628879Z Downloading pluggy-1.6.0-py3-none-any.whl (20 kB)
+2026-10-04T07:11:29.9722662Z Downloading exceptiongroup-1.3.1-py3-none-any.whl (16 kB)
+2026-10-04T07:11:29.9813267Z Downloading iniconfig-2.3.0-py3-none-any.whl (7.5 kB)
+2026-10-04T07:11:29.9903734Z Downloading packaging-26.3-py3-none-any.whl (129 kB)
+2026-10-04T07:11:29.9998064Z Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)
+2026-10-04T07:11:30.0194502Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 59.5 MB/s  0:00:00
+2026-10-04T07:11:30.0266588Z Downloading tomli-2.4.1-py3-none-any.whl (14 kB)
+2026-10-04T07:11:30.0358369Z Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+2026-10-04T07:11:30.0969992Z Installing collected packages: typing-extensions, tomli, pygments, pyflakes, pycodestyle, pluggy, packaging, mccabe, iniconfig, flake8, exceptiongroup, pytest
+2026-10-04T07:11:31.2226729Z 
+2026-10-04T07:11:31.2256348Z Successfully installed exceptiongroup-1.3.1 flake8-7.4.1 iniconfig-2.3.0 mccabe-0.7.0 packaging-26.3 pluggy-1.6.0 pycodestyle-2.15.0 pyflakes-4.0.2 pygments-2.21.0 pytest-9.1.1 tomli-2.4.1 typing-extensions-4.16.0
