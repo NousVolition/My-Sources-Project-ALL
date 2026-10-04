@@ -70,6 +70,45 @@ class PurePythonNavierStokes3D:
                     next_S[i][j][k] = self.S[i][j][k] + dt * (-adv_S + self.D * lap_S + self.rho_epsilon[i][j][k] * P_U)
         self.u, self.v, self.w, self.S = next_u, next_v, next_w, next_S
 
+    def divergence_at(self, i, j, k):
+        ip, im, jp, jm, kp, km = self.get_neighbors(i, j, k)
+        dx = self.dx
+        du = (self.u[ip][j][k] - self.u[im][j][k]) / (2.0 * dx)
+        dv = (self.v[i][jp][k] - self.v[i][jm][k]) / (2.0 * dx)
+        dw = (self.w[i][j][kp] - self.w[i][j][km]) / (2.0 * dx)
+        return du + dv + dw
+
+    def project(self, iterations=2000):
+        N = self.N
+        rhs = [[[self.divergence_at(i, j, k) for k in range(N)] for j in range(N)] for i in range(N)]
+        phi = [[[0.0 for _ in range(N)] for _ in range(N)] for _ in range(N)]
+        for _ in range(iterations):
+            nxt = [[[0.0 for _ in range(N)] for _ in range(N)] for _ in range(N)]
+            for i in range(N):
+                for j in range(N):
+                    for k in range(N):
+                        ip, im = (i + 2) % N, (i - 2) % N
+                        jp, jm = (j + 2) % N, (j - 2) % N
+                        kp, km = (k + 2) % N, (k - 2) % N
+                        nxt[i][j][k] = (
+                            phi[ip][j][k] + phi[im][j][k]
+                            + phi[i][jp][k] + phi[i][jm][k]
+                            + phi[i][j][kp] + phi[i][j][km]
+                            - 4.0 * rhs[i][j][k]
+                        ) / 6.0
+            phi = nxt
+        for i in range(N):
+            for j in range(N):
+                for k in range(N):
+                    ip, im, jp, jm, kp, km = self.get_neighbors(i, j, k)
+                    self.u[i][j][k] -= (phi[ip][j][k] - phi[im][j][k]) / (2.0 * self.dx)
+                    self.v[i][j][k] -= (phi[i][jp][k] - phi[i][jm][k]) / (2.0 * self.dx)
+                    self.w[i][j][k] -= (phi[i][j][kp] - phi[i][j][km]) / (2.0 * self.dx)
+
+    def step_with_pressure(self, dt, P_U):
+        self.step(dt, P_U)
+        self.project()
+
     def max_w(self):
         return max(max(max(row) for row in plane) for plane in self.w)
 
