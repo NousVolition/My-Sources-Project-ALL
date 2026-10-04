@@ -1,0 +1,78 @@
+"""Discrete fluid step from Code_.txt. Behavior matches that script."""
+
+import math
+
+
+class PurePythonNavierStokes3D:
+    def __init__(self, N=8, dx=1.0):
+        self.N = N
+        self.dx = dx
+        self.nu = 0.01
+        self.D = 0.02
+        self.sigma = 0.5
+        self.rho = 1.0
+        self.gamma_crit = 1.5
+        self.epsilon = 0.1
+        self.e_k = [0.0, 0.0, 1.0]
+        self.u = [[[0.05 for _ in range(N)] for _ in range(N)] for _ in range(N)]
+        self.v = [[[0.01 for _ in range(N)] for _ in range(N)] for _ in range(N)]
+        self.w = [[[0.02 for _ in range(N)] for _ in range(N)] for _ in range(N)]
+        self.S = [[[0.0 for _ in range(N)] for _ in range(N)] for _ in range(N)]
+        self.rho_epsilon = [[[0.0 for _ in range(N)] for _ in range(N)] for _ in range(N)]
+        mid = N / 2.0
+        for i in range(N):
+            for j in range(N):
+                for k in range(N):
+                    r_sq = (i - mid) ** 2 + (j - mid) ** 2 + (k - mid) ** 2
+                    self.rho_epsilon[i][j][k] = math.exp(-r_sq / (2.0 * (self.epsilon ** 2)))
+
+    def get_neighbors(self, i, j, k):
+        N = self.N
+        return (i + 1) % N, (i - 1) % N, (j + 1) % N, (j - 1) % N, (k + 1) % N, (k - 1) % N
+
+    def step(self, dt, P_U):
+        N = self.N
+        next_u = [[[0.0 for _ in range(N)] for _ in range(N)] for _ in range(N)]
+        next_v = [[[0.0 for _ in range(N)] for _ in range(N)] for _ in range(N)]
+        next_w = [[[0.0 for _ in range(N)] for _ in range(N)] for _ in range(N)]
+        next_S = [[[0.0 for _ in range(N)] for _ in range(N)] for _ in range(N)]
+        for i in range(N):
+            for j in range(N):
+                for k in range(N):
+                    ip, im, jp, jm, kp, km = self.get_neighbors(i, j, k)
+                    grad_Sx = (self.S[ip][j][k] - self.S[im][j][k]) / (2.0 * self.dx)
+                    grad_Sy = (self.S[i][jp][k] - self.S[i][jm][k]) / (2.0 * self.dx)
+                    grad_Sz = (self.S[i][j][kp] - self.S[i][j][km]) / (2.0 * self.dx)
+                    grad_mag_S = math.sqrt(grad_Sx ** 2 + grad_Sy ** 2 + grad_Sz ** 2)
+                    dux = (self.u[ip][j][k] - self.u[im][j][k]) / (2.0 * self.dx)
+                    duy = (self.u[i][jp][k] - self.u[i][jm][k]) / (2.0 * self.dx)
+                    duz = (self.u[i][j][kp] - self.u[i][j][km]) / (2.0 * self.dx)
+                    dvx = (self.v[ip][j][k] - self.v[im][j][k]) / (2.0 * self.dx)
+                    dvy = (self.v[i][jp][k] - self.v[i][jm][k]) / (2.0 * self.dx)
+                    dvz = (self.v[i][j][kp] - self.v[i][j][km]) / (2.0 * self.dx)
+                    dwx = (self.w[ip][j][k] - self.w[im][j][k]) / (2.0 * self.dx)
+                    dwy = (self.w[i][jp][k] - self.w[i][jm][k]) / (2.0 * self.dx)
+                    dwz = (self.w[i][j][kp] - self.w[i][j][km]) / (2.0 * self.dx)
+                    adv_u = self.u[i][j][k] * dux + self.v[i][j][k] * duy + self.w[i][j][k] * duz
+                    adv_v = self.u[i][j][k] * dvx + self.v[i][j][k] * dvy + self.w[i][j][k] * dvz
+                    adv_w = self.u[i][j][k] * dwx + self.v[i][j][k] * dwy + self.w[i][j][k] * dwz
+                    adv_S = self.u[i][j][k] * grad_Sx + self.v[i][j][k] * grad_Sy + self.w[i][j][k] * grad_Sz
+                    delta_gamma = grad_mag_S - self.gamma_crit
+                    switch_profile = 0.5 + 0.5 * math.tanh(delta_gamma / self.epsilon)
+                    forcing_scalar = (self.sigma / self.rho) * delta_gamma * switch_profile
+                    lap_u = (self.u[ip][j][k] + self.u[im][j][k] + self.u[i][jp][k] + self.u[i][jm][k] + self.u[i][j][kp] + self.u[i][j][km] - 6 * self.u[i][j][k]) / (self.dx ** 2)
+                    lap_v = (self.v[ip][j][k] + self.v[im][j][k] + self.v[i][jp][k] + self.v[i][jm][k] + self.v[i][j][kp] + self.v[i][j][km] - 6 * self.v[i][j][k]) / (self.dx ** 2)
+                    lap_w = (self.w[ip][j][k] + self.w[im][j][k] + self.w[i][jp][k] + self.w[i][jm][k] + self.w[i][j][kp] + self.w[i][j][km] - 6 * self.w[i][j][k]) / (self.dx ** 2)
+                    lap_S = (self.S[ip][j][k] + self.S[im][j][k] + self.S[i][jp][k] + self.S[i][jm][k] + self.S[i][j][kp] + self.S[i][j][km] - 6 * self.S[i][j][k]) / (self.dx ** 2)
+                    next_u[i][j][k] = self.u[i][j][k] + dt * (-adv_u + self.nu * lap_u - forcing_scalar * self.e_k[0])
+                    next_v[i][j][k] = self.v[i][j][k] + dt * (-adv_v + self.nu * lap_v - forcing_scalar * self.e_k[1])
+                    next_w[i][j][k] = self.w[i][j][k] + dt * (-adv_w + self.nu * lap_w - forcing_scalar * self.e_k[2])
+                    next_S[i][j][k] = self.S[i][j][k] + dt * (-adv_S + self.D * lap_S + self.rho_epsilon[i][j][k] * P_U)
+        self.u, self.v, self.w, self.S = next_u, next_v, next_w, next_S
+
+    def max_w(self):
+        return max(max(max(row) for row in plane) for plane in self.w)
+
+    def mean_S(self):
+        total = sum(sum(sum(row) for row in plane) for plane in self.S)
+        return total / (self.N ** 3)
