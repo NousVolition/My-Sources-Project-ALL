@@ -1,0 +1,48 @@
+﻿2026-10-04T07:11:31.2789137Z ##[group]Run # stop the build if there are Python syntax errors or undefined names
+2026-10-04T07:11:31.2789801Z [36;1m# stop the build if there are Python syntax errors or undefined names[0m
+2026-10-04T07:11:31.2790331Z [36;1mflake8 . --count --select=E9,F63,F7,F82 --show-source --statistics[0m
+2026-10-04T07:11:31.2790871Z [36;1m# exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide[0m
+2026-10-04T07:11:31.2791482Z [36;1mflake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics[0m
+2026-10-04T07:11:31.2857750Z shell: /usr/bin/bash -e {0}
+2026-10-04T07:11:31.2858028Z env:
+2026-10-04T07:11:31.2858318Z   pythonLocation: /opt/hostedtoolcache/Python/3.10.21/x64
+2026-10-04T07:11:31.2858740Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.10.21/x64/lib
+2026-10-04T07:11:31.2859088Z ##[endgroup]
+2026-10-04T07:11:31.7047172Z 0
+2026-10-04T07:11:31.9015070Z ./map_language.py:14:1: F401 'numpy as np' imported but unused
+2026-10-04T07:11:31.9015911Z ./map_language.py:80:128: E501 line too long (146 > 127 characters)
+2026-10-04T07:11:31.9016827Z ./map_language.py:81:128: E501 line too long (261 > 127 characters)
+2026-10-04T07:11:31.9017596Z ./map_language.py:82:128: E501 line too long (143 > 127 characters)
+2026-10-04T07:11:31.9018379Z ./map_language.py:104:128: E501 line too long (137 > 127 characters)
+2026-10-04T07:11:31.9019119Z ./map_language.py:153:1: E302 expected 2 blank lines, found 1
+2026-10-04T07:11:31.9020024Z ./map_language.py:166:1: E305 expected 2 blank lines after class or function definition, found 1
+2026-10-04T07:11:31.9020968Z ./map_language.py:230:128: E501 line too long (128 > 127 characters)
+2026-10-04T07:11:31.9021581Z ./map_language.py:292:1: E302 expected 2 blank lines, found 1
+2026-10-04T07:11:31.9022125Z ./map_language.py:295:1: E305 expected 2 blank lines after class or function definition, found 1
+2026-10-04T07:11:31.9022677Z ./map_language.py:333:128: E501 line too long (225 > 127 characters)
+2026-10-04T07:11:31.9023385Z ./map_language.py:336:128: E501 line too long (173 > 127 characters)
+2026-10-04T07:11:31.9023879Z ./map_language.py:337:128: E501 line too long (173 > 127 characters)
+2026-10-04T07:11:31.9024314Z ./map_language.py:338:128: E501 line too long (183 > 127 characters)
+2026-10-04T07:11:31.9024751Z ./map_language.py:339:128: E501 line too long (228 > 127 characters)
+2026-10-04T07:11:31.9025164Z ./map_language.py:340:128: E501 line too long (211 > 127 characters)
+2026-10-04T07:11:31.9025611Z ./map_language.py:341:128: E501 line too long (242 > 127 characters)
+2026-10-04T07:11:31.9026038Z ./map_language.py:343:128: E501 line too long (274 > 127 characters)
+2026-10-04T07:11:31.9026473Z ./map_language.py:355:128: E501 line too long (163 > 127 characters)
+2026-10-04T07:11:31.9026904Z ./map_language_2.py:91:128: E501 line too long (183 > 127 characters)
+2026-10-04T07:11:31.9027336Z ./map_language_2.py:94:128: E501 line too long (139 > 127 characters)
+2026-10-04T07:11:31.9027768Z ./map_language_2.py:101:1: E302 expected 2 blank lines, found 1
+2026-10-04T07:11:31.9028195Z ./map_language_2.py:105:1: E302 expected 2 blank lines, found 1
+2026-10-04T07:11:31.9028610Z ./map_language_2.py:113:128: E501 line too long (129 > 127 characters)
+2026-10-04T07:11:31.9029143Z ./map_language_2.py:119:1: E305 expected 2 blank lines after class or function definition, found 1
+2026-10-04T07:11:31.9029717Z ./map_language_2.py:156:128: E501 line too long (146 > 127 characters)
+2026-10-04T07:11:31.9030209Z ./map_language_2.py:162:128: E501 line too long (196 > 127 characters)
+2026-10-04T07:11:31.9030923Z ./map_language_2.py:320:1: E302 expected 2 blank lines, found 1
+2026-10-04T07:11:31.9031339Z ./map_language_2.py:323:1: E302 expected 2 blank lines, found 1
+2026-10-04T07:11:31.9031855Z ./map_language_2.py:337:1: E305 expected 2 blank lines after class or function definition, found 1
+2026-10-04T07:11:31.9032385Z ./map_language_2.py:354:128: E501 line too long (299 > 127 characters)
+2026-10-04T07:11:31.9032815Z ./map_language_2.py:355:128: E501 line too long (444 > 127 characters)
+2026-10-04T07:11:31.9033677Z 6     E302 expected 2 blank lines, found 1
+2026-10-04T07:11:31.9034089Z 4     E305 expected 2 blank lines after class or function definition, found 1
+2026-10-04T07:11:31.9034505Z 21    E501 line too long (146 > 127 characters)
+2026-10-04T07:11:31.9034824Z 1     F401 'numpy as np' imported but unused
+2026-10-04T07:11:31.9035094Z 32
