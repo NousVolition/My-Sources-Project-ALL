@@ -70,6 +70,40 @@ class PurePythonNavierStokes3D:
                     next_S[i][j][k] = self.S[i][j][k] + dt * (-adv_S + self.D * lap_S + self.rho_epsilon[i][j][k] * P_U)
         self.u, self.v, self.w, self.S = next_u, next_v, next_w, next_S
 
+    def divergence_at(self, i, j, k):
+        ip, im, jp, jm, kp, km = self.get_neighbors(i, j, k)
+        return (
+            (self.u[ip][j][k] - self.u[im][j][k]) / (2.0 * self.dx)
+            + (self.v[i][jp][k] - self.v[i][jm][k]) / (2.0 * self.dx)
+            + (self.w[i][j][kp] - self.w[i][j][km]) / (2.0 * self.dx)
+        )
+
+    def step_with_pressure(self, dt, P_U, sweeps=50):
+        self.step(dt, P_U)
+        N = self.N
+        p = [[[0.0 for _ in range(N)] for _ in range(N)] for _ in range(N)]
+        for _ in range(sweeps):
+            next_p = [[[0.0 for _ in range(N)] for _ in range(N)] for _ in range(N)]
+            for i in range(N):
+                for j in range(N):
+                    for k in range(N):
+                        ip, im, jp, jm, kp, km = self.get_neighbors(i, j, k)
+                        div = self.divergence_at(i, j, k)
+                        next_p[i][j][k] = (
+                            p[ip][j][k] + p[im][j][k]
+                            + p[i][jp][k] + p[i][jm][k]
+                            + p[i][j][kp] + p[i][j][km]
+                            - (self.dx ** 2) * div / dt
+                        ) / 6.0
+            p = next_p
+        for i in range(N):
+            for j in range(N):
+                for k in range(N):
+                    ip, im, jp, jm, kp, km = self.get_neighbors(i, j, k)
+                    self.u[i][j][k] -= dt * (p[ip][j][k] - p[im][j][k]) / (2.0 * self.dx)
+                    self.v[i][j][k] -= dt * (p[i][jp][k] - p[i][jm][k]) / (2.0 * self.dx)
+                    self.w[i][j][k] -= dt * (p[i][j][kp] - p[i][j][km]) / (2.0 * self.dx)
+
     def max_w(self):
         return max(max(max(row) for row in plane) for plane in self.w)
 
