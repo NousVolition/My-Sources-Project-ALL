@@ -1,0 +1,16 @@
+﻿2026-10-04T08:56:06.8483400Z ##[group]Run echo "Cleaning up..." && \
+2026-10-04T08:56:06.8483653Z [36;1mecho "Cleaning up..." && \[0m
+2026-10-04T08:56:06.8483872Z [36;1mmkdir -p "/home/runner/work/_temp/runtime-logs" && \[0m
+2026-10-04T08:56:06.8485779Z [36;1mcleanup_list="***,***,***," && \[0m
+2026-10-04T08:56:06.8485951Z [36;1m[0m
+2026-10-04T08:56:06.8486345Z [36;1mcurl -L -H "Content-Type: application/json" -H "Accept: application/json" --data '{"oid":'$GITHUB_REPOSITORY_OWNER_ID',"rid":'$GITHUB_REPOSITORY_ID',"wid":'$GITHUB_RUN_ID'}' \[0m
+2026-10-04T08:56:06.8487003Z [36;1m  -H "Authorization: ***" -H "X-GitHub-Copilot-Cleanup-List: $cleanup_list" \[0m
+2026-10-04T08:56:06.8487443Z [36;1m  "https://api.individual.githubcopilot.com/agents/swe/agent/cleanup" > "/home/runner/work/_temp/runtime-logs/clean.log" 2>&1[0m
+2026-10-04T08:56:06.8541730Z shell: /usr/bin/bash -e {0}
+2026-10-04T08:56:06.8541917Z env:
+2026-10-04T08:56:06.8542204Z   SHOULD_CONTINUE: true
+2026-10-04T08:56:06.8542359Z   COPILOT_AGENT_START_TIME_SEC: 1791103579
+2026-10-04T08:56:06.8542577Z   COPILOT_AGENT_TIMEOUT_MIN: 59
+2026-10-04T08:56:06.8542744Z   COPILOT_PREINSTALLED_RUNTIME: true
+2026-10-04T08:56:06.8542913Z ##[endgroup]
+2026-10-04T08:56:06.8614684Z Cleaning up...

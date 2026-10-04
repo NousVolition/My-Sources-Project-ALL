@@ -1,0 +1,57 @@
+﻿2026-10-04T08:48:09.1305426Z ##[group]Run echo "Starting MCP servers..." && \
+2026-10-04T08:48:09.1306292Z [36;1mecho "Starting MCP servers..." && \[0m
+2026-10-04T08:48:09.1306965Z [36;1mexport HOME="$(realpath ~)"[0m
+2026-10-04T08:48:09.1307667Z [36;1mexport RUNNER_PATH="/home/runner/work/_temp"[0m
+2026-10-04T08:48:09.1308335Z [36;1m[0m
+2026-10-04T08:48:09.1309053Z [36;1m# Secrets listed here are piped via stdin so they never appear in /proc[0m
+2026-10-04T08:48:09.1310113Z [36;1msecrets=$("$RUNNER_PATH/ghcca-node/node/bin/node" -p "JSON.stringify({[0m
+2026-10-04T08:48:09.1311183Z [36;1m  GITHUB_COPILOT_GITHUB_TOKEN: process.env.GITHUB_COPILOT_GITHUB_TOKEN || '',[0m
+2026-10-04T08:48:09.1312294Z [36;1m  GITHUB_PERSONAL_ACCESS_TOKEN: process.env.GITHUB_PERSONAL_ACCESS_TOKEN || '',[0m
+2026-10-04T08:48:09.1313380Z [36;1m  GITHUB_COPILOT_API_TOKEN: process.env.GITHUB_COPILOT_API_TOKEN || '',[0m
+2026-10-04T08:48:09.1314489Z [36;1m  GITHUB_COPILOT_INTEGRATION_ID: process.env.GITHUB_COPILOT_INTEGRATION_ID || '',[0m
+2026-10-04T08:48:09.1315839Z [36;1m  COPILOT_JOB_NONCE: process.env.COPILOT_JOB_NONCE || ''[0m
+2026-10-04T08:48:09.1316571Z [36;1m})")[0m
+2026-10-04T08:48:09.1317659Z [36;1munset GITHUB_COPILOT_GITHUB_TOKEN GITHUB_PERSONAL_ACCESS_TOKEN GITHUB_COPILOT_API_TOKEN GITHUB_COPILOT_INTEGRATION_ID COPILOT_JOB_NONCE[0m
+2026-10-04T08:48:09.1319297Z [36;1mprintf '%s' "$secrets" | "$RUNNER_PATH/***-action-main/script/start-mcp-servers.sh"[0m
+2026-10-04T08:48:09.1320150Z [36;1m[0m
+2026-10-04T08:48:09.1320629Z [36;1mecho "Ending MCP step"[0m
+2026-10-04T08:48:09.1380556Z shell: /usr/bin/bash -e {0}
+2026-10-04T08:48:09.1381138Z env:
+2026-10-04T08:48:09.1381594Z   SHOULD_CONTINUE: true
+2026-10-04T08:48:09.1382157Z   COPILOT_AGENT_START_TIME_SEC: 1791103689
+2026-10-04T08:48:09.1382790Z   COPILOT_AGENT_TIMEOUT_MIN: 59
+2026-10-04T08:48:09.1383365Z   COPILOT_PREINSTALLED_RUNTIME: true
+2026-10-04T08:48:09.1383962Z   COPILOT_MCP_READ_ONLY_MODE: false
+2026-10-04T08:48:09.1384678Z   COPILOT_API_URL: https://api.individual.githubcopilot.com
+2026-10-04T08:48:09.1385851Z   GITHUB_COPILOT_GITHUB_TOKEN: ***
+2026-10-04T08:48:09.1386863Z   GITHUB_PERSONAL_ACCESS_TOKEN: ***
+2026-10-04T08:48:09.1387645Z   GITHUB_COPILOT_API_TOKEN: ***
+2026-10-04T08:48:09.1388221Z   GITHUB_COPILOT_3P_MCP_ENABLED: true
+2026-10-04T08:48:09.1388985Z   COPILOT_AGENT_MCP_SERVER_TEMP: /home/runner/work/_temp/mcp-server
+2026-10-04T08:48:09.1390642Z   GITHUB_COPILOT_MCP_JSON_FROM_INPUT: eyJtY3BTZXJ2ZXJzIjp7InBsYXl3cmlnaHQiOnsidG9vbHMiOlsiKiJdLCJ0eXBlIjoiaHR0cCIsInVybCI6Imh0dHA6Ly9sb2NhbGhvc3Q6MzEwMC9tY3AifX19
+2026-10-04T08:48:09.1392134Z   GITHUB_COPILOT_REMOTE_MCP_ENABLED: true
+2026-10-04T08:48:09.1392907Z   GITHUB_COPILOT_INTERACTION_ID: d77c84ee-d904-435e-ab41-778b29712019
+2026-10-04T08:48:09.1403034Z   COPILOT_FEATURE_FLAGS: copilot_inject_integration_headers,copilot_swe_agent_blackbird_tool_use,copilot_swe_agent_cap_claude_opus_token_limits,copilot_swe_agent_cleanup_partial_clone,copilot_swe_agent_clone_session_logging,copilot_swe_agent_failure_recovery_before_shutdown,copilot_swe_agent_firewall_enabled_by_default,copilot_swe_agent_vision,copilot_swe_agent_parallel_tool_execution,copilot_swe_agent_enable_security_tool,copilot_swe_agent_code_review,copilot_swe_agent_cca_session_attribution,copilot_swe_agent_retry_workflow_run,copilot_swe_agent_validation_agent_dependencies,copilot_swe_agent_validation_tool_settings,copilot_swe_agent_secret_scanning_hook,copilot_swe_agent_new_out_proc_mcp,copilot_swe_agent_mcp_builtin_provenance,copilot_swe_agent_enable_dependabot_checker,copilot_swe_agent_use_non_blocking_callbacks,coding_agent_plan_tags,copilot_swe_agent_trivial_change,copilot_swe_agent_trivial_change_code_review_disable,copilot_swe_agent_trivial_change_skip,copilot_swe_agent_unified_task_tool,copilot_swe_agent_error_annotations,copilot_swe_agent_codex_error_classification,copilot_swe_agent_claude_error_classification,copilot_swe_agent_runtime_timing_telemetry,copilot_swe_agent_parallel_validation,copilot_swe_agent_3p_security_prompt,copilot_swe_agent_new_security_tools,copilot_swe_agent_oidc_token_exchange,copilot_swe_agent_logs_url_trailer,copilot_swe_agent_sandbox_server_token_cleanup,copilot_swe_agent_use_attachment_proxy,copilot_swe_agent_co_author_hook,copilot_feature_agentic_memory_user_scoped,copilot_feature_agentic_memory_user_scoped_cfi,copilot_swe_agent_chronicle,copilot-feature-agentic-memory
+2026-10-04T08:48:09.1413488Z   COPILOT_EXPERIMENTS: 
+2026-10-04T08:48:09.1414046Z   COPILOT_EXPERIMENT_ASSIGNMENT_CONTEXT: 
+2026-10-04T08:48:09.1415651Z   COPILOT_AGENT_REQUEST_HEADERS: {"X-Copilot-Client-Exp-Assignment-Context":"permission_prompt_control:1332567;ccr_pr_nudge_adoption:1319471;ihko4107:1412285;jc553158:1433349;cmc_aa_t:1435711;"}
+2026-10-04T08:48:09.1417218Z   GITHUB_COPILOT_INTEGRATION_ID: ***
+2026-10-04T08:48:09.1417808Z   COPILOT_USE_SESSIONS: true
+2026-10-04T08:48:09.1418368Z   COPILOT_USE_ASYNC_SESSIONS: true
+2026-10-04T08:48:09.1418975Z   COPILOT_MCP_EMIT_PENDING_SETUP_LOGS: false
+2026-10-04T08:48:09.1419735Z   COPILOT_AGENT_SESSION_ID: d77c84ee-d904-435e-ab41-778b29712019
+2026-10-04T08:48:09.1420962Z   COPILOT_AGENT_RESUME_SESSION_ID: 
+2026-10-04T08:48:09.1421977Z   COPILOT_AGENT_MCP_DEBUG_LOGS_PATH: /home/runner/work/_temp/cca-mcp-debug-logs
+2026-10-04T08:48:09.1423538Z   COPILOT_AGENT_CALLBACK_URL: https://api.individual.githubcopilot.com/agents/swe/agent
+2026-10-04T08:48:09.1425236Z   COPILOT_AGENT_JOB_ID: 311664141-1403878427-40a1b158-2f26-40b9-a558-c1c2c0515c00
+2026-10-04T08:48:09.1426749Z   COPILOT_JOB_NONCE: ***
+2026-10-04T08:48:09.1427307Z   GITHUB_REPOSITORY_ID: 1403878427
+2026-10-04T08:48:09.1427911Z   GITHUB_REPOSITORY_OWNER_ID: 311664141
+2026-10-04T08:48:09.1428531Z   COPILOT_AGENT_INJECTED_SECRET_NAMES: 
+2026-10-04T08:48:09.1429116Z ##[endgroup]
+2026-10-04T08:48:09.1514757Z Starting MCP servers...
+2026-10-04T08:48:09.1906836Z Waiting for MCP servers to be ready...
+2026-10-04T08:48:09.1966113Z MCP servers not ready yet. Retrying in 300ms... (1/200)
+2026-10-04T08:48:09.5050836Z MCP servers not ready yet. Retrying in 300ms... (2/200)
+2026-10-04T08:48:09.8193918Z MCP servers are ready.
+2026-10-04T08:48:09.8199467Z Ending MCP step
