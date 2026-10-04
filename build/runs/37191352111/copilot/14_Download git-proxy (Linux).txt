@@ -1,0 +1,45 @@
+﻿2026-10-04T09:11:36.4056215Z ##[group]Run set -euo pipefail
+2026-10-04T09:11:36.4056789Z [36;1mset -euo pipefail[0m
+2026-10-04T09:11:36.4057221Z [36;1mARCH=$(uname -m)[0m
+2026-10-04T09:11:36.4057641Z [36;1mcase "$ARCH" in[0m
+2026-10-04T09:11:36.4058127Z [36;1m  x86_64)  ARTIFACT="git-proxy-linux-x64.tar.gz" ;;[0m
+2026-10-04T09:11:36.4058742Z [36;1m  aarch64) ARTIFACT="git-proxy-linux-arm64.tar.gz" ;;[0m
+2026-10-04T09:11:36.4059343Z [36;1m  *) echo "Unsupported architecture: $ARCH"; exit 1 ;;[0m
+2026-10-04T09:11:36.4059876Z [36;1mesac[0m
+2026-10-04T09:11:36.4060569Z [36;1m[0m
+2026-10-04T09:11:36.4060943Z [36;1m[0m
+2026-10-04T09:11:36.4061399Z [36;1mPREINSTALLED_DIR="/opt/copilot-runtime/git-proxy"[0m
+2026-10-04T09:11:36.4061929Z [36;1mif [ "$ARCH" = "x86_64" ] &&[0m
+2026-10-04T09:11:36.4062425Z [36;1m   [ -x "$PREINSTALLED_DIR/git-proxy" ] &&[0m
+2026-10-04T09:11:36.4062954Z [36;1m   [ -f "$PREINSTALLED_DIR/version" ] &&[0m
+2026-10-04T09:11:36.4063612Z [36;1m   [ "$(cat "$PREINSTALLED_DIR/version")" = "$COPILOT_AGENT_GIT_PROXY_VERSION" ]; then[0m
+2026-10-04T09:11:36.4064414Z [36;1m  ln -sf "$PREINSTALLED_DIR/git-proxy" "/home/runner/work/_temp/git-proxy"[0m
+2026-10-04T09:11:36.4065053Z [36;1m  echo "Using pre-installed git-proxy."[0m
+2026-10-04T09:11:36.4065523Z [36;1m  exit 0[0m
+2026-10-04T09:11:36.4065903Z [36;1mfi[0m
+2026-10-04T09:11:36.4066249Z [36;1m[0m
+2026-10-04T09:11:36.4066598Z [36;1m[0m
+2026-10-04T09:11:36.4067160Z [36;1mecho "A matching pre-installed git-proxy was not found; falling through to download."[0m
+2026-10-04T09:11:36.4067871Z [36;1mecho "Downloading git-proxy ($ARTIFACT)..."[0m
+2026-10-04T09:11:36.4068366Z [36;1mMAX_RETRIES=3[0m
+2026-10-04T09:11:36.4068765Z [36;1mRETRY_COUNT=0[0m
+2026-10-04T09:11:36.4069224Z [36;1mwhile [ $RETRY_COUNT -lt $MAX_RETRIES ]; do[0m
+2026-10-04T09:11:36.4070509Z [36;1m  if curl -fsSL --max-time 60 -H "Authorization: ***" \[0m
+2026-10-04T09:11:36.4071397Z [36;1m    "https://api.individual.githubcopilot.com/agents/swe/runtime-artifacts/$ARTIFACT" | tar -xz; then[0m
+2026-10-04T09:11:36.4072132Z [36;1m    break[0m
+2026-10-04T09:11:36.4072503Z [36;1m  fi[0m
+2026-10-04T09:11:36.4072907Z [36;1m  RETRY_COUNT=$((RETRY_COUNT + 1))[0m
+2026-10-04T09:11:36.4073358Z [36;1m  sleep 1[0m
+2026-10-04T09:11:36.4073737Z [36;1mdone[0m
+2026-10-04T09:11:36.4074401Z [36;1mif [ $RETRY_COUNT -eq $MAX_RETRIES ]; then echo "Failed to download git-proxy after $MAX_RETRIES attempts"; exit 81; fi[0m
+2026-10-04T09:11:36.4075147Z [36;1mchmod +x git-proxy[0m
+2026-10-04T09:11:36.4135580Z shell: /usr/bin/bash -e {0}
+2026-10-04T09:11:36.4136194Z env:
+2026-10-04T09:11:36.4136571Z   SHOULD_CONTINUE: true
+2026-10-04T09:11:36.4137006Z   COPILOT_AGENT_START_TIME_SEC: 1791105095
+2026-10-04T09:11:36.4137503Z   COPILOT_AGENT_TIMEOUT_MIN: 59
+2026-10-04T09:11:36.4137949Z   COPILOT_PREINSTALLED_RUNTIME: true
+2026-10-04T09:11:36.4138640Z   GITHUB_COPILOT_API_TOKEN: ***
+2026-10-04T09:11:36.4139203Z   COPILOT_AGENT_GIT_PROXY_VERSION: 1955cb7be27dbcc90854aa64524ab6b20b762b03
+2026-10-04T09:11:36.4139793Z ##[endgroup]
+2026-10-04T09:11:36.4279813Z Using pre-installed git-proxy.

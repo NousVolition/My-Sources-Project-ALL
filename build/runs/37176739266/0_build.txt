@@ -1,0 +1,519 @@
+﻿2026-10-04T04:46:41.1305669Z ##[debug]Starting: build
+2026-10-04T04:46:41.1320866Z ##[debug]Cleaning runner temp folder: /home/runner/work/_temp
+2026-10-04T04:46:41.1421202Z ##[debug]Starting: Set up job
+2026-10-04T04:46:41.1421769Z Current runner version: '2.337.0'
+2026-10-04T04:46:41.1438289Z ##[group]Runner Image Provisioner
+2026-10-04T04:46:41.1438836Z Hosted Compute Agent
+2026-10-04T04:46:41.1439236Z Version: 20260901.588
+2026-10-04T04:46:41.1439615Z Commit: f88ec8081b781fac6c440065ac7ff9e710ce3d0b
+2026-10-04T04:46:41.1440087Z Build Date: 2026-09-01T19:56:44Z
+2026-10-04T04:46:41.1440490Z Worker ID: {d00a8d39-4234-4dc2-a1e7-660dea083faf}
+2026-10-04T04:46:41.1440905Z Azure Region: centralus
+2026-10-04T04:46:41.1441332Z ##[endgroup]
+2026-10-04T04:46:41.1442092Z ##[group]Operating System
+2026-10-04T04:46:41.1442516Z Ubuntu
+2026-10-04T04:46:41.1442830Z 24.04.5
+2026-10-04T04:46:41.1443130Z LTS
+2026-10-04T04:46:41.1443511Z ##[endgroup]
+2026-10-04T04:46:41.1443853Z ##[group]Runner Image
+2026-10-04T04:46:41.1444256Z Image: ubuntu-24.04
+2026-10-04T04:46:41.1444821Z Version: 20260927.320.1
+2026-10-04T04:46:41.1445576Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260927.320/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-04T04:46:41.1446631Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260927.320
+2026-10-04T04:46:41.1447219Z ##[endgroup]
+2026-10-04T04:46:41.1447891Z ##[group]GITHUB_TOKEN Permissions
+2026-10-04T04:46:41.1449577Z Contents: read
+2026-10-04T04:46:41.1449923Z Metadata: read
+2026-10-04T04:46:41.1450300Z ##[endgroup]
+2026-10-04T04:46:41.1451738Z Secret source: Actions
+2026-10-04T04:46:41.1452324Z Cache mode: write
+2026-10-04T04:46:41.1452851Z ##[debug]Primary repository: NousVolition/My-Sources-Project-ALL
+2026-10-04T04:46:41.1453355Z Prepare workflow directory
+2026-10-04T04:46:41.1500961Z ##[debug]Creating pipeline directory: '/home/runner/work/My-Sources-Project-ALL'
+2026-10-04T04:46:41.1503231Z ##[debug]Creating workspace directory: '/home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL'
+2026-10-04T04:46:41.1504490Z ##[debug]Update context data
+2026-10-04T04:46:41.1506856Z ##[debug]Evaluating job-level environment variables
+2026-10-04T04:46:41.1641791Z ##[debug]Evaluating job container
+2026-10-04T04:46:41.1644159Z ##[debug]Evaluating job service containers
+2026-10-04T04:46:41.1645595Z ##[debug]Evaluating job defaults
+2026-10-04T04:46:41.1665216Z Prepare all required actions
+2026-10-04T04:46:41.1697267Z Getting action download info
+2026-10-04T04:46:41.4151889Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-04T04:46:41.4359810Z ##[debug]Copied action archive '/opt/actionarchivecache/actions_checkout/11d5960a326750d5838078e36cf38b85af677262.tar.gz' to '/home/runner/work/_actions/_temp_f3b1fb71-b308-4914-9725-d7dfab7a9dcf/1c04954d-f7fa-4d8e-bd02-5462fee77b2e.tar.gz'
+2026-10-04T04:46:41.4851723Z ##[debug]Unwrap 'actions-checkout-11d5960' to '/home/runner/work/_actions/actions/checkout/v4'
+2026-10-04T04:46:41.6127329Z ##[debug]Archive '/home/runner/work/_actions/_temp_f3b1fb71-b308-4914-9725-d7dfab7a9dcf/1c04954d-f7fa-4d8e-bd02-5462fee77b2e.tar.gz' has been unzipped into '/home/runner/work/_actions/actions/checkout/v4'.
+2026-10-04T04:46:41.6200580Z Download action repository 'actions/setup-python@v3' (SHA:3542bca2639a428e1796aaa6a2ffef0c0f575566)
+2026-10-04T04:46:41.8231575Z ##[debug]Copied action archive '/opt/actionarchivecache/actions_setup-python/3542bca2639a428e1796aaa6a2ffef0c0f575566.tar.gz' to '/home/runner/work/_actions/_temp_ffac7574-66fe-4fb3-b836-390320a9d728/1d97def2-9510-4d24-9bc4-d46400bc9fdf.tar.gz'
+2026-10-04T04:46:41.8537789Z ##[debug]Unwrap 'actions-setup-python-3542bca' to '/home/runner/work/_actions/actions/setup-python/v3'
+2026-10-04T04:46:42.1507846Z ##[debug]Archive '/home/runner/work/_actions/_temp_ffac7574-66fe-4fb3-b836-390320a9d728/1d97def2-9510-4d24-9bc4-d46400bc9fdf.tar.gz' has been unzipped into '/home/runner/work/_actions/actions/setup-python/v3'.
+2026-10-04T04:46:42.1551477Z ##[debug]action.yml for action: '/home/runner/work/_actions/actions/checkout/v4/action.yml'.
+2026-10-04T04:46:42.2266508Z ##[debug]action.yml for action: '/home/runner/work/_actions/actions/setup-python/v3/action.yml'.
+2026-10-04T04:46:42.2339943Z ##[debug]Set step '__actions_checkout' display name to: 'Run actions/checkout@v4'
+2026-10-04T04:46:42.2342601Z ##[debug]Set step '__actions_setup-python' display name to: 'Set up Python 3.10'
+2026-10-04T04:46:42.2343911Z ##[debug]Set step '__run' display name to: 'Install dependencies'
+2026-10-04T04:46:42.2345090Z ##[debug]Set step '__run_2' display name to: 'Lint with flake8'
+2026-10-04T04:46:42.2346392Z ##[debug]Set step '__run_3' display name to: 'Test with pytest'
+2026-10-04T04:46:42.2346836Z Complete job name: build
+2026-10-04T04:46:42.2363873Z ##[debug]Collect running processes for tracking orphan processes.
+2026-10-04T04:46:42.2513851Z ##[debug]Finishing: Set up job
+2026-10-04T04:46:42.2605744Z ##[debug]Evaluating condition for step: 'Run actions/checkout@v4'
+2026-10-04T04:46:42.2631390Z ##[debug]Evaluating: success()
+2026-10-04T04:46:42.2634281Z ##[debug]Evaluating success:
+2026-10-04T04:46:42.2643580Z ##[debug]=> true
+2026-10-04T04:46:42.2647407Z ##[debug]Result: true
+2026-10-04T04:46:42.2664113Z ##[debug]Starting: Run actions/checkout@v4
+2026-10-04T04:46:42.2717756Z ##[debug]Register post job cleanup for action: actions/checkout@v4
+2026-10-04T04:46:42.2779187Z ##[debug]Loading inputs
+2026-10-04T04:46:42.2787185Z ##[debug]Evaluating: github.repository
+2026-10-04T04:46:42.2787781Z ##[debug]Evaluating Index:
+2026-10-04T04:46:42.2788914Z ##[debug]..Evaluating github:
+2026-10-04T04:46:42.2789522Z ##[debug]..=> Object
+2026-10-04T04:46:42.2792740Z ##[debug]..Evaluating String:
+2026-10-04T04:46:42.2793200Z ##[debug]..=> 'repository'
+2026-10-04T04:46:42.2795931Z ##[debug]=> 'NousVolition/My-Sources-Project-ALL'
+2026-10-04T04:46:42.2797219Z ##[debug]Result: 'NousVolition/My-Sources-Project-ALL'
+2026-10-04T04:46:42.2800771Z ##[debug]Evaluating: github.token
+2026-10-04T04:46:42.2801269Z ##[debug]Evaluating Index:
+2026-10-04T04:46:42.2801734Z ##[debug]..Evaluating github:
+2026-10-04T04:46:42.2802240Z ##[debug]..=> Object
+2026-10-04T04:46:42.2802661Z ##[debug]..Evaluating String:
+2026-10-04T04:46:42.2803105Z ##[debug]..=> 'token'
+2026-10-04T04:46:42.2805963Z ##[debug]=> '***'
+2026-10-04T04:46:42.2808114Z ##[debug]Result: '***'
+2026-10-04T04:46:42.2821264Z ##[debug]Loading env
+2026-10-04T04:46:42.2859654Z ##[group]Run actions/checkout@v4
+2026-10-04T04:46:42.2860043Z with:
+2026-10-04T04:46:42.2860336Z   repository: NousVolition/My-Sources-Project-ALL
+2026-10-04T04:46:42.2862590Z   token: ***
+2026-10-04T04:46:42.2862836Z   ssh-strict: true
+2026-10-04T04:46:42.2863087Z   ssh-user: git
+2026-10-04T04:46:42.2863343Z   persist-credentials: true
+2026-10-04T04:46:42.2863627Z   clean: true
+2026-10-04T04:46:42.2863891Z   sparse-checkout-cone-mode: true
+2026-10-04T04:46:42.2864208Z   fetch-depth: 1
+2026-10-04T04:46:42.2864458Z   fetch-tags: false
+2026-10-04T04:46:42.2864711Z   show-progress: true
+2026-10-04T04:46:42.2864980Z   lfs: false
+2026-10-04T04:46:42.2865215Z   submodules: false
+2026-10-04T04:46:42.2865480Z   set-safe-directory: true
+2026-10-04T04:46:42.2865772Z   allow-unsafe-pr-checkout: false
+2026-10-04T04:46:42.2866138Z ##[endgroup]
+2026-10-04T04:46:42.3480085Z ##[debug]GITHUB_WORKSPACE = '/home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL'
+2026-10-04T04:46:42.3482145Z ##[debug]qualified repository = 'NousVolition/My-Sources-Project-ALL'
+2026-10-04T04:46:42.3483212Z ##[debug]ref = 'refs/heads/main'
+2026-10-04T04:46:42.3483975Z ##[debug]commit = '0864ef9d7047b67ebb7f68cf65eca6f4d65525e2'
+2026-10-04T04:46:42.3484707Z ##[debug]clean = true
+2026-10-04T04:46:42.3485387Z ##[debug]filter = undefined
+2026-10-04T04:46:42.3486092Z ##[debug]fetch depth = 1
+2026-10-04T04:46:42.3486990Z ##[debug]fetch tags = false
+2026-10-04T04:46:42.3487735Z ##[debug]show progress = true
+2026-10-04T04:46:42.3488553Z ##[debug]lfs = false
+2026-10-04T04:46:42.3489242Z ##[debug]submodules = false
+2026-10-04T04:46:42.3490493Z ##[debug]recursive submodules = false
+2026-10-04T04:46:42.3491315Z ##[debug]GitHub Host URL = 
+2026-10-04T04:46:42.3492083Z ##[debug]allow unsafe PR checkout = false
+2026-10-04T04:46:42.3494055Z ::add-matcher::/home/runner/work/_actions/actions/checkout/v4/dist/problem-matcher.json
+2026-10-04T04:46:42.3568984Z ##[debug]Added matchers: 'checkout-git'. Problem matchers scan action output for known warning or error strings and report these inline.
+2026-10-04T04:46:42.3572624Z Syncing repository: NousVolition/My-Sources-Project-ALL
+2026-10-04T04:46:42.3573645Z ::group::Getting Git version info
+2026-10-04T04:46:42.3574571Z ##[group]Getting Git version info
+2026-10-04T04:46:42.3575060Z Working directory is '/home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL'
+2026-10-04T04:46:42.3575848Z ##[debug]Getting git version
+2026-10-04T04:46:42.3576345Z [command]/usr/bin/git version
+2026-10-04T04:46:42.3624636Z git version 2.55.0
+2026-10-04T04:46:42.3636536Z ##[debug]0
+2026-10-04T04:46:42.3637908Z ##[debug]git version 2.55.0
+2026-10-04T04:46:42.3638453Z ##[debug]
+2026-10-04T04:46:42.3645973Z ##[debug]Set git useragent to: git/2.55.0 (github-actions-checkout)
+2026-10-04T04:46:42.3647338Z ::endgroup::
+2026-10-04T04:46:42.3647768Z ##[endgroup]
+2026-10-04T04:46:42.3653663Z ::add-mask::***
+2026-10-04T04:46:42.3655451Z Temporarily overriding HOME='/home/runner/work/_temp/476d2491-aeac-463a-a322-31c8e42bd718' before making global git config changes
+2026-10-04T04:46:42.3656940Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-04T04:46:42.3658206Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL
+2026-10-04T04:46:42.3803495Z ##[debug]0
+2026-10-04T04:46:42.3811028Z ##[debug]
+2026-10-04T04:46:42.3811943Z Deleting the contents of '/home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL'
+2026-10-04T04:46:42.3825549Z ::group::Initializing the repository
+2026-10-04T04:46:42.3826341Z ##[group]Initializing the repository
+2026-10-04T04:46:42.3827395Z [command]/usr/bin/git init /home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL
+2026-10-04T04:46:42.4113727Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-04T04:46:42.4115143Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-04T04:46:42.4116377Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-04T04:46:42.4117263Z hint: call:
+2026-10-04T04:46:42.4118057Z hint:
+2026-10-04T04:46:42.4118769Z hint: 	git config --global init.defaultBranch <name>
+2026-10-04T04:46:42.4119346Z hint:
+2026-10-04T04:46:42.4119876Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-04T04:46:42.4120752Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-04T04:46:42.4121410Z hint:
+2026-10-04T04:46:42.4121881Z hint: 	git branch -m <name>
+2026-10-04T04:46:42.4122317Z hint:
+2026-10-04T04:46:42.4122912Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-04T04:46:42.4124069Z Initialized empty Git repository in /home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL/.git/
+2026-10-04T04:46:42.4125634Z ##[debug]0
+2026-10-04T04:46:42.4126911Z ##[debug]Initialized empty Git repository in /home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL/.git/
+2026-10-04T04:46:42.4127820Z ##[debug]
+2026-10-04T04:46:42.4128527Z [command]/usr/bin/git remote add origin https://github.com/NousVolition/My-Sources-Project-ALL
+2026-10-04T04:46:42.4302871Z ##[debug]0
+2026-10-04T04:46:42.4303525Z ##[debug]
+2026-10-04T04:46:42.4304395Z ::endgroup::
+2026-10-04T04:46:42.4304769Z ##[endgroup]
+2026-10-04T04:46:42.4305442Z ::group::Disabling automatic garbage collection
+2026-10-04T04:46:42.4306008Z ##[group]Disabling automatic garbage collection
+2026-10-04T04:46:42.4308338Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-04T04:46:42.4402935Z ##[debug]0
+2026-10-04T04:46:42.4403653Z ##[debug]
+2026-10-04T04:46:42.4404694Z ::endgroup::
+2026-10-04T04:46:42.4405072Z ##[endgroup]
+2026-10-04T04:46:42.4405719Z ::group::Setting up auth
+2026-10-04T04:46:42.4406343Z ##[group]Setting up auth
+2026-10-04T04:46:42.4410105Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-04T04:46:42.4438198Z ##[debug]1
+2026-10-04T04:46:42.4438873Z ##[debug]
+2026-10-04T04:46:42.4442737Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-04T04:46:42.4734027Z ##[debug]0
+2026-10-04T04:46:42.4734838Z ##[debug]
+2026-10-04T04:46:42.4740062Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-04T04:46:42.4766780Z ##[debug]1
+2026-10-04T04:46:42.4767492Z ##[debug]
+2026-10-04T04:46:42.4772172Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-04T04:46:42.4945438Z ##[debug]0
+2026-10-04T04:46:42.4946668Z ##[debug]
+2026-10-04T04:46:42.4951175Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-04T04:46:42.4978516Z ##[debug]1
+2026-10-04T04:46:42.4979206Z ##[debug]
+2026-10-04T04:46:42.4983097Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-04T04:46:42.5155262Z ##[debug]0
+2026-10-04T04:46:42.5156038Z ##[debug]
+2026-10-04T04:46:42.5162983Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-04T04:46:42.5200428Z ##[debug]0
+2026-10-04T04:46:42.5200930Z ##[debug]
+2026-10-04T04:46:42.5393804Z ::endgroup::
+2026-10-04T04:46:42.5394253Z ##[endgroup]
+2026-10-04T04:46:42.5395418Z ::group::Fetching the repository
+2026-10-04T04:46:42.5395874Z ##[group]Fetching the repository
+2026-10-04T04:46:42.5401367Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +0864ef9d7047b67ebb7f68cf65eca6f4d65525e2:refs/remotes/origin/main
+2026-10-04T04:46:43.9255941Z From https://github.com/NousVolition/My-Sources-Project-ALL
+2026-10-04T04:46:43.9257470Z  * [new ref]         0864ef9d7047b67ebb7f68cf65eca6f4d65525e2 -> origin/main
+2026-10-04T04:46:43.9258818Z ##[debug]0
+2026-10-04T04:46:43.9259298Z ##[debug]
+2026-10-04T04:46:43.9259734Z ::endgroup::
+2026-10-04T04:46:43.9259995Z ##[endgroup]
+2026-10-04T04:46:43.9260470Z ::group::Determining the checkout info
+2026-10-04T04:46:43.9260770Z ##[group]Determining the checkout info
+2026-10-04T04:46:43.9261910Z ::endgroup::
+2026-10-04T04:46:43.9262141Z ##[endgroup]
+2026-10-04T04:46:43.9267681Z [command]/usr/bin/git sparse-checkout disable
+2026-10-04T04:46:43.9839273Z ##[debug]0
+2026-10-04T04:46:43.9839682Z ##[debug]
+2026-10-04T04:46:43.9843148Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-04T04:46:44.0050867Z ##[debug]0
+2026-10-04T04:46:44.0051454Z ##[debug]
+2026-10-04T04:46:44.0051932Z ::group::Checking out the ref
+2026-10-04T04:46:44.0052259Z ##[group]Checking out the ref
+2026-10-04T04:46:44.0056604Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-10-04T04:46:44.1239146Z Switched to a new branch 'main'
+2026-10-04T04:46:44.1242770Z branch 'main' set up to track 'origin/main'.
+2026-10-04T04:46:44.1267348Z ##[debug]0
+2026-10-04T04:46:44.1268012Z ##[debug]branch 'main' set up to track 'origin/main'.
+2026-10-04T04:46:44.1268279Z ##[debug]
+2026-10-04T04:46:44.1268837Z ::endgroup::
+2026-10-04T04:46:44.1269035Z ##[endgroup]
+2026-10-04T04:46:44.1459255Z ##[debug]0
+2026-10-04T04:46:44.1459888Z ##[debug]commit 0864ef9d7047b67ebb7f68cf65eca6f4d65525e2
+2026-10-04T04:46:44.1460282Z ##[debug]Author: Nous Volition <zimanmichele@gmail.com>
+2026-10-04T04:46:44.1460625Z ##[debug]Date:   Sat Oct 3 21:20:41 2026 -0700
+2026-10-04T04:46:44.1461507Z ##[debug]
+2026-10-04T04:46:44.1461690Z ##[debug]    Create python-app.yml
+2026-10-04T04:46:44.1461912Z ##[debug]
+2026-10-04T04:46:44.1462284Z [command]/usr/bin/git log -1 --format=%H
+2026-10-04T04:46:44.1488219Z 0864ef9d7047b67ebb7f68cf65eca6f4d65525e2
+2026-10-04T04:46:44.1491128Z ##[debug]0
+2026-10-04T04:46:44.1491588Z ##[debug]0864ef9d7047b67ebb7f68cf65eca6f4d65525e2
+2026-10-04T04:46:44.1491822Z ##[debug]
+2026-10-04T04:46:44.1496726Z ##[debug]Unsetting HOME override
+2026-10-04T04:46:44.1501996Z ::remove-matcher owner=checkout-git::
+2026-10-04T04:46:44.1512541Z ##[debug]Removed matchers: 'checkout-git'
+2026-10-04T04:46:44.1573827Z ##[debug]Node Action run completed with exit code 0
+2026-10-04T04:46:44.1597309Z ##[debug]Save intra-action state isPost = true
+2026-10-04T04:46:44.1597586Z ##[debug]Save intra-action state setSafeDirectory = true
+2026-10-04T04:46:44.1598088Z ##[debug]Save intra-action state repositoryPath = /home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL
+2026-10-04T04:46:44.1600958Z ##[debug]Set output commit = 0864ef9d7047b67ebb7f68cf65eca6f4d65525e2
+2026-10-04T04:46:44.1601229Z ##[debug]Set output ref = refs/heads/main
+2026-10-04T04:46:44.1612075Z ##[debug]Finishing: Run actions/checkout@v4
+2026-10-04T04:46:44.1622888Z ##[debug]Evaluating condition for step: 'Set up Python 3.10'
+2026-10-04T04:46:44.1625817Z ##[debug]Evaluating: success()
+2026-10-04T04:46:44.1626037Z ##[debug]Evaluating success:
+2026-10-04T04:46:44.1626571Z ##[debug]=> true
+2026-10-04T04:46:44.1626881Z ##[debug]Result: true
+2026-10-04T04:46:44.1627513Z ##[debug]Starting: Set up Python 3.10
+2026-10-04T04:46:44.1640719Z ##[debug]Register post job cleanup for action: actions/setup-python@v3
+2026-10-04T04:46:44.1653109Z ##[debug]Loading inputs
+2026-10-04T04:46:44.1718132Z ##[debug]Evaluating: github.token
+2026-10-04T04:46:44.1718372Z ##[debug]Evaluating Index:
+2026-10-04T04:46:44.1718531Z ##[debug]..Evaluating github:
+2026-10-04T04:46:44.1718734Z ##[debug]..=> Object
+2026-10-04T04:46:44.1718879Z ##[debug]..Evaluating String:
+2026-10-04T04:46:44.1719033Z ##[debug]..=> 'token'
+2026-10-04T04:46:44.1720741Z ##[debug]=> '***'
+2026-10-04T04:46:44.1722006Z ##[debug]Result: '***'
+2026-10-04T04:46:44.1724153Z ##[debug]Loading env
+2026-10-04T04:46:44.1728989Z ##[group]Run actions/setup-python@v3
+2026-10-04T04:46:44.1729133Z with:
+2026-10-04T04:46:44.1729249Z   python-version: 3.10
+2026-10-04T04:46:44.1730492Z   token: ***
+2026-10-04T04:46:44.1730633Z ##[endgroup]
+2026-10-04T04:46:44.2503594Z ##[debug]Semantic version spec of 3.10 is 3.10
+2026-10-04T04:46:44.2505105Z ##[debug]isExplicit: 
+2026-10-04T04:46:44.2505662Z ##[debug]explicit? false
+2026-10-04T04:46:44.2515662Z ##[debug]isExplicit: 3.10.21
+2026-10-04T04:46:44.2516034Z ##[debug]explicit? true
+2026-10-04T04:46:44.2518323Z ##[debug]isExplicit: 3.11.16
+2026-10-04T04:46:44.2518656Z ##[debug]explicit? true
+2026-10-04T04:46:44.2523079Z ##[debug]isExplicit: 3.12.14
+2026-10-04T04:46:44.2523696Z ##[debug]explicit? true
+2026-10-04T04:46:44.2529541Z ##[debug]isExplicit: 3.13.15
+2026-10-04T04:46:44.2530006Z ##[debug]explicit? true
+2026-10-04T04:46:44.2637118Z ##[debug]isExplicit: 3.14.7
+2026-10-04T04:46:44.2637545Z ##[debug]explicit? true
+2026-10-04T04:46:44.2642299Z ##[debug]evaluating 5 versions
+2026-10-04T04:46:44.2658671Z ##[debug]matched: 3.10.21
+2026-10-04T04:46:44.2659149Z ##[debug]checking cache: /opt/hostedtoolcache/Python/3.10.21/x64
+2026-10-04T04:46:44.2659645Z ##[debug]Found tool in cache Python 3.10.21 x64
+2026-10-04T04:46:44.2667843Z (node:2078) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-04T04:46:44.2668270Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-04T04:46:44.2669084Z Successfully setup CPython (3.10.21)
+2026-10-04T04:46:44.2676752Z ##[add-matcher]/home/runner/work/_actions/actions/setup-python/v3/.github/python.json
+2026-10-04T04:46:44.2693718Z ##[debug]Added matchers: 'python'. Problem matchers scan action output for known warning or error strings and report these inline.
+2026-10-04T04:46:44.2737318Z ##[debug]Node Action run completed with exit code 0
+2026-10-04T04:46:44.2743803Z ##[debug]pythonLocation='/opt/hostedtoolcache/Python/3.10.21/x64'
+2026-10-04T04:46:44.2744182Z ##[debug]LD_LIBRARY_PATH='/opt/hostedtoolcache/Python/3.10.21/x64/lib'
+2026-10-04T04:46:44.2745328Z ##[debug]Set output python-version = 3.10.21
+2026-10-04T04:46:44.2746447Z ##[debug]Finishing: Set up Python 3.10
+2026-10-04T04:46:44.2752891Z ##[debug]Evaluating condition for step: 'Install dependencies'
+2026-10-04T04:46:44.2754465Z ##[debug]Evaluating: success()
+2026-10-04T04:46:44.2754682Z ##[debug]Evaluating success:
+2026-10-04T04:46:44.2755022Z ##[debug]=> true
+2026-10-04T04:46:44.2755239Z ##[debug]Result: true
+2026-10-04T04:46:44.2755736Z ##[debug]Starting: Install dependencies
+2026-10-04T04:46:44.2766122Z ##[debug]Loading inputs
+2026-10-04T04:46:44.2767406Z ##[debug]Loading env
+2026-10-04T04:46:44.2780041Z ##[group]Run python -m pip install --upgrade pip
+2026-10-04T04:46:44.2780332Z [36;1mpython -m pip install --upgrade pip[0m
+2026-10-04T04:46:44.2780516Z [36;1mpip install flake8 pytest[0m
+2026-10-04T04:46:44.2780746Z [36;1mif [ -f requirements.txt ]; then pip install -r requirements.txt; fi[0m
+2026-10-04T04:46:44.3820909Z shell: /usr/bin/bash -e {0}
+2026-10-04T04:46:44.3821126Z env:
+2026-10-04T04:46:44.3821309Z   pythonLocation: /opt/hostedtoolcache/Python/3.10.21/x64
+2026-10-04T04:46:44.3821609Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.10.21/x64/lib
+2026-10-04T04:46:44.3821796Z ##[endgroup]
+2026-10-04T04:46:44.4334169Z ##[debug]/usr/bin/bash -e /home/runner/work/_temp/5e445333-4b83-45b2-8557-de67a272f19b.sh
+2026-10-04T04:46:45.1821399Z Requirement already satisfied: pip in /opt/hostedtoolcache/Python/3.10.21/x64/lib/python3.10/site-packages (26.2.1)
+2026-10-04T04:46:45.7103326Z Collecting flake8
+2026-10-04T04:46:45.7868008Z   Downloading flake8-7.4.1-py2.py3-none-any.whl.metadata (3.8 kB)
+2026-10-04T04:46:45.8372380Z Collecting pytest
+2026-10-04T04:46:45.8482426Z   Downloading pytest-9.1.1-py3-none-any.whl.metadata (7.6 kB)
+2026-10-04T04:46:45.8694470Z Collecting mccabe<0.8.0,>=0.7.0 (from flake8)
+2026-10-04T04:46:45.8801517Z   Downloading mccabe-0.7.0-py2.py3-none-any.whl.metadata (5.0 kB)
+2026-10-04T04:46:45.9000359Z Collecting pycodestyle<2.16.0,>=2.15.0 (from flake8)
+2026-10-04T04:46:45.9107607Z   Downloading pycodestyle-2.15.0-py2.py3-none-any.whl.metadata (4.5 kB)
+2026-10-04T04:46:45.9391826Z Collecting pyflakes<4.1.0,>=4.0.0 (from flake8)
+2026-10-04T04:46:45.9498892Z   Downloading pyflakes-4.0.2-py2.py3-none-any.whl.metadata (3.7 kB)
+2026-10-04T04:46:45.9711976Z Collecting exceptiongroup>=1 (from pytest)
+2026-10-04T04:46:45.9818702Z   Downloading exceptiongroup-1.3.1-py3-none-any.whl.metadata (6.7 kB)
+2026-10-04T04:46:46.0012373Z Collecting iniconfig>=1.0.1 (from pytest)
+2026-10-04T04:46:46.0119483Z   Downloading iniconfig-2.3.0-py3-none-any.whl.metadata (2.5 kB)
+2026-10-04T04:46:46.0434760Z Collecting packaging>=22 (from pytest)
+2026-10-04T04:46:46.0538823Z   Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+2026-10-04T04:46:46.0736925Z Collecting pluggy<2,>=1.5 (from pytest)
+2026-10-04T04:46:46.0861466Z   Downloading pluggy-1.6.0-py3-none-any.whl.metadata (4.8 kB)
+2026-10-04T04:46:46.1168637Z Collecting pygments>=2.7.2 (from pytest)
+2026-10-04T04:46:46.1274798Z   Downloading pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+2026-10-04T04:46:46.1542096Z Collecting tomli>=1 (from pytest)
+2026-10-04T04:46:46.1650296Z   Downloading tomli-2.4.1-py3-none-any.whl.metadata (10 kB)
+2026-10-04T04:46:46.1893234Z Collecting typing-extensions>=4.6.0 (from exceptiongroup>=1->pytest)
+2026-10-04T04:46:46.2002169Z   Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+2026-10-04T04:46:46.2141123Z Downloading flake8-7.4.1-py2.py3-none-any.whl (57 kB)
+2026-10-04T04:46:46.2359262Z Downloading mccabe-0.7.0-py2.py3-none-any.whl (7.3 kB)
+2026-10-04T04:46:46.2555462Z Downloading pycodestyle-2.15.0-py2.py3-none-any.whl (31 kB)
+2026-10-04T04:46:46.2679965Z Downloading pyflakes-4.0.2-py2.py3-none-any.whl (66 kB)
+2026-10-04T04:46:46.2819883Z Downloading pytest-9.1.1-py3-none-any.whl (386 kB)
+2026-10-04T04:46:46.3149180Z Downloading pluggy-1.6.0-py3-none-any.whl (20 kB)
+2026-10-04T04:46:46.3273355Z Downloading exceptiongroup-1.3.1-py3-none-any.whl (16 kB)
+2026-10-04T04:46:46.3399860Z Downloading iniconfig-2.3.0-py3-none-any.whl (7.5 kB)
+2026-10-04T04:46:46.3529899Z Downloading packaging-26.3-py3-none-any.whl (129 kB)
+2026-10-04T04:46:46.3655549Z Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)
+2026-10-04T04:46:46.3899748Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 46.8 MB/s  0:00:00
+2026-10-04T04:46:46.4008129Z Downloading tomli-2.4.1-py3-none-any.whl (14 kB)
+2026-10-04T04:46:46.4147662Z Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+2026-10-04T04:46:46.4513659Z Installing collected packages: typing-extensions, tomli, pygments, pyflakes, pycodestyle, pluggy, packaging, mccabe, iniconfig, flake8, exceptiongroup, pytest
+2026-10-04T04:46:47.1412415Z 
+2026-10-04T04:46:47.1426988Z Successfully installed exceptiongroup-1.3.1 flake8-7.4.1 iniconfig-2.3.0 mccabe-0.7.0 packaging-26.3 pluggy-1.6.0 pycodestyle-2.15.0 pyflakes-4.0.2 pygments-2.21.0 pytest-9.1.1 tomli-2.4.1 typing-extensions-4.16.0
+2026-10-04T04:46:47.2058391Z ##[debug]Finishing: Install dependencies
+2026-10-04T04:46:47.2064397Z ##[debug]Evaluating condition for step: 'Lint with flake8'
+2026-10-04T04:46:47.2065968Z ##[debug]Evaluating: success()
+2026-10-04T04:46:47.2066407Z ##[debug]Evaluating success:
+2026-10-04T04:46:47.2066691Z ##[debug]=> true
+2026-10-04T04:46:47.2066913Z ##[debug]Result: true
+2026-10-04T04:46:47.2067898Z ##[debug]Starting: Lint with flake8
+2026-10-04T04:46:47.2075824Z ##[debug]Loading inputs
+2026-10-04T04:46:47.2076806Z ##[debug]Loading env
+2026-10-04T04:46:47.2079596Z ##[group]Run # stop the build if there are Python syntax errors or undefined names
+2026-10-04T04:46:47.2079923Z [36;1m# stop the build if there are Python syntax errors or undefined names[0m
+2026-10-04T04:46:47.2080202Z [36;1mflake8 . --count --select=E9,F63,F7,F82 --show-source --statistics[0m
+2026-10-04T04:46:47.2080495Z [36;1m# exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide[0m
+2026-10-04T04:46:47.2080832Z [36;1mflake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics[0m
+2026-10-04T04:46:47.2132668Z shell: /usr/bin/bash -e {0}
+2026-10-04T04:46:47.2132810Z env:
+2026-10-04T04:46:47.2132961Z   pythonLocation: /opt/hostedtoolcache/Python/3.10.21/x64
+2026-10-04T04:46:47.2133202Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.10.21/x64/lib
+2026-10-04T04:46:47.2133384Z ##[endgroup]
+2026-10-04T04:46:47.2183981Z ##[debug]/usr/bin/bash -e /home/runner/work/_temp/a2472010-9d18-4b12-b6b5-7fd30229910f.sh
+2026-10-04T04:46:47.9678455Z 0
+2026-10-04T04:46:48.0937320Z ./map_language.py:14:1: F401 'numpy as np' imported but unused
+2026-10-04T04:46:48.0937640Z ./map_language.py:80:128: E501 line too long (146 > 127 characters)
+2026-10-04T04:46:48.0937919Z ./map_language.py:81:128: E501 line too long (261 > 127 characters)
+2026-10-04T04:46:48.0938232Z ./map_language.py:82:128: E501 line too long (143 > 127 characters)
+2026-10-04T04:46:48.0938581Z ./map_language.py:104:128: E501 line too long (137 > 127 characters)
+2026-10-04T04:46:48.0938906Z ./map_language.py:153:1: E302 expected 2 blank lines, found 1
+2026-10-04T04:46:48.0939175Z ./map_language.py:166:1: E305 expected 2 blank lines after class or function definition, found 1
+2026-10-04T04:46:48.0939450Z ./map_language.py:230:128: E501 line too long (128 > 127 characters)
+2026-10-04T04:46:48.0939709Z ./map_language.py:292:1: E302 expected 2 blank lines, found 1
+2026-10-04T04:46:48.0939964Z ./map_language.py:295:1: E305 expected 2 blank lines after class or function definition, found 1
+2026-10-04T04:46:48.0940233Z ./map_language.py:333:128: E501 line too long (225 > 127 characters)
+2026-10-04T04:46:48.0940455Z ./map_language.py:336:128: E501 line too long (173 > 127 characters)
+2026-10-04T04:46:48.0940674Z ./map_language.py:337:128: E501 line too long (173 > 127 characters)
+2026-10-04T04:46:48.0941260Z ./map_language.py:338:128: E501 line too long (183 > 127 characters)
+2026-10-04T04:46:48.0941473Z ./map_language.py:339:128: E501 line too long (228 > 127 characters)
+2026-10-04T04:46:48.0941692Z ./map_language.py:340:128: E501 line too long (211 > 127 characters)
+2026-10-04T04:46:48.0941913Z ./map_language.py:341:128: E501 line too long (242 > 127 characters)
+2026-10-04T04:46:48.0942127Z ./map_language.py:343:128: E501 line too long (274 > 127 characters)
+2026-10-04T04:46:48.0942341Z ./map_language.py:355:128: E501 line too long (163 > 127 characters)
+2026-10-04T04:46:48.0942563Z ./map_language_2.py:91:128: E501 line too long (183 > 127 characters)
+2026-10-04T04:46:48.0942783Z ./map_language_2.py:94:128: E501 line too long (139 > 127 characters)
+2026-10-04T04:46:48.0942998Z ./map_language_2.py:101:1: E302 expected 2 blank lines, found 1
+2026-10-04T04:46:48.0943213Z ./map_language_2.py:105:1: E302 expected 2 blank lines, found 1
+2026-10-04T04:46:48.0943436Z ./map_language_2.py:113:128: E501 line too long (129 > 127 characters)
+2026-10-04T04:46:48.0943711Z ./map_language_2.py:119:1: E305 expected 2 blank lines after class or function definition, found 1
+2026-10-04T04:46:48.0944172Z ./map_language_2.py:156:128: E501 line too long (146 > 127 characters)
+2026-10-04T04:46:48.0944396Z ./map_language_2.py:162:128: E501 line too long (196 > 127 characters)
+2026-10-04T04:46:48.0944618Z ./map_language_2.py:320:1: E302 expected 2 blank lines, found 1
+2026-10-04T04:46:48.0944826Z ./map_language_2.py:323:1: E302 expected 2 blank lines, found 1
+2026-10-04T04:46:48.0945084Z ./map_language_2.py:337:1: E305 expected 2 blank lines after class or function definition, found 1
+2026-10-04T04:46:48.0945354Z ./map_language_2.py:354:128: E501 line too long (299 > 127 characters)
+2026-10-04T04:46:48.0945591Z ./map_language_2.py:355:128: E501 line too long (444 > 127 characters)
+2026-10-04T04:46:48.0945798Z 6     E302 expected 2 blank lines, found 1
+2026-10-04T04:46:48.0946013Z 4     E305 expected 2 blank lines after class or function definition, found 1
+2026-10-04T04:46:48.0946447Z 21    E501 line too long (146 > 127 characters)
+2026-10-04T04:46:48.0946702Z 1     F401 'numpy as np' imported but unused
+2026-10-04T04:46:48.0946922Z 32
+2026-10-04T04:46:48.1079307Z ##[debug]Finishing: Lint with flake8
+2026-10-04T04:46:48.1087409Z ##[debug]Evaluating condition for step: 'Test with pytest'
+2026-10-04T04:46:48.1089443Z ##[debug]Evaluating: success()
+2026-10-04T04:46:48.1089667Z ##[debug]Evaluating success:
+2026-10-04T04:46:48.1089956Z ##[debug]=> true
+2026-10-04T04:46:48.1090152Z ##[debug]Result: true
+2026-10-04T04:46:48.1090618Z ##[debug]Starting: Test with pytest
+2026-10-04T04:46:48.1098310Z ##[debug]Loading inputs
+2026-10-04T04:46:48.1099087Z ##[debug]Loading env
+2026-10-04T04:46:48.1101442Z ##[group]Run pytest
+2026-10-04T04:46:48.1101578Z [36;1mpytest[0m
+2026-10-04T04:46:48.1153380Z shell: /usr/bin/bash -e {0}
+2026-10-04T04:46:48.1153512Z env:
+2026-10-04T04:46:48.1153672Z   pythonLocation: /opt/hostedtoolcache/Python/3.10.21/x64
+2026-10-04T04:46:48.1153895Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.10.21/x64/lib
+2026-10-04T04:46:48.1154072Z ##[endgroup]
+2026-10-04T04:46:48.1201223Z ##[debug]/usr/bin/bash -e /home/runner/work/_temp/581fa8ca-f410-4f98-b238-346c5c59c92a.sh
+2026-10-04T04:46:48.3357301Z ============================= test session starts ==============================
+2026-10-04T04:46:48.3357666Z platform linux -- Python 3.10.21, pytest-9.1.1, pluggy-1.6.0
+2026-10-04T04:46:48.3357931Z rootdir: /home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL
+2026-10-04T04:46:48.3358149Z collected 0 items
+2026-10-04T04:46:48.3358237Z 
+2026-10-04T04:46:48.3358334Z ============================ no tests ran in 0.00s =============================
+2026-10-04T04:46:48.3533178Z ##[error]Process completed with exit code 5.
+2026-10-04T04:46:48.3542124Z ##[debug]Finishing: Test with pytest
+2026-10-04T04:46:48.3568596Z ##[debug]Evaluating condition for step: 'Post Set up Python 3.10'
+2026-10-04T04:46:48.3570213Z ##[debug]Evaluating: success()
+2026-10-04T04:46:48.3570433Z ##[debug]Evaluating success:
+2026-10-04T04:46:48.3570702Z ##[debug]=> false
+2026-10-04T04:46:48.3570899Z ##[debug]Result: false
+2026-10-04T04:46:48.3574312Z ##[debug]Evaluating condition for step: 'Post Run actions/checkout@v4'
+2026-10-04T04:46:48.3575516Z ##[debug]Evaluating: always()
+2026-10-04T04:46:48.3575702Z ##[debug]Evaluating always:
+2026-10-04T04:46:48.3576102Z ##[debug]=> true
+2026-10-04T04:46:48.3576504Z ##[debug]Result: true
+2026-10-04T04:46:48.3576815Z ##[debug]Starting: Post Run actions/checkout@v4
+2026-10-04T04:46:48.3610326Z ##[debug]Loading inputs
+2026-10-04T04:46:48.3611242Z ##[debug]Evaluating: github.repository
+2026-10-04T04:46:48.3611416Z ##[debug]Evaluating Index:
+2026-10-04T04:46:48.3611559Z ##[debug]..Evaluating github:
+2026-10-04T04:46:48.3611709Z ##[debug]..=> Object
+2026-10-04T04:46:48.3611852Z ##[debug]..Evaluating String:
+2026-10-04T04:46:48.3612008Z ##[debug]..=> 'repository'
+2026-10-04T04:46:48.3612235Z ##[debug]=> 'NousVolition/My-Sources-Project-ALL'
+2026-10-04T04:46:48.3612453Z ##[debug]Result: 'NousVolition/My-Sources-Project-ALL'
+2026-10-04T04:46:48.3613440Z ##[debug]Evaluating: github.token
+2026-10-04T04:46:48.3613655Z ##[debug]Evaluating Index:
+2026-10-04T04:46:48.3613791Z ##[debug]..Evaluating github:
+2026-10-04T04:46:48.3613930Z ##[debug]..=> Object
+2026-10-04T04:46:48.3614056Z ##[debug]..Evaluating String:
+2026-10-04T04:46:48.3614191Z ##[debug]..=> 'token'
+2026-10-04T04:46:48.3615758Z ##[debug]=> '***'
+2026-10-04T04:46:48.3617217Z ##[debug]Result: '***'
+2026-10-04T04:46:48.3624241Z ##[debug]Loading env
+2026-10-04T04:46:48.3627083Z Post job cleanup.
+2026-10-04T04:46:48.4165908Z ##[debug]Getting git version
+2026-10-04T04:46:48.4177227Z [command]/usr/bin/git version
+2026-10-04T04:46:48.4214094Z git version 2.55.0
+2026-10-04T04:46:48.4226796Z ##[debug]0
+2026-10-04T04:46:48.4227183Z ##[debug]git version 2.55.0
+2026-10-04T04:46:48.4227345Z ##[debug]
+2026-10-04T04:46:48.4228342Z ##[debug]Set git useragent to: git/2.55.0 (github-actions-checkout)
+2026-10-04T04:46:48.4230669Z ::add-mask::***
+2026-10-04T04:46:48.4243646Z Temporarily overriding HOME='/home/runner/work/_temp/bc276b6e-c880-4c8a-9628-f00937c4c6a9' before making global git config changes
+2026-10-04T04:46:48.4244625Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-04T04:46:48.4248271Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL
+2026-10-04T04:46:48.4277243Z ##[debug]0
+2026-10-04T04:46:48.4299198Z ##[debug]
+2026-10-04T04:46:48.4299928Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-04T04:46:48.4311382Z ##[debug]1
+2026-10-04T04:46:48.4311820Z ##[debug]
+2026-10-04T04:46:48.4315931Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-04T04:46:48.4516419Z ##[debug]0
+2026-10-04T04:46:48.4516768Z ##[debug]
+2026-10-04T04:46:48.4523325Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-04T04:46:48.4549583Z http.https://github.com/.extraheader
+2026-10-04T04:46:48.4554414Z ##[debug]0
+2026-10-04T04:46:48.4554893Z ##[debug]http.https://github.com/.extraheader
+2026-10-04T04:46:48.4555174Z ##[debug]
+2026-10-04T04:46:48.4558772Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-04T04:46:48.4595989Z ##[debug]0
+2026-10-04T04:46:48.4596484Z ##[debug]
+2026-10-04T04:46:48.4601505Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-04T04:46:48.4800622Z ##[debug]0
+2026-10-04T04:46:48.4800950Z ##[debug]
+2026-10-04T04:46:48.4806917Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-04T04:46:48.4832972Z ##[debug]1
+2026-10-04T04:46:48.4833274Z ##[debug]
+2026-10-04T04:46:48.4837952Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-04T04:46:48.5017751Z ##[debug]0
+2026-10-04T04:46:48.5017987Z ##[debug]
+2026-10-04T04:46:48.5019423Z ##[debug]Unsetting HOME override
+2026-10-04T04:46:48.5092686Z ##[debug]Node Action run completed with exit code 0
+2026-10-04T04:46:48.5094977Z ##[debug]Finishing: Post Run actions/checkout@v4
+2026-10-04T04:46:48.5133703Z ##[debug]Starting: Complete job
+2026-10-04T04:46:48.5134956Z Uploading runner diagnostic logs
+2026-10-04T04:46:48.5144178Z ##[debug]Starting diagnostic file upload.
+2026-10-04T04:46:48.5144368Z ##[debug]Setting up diagnostic log folders.
+2026-10-04T04:46:48.5145737Z ##[debug]Creating diagnostic log files folder.
+2026-10-04T04:46:48.5152485Z ##[debug]Copying 1 worker diagnostic logs.
+2026-10-04T04:46:48.5158605Z ##[debug]Copying 1 runner diagnostic logs.
+2026-10-04T04:46:48.5159638Z ##[debug]Zipping diagnostic files.
+2026-10-04T04:46:48.5208623Z ##[debug]Uploading diagnostic metadata file.
+2026-10-04T04:46:48.5228180Z ##[debug]Diagnostic file upload complete.
+2026-10-04T04:46:48.5228540Z Completed runner diagnostic log upload
+2026-10-04T04:46:48.5228701Z Cleaning up orphan processes
+2026-10-04T04:46:48.5416624Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v3. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-10-04T04:46:48.5418003Z ##[debug]Finishing: Complete job
+2026-10-04T04:46:48.5438894Z ##[debug]Finishing: build

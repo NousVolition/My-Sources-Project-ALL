@@ -1,0 +1,45 @@
+﻿2026-10-04T08:46:19.6879664Z ##[group]Run set -euo pipefail
+2026-10-04T08:46:19.6880054Z [36;1mset -euo pipefail[0m
+2026-10-04T08:46:19.6880592Z [36;1mPREINSTALLED_RUNTIME="/opt/copilot-runtime/***-action-main"[0m
+2026-10-04T08:46:19.6881256Z [36;1mPREINSTALLED_NODE="/opt/copilot-runtime/ghcca-node"[0m
+2026-10-04T08:46:19.6881644Z [36;1mUSE_PREINSTALLED="true"[0m
+2026-10-04T08:46:19.6882057Z [36;1mif [ ! -d "$PREINSTALLED_RUNTIME" ] || [ ! -d "$PREINSTALLED_NODE" ]; then[0m
+2026-10-04T08:46:19.6882765Z [36;1m  echo "Pre-installed runtime not found (runtime=$PREINSTALLED_RUNTIME, node=$PREINSTALLED_NODE), falling through to download..."[0m
+2026-10-04T08:46:19.6883388Z [36;1m  USE_PREINSTALLED="false"[0m
+2026-10-04T08:46:19.6883693Z [36;1melse[0m
+2026-10-04T08:46:19.6884015Z [36;1m  EXPECTED_VERSION="${COPILOT_AGENT_RUNTIME_IMAGE_SHA}"[0m
+2026-10-04T08:46:19.6884455Z [36;1m  VERSION_FILE="$PREINSTALLED_RUNTIME/image-version"[0m
+2026-10-04T08:46:19.6884846Z [36;1m  if [ ! -f "$VERSION_FILE" ]; then[0m
+2026-10-04T08:46:19.6885245Z [36;1m    VERSION_FILE="$PREINSTALLED_RUNTIME/version"[0m
+2026-10-04T08:46:19.6885602Z [36;1m  fi[0m
+2026-10-04T08:46:19.6885871Z [36;1m  if [ -f "$VERSION_FILE" ]; then[0m
+2026-10-04T08:46:19.6886232Z [36;1m    INSTALLED_VERSION=$(cat "$VERSION_FILE")[0m
+2026-10-04T08:46:19.6886642Z [36;1m    if [ "$INSTALLED_VERSION" != "$EXPECTED_VERSION" ]; then[0m
+2026-10-04T08:46:19.6887316Z [36;1m      echo "Pre-installed runtime version ($INSTALLED_VERSION) differs from expected ($EXPECTED_VERSION). Falling through to download."[0m
+2026-10-04T08:46:19.6887936Z [36;1m      USE_PREINSTALLED="false"[0m
+2026-10-04T08:46:19.6888408Z [36;1m    fi[0m
+2026-10-04T08:46:19.6888660Z [36;1m  else[0m
+2026-10-04T08:46:19.6889135Z [36;1m    echo "Pre-installed runtime has no version file, cannot verify version match. Falling through to download."[0m
+2026-10-04T08:46:19.6889686Z [36;1m    USE_PREINSTALLED="false"[0m
+2026-10-04T08:46:19.6889992Z [36;1m  fi[0m
+2026-10-04T08:46:19.6890240Z [36;1mfi[0m
+2026-10-04T08:46:19.6890494Z [36;1m[0m
+2026-10-04T08:46:19.6890930Z [36;1mif [ "$USE_PREINSTALLED" = "true" ]; then[0m
+2026-10-04T08:46:19.6891372Z [36;1m  echo "Pre-installed runtime found, symlinking..."[0m
+2026-10-04T08:46:19.6891934Z [36;1m  ln -sf "$PREINSTALLED_RUNTIME" "/home/runner/work/_temp/***-action-main"[0m
+2026-10-04T08:46:19.6892541Z [36;1m  ln -sf "$PREINSTALLED_NODE" "/home/runner/work/_temp/ghcca-node"[0m
+2026-10-04T08:46:19.6893041Z [36;1m  echo "COPILOT_AGENT_START_TIME_SEC=$(date +%s)" >> "$GITHUB_ENV"[0m
+2026-10-04T08:46:19.6893503Z [36;1m  echo "COPILOT_AGENT_TIMEOUT_MIN=59" >> "$GITHUB_ENV"[0m
+2026-10-04T08:46:19.6893925Z [36;1m  mkdir -p "runtime-logs" "cca-mcp-debug-logs"[0m
+2026-10-04T08:46:19.6894350Z [36;1m  echo "COPILOT_PREINSTALLED_RUNTIME=true" >> "$GITHUB_ENV"[0m
+2026-10-04T08:46:19.6894803Z [36;1m  echo "Copilot prepared from pre-installed runtime."[0m
+2026-10-04T08:46:19.6895165Z [36;1melse[0m
+2026-10-04T08:46:19.6895520Z [36;1m  echo "COPILOT_PREINSTALLED_RUNTIME=false" >> "$GITHUB_ENV"[0m
+2026-10-04T08:46:19.6895911Z [36;1mfi[0m
+2026-10-04T08:46:19.6943604Z shell: /usr/bin/bash -e {0}
+2026-10-04T08:46:19.6943897Z env:
+2026-10-04T08:46:19.6944139Z   SHOULD_CONTINUE: true
+2026-10-04T08:46:19.6944517Z   COPILOT_AGENT_RUNTIME_IMAGE_SHA: 3e64b6ea97ff9b3354812522fb63a3968ae9f6a6
+2026-10-04T08:46:19.6944930Z ##[endgroup]
+2026-10-04T08:46:19.7018031Z Pre-installed runtime found, symlinking...
+2026-10-04T08:46:19.7052200Z Copilot prepared from pre-installed runtime.

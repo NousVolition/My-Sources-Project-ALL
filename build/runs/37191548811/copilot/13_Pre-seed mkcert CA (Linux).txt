@@ -1,0 +1,19 @@
+﻿2026-10-04T09:15:16.7376631Z ##[group]Run MKCERT_CA_SRC="/opt/copilot-runtime/mkcert-ca"
+2026-10-04T09:15:16.7377130Z [36;1mMKCERT_CA_SRC="/opt/copilot-runtime/mkcert-ca"[0m
+2026-10-04T09:15:16.7377544Z [36;1mMKCERT_CA_DST="/home/runner/work/_temp/runtime-logs/mkcert"[0m
+2026-10-04T09:15:16.7378030Z [36;1mif [ -f "$MKCERT_CA_SRC/rootCA.pem" ] && [ -f "$MKCERT_CA_SRC/rootCA-key.pem" ]; then[0m
+2026-10-04T09:15:16.7378467Z [36;1m  mkdir -p "$MKCERT_CA_DST"[0m
+2026-10-04T09:15:16.7378831Z [36;1m  ln -sf "$MKCERT_CA_SRC/rootCA.pem" "$MKCERT_CA_DST/rootCA.pem"[0m
+2026-10-04T09:15:16.7379267Z [36;1m  ln -sf "$MKCERT_CA_SRC/rootCA-key.pem" "$MKCERT_CA_DST/rootCA-key.pem"[0m
+2026-10-04T09:15:16.7379674Z [36;1m  echo "Pre-seeded mkcert CA from custom image."[0m
+2026-10-04T09:15:16.7379988Z [36;1melse[0m
+2026-10-04T09:15:16.7380333Z [36;1m  echo "No pre-generated mkcert CA found, keygen will happen at launch time."[0m
+2026-10-04T09:15:16.7380732Z [36;1mfi[0m
+2026-10-04T09:15:16.7438898Z shell: /usr/bin/bash -e {0}
+2026-10-04T09:15:16.7439335Z env:
+2026-10-04T09:15:16.7439580Z   SHOULD_CONTINUE: true
+2026-10-04T09:15:16.7439853Z   COPILOT_AGENT_START_TIME_SEC: 1791105315
+2026-10-04T09:15:16.7440152Z   COPILOT_AGENT_TIMEOUT_MIN: 59
+2026-10-04T09:15:16.7440435Z   COPILOT_PREINSTALLED_RUNTIME: true
+2026-10-04T09:15:16.7440711Z ##[endgroup]
+2026-10-04T09:15:16.7553091Z Pre-seeded mkcert CA from custom image.

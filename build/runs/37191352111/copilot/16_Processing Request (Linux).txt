@@ -1,0 +1,1419 @@
+﻿2026-10-04T09:11:36.4439211Z ##[group]Run set -euo pipefail
+2026-10-04T09:11:36.4439837Z [36;1mset -euo pipefail[0m
+2026-10-04T09:11:36.4440554Z [36;1mecho "RUNNER_TEMP=$RUNNER_TEMP"[0m
+2026-10-04T09:11:36.4441249Z [36;1mfind "$RUNNER_TEMP" -maxdepth 1 -type f -name 'git-credentials-*.config' -print -delete[0m
+2026-10-04T09:11:36.4441890Z [36;1m[0m
+2026-10-04T09:11:36.4442575Z [36;1m# Generate a unique token and stop processing workflow commands to prevent the runtime from injecting commands[0m
+2026-10-04T09:11:36.4443441Z [36;1mSTOP_TOKEN=$(cat /proc/sys/kernel/random/uuid)[0m
+2026-10-04T09:11:36.4443940Z [36;1m[0m
+2026-10-04T09:11:36.4444449Z [36;1m# Use a trap to ensure we always resume command processing and check for[0m
+2026-10-04T09:11:36.4445215Z [36;1m# fallback error annotations, even if the runtime exits with a non-zero code[0m
+2026-10-04T09:11:36.4445975Z [36;1m# (which would otherwise cause set -e to abort the shell before we get here).[0m
+2026-10-04T09:11:36.4446627Z [36;1m# The trap preserves the original exit code.[0m
+2026-10-04T09:11:36.4447164Z [36;1mcopilot_cleanup() {[0m
+2026-10-04T09:11:36.4447577Z [36;1m  [0m
+2026-10-04T09:11:36.4448067Z [36;1m  if [ -n "${GIT_PROXY_PID:-}" ] && kill -0 "$GIT_PROXY_PID" 2>/dev/null; then[0m
+2026-10-04T09:11:36.4448728Z [36;1m    echo "Stopping git-proxy (pid=$GIT_PROXY_PID)..."[0m
+2026-10-04T09:11:36.4449285Z [36;1m    kill "$GIT_PROXY_PID" 2>/dev/null || true[0m
+2026-10-04T09:11:36.4449780Z [36;1m    for _ in {1..25}; do[0m
+2026-10-04T09:11:36.4450531Z [36;1m      if ! kill -0 "$GIT_PROXY_PID" 2>/dev/null; then break; fi[0m
+2026-10-04T09:11:36.4451121Z [36;1m      sleep 0.2[0m
+2026-10-04T09:11:36.4451526Z [36;1m    done[0m
+2026-10-04T09:11:36.4451953Z [36;1m    if kill -0 "$GIT_PROXY_PID" 2>/dev/null; then[0m
+2026-10-04T09:11:36.4452574Z [36;1m      echo "git-proxy did not stop gracefully; forcing termination."[0m
+2026-10-04T09:11:36.4453189Z [36;1m      kill -KILL "$GIT_PROXY_PID" 2>/dev/null || true[0m
+2026-10-04T09:11:36.4453674Z [36;1m    fi[0m
+2026-10-04T09:11:36.4454090Z [36;1m    wait "$GIT_PROXY_PID" 2>/dev/null || true[0m
+2026-10-04T09:11:36.4454556Z [36;1m  fi[0m
+2026-10-04T09:11:36.4454907Z [36;1m  [0m
+2026-10-04T09:11:36.4455274Z [36;1m  echo "::$STOP_TOKEN::"[0m
+2026-10-04T09:11:36.4455812Z [36;1m  FALLBACK_FILE="${RUNNER_TEMP}/copilot-fallback-error.txt"[0m
+2026-10-04T09:11:36.4456375Z [36;1m  if [ -f "$FALLBACK_FILE" ]; then[0m
+2026-10-04T09:11:36.4456931Z [36;1m    FALLBACK_MSG=$(head -c 500 "$FALLBACK_FILE" | tr -d '\n\r')[0m
+2026-10-04T09:11:36.4457538Z [36;1m    echo "::error title=Copilot Error::${FALLBACK_MSG}"[0m
+2026-10-04T09:11:36.4458087Z [36;1m    rm -f "$FALLBACK_FILE"[0m
+2026-10-04T09:11:36.4458501Z [36;1m  fi[0m
+2026-10-04T09:11:36.4458861Z [36;1m}[0m
+2026-10-04T09:11:36.4459226Z [36;1mtrap copilot_cleanup EXIT[0m
+2026-10-04T09:11:36.4459650Z [36;1m[0m
+2026-10-04T09:11:36.4460030Z [36;1mecho "::stop-commands::$STOP_TOKEN"[0m
+2026-10-04T09:11:36.4460747Z [36;1m[0m
+2026-10-04T09:11:36.4461104Z [36;1m[0m
+2026-10-04T09:11:36.4461587Z [36;1m# Keep the proxy and runtime in one Actions step so their lifetimes[0m
+2026-10-04T09:11:36.4462215Z [36;1m# are coupled consistently on Linux and Windows.[0m
+2026-10-04T09:11:36.4462727Z [36;1mecho "Starting git-proxy..."[0m
+2026-10-04T09:11:36.4463221Z [36;1mGIT_PROXY_LOG="$RUNNER_TEMP/git-proxy.log"[0m
+2026-10-04T09:11:36.4463729Z [36;1mecho "git-proxy logs: $GIT_PROXY_LOG"[0m
+2026-10-04T09:11:36.4464437Z [36;1mprintf '%s\n' "$GITHUB_TOKEN" | env \[0m
+2026-10-04T09:11:36.4464964Z [36;1m  GITHUB_AGENT_ACTOR="$COPILOT_GIT_PROXY_ACTOR" \[0m
+2026-10-04T09:11:36.4465532Z [36;1m  GITHUB_REPOSITORY="$COPILOT_GIT_PROXY_REPOSITORY" \[0m
+2026-10-04T09:11:36.4466132Z [36;1m  GITHUB_AGENT_BRANCH_NAME="$COPILOT_GIT_PROXY_BRANCH_NAME" \[0m
+2026-10-04T09:11:36.4466711Z [36;1m  GITHUB_SERVER_URL="$GITHUB_SERVER_URL" \[0m
+2026-10-04T09:11:36.4467253Z [36;1m  GITHUB_GIT_PROXY_PORT="$COPILOT_GIT_PROXY_PORT" \[0m
+2026-10-04T09:11:36.4467811Z [36;1m  "$RUNNER_TEMP/git-proxy" > "$GIT_PROXY_LOG" 2>&1 &[0m
+2026-10-04T09:11:36.4468522Z [36;1mGIT_PROXY_PID=$![0m
+2026-10-04T09:11:36.4468910Z [36;1m[0m
+2026-10-04T09:11:36.4469273Z [36;1mPROXY_READY=false[0m
+2026-10-04T09:11:36.4469672Z [36;1mfor _ in {1..50}; do[0m
+2026-10-04T09:11:36.4470132Z [36;1m  if ! kill -0 "$GIT_PROXY_PID" 2>/dev/null; then[0m
+2026-10-04T09:11:36.4470924Z [36;1m    break[0m
+2026-10-04T09:11:36.4471307Z [36;1m  fi[0m
+2026-10-04T09:11:36.4471820Z [36;1m  if (exec 3&lt;>"/dev/tcp/127.0.0.1/${COPILOT_GIT_PROXY_PORT}") 2>/dev/null; then[0m
+2026-10-04T09:11:36.4472403Z [36;1m    PROXY_READY=true[0m
+2026-10-04T09:11:36.4472802Z [36;1m    break[0m
+2026-10-04T09:11:36.4473186Z [36;1m  fi[0m
+2026-10-04T09:11:36.4473540Z [36;1m  sleep 0.2[0m
+2026-10-04T09:11:36.4473910Z [36;1mdone[0m
+2026-10-04T09:11:36.4474299Z [36;1mif [ "$PROXY_READY" != "true" ]; then[0m
+2026-10-04T09:11:36.4474869Z [36;1m  if [ -f "$GIT_PROXY_LOG" ]; then cat "$GIT_PROXY_LOG"; fi[0m
+2026-10-04T09:11:36.4475452Z [36;1m  if ! kill -0 "$GIT_PROXY_PID" 2>/dev/null; then[0m
+2026-10-04T09:11:36.4476092Z [36;1m    echo "git-proxy exited before listening on port $COPILOT_GIT_PROXY_PORT"[0m
+2026-10-04T09:11:36.4476672Z [36;1m  else[0m
+2026-10-04T09:11:36.4477180Z [36;1m    echo "git-proxy did not start listening on port $COPILOT_GIT_PROXY_PORT"[0m
+2026-10-04T09:11:36.4477753Z [36;1m  fi[0m
+2026-10-04T09:11:36.4478113Z [36;1m  exit 1[0m
+2026-10-04T09:11:36.4478469Z [36;1mfi[0m
+2026-10-04T09:11:36.4478889Z [36;1mecho "git-proxy started (pid=$GIT_PROXY_PID)"[0m
+2026-10-04T09:11:36.4479371Z [36;1m[0m
+2026-10-04T09:11:36.4479843Z [36;1m# Keep proxy-only configuration out of the runtime environment.[0m
+2026-10-04T09:11:36.4480893Z [36;1munset COPILOT_GIT_PROXY_ACTOR COPILOT_GIT_PROXY_REPOSITORY COPILOT_GIT_PROXY_BRANCH_NAME COPILOT_GIT_PROXY_PORT[0m
+2026-10-04T09:11:36.4481622Z [36;1m[0m
+2026-10-04T09:11:36.4481968Z [36;1m[0m
+2026-10-04T09:11:36.4482307Z [36;1m[0m
+2026-10-04T09:11:36.4482669Z [36;1munset GITHUB_TOKEN[0m
+2026-10-04T09:11:36.4483067Z [36;1m[0m
+2026-10-04T09:11:36.4483403Z [36;1m[0m
+2026-10-04T09:11:36.4483899Z [36;1m# Secrets listed here are piped via stdin so they never appear in /proc[0m
+2026-10-04T09:11:36.4484655Z [36;1msecrets=$("/home/runner/work/_temp/ghcca-node/node/bin/node" -p "JSON.stringify({[0m
+2026-10-04T09:11:36.4485258Z [36;1m  [0m
+2026-10-04T09:11:36.4485763Z [36;1m  GITHUB_COPILOT_API_TOKEN: process.env.GITHUB_COPILOT_API_TOKEN || '',[0m
+2026-10-04T09:11:36.4486532Z [36;1m  GITHUB_COPILOT_INFERENCE_TOKEN: process.env.GITHUB_COPILOT_INFERENCE_TOKEN || '',[0m
+2026-10-04T09:11:36.4487323Z [36;1m  GITHUB_COPILOT_INTEGRATION_ID: process.env.GITHUB_COPILOT_INTEGRATION_ID || '',[0m
+2026-10-04T09:11:36.4488121Z [36;1m  COPILOT_INTEGRATION_ID_OVERRIDE: process.env.COPILOT_INTEGRATION_ID_OVERRIDE || '',[0m
+2026-10-04T09:11:36.4488865Z [36;1m  CAPI_HMAC_KEY_OVERRIDE: process.env.CAPI_HMAC_KEY_OVERRIDE || '',[0m
+2026-10-04T09:11:36.4489508Z [36;1m  COPILOT_JOB_NONCE: process.env.COPILOT_JOB_NONCE || ''[0m
+2026-10-04T09:11:36.4490019Z [36;1m})")[0m
+2026-10-04T09:11:36.4491254Z [36;1munset GITHUB_TOKEN GITHUB_COPILOT_GITHUB_TOKEN GITHUB_COPILOT_API_TOKEN GITHUB_COPILOT_INFERENCE_TOKEN GITHUB_COPILOT_INTEGRATION_ID COPILOT_INTEGRATION_ID_OVERRIDE CAPI_HMAC_KEY_OVERRIDE COPILOT_JOB_NONCE[0m
+2026-10-04T09:11:36.4492309Z [36;1m[0m
+2026-10-04T09:11:36.4492700Z [36;1mecho "Processing requests..." && \[0m
+2026-10-04T09:11:36.4493337Z [36;1mprintf '%s' "$secrets" | \[0m
+2026-10-04T09:11:36.4494042Z [36;1m"/home/runner/work/_temp/***-action-main/ebpf/launch.sh" \[0m
+2026-10-04T09:11:36.4495035Z [36;1m  "/home/runner/work/_temp/ghcca-node/node/bin/node --enable-source-maps /home/runner/work/_temp/***-action-main/dist-cca-v3/index.js" \[0m
+2026-10-04T09:11:36.4495882Z [36;1m  "/home/runner/work/_temp/runtime-logs" \[0m
+2026-10-04T09:11:36.4496350Z [36;1m  "false"[0m
+2026-10-04T09:11:36.4557102Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-10-04T09:11:36.4557806Z env:
+2026-10-04T09:11:36.4558176Z   SHOULD_CONTINUE: true
+2026-10-04T09:11:36.4558593Z   COPILOT_AGENT_START_TIME_SEC: 1791105095
+2026-10-04T09:11:36.4559057Z   COPILOT_AGENT_TIMEOUT_MIN: 59
+2026-10-04T09:11:36.4559485Z   COPILOT_PREINSTALLED_RUNTIME: true
+2026-10-04T09:11:36.4562857Z   GITHUB_TOKEN: ***
+2026-10-04T09:11:36.4563391Z   COPILOT_GIT_PROXY_REPOSITORY: NousVolition/My-Sources-Project-ALL
+2026-10-04T09:11:36.4563976Z   COPILOT_GIT_PROXY_ACTOR: NousVolition
+2026-10-04T09:11:36.4564559Z   COPILOT_GIT_PROXY_BRANCH_NAME: copilot/add-divergence-and-project-methods
+2026-10-04T09:11:36.4565142Z   COPILOT_GIT_PROXY_PORT: 26831
+2026-10-04T09:11:36.4565709Z   GITHUB_COPILOT_API_TOKEN: ***
+2026-10-04T09:11:36.4566153Z   GITHUB_COPILOT_INFERENCE_TOKEN: 
+2026-10-04T09:11:36.4566615Z   COPILOT_AGENT_INFERENCE_IDENTITY: actor
+2026-10-04T09:11:36.4567137Z   GITHUB_COPILOT_INTEGRATION_ID: ***
+2026-10-04T09:11:36.4567594Z   COPILOT_AGENT_FIREWALL_ENABLED: true
+2026-10-04T09:11:36.4583979Z   COPILOT_AGENT_FIREWALL_RULESET_ALLOW_LIST: H4sIAAAAAAAA/7ycW4/bNhbH3+dTEO7D7gIRJ07aSTJvwd7ysMUWm/ZpUaBH5LHEMUUyPKQdZbHfvaBke66dsUXKTw3i8ncuJA//vCgXVVVdbNCTsuaaveav+fLCR410fcFYxdbKyGumXJX+7oIxxgx0eM3gW/RYdRhAQoBKueE35a7Z8uo9v3rLl28+8OXVxVH4NoQ7BqLX1+x/TNoOlLlmwuu3XKpGCfSBC9ux/5/Q9PuJTa0gN7FpoEp4zbfEqe/ABBQntx+sTwYk6w3a4CNNiXpa02Q0tLANOMHklIbJ4Aa9ItWYCSanNR1Sq20NeqLZqY2F18SJ9ASTJ7dKQSqJZuoAmtg2mSUUQTV2SpRTWiaTkdBPjXRi22Fii3pKI7lrNLFsSyvW6CthO2cJq9or2eDd6r1YvnvDl+8Tb/GSZyRaTND/LtLPtPj11cHZphWeK/tydM8wPDaKgu95G2s+On5axnZtlH3FQGu7rcD0FcX6UGh9xJNpwnZZuGcCdt7KKIKyhgtto1xp8HhS5M/Apebr95TbJ27dUAnOlwh9LqMTnndKeEt2deQEfG7E5g9YF2utBEfhOWwpCwUxtPwwfo+d76daMbHBwK1v8kaWosDLoMCpQqSR4tYNb1RIBSR7/thgMBQccMNUkrjhg5TOxtVRaUm8uJsjUGjFa21TGj3yrTLSbokbDC+whz+wI7pqX+w3b1IVnGTrhaGVskwIXrRVJCNKjdh7WCqFlYIT+o0SSHyjKIKmEKU6Ut48353ZqZR2a7QFed+zOYbckF2UDWb7LBQvEfp2uy0YqDU4yMhjiaOGW3xM6oOljalaKQEBmceNFZCUA9OKArMb9EPbxcOZeN+bxa+7v957tHgU4GL3fzgI7TVbXLq1so4uhdeXi3lWJZfkHm5yl2IuwQcNpjliMj6ZHHqUHQrWQ4O8sbbRCE5RytDDBMW6ciDW0CBdPq+hS5pN0VapDKkNZvXMQRAN62ba4QhrApowp/T1sOVPGsybX/UNikAzkPWKSgmLEVMNin8GT+/h6S2HDr5ZA1vKJgsrcVgGCiUi8b7oUjQSYIwyTZU0ZSFmQnXClZOU4oRRdGSxiC71yV3ug0IhrFPahkvRQriEEEC0HZow1qrv2D9V+BRr9nHYhxLbWr9epeXGR8MgrTggwr4iMRDCRhOI/fljWqlZkm2HH9FIZ1X69XZj65GiDkTwulp++EuRvfItcgbV+ISZ5XnMvDmPmbfnMfP9ecz8cB4zV+cx8+48Zt6fx8yHM03Pc5WBM9WB5ZkKwfJMlWB5plKwPFMtWJ6pGCzPVA2WZyoHyz+uB4MO+esoU1hAjR0G37Pdgcitrighl3ZqqDqYeVqClzB1a0IZqTZKRtir3Z0X5S3VkZRBorntoAnonVeET1ia5ZSgsdmHBI098njgxcH9teeFYBS7Uqjh8LtElsYAX7wcKXqIkkxWYyIq65sqVZC5Dpw8agRC4i1Qq4T1rsBOMfAZsH3s5sAebloDeg8r67sZL51aoDVqfdzwvm00HKjxO43nOopqMFRNK6LjJ3l6xHk5PSDOkt7tdstvYAPZg+JGrkdQ9s2LUxykdUHFLh9WCjTe2fAONmiye3ikgAPRYjbMo7O8OHFZNNSTLlb3l4C7/z6xRLw6/HTPTCXQBA+a79aM6nDzdH/x2DfPj2vkZs+dfapBFIDdiEFd8VqlZPT5p+JEnKyB0LtCg5WcV6bJfT7ReJA636PDvWkhntOxUaY0rtqfpRYDDz3ReFCaiq1YHIVWjvKdOwDvzYlZFsAbsqYafodstxOLj6xUgvCYhfs79h/slJHor9m/bCBmV+w3cOG3oYdIBesVEpPW/CmwSMg+/fzzT4wQR/fo+vKSokOfdqApT5dfItJwGH+5fPvD1bv3V5exjibEClyotm1fgccqtFh5pFsDFQiBRCgru0FfJfS4sf5laHxaUhav2BNL8XjZyEdvppSlJ7GEInoV+tJc54BriEa0DuQU+fAkdY19KjjoS7s7vgqaKcdJkpEBJzyswk7rp7HxN6wVmAIGJNZcDrApc/D5cVGYu8Z+WL0KY/dPAEpzd7gOHF8BBd1LM+l87g/GReBab7p9nUtj4h8orYe8l6ergeG8vUGR/ziqU95bT4WphyXqKex4JIkm/PtztuM86Tmbv0hvIOpwHza4+VE7ZTCrwyohDYeBo5WJX4ucRT3mje560ebnNBXKMq4+JA1Ofv7l89+LyB+HhuJBUO3kgmSfIOS8nJCGe5Qt7J+L7E7Qu84a9tNYiNiP46zJ6cSRND4lyX0rvS+Pu3cvd/ddg/c/7h+hsc82eoEFHKdHD+3meVXtupv82T1Sip3szYLL3qqtVSfrQr4Z15V87z08RXdd9pcOxkoskKoevEnRFevBckBnT4Pd1YgpOzTM7/yHbhi4S4Mgs8PqaDi1eVICjeUajCzTVbXdYvbHKbUykPaF3HlFHeSGCOSUx93l0ixlVLhpqvnRaXgRUIcBioAGyAPaTLdazvJx5VOUL4/LkRoMu+8P/ZzxOw391qumDfwgv5ynxyIgT3fdNZP7aP0WVe7Dh1toBWvooORHFXfYG/TqmzUnwUteGIvW2w6rlfVVQArKNNX4Od5cHyn0TnHXh9bml4SBlQ1RjrvewdH39C+4lCJrLQWUc162rpROS9IDa3kLnbWBgodj0/HSo3QjgdfKUACfX/wHGhgY/5AdaiG3ijl0W2j7YL1oy1xqCGuCMjFmS7uBdgh2xi2gj3XfYJcv+9MupBjsACq4TaqjkRp9OScHSKKtrG/yL54OOGvKXI0pI/FruXDFcMGfcNXxj74OHbrpXvzXDebR5h4CZm+Nx1SWYVGAoEQpWMt9pBAd93mf8e+8SrC73TtLnxxqL23VKl+ll6EIKyw4KwtMFGn4Q9rvAQAA//8Zk2hSvEoAAA==
+2026-10-04T09:11:36.4600909Z   COPILOT_AGENT_FIREWALL_ENABLE_RULESET_ALLOW_LIST: true
+2026-10-04T09:11:36.4611545Z   COPILOT_AGENT_FIREWALL_ALLOW_LIST: localhost,https://github.com/,githubusercontent.com,https://raw.githubusercontent.com/,https://objects.githubusercontent.com/,https://codeload.github.com/,https://uploads.github.com/user-attachments/assets/,https://api.github.com/internal/user-attachments/assets/,https://api.github.com/advisories,https://api.github.com/copilot_internal/user,https://api.github.com/copilot/mcp_registry,https://api.github.com/user,https://api.github.com/cmc_internal/api/agents/environments,https://api.github.com/repos/NousVolition/My-Sources-Project-ALL/copilot_internal/,https://api.github.com/repos/NousVolition/My-Sources-Project-ALL/compare/,https://api.github.com/repos/NousVolition/My-Sources-Project-ALL/code-scanning/codeql/databases/,https://api.github.com/embeddings/code/search,https://github.githubassets.com/assets,https://*.githubusercontent.com,https://uploads.github.com,172.18.0.1,168.63.129.16,host.docker.internal,https://lfs.github.com/,https://github-cloud.githubusercontent.com/,https://github-cloud.s3.amazonaws.com/,https://api.github.com/repos/github/codeql-action/releases/,https://api.github.com/repos/dependabot/cli/releases/,https://productionresultssa0.blob.core.windows.net/,https://productionresultssa1.blob.core.windows.net/,https://productionresultssa2.blob.core.windows.net/,https://productionresultssa3.blob.core.windows.net/,https://productionresultssa4.blob.core.windows.net/,https://productionresultssa5.blob.core.windows.net/,https://productionresultssa6.blob.core.windows.net/,https://productionresultssa7.blob.core.windows.net/,https://productionresultssa8.blob.core.windows.net/,https://productionresultssa9.blob.core.windows.net/,https://productionresultssa10.blob.core.windows.net/,https://productionresultssa11.blob.core.windows.net/,https://productionresultssa12.blob.core.windows.net/,https://productionresultssa13.blob.core.windows.net/,https://productionresultssa14.blob.core.windows.net/,https://productionresultssa15.blob.core.windows.net/,https://productionresultssa16.blob.core.windows.net/,https://productionresultssa17.blob.core.windows.net/,https://productionresultssa18.blob.core.windows.net/,https://productionresultssa19.blob.core.windows.net/,https://production-copilot-host.webpubsub.azure.com/,https://queryconsoleprod.blob.core.windows.net/github-codeql-query-console-prod/,https://api.githubcopilot.com/,https://api.githubcopilot.com/,api.individual.githubcopilot.com,,https://github.com
+2026-10-04T09:11:36.4622235Z   COPILOT_AGENT_SOURCE_ENVIRONMENT: gc-cus-02
+2026-10-04T09:11:36.4622732Z   AI_AGENT: github_copilot_cloud_agent
+2026-10-04T09:11:36.4623295Z   GITHUB_UPLOADS_URL: https://uploads.github.com/user-attachments/assets
+2026-10-04T09:11:36.4624005Z   GITHUB_DOWNLOADS_URL: https://api.github.com/internal/user-attachments/assets
+2026-10-04T09:11:36.4624720Z   SECRET_SCANNING_URL: https://scanning-api.github.com/api/v1/scan/multipart
+2026-10-04T09:11:36.4625488Z   COPILOT_AGENT_RUNTIME_VERSION: runtime-cca-vendored-658ac157216300de4e6f6514826e1338c87dab79
+2026-10-04T09:11:36.4626145Z   COPILOT_AGENT_DEBUG: false
+2026-10-04T09:11:36.4626567Z   COPILOT_MCP_ENABLED: true
+2026-10-04T09:11:36.4626996Z   GITHUB_COPILOT_3P_MCP_POLICY_ENABLED: true
+2026-10-04T09:11:36.4627456Z   COPILOT_MCP_READ_ONLY_MODE: false
+2026-10-04T09:11:36.4628002Z   COPILOT_AGENT_MCP_SERVER_TEMP: /home/runner/work/_temp/mcp-server
+2026-10-04T09:11:36.4628543Z   COPILOT_AGENT_INJECTED_SECRET_NAMES: 
+2026-10-04T09:11:36.4629437Z   CPD_SAVE_TRAJECTORY_OUTPUT: /home/runner/work/_temp/***-action-main/dist/trajectory.md
+2026-10-04T09:11:36.4630090Z   COPILOT_AGENT_ONLINE_EVALUATION_DISABLED: true
+2026-10-04T09:11:36.4636354Z   COPILOT_FEATURE_FLAGS: copilot_inject_integration_headers,copilot_swe_agent_blackbird_tool_use,copilot_swe_agent_cap_claude_opus_token_limits,copilot_swe_agent_cleanup_partial_clone,copilot_swe_agent_clone_session_logging,copilot_swe_agent_failure_recovery_before_shutdown,copilot_swe_agent_firewall_enabled_by_default,copilot_swe_agent_vision,copilot_swe_agent_parallel_tool_execution,copilot_swe_agent_enable_security_tool,copilot_swe_agent_code_review,copilot_swe_agent_cca_session_attribution,copilot_swe_agent_retry_workflow_run,copilot_swe_agent_validation_agent_dependencies,copilot_swe_agent_validation_tool_settings,copilot_swe_agent_secret_scanning_hook,copilot_swe_agent_new_out_proc_mcp,copilot_swe_agent_mcp_builtin_provenance,copilot_swe_agent_enable_dependabot_checker,copilot_swe_agent_use_non_blocking_callbacks,coding_agent_plan_tags,copilot_swe_agent_trivial_change,copilot_swe_agent_trivial_change_code_review_disable,copilot_swe_agent_trivial_change_skip,copilot_swe_agent_unified_task_tool,copilot_swe_agent_error_annotations,copilot_swe_agent_codex_error_classification,copilot_swe_agent_claude_error_classification,copilot_swe_agent_runtime_timing_telemetry,copilot_swe_agent_parallel_validation,copilot_swe_agent_3p_security_prompt,copilot_swe_agent_new_security_tools,copilot_swe_agent_oidc_token_exchange,copilot_swe_agent_logs_url_trailer,copilot_swe_agent_sandbox_server_token_cleanup,copilot_swe_agent_use_attachment_proxy,copilot_swe_agent_co_author_hook,copilot_feature_agentic_memory_user_scoped,copilot_feature_agentic_memory_user_scoped_cfi,copilot_swe_agent_chronicle,copilot-feature-agentic-memory
+2026-10-04T09:11:36.4643016Z   COPILOT_EXPERIMENTS: 
+2026-10-04T09:11:36.4643444Z   COPILOT_EXPERIMENT_ASSIGNMENT_CONTEXT: 
+2026-10-04T09:11:36.4643929Z   COPILOT_PERMISSION_GATE_REASON: not_assigned
+2026-10-04T09:11:36.4644406Z   COPILOT_PERMISSION_MODE: 
+2026-10-04T09:11:36.4645350Z   COPILOT_AGENT_REQUEST_HEADERS: {"X-Copilot-Client-Exp-Assignment-Context":"permission_prompt_control:1332567;ccr_pr_nudge_adoption:1319471;ihko4107:1412285;jc553158:1433349;cmc_aa_t:1435711;"}
+2026-10-04T09:11:36.4646406Z   COPILOT_API_URL: https://api.individual.githubcopilot.com
+2026-10-04T09:11:36.4647011Z   COPILOT_AGENT_SESSION_ID: 502ea442-c7dd-48ed-b9b0-ae5023ecd5d1
+2026-10-04T09:11:36.4647529Z   COPILOT_AGENT_RESUME_SESSION_ID: 
+2026-10-04T09:11:36.4647951Z ##[endgroup]
+2026-10-04T09:11:36.4731932Z RUNNER_TEMP=/home/runner/work/_temp
+2026-10-04T09:11:36.4768416Z ::stop-commands::***
+2026-10-04T09:11:36.4769341Z Starting git-proxy...
+2026-10-04T09:11:36.4770465Z git-proxy logs: /home/runner/work/_temp/git-proxy.log
+2026-10-04T09:11:36.6807966Z git-proxy started (pid=3385)
+2026-10-04T09:11:36.7092245Z Processing requests...
+2026-10-04T09:11:36.7164181Z Launcher version: 33c08a15d2efd6fe1ad90f3fa4663b97935eadae, 0.0.61, 1.4.4
+2026-10-04T09:11:36.9732642Z ==============================
+2026-10-04T09:11:36.9733663Z Allow list
+2026-10-04T09:11:36.9734345Z ----
+2026-10-04T09:11:36.9735000Z localhost
+2026-10-04T09:11:36.9735707Z https://github.com/
+2026-10-04T09:11:36.9736447Z githubusercontent.com
+2026-10-04T09:11:36.9737224Z https://raw.githubusercontent.com/
+2026-10-04T09:11:36.9738153Z https://objects.githubusercontent.com/
+2026-10-04T09:11:36.9739084Z https://codeload.github.com/
+2026-10-04T09:11:36.9740004Z https://uploads.github.com/user-attachments/assets/
+2026-10-04T09:11:36.9741589Z https://api.github.com/internal/user-attachments/assets/
+2026-10-04T09:11:36.9742571Z https://api.github.com/advisories
+2026-10-04T09:11:36.9743446Z https://api.github.com/copilot_internal/user
+2026-10-04T09:11:36.9744217Z https://api.github.com/copilot/mcp_registry
+2026-10-04T09:11:36.9744751Z https://api.github.com/user
+2026-10-04T09:11:36.9745328Z https://api.github.com/cmc_internal/api/agents/environments
+2026-10-04T09:11:36.9746329Z https://api.github.com/repos/NousVolition/My-Sources-Project-ALL/copilot_internal/
+2026-10-04T09:11:36.9747097Z https://api.github.com/repos/NousVolition/My-Sources-Project-ALL/compare/
+2026-10-04T09:11:36.9748092Z https://api.github.com/repos/NousVolition/My-Sources-Project-ALL/code-scanning/codeql/databases/
+2026-10-04T09:11:36.9748809Z https://api.github.com/embeddings/code/search
+2026-10-04T09:11:36.9749335Z https://github.githubassets.com/assets
+2026-10-04T09:11:36.9749966Z https://*.githubusercontent.com
+2026-10-04T09:11:36.9750754Z https://uploads.github.com
+2026-10-04T09:11:36.9751385Z 172.18.0.1
+2026-10-04T09:11:36.9751740Z 168.63.129.16
+2026-10-04T09:11:36.9752117Z host.docker.internal
+2026-10-04T09:11:36.9752523Z https://lfs.github.com/
+2026-10-04T09:11:36.9752995Z https://github-cloud.githubusercontent.com/
+2026-10-04T09:11:36.9753524Z https://github-cloud.s3.amazonaws.com/
+2026-10-04T09:11:36.9754077Z https://api.github.com/repos/github/codeql-action/releases/
+2026-10-04T09:11:36.9754702Z https://api.github.com/repos/dependabot/cli/releases/
+2026-10-04T09:11:36.9755284Z https://productionresultssa0.blob.core.windows.net/
+2026-10-04T09:11:36.9755869Z https://productionresultssa1.blob.core.windows.net/
+2026-10-04T09:11:36.9756436Z https://productionresultssa2.blob.core.windows.net/
+2026-10-04T09:11:36.9757009Z https://productionresultssa3.blob.core.windows.net/
+2026-10-04T09:11:36.9757580Z https://productionresultssa4.blob.core.windows.net/
+2026-10-04T09:11:36.9758150Z https://productionresultssa5.blob.core.windows.net/
+2026-10-04T09:11:36.9758738Z https://productionresultssa6.blob.core.windows.net/
+2026-10-04T09:11:36.9759319Z https://productionresultssa7.blob.core.windows.net/
+2026-10-04T09:11:36.9759893Z https://productionresultssa8.blob.core.windows.net/
+2026-10-04T09:11:36.9760855Z https://productionresultssa9.blob.core.windows.net/
+2026-10-04T09:11:36.9761621Z https://productionresultssa10.blob.core.windows.net/
+2026-10-04T09:11:36.9762842Z https://productionresultssa11.blob.core.windows.net/
+2026-10-04T09:11:36.9763999Z https://productionresultssa12.blob.core.windows.net/
+2026-10-04T09:11:36.9765110Z https://productionresultssa13.blob.core.windows.net/
+2026-10-04T09:11:36.9766191Z https://productionresultssa14.blob.core.windows.net/
+2026-10-04T09:11:36.9767281Z https://productionresultssa15.blob.core.windows.net/
+2026-10-04T09:11:36.9767914Z https://productionresultssa16.blob.core.windows.net/
+2026-10-04T09:11:36.9768531Z https://productionresultssa17.blob.core.windows.net/
+2026-10-04T09:11:36.9769119Z https://productionresultssa18.blob.core.windows.net/
+2026-10-04T09:11:36.9769720Z https://productionresultssa19.blob.core.windows.net/
+2026-10-04T09:11:36.9770736Z https://production-copilot-host.webpubsub.azure.com/
+2026-10-04T09:11:36.9771483Z https://queryconsoleprod.blob.core.windows.net/github-codeql-query-console-prod/
+2026-10-04T09:11:36.9772141Z https://api.githubcopilot.com/
+2026-10-04T09:11:36.9772594Z https://api.githubcopilot.com/
+2026-10-04T09:11:36.9773068Z api.individual.githubcopilot.com
+2026-10-04T09:11:36.9773550Z https://github.com
+2026-10-04T09:11:36.9773916Z ----
+2026-10-04T09:11:36.9774268Z ==============================
+2026-10-04T09:11:36.9774709Z Using Firewall Recommended Rules
+2026-10-04T09:11:36.9775112Z ----
+2026-10-04T09:11:36.9775303Z 
+2026-10-04T09:11:36.9775458Z ---
+2026-10-04T09:11:36.9776001Z version: 0.0.1
+2026-10-04T09:11:36.9776380Z rules:
+2026-10-04T09:11:36.9776956Z   - kind: ip-rule
+2026-10-04T09:11:36.9777696Z     name: azure-metadata-ip
+2026-10-04T09:11:36.9778453Z     ip: 168.63.129.16
+2026-10-04T09:11:36.9778882Z 
+2026-10-04T09:11:36.9779063Z ---
+2026-10-04T09:11:36.9779414Z version: 0.0.1
+2026-10-04T09:11:36.9779768Z rules:
+2026-10-04T09:11:36.9780136Z   - kind: http-rule
+2026-10-04T09:11:36.9780835Z     url: { domain: crl3.digicert.com }
+2026-10-04T09:11:36.9781302Z   - kind: http-rule
+2026-10-04T09:11:36.9781730Z     url: { domain: crl4.digicert.com }
+2026-10-04T09:11:36.9782168Z   - kind: http-rule
+2026-10-04T09:11:36.9782754Z     url: { domain: ocsp.digicert.com }
+2026-10-04T09:11:36.9783196Z   - kind: http-rule
+2026-10-04T09:11:36.9783599Z     url: { domain: ts-crl.ws.symantec.com }
+2026-10-04T09:11:36.9784056Z   - kind: http-rule
+2026-10-04T09:11:36.9784471Z     url: { domain: ts-ocsp.ws.symantec.com }
+2026-10-04T09:11:36.9784924Z   - kind: http-rule
+2026-10-04T09:11:36.9785322Z     url: { domain: crl.geotrust.com }
+2026-10-04T09:11:36.9785744Z   - kind: http-rule
+2026-10-04T09:11:36.9786139Z     url: { domain: ocsp.geotrust.com }
+2026-10-04T09:11:36.9786569Z   - kind: http-rule
+2026-10-04T09:11:36.9786950Z     url: { domain: crl.thawte.com }
+2026-10-04T09:11:36.9787589Z   - kind: http-rule
+2026-10-04T09:11:36.9788112Z     url: { domain: ocsp.thawte.com }
+2026-10-04T09:11:36.9788675Z   - kind: http-rule
+2026-10-04T09:11:36.9789617Z     url: { domain: crl.verisign.com }
+2026-10-04T09:11:36.9790633Z   - kind: http-rule
+2026-10-04T09:11:36.9791451Z     url: { domain: ocsp.verisign.com }
+2026-10-04T09:11:36.9791990Z   - kind: http-rule
+2026-10-04T09:11:36.9792415Z     url: { domain: crl.globalsign.com }
+2026-10-04T09:11:36.9792854Z   - kind: http-rule
+2026-10-04T09:11:36.9793258Z     url: { domain: ocsp.globalsign.com }
+2026-10-04T09:11:36.9793705Z   - kind: http-rule
+2026-10-04T09:11:36.9794088Z     url: { domain: crls.ssl.com }
+2026-10-04T09:11:36.9794505Z   - kind: http-rule
+2026-10-04T09:11:36.9794892Z     url: { domain: ocsp.ssl.com }
+2026-10-04T09:11:36.9795308Z   - kind: http-rule
+2026-10-04T09:11:36.9795708Z     url: { domain: crl.identrust.com }
+2026-10-04T09:11:36.9796134Z   - kind: http-rule
+2026-10-04T09:11:36.9796563Z     url: { domain: ocsp.identrust.com }
+2026-10-04T09:11:36.9796995Z   - kind: http-rule
+2026-10-04T09:11:36.9797387Z     url: { domain: crl.sectigo.com }
+2026-10-04T09:11:36.9797810Z   - kind: http-rule
+2026-10-04T09:11:36.9798205Z     url: { domain: ocsp.sectigo.com }
+2026-10-04T09:11:36.9798641Z   - kind: http-rule
+2026-10-04T09:11:36.9799035Z     url: { domain: crl.usertrust.com }
+2026-10-04T09:11:36.9799478Z   - kind: http-rule
+2026-10-04T09:11:36.9799866Z     url: { domain: ocsp.usertrust.com }
+2026-10-04T09:11:36.9800613Z   - kind: http-rule
+2026-10-04T09:11:36.9801032Z     url: { domain: s.symcb.com }
+2026-10-04T09:11:36.9801443Z   - kind: http-rule
+2026-10-04T09:11:36.9801825Z     url: { domain: s.symcd.com }
+2026-10-04T09:11:36.9802078Z 
+2026-10-04T09:11:36.9802224Z ---
+2026-10-04T09:11:36.9802569Z version: 0.0.1
+2026-10-04T09:11:36.9802917Z rules:
+2026-10-04T09:11:36.9803254Z   - kind: ip-rule
+2026-10-04T09:11:36.9803654Z     name: docker-compose-bridge-ip
+2026-10-04T09:11:36.9804074Z     ip: "172.18.0.1"
+2026-10-04T09:11:36.9804463Z   - kind: http-rule
+2026-10-04T09:11:36.9804999Z     url: { scheme: ["https"], domain: ghcr.io }
+2026-10-04T09:11:36.9805678Z   - kind: http-rule
+2026-10-04T09:11:36.9806140Z     url: { scheme: ["https"], domain: registry.hub.docker.com }
+2026-10-04T09:11:36.9806653Z   - kind: http-rule
+2026-10-04T09:11:36.9807101Z     url: { domain: docker.io, allow-any-subdomain: true }
+2026-10-04T09:11:36.9807908Z   - kind: http-rule
+2026-10-04T09:11:36.9808716Z     url: { domain: docker.com, allow-any-subdomain: true }
+2026-10-04T09:11:36.9809647Z   - kind: http-rule
+2026-10-04T09:11:36.9810741Z     url: { scheme: ["https"], domain: production.cloudflare.docker.com }
+2026-10-04T09:11:36.9811640Z   - kind: http-rule
+2026-10-04T09:11:36.9812087Z     url: { scheme: ["https"], domain: dl.k8s.io }
+2026-10-04T09:11:36.9812556Z   - kind: http-rule
+2026-10-04T09:11:36.9812999Z     url: { scheme: ["https"], domain: pkgs.k8s.io }
+2026-10-04T09:11:36.9813467Z   - kind: http-rule
+2026-10-04T09:11:36.9813885Z     url: { scheme: ["https"], domain: quay.io }
+2026-10-04T09:11:36.9814335Z   - kind: http-rule
+2026-10-04T09:11:36.9814769Z     url: { scheme: ["https"], domain: mcr.microsoft.com }
+2026-10-04T09:11:36.9815247Z   - kind: http-rule
+2026-10-04T09:11:36.9815642Z     url: { scheme: ["https"], domain: gcr.io }
+2026-10-04T09:11:36.9816087Z   - kind: http-rule
+2026-10-04T09:11:36.9816510Z     url: { scheme: ["https"], domain: public.ecr.aws }
+2026-10-04T09:11:36.9817179Z   - kind: http-rule
+2026-10-04T09:11:36.9817602Z     url: { scheme: ["https"], domain: auth.docker.io }
+2026-10-04T09:11:36.9817915Z 
+2026-10-04T09:11:36.9818072Z ---
+2026-10-04T09:11:36.9818425Z version: 0.0.1
+2026-10-04T09:11:36.9818774Z rules:
+2026-10-04T09:11:36.9819126Z   - kind: http-rule
+2026-10-04T09:11:36.9819544Z     url: { scheme: ["https"], domain: nuget.org }
+2026-10-04T09:11:36.9820002Z   - kind: http-rule
+2026-10-04T09:11:36.9820734Z     url: { scheme: ["https"], domain: dist.nuget.org }
+2026-10-04T09:11:36.9821358Z   - kind: http-rule
+2026-10-04T09:11:36.9821782Z     url: { scheme: ["https"], domain: api.nuget.org }
+2026-10-04T09:11:36.9822248Z   - kind: http-rule
+2026-10-04T09:11:36.9822685Z     url: { scheme: ["https"], domain: nuget.pkg.github.com }
+2026-10-04T09:11:36.9823172Z   - kind: http-rule
+2026-10-04T09:11:36.9823596Z     url: { scheme: ["https"], domain: dotnet.microsoft.com }
+2026-10-04T09:11:36.9824077Z   - kind: http-rule
+2026-10-04T09:11:36.9824520Z     url: { scheme: ["https"], domain: pkgs.dev.azure.com }
+2026-10-04T09:11:36.9824987Z   - kind: http-rule
+2026-10-04T09:11:36.9825441Z     url: { scheme: ["https"], domain: builds.dotnet.microsoft.com }
+2026-10-04T09:11:36.9825942Z   - kind: http-rule
+2026-10-04T09:11:36.9826413Z     url: { scheme: ["https"], domain: dotnetcli.blob.core.windows.net }
+2026-10-04T09:11:36.9826936Z   - kind: http-rule
+2026-10-04T09:11:36.9827296Z     url:
+2026-10-04T09:11:36.9827765Z       { scheme: ["https"], domain: nugetregistryv2prod.blob.core.windows.net }
+2026-10-04T09:11:36.9828316Z   - kind: http-rule
+2026-10-04T09:11:36.9828781Z     url: { scheme: ["https"], domain: azuresearch-usnc.nuget.org }
+2026-10-04T09:11:36.9829285Z   - kind: http-rule
+2026-10-04T09:11:36.9829732Z     url: { scheme: ["https"], domain: azuresearch-ussc.nuget.org }
+2026-10-04T09:11:36.9830492Z   - kind: http-rule
+2026-10-04T09:11:36.9830979Z     url: { scheme: ["https"], domain: dc.services.visualstudio.com }
+2026-10-04T09:11:36.9831507Z   - kind: http-rule
+2026-10-04T09:11:36.9831909Z     url: { scheme: ["https"], domain: dot.net }
+2026-10-04T09:11:36.9832357Z   - kind: http-rule
+2026-10-04T09:11:36.9832843Z     url: { scheme: ["https"], domain: download.visualstudio.microsoft.com }
+2026-10-04T09:11:36.9833376Z   - kind: http-rule
+2026-10-04T09:11:36.9833833Z     url: { scheme: ["https"], domain: dotnetcli.azureedge.net }
+2026-10-04T09:11:36.9834336Z   - kind: http-rule
+2026-10-04T09:11:36.9834737Z     url: { scheme: ["https"], domain: ci.dot.net }
+2026-10-04T09:11:36.9835195Z   - kind: http-rule
+2026-10-04T09:11:36.9835627Z     url: { scheme: ["https"], domain: www.microsoft.com }
+2026-10-04T09:11:36.9836104Z   - kind: http-rule
+2026-10-04T09:11:36.9836539Z     url: { scheme: ["https"], domain: oneocsp.microsoft.com }
+2026-10-04T09:11:36.9837028Z   - kind: http-rule
+2026-10-04T09:11:36.9837461Z     name: "Allow certificate revocation list over http"
+2026-10-04T09:11:36.9837924Z     url:
+2026-10-04T09:11:36.9838272Z       scheme: ["http"]
+2026-10-04T09:11:36.9838666Z       domain: "www.microsoft.com"
+2026-10-04T09:11:36.9839094Z       path: "/pkiops/crl/"
+2026-10-04T09:11:36.9839339Z 
+2026-10-04T09:11:36.9839491Z ---
+2026-10-04T09:11:36.9839818Z version: 0.0.1
+2026-10-04T09:11:36.9840362Z rules:
+2026-10-04T09:11:36.9840790Z   - kind: http-rule
+2026-10-04T09:11:36.9841202Z     url: { scheme: ["https"], domain: pub.dev }
+2026-10-04T09:11:36.9841652Z   - kind: http-rule
+2026-10-04T09:11:36.9842079Z     url: { scheme: ["https"], domain: pub.dartlang.org }
+2026-10-04T09:11:36.9842547Z   - kind: http-rule
+2026-10-04T09:11:36.9842902Z     url:
+2026-10-04T09:11:36.9843252Z       scheme: ["https"]
+2026-10-04T09:11:36.9843649Z       domain: storage.googleapis.com
+2026-10-04T09:11:36.9844089Z       path: "/pub-packages/"
+2026-10-04T09:11:36.9844487Z   - kind: http-rule
+2026-10-04T09:11:36.9844837Z     url:
+2026-10-04T09:11:36.9845180Z       scheme: ["https"]
+2026-10-04T09:11:36.9845575Z       domain: storage.googleapis.com
+2026-10-04T09:11:36.9846171Z       path: "/dart-archive/"
+2026-10-04T09:11:36.9846416Z 
+2026-10-04T09:11:36.9846567Z ---
+2026-10-04T09:11:36.9846900Z version: 0.0.1
+2026-10-04T09:11:36.9847251Z rules:
+2026-10-04T09:11:36.9847589Z   - kind: http-rule
+2026-10-04T09:11:36.9848071Z     url: { domain: githubusercontent.com, allow-any-subdomain: true }
+2026-10-04T09:11:36.9848615Z   - kind: http-rule
+2026-10-04T09:11:36.9849211Z     url: { scheme: ["https"], domain: raw.githubusercontent.com }
+2026-10-04T09:11:36.9849802Z   - kind: http-rule
+2026-10-04T09:11:36.9850772Z     url: { scheme: ["https"], domain: objects.githubusercontent.com }
+2026-10-04T09:11:36.9851577Z   - kind: http-rule
+2026-10-04T09:11:36.9852223Z     url: { scheme: ["https"], domain: lfs.github.com }
+2026-10-04T09:11:36.9852816Z   - kind: http-rule
+2026-10-04T09:11:36.9853433Z     url: { scheme: ["https"], domain: github-cloud.githubusercontent.com }
+2026-10-04T09:11:36.9854093Z   - kind: http-rule
+2026-10-04T09:11:36.9866790Z     url: { scheme: ["https"], domain: github-cloud.s3.amazonaws.com }
+2026-10-04T09:11:36.9867550Z   - kind: http-rule
+2026-10-04T09:11:36.9868034Z     url: { scheme: ["https"], domain: codeload.github.com }
+2026-10-04T09:11:36.9868531Z   - kind: http-rule
+2026-10-04T09:11:36.9868983Z     url: { scheme: ["https"], domain: codeql.github.com }
+2026-10-04T09:11:36.9869471Z   - kind: http-rule
+2026-10-04T09:11:36.9869931Z     url: { scheme: ["https"], domain: scanning-api.github.com }
+2026-10-04T09:11:36.9870780Z   - kind: http-rule
+2026-10-04T09:11:36.9871251Z     url: { scheme: ["https"], domain: api.mcp.github.com }
+2026-10-04T09:11:36.9871756Z   - kind: http-rule
+2026-10-04T09:11:36.9872184Z     url: { scheme: ["https"], domain: docs.github.com }
+2026-10-04T09:11:36.9872666Z   - kind: http-rule
+2026-10-04T09:11:36.9873041Z     url:
+2026-10-04T09:11:36.9873390Z       scheme: ["https"]
+2026-10-04T09:11:36.9873840Z       domain: uploads.github.com
+2026-10-04T09:11:36.9874279Z       path: "/copilot/chat/attachments/"
+2026-10-04T09:11:36.9875004Z   # GitHub Actions workflow run artifact storage accounts (Azure blob storage endpoints productionresultssa0-19)
+2026-10-04T09:11:36.9875705Z   - kind: http-rule
+2026-10-04T09:11:36.9876225Z     url: { scheme: ["https"], domain: productionresultssa0.blob.core.windows.net }
+2026-10-04T09:11:36.9876803Z   - kind: http-rule
+2026-10-04T09:11:36.9877312Z     url: { scheme: ["https"], domain: productionresultssa1.blob.core.windows.net }
+2026-10-04T09:11:36.9877882Z   - kind: http-rule
+2026-10-04T09:11:36.9878391Z     url: { scheme: ["https"], domain: productionresultssa2.blob.core.windows.net }
+2026-10-04T09:11:36.9878951Z   - kind: http-rule
+2026-10-04T09:11:36.9879458Z     url: { scheme: ["https"], domain: productionresultssa3.blob.core.windows.net }
+2026-10-04T09:11:36.9880013Z   - kind: http-rule
+2026-10-04T09:11:36.9880794Z     url: { scheme: ["https"], domain: productionresultssa4.blob.core.windows.net }
+2026-10-04T09:11:36.9881389Z   - kind: http-rule
+2026-10-04T09:11:36.9881911Z     url: { scheme: ["https"], domain: productionresultssa5.blob.core.windows.net }
+2026-10-04T09:11:36.9882486Z   - kind: http-rule
+2026-10-04T09:11:36.9882995Z     url: { scheme: ["https"], domain: productionresultssa6.blob.core.windows.net }
+2026-10-04T09:11:36.9883561Z   - kind: http-rule
+2026-10-04T09:11:36.9884068Z     url: { scheme: ["https"], domain: productionresultssa7.blob.core.windows.net }
+2026-10-04T09:11:36.9884618Z   - kind: http-rule
+2026-10-04T09:11:36.9885154Z     url: { scheme: ["https"], domain: productionresultssa8.blob.core.windows.net }
+2026-10-04T09:11:36.9885712Z   - kind: http-rule
+2026-10-04T09:11:36.9886232Z     url: { scheme: ["https"], domain: productionresultssa9.blob.core.windows.net }
+2026-10-04T09:11:36.9886792Z   - kind: http-rule
+2026-10-04T09:11:36.9887303Z     url: { scheme: ["https"], domain: productionresultssa10.blob.core.windows.net }
+2026-10-04T09:11:36.9887868Z   - kind: http-rule
+2026-10-04T09:11:36.9888378Z     url: { scheme: ["https"], domain: productionresultssa11.blob.core.windows.net }
+2026-10-04T09:11:36.9889175Z   - kind: http-rule
+2026-10-04T09:11:36.9889699Z     url: { scheme: ["https"], domain: productionresultssa12.blob.core.windows.net }
+2026-10-04T09:11:36.9890526Z   - kind: http-rule
+2026-10-04T09:11:36.9891078Z     url: { scheme: ["https"], domain: productionresultssa13.blob.core.windows.net }
+2026-10-04T09:11:36.9891651Z   - kind: http-rule
+2026-10-04T09:11:36.9892158Z     url: { scheme: ["https"], domain: productionresultssa14.blob.core.windows.net }
+2026-10-04T09:11:36.9892716Z   - kind: http-rule
+2026-10-04T09:11:36.9893233Z     url: { scheme: ["https"], domain: productionresultssa15.blob.core.windows.net }
+2026-10-04T09:11:36.9893941Z   - kind: http-rule
+2026-10-04T09:11:36.9894450Z     url: { scheme: ["https"], domain: productionresultssa16.blob.core.windows.net }
+2026-10-04T09:11:36.9895009Z   - kind: http-rule
+2026-10-04T09:11:36.9895509Z     url: { scheme: ["https"], domain: productionresultssa17.blob.core.windows.net }
+2026-10-04T09:11:36.9896061Z   - kind: http-rule
+2026-10-04T09:11:36.9896561Z     url: { scheme: ["https"], domain: productionresultssa18.blob.core.windows.net }
+2026-10-04T09:11:36.9897121Z   - kind: http-rule
+2026-10-04T09:11:36.9897629Z     url: { scheme: ["https"], domain: productionresultssa19.blob.core.windows.net }
+2026-10-04T09:11:36.9898029Z 
+2026-10-04T09:11:36.9898219Z   # Copilot telemetry service endpoints
+2026-10-04T09:11:36.9898655Z   - kind: http-rule
+2026-10-04T09:11:36.9899007Z     url:
+2026-10-04T09:11:36.9899355Z       scheme: ["https"]
+2026-10-04T09:11:36.9899808Z       domain: copilot-telemetry.githubusercontent.com
+2026-10-04T09:11:36.9900578Z   - kind: http-rule
+2026-10-04T09:11:36.9900965Z     url:
+2026-10-04T09:11:36.9901309Z       scheme: ["https"]
+2026-10-04T09:11:36.9901756Z       domain: telemetry.individual.githubcopilot.com
+2026-10-04T09:11:36.9902231Z   - kind: http-rule
+2026-10-04T09:11:36.9902588Z     url:
+2026-10-04T09:11:36.9902943Z       scheme: ["https"]
+2026-10-04T09:11:36.9903377Z       domain: telemetry.business.githubcopilot.com
+2026-10-04T09:11:36.9903865Z   - kind: http-rule
+2026-10-04T09:11:36.9904223Z     url:
+2026-10-04T09:11:36.9904569Z       scheme: ["https"]
+2026-10-04T09:11:36.9905014Z       domain: telemetry.enterprise.githubcopilot.com
+2026-10-04T09:11:36.9905329Z 
+2026-10-04T09:11:36.9905482Z ---
+2026-10-04T09:11:36.9905816Z version: 0.0.1
+2026-10-04T09:11:36.9906157Z rules:
+2026-10-04T09:11:36.9906500Z   - kind: http-rule
+2026-10-04T09:11:36.9906902Z     url: { scheme: ["https"], domain: go.dev }
+2026-10-04T09:11:36.9907343Z   - kind: http-rule
+2026-10-04T09:11:36.9907745Z     url: { scheme: ["https"], domain: golang.org }
+2026-10-04T09:11:36.9908204Z   - kind: http-rule
+2026-10-04T09:11:36.9908638Z     url: { scheme: ["https"], domain: proxy.golang.org }
+2026-10-04T09:11:36.9909105Z   - kind: http-rule
+2026-10-04T09:11:36.9909522Z     url: { scheme: ["https"], domain: sum.golang.org }
+2026-10-04T09:11:36.9909982Z   - kind: http-rule
+2026-10-04T09:11:36.9910651Z     url: { scheme: ["https"], domain: pkg.go.dev }
+2026-10-04T09:11:36.9911138Z   - kind: http-rule
+2026-10-04T09:11:36.9911560Z     url: { scheme: ["https"], domain: goproxy.io }
+2026-10-04T09:11:36.9912015Z   - kind: http-rule
+2026-10-04T09:11:36.9912381Z     url:
+2026-10-04T09:11:36.9912724Z       scheme: ["https"]
+2026-10-04T09:11:36.9913132Z       domain: storage.googleapis.com
+2026-10-04T09:11:36.9913590Z       path: "/proxy-golang-org-prod/"
+2026-10-04T09:11:36.9913873Z 
+2026-10-04T09:11:36.9914025Z ---
+2026-10-04T09:11:36.9914363Z version: 0.0.1
+2026-10-04T09:11:36.9914707Z rules:
+2026-10-04T09:11:36.9915057Z   - kind: http-rule
+2026-10-04T09:11:36.9915515Z     url: { scheme: ["https"], domain: releases.hashicorp.com }
+2026-10-04T09:11:36.9916020Z   - kind: http-rule
+2026-10-04T09:11:36.9916489Z     url: { scheme: ["https"], domain: apt.releases.hashicorp.com }
+2026-10-04T09:11:36.9916997Z   - kind: http-rule
+2026-10-04T09:11:36.9917459Z     url: { scheme: ["https"], domain: yum.releases.hashicorp.com }
+2026-10-04T09:11:36.9918123Z   - kind: http-rule
+2026-10-04T09:11:36.9918571Z     url: { scheme: ["https"], domain: registry.terraform.io }
+2026-10-04T09:11:36.9918909Z 
+2026-10-04T09:11:36.9919059Z ---
+2026-10-04T09:11:36.9919402Z version: 0.0.1
+2026-10-04T09:11:36.9919757Z rules:
+2026-10-04T09:11:36.9920102Z   - kind: http-rule
+2026-10-04T09:11:36.9920777Z     url: { scheme: ["https"], domain: haskell.org }
+2026-10-04T09:11:36.9921247Z   - kind: http-rule
+2026-10-04T09:11:36.9921710Z     url: { domain: hackage.haskell.org, allow-any-subdomain: true }
+2026-10-04T09:11:36.9922227Z   - kind: http-rule
+2026-10-04T09:11:36.9922865Z     url: { scheme: ["https"], domain: get-ghcup.haskell.org }
+2026-10-04T09:11:36.9923357Z   - kind: http-rule
+2026-10-04T09:11:36.9923797Z     url: { scheme: ["https"], domain: downloads.haskell.org }
+2026-10-04T09:11:36.9924122Z 
+2026-10-04T09:11:36.9924272Z ---
+2026-10-04T09:11:36.9924603Z version: 0.0.1
+2026-10-04T09:11:36.9924945Z rules:
+2026-10-04T09:11:36.9925288Z   - kind: http-rule
+2026-10-04T09:11:36.9925712Z     url: { scheme: ["https"], domain: www.java.com }
+2026-10-04T09:11:36.9926165Z   - kind: http-rule
+2026-10-04T09:11:36.9926573Z     url: { scheme: ["https"], domain: jdk.java.net }
+2026-10-04T09:11:36.9927024Z   - kind: http-rule
+2026-10-04T09:11:36.9927453Z     url: { scheme: ["https"], domain: api.adoptium.net }
+2026-10-04T09:11:36.9927954Z   - kind: http-rule
+2026-10-04T09:11:36.9928367Z     url: { scheme: ["https"], domain: adoptium.net }
+2026-10-04T09:11:36.9928834Z   - kind: http-rule
+2026-10-04T09:11:36.9929255Z     url: { scheme: ["https"], domain: search.maven.org }
+2026-10-04T09:11:36.9929728Z   - kind: http-rule
+2026-10-04T09:11:36.9930148Z     url: { scheme: ["https"], domain: maven.apache.org }
+2026-10-04T09:11:36.9930861Z   - kind: http-rule
+2026-10-04T09:11:36.9931303Z     url: { scheme: ["https"], domain: repo.maven.apache.org }
+2026-10-04T09:11:36.9931785Z   - kind: http-rule
+2026-10-04T09:11:36.9932206Z     url: { scheme: ["https"], domain: repo1.maven.org }
+2026-10-04T09:11:36.9932669Z   - kind: http-rule
+2026-10-04T09:11:36.9933103Z     url: { scheme: ["https"], domain: maven.pkg.github.com }
+2026-10-04T09:11:36.9933588Z   - kind: http-rule
+2026-10-04T09:11:36.9933946Z     url:
+2026-10-04T09:11:36.9934277Z       {
+2026-10-04T09:11:36.9934620Z         scheme: ["https"],
+2026-10-04T09:11:36.9935122Z         domain: maven-central.storage-download.googleapis.com,
+2026-10-04T09:11:36.9935627Z       }
+2026-10-04T09:11:36.9935961Z   - kind: http-rule
+2026-10-04T09:11:36.9936398Z     url: { scheme: ["https"], domain: maven.google.com }
+2026-10-04T09:11:36.9936863Z   - kind: http-rule
+2026-10-04T09:11:36.9937290Z     url: { scheme: ["https"], domain: maven.oracle.com }
+2026-10-04T09:11:36.9937753Z   - kind: http-rule
+2026-10-04T09:11:36.9938186Z     url: { scheme: ["https"], domain: jcenter.bintray.com }
+2026-10-04T09:11:36.9938664Z   - kind: http-rule
+2026-10-04T09:11:36.9939085Z     url: { scheme: ["https"], domain: oss.sonatype.org }
+2026-10-04T09:11:36.9939547Z   - kind: http-rule
+2026-10-04T09:11:36.9939966Z     url: { scheme: ["https"], domain: repo.spring.io }
+2026-10-04T09:11:36.9940688Z   - kind: http-rule
+2026-10-04T09:11:36.9941114Z     url: { scheme: ["https"], domain: gradle.org }
+2026-10-04T09:11:36.9941567Z   - kind: http-rule
+2026-10-04T09:11:36.9942007Z     url: { scheme: ["https"], domain: services.gradle.org }
+2026-10-04T09:11:36.9942476Z   - kind: http-rule
+2026-10-04T09:11:36.9942907Z     url: { scheme: ["https"], domain: plugins.gradle.org }
+2026-10-04T09:11:36.9943385Z   - kind: http-rule
+2026-10-04T09:11:36.9943845Z     url: { scheme: ["https"], domain: plugins-artifacts.gradle.org }
+2026-10-04T09:11:36.9944382Z   - kind: http-rule
+2026-10-04T09:11:36.9944799Z     url: { scheme: ["https"], domain: repo.grails.org }
+2026-10-04T09:11:36.9945264Z   - kind: http-rule
+2026-10-04T09:11:36.9945702Z     url: { scheme: ["https"], domain: download.eclipse.org }
+2026-10-04T09:11:36.9946181Z   - kind: http-rule
+2026-10-04T09:11:36.9946608Z     url: { scheme: ["https"], domain: download.oracle.com }
+2026-10-04T09:11:36.9947092Z 
+2026-10-04T09:11:36.9947242Z ---
+2026-10-04T09:11:36.9947573Z version: 0.0.1
+2026-10-04T09:11:36.9947925Z rules:
+2026-10-04T09:11:36.9948267Z   - kind: http-rule
+2026-10-04T09:11:36.9948684Z     url: { scheme: ["https"], domain: json-schema.org }
+2026-10-04T09:11:36.9949134Z   - kind: http-rule
+2026-10-04T09:11:36.9949565Z     url: { scheme: ["https"], domain: json.schemastore.org }
+2026-10-04T09:11:36.9949893Z 
+2026-10-04T09:11:36.9950043Z ---
+2026-10-04T09:11:36.9950650Z version: 0.0.1
+2026-10-04T09:11:36.9951008Z rules:
+2026-10-04T09:11:36.9952022Z   # Reminder: Lots of `apt` repositories don't use HTTP see: https://superuser.com/questions/1356786/ubuntu-apt-why-are-the-respositories-accessed-over-http
+2026-10-04T09:11:36.9952748Z 
+2026-10-04T09:11:36.9952904Z   # Ubuntu
+2026-10-04T09:11:36.9953256Z   - kind: http-rule
+2026-10-04T09:11:36.9953718Z     url: { scheme: ["http", "https"], domain: archive.ubuntu.com }
+2026-10-04T09:11:36.9954228Z   - kind: http-rule
+2026-10-04T09:11:36.9954680Z     url: { scheme: ["http", "https"], domain: security.ubuntu.com }
+2026-10-04T09:11:36.9955182Z   - kind: http-rule
+2026-10-04T09:11:36.9955637Z     url: { scheme: ["http", "https"], domain: ppa.launchpad.net }
+2026-10-04T09:11:36.9956131Z   - kind: http-rule
+2026-10-04T09:11:36.9956595Z     url: { scheme: ["http", "https"], domain: keyserver.ubuntu.com }
+2026-10-04T09:11:36.9957098Z   - kind: http-rule
+2026-10-04T09:11:36.9957562Z     url: { scheme: ["http", "https"], domain: azure.archive.ubuntu.com }
+2026-10-04T09:11:36.9958095Z   - kind: http-rule
+2026-10-04T09:11:36.9958549Z     url: { scheme: ["http", "https"], domain: api.snapcraft.io }
+2026-10-04T09:11:36.9958886Z 
+2026-10-04T09:11:36.9959042Z   # Debian
+2026-10-04T09:11:36.9959382Z   - kind: http-rule
+2026-10-04T09:11:36.9959819Z     url: { scheme: ["http", "https"], domain: deb.debian.org }
+2026-10-04T09:11:36.9960570Z   - kind: http-rule
+2026-10-04T09:11:36.9961051Z     url: { scheme: ["http", "https"], domain: security.debian.org }
+2026-10-04T09:11:36.9961570Z   - kind: http-rule
+2026-10-04T09:11:36.9962015Z     url: { scheme: ["http", "https"], domain: keyring.debian.org }
+2026-10-04T09:11:36.9962512Z   - kind: http-rule
+2026-10-04T09:11:36.9962963Z     url: { scheme: ["http", "https"], domain: packages.debian.org }
+2026-10-04T09:11:36.9963457Z   - kind: http-rule
+2026-10-04T09:11:36.9963918Z     url: { scheme: ["http", "https"], domain: debian.map.fastlydns.net }
+2026-10-04T09:11:36.9964432Z   - kind: http-rule
+2026-10-04T09:11:36.9964861Z     url: { scheme: ["http", "https"], domain: apt.llvm.org }
+2026-10-04T09:11:36.9965188Z 
+2026-10-04T09:11:36.9965339Z   # Fedora
+2026-10-04T09:11:36.9965674Z   - kind: http-rule
+2026-10-04T09:11:36.9966103Z     url: { scheme: ["https"], domain: dl.fedoraproject.org }
+2026-10-04T09:11:36.9966572Z   - kind: http-rule
+2026-10-04T09:11:36.9967021Z     url: { scheme: ["https"], domain: mirrors.fedoraproject.org }
+2026-10-04T09:11:36.9967511Z   - kind: http-rule
+2026-10-04T09:11:36.9967957Z     url: { scheme: ["https"], domain: download.fedoraproject.org }
+2026-10-04T09:11:36.9968302Z 
+2026-10-04T09:11:36.9968453Z   # CentOS
+2026-10-04T09:11:36.9968796Z   - kind: http-rule
+2026-10-04T09:11:36.9969222Z     url: { scheme: ["https"], domain: mirror.centos.org }
+2026-10-04T09:11:36.9969689Z   - kind: http-rule
+2026-10-04T09:11:36.9970105Z     url: { scheme: ["https"], domain: vault.centos.org }
+2026-10-04T09:11:36.9970553Z 
+2026-10-04T09:11:36.9970706Z   # Alpine
+2026-10-04T09:11:36.9971290Z   - kind: http-rule
+2026-10-04T09:11:36.9971756Z     url: { scheme: ["https"], domain: dl-cdn.alpinelinux.org }
+2026-10-04T09:11:36.9972259Z   - kind: http-rule
+2026-10-04T09:11:36.9972686Z     url: { scheme: ["https"], domain: pkg.alpinelinux.org }
+2026-10-04T09:11:36.9973012Z 
+2026-10-04T09:11:36.9973165Z   # Arch
+2026-10-04T09:11:36.9973538Z   - kind: http-rule
+2026-10-04T09:11:36.9973973Z     url: { scheme: ["https"], domain: mirror.archlinux.org }
+2026-10-04T09:11:36.9974449Z   - kind: http-rule
+2026-10-04T09:11:36.9975021Z     url: { scheme: ["https"], domain: archlinux.org }
+2026-10-04T09:11:36.9975328Z 
+2026-10-04T09:11:36.9975478Z   # SUSE
+2026-10-04T09:11:36.9975817Z   - kind: http-rule
+2026-10-04T09:11:36.9976255Z     url: { scheme: ["https"], domain: download.opensuse.org }
+2026-10-04T09:11:36.9976589Z 
+2026-10-04T09:11:36.9976737Z   # Red Hat
+2026-10-04T09:11:36.9977075Z   - kind: http-rule
+2026-10-04T09:11:36.9977490Z     url: { scheme: ["https"], domain: cdn.redhat.com }
+2026-10-04T09:11:36.9977796Z 
+2026-10-04T09:11:36.9977970Z   # Common Package Mirrors
+2026-10-04T09:11:36.9978846Z   - kind: http-rule
+2026-10-04T09:11:36.9979641Z     url: { scheme: ["https"], domain: packagecloud.io }
+2026-10-04T09:11:36.9980723Z   - kind: http-rule
+2026-10-04T09:11:36.9981598Z     url: { scheme: ["https"], domain: packages.cloud.google.com }
+2026-10-04T09:11:36.9982251Z 
+2026-10-04T09:11:36.9982571Z   # Microsoft Sources
+2026-10-04T09:11:36.9983265Z   - kind: http-rule
+2026-10-04T09:11:36.9984092Z     url: { scheme: ["https"], domain: packages.microsoft.com }
+2026-10-04T09:11:36.9984750Z 
+2026-10-04T09:11:36.9985121Z ---
+2026-10-04T09:11:36.9985745Z version: 0.0.1
+2026-10-04T09:11:36.9986415Z rules:
+2026-10-04T09:11:36.9987065Z   - kind: http-rule
+2026-10-04T09:11:36.9987828Z     url: { scheme: ["https"], domain: npmjs.org }
+2026-10-04T09:11:36.9988719Z   - kind: http-rule
+2026-10-04T09:11:36.9989494Z     url: { scheme: ["https"], domain: npmjs.com }
+2026-10-04T09:11:36.9990578Z   - kind: http-rule
+2026-10-04T09:11:36.9991447Z     url: { scheme: ["https"], domain: registry.npmjs.com }
+2026-10-04T09:11:36.9992353Z   - kind: http-rule
+2026-10-04T09:11:36.9992897Z     url: { scheme: ["https"], domain: registry.npmjs.org }
+2026-10-04T09:11:36.9993392Z   - kind: http-rule
+2026-10-04T09:11:36.9993831Z     url: { scheme: ["https"], domain: skimdb.npmjs.com }
+2026-10-04T09:11:36.9994308Z   - kind: http-rule
+2026-10-04T09:11:36.9994751Z     url: { scheme: ["https"], domain: npm.pkg.github.com }
+2026-10-04T09:11:36.9995233Z   - kind: http-rule
+2026-10-04T09:11:36.9995651Z     url: { scheme: ["https"], domain: api.npms.io }
+2026-10-04T09:11:36.9996109Z   - kind: http-rule
+2026-10-04T09:11:36.9996513Z     url: { scheme: ["https"], domain: nodejs.org }
+2026-10-04T09:11:36.9996967Z   - kind: http-rule
+2026-10-04T09:11:36.9997371Z     url: { scheme: ["https"], domain: yarnpkg.com }
+2026-10-04T09:11:36.9997840Z   - kind: http-rule
+2026-10-04T09:11:36.9998285Z     url: { scheme: ["https"], domain: registry.yarnpkg.com }
+2026-10-04T09:11:36.9998775Z   - kind: http-rule
+2026-10-04T09:11:36.9999206Z     url: { scheme: ["https"], domain: repo.yarnpkg.com }
+2026-10-04T09:11:36.9999678Z   - kind: http-rule
+2026-10-04T09:11:37.0000069Z     url: { domain: deb.nodesource.com }
+2026-10-04T09:11:37.0000806Z   - kind: http-rule
+2026-10-04T09:11:37.0001250Z     url: { scheme: ["https"], domain: get.pnpm.io }
+2026-10-04T09:11:37.0001716Z   - kind: http-rule
+2026-10-04T09:11:37.0002116Z     url: { scheme: ["https"], domain: bun.sh }
+2026-10-04T09:11:37.0002568Z   - kind: http-rule
+2026-10-04T09:11:37.0002975Z     url: { scheme: ["https"], domain: deno.land }
+2026-10-04T09:11:37.0003435Z   - kind: http-rule
+2026-10-04T09:11:37.0003860Z     url: { scheme: ["https"], domain: registry.bower.io }
+2026-10-04T09:11:37.0004334Z   - kind: http-rule
+2026-10-04T09:11:37.0004767Z     url: { scheme: ["https"], domain: binaries.prisma.sh }
+2026-10-04T09:11:37.0005241Z   - kind: http-rule
+2026-10-04T09:11:37.0005648Z     url: { scheme: ["https"], domain: aspire.dev }
+2026-10-04T09:11:37.0005944Z 
+2026-10-04T09:11:37.0006091Z ---
+2026-10-04T09:11:37.0006432Z version: 0.0.1
+2026-10-04T09:11:37.0006771Z rules:
+2026-10-04T09:11:37.0007114Z   - kind: http-rule
+2026-10-04T09:11:37.0007521Z     url: { scheme: ["https"], domain: cpan.org }
+2026-10-04T09:11:37.0007970Z   - kind: http-rule
+2026-10-04T09:11:37.0008663Z     url: { scheme: ["https"], domain: www.cpan.org }
+2026-10-04T09:11:37.0009383Z   - kind: http-rule
+2026-10-04T09:11:37.0010067Z     url: { scheme: ["https"], domain: metacpan.org }
+2026-10-04T09:11:37.0011088Z   - kind: http-rule
+2026-10-04T09:11:37.0011560Z     url: { scheme: ["https"], domain: cpan.metacpan.org }
+2026-10-04T09:11:37.0011889Z 
+2026-10-04T09:11:37.0012041Z ---
+2026-10-04T09:11:37.0012377Z version: 0.0.1
+2026-10-04T09:11:37.0012726Z rules:
+2026-10-04T09:11:37.0013064Z   - kind: http-rule
+2026-10-04T09:11:37.0013509Z     url: { scheme: ["https"], domain: repo.packagist.org }
+2026-10-04T09:11:37.0013992Z   - kind: http-rule
+2026-10-04T09:11:37.0014406Z     url: { scheme: ["https"], domain: packagist.org }
+2026-10-04T09:11:37.0014866Z   - kind: http-rule
+2026-10-04T09:11:37.0015409Z     url: { scheme: ["https"], domain: getcomposer.org }
+2026-10-04T09:11:37.0015727Z 
+2026-10-04T09:11:37.0015878Z ---
+2026-10-04T09:11:37.0016221Z version: 0.0.1
+2026-10-04T09:11:37.0016562Z rules:
+2026-10-04T09:11:37.0016907Z   - kind: http-rule
+2026-10-04T09:11:37.0017407Z     url: { scheme: ["https"], domain: playwright.download.prss.microsoft.com }
+2026-10-04T09:11:37.0017973Z   - kind: http-rule
+2026-10-04T09:11:37.0018408Z     url: { scheme: ["https"], domain: cdn.playwright.dev }
+2026-10-04T09:11:37.0018890Z   - kind: http-rule
+2026-10-04T09:11:37.0019498Z     url: { scheme: ["https"], domain: playwright.azureedge.net }
+2026-10-04T09:11:37.0020000Z   - kind: http-rule
+2026-10-04T09:11:37.0020741Z     url: { scheme: ["https"], domain: playwright-akamai.azureedge.net }
+2026-10-04T09:11:37.0021280Z   - kind: http-rule
+2026-10-04T09:11:37.0021748Z     url: { scheme: ["https"], domain: playwright-verizon.azureedge.net }
+2026-10-04T09:11:37.0022279Z   - kind: http-rule
+2026-10-04T09:11:37.0022644Z     url:
+2026-10-04T09:11:37.0022989Z       scheme: ["https"]
+2026-10-04T09:11:37.0023390Z       domain: storage.googleapis.com
+2026-10-04T09:11:37.0023842Z       path: "/chrome-for-testing-public"
+2026-10-04T09:11:37.0024123Z 
+2026-10-04T09:11:37.0024269Z ---
+2026-10-04T09:11:37.0024592Z version: 0.0.1
+2026-10-04T09:11:37.0024936Z rules:
+2026-10-04T09:11:37.0025272Z   - kind: http-rule
+2026-10-04T09:11:37.0025743Z     url: { scheme: ["https"], domain: pypi.python.org }
+2026-10-04T09:11:37.0026212Z   - kind: http-rule
+2026-10-04T09:11:37.0026609Z     url: { scheme: ["https"], domain: pypi.org }
+2026-10-04T09:11:37.0027055Z   - kind: http-rule
+2026-10-04T09:11:37.0027451Z     url: { scheme: ["https"], domain: pip.pypa.io }
+2026-10-04T09:11:37.0027911Z   - kind: http-rule
+2026-10-04T09:11:37.0028267Z     url:
+2026-10-04T09:11:37.0028731Z       { scheme: ["https"], domain: pythonhosted.org, allow-any-subdomain: true }
+2026-10-04T09:11:37.0029277Z   - kind: http-rule
+2026-10-04T09:11:37.0029717Z     url: { scheme: ["https"], domain: files.pythonhosted.org }
+2026-10-04T09:11:37.0030426Z   - kind: http-rule
+2026-10-04T09:11:37.0030893Z     url: { scheme: ["https"], domain: bootstrap.pypa.io }
+2026-10-04T09:11:37.0031369Z   - kind: http-rule
+2026-10-04T09:11:37.0031794Z     url: { scheme: ["https"], domain: conda.binstar.org }
+2026-10-04T09:11:37.0032257Z   - kind: http-rule
+2026-10-04T09:11:37.0032689Z     url: { scheme: ["https"], domain: conda.anaconda.org }
+2026-10-04T09:11:37.0033163Z   - kind: http-rule
+2026-10-04T09:11:37.0033558Z     url: { scheme: ["https"], domain: binstar.org }
+2026-10-04T09:11:37.0034013Z   - kind: http-rule
+2026-10-04T09:11:37.0034419Z     url: { scheme: ["https"], domain: anaconda.org }
+2026-10-04T09:11:37.0034871Z   - kind: http-rule
+2026-10-04T09:11:37.0035304Z     url: { scheme: ["https"], domain: download.pytorch.org }
+2026-10-04T09:11:37.0035802Z   - kind: http-rule
+2026-10-04T09:11:37.0036242Z     url: { scheme: ["https"], domain: repo.continuum.io }
+2026-10-04T09:11:37.0036715Z   - kind: http-rule
+2026-10-04T09:11:37.0037145Z     url: { scheme: ["https"], domain: repo.anaconda.com }
+2026-10-04T09:11:37.0037462Z 
+2026-10-04T09:11:37.0037611Z ---
+2026-10-04T09:11:37.0037942Z version: 0.0.1
+2026-10-04T09:11:37.0038282Z rules:
+2026-10-04T09:11:37.0038654Z   - kind: http-rule
+2026-10-04T09:11:37.0039067Z     url: { scheme: ["https"], domain: rubygems.org }
+2026-10-04T09:11:37.0039693Z   - kind: http-rule
+2026-10-04T09:11:37.0040119Z     url: { scheme: ["https"], domain: api.rubygems.org }
+2026-10-04T09:11:37.0040861Z   - kind: http-rule
+2026-10-04T09:11:37.0041309Z     url: { scheme: ["https"], domain: rubygems.pkg.github.com }
+2026-10-04T09:11:37.0041802Z   - kind: http-rule
+2026-10-04T09:11:37.0042240Z     url: { scheme: ["https"], domain: bundler.rubygems.org }
+2026-10-04T09:11:37.0042713Z   - kind: http-rule
+2026-10-04T09:11:37.0043148Z     url: { scheme: ["https"], domain: gems.rubyforge.org }
+2026-10-04T09:11:37.0043615Z   - kind: http-rule
+2026-10-04T09:11:37.0044191Z     url: { scheme: ["https"], domain: gems.rubyonrails.org }
+2026-10-04T09:11:37.0044671Z   - kind: http-rule
+2026-10-04T09:11:37.0045098Z     url: { scheme: ["https"], domain: index.rubygems.org }
+2026-10-04T09:11:37.0045567Z   - kind: http-rule
+2026-10-04T09:11:37.0045989Z     url: { scheme: ["https"], domain: cache.ruby-lang.org }
+2026-10-04T09:11:37.0046468Z   - kind: http-rule
+2026-10-04T09:11:37.0046895Z     url: { domain: rvm.io, allow-any-subdomain: true }
+2026-10-04T09:11:37.0047211Z 
+2026-10-04T09:11:37.0047358Z ---
+2026-10-04T09:11:37.0047686Z version: 0.0.1
+2026-10-04T09:11:37.0048026Z rules:
+2026-10-04T09:11:37.0048377Z   - kind: http-rule
+2026-10-04T09:11:37.0048773Z     url: { scheme: ["https"], domain: crates.io }
+2026-10-04T09:11:37.0049227Z   - kind: http-rule
+2026-10-04T09:11:37.0049646Z     url: { scheme: ["https"], domain: index.crates.io }
+2026-10-04T09:11:37.0050101Z   - kind: http-rule
+2026-10-04T09:11:37.0050789Z     url: { scheme: ["https"], domain: static.crates.io }
+2026-10-04T09:11:37.0051266Z   - kind: http-rule
+2026-10-04T09:11:37.0051684Z     url: { scheme: ["https"], domain: sh.rustup.rs }
+2026-10-04T09:11:37.0052137Z   - kind: http-rule
+2026-10-04T09:11:37.0052562Z     url: { scheme: ["https"], domain: static.rust-lang.org }
+2026-10-04T09:11:37.0052888Z 
+2026-10-04T09:11:37.0053038Z ---
+2026-10-04T09:11:37.0053363Z version: 0.0.1
+2026-10-04T09:11:37.0053708Z rules:
+2026-10-04T09:11:37.0054053Z   - kind: http-rule
+2026-10-04T09:11:37.0054474Z     url: { scheme: ["https"], domain: download.swift.org }
+2026-10-04T09:11:37.0054945Z   - kind: http-rule
+2026-10-04T09:11:37.0055340Z     url: { scheme: ["https"], domain: swift.org }
+2026-10-04T09:11:37.0055787Z   - kind: http-rule
+2026-10-04T09:11:37.0056195Z     url: { scheme: ["https"], domain: cocoapods.org }
+2026-10-04T09:11:37.0056650Z   - kind: http-rule
+2026-10-04T09:11:37.0057070Z     url: { scheme: ["https"], domain: cdn.cocoapods.org }
+2026-10-04T09:11:37.0057384Z 
+2026-10-04T09:11:37.0057527Z ----
+2026-10-04T09:11:38.3374408Z Loaded 2 secrets
+2026-10-04T09:11:38.3415240Z A value is from inputs.
+2026-10-04T09:11:39.0008545Z A value is from inputs.
+2026-10-04T09:11:39.0009777Z [cca-engine] Job 311664141-1403878427-c0e75be5-df16-45f2-a5e5-eab7a0bd40c1: action=task trigger=false repo=NousVolition/My-Sources-Project-ALL branch=copilot/add-divergence-and-project-methods
+2026-10-04T09:11:39.0012137Z Proceeding without custom agent.
+2026-10-04T09:11:39.0024657Z [cca-engine] Problem statement (1681 chars, source=job): def divergence_at(self, i, j, k):
+2026-10-04T09:11:39.0026004Z     ip, im, jp, jm, kp, km = self.get_neighbors(i, j, k)
+2026-10-04T09:11:39.0026820Z     dx = self.dx
+2026-10-04T09:11:39.0027443Z     du = (self.u[ip][j][k] - self.u[im][j][k]) / (2.0 * dx)
+2026-10-04T09:11:39.0028318Z     dv = (self.v[i][jp][k] - self.v[i][jm][k]) / (2.0 * dx)
+2026-10-04T09:11:39.0029112Z     dw = (self.w[i][j][kp] - self.w[i][j][km]) / (2.0 * dx)
+2026-10-04T09:11:39.0029813Z     return du + dv + dw
+2026-10-04T09:11:39.0030467Z 
+2026-10-04T09:11:39.0030729Z def project(self, iterations=2000):
+2026-10-04T09:11:39.0031386Z     N = self.N
+2026-10-04T09:11:39.0032253Z     rhs = [[[self.divergence_at(i, j, k) for k in range(N)] for j in range(N)] for i in range(N)]
+2026-10-04T09:11:39.0033193Z     phi = [[[0.0 for _ in range(N)] fo...
+2026-10-04T09:11:39.0590526Z [cca-engine] Cloning through git proxy: http://localhost:26831/NousVolition/My-Sources-Project-ALL
+2026-10-04T09:11:39.6943895Z [cca-engine] Cloned to /home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL
+2026-10-04T09:11:39.6978624Z Using per-app CAPI integration ID from job metadata
+2026-10-04T09:11:39.7135592Z Base commit 'main' not found locally, attempting to fetch from remote
+2026-10-04T09:11:39.8605460Z From http://localhost:26831/NousVolition/My-Sources-Project-ALL
+2026-10-04T09:11:39.8606381Z  * branch            main       -> FETCH_HEAD
+2026-10-04T09:11:39.8606759Z 
+2026-10-04T09:11:39.8690395Z Resolved base commit 'main' to SHA: aaa52ad542822eadb8295327818211580cfc09c3 (via FETCH_HEAD)
+2026-10-04T09:11:39.8725175Z CodeQL directory found in toolcache at '/opt/hostedtoolcache/CodeQL/2.27.1/x64'.
+2026-10-04T09:11:40.3595473Z Memory enablement check: enabled
+2026-10-04T09:11:40.8274874Z [cca-engine] Model resolution: env="sweagent-capi:kimi-k3" settings="sweagent-capi:kimi-k3" → resolved="kimi-k3"
+2026-10-04T09:11:40.8276451Z [cca-engine] Reasoning effort resolution: env="max" settings="max" → resolved="max"
+2026-10-04T09:11:40.8307142Z [cca-engine] CopilotClient log level set to "info" (COPILOT_AGENT_DEBUG=false)
+2026-10-04T09:11:40.8308478Z [cca-engine] Using explicit CLI path: /opt/copilot-runtime/***-action-main/dist-cca-v3/node_modules/@github/copilot-linux-x64/index.js
+2026-10-04T09:11:40.9660920Z [cca-engine] Discovering MCP tools from proxy...
+2026-10-04T09:11:41.1499837Z [cca-engine] Discovered MCP server: github-mcp-server
+2026-10-04T09:11:41.1501171Z [cca-engine] Discovered MCP server: playwright
+2026-10-04T09:11:41.4577110Z [cca-engine] fetchProgress returned 0 raw record(s).
+2026-10-04T09:11:41.4579193Z [cca-engine] Parsed 0 session-events record(s): 0 v3, 0 manifest(s), 0 chunk(s); 0 candidate snapshot(s).
+2026-10-04T09:11:41.5015467Z [cca-engine] Parsed 2 legacy V1 session log record(s).
+2026-10-04T09:11:41.5024820Z [cca-engine] No prior session state found; starting fresh.
+2026-10-04T09:11:41.5026199Z [cca-engine] MCP permission gate disabled — all tool calls auto-approved
+2026-10-04T09:11:41.5081587Z [cca-engine] CCA V3 CAPI proxy listening on http://127.0.0.1:33775, forwarding to https://api.individual.githubcopilot.com
+2026-10-04T09:11:42.2062995Z [cca-engine] Routing host-provided ExP assignment context into the SDK session for telemetry attribution (flights carried through: [none])
+2026-10-04T09:11:42.2065356Z [cca-engine] Memory diagnostics: sdkFlagEnabled=false sdkEnabled=false cloudEnabled=true cloudAvailableForContext=true testInjected=false userPromptMemoryInjected=true userPromptMemoryChars=2181
+2026-10-04T09:11:42.8983763Z [cca-engine] Created new session 502ea442-c7dd-48ed-b9b0-ae5023ecd5d1
+2026-10-04T09:11:42.9013551Z [cca-engine] Steering mode: mission-control session=502ea442-c7dd-48ed-b9b0-ae5023ecd5d1 callback_accepts_user_messages=false
+2026-10-04T09:11:42.9102734Z [cca-engine] Sending prompt for action=task...
+2026-10-04T09:11:42.9292746Z [cca-engine] [session=502ea442-c7dd-48ed-b9b0-ae5023ecd5d1] MCP server 'github-mcp-server': pending
+2026-10-04T09:11:42.9453522Z [cca-engine] [session=502ea442-c7dd-48ed-b9b0-ae5023ecd5d1] MCP server 'runtime-tools': pending
+2026-10-04T09:11:42.9454841Z [cca-engine] [session=502ea442-c7dd-48ed-b9b0-ae5023ecd5d1] MCP server 'engine-tools': pending
+2026-10-04T09:11:42.9456042Z [cca-engine] [session=502ea442-c7dd-48ed-b9b0-ae5023ecd5d1] MCP server 'playwright': pending
+2026-10-04T09:11:43.1022911Z [cca-engine] [session=502ea442-c7dd-48ed-b9b0-ae5023ecd5d1] MCP server 'github-mcp-server': connected
+2026-10-04T09:11:43.1613114Z [cca-engine] in-session runtime checkQuota callback v3: preRequest invoked (turn=0)
+2026-10-04T09:11:43.2541266Z [cca-engine] [session=502ea442-c7dd-48ed-b9b0-ae5023ecd5d1] MCP server 'playwright': connected
+2026-10-04T09:11:43.2798860Z [cca-engine] [session=502ea442-c7dd-48ed-b9b0-ae5023ecd5d1] MCP server 'engine-tools': connected
+2026-10-04T09:11:43.4953192Z [cca-engine] in-session runtime checkQuota callback v3: quota is sufficient, continuing session (turn=0)
+2026-10-04T09:11:43.6756736Z [cca-engine] [session=502ea442-c7dd-48ed-b9b0-ae5023ecd5d1] MCP server 'runtime-tools': connected
+2026-10-04T09:11:43.6758954Z [cca-engine] [session=502ea442-c7dd-48ed-b9b0-ae5023ecd5d1] MCP server 'runtime-tools': connected
+2026-10-04T09:11:43.6764360Z [cca-engine] [session=502ea442-c7dd-48ed-b9b0-ae5023ecd5d1] MCP server 'github-mcp-server': connected
+2026-10-04T09:11:43.6765980Z [cca-engine] [session=502ea442-c7dd-48ed-b9b0-ae5023ecd5d1] MCP server 'playwright': connected
+2026-10-04T09:11:43.6767497Z [cca-engine] [session=502ea442-c7dd-48ed-b9b0-ae5023ecd5d1] MCP server 'engine-tools': connected
+2026-10-04T09:11:43.8019459Z [cca-engine] turn=0 user.message: 6517 chars
+2026-10-04T09:11:43.8545176Z [cca-engine] turn=1 assistant.turn_start
+2026-10-04T09:12:02.1367098Z [cca-engine] turn=1 assistant.usage: model=kimi-k3 input=28194 output=791
+2026-10-04T09:12:02.1570502Z [cca-engine] turn=1 assistant.message: 88 chars, 2 tool call(s)
+2026-10-04T09:12:02.1591753Z [cca-engine] in-session runtime checkQuota callback v3: preRequest invoked (turn=1)
+2026-10-04T09:12:02.1601716Z [cca-engine] turn=1 tool.execution_start: view — /home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL
+2026-10-04T09:12:02.1607644Z [cca-engine] turn=1 tool.execution_start: bash — cd /home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL && git log --oneline -10 && git status
+2026-10-04T09:12:02.2287439Z [cca-engine] turn=1 tool.execution_complete: view success=true
+2026-10-04T09:12:02.2399949Z [cca-engine] turn=1 tool.execution_complete: bash success=true
+2026-10-04T09:12:02.2910938Z [cca-engine] in-session runtime checkQuota callback v3: quota is sufficient, continuing session (turn=1)
+2026-10-04T09:12:02.3041404Z [cca-engine] turn=1 assistant.turn_end
+2026-10-04T09:12:02.3049257Z [cca-engine] turn=2 assistant.turn_start
+2026-10-04T09:12:08.0155148Z [cca-engine] turn=2 assistant.usage: model=kimi-k3 input=28631 output=206
+2026-10-04T09:12:08.0344822Z [cca-engine] turn=2 assistant.message: 0 chars, 2 tool call(s)
+2026-10-04T09:12:08.0349171Z [cca-engine] in-session runtime checkQuota callback v3: preRequest invoked (turn=2)
+2026-10-04T09:12:08.0361460Z [cca-engine] turn=2 tool.execution_start: view — /home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL/pytest_suite
+2026-10-04T09:12:08.0364366Z [cca-engine] turn=2 tool.execution_start: bash — cd /home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL && wc -l navier_stokes_framework.txt && head -100 nav…
+2026-10-04T09:12:08.0871312Z [cca-engine] turn=2 tool.execution_complete: view success=true
+2026-10-04T09:12:08.1029152Z [cca-engine] turn=2 tool.execution_complete: bash success=true
+2026-10-04T09:12:08.1414101Z [cca-engine] in-session runtime checkQuota callback v3: quota is sufficient, continuing session (turn=2)
+2026-10-04T09:12:08.1704602Z [cca-engine] turn=2 assistant.turn_end
+2026-10-04T09:12:08.1720662Z [cca-engine] turn=3 assistant.turn_start
+2026-10-04T09:12:14.0218855Z [cca-engine] turn=3 assistant.usage: model=kimi-k3 input=30914 output=148
+2026-10-04T09:12:14.0357028Z [cca-engine] turn=3 assistant.message: 0 chars, 1 tool call(s)
+2026-10-04T09:12:14.0364746Z [cca-engine] in-session runtime checkQuota callback v3: preRequest invoked (turn=3)
+2026-10-04T09:12:14.0368898Z [cca-engine] turn=3 tool.execution_start: view — /home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL/pytest_suite/navier.py
+2026-10-04T09:12:14.0618454Z [cca-engine] turn=3 tool.execution_complete: view success=true
+2026-10-04T09:12:14.1235789Z [cca-engine] turn=3 assistant.turn_end
+2026-10-04T09:12:14.1253242Z [cca-engine] turn=4 assistant.turn_start
+2026-10-04T09:12:14.1413188Z [cca-engine] in-session runtime checkQuota callback v3: quota is sufficient, continuing session (turn=3)
+2026-10-04T09:12:18.3839154Z [cca-engine] turn=4 assistant.usage: model=kimi-k3 input=32980 output=124
+2026-10-04T09:12:18.4030035Z [cca-engine] turn=4 assistant.message: 0 chars, 2 tool call(s)
+2026-10-04T09:12:18.4031332Z [cca-engine] in-session runtime checkQuota callback v3: preRequest invoked (turn=4)
+2026-10-04T09:12:18.4040555Z [cca-engine] turn=4 tool.execution_start: view — /home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL/pytest_suite/test_navier.py
+2026-10-04T09:12:18.4051104Z [cca-engine] turn=4 tool.execution_start: view — /home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL/pytest_suite/pytest.ini
+2026-10-04T09:12:18.4256301Z [cca-engine] turn=4 tool.execution_complete: view success=true
+2026-10-04T09:12:18.4367450Z [cca-engine] turn=4 tool.execution_complete: view success=true
+2026-10-04T09:12:18.5002237Z [cca-engine] in-session runtime checkQuota callback v3: quota is sufficient, continuing session (turn=4)
+2026-10-04T09:12:18.5043982Z [cca-engine] turn=4 assistant.turn_end
+2026-10-04T09:12:18.5086808Z [cca-engine] turn=5 assistant.turn_start
+2026-10-04T09:13:35.0833675Z [cca-engine] turn=5 assistant.usage: model=kimi-k3 input=33560 output=3822
+2026-10-04T09:13:35.1040952Z [cca-engine] turn=5 assistant.message: 76 chars, 2 tool call(s)
+2026-10-04T09:13:35.1044152Z [cca-engine] in-session runtime checkQuota callback v3: preRequest invoked (turn=5)
+2026-10-04T09:13:35.1047628Z [cca-engine] turn=5 tool.execution_start: bash — cd /home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL && ls Filesother build 2>/dev/null | head -30; grep -…
+2026-10-04T09:13:35.1049942Z [cca-engine] turn=5 tool.execution_start: view — /home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL/pytest_suite/regime.py
+2026-10-04T09:13:35.1608794Z [cca-engine] turn=5 tool.execution_complete: view success=true
+2026-10-04T09:13:35.1697548Z [cca-engine] turn=5 tool.execution_complete: bash success=true
+2026-10-04T09:13:35.2375959Z [cca-engine] turn=5 assistant.turn_end
+2026-10-04T09:13:35.2385750Z [cca-engine] turn=6 assistant.turn_start
+2026-10-04T09:13:35.2669515Z [cca-engine] in-session runtime checkQuota callback v3: quota is sufficient, continuing session (turn=5)
+2026-10-04T09:13:38.0204197Z [cca-engine] turn=6 assistant.usage: model=kimi-k3 input=34323 output=125
+2026-10-04T09:13:38.0361460Z [cca-engine] turn=6 assistant.message: 0 chars, 1 tool call(s)
+2026-10-04T09:13:38.0368376Z [cca-engine] turn=6 tool.execution_start: bash — cd /home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL && grep -n "project\|divergence\|pressure" Filesother…
+2026-10-04T09:13:38.0829531Z [cca-engine] turn=6 tool.execution_complete: bash success=true
+2026-10-04T09:13:38.1531433Z [cca-engine] turn=6 assistant.turn_end
+2026-10-04T09:13:38.1542850Z [cca-engine] turn=7 assistant.turn_start
+2026-10-04T09:13:38.2698929Z [cca-engine] in-session runtime checkQuota callback v3: preRequest invoked (turn=6)
+2026-10-04T09:13:38.3712291Z [cca-engine] in-session runtime checkQuota callback v3: quota is sufficient, continuing session (turn=6)
+2026-10-04T09:13:40.3773752Z [cca-engine] turn=7 assistant.usage: model=kimi-k3 input=34498 output=91
+2026-10-04T09:13:40.3915869Z [cca-engine] turn=7 assistant.message: 0 chars, 1 tool call(s)
+2026-10-04T09:13:40.3918872Z [cca-engine] in-session runtime checkQuota callback v3: preRequest invoked (turn=7)
+2026-10-04T09:13:40.3923302Z [cca-engine] turn=7 tool.execution_start: view — /home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL/Filesother/Code_.txt
+2026-10-04T09:13:40.4157627Z [cca-engine] turn=7 tool.execution_complete: view success=true
+2026-10-04T09:13:40.4860788Z [cca-engine] turn=7 assistant.turn_end
+2026-10-04T09:13:40.4865838Z [cca-engine] turn=8 assistant.turn_start
+2026-10-04T09:13:40.4985979Z [cca-engine] in-session runtime checkQuota callback v3: quota is sufficient, continuing session (turn=7)
+2026-10-04T09:15:31.9050108Z [cca-engine] turn=8 assistant.usage: model=kimi-k3 input=36963 output=4564
+2026-10-04T09:15:31.9201665Z [cca-engine] turn=8 assistant.message: 257 chars, 1 tool call(s)
+2026-10-04T09:15:31.9208101Z [cca-engine] in-session runtime checkQuota callback v3: preRequest invoked (turn=8)
+2026-10-04T09:15:31.9210464Z [cca-engine] turn=8 tool.execution_start: bash — cd /home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL && find .github -type f | head; echo ---; cat .github…
+2026-10-04T09:15:31.9739285Z [cca-engine] turn=8 tool.execution_complete: bash success=true
+2026-10-04T09:15:32.0395636Z [cca-engine] turn=8 assistant.turn_end
+2026-10-04T09:15:32.0413707Z [cca-engine] in-session runtime checkQuota callback v3: quota is sufficient, continuing session (turn=8)
+2026-10-04T09:15:32.0424085Z [cca-engine] turn=9 assistant.turn_start
+2026-10-04T09:15:34.7212213Z [cca-engine] turn=9 assistant.usage: model=kimi-k3 input=38034 output=95
+2026-10-04T09:15:34.7370997Z [cca-engine] turn=9 assistant.message: 0 chars, 1 tool call(s)
+2026-10-04T09:15:34.7372443Z [cca-engine] in-session runtime checkQuota callback v3: preRequest invoked (turn=9)
+2026-10-04T09:15:34.7380020Z [cca-engine] turn=9 tool.execution_start: bash — cd /home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL && cat .github/workflows/python-app.yml
+2026-10-04T09:15:34.7850112Z [cca-engine] turn=9 tool.execution_complete: bash success=true
+2026-10-04T09:15:34.8380880Z [cca-engine] in-session runtime checkQuota callback v3: quota is sufficient, continuing session (turn=9)
+2026-10-04T09:15:34.8611138Z [cca-engine] turn=9 assistant.turn_end
+2026-10-04T09:15:34.8627259Z [cca-engine] turn=10 assistant.turn_start
+2026-10-04T09:15:41.6757706Z [cca-engine] turn=10 assistant.usage: model=kimi-k3 input=38466 output=232
+2026-10-04T09:15:41.6875336Z [cca-engine] turn=10 assistant.message: 225 chars, 1 tool call(s)
+2026-10-04T09:15:41.6878974Z [cca-engine] in-session runtime checkQuota callback v3: preRequest invoked (turn=10)
+2026-10-04T09:15:41.6882252Z [cca-engine] turn=10 tool.execution_start: report_progress
+2026-10-04T09:15:41.7975083Z [cca-engine] in-session runtime checkQuota callback v3: quota is sufficient, continuing session (turn=10)
+2026-10-04T09:15:42.0388835Z [cca-engine] turn=10 tool.execution_complete: report_progress success=true
+2026-10-04T09:15:42.1105379Z [cca-engine] turn=10 assistant.turn_end
+2026-10-04T09:15:42.1114617Z [cca-engine] turn=11 assistant.turn_start
+2026-10-04T09:15:45.0068109Z [cca-engine] turn=11 assistant.usage: model=kimi-k3 input=38836 output=126
+2026-10-04T09:15:45.0213900Z [cca-engine] turn=11 assistant.message: 0 chars, 1 tool call(s)
+2026-10-04T09:15:45.0216379Z [cca-engine] in-session runtime checkQuota callback v3: preRequest invoked (turn=11)
+2026-10-04T09:15:45.0219986Z [cca-engine] turn=11 tool.execution_start: bash — cd /home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL/pytest_suite && python -m pytest -q 2>&1 | tail -5; p…
+2026-10-04T09:15:45.1057982Z [cca-engine] turn=11 tool.execution_complete: bash success=true
+2026-10-04T09:15:45.1202210Z [cca-engine] in-session runtime checkQuota callback v3: quota is sufficient, continuing session (turn=11)
+2026-10-04T09:15:45.1750820Z [cca-engine] turn=11 assistant.turn_end
+2026-10-04T09:15:45.1763128Z [cca-engine] turn=12 assistant.turn_start
+2026-10-04T09:15:48.1422490Z [cca-engine] turn=12 assistant.usage: model=kimi-k3 input=39017 output=96
+2026-10-04T09:15:48.1575472Z [cca-engine] turn=12 assistant.message: 0 chars, 1 tool call(s)
+2026-10-04T09:15:48.1577005Z [cca-engine] in-session runtime checkQuota callback v3: preRequest invoked (turn=12)
+2026-10-04T09:15:48.1579656Z [cca-engine] turn=12 tool.execution_start: bash — pip install -q pytest flake8 2>&1 | tail -2; python -m pytest --version && python -m flake8 --version
+2026-10-04T09:15:48.2664189Z [cca-engine] in-session runtime checkQuota callback v3: quota is sufficient, continuing session (turn=12)
+2026-10-04T09:15:50.4374174Z [cca-engine] turn=12 tool.execution_complete: bash success=true
+2026-10-04T09:15:50.5098689Z [cca-engine] turn=12 assistant.turn_end
+2026-10-04T09:15:50.5114397Z [cca-engine] turn=13 assistant.turn_start
+2026-10-04T09:15:53.1023070Z [cca-engine] turn=13 assistant.usage: model=kimi-k3 input=39214 output=103
+2026-10-04T09:15:53.1175465Z [cca-engine] turn=13 assistant.message: 0 chars, 1 tool call(s)
+2026-10-04T09:15:53.1204930Z [cca-engine] in-session runtime checkQuota callback v3: preRequest invoked (turn=13)
+2026-10-04T09:15:53.1207514Z [cca-engine] turn=13 tool.execution_start: bash — cd /home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL/pytest_suite && python -m pytest -q 2>&1 | tail -3
+2026-10-04T09:15:53.2314701Z [cca-engine] in-session runtime checkQuota callback v3: quota is sufficient, continuing session (turn=13)
+2026-10-04T09:15:53.4491768Z [cca-engine] turn=13 tool.execution_complete: bash success=true
+2026-10-04T09:15:53.5161747Z [cca-engine] turn=13 assistant.turn_end
+2026-10-04T09:15:53.5177086Z [cca-engine] turn=14 assistant.turn_start
+2026-10-04T09:16:06.9651577Z [cca-engine] turn=14 assistant.usage: model=kimi-k3 input=39375 output=825
+2026-10-04T09:16:06.9799617Z [cca-engine] turn=14 assistant.message: 124 chars, 1 tool call(s)
+2026-10-04T09:16:06.9804012Z [cca-engine] in-session runtime checkQuota callback v3: preRequest invoked (turn=14)
+2026-10-04T09:16:06.9805938Z [cca-engine] turn=14 tool.execution_start: edit — /home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL/pytest_suite/navier.py
+2026-10-04T09:16:07.0063141Z [cca-engine] turn=14 tool.execution_complete: edit success=true
+2026-10-04T09:16:07.0825551Z [cca-engine] turn=14 assistant.turn_end
+2026-10-04T09:16:07.0839575Z [cca-engine] turn=15 assistant.turn_start
+2026-10-04T09:16:07.0912448Z [cca-engine] in-session runtime checkQuota callback v3: quota is sufficient, continuing session (turn=14)
+2026-10-04T09:16:19.3916092Z [cca-engine] turn=15 assistant.usage: model=kimi-k3 input=40226 output=761
+2026-10-04T09:16:19.4072768Z [cca-engine] turn=15 assistant.message: 41 chars, 1 tool call(s)
+2026-10-04T09:16:19.4075363Z [cca-engine] in-session runtime checkQuota callback v3: preRequest invoked (turn=15)
+2026-10-04T09:16:19.4081923Z [cca-engine] turn=15 tool.execution_start: edit — /home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL/pytest_suite/test_navier.py
+2026-10-04T09:16:19.4326772Z [cca-engine] turn=15 tool.execution_complete: edit success=true
+2026-10-04T09:16:19.5086264Z [cca-engine] turn=15 assistant.turn_end
+2026-10-04T09:16:19.5101270Z [cca-engine] in-session runtime checkQuota callback v3: quota is sufficient, continuing session (turn=15)
+2026-10-04T09:16:19.5103930Z [cca-engine] turn=16 assistant.turn_start
+2026-10-04T09:16:23.3649765Z [cca-engine] turn=16 assistant.usage: model=kimi-k3 input=41047 output=160
+2026-10-04T09:16:23.3816528Z [cca-engine] turn=16 assistant.message: 0 chars, 1 tool call(s)
+2026-10-04T09:16:23.3827526Z [cca-engine] turn=16 tool.execution_start: bash — cd /home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL/pytest_suite && python -m pytest -q 2>&1 | tail -3 &&…
+2026-10-04T09:16:23.6272158Z [cca-engine] in-session runtime checkQuota callback v3: preRequest invoked (turn=16)
+2026-10-04T09:16:23.7336946Z [cca-engine] in-session runtime checkQuota callback v3: quota is sufficient, continuing session (turn=16)
+2026-10-04T09:16:24.1741540Z [cca-engine] turn=16 tool.execution_complete: bash success=true
+2026-10-04T09:16:24.2497374Z [cca-engine] turn=16 assistant.turn_end
+2026-10-04T09:16:24.2523291Z [cca-engine] turn=17 assistant.turn_start
+2026-10-04T09:16:47.8453368Z [cca-engine] turn=17 assistant.usage: model=kimi-k3 input=41344 output=1261
+2026-10-04T09:16:47.8600480Z [cca-engine] turn=17 assistant.message: 239 chars, 1 tool call(s)
+2026-10-04T09:16:47.8604049Z [cca-engine] in-session runtime checkQuota callback v3: preRequest invoked (turn=17)
+2026-10-04T09:16:47.8611821Z [cca-engine] turn=17 tool.execution_start: edit — /home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL/pytest_suite/test_navier.py
+2026-10-04T09:16:47.8841246Z [cca-engine] turn=17 tool.execution_complete: edit success=true
+2026-10-04T09:16:47.9606047Z [cca-engine] turn=17 assistant.turn_end
+2026-10-04T09:16:47.9620361Z [cca-engine] turn=18 assistant.turn_start
+2026-10-04T09:16:48.0277234Z [cca-engine] in-session runtime checkQuota callback v3: quota is sufficient, continuing session (turn=17)
+2026-10-04T09:16:51.3065398Z [cca-engine] turn=18 assistant.usage: model=kimi-k3 input=41798 output=130
+2026-10-04T09:16:51.3215882Z [cca-engine] turn=18 assistant.message: 0 chars, 1 tool call(s)
+2026-10-04T09:16:51.3217206Z [cca-engine] in-session runtime checkQuota callback v3: preRequest invoked (turn=18)
+2026-10-04T09:16:51.3219687Z [cca-engine] turn=18 tool.execution_start: bash — cd /home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL/pytest_suite && python -m pytest -q 2>&1 | tail -2 &&…
+2026-10-04T09:16:51.4378013Z [cca-engine] in-session runtime checkQuota callback v3: quota is sufficient, continuing session (turn=18)
+2026-10-04T09:16:51.9114096Z [cca-engine] turn=18 tool.execution_complete: bash success=true
+2026-10-04T09:16:51.9857171Z [cca-engine] turn=18 assistant.turn_end
+2026-10-04T09:16:51.9872323Z [cca-engine] turn=19 assistant.turn_start
+2026-10-04T09:16:55.9112198Z [cca-engine] turn=19 assistant.usage: model=kimi-k3 input=41988 output=188
+2026-10-04T09:16:55.9306996Z [cca-engine] turn=19 assistant.message: 89 chars, 2 tool call(s)
+2026-10-04T09:16:55.9309889Z [cca-engine] in-session runtime checkQuota callback v3: preRequest invoked (turn=19)
+2026-10-04T09:16:55.9317478Z [cca-engine] turn=19 tool.execution_start: view — /home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL/pytest_suite/navier.py
+2026-10-04T09:16:55.9320328Z [cca-engine] turn=19 tool.execution_start: view — /home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL/pytest_suite/test_navier.py
+2026-10-04T09:16:55.9547951Z [cca-engine] turn=19 tool.execution_complete: view success=true
+2026-10-04T09:16:55.9646891Z [cca-engine] turn=19 tool.execution_complete: view success=true
+2026-10-04T09:16:56.0371693Z [cca-engine] in-session runtime checkQuota callback v3: quota is sufficient, continuing session (turn=19)
+2026-10-04T09:16:56.0385161Z [cca-engine] turn=19 assistant.turn_end
+2026-10-04T09:16:56.0418376Z [cca-engine] turn=20 assistant.turn_start
+2026-10-04T09:16:58.1639609Z [cca-engine] turn=20 assistant.usage: model=kimi-k3 input=43652 output=66
+2026-10-04T09:16:58.1771882Z [cca-engine] turn=20 assistant.message: 0 chars, 1 tool call(s)
+2026-10-04T09:16:58.1775073Z [cca-engine] in-session runtime checkQuota callback v3: preRequest invoked (turn=20)
+2026-10-04T09:16:58.1776732Z [cca-engine] turn=20 tool.execution_start: runtime-tools-secret_scanning
+2026-10-04T09:16:58.2852061Z [cca-engine] in-session runtime checkQuota callback v3: quota is sufficient, continuing session (turn=20)
+2026-10-04T09:16:58.6002503Z [cca-engine] turn=20 tool.execution_complete: runtime-tools-secret_scanning success=true
+2026-10-04T09:16:58.6804996Z [cca-engine] turn=20 assistant.turn_end
+2026-10-04T09:16:58.6817686Z [cca-engine] turn=21 assistant.turn_start
+2026-10-04T09:17:04.1793526Z [cca-engine] turn=21 assistant.usage: model=kimi-k3 input=43765 output=196
+2026-10-04T09:17:04.1913971Z [cca-engine] turn=21 assistant.message: 0 chars, 1 tool call(s)
+2026-10-04T09:17:04.1916968Z [cca-engine] in-session runtime checkQuota callback v3: preRequest invoked (turn=21)
+2026-10-04T09:17:04.1921423Z [cca-engine] turn=21 tool.execution_start: report_progress
+2026-10-04T09:17:04.2458024Z calling secret-scanning API @ https://scanning-api.github.com/api/v1/scan/multipart
+2026-10-04T09:17:04.2458915Z finished calling secret-scanning in 45ms
+2026-10-04T09:17:04.2973037Z [cca-engine] in-session runtime checkQuota callback v3: quota is sufficient, continuing session (turn=21)
+2026-10-04T09:17:05.4287516Z [cca-engine] turn=21 tool.execution_complete: report_progress success=true
+2026-10-04T09:17:05.5101569Z [cca-engine] turn=21 assistant.turn_end
+2026-10-04T09:17:05.5122965Z [cca-engine] turn=22 assistant.turn_start
+2026-10-04T09:17:16.7877544Z [cca-engine] turn=22 assistant.usage: model=kimi-k3 input=44130 output=315
+2026-10-04T09:17:16.8002881Z [cca-engine] turn=22 assistant.message: 81 chars, 1 tool call(s)
+2026-10-04T09:17:16.8005918Z [cca-engine] in-session runtime checkQuota callback v3: preRequest invoked (turn=22)
+2026-10-04T09:17:16.8011124Z [cca-engine] turn=22 tool.execution_start: parallel_validation
+2026-10-04T09:17:16.8257420Z Starting code_review...
+2026-10-04T09:17:16.8268720Z Starting codeql_checker...
+2026-10-04T09:17:16.8294319Z Languages found to analyze: python
+2026-10-04T09:17:16.8295997Z Executing CodeQL command: version --format json
+2026-10-04T09:17:16.8296873Z /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/codeql version --format json
+2026-10-04T09:17:16.8333184Z   Ignored 6 changed file(s) based on ignore patterns.
+2026-10-04T09:17:16.8977874Z   /opt/copilot-runtime/***-action-main/autofind/autofind --version
+2026-10-04T09:17:16.9047668Z [cca-engine] in-session runtime checkQuota callback v3: quota is sufficient, continuing session (turn=22)
+2026-10-04T09:17:17.4576459Z     autofind version 4.4.11
+2026-10-04T09:17:17.4576844Z     
+2026-10-04T09:17:17.8437740Z   {
+2026-10-04T09:17:17.8438484Z     "productName" : "CodeQL",
+2026-10-04T09:17:17.8439368Z     "vendor" : "GitHub",
+2026-10-04T09:17:17.8439789Z     "version" : "2.27.1",
+2026-10-04T09:17:17.8440596Z     "sha" : "938af3639d0709b587251e45d9f8d2bdc3505696",
+2026-10-04T09:17:17.8441180Z     "branches" : [
+2026-10-04T09:17:17.8441865Z       "codeql-cli-2.27.1"
+2026-10-04T09:17:17.8442266Z     ],
+2026-10-04T09:17:17.8442684Z     "copyright" : "Copyright (C) 2019-2026 GitHub, Inc.",
+2026-10-04T09:17:17.8443709Z     "unpackedLocation" : "/opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql",
+2026-10-04T09:17:17.8444878Z     "configFileLocation" : "/home/runner/.config/codeql/config",
+2026-10-04T09:17:17.8445924Z     "configFileFound" : false,
+2026-10-04T09:17:17.8446747Z     "overlayVersion" : 4,
+2026-10-04T09:17:17.8447173Z     "features" : {
+2026-10-04T09:17:17.8447659Z       "analysisSummaryV2Default" : true,
+2026-10-04T09:17:17.8448544Z       "buildModeOption" : true,
+2026-10-04T09:17:17.8449436Z       "bundleSupportsIncludeDiagnostics" : true,
+2026-10-04T09:17:17.8450077Z       "bundleSupportsIncludeLogs" : true,
+2026-10-04T09:17:17.8450865Z       "bundleSupportsOverlay" : true,
+2026-10-04T09:17:17.8451542Z       "databaseInterpretResultsSupportsSarifRunProperty" : true,
+2026-10-04T09:17:17.8452273Z       "featuresInVersionResult" : true,
+2026-10-04T09:17:17.8452922Z       "indirectTracingSupportsStaticBinaries" : false,
+2026-10-04T09:17:17.8453595Z       "informsAboutUnsupportedPathFilters" : true,
+2026-10-04T09:17:17.8454186Z       "supportsPython312" : true,
+2026-10-04T09:17:17.8454666Z       "mrvaPackCreate" : true,
+2026-10-04T09:17:17.8455141Z       "threatModelOption" : true,
+2026-10-04T09:17:17.8455639Z       "traceCommandUseBuildMode" : true,
+2026-10-04T09:17:17.8456148Z       "v2ramSizing" : true,
+2026-10-04T09:17:17.8456633Z       "mrvaPackCreateMultipleQueries" : true,
+2026-10-04T09:17:17.8457213Z       "setsCodeqlRunnerEnvVar" : true,
+2026-10-04T09:17:17.8457784Z       "sarifMergeRunsFromEqualCategory" : true,
+2026-10-04T09:17:17.8458345Z       "forceOverwrite" : true,
+2026-10-04T09:17:17.8458819Z       "generateSummarySymbolMap" : true,
+2026-10-04T09:17:17.8459418Z       "pythonDefaultIsToNotExtractStdlib" : true,
+2026-10-04T09:17:17.8460011Z       "queryServerRunQueries" : true,
+2026-10-04T09:17:17.8460778Z       "queryServerTrimCacheWithMode" : true,
+2026-10-04T09:17:17.8461551Z       "builtinExtractorsSpecifyDefaultQueries" : true,
+2026-10-04T09:17:17.8462116Z       "bqrsDiffResultSets" : true,
+2026-10-04T09:17:17.8462598Z       "bundleSupportsIncludeOption" : true,
+2026-10-04T09:17:17.8463158Z       "suppressesMissingFileBaselineWarning" : true
+2026-10-04T09:17:17.8463685Z     }
+2026-10-04T09:17:17.8464022Z   }
+2026-10-04T09:17:17.8464331Z   
+2026-10-04T09:17:17.9015239Z SCC output for python: 45442 bytes
+2026-10-04T09:17:17.9018451Z Executing CodeQL command: database create --ram=14575 --threads=4 --no-sublanguage-file-coverage --no-calculate-baseline --overwrite --language python --build-mode none --source-root /home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL /tmp/codeql-scratch-785b6f2ad774e940/dbs/python
+2026-10-04T09:17:17.9023145Z /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/codeql database create --ram=14575 --threads=4 --no-sublanguage-file-coverage --no-calculate-baseline --overwrite --language python --build-mode none --source-root /home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL /tmp/codeql-scratch-785b6f2ad774e940/dbs/python
+2026-10-04T09:17:18.0707564Z   Error: Error getting common flags: failed to get model capi-prod-claude-sonnet-4.6: creating model capi-prod-claude-sonnet-4.6: model claude-sonnet-4.6 not found in registry. Ensure the Copilot /models endpoint includes it
+2026-10-04T09:17:18.0709955Z   Usage:
+2026-10-04T09:17:18.0711151Z     autofind run [repoDir] [flags]
+2026-10-04T09:17:18.0711707Z   
+2026-10-04T09:17:18.0712475Z   Flags:
+2026-10-04T09:17:18.0713144Z         --blackbird-analysis-url string   Endpoint for the Blackbird Analysis API
+2026-10-04T09:17:18.0714248Z         --capi-url string                 URL for CAPI (Copilot API). Used for model calls and session creation
+2026-10-04T09:17:18.0715025Z         --custom-instructions string      Path to a file containing coding instructions to provide to the model
+2026-10-04T09:17:18.0715611Z         --detector string                 Detector to use
+2026-10-04T09:17:18.0716008Z         --diff-file string                Path to unified diff
+2026-10-04T09:17:18.0716634Z         --disable-session                 Disable session creation
+2026-10-04T09:17:18.0717393Z         --extra string                    Path to a file containing a JSON object with extra data (all optional), like PR title, diff, etc.
+2026-10-04T09:17:18.0718082Z         --files string                    JSON object with file changes
+2026-10-04T09:17:18.0718634Z         --format string                   Output format: json, sarifv2.1.0, sarif-latest (default "json")
+2026-10-04T09:17:18.0719185Z     -h, --help                            help for run
+2026-10-04T09:17:18.0719564Z         --model string                    Model name to use
+2026-10-04T09:17:18.0719983Z         --options string                  JSON object for detector options
+2026-10-04T09:17:18.0731950Z         --save-callback-to-file string    Saves agentic detection results to the specified file (required for agentic flows, and not supported otherwise)
+2026-10-04T09:17:18.0733230Z   
+2026-10-04T09:17:18.0735731Z   2026-10-04T09:17:18.06786861Z	ERROR	autofind	command_failed	{"gh.autofind.client": "no_client_name", "exception.message": "Error getting common flags: failed to get model capi-prod-claude-sonnet-4.6: creating model capi-prod-claude-sonnet-4.6: model claude-sonnet-4.6 not found in registry. Ensure the Copilot /models endpoint includes it"}
+2026-10-04T09:17:18.0737158Z   
+2026-10-04T09:17:18.0737480Z   Autofind CLI not found, returning empty results for testing
+2026-10-04T09:17:18.0737905Z   code_review completed in 1245ms (success)
+2026-10-04T09:17:24.3547654Z   [2026-10-04 09:17:19] [build-stderr] /bin/sh: 1: python2: not found
+2026-10-04T09:17:24.3549176Z   [2026-10-04 09:17:19] [build-stdout] No directories containing root identifiers were found. Returning working directory as root.
+2026-10-04T09:17:24.3551020Z   [2026-10-04 09:17:19] [build-stdout] Will try to guess Python version, as it was not specified in `lgtm.yml`
+2026-10-04T09:17:24.3552546Z   [2026-10-04 09:17:19] [build-stdout] Trying to guess Python version based on Trove classifiers in setup.py
+2026-10-04T09:17:24.3553964Z   [2026-10-04 09:17:19] [build-stdout] Did not find setup.py (expected it to be at /home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL/setup.py)
+2026-10-04T09:17:24.3555091Z   [2026-10-04 09:17:19] [build-stdout] Trying to guess Python version based on travis file
+2026-10-04T09:17:24.3556672Z   [2026-10-04 09:17:19] [build-stdout] Did not find any travis files (expected them at either ['/home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL/.travis.yml', '/home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL/travis.yml'])
+2026-10-04T09:17:24.3558296Z   [2026-10-04 09:17:19] [build-stdout] Trying to guess Python version based on installed versions
+2026-10-04T09:17:24.3559177Z   [2026-10-04 09:17:19] [build-stdout] Wanted to run Python 2, but it is not available. Using Python 3 instead
+2026-10-04T09:17:24.3560728Z   [2026-10-04 09:17:19] [build-stdout] This script is running Python 3, but Python 2 is also available (as 'python3')
+2026-10-04T09:17:24.3561933Z   [2026-10-04 09:17:19] [build-stdout] Could not guess Python version, will use default: Python 3
+2026-10-04T09:17:24.3563405Z   [2026-10-04 09:17:19] [build-stdout] Calling python3 -S /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/python/tools/python_tracer.py --verbosity 3 -z all -c /tmp/codeql-scratch-785b6f2ad774e940/dbs/python/working/trap_cache -R /home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL
+2026-10-04T09:17:24.3565878Z   [2026-10-04 09:17:20] [build-stdout] INFO: The Python extractor has recently stopped extracting the standard library by default. If you encounter problems, please let us know by submitting an issue to https://github.com/github/codeql. It is possible to re-enable extraction of the standard library by setting the environment variable CODEQL_EXTRACTOR_PYTHON_EXTRACT_STDLIB.
+2026-10-04T09:17:24.3567447Z   [2026-10-04 09:17:20] [build-stdout] [INFO] Extraction will use the Python 3 standard library.
+2026-10-04T09:17:24.3568430Z   [2026-10-04 09:17:20] [build-stdout] [INFO] sys_path is: ['/opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/python/tools', '/usr/lib/python312.zip', '/usr/lib/python3.12', '/usr/lib/python3.12/lib-dynload']
+2026-10-04T09:17:24.3569338Z   [2026-10-04 09:17:20] [build-stdout] [INFO] Python version 3.12.3
+2026-10-04T09:17:24.3569813Z   [2026-10-04 09:17:20] [build-stdout] [INFO] Python extractor version 7.1.10
+2026-10-04T09:17:24.3571032Z   [2026-10-04 09:17:20] [build-stdout] [INFO] [4] Extracted file /home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL/pytest_suite/test_survival.py in 87ms
+2026-10-04T09:17:24.3572149Z   [2026-10-04 09:17:20] [build-stdout] [INFO] [2] Extracted file /home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL/pytest_suite/regime.py in 68ms
+2026-10-04T09:17:24.3573217Z   [2026-10-04 09:17:20] [build-stdout] [INFO] [3] Extracted file /home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL/pytest_suite/test_navier.py in 117ms
+2026-10-04T09:17:24.3574326Z   [2026-10-04 09:17:20] [build-stdout] [INFO] [4] Extracted file /home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL/pytest_suite/test_regime.py in 44ms
+2026-10-04T09:17:24.3575353Z   [2026-10-04 09:17:20] [build-stdout] [INFO] [4] Extracted folder /home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL/pytest_suite in 1ms
+2026-10-04T09:17:24.3576106Z   [2026-10-04 09:17:20] [build-stdout] [INFO] [4] Extracted module itertools in 16ms
+2026-10-04T09:17:24.3576898Z   [2026-10-04 09:17:20] [build-stdout] [INFO] [3] Extracted file /home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL/pytest_suite/survival.py in 47ms
+2026-10-04T09:17:24.3577668Z   [2026-10-04 09:17:20] [build-stdout] [INFO] [3] Extracted module math in 7ms
+2026-10-04T09:17:24.3578424Z   [2026-10-04 09:17:20] [build-stdout] [INFO] [1] Extracted file /home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL/map_language_2.py in 367ms
+2026-10-04T09:17:24.3579234Z   [2026-10-04 09:17:20] [build-stdout] [INFO] [1] Extracted folder /usr/lib/python3.12/re in 2ms
+2026-10-04T09:17:24.3579839Z   [2026-10-04 09:17:20] [build-stdout] [INFO] [3] Extracted folder /usr/lib/python3.12/json in 4ms
+2026-10-04T09:17:24.3580798Z   [2026-10-04 09:17:20] [build-stdout] [INFO] [3] Skipped built-in file /usr/lib/python3.12/json/__init__.py
+2026-10-04T09:17:24.3581464Z   [2026-10-04 09:17:20] [build-stdout] [INFO] [3] Skipped built-in file /usr/lib/python3.12/pathlib.py
+2026-10-04T09:17:24.3582138Z   [2026-10-04 09:17:20] [build-stdout] [INFO] [3] Skipped built-in file /usr/lib/python3.12/re/__init__.py
+2026-10-04T09:17:24.3582805Z   [2026-10-04 09:17:20] [build-stdout] [INFO] [3] Skipped built-in file /usr/lib/python3.12/html/__init__.py
+2026-10-04T09:17:24.3583432Z   [2026-10-04 09:17:20] [build-stdout] [INFO] [3] Extracted folder /usr/lib/python3.12/html in 2ms
+2026-10-04T09:17:24.3584507Z   [2026-10-04 09:17:20] [build-stdout] [INFO] [4] Extracted file /home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL/map_language.py in 324ms
+2026-10-04T09:17:24.3585538Z   [2026-10-04 09:17:20] [build-stdout] [INFO] [2] Extracted file /home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL/pytest_suite/navier.py in 460ms
+2026-10-04T09:17:24.3586295Z   [2026-10-04 09:17:20] [build-stdout] [INFO] Processed 18 modules in 0.73s
+2026-10-04T09:17:24.3586961Z   [2026-10-04 09:17:21] [build-stderr] Scanning for files in /home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL...
+2026-10-04T09:17:24.3588103Z   [2026-10-04 09:17:22] [build-stderr] /tmp/codeql-scratch-785b6f2ad774e940/dbs/python: Indexing files in in /home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL...
+2026-10-04T09:17:24.3589787Z   [2026-10-04 09:17:22] [build-stderr] Running command in /home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL: [/opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/yaml/tools/index-files.sh, /tmp/codeql-scratch-785b6f2ad774e940/dbs/python/working/files-to-index12369661713688790603.list]
+2026-10-04T09:17:24.3591168Z   
+2026-10-04T09:17:24.3591508Z   Initializing database at /tmp/codeql-scratch-785b6f2ad774e940/dbs/python.
+2026-10-04T09:17:24.3591925Z   Running build command: []
+2026-10-04T09:17:24.3592869Z   Running command in /home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL: [/opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/python/tools/autobuild.sh]
+2026-10-04T09:17:24.3593711Z   Finalizing database at /tmp/codeql-scratch-785b6f2ad774e940/dbs/python.
+2026-10-04T09:17:24.3594749Z   Running pre-finalize script /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/python/tools/pre-finalize.sh in /home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL.
+2026-10-04T09:17:24.3596177Z   Running command in /home/runner/work/My-Sources-Project-ALL/My-Sources-Project-ALL: [/opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/python/tools/pre-finalize.sh]
+2026-10-04T09:17:24.3597510Z   Pre-finalize script /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/python/tools/pre-finalize.sh completed in 1585 ms.
+2026-10-04T09:17:24.3598265Z   Running TRAP import for CodeQL database at /tmp/codeql-scratch-785b6f2ad774e940/dbs/python...
+2026-10-04T09:17:24.3598755Z   Importing TRAP files
+2026-10-04T09:17:24.3598999Z   Merging relations
+2026-10-04T09:17:24.3599489Z   Finished writing database (relations: 209.03 KiB; string pool: 2.13 MiB).
+2026-10-04T09:17:24.3599914Z   TRAP import complete (1.7s).
+2026-10-04T09:17:24.3600394Z   Finished zipping source archive (20.17 KiB).
+2026-10-04T09:17:24.3600878Z   Successfully created database at /tmp/codeql-scratch-785b6f2ad774e940/dbs/python.
+2026-10-04T09:17:24.3601306Z   
+2026-10-04T09:17:24.3601520Z Created database for python.
+2026-10-04T09:17:24.3602327Z Analyzing database at /tmp/codeql-scratch-785b6f2ad774e940/dbs/python for language python
+2026-10-04T09:17:24.3604167Z Executing CodeQL command: database analyze --ram=14575 --threads=4 --format sarifv2.1.0 --output /tmp/codeql-scratch-785b6f2ad774e940/dbs/python/results-python.json --additional-packs /tmp/codeql-QO3UX8/pr-diff-range --extension-packs codeql-action/pr-diff-range /tmp/codeql-scratch-785b6f2ad774e940/dbs/python codeql/python-queries
+2026-10-04T09:17:24.3608080Z /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/codeql database analyze --ram=14575 --threads=4 --format sarifv2.1.0 --output /tmp/codeql-scratch-785b6f2ad774e940/dbs/python/results-python.json --additional-packs /tmp/codeql-QO3UX8/pr-diff-range --extension-packs codeql-action/pr-diff-range /tmp/codeql-scratch-785b6f2ad774e940/dbs/python codeql/python-queries
+2026-10-04T09:17:40.2573508Z   Running queries.
+2026-10-04T09:17:40.2574077Z   Resolving data extensions.
+2026-10-04T09:17:40.2574619Z   Finished resolving data extensions.
+2026-10-04T09:17:40.2575147Z   Loading data extensions.
+2026-10-04T09:17:40.2575621Z   Finished loading data extensions.
+2026-10-04T09:17:40.2576661Z   [1/45] Loaded /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Expressions/UseofInput.qlx.
+2026-10-04T09:17:40.2578580Z   [2/45] Loaded /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-326/WeakCryptoKey.qlx.
+2026-10-04T09:17:40.2580487Z   [3/45] Loaded /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-116/BadTagFilter.qlx.
+2026-10-04T09:17:40.2582262Z   [4/45] Loaded /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-918/FullServerSideRequestForgery.qlx.
+2026-10-04T09:17:40.2583883Z   [5/45] Loaded /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-079/ReflectedXss.qlx.
+2026-10-04T09:17:40.2585602Z   [6/45] Loaded /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-022/PathInjection.qlx.
+2026-10-04T09:17:40.2587243Z   [7/45] Loaded /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-943/NoSqlInjection.qlx.
+2026-10-04T09:17:40.2588445Z   [8/45] Loaded /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-643/XpathInjection.qlx.
+2026-10-04T09:17:40.2589419Z   [9/45] Loaded /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-094/CodeInjection.qlx.
+2026-10-04T09:17:40.2590707Z   [10/45] Loaded /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-209/StackTraceExposure.qlx.
+2026-10-04T09:17:40.2591722Z   [11/45] Loaded /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-377/InsecureTemporaryFile.qlx.
+2026-10-04T09:17:40.2592785Z   [12/45] Loaded /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-295/MissingHostKeyValidation.qlx.
+2026-10-04T09:17:40.2593887Z   [13/45] Loaded /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-730/ReDoS.qlx.
+2026-10-04T09:17:40.2595465Z   [14/45] Loaded /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-730/RegexInjection.qlx.
+2026-10-04T09:17:40.2597127Z   [15/45] Loaded /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-730/PolynomialReDoS.qlx.
+2026-10-04T09:17:40.2598830Z   [16/45] Loaded /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-601/UrlRedirect.qlx.
+2026-10-04T09:17:40.2600737Z   [17/45] Loaded /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-1275/SameSiteNoneCookie.qlx.
+2026-10-04T09:17:40.2602443Z   [18/45] Loaded /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-611/Xxe.qlx.
+2026-10-04T09:17:40.2604044Z   [19/45] Loaded /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-352/CSRFProtectionDisabled.qlx.
+2026-10-04T09:17:40.2605723Z   [20/45] Loaded /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-312/CleartextStorage.qlx.
+2026-10-04T09:17:40.2607390Z   [21/45] Loaded /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-312/CleartextLogging.qlx.
+2026-10-04T09:17:40.2609071Z   [22/45] Loaded /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-1004/NonHttpOnlyCookie.qlx.
+2026-10-04T09:17:40.2611145Z   [23/45] Loaded /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-776/XmlBomb.qlx.
+2026-10-04T09:17:40.2612826Z   [24/45] Loaded /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-502/UnsafeDeserialization.qlx.
+2026-10-04T09:17:40.2614520Z   [25/45] Loaded /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-089/SqlInjection.qlx.
+2026-10-04T09:17:40.2616482Z   [26/45] Loaded /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CVE-2018-1281/BindToAllInterfaces.qlx.
+2026-10-04T09:17:40.2618163Z   [27/45] Loaded /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-215/FlaskDebug.qlx.
+2026-10-04T09:17:40.2619811Z   [28/45] Loaded /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-074/TemplateInjection.qlx.
+2026-10-04T09:17:40.2621837Z   [29/45] Loaded /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-078/CommandInjection.qlx.
+2026-10-04T09:17:40.2623717Z   [30/45] Loaded /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-090/LdapInjection.qlx.
+2026-10-04T09:17:40.2625449Z   [31/45] Loaded /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-327/WeakSensitiveDataHashing.qlx.
+2026-10-04T09:17:40.2627199Z   [32/45] Loaded /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-327/BrokenCryptoAlgorithm.qlx.
+2026-10-04T09:17:40.2628844Z   [33/45] Loaded /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-327/InsecureDefaultProtocol.qlx.
+2026-10-04T09:17:40.2630130Z   [34/45] Loaded /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-020/IncompleteUrlSubstringSanitization.qlx.
+2026-10-04T09:17:40.2632121Z   [35/45] Loaded /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-327/InsecureProtocol.qlx.
+2026-10-04T09:17:40.2633917Z   [36/45] Loaded /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-614/InsecureCookie.qlx.
+2026-10-04T09:17:40.2635108Z   [37/45] Loaded /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-285/PamAuthorization.qlx.
+2026-10-04T09:17:40.2636135Z   [38/45] Loaded /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-020/IncompleteHostnameRegExp.qlx.
+2026-10-04T09:17:40.2637127Z   [39/45] Loaded /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-020/OverlyLargeRange.qlx.
+2026-10-04T09:17:40.2638084Z   [40/45] Loaded /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Diagnostics/ExtractionWarnings.qlx.
+2026-10-04T09:17:40.2638997Z   [41/45] Loaded /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Diagnostics/ExtractedFiles.qlx.
+2026-10-04T09:17:40.2639870Z   [42/45] Loaded /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Summary/LinesOfCode.qlx.
+2026-10-04T09:17:40.2640899Z   [43/45] Loaded /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Summary/LinesOfUserCode.qlx.
+2026-10-04T09:17:40.2641799Z   [44/45] Loaded /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-113/HeaderInjection.qlx.
+2026-10-04T09:17:40.2642721Z   [45/45] Loaded /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-020/CookieInjection.qlx.
+2026-10-04T09:17:40.2644232Z   Starting evaluation of codeql/python-queries/Diagnostics/ExtractionWarnings.ql.
+2026-10-04T09:17:40.2645630Z   Starting evaluation of codeql/python-queries/Diagnostics/ExtractedFiles.ql.
+2026-10-04T09:17:40.2646397Z   Starting evaluation of codeql/python-queries/Expressions/UseofInput.ql.
+2026-10-04T09:17:40.2647010Z   Starting evaluation of codeql/python-queries/Security/CVE-2018-1281/BindToAllInterfaces.ql.
+2026-10-04T09:17:40.2647720Z   [1/45 eval 855ms] Evaluation done; writing results to codeql/python-queries/Diagnostics/ExtractedFiles.bqrs.
+2026-10-04T09:17:40.2648484Z   [2/45 eval 964ms] Evaluation done; writing results to codeql/python-queries/Diagnostics/ExtractionWarnings.bqrs.
+2026-10-04T09:17:40.2649384Z   Starting evaluation of codeql/python-queries/Security/CWE-020/CookieInjection.ql.
+2026-10-04T09:17:40.2650104Z   Starting evaluation of codeql/python-queries/Security/CWE-020/IncompleteHostnameRegExp.ql.
+2026-10-04T09:17:40.2651421Z   Starting evaluation of codeql/python-queries/Security/CWE-020/IncompleteUrlSubstringSanitization.ql.
+2026-10-04T09:17:40.2652141Z   Starting evaluation of codeql/python-queries/Security/CWE-020/OverlyLargeRange.ql.
+2026-10-04T09:17:40.2653003Z   Starting evaluation of codeql/python-queries/Security/CWE-022/PathInjection.ql.
+2026-10-04T09:17:40.2654266Z   [3/45 eval 31ms] Evaluation done; writing results to codeql/python-queries/Security/CWE-020/IncompleteUrlSubstringSanitization.bqrs.
+2026-10-04T09:17:40.2655077Z   Starting evaluation of codeql/python-queries/Security/CWE-074/TemplateInjection.ql.
+2026-10-04T09:17:40.2655679Z   Starting evaluation of codeql/python-queries/Security/CWE-078/CommandInjection.ql.
+2026-10-04T09:17:40.2656254Z   Starting evaluation of codeql/python-queries/Security/CWE-079/ReflectedXss.ql.
+2026-10-04T09:17:40.2656815Z   Starting evaluation of codeql/python-queries/Security/CWE-089/SqlInjection.ql.
+2026-10-04T09:17:40.2657663Z   Starting evaluation of codeql/python-queries/Security/CWE-090/LdapInjection.ql.
+2026-10-04T09:17:40.2658416Z   Starting evaluation of codeql/python-queries/Security/CWE-094/CodeInjection.ql.
+2026-10-04T09:17:40.2659006Z   Starting evaluation of codeql/python-queries/Security/CWE-1004/NonHttpOnlyCookie.ql.
+2026-10-04T09:17:40.2659604Z   Starting evaluation of codeql/python-queries/Security/CWE-113/HeaderInjection.ql.
+2026-10-04T09:17:40.2660427Z   Starting evaluation of codeql/python-queries/Security/CWE-116/BadTagFilter.ql.
+2026-10-04T09:17:40.2661300Z   Starting evaluation of codeql/python-queries/Security/CWE-1275/SameSiteNoneCookie.ql.
+2026-10-04T09:17:40.2662461Z   Starting evaluation of codeql/python-queries/Security/CWE-209/StackTraceExposure.ql.
+2026-10-04T09:17:40.2663414Z   Starting evaluation of codeql/python-queries/Security/CWE-215/FlaskDebug.ql.
+2026-10-04T09:17:40.2664067Z   Starting evaluation of codeql/python-queries/Security/CWE-285/PamAuthorization.ql.
+2026-10-04T09:17:40.2665086Z   Starting evaluation of codeql/python-queries/Security/CWE-295/MissingHostKeyValidation.ql.
+2026-10-04T09:17:40.2666215Z   Starting evaluation of codeql/python-queries/Security/CWE-312/CleartextLogging.ql.
+2026-10-04T09:17:40.2667315Z   Starting evaluation of codeql/python-queries/Security/CWE-312/CleartextStorage.ql.
+2026-10-04T09:17:40.2668369Z   Starting evaluation of codeql/python-queries/Security/CWE-326/WeakCryptoKey.ql.
+2026-10-04T09:17:40.2669529Z   Starting evaluation of codeql/python-queries/Security/CWE-327/BrokenCryptoAlgorithm.ql.
+2026-10-04T09:17:40.2670517Z   Starting evaluation of codeql/python-queries/Security/CWE-327/InsecureDefaultProtocol.ql.
+2026-10-04T09:17:40.2671154Z   Starting evaluation of codeql/python-queries/Security/CWE-327/InsecureProtocol.ql.
+2026-10-04T09:17:40.2671779Z   Starting evaluation of codeql/python-queries/Security/CWE-327/WeakSensitiveDataHashing.ql.
+2026-10-04T09:17:40.2672460Z   Starting evaluation of codeql/python-queries/Security/CWE-352/CSRFProtectionDisabled.ql.
+2026-10-04T09:17:40.2673083Z   Starting evaluation of codeql/python-queries/Security/CWE-377/InsecureTemporaryFile.ql.
+2026-10-04T09:17:40.2673710Z   Starting evaluation of codeql/python-queries/Security/CWE-502/UnsafeDeserialization.ql.
+2026-10-04T09:17:40.2674305Z   Starting evaluation of codeql/python-queries/Security/CWE-601/UrlRedirect.ql.
+2026-10-04T09:17:40.2674832Z   Starting evaluation of codeql/python-queries/Security/CWE-611/Xxe.ql.
+2026-10-04T09:17:40.2675374Z   Starting evaluation of codeql/python-queries/Security/CWE-614/InsecureCookie.ql.
+2026-10-04T09:17:40.2675944Z   Starting evaluation of codeql/python-queries/Security/CWE-643/XpathInjection.ql.
+2026-10-04T09:17:40.2676622Z   Starting evaluation of codeql/python-queries/Security/CWE-730/PolynomialReDoS.ql.
+2026-10-04T09:17:40.2677643Z   Starting evaluation of codeql/python-queries/Security/CWE-730/ReDoS.ql.
+2026-10-04T09:17:40.2678554Z   Starting evaluation of codeql/python-queries/Security/CWE-730/RegexInjection.ql.
+2026-10-04T09:17:40.2679133Z   Starting evaluation of codeql/python-queries/Security/CWE-776/XmlBomb.ql.
+2026-10-04T09:17:40.2679752Z   Starting evaluation of codeql/python-queries/Security/CWE-918/FullServerSideRequestForgery.ql.
+2026-10-04T09:17:40.2680566Z   Starting evaluation of codeql/python-queries/Security/CWE-943/NoSqlInjection.ql.
+2026-10-04T09:17:40.2681109Z   Starting evaluation of codeql/python-queries/Summary/LinesOfCode.ql.
+2026-10-04T09:17:40.2682146Z   Starting evaluation of codeql/python-queries/Summary/LinesOfUserCode.ql.
+2026-10-04T09:17:40.2682748Z   [4/45 eval 3ms] Evaluation done; writing results to codeql/python-queries/Summary/LinesOfCode.bqrs.
+2026-10-04T09:17:40.2683442Z   [5/45 eval 22ms] Evaluation done; writing results to codeql/python-queries/Summary/LinesOfUserCode.bqrs.
+2026-10-04T09:17:40.2684608Z   [6/45 eval 3.4s] Evaluation done; writing results to codeql/python-queries/Expressions/UseofInput.bqrs.
+2026-10-04T09:17:40.2685384Z   [7/45 eval 1.3s] Evaluation done; writing results to codeql/python-queries/Security/CWE-215/FlaskDebug.bqrs.
+2026-10-04T09:17:40.2686172Z   [8/45 eval 1s] Evaluation done; writing results to codeql/python-queries/Security/CWE-295/MissingHostKeyValidation.bqrs.
+2026-10-04T09:17:40.2686963Z   [9/45 eval 700ms] Evaluation done; writing results to codeql/python-queries/Security/CWE-326/WeakCryptoKey.bqrs.
+2026-10-04T09:17:40.2687776Z   [10/45 eval 694ms] Evaluation done; writing results to codeql/python-queries/Security/CWE-327/InsecureDefaultProtocol.bqrs.
+2026-10-04T09:17:40.2688633Z   [11/45 eval 4s] Evaluation done; writing results to codeql/python-queries/Security/CVE-2018-1281/BindToAllInterfaces.bqrs.
+2026-10-04T09:17:40.2689438Z   [12/45 eval 2.2s] Evaluation done; writing results to codeql/python-queries/Security/CWE-074/TemplateInjection.bqrs.
+2026-10-04T09:17:40.2690353Z   [13/45 eval 2.3s] Evaluation done; writing results to codeql/python-queries/Security/CWE-022/PathInjection.bqrs.
+2026-10-04T09:17:40.2691388Z   [14/45 eval 2.2s] Evaluation done; writing results to codeql/python-queries/Security/CWE-078/CommandInjection.bqrs.
+2026-10-04T09:17:40.2692141Z   [15/45 eval 2.2s] Evaluation done; writing results to codeql/python-queries/Security/CWE-079/ReflectedXss.bqrs.
+2026-10-04T09:17:40.2692865Z   [16/45 eval 2.2s] Evaluation done; writing results to codeql/python-queries/Security/CWE-089/SqlInjection.bqrs.
+2026-10-04T09:17:40.2693615Z   [17/45 eval 2.2s] Evaluation done; writing results to codeql/python-queries/Security/CWE-094/CodeInjection.bqrs.
+2026-10-04T09:17:40.2694354Z   [18/45 eval 2.2s] Evaluation done; writing results to codeql/python-queries/Security/CWE-090/LdapInjection.bqrs.
+2026-10-04T09:17:40.2695116Z   [19/45 eval 2.2s] Evaluation done; writing results to codeql/python-queries/Security/CWE-1004/NonHttpOnlyCookie.bqrs.
+2026-10-04T09:17:40.2695883Z   [20/45 eval 2.2s] Evaluation done; writing results to codeql/python-queries/Security/CWE-113/HeaderInjection.bqrs.
+2026-10-04T09:17:40.2696634Z   [21/45 eval 2.3s] Evaluation done; writing results to codeql/python-queries/Security/CWE-020/CookieInjection.bqrs.
+2026-10-04T09:17:40.2697386Z   [22/45 eval 1.7s] Evaluation done; writing results to codeql/python-queries/Security/CWE-285/PamAuthorization.bqrs.
+2026-10-04T09:17:40.2698176Z   [23/45 eval 1.3s] Evaluation done; writing results to codeql/python-queries/Security/CWE-352/CSRFProtectionDisabled.bqrs.
+2026-10-04T09:17:40.2698993Z   [24/45 eval 1.3s] Evaluation done; writing results to codeql/python-queries/Security/CWE-327/WeakSensitiveDataHashing.bqrs.
+2026-10-04T09:17:40.2699791Z   [25/45 eval 1.4s] Evaluation done; writing results to codeql/python-queries/Security/CWE-312/CleartextStorage.bqrs.
+2026-10-04T09:17:40.2700915Z   [26/45 eval 1.1s] Evaluation done; writing results to codeql/python-queries/Security/CWE-614/InsecureCookie.bqrs.
+2026-10-04T09:17:40.2701833Z   [27/45 eval 1.1s] Evaluation done; writing results to codeql/python-queries/Security/CWE-611/Xxe.bqrs.
+2026-10-04T09:17:40.2702522Z   [28/45 eval 1.1s] Evaluation done; writing results to codeql/python-queries/Security/CWE-776/XmlBomb.bqrs.
+2026-10-04T09:17:40.2703232Z   [29/45 eval 1.2s] Evaluation done; writing results to codeql/python-queries/Security/CWE-601/UrlRedirect.bqrs.
+2026-10-04T09:17:40.2703963Z   [30/45 eval 1.1s] Evaluation done; writing results to codeql/python-queries/Security/CWE-643/XpathInjection.bqrs.
+2026-10-04T09:17:40.2704714Z   [31/45 eval 2.4s] Evaluation done; writing results to codeql/python-queries/Security/CWE-020/OverlyLargeRange.bqrs.
+2026-10-04T09:17:40.2705618Z   [32/45 eval 2s] Evaluation done; writing results to codeql/python-queries/Security/CWE-1275/SameSiteNoneCookie.bqrs.
+2026-10-04T09:17:40.2706383Z   [33/45 eval 2s] Evaluation done; writing results to codeql/python-queries/Security/CWE-209/StackTraceExposure.bqrs.
+2026-10-04T09:17:40.2707179Z   [34/45 eval 2.4s] Evaluation done; writing results to codeql/python-queries/Security/CWE-020/IncompleteHostnameRegExp.bqrs.
+2026-10-04T09:17:40.2708002Z   [35/45 eval 1.4s] Evaluation done; writing results to codeql/python-queries/Security/CWE-327/BrokenCryptoAlgorithm.bqrs.
+2026-10-04T09:17:40.2708780Z   [36/45 eval 1.8s] Evaluation done; writing results to codeql/python-queries/Security/CWE-312/CleartextLogging.bqrs.
+2026-10-04T09:17:40.2709560Z   [37/45 eval 1.5s] Evaluation done; writing results to codeql/python-queries/Security/CWE-377/InsecureTemporaryFile.bqrs.
+2026-10-04T09:17:40.2710667Z   [38/45 eval 1.5s] Evaluation done; writing results to codeql/python-queries/Security/CWE-502/UnsafeDeserialization.bqrs.
+2026-10-04T09:17:40.2711500Z   [39/45 eval 1.5s] Evaluation done; writing results to codeql/python-queries/Security/CWE-327/InsecureProtocol.bqrs.
+2026-10-04T09:17:40.2712237Z   [40/45 eval 1.3s] Evaluation done; writing results to codeql/python-queries/Security/CWE-730/ReDoS.bqrs.
+2026-10-04T09:17:40.2712971Z   [41/45 eval 1.4s] Evaluation done; writing results to codeql/python-queries/Security/CWE-730/PolynomialReDoS.bqrs.
+2026-10-04T09:17:40.2713723Z   [42/45 eval 1.4s] Evaluation done; writing results to codeql/python-queries/Security/CWE-730/RegexInjection.bqrs.
+2026-10-04T09:17:40.2714531Z   [43/45 eval 1.3s] Evaluation done; writing results to codeql/python-queries/Security/CWE-918/FullServerSideRequestForgery.bqrs.
+2026-10-04T09:17:40.2715334Z   [44/45 eval 1.3s] Evaluation done; writing results to codeql/python-queries/Security/CWE-943/NoSqlInjection.bqrs.
+2026-10-04T09:17:40.2716074Z   [45/45 eval 2.7s] Evaluation done; writing results to codeql/python-queries/Security/CWE-116/BadTagFilter.bqrs.
+2026-10-04T09:17:40.2716609Z   Shutting down query evaluator.
+2026-10-04T09:17:40.2716885Z   Interpreting results.
+2026-10-04T09:17:40.2717134Z   Resolving extensions
+2026-10-04T09:17:40.2717680Z   Interpreting /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Expressions/UseofInput.ql...
+2026-10-04T09:17:40.2718663Z   Interpreting /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-918/FullServerSideRequestForgery.ql...
+2026-10-04T09:17:40.2719655Z   Interpreting /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-079/ReflectedXss.ql...
+2026-10-04T09:17:40.2720789Z   Interpreting /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-326/WeakCryptoKey.ql...
+2026-10-04T09:17:40.2721727Z   Interpreting /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-022/PathInjection.ql...
+2026-10-04T09:17:40.2722657Z   Interpreting /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-116/BadTagFilter.ql...
+2026-10-04T09:17:40.2723576Z   Interpreting /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-943/NoSqlInjection.ql...
+2026-10-04T09:17:40.2724696Z   Interpreting /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-209/StackTraceExposure.ql...
+2026-10-04T09:17:40.2726070Z   Interpreting /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-643/XpathInjection.ql...
+2026-10-04T09:17:40.2727742Z   Interpreting /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-094/CodeInjection.ql...
+2026-10-04T09:17:40.2729528Z   Interpreting /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-377/InsecureTemporaryFile.ql...
+2026-10-04T09:17:40.2731751Z   Interpreting /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-730/PolynomialReDoS.ql...
+2026-10-04T09:17:40.2733430Z   Interpreting /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-730/ReDoS.ql...
+2026-10-04T09:17:40.2735066Z   Interpreting /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-730/RegexInjection.ql...
+2026-10-04T09:17:40.2736930Z   Interpreting /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-295/MissingHostKeyValidation.ql...
+2026-10-04T09:17:40.2738754Z   Interpreting /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-601/UrlRedirect.ql...
+2026-10-04T09:17:40.2740666Z   Interpreting /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-611/Xxe.ql...
+2026-10-04T09:17:40.2742412Z   Interpreting /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-1275/SameSiteNoneCookie.ql...
+2026-10-04T09:17:40.2744080Z   Interpreting /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-352/CSRFProtectionDisabled.ql...
+2026-10-04T09:17:40.2745115Z   Interpreting /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-312/CleartextStorage.ql...
+2026-10-04T09:17:40.2746093Z   Interpreting /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-312/CleartextLogging.ql...
+2026-10-04T09:17:40.2747014Z   Interpreting /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-776/XmlBomb.ql...
+2026-10-04T09:17:40.2747950Z   Interpreting /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-1004/NonHttpOnlyCookie.ql...
+2026-10-04T09:17:40.2748946Z   Interpreting /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-502/UnsafeDeserialization.ql...
+2026-10-04T09:17:40.2749906Z   Interpreting /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-089/SqlInjection.ql...
+2026-10-04T09:17:40.2751340Z   Interpreting /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CVE-2018-1281/BindToAllInterfaces.ql...
+2026-10-04T09:17:40.2752354Z   Interpreting /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-078/CommandInjection.ql...
+2026-10-04T09:17:40.2767941Z   Interpreting /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-074/TemplateInjection.ql...
+2026-10-04T09:17:40.2769693Z   Interpreting /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-215/FlaskDebug.ql...
+2026-10-04T09:17:40.2770875Z   Interpreting /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-090/LdapInjection.ql...
+2026-10-04T09:17:40.2771939Z   Interpreting /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-327/WeakSensitiveDataHashing.ql...
+2026-10-04T09:17:40.2772943Z   Interpreting /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-327/InsecureProtocol.ql...
+2026-10-04T09:17:40.2774163Z   Interpreting /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-327/BrokenCryptoAlgorithm.ql...
+2026-10-04T09:17:40.2775536Z   Interpreting /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-327/InsecureDefaultProtocol.ql...
+2026-10-04T09:17:40.2776583Z   Interpreting /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-614/InsecureCookie.ql...
+2026-10-04T09:17:40.2777543Z   Interpreting /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-285/PamAuthorization.ql...
+2026-10-04T09:17:40.2778760Z   Interpreting /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-020/IncompleteUrlSubstringSanitization.ql...
+2026-10-04T09:17:40.2779836Z   Interpreting /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-020/IncompleteHostnameRegExp.ql...
+2026-10-04T09:17:40.2780990Z   Interpreting /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-020/OverlyLargeRange.ql...
+2026-10-04T09:17:40.2782273Z   Interpreting /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-020/CookieInjection.ql...
+2026-10-04T09:17:40.2783234Z   Interpreting /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Security/CWE-113/HeaderInjection.ql...
+2026-10-04T09:17:40.2784165Z   Interpreting /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Diagnostics/ExtractionWarnings.ql...
+2026-10-04T09:17:40.2785177Z   Interpreting /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Diagnostics/ExtractedFiles.ql...
+2026-10-04T09:17:40.2788188Z   Interpreting /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Summary/LinesOfUserCode.ql...
+2026-10-04T09:17:40.2789839Z   Interpreting /opt/hostedtoolcache/CodeQL/2.27.1/x64/codeql/qlpacks/codeql/python-queries/1.8.11/Summary/LinesOfCode.ql...
+2026-10-04T09:17:40.2791396Z   Reading source archive /tmp/codeql-scratch-785b6f2ad774e940/dbs/python/src.zip
+2026-10-04T09:17:40.2792187Z   Exporting results to SARIF v2.1.0...
+2026-10-04T09:17:40.2792723Z   Exported results to SARIF v2.1.0 (134ms).
+2026-10-04T09:17:40.2793230Z   
+2026-10-04T09:17:40.2793632Z Completed analysis of python. 0 alerts found.
+2026-10-04T09:17:40.2794260Z codeql_checker completed in 23433ms (success)
+2026-10-04T09:17:40.2795024Z [cca-engine] turn=22 tool.execution_complete: parallel_validation success=true
+2026-10-04T09:17:40.3607684Z [cca-engine] turn=22 assistant.turn_end
+2026-10-04T09:17:40.3623397Z [cca-engine] turn=23 assistant.turn_start
+2026-10-04T09:17:45.1091883Z [cca-engine] turn=23 assistant.usage: model=kimi-k3 input=44950 output=238
+2026-10-04T09:17:45.1222206Z [cca-engine] turn=23 assistant.message: 164 chars, 1 tool call(s)
+2026-10-04T09:17:45.1231149Z [cca-engine] in-session runtime checkQuota callback v3: preRequest invoked (turn=23)
+2026-10-04T09:17:45.1232396Z [cca-engine] turn=23 tool.execution_start: report_progress
+2026-10-04T09:17:45.2356232Z [cca-engine] in-session runtime checkQuota callback v3: quota is sufficient, continuing session (turn=23)
+2026-10-04T09:17:45.4963151Z [cca-engine] turn=23 tool.execution_complete: report_progress success=true
+2026-10-04T09:17:45.5743726Z [cca-engine] turn=23 assistant.turn_end
+2026-10-04T09:17:45.5756664Z [cca-engine] turn=24 assistant.turn_start
+2026-10-04T09:17:59.0972045Z [cca-engine] turn=24 assistant.usage: model=kimi-k3 input=45359 output=417
+2026-10-04T09:17:59.1027955Z [cca-engine] turn=24 assistant.message: 1659 chars, 0 tool call(s)
+2026-10-04T09:17:59.1030967Z [cca-engine] in-session runtime checkQuota callback v3: preRequest invoked (turn=24)
+2026-10-04T09:17:59.1047132Z [cca-engine] turn=24 assistant.turn_end
+2026-10-04T09:17:59.1126506Z Dependabot Checker
+2026-10-04T09:17:59.2609203Z [cca-engine] in-session runtime checkQuota callback v3: quota is sufficient, continuing session (turn=24)
+2026-10-04T09:17:59.5953801Z Got 8 changed file(s) from GitHub API for base commit 'main'
+2026-10-04T09:17:59.6016311Z 8 changed file(s) detected, but none are dependency manifests.
+2026-10-04T09:17:59.6019116Z No manifest ecosystems detected; skipping dependabot graph runs.
+2026-10-04T09:17:59.6311143Z [cca-engine] turn=24 session.idle
+2026-10-04T09:17:59.9791836Z [cca-engine] Main session complete after 24 turns
+2026-10-04T09:18:00.5030161Z [cca-engine] Uploaded session state for 502ea442-c7dd-48ed-b9b0-ae5023ecd5d1 (398903 bytes, single record, ~536122 document bytes).
+2026-10-04T09:18:00.5904735Z [cca-engine] turn=24 user.message: 2135 chars
+2026-10-04T09:18:00.6626398Z [cca-engine] turn=25 assistant.turn_start
+2026-10-04T09:18:13.3207764Z [cca-engine] turn=25 assistant.usage: model=kimi-k3 input=46289 output=387
+2026-10-04T09:18:13.3261675Z [cca-engine] turn=25 assistant.message: 1361 chars, 0 tool call(s)
+2026-10-04T09:18:13.3263147Z [cca-engine] in-session runtime checkQuota callback v3: preRequest invoked (turn=25)
+2026-10-04T09:18:13.3279361Z [cca-engine] turn=25 assistant.turn_end
+2026-10-04T09:18:13.3344790Z Dependabot Checker
+2026-10-04T09:18:13.4446616Z [cca-engine] in-session runtime checkQuota callback v3: quota is sufficient, continuing session (turn=25)
+2026-10-04T09:18:13.5810080Z Got 8 changed file(s) from GitHub API for base commit 'main'
+2026-10-04T09:18:13.5873192Z 8 changed file(s) detected, but none are dependency manifests.
+2026-10-04T09:18:13.5874389Z No manifest ecosystems detected; skipping dependabot graph runs.
+2026-10-04T09:18:13.5977127Z [cca-engine] turn=25 session.idle
+2026-10-04T09:18:13.5986316Z [cca-engine] PR: "Add pressure-projection methods (divergence_at, project, step_with_pressure) to Navier-Stokes module"
+2026-10-04T09:18:14.2665697Z [cca-engine] Sent pr_summary (title_length=100, description_length=1201)
+2026-10-04T09:18:14.6883281Z [cca-engine] CCA V3 CAPI proxy stopped
+2026-10-04T09:18:14.6889101Z forceExit is shutting down the process
+2026-10-04T09:18:15.7906766Z Stopping git-proxy (pid=3385)...
+2026-10-04T09:18:16.1939986Z ::***::
