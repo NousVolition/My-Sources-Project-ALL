@@ -1,0 +1,34 @@
+import itertools
+
+def check_aerospace_state(B: int, M: int, Y: int, T: int, U: int) -> tuple:
+    """
+    Evaluates aerospace series system integrity: S = B ∧ M ∧ Y ∧ T ∧ U
+    """
+    # Series System Multiplication Logic
+    S = B * M * Y * T * U
+    
+    if S == 1:
+        return S, "Nominal Operation: Stable Flight Profile Verified."
+    
+    # Fault isolation routine
+    failures = []
+    if B == 0: failures.append("Airframe Compromise (B=0)")
+    if M == 0: failures.append("Avionics Dark (M=0)")
+    if Y == 0: failures.append("Asymmetry Condition (Y=0)")
+    if T == 0: failures.append("Thrust Stall (T=0)")
+    if U == 0: failures.append("Payload Inefficient (U=0)")
+    
+    return S, f"System Failure due to: {', '.join(failures)}"
+
+# --- AUTOMATED 32-STATE TEST BENCH ---
+
+combinations = list(itertools.product([0, 1], repeat=5))
+
+print(f"{'B':<3}{'M':<3}{'Y':<3}{'T':<3}{'U':<3} | {'S':<3} | Telemetry / Diagnostic Log")
+print("-" * 75)
+
+for combo in combinations:
+    B_val, M_val, Y_val, T_val, U_val = combo
+    S_out, log_msg = check_aerospace_state(B_val, M_val, Y_val, T_val, U_val)
+    
+    print(f"{B_val:<3}{M_val:<3}{Y_val:<3}{T_val:<3}{U_val:<3} | {S_out:<3} | {log_msg}")

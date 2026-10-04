@@ -1,0 +1,22 @@
+
+
+def simulate_balance_metaphor(body: int, mind: int, symmetry: int, tension: int, utility: int) -> int:
+    """
+    Simulates the system logic for the Conceptual Metaphor of Balance.
+    Inputs must be binary states: 1 (Active/Present) or 0 (Inactive/Absent).
+    Returns 1 for Metaphor Survival, 0 for System Collapse.
+    """
+    # The system is a series architecture requiring all cognitive inputs to be active
+    metaphor_survival = body * mind * symmetry * tension * utility
+    
+    return metaphor_survival
+
+# --- SYSTEM TEST BENCH ---
+
+# Case 1: Nominal Configuration (All cognitive inputs active)
+nominal_state = simulate_balance_metaphor(body=1, mind=1, symmetry=1, tension=1, utility=1)
+print(f"Telemetry (Nominal): {nominal_state}")  # Expected Output: 1 (Survives)
+
+# Case 2: Structural Fault (Dynamic Tension drops offline)
+fault_state = simulate_balance_metaphor(body=1, mind=1, symmetry=1, tension=0, utility=1)
+print(f"Telemetry (Fault):   {fault_state}")    # Expected Output: 0 (Collapses)
