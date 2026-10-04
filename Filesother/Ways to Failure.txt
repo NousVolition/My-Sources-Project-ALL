@@ -1,0 +1,36 @@
+import itertools
+
+def check_system_state(E: int, P: int, S: int, T: int, U: int) -> tuple:
+    """
+    Evaluates system inputs against the series equation: B = E ∧ P ∧ S ∧ T ∧ U
+    Returns a tuple containing the system output (B) and a string status log.
+    """
+    # System Equation evaluation
+    B = E * P * S * T * U
+    
+    if B == 1:
+        return B, "Nominal: Metaphor survives."
+    
+    # Isolate exact failure modes if system drops to 0
+    failures = []
+    if E == 0: failures.append("Disembodied (E=0)")
+    if P == 0: failures.append("Literalized (P=0)")
+    if S == 0: failures.append("Asymmetric (S=0)")
+    if T == 0: failures.append("Static (T=0)")
+    if U == 0: failures.append("Obsolete (U=0)")
+    
+    return B, f"Failure due to: {', '.join(failures)}"
+
+# --- AUTOMATED 32-STATE TEST BENCH ---
+
+# Generate all 32 combinations for 5 binary inputs (1 or 0)
+combinations = list(itertools.product([1, 0], repeat=5))
+
+print(f"{'E':<3}{'P':<3}{'S':<3}{'T':<3}{'U':<3} | {'B':<3} | Diagnostic Log")
+print("-" * 65)
+
+for combo in combinations:
+    E_val, P_val, S_val, T_val, U_val = combo
+    B_out, log_msg = check_system_state(E_val, P_val, S_val, T_val, U_val)
+    
+    print(f"{E_val:<3}{P_val:<3}{S_val:<3}{T_val:<3}{U_val:<3} | {B_out:<3} | {log_msg}")

@@ -1,0 +1,12 @@
+def check_survival(B, M, Y, T, U):
+    """
+    Evaluates if the balance metaphor survives based on 5 inputs.
+    Inputs must be True (1) or False (0).
+    """
+    if B and M and Y and T and U:
+        return "System Active: Metaphor survives! (1)"
+    else:
+        return "System Inactive: Metaphor fails. (0)"
+
+# Test Case: All conditions met
+print(check_survival(B=True, M=True, Y=True, T=True, U=True))
