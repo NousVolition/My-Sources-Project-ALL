@@ -7,11 +7,13 @@ Start with a section below. [What is done and what comes next →](STATUS.md)
 | Explore | Start here |
 | --- | --- |
 | **Math & fluid experiments** | [Smooth initial field, derivation, code, and saved results](math/README.md) |
-| **Language studies** | [Existing reports, charts, and source notes](language/README.md) |
+| **Conversation patterns** | [Explore the conversation without the reply text](language/exploration/README.md) |
 | **Working papers** | [The two papers and their source status](papers/README.md) |
 | **Earlier work** | [Original drafts, Copilot branches, and run history](archive/README.md) |
 
 ## Current focus
+
+Explore how a conversation changes over time: repeated categories, overlaps, unmarked replies, and reply length. The [new map](language/exploration/README.md) preserves the existing annotations and sequence. It is an exploratory view that can grow as more conversations are collected.
 
 The smooth initial field and its energy calculation are finished. The cube experiments and corrected projection are implemented and checked. Their saved results are ready to read.
 
@@ -24,6 +26,7 @@ Use Python 3.12 from this repository's root:
 ```sh
 python -m pip install -r requirements.txt
 python -m pytest -q
+python language/conversation_map.py --output scratch/conversation-map
 python math/box_experiment.py --profile smooth --start projected --points 8 --steps 1
 ```
 
