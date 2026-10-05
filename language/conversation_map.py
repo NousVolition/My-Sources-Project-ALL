@@ -90,7 +90,7 @@ def main():
     args = parser.parse_args()
     data = map_data(args.input)
     args.output.mkdir(parents=True, exist_ok=True)
-    (args.output / "map-data.json").write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
+    (args.output / "map-data.json").write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8", newline="\n")
     plot_map(data, args.output)
     print(json.dumps({"replies": data["summary"]["replies"],
                       "no_recorded_matches": len(data["summary"]["no_recorded_matches"]),
