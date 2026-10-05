@@ -1,0 +1,470 @@
+\documentclass[11pt]{article}
+\usepackage[margin=0.85in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue}
+\newtheorem{proposition}{Proposition}
+\newcommand{\R}{\mathbb R}
+\newcommand{\uu}{\mathbf u_0}
+\newcommand{\dd}{\,\mathrm d}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em}
+\title{A smooth initial velocity field with swirl}
+\author{Working note}
+\date{5 October 2026}
+
+\begin{document}
+\maketitle
+
+This note completes the initial-data construction: the field below is smooth
+through the symmetry axis, divergence-free on all of $\R^3$, and rapidly
+decreasing. Its kinetic energy has an exact formula. These statements concern
+the starting field. The discrete experiments below do not establish a theorem
+about time evolution or singularity.
+
+\section{The field and its parameters}
+
+Let $(x,y,z)\in\R^3$, $q=x^2+y^2$, and $r=\sqrt q$. Choose
+\[
+R\geq0,\qquad a>0,\qquad b>0,\qquad A,B\in\R.
+\]
+Here $R$ sets the ring radius, $a$ controls radial concentration, $b$ controls
+vertical extent, $A$ sets the meridional flow strength, and $B$ sets the swirl.
+If the coordinates have units of length, $R,a,b$ have those same units and
+$A,B$ have units of inverse time. All numerical examples below use
+nondimensional variables.
+
+Define
+\begin{align}
+\phi(r,z)&=\exp\!\left(-\frac{(r^2-R^2)^2}{a^4}-\frac{z^2}{b^2}\right),
+\\
+\psi(r,z)&=A r^2z\phi(r,z),\qquad u_\theta=B r\phi(r,z).
+\end{align}
+For $r>0$, the stream-function relations give
+\begin{align}
+u_r&=-\frac1r\partial_z\psi
+     =-A r\left(1-\frac{2z^2}{b^2}\right)\phi,\\
+u_z&=\frac1r\partial_r\psi
+     =A z\left(2-\frac{4r^2(r^2-R^2)}{a^4}\right)\phi.
+\end{align}
+These follow from
+$\partial_z\phi=-2z\phi/b^2$ and
+$\partial_r\phi=-4r(r^2-R^2)\phi/a^4$.
+
+Set
+\[
+H=1-\frac{2z^2}{b^2},\qquad
+C=2-\frac{4q(q-R^2)}{a^4}.
+\]
+The Cartesian field, which is the definition to use on the axis as well, is
+\begin{equation}\label{eq:cartesian}
+\boxed{
+\begin{aligned}
+u_x&=(-A xH-B y)\phi,\\
+u_y&=(-A yH+B x)\phi,\\
+u_z&=A zC\phi.
+\end{aligned}}
+\end{equation}
+There is no division by $r$ in \eqref{eq:cartesian}. In particular,
+\[
+\uu(0,0,z)=
+\left(0,0,\,2Az\exp\!\left[-\frac{R^4}{a^4}-\frac{z^2}{b^2}\right]\right).
+\]
+The earlier correction is the special case $a=b=\alpha$ and $A=B=1$.
+
+\section{Smoothness, decay, and incompressibility}
+
+\begin{proposition}
+For every allowed parameter choice, $\uu\in\mathcal S(\R^3;\R^3)$ and
+$\nabla\cdot\uu=0$ everywhere. Consequently its kinetic energy and the
+$L^2$ norm of every spatial derivative are finite.
+\end{proposition}
+
+\begin{proof}
+The exponent
+\[
+F(x,y,z)=\frac{(x^2+y^2-R^2)^2}{a^4}+\frac{z^2}{b^2}
+\]
+is a polynomial. Each component of $\uu$, and each of its derivatives, is a
+polynomial times $e^{-F}$. In particular the field is real analytic in
+Cartesian coordinates, including on the axis.
+
+To check rapid decay, use
+\[
+(q-R^2)^2\geq\frac12q^2-R^4.
+\]
+Thus
+\[
+0<\phi\leq e^{R^4/a^4}
+\exp\!\left(-\frac{q^2}{2a^4}-\frac{z^2}{b^2}\right).
+\]
+This decay dominates every polynomial in $x,y,z$. For all multi-indices
+$\beta,\gamma$ and each component $j$,
+\[
+\sup_{(x,y,z)\in\R^3}
+\big| (x,y,z)^\beta\partial^\gamma u_j(x,y,z)\big|<\infty.
+\]
+This is the Schwartz-space condition.
+
+For divergence, note
+\[
+x\partial_x\phi+y\partial_y\phi
+=-\frac{4q(q-R^2)}{a^4}\phi,\qquad
+-By\partial_x\phi+Bx\partial_y\phi=0.
+\]
+Differentiating \eqref{eq:cartesian} therefore gives
+\begin{align*}
+\partial_xu_x+\partial_yu_y
+&=-2AH\phi+\frac{4AHq(q-R^2)}{a^4}\phi=-AHC\phi,\\
+\partial_zu_z
+&=AC(\phi+z\partial_z\phi)=ACH\phi.
+\end{align*}
+The terms cancel identically. This Cartesian calculation holds at $r=0$
+as well as at $r>0$.
+\end{proof}
+
+The swirl does not change this cancellation. Its direction is tangent to
+circles about the axis and its magnitude has no angular dependence.
+
+\section{Exact kinetic energy}
+
+Use energy per unit constant density:
+\[
+E_0=\frac12\int_{\R^3}|\uu|^2\dd x\,\dd y\,\dd z.
+\]
+Multiplying by the physical density gives the physical kinetic energy.
+Introduce
+\begin{align*}
+g(q)&=\exp\!\left(-\frac{2(q-R^2)^2}{a^4}\right),&
+Z_0&=\int_{\R}e^{-2z^2/b^2}\dd z=b\sqrt{\frac{\pi}{2}},\\
+M_0&=\int_0^\infty g(q)\dd q,&
+M_1&=\int_0^\infty qg(q)\dd q.
+\end{align*}
+The two radial moments are explicit:
+\begin{align}
+M_0&=\frac{a^2\sqrt\pi}{2\sqrt2}
+\left[1+\operatorname{erf}\!\left(\frac{\sqrt2 R^2}{a^2}\right)\right],\\
+M_1&=R^2M_0+\frac{a^4}{4}e^{-2R^4/a^4}.
+\end{align}
+Here $\operatorname{erf}(s)=\frac{2}{\sqrt\pi}\int_0^s e^{-t^2}\dd t$.
+
+\begin{proposition}
+The kinetic energy of \eqref{eq:cartesian} is
+\begin{equation}\label{eq:energy}
+\boxed{
+E_0=\frac{\pi Z_0}{2}
+\left[
+\left(B^2+\frac{3A^2}{4}+\frac{A^2b^2R^2}{a^4}\right)M_1
++\frac{3A^2b^2}{4}M_0
+\right].}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The squared cylindrical components add to
+\[
+|\uu|^2=
+\left[A^2r^2H^2+B^2r^2+A^2z^2C^2\right]\phi^2.
+\]
+Use $r\dd r=\dd q/2$ and the Gaussian moments
+\[
+\int_{\R}H^2e^{-2z^2/b^2}\dd z=\frac34 Z_0,\qquad
+\int_{\R}z^2e^{-2z^2/b^2}\dd z=\frac{b^2}{4}Z_0.
+\]
+The angular integral is $2\pi$, so
+\begin{equation}\label{eq:energy-pre}
+E_0=\frac{\pi Z_0}{2}
+\int_0^\infty
+\left[
+\left(\frac{3A^2}{4}+B^2\right)q+\frac{A^2b^2}{4}C(q)^2
+\right]g(q)\dd q.
+\end{equation}
+
+It remains to simplify $K=\int_0^\infty C(q)^2g(q)\dd q$.
+Since $g'=-4(q-R^2)g/a^4$ and $C=2+qg'/g$,
+\[
+K=4M_0+4\int_0^\infty qg'\dd q
+  +\int_0^\infty q^2\frac{(g')^2}{g}\dd q.
+\]
+The first two terms cancel by integration by parts. Also
+$(g')^2/g=g''+4g/a^4$. Writing $M_2=\int_0^\infty q^2g(q)\dd q$ yields
+\[
+K=2M_0+\frac4{a^4}M_2,\qquad
+M_2=R^2M_1+\frac{a^4}{4}M_0.
+\]
+All boundary terms with $q$ or $q^2$ vanish at zero and infinity.
+Consequently
+\[
+K=3M_0+\frac{4R^2}{a^4}M_1.
+\]
+Substitution in \eqref{eq:energy-pre} proves \eqref{eq:energy}.
+\end{proof}
+
+\subsection*{A reproducible example and energy control}
+
+For $R=1.5$, $a=b=1$, and $A=B=1$,
+\[
+E_0=24.05715786588763.
+\]
+Scaling both rates by $\lambda$ scales the velocity by $\lambda$ and the
+energy by $\lambda^2$. To set a target $E_*>0$ for a nonzero base field, use
+\[
+\lambda=\sqrt{\frac{E_*}{E_0}},\qquad
+(A,B)\longmapsto(\lambda A,\lambda B).
+\]
+The example has unit energy when
+$A=B=0.20388150977663805$.
+
+\section{What changed from the earlier radial Gaussian}
+
+The old envelope was
+\[
+\phi_{\rm old}(r,z)=
+\exp\!\left(-\frac{(r-R)^2+z^2}{\alpha^2}\right).
+\]
+On $y=0$, its radial coordinate is $r=|x|$. For $R>0$, the one-sided
+$x$ derivatives at $x=0$ are
+\[
+D_x^+\phi_{\rm old}=\frac{2R}{\alpha^2}\phi_{\rm old}(0,z),
+\qquad
+D_x^-\phi_{\rm old}=-\frac{2R}{\alpha^2}\phi_{\rm old}(0,z).
+\]
+They do not agree. The old velocity itself also fails to be smooth in
+general: for fixed $z$,
+\[
+u_{z,\rm old}(x,0,z)=
+Az\phi_{\rm old}(0,z)
+\left(2+\frac{6R}{\alpha^2}|x|+O(x^2)\right).
+\]
+When $AzR\ne0$, this has a cusp. The new envelope removes the problematic
+$|x|$ dependence by using $r^2=x^2+y^2$ inside a polynomial.
+
+The replacement changes the ring shape. For $R>0$ and $r=R+\eta$,
+\[
+\frac{(r^2-R^2)^2}{a^4}
+=\frac{4R^2\eta^2+4R\eta^3+\eta^4}{a^4}.
+\]
+The local radial Gaussian width, in the convention
+$e^{-(\eta/w)^2}$, is approximately $w=a^2/(2R)$.
+To match the old width $\alpha$ to quadratic order at the ring, choose
+$a=\sqrt{2R\alpha}$ and $b=\alpha$.
+This matches local curvature at the peak, not the entire original profile.
+For $R=0$, the radial envelope is $e^{-r^4/a^4}$ and is still smooth.
+
+\section{Verification and the remaining scope}
+
+The accompanying \texttt{initial\_field.py} evaluates the Cartesian formula
+directly and implements the exact energy and amplitude normalization.
+Seven tests cover the axis values, numerical derivatives of the stream
+function, Cartesian divergence, rotation about the axis, energy scaling,
+the zero field, and invalid geometric parameters.
+
+An independent numerical check integrates $|\uu|^2$ in cylindrical
+coordinates with a 180-point Gauss--Legendre rule in each variable.
+Four parameter choices, including $R=0$ and unequal widths, agree with
+\eqref{eq:energy} to relative error below $1.3\times10^{-14}$ in floating
+point. The integration was truncated at
+$r^2=R^2+8a^2$ and $|z|=8b$.
+These checks validate the implementation; the identities and estimates
+above establish the mathematical properties for the full parameter family.
+
+If a scalar initial field is wanted, $S_0=S_*\phi$ is also Schwartz for any
+finite constant $S_*$. That fact alone does not ensure smoothness of a
+force involving $|\nabla S|$ at critical points of $S$.
+The forcing law and the accuracy of the evolution scheme still require
+separate analysis.
+
+For the exact initial-data and forcing requirements in the standard
+Navier--Stokes problem, see Charles Fefferman's
+\href{https://www.claymath.org/library/monographs/MPPc.pdf}
+{official problem description for the Clay Mathematics Institute}.
+
+\section{What the stream-function tests establish}
+
+The 20 submitted checks for the original radial Gaussian pass, including
+finite-difference divergence away from the axis, reflection in $z$, and
+bounded radial velocity near $r=0$. These properties are consistent with the
+axis cusp derived above: boundedness alone does not imply differentiability.
+For $R=1.5$, $\alpha=1$, $A=1$ and $z=0.4$, the one-sided $x$ slopes of the
+old $u_z$ approach opposite nonzero values
+$\pm 3.6e^{-2.41}$. The corrected field has matching zero slopes there.
+
+For $r>0$, the contour-tangency identity follows directly:
+\[
+u_r\partial_r\psi+u_z\partial_z\psi
+=-\frac{\partial_z\psi\,\partial_r\psi}{r}
+ +\frac{\partial_r\psi\,\partial_z\psi}{r}=0.
+\]
+Changing the initial swirl keeps these meridional contours fixed, while
+changing the azimuthal motion and generally the subsequent evolution.
+The corrected envelope is symmetric about $q=R^2$ as a function of
+$q=r^2$ (where both comparison points have $q\geq0$); it is generally
+not symmetric about $r=R$ as a function of $r$.
+
+\section{A compatible projection on a periodic grid}
+
+Let $h=L/N$ be the grid spacing, let $D_h$ denote centered-difference
+divergence, and let $G_h$ denote the matching centered gradient. Given
+the velocity $\mathbf u^*$ after the original explicit update, solve
+\[
+D_hG_h\chi=D_h\mathbf u^*,\qquad
+\mathbf u^{n+1}=\mathbf u^*-G_h\chi.
+\]
+Here $\chi$ is a velocity correction potential. In this nonincremental
+time-step construction, $\rho\chi/\Delta t$ is a discrete pressure
+approximation. An initial projection has no assigned physical time step.
+
+Because both first derivatives are centered,
+\[
+(D_hG_h\chi)_{ijk}=
+\frac{\chi_{i+2,j,k}+\chi_{i-2,j,k}
+      \chi_{i,j+2,k}+\chi_{i,j-2,k}
+      \chi_{i,j,k+2}+\chi_{i,j,k-2}
+      -6\chi_{ijk}}{4h^2},
+\]
+with periodic indices. Thus, for $b_{ijk}=(D_h\mathbf u^*)_{ijk}$,
+the undamped Jacobi target is
+\[
+\chi^{\mathrm{target}}_{ijk}
+=\frac{\sum_{\text{six neighbors at distance }2h}\chi
+       -4h^2b_{ijk}}{6}.
+\]
+The submitted projection omitted the factor $h^2$. On modes where that
+iteration converges, the incorrect solve leaves
+$(1-h^{-2})D_h\mathbf u^*$ as the divergence. For $h=0.375$ and $0.1875$,
+the residual magnitude can therefore be about $6.11$ and $27.44$ times
+the starting value.
+
+There is a second issue: when $N$ is divisible by four, the mode
+$\cos[\pi(i+j+k)/2]$ gives an undamped Jacobi error multiplier of $-1$.
+It oscillates. The standard-library implementation uses
+\[
+\chi^{(\ell+1)}
+=\tfrac13\chi^{(\ell)}+\tfrac23\chi^{\mathrm{target}}
+\]
+and checks the maximum residual against an absolute plus relative tolerance.
+Failure to converge is reported. The optional Fourier implementation used
+for the box experiments solves the same discrete equation with symbol
+\[
+\lambda(\mathbf m)
+=-\frac1{h^2}\sum_{d=1}^3\sin^2(2\pi m_d/N).
+\]
+It sets the potential to zero on the null modes. For even $N$ there are
+eight combinations with each $m_d$ equal to $0$ or $N/2$.
+The centered divergence and gradient cannot see these checkerboard modes;
+small measured divergence alone does not exclude them.
+
+On the periodic grid $G_h=-D_h^*$ under the grid inner product. An exact
+compatible solve therefore gives an orthogonal projection: it preserves
+componentwise mean velocity and cannot increase the discrete kinetic
+energy during the projection alone. This says nothing by itself about
+stability of the preceding explicit update.
+The numerical tests check these properties, non-unit spacing, odd and even
+grids, and the oscillating mode.
+
+For the historical projection-method construction, see
+\href{https://math.berkeley.edu/~chorin/chorin68.pdf}
+{A.~J. Chorin, Numerical Solution of the Navier--Stokes Equations (1968)}.
+The centered operator and its limitations here are derived explicitly above.
+
+The repository review also found two Copilot variants that solve a
+nearest-neighbor pressure Poisson equation and then subtract a centered
+gradient. That nearest-neighbor Laplacian is not $D_hG_h$ for the centered
+operators used here. Even a converged solve of that different equation need
+not remove the measured divergence. These are implementation variants of
+the same projection task; they should be reconciled rather than maintained
+as independent solvers.
+
+\section{The small-box experiment}
+
+All grids sample cell centers
+$x_i=(i-(N-1)/2)L/N$, and similarly for $y,z$. Opposite faces are identified
+periodically. Sampling a divergence-free whole-space field need not give
+$D_h\mathbf u=0$, and a rapidly decreasing field is not automatically periodic.
+No artificial radius clamp is used on the axis.
+
+For the original field, $R=1.5$ and $\alpha=1$, the raw starting diagnostics
+on $L=6$ are:
+\begin{center}
+\begin{tabular}{r r r r r}
+\hline
+$N$ & $h$ & $\max|D_h\mathbf u|$ &
+interior maximum & $\max\|\nabla_h\mathbf u\|_F$\\
+\hline
+8  & 0.7500 & 0.46351 & 0.46351 & 2.02332\\
+16 & 0.3750 & 0.91375 & 0.23399 & 3.39830\\
+32 & 0.1875 & 1.71323 & 0.07559 & 3.85268\\
+\hline
+\end{tabular}
+\end{center}
+The interior maximum excludes the outermost cell layer, where centered
+differences wrap around the boundary. For $N=16,32$ the global divergence
+maximum lies on that layer. Interior error decreases while the boundary
+error grows. A nonzero jump across a periodic seam produces derivative
+terms proportional to the jump divided by $h$.
+
+To separate box size from resolution, compare equal spacing $h=0.375$:
+\begin{center}
+\begin{tabular}{r r r r}
+\hline
+$L$ & $N$ & raw $\max|D_h\mathbf u|$ &
+sampled opposing-face velocity mismatch\\
+\hline
+6  & 16 & 0.91375 & $0.81910$\\
+18 & 48 & 0.23399 & $8.58\times10^{-24}$\\
+\hline
+\end{tabular}
+\end{center}
+Here the mismatch is the largest Euclidean velocity difference at opposite
+physical faces sampled at the tangential grid coordinates. Enlarging the
+box at fixed $N$ also enlarges $h$ and under-resolves the ring: for $L=18$,
+$N=16,32$ the raw divergence maxima are $0.22016,0.40763$ respectively.
+Their nonmonotonic behavior is not evidence of resolved convergence.
+
+\subsection*{Four steps and a common smooth start}
+
+The experiment uses the original explicit advection and diffusion update,
+$\nu=0.01$, $S=0$, $P_U=0$, and sets the force coefficient $\sigma=0$.
+The last setting removes the tiny nonzero tail of the original tanh force.
+The original-Gaussian reproduction starts both branches from the raw samples.
+After four steps of size $\Delta t=0.02$, the $L=6$ divergence maxima are:
+\begin{center}
+\begin{tabular}{r r r}
+\hline
+$N$ & without projection & with corrected projection\\
+\hline
+8  & 0.48463 & $2.22\times10^{-16}$\\
+16 & 0.62311 & $6.66\times10^{-16}$\\
+32 & 1.23564 & $1.78\times10^{-15}$\\
+\hline
+\end{tabular}
+\end{center}
+The first projected step changes the discrete starting field as well as
+correcting divergence created by evolution.
+
+A second comparison uses the smooth field with
+$R=1.5$, $a=\sqrt3$, $b=1$, $A=B=1$, matching the original local ring width.
+It projects the sampled start once, then copies that same start to both
+branches. At $L=6$, $N=32$, this initial correction has relative grid
+$L^2$ size $0.009636$. At time $0.08$, the divergence maxima are
+$1.05212$ without projection and $1.33\times10^{-15}$ with projection.
+The maximum gradient norms are $4.05142$ and $4.08213$ respectively.
+Projection enforces the chosen discrete divergence; it need not lower the
+maximum gradient.
+
+Halving the time step to $0.01$ and taking eight steps to the same time
+gives $1.03447$ and $1.33\times10^{-15}$ for the two divergence maxima.
+The projected maximum gradient changes from $4.08213$ to $4.07891$,
+and its discrete energy from $38.80037$ to $38.77337$.
+This is one time-resolution check, not a convergence or stability proof.
+
+Even the smooth field has a small nonzero periodic face mismatch on $L=6$.
+The next spatial-accuracy experiment should make the boundary treatment
+explicit (for example, periodize the rapidly decreasing field), then refine
+space and time with that choice fixed. A finite grid and four time steps
+cannot establish continuum regularity or singularity.
+
+\end{document}
