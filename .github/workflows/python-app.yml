@@ -21,6 +21,14 @@ jobs:
       - name: Install checked dependencies
         run: python -m pip install -r requirements.txt flake8
       - name: Check syntax and undefined names
-        run: python -m flake8 math models language/scripts --select=E9,F63,F7,F82 --show-source --statistics
+        run: python -m flake8 math models language --select=E9,F63,F7,F82 --show-source --statistics
       - name: Run the consolidated tests
         run: python -m pytest -q
+      - name: Reproduce the clustering study and verify its numerical record
+        run: |
+          python language/clustering/study.py --output scratch/clustering
+          python language/clustering/verify_results.py --actual scratch/clustering
+      - name: Rebuild the conversation map
+        run: |
+          python language/conversation_map.py --output scratch/conversation-map
+          diff language/exploration/map-data.json scratch/conversation-map/map-data.json

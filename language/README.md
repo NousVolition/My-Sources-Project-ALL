@@ -2,6 +2,16 @@
 
 [← Project home](../README.md)
 
+## Start with the conversation map
+
+**[Conversation without the reply text →](exploration/README.md)**
+
+See the 68 replies in order, with eight overlapping categories and reply length. The original descriptive labels remain available. This is an exploratory way to notice patterns and refine observations as the collection grows.
+
+![Saved categories and reply length in conversation order](exploration/conversation-map.svg)
+
+An [optional K-means comparison](clustering/README.md) explores how automatic grouping changes when counts are adjusted for reply length. It reuses the same saved table; it does not replace the annotations.
+
 ## Finished reports
 
 These HTML reports can be downloaded and opened in a browser together with the figures folder. GitHub shows their source when opened directly.
@@ -11,8 +21,6 @@ These HTML reports can be downloaded and opened in a browser together with the f
 | [Language map, third version](reports/language_map_3.html) | [Turn table](data/ai_language_turns_3.csv) | [Timeline](figures/primary-mode-timeline-3.png) · [word delta](figures/word-delta-3.png) · [tracked moves](figures/tracked-moves-3.png) |
 | [Reconstruction map](reports/reconstruction_map.html) | [Table](data/reconstruction_map.csv) | [Reconstruction chart](figures/reconstruction-map.png) |
 | [Connection map](reports/connection_map.html) | [Table](data/connection_map.csv) | Original chart missing; the report's table remains available |
-
-![Language mode timeline, third version](figures/primary-mode-timeline-3.png)
 
 ## Sources & scripts
 
