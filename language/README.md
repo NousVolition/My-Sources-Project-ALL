@@ -2,7 +2,13 @@
 
 [← Project home](../README.md)
 
-## Start with the conversation map
+## Latest: conversation, confusion, and context
+
+The [conversation study](conversation-study/README.md) adds three supplied source snapshots, 53 selected observations, eight word paths, and six context comparisons. Read it directly on GitHub or open its saved interactive HTML after downloading the folder. The original text, evidence links, categories, and integrity checks are together.
+
+This is a separate source collection from the 68-reply map below. The context comparisons reuse existing passages and are not additional independent events.
+
+## Earlier conversation map
 
 **[Conversation without the reply text →](exploration/README.md)**
 

@@ -1,0 +1,31 @@
+name: Conversation study
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'language/conversation-study/**'
+      - '.github/workflows/conversation-study.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'language/conversation-study/**'
+      - '.github/workflows/conversation-study.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  evidence:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check source integrity and evidence links
+        run: python language/conversation-study/validate.py
+      - name: Check regression cases
+        run: python -m unittest discover -s language/conversation-study/tests -v
+      - name: Check GitHub views match saved annotations
+        run: python language/conversation-study/build.py --check

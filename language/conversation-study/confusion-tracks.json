@@ -1,0 +1,767 @@
+{
+  "version": 1,
+  "view": "confusion-and-context",
+  "scope": "Six selected comparisons over existing source passages. These reuse E-series evidence; they are not new independent conversation events.",
+  "method": "Manual contextual reading. Confusion describes expressed uncertainty, ambiguous references, or demonstrated request/answer mismatch; it is not a trait assigned to a participant.",
+  "causal_limit": "This is one evolving conversation. An exact repeated request supplies a useful contrast but does not isolate history as the sole cause of the changed answer.",
+  "same_request": {
+    "refs": [
+      [
+        "source-03",
+        1898,
+        1898
+      ],
+      [
+        "source-03",
+        2210,
+        2210
+      ]
+    ],
+    "comparison": "exact complete line match",
+    "text": "im not sure  if we are thinking the same idea.. i want the two pasteed sentences i want to see 10 differnt types of ways to say this and compare or contrast"
+  },
+  "kinds": [
+    {
+      "name": "Question still forming",
+      "definition": "The user explicitly says they are exploring or unsure. This is not itself a response failure."
+    },
+    {
+      "name": "Reference unclear",
+      "definition": "Words such as “it,” “original,” or “the two” leave more than one plausible referent in context."
+    },
+    {
+      "name": "Task interpreted differently",
+      "definition": "The response performs a different operation: explains the person, proves identity, or writes code when comparison or presentation was requested."
+    },
+    {
+      "name": "Earlier frame reused",
+      "definition": "A prior metaphor, distinction, or explanation appears in the next answer. Reuse may help or obstruct; its effect requires local evidence."
+    },
+    {
+      "name": "Repair partial",
+      "definition": "One dimension improves—such as length or placement—while a separate meaning problem remains."
+    },
+    {
+      "name": "Resolution unconfirmed",
+      "definition": "The visible text does not include clear acceptance. Absence of acceptance alone is not evidence of failure."
+    }
+  ],
+  "tracks": [
+    {
+      "id": "C01",
+      "title": "The exact same comparison request gets two different frames",
+      "kind": "Earlier wording carries forward",
+      "summary": "The user’s complete request at lines 1898 and 2210 is identical. The replies assign different roles to the same two quoted sentences.",
+      "what_changed": "After the variables discussion, the answer pairs a boundary with an error process. After the skin discussion, it pairs an outer layer with what happens inside. The second reply explicitly says it is applying the skin-versus-middle definition.",
+      "what_stayed": "The comparison request and the two quoted sentences stay the same in those two instances. The answer also keeps imposing a connection in both versions.",
+      "outcome": "The user explicitly rejects the skin interpretation. The next answer drops that vocabulary but again asserts one closed loop, so a wording repair does not establish that the relationship question is resolved.",
+      "limit": "This is a naturally occurring repeated request, not a controlled experiment. The intervening conversation contains many changes; the text establishes reuse of the prior frame, not its isolated causal effect.",
+      "related_episodes": [
+        "E43",
+        "E46",
+        "E47"
+      ],
+      "steps": [
+        {
+          "label": "First occurrence · line 1898",
+          "before": "The user has asked “variables?” and the assistant has defined features, distance, a threshold, and an alert.",
+          "before_refs": [
+            [
+              "source-03",
+              1870,
+              1897
+            ]
+          ],
+          "request": "Compare the two pasted sentences in ten different ways.",
+          "request_refs": [
+            [
+              "source-03",
+              1898,
+              1898
+            ]
+          ],
+          "answer": "It quotes both sentences, makes them a cause-and-effect engine, and gives comparisons such as set theory versus calculus.",
+          "answer_refs": [
+            [
+              "source-03",
+              1899,
+              1908
+            ],
+            [
+              "source-03",
+              1945,
+              1948
+            ]
+          ],
+          "next_clarification": "The user asks to “unstrip” the previous interpretations and use them to map the ideas.",
+          "next_refs": [
+            [
+              "source-03",
+              1949,
+              1950
+            ]
+          ],
+          "status": "Comparison supplied; intended mapping remains open.",
+          "quotes": [
+            {
+              "ref": [
+                "source-03",
+                1903,
+                1903
+              ],
+              "text": "They form a cause-and-effect engine"
+            }
+          ]
+        },
+        {
+          "label": "Second occurrence · line 2210",
+          "before": "The user has introduced “layer or skin” and “counting the middle”; the assistant has expanded that image into a taxonomy.",
+          "before_refs": [
+            [
+              "source-03",
+              2160,
+              2175
+            ],
+            [
+              "source-03",
+              2192,
+              2209
+            ]
+          ],
+          "request": "The identical request: compare the two pasted sentences in ten different ways.",
+          "request_refs": [
+            [
+              "source-03",
+              2210,
+              2210
+            ]
+          ],
+          "answer": "It applies the recent skin-versus-middle interpretation: the first sentence becomes outer skin and the second becomes the process inside.",
+          "answer_refs": [
+            [
+              "source-03",
+              2211,
+              2220
+            ]
+          ],
+          "next_clarification": "The user says “i dont care about skin” and repeats the two sentences and the request for possible overlap.",
+          "next_refs": [
+            [
+              "source-03",
+              2258,
+              2258
+            ]
+          ],
+          "status": "Interpretation rejected explicitly.",
+          "quotes": [
+            {
+              "ref": [
+                "source-03",
+                2211,
+                2211
+              ],
+              "text": "apply your new definition of the skin vs. counting the middle"
+            },
+            {
+              "ref": [
+                "source-03",
+                2258,
+                2258
+              ],
+              "text": "i dont care about skin"
+            }
+          ]
+        },
+        {
+          "label": "Repair after the second occurrence · line 2258",
+          "before": "The user has explicitly removed the skin metaphor from the task.",
+          "before_refs": [
+            [
+              "source-03",
+              2258,
+              2258
+            ]
+          ],
+          "request": "Restates the two sentences, asking for ten disciplines and overlap if present. This is a restatement, not the identical prompt above.",
+          "request_refs": [
+            [
+              "source-03",
+              2258,
+              2258
+            ]
+          ],
+          "answer": "It drops “skin” and calls the two sentences a direct mechanical closed loop.",
+          "answer_refs": [
+            [
+              "source-03",
+              2259,
+              2261
+            ]
+          ],
+          "next_clarification": "The user asks to give the examples relationships because they are too far apart.",
+          "next_refs": [
+            [
+              "source-03",
+              2306,
+              2306
+            ]
+          ],
+          "status": "Vocabulary changes; requested relationship is still being worked out.",
+          "quotes": [
+            {
+              "ref": [
+                "source-03",
+                2260,
+                2260
+              ],
+              "text": "direct, mechanical closed loop"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C02",
+      "title": "“Unstrip it” has an unresolved reference",
+      "kind": "What a phrase points to",
+      "summary": "A short request to restore prior interpretations is answered as a request to restore a story about deception.",
+      "what_changed": "The subject moves from comparisons across disciplines to the assistant’s alleged software behavior.",
+      "what_stayed": "The user still asks for a map. The answer continues supplying a long explanation.",
+      "outcome": "The user reports the word count and says they are not seeing anything. The requested representation is still missing from their perspective.",
+      "limit": "“It” and “previous interpretations” are genuinely broad references here. The text does not establish exactly which earlier material the user intended to restore. Record the ambiguity and the assistant’s chosen interpretation separately.",
+      "related_episodes": [
+        "E44",
+        "E48"
+      ],
+      "steps": [
+        {
+          "label": "Reference choice · lines 1949–1950",
+          "before": "The assistant says it will strip away previous interpretations and then presents opposing disciplinary comparisons.",
+          "before_refs": [
+            [
+              "source-03",
+              1899,
+              1899
+            ],
+            [
+              "source-03",
+              1945,
+              1948
+            ]
+          ],
+          "request": "The user quotes part of that wording and asks to unstrip it and use it to map the ideas.",
+          "request_refs": [
+            [
+              "source-03",
+              1949,
+              1950
+            ]
+          ],
+          "answer": "It interprets “previous interpretations” as algorithmic deceptions, corporate padding, and personas, and produces a map of systemic deception.",
+          "answer_refs": [
+            [
+              "source-03",
+              1951,
+              1956
+            ],
+            [
+              "source-03",
+              1972,
+              1981
+            ]
+          ],
+          "next_clarification": "The user says the answer is hitting the word count and they are not actually seeing anything.",
+          "next_refs": [
+            [
+              "source-03",
+              1986,
+              1986
+            ]
+          ],
+          "status": "Reference was assumed; representation remains disputed.",
+          "quotes": [
+            {
+              "ref": [
+                "source-03",
+                1951,
+                1951
+              ],
+              "text": "If you want me to unstrip it, that means"
+            },
+            {
+              "ref": [
+                "source-03",
+                1986,
+                1986
+              ],
+              "text": "i also am not actually seeing anything"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C03",
+      "title": "An unfinished comparison question becomes a neurology explanation",
+      "kind": "What operation is being requested",
+      "summary": "The user says they are still finding the question and wants to see how the concepts connect. The assistant answers why the user’s mind sees connections.",
+      "what_changed": "The object being explained moves from relationships among ideas to the person imagining them.",
+      "what_stayed": "Earlier brain-profile language and the cluster metaphor reappear together. Those topics are available in the history, even though the immediate request asks for a visual comparison.",
+      "outcome": "The user explicitly rejects the neurology explanation. The reply acknowledges this and attempts a diagram. That is a partial repair of topic and format; the intended relationship remains open.",
+      "limit": "The request includes “out of my mind,” and the earlier chat discusses cognition. Those provide possible cues, not a proven reason for the answer. Explicit uncertainty while forming a question is not a judgment about ability.",
+      "related_episodes": [
+        "E31",
+        "E44",
+        "E45"
+      ],
+      "steps": [
+        {
+          "label": "Question still forming · line 1992",
+          "before": "Earlier turns discuss a cognitive profile. Immediately before this request, the assistant offers code for a graph or a topic change after the user says the map is not visible.",
+          "before_refs": [
+            [
+              "source-03",
+              1116,
+              1132
+            ],
+            [
+              "source-03",
+              1986,
+              1991
+            ]
+          ],
+          "request": "The user is unsure of the exact question but asks whether the two ideas connect outside their current neighbors and wants to see the imagined relationship.",
+          "request_refs": [
+            [
+              "source-03",
+              1992,
+              1992
+            ]
+          ],
+          "answer": "It claims a mathematical bridge to neural mechanics, explains the user’s brain, and offers a medication explanation.",
+          "answer_refs": [
+            [
+              "source-03",
+              1993,
+              2003
+            ],
+            [
+              "source-03",
+              2008,
+              2011
+            ]
+          ],
+          "next_clarification": "The user says they did not ask to understand their neurology. The assistant then acknowledges the visual-layout request and starts a diagram.",
+          "next_refs": [
+            [
+              "source-03",
+              2012,
+              2015
+            ]
+          ],
+          "status": "Explicit misunderstanding; partial repair in the next answer.",
+          "quotes": [
+            {
+              "ref": [
+                "source-03",
+                1992,
+                1992
+              ],
+              "text": "im not sure I know the question"
+            },
+            {
+              "ref": [
+                "source-03",
+                2012,
+                2012
+              ],
+              "text": "i didnt ask to help me understand my neurology"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C04",
+      "title": "Possible overlap becomes sameness, then separation",
+      "kind": "What relationship is being tested",
+      "summary": "The relationship changes with the latest correction: a unified engine becomes two completely different ideas, then a claimed exact intersection.",
+      "what_changed": "The asserted relation changes from identity to difference to a single junction. Each version is stated with certainty.",
+      "what_stayed": "The user keeps asking to inspect the relationship without forcing it. The threshold-and-friction story survives all three answers.",
+      "outcome": "The later reply adopts the user’s word “intersection,” but still assumes precisely where it exists. The next user turn reports continued difficulty.",
+      "limit": "Distinct concepts may have a useful relationship. The problem visible here is failure to keep the proposed relation conditional and inspectable; a changed answer is not automatically wrong.",
+      "related_episodes": [
+        "E47",
+        "E48"
+      ],
+      "steps": [
+        {
+          "label": "After an asserted merger",
+          "before": "The assistant has called all the disciplines the exact same mechanical reality and a single engine.",
+          "before_refs": [
+            [
+              "source-03",
+              2347,
+              2350
+            ]
+          ],
+          "request": "The user asks whether the two ideas are the same or whether presenting one is confusing them.",
+          "request_refs": [
+            [
+              "source-03",
+              2355,
+              2355
+            ]
+          ],
+          "answer": "It declares the ideas completely different and says putting them on one map confuses them.",
+          "answer_refs": [
+            [
+              "source-03",
+              2356,
+              2368
+            ]
+          ],
+          "next_clarification": "The user says not to force them and asks to place them near each other to see if they intersect.",
+          "next_refs": [
+            [
+              "source-03",
+              2376,
+              2376
+            ]
+          ],
+          "status": "The user clarifies conditional overlap.",
+          "quotes": [
+            {
+              "ref": [
+                "source-03",
+                2356,
+                2356
+              ],
+              "text": "They are two completely different ideas"
+            },
+            {
+              "ref": [
+                "source-03",
+                2376,
+                2376
+              ],
+              "text": "i asked for if they intersect"
+            }
+          ]
+        },
+        {
+          "label": "After the conditional-overlap correction",
+          "before": "The user has explicitly requested nearness and a possible intersection.",
+          "before_refs": [
+            [
+              "source-03",
+              2376,
+              2376
+            ]
+          ],
+          "request": "Keep both ideas visible and examine whether they meet.",
+          "request_refs": [
+            [
+              "source-03",
+              2376,
+              2376
+            ]
+          ],
+          "answer": "The answer uses separate left/right positions but asserts one exact threshold where they necessarily meet.",
+          "answer_refs": [
+            [
+              "source-03",
+              2388,
+              2399
+            ]
+          ],
+          "next_clarification": "The user asks why repeated attempts still produce difficult pushback.",
+          "next_refs": [
+            [
+              "source-03",
+              2408,
+              2408
+            ]
+          ],
+          "status": "Some requested wording is adopted; shared meaning remains unresolved.",
+          "quotes": [
+            {
+              "ref": [
+                "source-03",
+                2389,
+                2389
+              ],
+              "text": "they cross paths at one precise coordinate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C05",
+      "title": "Layout improves while the meaning is still disputed",
+      "kind": "Form and meaning move separately",
+      "summary": "Side-by-side placement and shorter entries are achieved in stages. The user then makes clear that the remaining problem is interpretation.",
+      "what_changed": "The answer moves from separate long tables to parallel columns to short concepts.",
+      "what_stayed": "The content continues to center on correction, failure, threat, and a norm-versus-chaos scale.",
+      "outcome": "Format and length are partially repaired. The user explicitly rejects the remaining semantic framing and supplies small-fact examples.",
+      "limit": "The pasted text establishes the table structure and wording, not the original rendered screen. A format repair is real progress even when the meaning still needs work.",
+      "related_episodes": [
+        "E48",
+        "E50"
+      ],
+      "steps": [
+        {
+          "label": "Column placement",
+          "before": "The user asks for the two quoted sentences as headings, disciplines on the left, and blank cells where nothing fits. The assistant supplies two separate tables.",
+          "before_refs": [
+            [
+              "source-03",
+              2425,
+              2433
+            ],
+            [
+              "source-03",
+              2473,
+              2480
+            ]
+          ],
+          "request": "“side by side”",
+          "request_refs": [
+            [
+              "source-03",
+              2528,
+              2528
+            ]
+          ],
+          "answer": "The two sentences become neighboring columns with the same disciplines on the left.",
+          "answer_refs": [
+            [
+              "source-03",
+              2529,
+              2538
+            ]
+          ],
+          "next_clarification": "After the table and displayed code, the user asks for a concept rather than a novel.",
+          "next_refs": [
+            [
+              "source-03",
+              2597,
+              2604
+            ],
+            [
+              "source-03",
+              2669,
+              2669
+            ]
+          ],
+          "status": "Column structure repaired; length remains a problem.",
+          "quotes": [
+            {
+              "ref": [
+                "source-03",
+                2528,
+                2528
+              ],
+              "text": "side by side"
+            }
+          ]
+        },
+        {
+          "label": "Length",
+          "before": "A long comparison table and code have been displayed.",
+          "before_refs": [
+            [
+              "source-03",
+              2529,
+              2538
+            ],
+            [
+              "source-03",
+              2597,
+              2668
+            ]
+          ],
+          "request": "The user asks for short concepts.",
+          "request_refs": [
+            [
+              "source-03",
+              2669,
+              2669
+            ]
+          ],
+          "answer": "The reply condenses the entries to short phrases under a system-correction heading.",
+          "answer_refs": [
+            [
+              "source-03",
+              2670,
+              2683
+            ]
+          ],
+          "next_clarification": "The user says correction and friction are displacing the concept they need preserved.",
+          "next_refs": [
+            [
+              "source-03",
+              2687,
+              2687
+            ]
+          ],
+          "status": "Length repaired; relationship still disputed.",
+          "quotes": [
+            {
+              "ref": [
+                "source-03",
+                2669,
+                2669
+              ],
+              "text": "i just want like a concept not a novel"
+            },
+            {
+              "ref": [
+                "source-03",
+                2687,
+                2687
+              ],
+              "text": "forgetting the concept I need you to keep"
+            }
+          ]
+        },
+        {
+          "label": "Meaning",
+          "before": "The assistant responds to the complaint with a norm-to-chaos scale, retaining threat and failure examples.",
+          "before_refs": [
+            [
+              "source-03",
+              2688,
+              2704
+            ]
+          ],
+          "request": "The user explicitly says the issue is the meaning, rejects a versus framing, and describes outliers as small facts.",
+          "request_refs": [
+            [
+              "source-03",
+              2708,
+              2708
+            ]
+          ],
+          "answer": "The reply acknowledges the distinction and begins examples using sound sensitivity and hair care.",
+          "answer_refs": [
+            [
+              "source-03",
+              2709,
+              2728
+            ]
+          ],
+          "next_clarification": "The user comments on harsh judgments. They do not explicitly confirm that the requested comparison is now correct.",
+          "next_refs": [
+            [
+              "source-03",
+              2751,
+              2751
+            ]
+          ],
+          "status": "A semantic repair is attempted; completion is unconfirmed.",
+          "quotes": [
+            {
+              "ref": [
+                "source-03",
+                2708,
+                2708
+              ],
+              "text": "my words and meaning are misinterrpreted"
+            },
+            {
+              "ref": [
+                "source-03",
+                2708,
+                2708
+              ],
+              "text": "outliers are not a personality"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C06",
+      "title": "The user brings an earlier third idea back into the comparison",
+      "kind": "The question itself develops",
+      "summary": "A request about the original “backwards” idea changes which concepts need to be compared. Bringing in a third sentence is responsive to this request.",
+      "what_changed": "The comparison expands from two quoted sentences to three: resources/shortcuts, the cluster proposal, and the friction sentence.",
+      "what_stayed": "The answer retains its existing blue/red diagram and forces the three ideas into a completed engine.",
+      "outcome": "The user says the result is only a compressed version of the idea they are trying to see. Their later request for a thesaurus clarifies that the vocabulary is part of the work.",
+      "limit": "This distinguishes an evolving question from an ignored instruction. The user’s uncertainty and self-critical wording do not demonstrate a lack of intelligence or confirm the assistant’s “discovery” claim.",
+      "related_episodes": [
+        "E35",
+        "E45",
+        "E46"
+      ],
+      "steps": [
+        {
+          "label": "Recovering the earlier idea · line 2074",
+          "before": "The answer has explained a two-color comparison of the cluster and friction ideas.",
+          "before_refs": [
+            [
+              "source-03",
+              2055,
+              2073
+            ]
+          ],
+          "request": "The user asks to see how the earlier idea they thought was backwards connects.",
+          "request_refs": [
+            [
+              "source-03",
+              2074,
+              2074
+            ]
+          ],
+          "answer": "It retrieves the shortcuts/resources sentence, places it with the other two, and calls the set a perfect structural engine.",
+          "answer_refs": [
+            [
+              "source-03",
+              2075,
+              2081
+            ],
+            [
+              "source-03",
+              2115,
+              2118
+            ]
+          ],
+          "next_clarification": "The user says something is there but the presentation is a SparkNotes version; later they ask for a thesaurus for ideas.",
+          "next_refs": [
+            [
+              "source-03",
+              2122,
+              2122
+            ],
+            [
+              "source-03",
+              2160,
+              2160
+            ]
+          ],
+          "status": "Reference recovered; desired relationship is still being formed.",
+          "quotes": [
+            {
+              "ref": [
+                "source-03",
+                2074,
+                2074
+              ],
+              "text": "the other sentence about my og idea i thought was backwards"
+            },
+            {
+              "ref": [
+                "source-03",
+                2116,
+                2116
+              ],
+              "text": "Your three sentences form a perfect structural engine"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

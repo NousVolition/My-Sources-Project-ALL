@@ -8,10 +8,13 @@ Start with a section below. [What is done and what comes next →](STATUS.md)
 | --- | --- |
 | **Math & fluid experiments** | [Smooth initial field, derivation, code, and saved results](math/README.md) |
 | **Conversation patterns** | [Explore the conversation without the reply text](language/exploration/README.md) |
+| **Conversation study** | [Sources, confusion, context comparisons, and evidence checks](language/conversation-study/README.md) |
 | **Working papers** | [The two papers and their source status](papers/README.md) |
 | **Earlier work** | [Original drafts, Copilot branches, and run history](archive/README.md) |
 
 ## Current focus
+
+The [conversation study](language/conversation-study/README.md) is now a separate, source-linked collection: 53 observations, eight word paths, and six context comparisons across three supplied snapshots. Its reading pages work directly on GitHub. The original text, annotations, interactive edition, and checks are together in the folder. It remains distinct from the earlier 68-reply table below.
 
 Explore how a conversation changes over time: repeated categories, overlaps, unmarked replies, and reply length. The [new map](language/exploration/README.md) preserves the existing annotations and sequence. It is an exploratory view that can grow as more conversations are collected.
 

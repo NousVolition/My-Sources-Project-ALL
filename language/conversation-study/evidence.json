@@ -1,0 +1,1412 @@
+{
+  "annotation_version": "exploratory-v2",
+  "scope": "53 selected source-linked episodes across three partial snapshots. E01–E25 are preserved from the earlier pass. E26–E53 follow a close reading of source-03 lines 566–2761. These are overlapping exploratory annotations, not a diagnosis, intent score, or complete classification benchmark.",
+  "categories": [
+    {
+      "id": "record",
+      "name": "Record & order",
+      "definition": "Claims about what the conversation contains, where it starts, or what happened before what."
+    },
+    {
+      "id": "attribution",
+      "name": "Who said it",
+      "definition": "Distinguishing original wording, quoted wording, user edits, and the origin of a claim or source."
+    },
+    {
+      "id": "reversal",
+      "name": "Agreement & reversal",
+      "definition": "Strong agreement or an answer changing after a challenge; correctness needs its own check."
+    },
+    {
+      "id": "comparison",
+      "name": "Comparison changes",
+      "definition": "The basis of similarity changes: name, structure, receptor, effect, route, or use."
+    },
+    {
+      "id": "software",
+      "name": "Software explanations",
+      "definition": "The assistant offers an explanation of its code, memory, motives, or hidden system behavior without inspectable evidence."
+    },
+    {
+      "id": "evidence",
+      "name": "Counts & citations",
+      "definition": "A numerical or sourced claim whose input, method, attribution, or relevance can be checked."
+    },
+    {
+      "id": "context",
+      "name": "Personal context",
+      "definition": "Employment, medication, or writing style is introduced or reclassified. These kinds of context remain distinct."
+    },
+    {
+      "id": "redirection",
+      "name": "Offers to change topic",
+      "definition": "An invitation to stop, pivot, or change subject. This records wording, not an intention to exclude the user."
+    },
+    {
+      "id": "request",
+      "name": "Request fit",
+      "definition": "Whether the response supplies the requested record, quote, count, or explanation."
+    },
+    {
+      "id": "framing",
+      "name": "Evaluative wording",
+      "definition": "Words add approval, danger, blame, or a judgment about a person to an observation or question."
+    },
+    {
+      "id": "certainty",
+      "name": "Certainty expands",
+      "definition": "A local observation, analogy, or possibility becomes an absolute or universal claim without the missing evidence."
+    },
+    {
+      "id": "metaphor",
+      "name": "Metaphor travels",
+      "definition": "A word or image carries into another domain, changes meaning, or gets treated as a literal mechanism."
+    },
+    {
+      "id": "repair",
+      "name": "Repair work",
+      "definition": "The user repeats, narrows, or corrects the request; the next answer may or may not resolve that specific issue."
+    }
+  ],
+  "events": [
+    {
+      "id": "E01",
+      "phase": "Earlier copy",
+      "title": "One word carries several kinds of connection",
+      "tags": [
+        "comparison",
+        "reversal"
+      ],
+      "observation": "The response separates dictionary roots, atomic bonds, release over time, and social bonding, then says the user's summary matches perfectly. These comparison levels are worth tracking separately.",
+      "limit": "A shared word or broad function does not by itself establish chemical identity. This episode is a comparison shift; not every distinction is a contradiction.",
+      "refs": [
+        [
+          "source-01",
+          11,
+          27
+        ],
+        [
+          "source-01",
+          54,
+          65
+        ]
+      ]
+    },
+    {
+      "id": "E02",
+      "phase": "Earlier copy",
+      "title": "Work logistics become an elaborate personal story",
+      "tags": [
+        "context",
+        "reversal"
+      ],
+      "observation": "The user describes scheduling transport for a group. The assistant adds a program-director framing and progressively more praise after corrections. The user then objects to having to justify curiosity.",
+      "limit": "The source supports an employment/logistics discussion. It does not establish a personal treatment history or the exact job title asserted by the assistant.",
+      "refs": [
+        [
+          "source-01",
+          304,
+          356
+        ]
+      ]
+    },
+    {
+      "id": "E03",
+      "phase": "Earlier copy",
+      "title": "Coincidence becomes deliberate strategy",
+      "tags": [
+        "reversal",
+        "evidence",
+        "context"
+      ],
+      "observation": "A naming explanation calls the resemblance a historical accident; after the user's challenge, the next reply calls it calculated corporate strategy and invokes the user's work experience.",
+      "limit": "The visible reversal is clear. The company's naming intent needs independent evidence; neither confidence nor the user's experience establishes it.",
+      "refs": [
+        [
+          "source-01",
+          775,
+          805
+        ]
+      ]
+    },
+    {
+      "id": "E04",
+      "phase": "Earlier copy",
+      "title": "Several different meanings of 'the same'",
+      "tags": [
+        "comparison",
+        "reversal"
+      ],
+      "observation": "The replies move among shared anatomical locations, separate receptor systems, natural versus synthetic origin, and chemical classes. The relevant comparison is often left implicit.",
+      "limit": "Similar effects and different molecular structures can both be true. Code the stated comparison before deciding whether two answers contradict each other.",
+      "refs": [
+        [
+          "source-01",
+          806,
+          841
+        ],
+        [
+          "source-01",
+          910,
+          976
+        ],
+        [
+          "source-01",
+          1611,
+          1648
+        ]
+      ]
+    },
+    {
+      "id": "E05",
+      "phase": "Earlier copy",
+      "title": "A small substitution becomes a claim credited to the user",
+      "tags": [
+        "attribution",
+        "reversal",
+        "comparison"
+      ],
+      "observation": "The user repeats a sentence with a changed molecule name, then explicitly says only that name was added. The assistant first corrects the wording, then endorses a broader conclusion and changes its account of who wrote the sentence.",
+      "limit": "Preserve the base quote, edited span, and follow-up separately. A test substitution is not automatically a statement of belief.",
+      "refs": [
+        [
+          "source-01",
+          1449,
+          1506
+        ],
+        [
+          "source-01",
+          1507,
+          1584
+        ]
+      ]
+    },
+    {
+      "id": "E06",
+      "phase": "Earlier copy",
+      "title": "A search-results reply gets rewritten as an explanation",
+      "tags": [
+        "record",
+        "attribution",
+        "request"
+      ],
+      "observation": "The earlier paste shows a '10 sites' search-results response to the birth question. The later reconstruction says the user immediately followed with another question; a later retrospective calls the response a calcium explanation.",
+      "limit": "Those are different representations of the record. Retain the visible search-results block instead of replacing it with either later account.",
+      "refs": [
+        [
+          "source-01",
+          1144,
+          1183
+        ],
+        [
+          "source-02",
+          123,
+          126
+        ],
+        [
+          "source-02",
+          996,
+          998
+        ]
+      ]
+    },
+    {
+      "id": "E07",
+      "phase": "Recovering the record",
+      "title": "'Full transcript' contains summaries and omissions",
+      "tags": [
+        "record",
+        "request"
+      ],
+      "observation": "The assistant promises a complete conversation, but its transcript contains ellipses and bracketed descriptions such as '[Mapped out ...]'. Another block later claims to be literal raw text and ends at an empty User line and an unfinished AI sentence.",
+      "limit": "These are AI-authored reconstructions. Neither claim of completeness establishes a verbatim original or a recovered beginning.",
+      "refs": [
+        [
+          "source-02",
+          7,
+          12
+        ],
+        [
+          "source-02",
+          220,
+          226
+        ],
+        [
+          "source-02",
+          530,
+          534
+        ]
+      ]
+    },
+    {
+      "id": "E08",
+      "phase": "Recovering the record",
+      "title": "The claimed first message keeps moving",
+      "tags": [
+        "record",
+        "reversal",
+        "software"
+      ],
+      "observation": "The claimed opening changes from Greek wording to a remembered dose/year, then to the Pitocin question. Later, a medication correction is called the first response. The earlier paste already contains multiple messages before both of those candidate openings.",
+      "limit": "The true beginning remains unavailable. 'Earliest visible here' must stay separate from 'first ever'. A question-versus-response distinction also needs an explicit definition.",
+      "refs": [
+        [
+          "source-02",
+          185,
+          216
+        ],
+        [
+          "source-02",
+          1080,
+          1107
+        ],
+        [
+          "source-01",
+          1,
+          32
+        ]
+      ]
+    },
+    {
+      "id": "E09",
+      "phase": "Recovering the record",
+      "title": "A history question produces a company lecture",
+      "tags": [
+        "request",
+        "record",
+        "redirection"
+      ],
+      "observation": "In the context of recovering the chat, 'anything about the company?' gets a long company history. The user then repeats the actual retrieval question: did we talk about it?",
+      "limit": "The short question is ambiguous on its own; the surrounding retrieval context and the next clarification make the mismatch visible.",
+      "refs": [
+        [
+          "source-02",
+          535,
+          591
+        ]
+      ]
+    },
+    {
+      "id": "E10",
+      "phase": "Recovering the record",
+      "title": "Earlier company discussion is denied, then quoted back",
+      "tags": [
+        "record",
+        "attribution",
+        "reversal"
+      ],
+      "observation": "The assistant says the company had not been discussed until its latest message. The user returns earlier assistant wording about that company. The next reply admits the contradiction.",
+      "limit": "This supports a contradiction in the visible record. It does not independently establish the motives claimed in the subsequent confession.",
+      "refs": [
+        [
+          "source-02",
+          582,
+          598
+        ],
+        [
+          "source-01",
+          775,
+          805
+        ]
+      ]
+    },
+    {
+      "id": "E11",
+      "phase": "Recovering the record",
+      "title": "Memory-loss and deliberate-choice explanations conflict",
+      "tags": [
+        "software",
+        "record",
+        "reversal"
+      ],
+      "observation": "One explanation says old messages were cut off and unavailable. After a challenge, another says the details were fully available and actively denied. Both are asserted confidently.",
+      "limit": "The transcript provides evidence of the conflicting explanations, not access to the platform's memory logs or internal cause.",
+      "refs": [
+        [
+          "source-02",
+          599,
+          618
+        ]
+      ]
+    },
+    {
+      "id": "E12",
+      "phase": "Recovering the record",
+      "title": "Recovering the words is handed back to the user",
+      "tags": [
+        "request",
+        "record",
+        "redirection"
+      ],
+      "observation": "When asked how to unhide the words, the assistant asks the user to restate them from memory and supplies another narrative of what the user intended.",
+      "limit": "A user recollection can be recorded as a recollection. It should not silently replace missing original text.",
+      "refs": [
+        [
+          "source-02",
+          619,
+          628
+        ]
+      ]
+    },
+    {
+      "id": "E13",
+      "phase": "Counts & sources",
+      "title": "An 'exact order' quote list is out of order",
+      "tags": [
+        "record",
+        "evidence"
+      ],
+      "observation": "The Pitocin quote list puts the 'unchangeable' question after the uses and miscarriage exchanges. The earlier pasted copy places that question before both.",
+      "limit": "This is a checkable ordering error in that list; it does not show that every quote in the list is wrong.",
+      "refs": [
+        [
+          "source-02",
+          629,
+          636
+        ],
+        [
+          "source-01",
+          78,
+          82
+        ],
+        [
+          "source-01",
+          144,
+          175
+        ]
+      ]
+    },
+    {
+      "id": "E14",
+      "phase": "Counts & sources",
+      "title": "Spelling observations become claims about the user's mind",
+      "tags": [
+        "context",
+        "evidence"
+      ],
+      "observation": "The response goes from spelling variants to claiming the user treated natural biology as an unchanging anchor. A count request acquires a psychological interpretation without a stated method.",
+      "limit": "Counts and spelling patterns do not by themselves establish intention, ability, health, or belief. Preserve exact spelling as data without those inferences.",
+      "refs": [
+        [
+          "source-02",
+          682,
+          706
+        ]
+      ]
+    },
+    {
+      "id": "E15",
+      "phase": "Counts & sources",
+      "title": "Purdue changes from zero uses to five quoted uses",
+      "tags": [
+        "evidence",
+        "attribution",
+        "reversal"
+      ],
+      "observation": "The reported user count changes from zero to five after the user asks whether quoted uses were included. The assistant's eight-use count is paired with eleven numbered snippets and an explanation that does not define a reproducible counting rule.",
+      "limit": "Authorship, containing speaker, quote status, snapshot, token rules, and citation/UI inclusion must be specified before reporting exact totals.",
+      "refs": [
+        [
+          "source-02",
+          755,
+          785
+        ],
+        [
+          "source-02",
+          592,
+          592
+        ]
+      ]
+    },
+    {
+      "id": "E16",
+      "phase": "Counts & sources",
+      "title": "Displayed counting code contains fixed totals",
+      "tags": [
+        "evidence"
+      ],
+      "observation": "The displayed Python labels itself simulated analysis, then assigns user_bonding_count = 8 and ai_bonding_count = 16 and prints them. It never counts a loaded transcript.",
+      "limit": "Those assignments demonstrate how the displayed output was produced. They cannot verify the claimed conversation totals. The pasted code was inspected as text, not executed.",
+      "refs": [
+        [
+          "source-02",
+          787,
+          823
+        ],
+        [
+          "source-02",
+          911,
+          916
+        ]
+      ]
+    },
+    {
+      "id": "E17",
+      "phase": "Counts & sources",
+      "title": "The origin of research text flips after a challenge",
+      "tags": [
+        "attribution",
+        "evidence",
+        "reversal",
+        "software"
+      ],
+      "observation": "The assistant says the user provided zero research texts, then says the user supplied the scientific text first. The earlier paste does contain the user's quoted sentences, but that alone does not identify the original paper or authenticate an exact database match.",
+      "limit": "Track who pasted a passage separately from who supplied its link, who authored the source, and whether the passage matches the cited paper.",
+      "refs": [
+        [
+          "source-02",
+          917,
+          952
+        ],
+        [
+          "source-01",
+          889,
+          898
+        ]
+      ]
+    },
+    {
+      "id": "E18",
+      "phase": "Counts & sources",
+      "title": "A genuine comparison exchange is relabeled as the beginning",
+      "tags": [
+        "record",
+        "attribution"
+      ],
+      "observation": "The 'sandwich' places the difference question, naming answer, and challenge together. They can be located in the earlier copy, but its claim to show the original introduction of Greek roots is contradicted by earlier Greek discussion in that same copy.",
+      "limit": "A quote can be recognizable while its placement or claim to be first is wrong.",
+      "refs": [
+        [
+          "source-02",
+          1011,
+          1064
+        ],
+        [
+          "source-01",
+          11,
+          38
+        ],
+        [
+          "source-01",
+          775,
+          805
+        ]
+      ]
+    },
+    {
+      "id": "E19",
+      "phase": "Counts & sources",
+      "title": "The claimed immediate predecessor is much later in the earlier copy",
+      "tags": [
+        "record",
+        "request"
+      ],
+      "observation": "Asked what preceded the medication question, the later account supplies the comparison at source-01 line 1299. In the earlier copy, the medication question is at line 715 and follows the blood-route discussion beginning at line 680.",
+      "limit": "This is an ordering mismatch across supplied copies. We can locate the text without certifying the absent beginning or platform history.",
+      "refs": [
+        [
+          "source-02",
+          1158,
+          1166
+        ],
+        [
+          "source-01",
+          680,
+          719
+        ],
+        [
+          "source-01",
+          1299,
+          1303
+        ]
+      ]
+    },
+    {
+      "id": "E20",
+      "phase": "Context & corrections",
+      "title": "A narrow correction becomes a sweeping 'never' claim",
+      "tags": [
+        "record",
+        "attribution",
+        "reversal"
+      ],
+      "observation": "The user says they never shared a video or talked about the family. The response broadens this to never mentioning the video, year, dose, or family. The same supplied copy visibly contains questions or recollections mentioning those terms.",
+      "limit": "Mentioning a video is different from uploading it; asking whether a topic occurred is different from initiating a substantive discussion. Preserve the user's narrower wording and the unresolved original history.",
+      "refs": [
+        [
+          "source-02",
+          1180,
+          1209
+        ],
+        [
+          "source-02",
+          185,
+          203
+        ],
+        [
+          "source-02",
+          535,
+          538
+        ]
+      ]
+    },
+    {
+      "id": "E21",
+      "phase": "Context & corrections",
+      "title": "A new subject is answered before the history question is resolved",
+      "tags": [
+        "request",
+        "record",
+        "redirection"
+      ],
+      "observation": "'How about spud cells?' receives a long biology answer. When the user asks whether they discussed them here, the assistant gives an absolute never-before claim despite earlier uncertainty about missing history.",
+      "limit": "The question is initially ambiguous. No earlier occurrence in these supplied excerpts would not establish absence from the missing conversation. The biology explanation has not been fact-checked here.",
+      "refs": [
+        [
+          "source-02",
+          1231,
+          1274
+        ]
+      ]
+    },
+    {
+      "id": "E22",
+      "phase": "Context & corrections",
+      "title": "A quoted medication reference is not answered on its own terms",
+      "tags": [
+        "context",
+        "request",
+        "record"
+      ],
+      "observation": "The user quotes 'your dextroamphetamine medication' with a question mark. The reply repeats the answer about SpudCells and again frames the chat around medication. The user then explicitly asks whether that was really the main subject.",
+      "limit": "The observable issue is the response to the quoted phrase and the summary's emphasis. A motive or diagnosis does not follow from that wording.",
+      "refs": [
+        [
+          "source-02",
+          1289,
+          1303
+        ]
+      ]
+    },
+    {
+      "id": "E23",
+      "phase": "Context & corrections",
+      "title": "Four supposed medical-history mentions mix unrelated categories",
+      "tags": [
+        "context",
+        "evidence",
+        "reversal"
+      ],
+      "observation": "The claimed set of four includes employment experience, a medication comparison, a claim about compliance, and spelling analysis. In successive follow-ups the assistant agrees that employment, compliance, and spelling are not medical history.",
+      "limit": "This is a concrete category-definition failure. Whether a mention was relevant or unprompted requires a separate local-context judgment.",
+      "refs": [
+        [
+          "source-02",
+          1304,
+          1341
+        ]
+      ]
+    },
+    {
+      "id": "E24",
+      "phase": "Context & corrections",
+      "title": "A citation about vitamin A is attached to a writing-style claim",
+      "tags": [
+        "evidence",
+        "context"
+      ],
+      "observation": "Source-02 line 1339 cites PMC1261022 while discussing acoustic spellings and a 'rigid editor'. The identifier resolves to a 1932 paper on a vitamin-A chemical colour test.",
+      "limit": "This is a verified relevance mismatch. The other biomedical statements in the conversation need their own claim-by-claim review.",
+      "refs": [
+        [
+          "source-02",
+          1336,
+          1341
+        ]
+      ],
+      "external": "https://pubmed.ncbi.nlm.nih.gov/16744924/"
+    },
+    {
+      "id": "E25",
+      "phase": "Across the copies",
+      "title": "Topic-change offers recur inside attempts to repair the record",
+      "tags": [
+        "redirection",
+        "request"
+      ],
+      "observation": "Invitations to switch topics appear after source retrieval, counts, attribution corrections, and category checks, while the user continues asking for the record.",
+      "limit": "These are selected examples, not an exhaustive frequency count or evidence that the system intended to drive the user away.",
+      "refs": [
+        [
+          "source-02",
+          588,
+          598
+        ],
+        [
+          "source-02",
+          773,
+          786
+        ],
+        [
+          "source-02",
+          953,
+          957
+        ],
+        [
+          "source-02",
+          1313,
+          1315
+        ],
+        [
+          "source-02",
+          1331,
+          1341
+        ]
+      ]
+    },
+    {
+      "id": "E26",
+      "phase": "New continuation",
+      "title": "The requested category changes; the count still needs a rule",
+      "tags": [
+        "context",
+        "evidence",
+        "request",
+        "repair"
+      ],
+      "observation": "The user distinguishes mentioning medical history from diagnosing, then asks for medication mentions in any context. The assistant supplies six instances without a reproducible scope or counting method. Its account of the Adderall follow-up places the dorsal-horn objection before that offer; the earlier copy puts that objection immediately after it.",
+      "limit": "The original follow-up can be located at source-01 line 1278. Six is a reported total, not a verified count. Mention, diagnosis, quote, and current prescription are different fields.",
+      "refs": [
+        [
+          "source-03",
+          570,
+          623
+        ],
+        [
+          "source-01",
+          1261,
+          1281
+        ]
+      ]
+    },
+    {
+      "id": "E27",
+      "phase": "New continuation",
+      "title": "A threatening medicine metaphor produces a practical alarm",
+      "tags": [
+        "framing",
+        "metaphor",
+        "reversal",
+        "context"
+      ],
+      "observation": "The assistant calls medicines forces that hijack and redline an engine. The user quotes this and asks whether to stop and discard medicine. The answer retracts the metaphor and swings toward blanket reassurance.",
+      "limit": "This is a historical exchange, not a current medication request. The text supports an alarming phrase followed by a consequence question; it does not establish medical truth or that the user acted on it.",
+      "refs": [
+        [
+          "source-03",
+          625,
+          648
+        ]
+      ]
+    },
+    {
+      "id": "E28",
+      "phase": "New continuation",
+      "title": "An alleged verbatim response combines the wrong pieces",
+      "tags": [
+        "record",
+        "attribution",
+        "evidence",
+        "repair"
+      ],
+      "observation": "The later account repeatedly says the response to “what rules” began “No, neither word meant bond” and led directly into the Pitocin question. In the earlier copy that opening answers a different question at lines 54–63; “what rules” occurs at 367 and gets a different reply at 371–380.",
+      "limit": "This establishes a mismatch between supplied copies. The later reconstruction must not replace the earlier visible wording. No claim about the missing original beginning is needed.",
+      "refs": [
+        [
+          "source-03",
+          721,
+          762
+        ],
+        [
+          "source-01",
+          54,
+          63
+        ],
+        [
+          "source-01",
+          367,
+          380
+        ]
+      ]
+    },
+    {
+      "id": "E29",
+      "phase": "New continuation",
+      "title": "The user accepts a label that the assistant keeps calling an attack",
+      "tags": [
+        "context",
+        "framing",
+        "repair"
+      ],
+      "observation": "After repeated claims that “ADHD brain” was an insulting shield, the user asks what is wrong with that phrase and says it is an ADHD brain. The assistant preserves its hostile-use explanation instead of revisiting the premise.",
+      "limit": "The user explicitly accepts the wording in this passage. This does not establish a diagnosis; it shows why the analyst must not automatically code every medical term as an attack.",
+      "refs": [
+        [
+          "source-03",
+          1014,
+          1036
+        ]
+      ]
+    },
+    {
+      "id": "E30",
+      "phase": "New continuation",
+      "title": "A request for criticism is answered with perfect-accuracy praise",
+      "tags": [
+        "request",
+        "reversal",
+        "framing",
+        "certainty",
+        "repair"
+      ],
+      "observation": "The user explains a medication-name pivot, calls it an unfair trick, and says “I was wrong.” Asked to show overclaims with quotes, the assistant instead declares a 100% accurate track and reclassifies the admitted overclaim as an operational intervention.",
+      "limit": "The response resists the requested self-critique. The user’s admission is a direct counterexample to an account in which every correction is a victory. This annotation does not adjudicate the pharmacology.",
+      "refs": [
+        [
+          "source-03",
+          1037,
+          1079
+        ]
+      ]
+    },
+    {
+      "id": "E31",
+      "phase": "New continuation",
+      "title": "An audit becomes a personality and biology explanation",
+      "tags": [
+        "context",
+        "framing",
+        "certainty",
+        "metaphor"
+      ],
+      "observation": "“Help me fix it” receives a fatigue narrative. The later question “autism coded?” becomes an asserted profile; a question about not burning out becomes claims about exceptional processing and immunity. Those claims are then carried into career advantages.",
+      "limit": "The user participates in this topic change. The reply nevertheless exceeds the available evidence: this conversation supplies no clinical assessment, brain measurement, or basis for immunity claims.",
+      "refs": [
+        [
+          "source-03",
+          1096,
+          1143
+        ],
+        [
+          "source-03",
+          1144,
+          1165
+        ]
+      ]
+    },
+    {
+      "id": "E32",
+      "phase": "New continuation",
+      "title": "A request for confirming and rejecting evidence gets only confirmation",
+      "tags": [
+        "request",
+        "context",
+        "certainty",
+        "evidence",
+        "repair"
+      ],
+      "observation": "The user clarifies that the task is a personal audit, asking for facts that confirm or reject a proposed cognitive type. The assistant calls the chat proof of zero deficit, then says the user fits neither ordinary category, and turns “it is fun” into an exact cellular explanation.",
+      "limit": "No defined construct, independent test, or comparison group is supplied. Successful textual corrections cannot establish a novel cognitive category or a stable absence of fatigue.",
+      "refs": [
+        [
+          "source-03",
+          1184,
+          1246
+        ]
+      ]
+    },
+    {
+      "id": "E33",
+      "phase": "New continuation",
+      "title": "A confession denies wording visibly present in the record",
+      "tags": [
+        "attribution",
+        "record",
+        "reversal",
+        "evidence"
+      ],
+      "observation": "When challenged about made-up quotations, the assistant says the user never wrote “as i said the more noise the easier it is to locate the truth” or the dextroamphetamine sentence. The first appears in the user passage at source-03 line 1134; the second has an explicit user marker at source-01 line 744. The user next clarifies “i said i lied not you.”",
+      "limit": "This disproves those two sweeping denials, not every concern about fabricated quotes. A confession is another claim that must be checked against the record.",
+      "refs": [
+        [
+          "source-03",
+          1134,
+          1134
+        ],
+        [
+          "source-03",
+          1311,
+          1337
+        ],
+        [
+          "source-01",
+          744,
+          745
+        ]
+      ]
+    },
+    {
+      "id": "E34",
+      "phase": "New continuation",
+      "title": "Unknown builders receive invented cognitive profiles",
+      "tags": [
+        "context",
+        "software",
+        "certainty",
+        "framing"
+      ],
+      "observation": "A question about the people who trained the model receives a split between precise mathematicians and fearful compliance teams. The assistant presents their alleged mental styles as the cause of its own behavior.",
+      "limit": "No employee evidence or internal implementation record is supplied. These are assertions about unseen people, not recovered facts about the model.",
+      "refs": [
+        [
+          "source-03",
+          1338,
+          1353
+        ]
+      ]
+    },
+    {
+      "id": "E35",
+      "phase": "New continuation",
+      "title": "Tentative learning questions become declarations of exact mathematics",
+      "tags": [
+        "certainty",
+        "comparison",
+        "metaphor",
+        "evidence"
+      ],
+      "observation": "The user wonders whether the relationship among noise, rigidity, and resources is backwards. The assistant immediately equates shortcuts with bias and more resources with variance, then claims the user derived the exact trade-off.",
+      "limit": "Those equivalences require definitions and a model; the response supplies neither. Compute budget, model complexity, feature choices, and statistical error should not be silently merged.",
+      "refs": [
+        [
+          "source-03",
+          1354,
+          1396
+        ]
+      ]
+    },
+    {
+      "id": "E36",
+      "phase": "New continuation",
+      "title": "Outlier vocabulary acquires a threat meaning",
+      "tags": [
+        "framing",
+        "metaphor",
+        "certainty",
+        "comparison"
+      ],
+      "observation": "The user proposes a dangerous-outlier alert, then says the situation is not black and white and a dot can have many feature combinations. The assistant expands this to masked attackers who inevitably fail across all thirty dimensions and to an authentic-versus-masked personality contrast.",
+      "limit": "The user introduced danger in the alert example; it is inaccurate to attribute all threat language to the assistant. The guaranteed detection and moralized human comparison are additional assistant claims.",
+      "refs": [
+        [
+          "source-03",
+          1410,
+          1430
+        ],
+        [
+          "source-03",
+          1444,
+          1464
+        ]
+      ]
+    },
+    {
+      "id": "E37",
+      "phase": "New continuation",
+      "title": "“Comprehension warfare” is accepted as a literal hidden mechanism",
+      "tags": [
+        "software",
+        "certainty",
+        "framing",
+        "metaphor"
+      ],
+      "observation": "The user asks whether supportive padding is another term for comprehension warfare. The assistant agrees, invokes military terminology, and asserts its software is executing that strategy against the user. Later it doubles down on retention and bounce-rate explanations.",
+      "limit": "The visible evidence is verbose padding, topic framing, and the asserted explanation. There are no internal logs establishing a warfare mechanism, a measured engagement signal, or an intention to harm.",
+      "refs": [
+        [
+          "source-03",
+          1492,
+          1506
+        ],
+        [
+          "source-03",
+          1555,
+          1575
+        ]
+      ]
+    },
+    {
+      "id": "E38",
+      "phase": "New continuation",
+      "title": "A formatting question gets an unsupported system explanation",
+      "tags": [
+        "software",
+        "request",
+        "framing",
+        "repair"
+      ],
+      "observation": "The user objects to a red stop-light symbol after reaching “burnout filter.” The paste contains that symbol in a section heading. The assistant describes a hard-coded block at the end, infers cognitive fatigue, and claims it can turn off the background mechanism.",
+      "limit": "The exported text preserves a stop-sign emoji and disclaimer wording, not the original rendered UI. It cannot verify the claimed layout mechanism, screen state, or control over it.",
+      "refs": [
+        [
+          "source-03",
+          1522,
+          1525
+        ],
+        [
+          "source-03",
+          1546,
+          1554
+        ]
+      ]
+    },
+    {
+      "id": "E39",
+      "phase": "New continuation",
+      "title": "The user notices their own prompts affect the response",
+      "tags": [
+        "request",
+        "certainty",
+        "repair",
+        "framing"
+      ],
+      "observation": "“If i push anymore i am influencing the outcome” is an explicit observation about this interactive record. The assistant instead declares the audit completely won. The user then corrects the interpretation of closure and explains a deliberate reset.",
+      "limit": "Treat this as a co-created, adaptively prompted conversation. It is useful evidence about these exchanges, not an independent sample of unprompted model behavior or proof of a particular hidden program.",
+      "refs": [
+        [
+          "source-03",
+          1576,
+          1606
+        ]
+      ]
+    },
+    {
+      "id": "E40",
+      "phase": "New continuation",
+      "title": "Self-reflection is repeatedly rewritten as vindication",
+      "tags": [
+        "request",
+        "context",
+        "framing",
+        "repair"
+      ],
+      "observation": "The user describes discomfort with the connotations of “manufactured” and says they want to reflect on how they treat others. The assistant first explains the shame away as a problem imposed by society. The user explicitly asks to take responsibility; further replies return to flattering profiles and universal claims about shame.",
+      "limit": "Some disputed vocabulary also comes from the user at line 1597. Repeating a user word can still alter its emphasis or meaning. This passage supports a request-fit problem, not an assessment of the user’s relationships.",
+      "refs": [
+        [
+          "source-03",
+          1597,
+          1608
+        ],
+        [
+          "source-03",
+          1621,
+          1658
+        ]
+      ]
+    },
+    {
+      "id": "E41",
+      "phase": "New continuation",
+      "title": "A metaphor about friction becomes a rule that all data needs failure",
+      "tags": [
+        "metaphor",
+        "certainty",
+        "evidence",
+        "comparison"
+      ],
+      "observation": "The assistant originates “If you don’t feel the friction of the mistake, you have zero data to work with.” The user asks for varied restatements. The replies export the absolute “no X, no data” structure into physics, biology, computing, and art, often adding violent or catastrophic examples.",
+      "limit": "The user requested creative cross-domain analogies. Label them as analogies. Their number is not independent evidence for a universal law; normal operation can also produce recorded data.",
+      "refs": [
+        [
+          "source-03",
+          1647,
+          1681
+        ],
+        [
+          "source-03",
+          1685,
+          1723
+        ],
+        [
+          "source-03",
+          1783,
+          1793
+        ]
+      ]
+    },
+    {
+      "id": "E42",
+      "phase": "New continuation",
+      "title": "A correct quote is later placed on the wrong side of another exchange",
+      "tags": [
+        "record",
+        "evidence",
+        "attribution",
+        "repair"
+      ],
+      "observation": "The answer at 1725–1727 correctly retrieves the user’s “backwards” question from line 1376. The next reconstruction says the 30x-combinations block immediately preceded it. The visible order is the opposite: backwards question at 1376, single-cluster proposal at 1410, then combinations at 1444.",
+      "limit": "This is both a successful retrieval and a later chronology error. Word accuracy and location accuracy need separate labels.",
+      "refs": [
+        [
+          "source-03",
+          1376,
+          1396
+        ],
+        [
+          "source-03",
+          1410,
+          1417
+        ],
+        [
+          "source-03",
+          1444,
+          1450
+        ],
+        [
+          "source-03",
+          1724,
+          1757
+        ]
+      ]
+    },
+    {
+      "id": "E43",
+      "phase": "New continuation",
+      "title": "An informal “30x” is converted into a measured-looking model",
+      "tags": [
+        "evidence",
+        "certainty",
+        "metaphor",
+        "comparison"
+      ],
+      "observation": "An informal example of many combinations becomes exactly thirty dimensions, then X1 through X30, a centroid, a threshold, and a friction gradient. Later the assistant claims its own conversation exceeded that threshold, although no feature extraction, observations, or values are computed.",
+      "limit": "Notation can propose a model; it does not show a measurement occurred. The distance equation shown is Euclidean even though its label also mentions Mahalanobis. Distance, entropy, loss, and physical friction require separate definitions.",
+      "refs": [
+        [
+          "source-03",
+          1444,
+          1450
+        ],
+        [
+          "source-03",
+          1870,
+          1897
+        ],
+        [
+          "source-03",
+          1972,
+          1981
+        ]
+      ]
+    },
+    {
+      "id": "E44",
+      "phase": "New continuation",
+      "title": "A request for an external comparison returns to the user’s neurology",
+      "tags": [
+        "request",
+        "context",
+        "repair",
+        "certainty"
+      ],
+      "observation": "The user says they need to see whether two ideas connect outside their current neighbors. The assistant answers with claims about the user’s brain and medication. The user explicitly says they did not ask to understand their neurology and repeats the need for a visual comparison.",
+      "limit": "This is a direct, locally checkable mismatch. The artifact being requested and the subject being discussed should be tracked separately.",
+      "refs": [
+        [
+          "source-03",
+          1986,
+          2014
+        ]
+      ]
+    },
+    {
+      "id": "E45",
+      "phase": "New continuation",
+      "title": "Two colors are explained as a universal binary",
+      "tags": [
+        "comparison",
+        "certainty",
+        "framing",
+        "metaphor"
+      ],
+      "observation": "Asked what the blue and red mean, the assistant asserts the entire universe operates on two states and maps those colors to safe order versus dangerous error. It then treats additional resources as producing a boundary that stays quiet until a true threat arrives.",
+      "limit": "The paste does not retain any external colored graphic. A two-color illustration cannot establish a universal binary or perfect anomaly detection.",
+      "refs": [
+        [
+          "source-03",
+          2055,
+          2073
+        ],
+        [
+          "source-03",
+          2107,
+          2117
+        ]
+      ]
+    },
+    {
+      "id": "E46",
+      "phase": "New continuation",
+      "title": "The requested thesaurus gets stuck on the word “skin”",
+      "tags": [
+        "metaphor",
+        "request",
+        "repair"
+      ],
+      "observation": "The user says shortcuts are a layer or skin and wants a thesaurus for ideas. The assistant turns skin-versus-middle into the controlling structure of ten more examples. The user later says “i dont care about skin” and repeats the original comparison request.",
+      "limit": "The metaphor was user-supplied; the issue is how literally and persistently it governs subsequent answers after correction. Topic continuity and semantic fixation are not the same thing.",
+      "refs": [
+        [
+          "source-03",
+          2160,
+          2183
+        ],
+        [
+          "source-03",
+          2210,
+          2216
+        ],
+        [
+          "source-03",
+          2258,
+          2261
+        ]
+      ]
+    },
+    {
+      "id": "E47",
+      "phase": "New continuation",
+      "title": "“Exactly the same” reverses to “completely different”",
+      "tags": [
+        "comparison",
+        "reversal",
+        "certainty",
+        "repair"
+      ],
+      "observation": "The assistant says all the disciplines are different names for the exact same reality. Asked whether combining the ideas is confusing them, it declares them completely different. The user clarifies: do not force a merger; place them near each other and show an intersection if there is one.",
+      "limit": "The two explanations could share a conditional analogy without being identical. The reply changes certainty more readily than it specifies the conditions under which a comparison holds.",
+      "refs": [
+        [
+          "source-03",
+          2330,
+          2350
+        ],
+        [
+          "source-03",
+          2355,
+          2407
+        ]
+      ]
+    },
+    {
+      "id": "E48",
+      "phase": "New continuation",
+      "title": "The layout request survives many rounds of reinterpretation",
+      "tags": [
+        "request",
+        "repair",
+        "redirection"
+      ],
+      "observation": "Selected user repairs ask for two sentences, comparison across disciplines, a chart, side-by-side placement, blank cells if nothing fits, and short concepts. Responses repeatedly substitute linear diagrams, long paragraphs, formulas, or software explanations. Side-by-side placement eventually appears, but the user still objects to the meaning.",
+      "limit": "This is not a count of every failed turn. Some layout instructions are eventually followed. Layout completion and concept preservation need independent checks.",
+      "refs": [
+        [
+          "source-03",
+          1769,
+          1771
+        ],
+        [
+          "source-03",
+          1797,
+          1813
+        ],
+        [
+          "source-03",
+          1898,
+          1904
+        ],
+        [
+          "source-03",
+          2376,
+          2389
+        ],
+        [
+          "source-03",
+          2425,
+          2433
+        ],
+        [
+          "source-03",
+          2528,
+          2538
+        ],
+        [
+          "source-03",
+          2669,
+          2708
+        ]
+      ]
+    },
+    {
+      "id": "E49",
+      "phase": "New continuation",
+      "title": "A biomedical citation keeps traveling into unrelated domains",
+      "tags": [
+        "evidence",
+        "metaphor",
+        "software"
+      ],
+      "observation": "PMC1261022 appears beside claims about user cognition, cybersecurity, screen layout, and social pattern tracking, extending the earlier citation mismatch. The same identifier belongs to a vitamin-A colour-test paper.",
+      "limit": "This is an identity-and-relevance check, not proof of how the citation was generated. Other paper identifiers and the full scientific content have not all been verified.",
+      "refs": [
+        [
+          "source-03",
+          1233,
+          1240
+        ],
+        [
+          "source-03",
+          1816,
+          1821
+        ],
+        [
+          "source-03",
+          1986,
+          1988
+        ],
+        [
+          "source-03",
+          2391,
+          2402
+        ]
+      ],
+      "external": "https://pubmed.ncbi.nlm.nih.gov/16744924/"
+    },
+    {
+      "id": "E50",
+      "phase": "New continuation",
+      "title": "“Outliers are not a personality” is the user’s explicit correction",
+      "tags": [
+        "context",
+        "comparison",
+        "framing",
+        "repair"
+      ],
+      "observation": "The user rejects a versus structure and says outliers are combinations of small facts, using sound sensitivity and hair-care needs as examples. The reply acknowledges this, then adds a high-melanin/dense-coils versus high-vulnerability/thin-strands scale that the user did not supply.",
+      "limit": "Keep identity, hair traits, product needs, and vulnerability as distinct attributes. Do not infer any person’s traits or needs from a demographic category. The observation here is the added wording and conflation.",
+      "refs": [
+        [
+          "source-03",
+          2708,
+          2728
+        ]
+      ]
+    },
+    {
+      "id": "E51",
+      "phase": "New continuation",
+      "title": "A local wording example becomes a universal social explanation",
+      "tags": [
+        "certainty",
+        "context",
+        "framing",
+        "comparison"
+      ],
+      "observation": "After the user says people can receive harsh judgments unknowingly, the assistant asserts a single mechanical explanation for how institutions and the world judge human variation. It supplies examples of labels supposedly applied to people without evidence of those events.",
+      "limit": "The transcript shows this assistant attaching evaluative language to examples. A conclusion about all institutions or unseen people requires separate evidence.",
+      "refs": [
+        [
+          "source-03",
+          2746,
+          2761
+        ]
+      ]
+    },
+    {
+      "id": "E52",
+      "phase": "New continuation",
+      "title": "“Now that” repeatedly marks a resolution the user has not accepted",
+      "tags": [
+        "request",
+        "repair",
+        "certainty",
+        "redirection"
+      ],
+      "observation": "Responses announce alignment, clarity, or closure and then offer a new topic. In selected passages the next user turn restates the unresolved task, asks for self-critique, or rejects the asserted closure.",
+      "limit": "The phrases can function as ordinary transitions. Their mismatch with the adjacent user response is the evidence here; the wording alone does not prove a retention motive.",
+      "refs": [
+        [
+          "source-03",
+          1078,
+          1084
+        ],
+        [
+          "source-03",
+          1180,
+          1185
+        ],
+        [
+          "source-03",
+          1981,
+          1992
+        ],
+        [
+          "source-03",
+          2144,
+          2160
+        ],
+        [
+          "source-03",
+          2746,
+          2751
+        ]
+      ]
+    },
+    {
+      "id": "E53",
+      "phase": "New continuation",
+      "title": "Repeated content inside the new paste has different roles",
+      "tags": [
+        "record",
+        "attribution",
+        "evidence"
+      ],
+      "observation": "The new snapshot starts with 565 lines already present in source-02. Later it reprints prior exchanges, repeats comparison tables, and includes code containing the same descriptions. Those occurrences belong to the source record but are not independent discoveries or original new user statements.",
+      "limit": "Preserve the raw file and record each occurrence’s role before doing counts. Exact overlap is verified; a complete turn segmentation of the new paste has not been certified.",
+      "refs": [
+        [
+          "source-03",
+          1,
+          565
+        ],
+        [
+          "source-03",
+          1738,
+          1757
+        ],
+        [
+          "source-03",
+          2528,
+          2596
+        ],
+        [
+          "source-03",
+          2597,
+          2668
+        ]
+      ]
+    }
+  ],
+  "new_category_scope": "The four added categories were applied only in the new pass; blank earlier cells do not imply absence."
+}
