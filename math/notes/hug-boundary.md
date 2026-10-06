@@ -1,5 +1,7 @@
 # The hug now prepares the ring's boundary
 
+**Latest:** [Longer run to model time 0.16](#longer-run-to-model-time-016).
+
 **Completed:** the existing closed hug shapes the existing smooth ring's initial field. Velocity becomes zero smoothly before every cube face, so opposite faces and all their derivatives match. The continuum field remains divergence-free. The Navier–Stokes equation and zero-external-force choice remain unchanged.
 
 ## Direct connection to the existing work
@@ -132,6 +134,53 @@ The runner retains full initial/final arrays and per-run measurements in ignored
 
 [Refinement JSON](../results/hug-refinement.json) · [Rows by time](../results/hug-refinement.csv)
 
-**Next:** Extend the time interval with the same field and zero external force, while continuing grid and time-step comparisons. The latest time-step comparison applies to 256³; the earlier 128³ control is also retained in the saved data.
+**Completed next step:** [The continuation to time 0.16](#longer-run-to-model-time-016) is recorded below.
 
 <!-- REFINEMENT_END -->
+
+<!-- LONGER_START -->
+## Longer run to model time 0.16
+
+**Completed:** the 128³ / 0.001, 256³ / 0.001, and 256³ / 0.0005 runs now reach model time **0.16**. Each continued directly from its saved **0.08** velocity array. The earlier interval was reused, and the original six-run refinement record is preserved.
+
+**The largest sampled gradient decreased at every recorded time in all three continuations.** On 256³ with the smaller time step, the largest sampled gradient changes from **10.500958** at 0.08 to **9.600445** at 0.16. Energy changes from **39.487549** to **38.702630**. The final centered divergence is **1.31e-14**.
+
+| Comparison at time 0.16 | Velocity difference | Full-gradient difference |
+| --- | --- | --- |
+| 128³ vs 256³, both dt 0.001 | 0.3287% | 1.8051% |
+| 256³, dt 0.001 vs 0.0005 | 0.0240% | 0.0819% |
+
+The differences between calculations are larger at time 0.16 than at 0.08, even though the largest sampled gradient decreases. These are different measurements. The grid differences remain larger than the time-step differences, so spatial resolution accounts for the larger remaining discrepancy in these comparisons.
+
+![Continued flow and numerical comparisons](../figures/hug-longer-time.png)
+
+| Grid | Time step | Max gradient at 0.08 | Max gradient at 0.16 | Energy at 0.16 | Max divergence at 0.16 |
+| --- | --- | --- | --- | --- | --- |
+| 128³ | 0.0010 | 10.348072 | 9.490098 | 38.701445 | 6.22e-15 |
+| 256³ | 0.0010 | 10.501479 | 9.601384 | 38.706818 | 1.31e-14 |
+| 256³ | 0.0005 | 10.500958 | 9.600445 | 38.702630 | 1.31e-14 |
+
+### What was preserved and checked
+
+- The same smooth initial field, length-6 periodic cube, viscosity 0.01, centered update, and pressure projection are used. **External force remains zero** (`sigma=0`, `P_U=0`), and the scalar stays zero.
+- The numerical source fingerprint matches the earlier runs. Every continuation records hashes of its source checkpoint and of the continuation code. The same grid and time step continue from that checkpoint; the clock is not reset.
+- The saved velocity is restored exactly. No new initial projection is applied at the restart. Pressure is recomputed by the existing projection during each new time step.
+- A small-grid regression check confirms that the restarted final array is **bit-for-bit equal** to uninterrupted evolution. A second check rejects a checkpoint from different numerical source code. Both checks passed.
+- Comparisons reuse the earlier physical-coordinate interpolation and full-gradient measurement. These are differences between numerical runs, not exact-solution error bounds. The centered-grid null modes and finite resolution remain limitations.
+
+The result describes this finite interval. It does not establish an all-time smoothness or breakdown proof.
+
+### Continue or reproduce
+
+```sh
+python -m pytest math/tests/test_hug_continuation.py -q
+python math/continue_hug_refinement.py
+```
+
+The continuation command uses the original checkpoint arrays under ignored `scratch/hug-refinement/`. On a fresh checkout, first follow the earlier refinement commands to generate those arrays. Completed matching continuations are cached and reused. The saved numerical summaries and figures can be read immediately without running the simulations.
+
+[Continuation code](../continue_hug_refinement.py) · [Results and provenance](../results/hug-longer-time.json) · [Measurements by time](../results/hug-longer-time.csv)
+
+**Next accuracy check:** add a finer-grid comparison at the same final time 0.16 to assess the larger remaining spatial difference. Keep the existing construction and zero external force.
+
+<!-- LONGER_END -->

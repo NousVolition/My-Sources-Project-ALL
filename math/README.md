@@ -9,7 +9,7 @@
 3. **[Review of the original framework](notes/math-review.md)** — mathematical claims still requiring work.
 4. **[Norm and Entropy: two mirrored halves](notes/norm-entropy-mirror.md)** — paired samples, K-means before and after alignment, and the separate boundary check.
 5. **[A soft envelope: hug, imprint, and pressure](notes/soft-envelope.md)** — small motion and memory prototypes, with explicit opening rules.
-6. **[The hug closes the ring's boundary](notes/hug-boundary.md)** — the actual closed hug shapes the maintained ring's stream function, giving a smooth, divergence-free start with matching cube faces. [Finer-grid evolution](notes/hug-boundary.md#finer-grid-evolution-check) follows the same field through a short unforced run.
+6. **[The hug closes the ring's boundary](notes/hug-boundary.md)** — the actual closed hug shapes the maintained ring's stream function, giving a smooth, divergence-free start with matching cube faces. [Finer-grid evolution](notes/hug-boundary.md#finer-grid-evolution-check) follows the same field through a short unforced run; [the longer interval](notes/hug-boundary.md#longer-run-to-model-time-016) continues three saved states to time 0.16.
 7. **[Separate trigonometric illustration](notes/hidden-flow-evolution.md)** — assistant-chosen fields with an analytic reduction and refined numerical runs; these do not evolve the project's ring field or establish the proposed conversation-to-fluid mapping.
 
 ![Original and corrected ring profiles](figures/smooth-initial-profile.png)
@@ -33,6 +33,7 @@ The editable derivation is [smooth-initial-field.tex](notes/smooth-initial-field
 | [hugged_ring.py](hugged_ring.py) | The existing closed hug applied to the existing smooth ring through its stream function; used by `box_experiment.py --profile hug` |
 | [hug_refinement.py](hug_refinement.py) | Grid and time-step comparisons of the same hugged ring, using the existing cube stencils; caches completed runs |
 | [extend_hug_refinement.py](extend_hug_refinement.py) | Adds the 128³-to-256³ comparison; `--half-step` adds the 256³ time-step control while preserving completed runs |
+| [continue_hug_refinement.py](continue_hug_refinement.py) | Continues the saved 128³ and 256³ states to time 0.16, preserving the original step sizes and zero force; checks restart identity |
 | [hidden_flow_experiment.py](hidden_flow_experiment.py) | Unforced periodic Fourier evolution for A/B/C and the three-dimensional continuation |
 | [tests/](tests/) | Consolidated checks from the repositories and this review |
 
