@@ -15,6 +15,18 @@ Start with a section below. Each study connects its questions to the available s
 | **Working papers** | [The two papers and their source status](https://github.com/NousVolition/My-Sources-Project-ALL/tree/copilot/put-stokes-start-on-cube/papers) |
 | **Project progress** | [What is finished and what comes next](https://github.com/NousVolition/My-Sources-Project-ALL/blob/copilot/put-stokes-start-on-cube/STATUS.md) |
 
+## Latest math: the hug-shaped ring
+
+**[Read the construction, charts, and completed results](https://github.com/NousVolition/My-Sources-Project-ALL/blob/copilot/put-stokes-start-on-cube/math/notes/hug-boundary.md)** · [Code and tests](https://github.com/NousVolition/My-Sources-Project-ALL/blob/copilot/put-stokes-start-on-cube/math/README.md)
+
+The closed hug shapes the maintained smooth ring's starting field. Six saved runs compare grids through **256³**, with half-time-step checks on **128³ and 256³**, over the same short time interval.
+
+- Finest grid comparison: **0.23% velocity difference** and **1.75% gradient difference**.
+- Halving the time step on the 256³ grid: **0.0140% velocity difference**, **0.0582% gradient difference**.
+- **Zero external force. All 146 repository tests passed.**
+
+The figures, measured data, source code, and reproducible commands are available from the reading page. These are finite-time numerical comparisons, not a proof of global smoothness or breakdown.
+
 ## Latest study: following a conversation
 
 The new [conversation study](language/conversation-study/README.md) follows **request → answer → correction → next answer**, with 53 selected observations, eight word paths, and six comparisons of prior context. Its category view makes patterns visible before returning to the wording.
@@ -40,3 +52,4 @@ For the interactive view, open `language/conversation-study/index.html` from the
 The conversation study is available here on the main branch. The links to math, earlier language work, papers, and progress open the organized working version while [the broader reorganization](https://github.com/NousVolition/My-Sources-Project-ALL/pull/1) remains under review. They can all be read without using the pull-request interface.
 
 [Nous-Volition](https://github.com/NousVolition/Nous-Volition) holds the original stream-function report. This repository brings the sources, implementations, and studies together. The [consolidation record](https://github.com/NousVolition/My-Sources-Project-ALL/blob/copilot/put-stokes-start-on-cube/archive/CONSOLIDATION.md) traces earlier work so completed pieces can be reused.
+
