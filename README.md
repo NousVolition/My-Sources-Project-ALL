@@ -17,15 +17,15 @@ Start with a section below. Each study connects its questions to the available s
 
 ## Latest math: the hug-shaped ring
 
-**[Read the construction, charts, and completed results](https://github.com/NousVolition/My-Sources-Project-ALL/blob/copilot/put-stokes-start-on-cube/math/notes/hug-boundary.md)** · [Code and tests](https://github.com/NousVolition/My-Sources-Project-ALL/blob/copilot/put-stokes-start-on-cube/math/README.md)
+**[Read the latest construction, charts, and results](https://github.com/NousVolition/My-Sources-Project-ALL/blob/copilot/put-stokes-start-on-cube/math/notes/hug-boundary.md#longer-run-to-model-time-016)** · [Code and tests](https://github.com/NousVolition/My-Sources-Project-ALL/blob/copilot/put-stokes-start-on-cube/math/README.md)
 
-The closed hug shapes the maintained smooth ring's starting field. Six saved runs compare grids through **256³**, with half-time-step checks on **128³ and 256³**, over the same short time interval.
+The closed hug shapes the maintained smooth ring's starting field. The six-run grid study reaches **256³**. Three saved states now continue to **model time 0.16**, including both time steps on the 256³ grid.
 
-- Finest grid comparison: **0.23% velocity difference** and **1.75% gradient difference**.
-- Halving the time step on the 256³ grid: **0.0140% velocity difference**, **0.0582% gradient difference**.
-- **Zero external force. All 146 repository tests passed.**
+- At time 0.16, the 128³ vs 256³ comparison gives **0.3287% velocity difference** and **1.8051% gradient difference**.
+- Halving the time step on 256³ gives **0.0240% velocity difference** and **0.0819% gradient difference**.
+- **Zero external force.** Two new restart checks passed: saved-state continuation matches uninterrupted evolution exactly, and a mismatched numerical-source checkpoint is rejected. The preceding full suite had 146 passing tests.
 
-The figures, measured data, source code, and reproducible commands are available from the reading page. These are finite-time numerical comparisons, not a proof of global smoothness or breakdown.
+The figures, measured data, source code, and reproducible commands are available from the reading page. These are finite-time numerical comparisons, without an all-time smoothness or breakdown proof.
 
 ## Latest study: following a conversation
 
