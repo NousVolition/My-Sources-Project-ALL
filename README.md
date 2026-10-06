@@ -17,15 +17,15 @@ Start with a section below. Each study connects its questions to the available s
 
 ## Latest math: the hug-shaped ring
 
-**[Read the latest construction, charts, and results](https://github.com/NousVolition/My-Sources-Project-ALL/blob/copilot/put-stokes-start-on-cube/math/notes/hug-boundary.md#longer-run-to-model-time-016)** · [Code and tests](https://github.com/NousVolition/My-Sources-Project-ALL/blob/copilot/put-stokes-start-on-cube/math/README.md)
+**[Read the latest 384³ grid comparison](https://github.com/NousVolition/My-Sources-Project-ALL/blob/copilot/put-stokes-start-on-cube/math/notes/hug-boundary.md#finer-grid-at-time-016)** · [Code and tests](https://github.com/NousVolition/My-Sources-Project-ALL/blob/copilot/put-stokes-start-on-cube/math/README.md)
 
-The closed hug shapes the maintained smooth ring's starting field. The six-run grid study reaches **256³**. Three saved states now continue to **model time 0.16**, including both time steps on the 256³ grid.
+The closed hug shapes the maintained smooth ring's starting field. A new **384³** run is compared with the saved **256³** field at **model time 0.16**, using the same time step **0.001** and **zero external force**.
 
-- At time 0.16, the 128³ vs 256³ comparison gives **0.3287% velocity difference** and **1.8051% gradient difference**.
-- Halving the time step on 256³ gives **0.0240% velocity difference** and **0.0819% gradient difference**.
-- **Zero external force.** Two new restart checks passed: saved-state continuation matches uninterrupted evolution exactly, and a mismatched numerical-source checkpoint is rejected. The preceding full suite had 146 passing tests.
+- 256³ vs 384³: **0.0619% velocity difference**, **0.3509% gradient difference**.
+- Earlier 128³ vs 256³: **0.3287%** and **1.8051%**. These grid changes have different refinement ratios (2 and 1.5).
+- Six targeted comparison/restart checks passed, including a new check of the 3:2 grid alignment. Four checkpoints preserve the new work; previous completed runs were reused.
 
-The figures, measured data, source code, and reproducible commands are available from the reading page. These are finite-time numerical comparisons, without an all-time smoothness or breakdown proof.
+The 256³ time-step control and the earlier results remain available. A 384³ half-step check has not been run. These are finite-time numerical comparisons, without a rigorous error bound or an all-time smoothness or breakdown proof.
 
 ## Latest study: following a conversation
 
@@ -52,4 +52,5 @@ For the interactive view, open `language/conversation-study/index.html` from the
 The conversation study is available here on the main branch. The links to math, earlier language work, papers, and progress open the organized working version while [the broader reorganization](https://github.com/NousVolition/My-Sources-Project-ALL/pull/1) remains under review. They can all be read without using the pull-request interface.
 
 [Nous-Volition](https://github.com/NousVolition/Nous-Volition) holds the original stream-function report. This repository brings the sources, implementations, and studies together. The [consolidation record](https://github.com/NousVolition/My-Sources-Project-ALL/blob/copilot/put-stokes-start-on-cube/archive/CONSOLIDATION.md) traces earlier work so completed pieces can be reused.
+
 
