@@ -18,9 +18,9 @@ The [conversation study](language/conversation-study/README.md) is now a separat
 
 Explore how a conversation changes over time: repeated categories, overlaps, unmarked replies, and reply length. The [new map](language/exploration/README.md) preserves the existing annotations and sequence. It is an exploratory view that can grow as more conversations are collected.
 
-The smooth initial field and its energy calculation are finished. The cube experiments and corrected projection are implemented and checked. Their saved results are ready to read.
+The smooth initial field and its energy calculation are finished. The existing hug now shapes the ring's starting field, giving smooth matching boundaries without external force. [Read the hug construction, grid comparisons, and time-step checks →](math/notes/hug-boundary.md)
 
-The next math step is to choose the boundary treatment, then study accuracy as the grid and time step are refined. [Continue from here →](STATUS.md#next-math-step)
+The saved study compares 32³, 64³, 128³, and 256³ grids over the same short time interval. Code, checks, numerical records, and figures are together in [math/](math/README.md). [What is finished and what comes next →](STATUS.md#next-math-step)
 
 ## Run the existing work
 

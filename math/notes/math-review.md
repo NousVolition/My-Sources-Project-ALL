@@ -1,6 +1,6 @@
 # Math review: Navier-Stokes working framework
 
-The framework is a research draft. The following steps need correction or proof before its singularity conclusion can be supported.
+This review concerns the original research draft. Its singularity conclusion needs the corrections or proofs listed below. The current [hug-shaped ring study](hug-boundary.md) uses the corrected smooth field and zero external force; its completed numerical work is recorded separately.
 
 1. **Initial data at the axis.** With \(r=\sqrt{x^2+y^2}\), the factor \(\exp(-((r-r_0)^2+z^2)/\alpha^2)\) is not differentiable at \(r=0\) when \(r_0>0\). The claim that the displayed fields are smooth Schwartz data is therefore unsupported. A smooth ring-centered replacement is \(\phi=\exp(-(r^2-r_0^2)^2/\alpha^4-z^2/\alpha^2)\), because it depends on \(r^2=x^2+y^2\). Full velocity formulas are in [the smooth-field note](smooth-initial-field.md).
 2. **Forcing and the Clay formulation.** Clay's Statement C allows a prescribed smooth force \(f(x,t)\). The draft's force depends on the evolving scalar \(S\), so the coupled model is a different system unless a reduction to the prescribed-force formulation is proved. Also, smooth \(S\) does not in general make \(|\nabla S|\) smooth at zeros of \(\nabla S\); a tanh switch outside that norm does not fix the cusp.
@@ -11,7 +11,7 @@ The framework is a research draft. The following steps need correction or proof 
 
 ## Productive next step
 
-Reuse the corrected initial field and its existing proof. The [experiment record](../EXPERIMENTS.md) contains the completed grid comparisons. Choose the boundary treatment and model to study, then resolve spatial and temporal accuracy. The Copilot work is consolidated in the existing field and box runner; extend those files for follow-up work.
+Reuse the corrected initial field and its existing proof. The [experiment record](../EXPERIMENTS.md) preserves the earlier comparisons. The [hug boundary and refinement study](hug-boundary.md) now supplies the chosen smooth boundary preparation and the current spatial/time-step measurements. Extend that maintained construction and its runners for follow-up work.
 
 ## Primary references
 

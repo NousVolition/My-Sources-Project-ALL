@@ -1,0 +1,128 @@
+{
+  "question": "Does an upside-down right-hand copy fix the wrap join?",
+  "interpretation": "Vertical reflection of velocity values in a neighboring copy, not a coordinate reflection and not a flip inside the original box.",
+  "domain": "Original x in [-3,3]; neighboring copy x in [3,9]. Only the x-face join is tested; y and z are unchanged.",
+  "parameters": {
+    "R": 1.5,
+    "radial_scale": 1.7320508075688772,
+    "axial_scale": 1.0,
+    "meridional_rate": 1.0,
+    "swirl_rate": 1.0
+  },
+  "units": "Nondimensional; velocity, derivative, and divergence are different quantities.",
+  "face_sampling": "33 by 33 points including face boundaries",
+  "probe_point": [
+    4.2,
+    0.0,
+    0.0
+  ],
+  "cases": [
+    {
+      "mode": "repeat",
+      "sampled_face_value_jump": 0.05370941642107529,
+      "left_velocity_x_at_center": -0.018989146282457223,
+      "right_velocity_x_at_center": 0.018989146282457223,
+      "refinement": [
+        {
+          "h": 0.01,
+          "left_slope": 0.17076723375882494,
+          "right_slope": 0.17076723375882494,
+          "divergence_inside_right_copy": 1.9225148357837618e-05
+        },
+        {
+          "h": 0.001,
+          "left_slope": 0.16518142580274064,
+          "right_slope": 0.16518142580274064,
+          "divergence_inside_right_copy": 1.9237559223395095e-07
+        },
+        {
+          "h": 0.0001,
+          "left_slope": 0.164633378094102,
+          "right_slope": 0.164633378094102,
+          "divergence_inside_right_copy": 1.922752401739558e-09
+        },
+        {
+          "h": 1e-05,
+          "left_slope": 0.16457867776098478,
+          "right_slope": 0.16457867776098478,
+          "divergence_inside_right_copy": 1.040512120908943e-11
+        }
+      ]
+    },
+    {
+      "mode": "sign_flip",
+      "sampled_face_value_jump": 0.13524611760058983,
+      "left_velocity_x_at_center": -0.018989146282457223,
+      "right_velocity_x_at_center": -0.018989146282457223,
+      "refinement": [
+        {
+          "h": 0.01,
+          "left_slope": 0.17076723375882494,
+          "right_slope": -0.17076723375882494,
+          "divergence_inside_right_copy": -1.9225148357837618e-05
+        },
+        {
+          "h": 0.001,
+          "left_slope": 0.16518142580274064,
+          "right_slope": -0.16518142580274064,
+          "divergence_inside_right_copy": -1.9237559223395095e-07
+        },
+        {
+          "h": 0.0001,
+          "left_slope": 0.164633378094102,
+          "right_slope": -0.164633378094102,
+          "divergence_inside_right_copy": -1.922752401739558e-09
+        },
+        {
+          "h": 1e-05,
+          "left_slope": 0.16457867776098478,
+          "right_slope": -0.16457867776098478,
+          "divergence_inside_right_copy": -1.040512120908943e-11
+        }
+      ]
+    },
+    {
+      "mode": "matched_flip",
+      "sampled_face_value_jump": 2.168404344971009e-19,
+      "left_velocity_x_at_center": -0.018989146282457223,
+      "right_velocity_x_at_center": -0.018989146282457223,
+      "refinement": [
+        {
+          "h": 0.01,
+          "left_slope": 0.17076723375882494,
+          "right_slope": -0.17076723375882494,
+          "divergence_inside_right_copy": -0.32913088159657766
+        },
+        {
+          "h": 0.001,
+          "left_slope": 0.16518142580274064,
+          "right_slope": -0.16518142580274064,
+          "divergence_inside_right_copy": -0.3291450591301669
+        },
+        {
+          "h": 0.0001,
+          "left_slope": 0.164633378094102,
+          "right_slope": -0.164633378094102,
+          "divergence_inside_right_copy": -0.3291452007981551
+        },
+        {
+          "h": 1e-05,
+          "left_slope": 0.16457867776098478,
+          "right_slope": -0.16457867776098478,
+          "divergence_inside_right_copy": -0.3291452022121958
+        }
+      ]
+    }
+  ],
+  "analytic_checkpoint": {
+    "original_x_slope_at_join": 0.16457260111462926,
+    "flipped_x_slope_at_join": -0.16457260111462926,
+    "matched_flip_divergence_on_center_line": -0.3291452022292585
+  },
+  "reading": {
+    "repeat": "Original mismatch remains; each copy is divergence-free in its interior.",
+    "sign_flip": "The center-line endpoints meet and interior divergence stays zero, but velocity traces still mismatch elsewhere on the face. This does not establish global incompressibility across the join.",
+    "matched_flip": "All face values match by construction, but one-sided slopes differ and the endpoint offset creates nonzero interior divergence.",
+    "scope": "This tests these two direct velocity-value flips. It does not rule out other reflections or a separately constructed smooth periodic field. No Navier-Stokes time evolution or regularity conclusion follows."
+  }
+}

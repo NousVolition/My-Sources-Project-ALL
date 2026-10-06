@@ -11,13 +11,18 @@
 | Stokes geometry | [Legacy field](math/stokes.py) · [checks](math/tests/test_stokes.py) | Reuses the submitted checks; the old Gaussian remains a comparison with an axis cusp |
 | Cube & projection | [Implementation](math/navier.py) · [checks](math/tests/test_projection.py) | Compatible centered operators, residual stopping, and optional Fourier solve |
 | Small & large box runs | [Results and interpretation](math/EXPERIMENTS.md) | Lengths 6 and 18, a fixed-spacing comparison, and a half-time-step check already run |
+| Mirror and boundary checks | [Norm and Entropy](math/notes/norm-entropy-mirror.md) | The 65 generated pairs match after alignment; K-means depends on representation. The endpoint-matched fluid copy still has a corner and nonzero divergence |
+| Soft-envelope prototypes | [Hug, imprint, and pressure](math/notes/soft-envelope.md) | Timed mirrored arms and a separate chosen pressure-opening rule pass nine checks; material-response labels and pressure for conversation data remain undefined |
+| Hug joined to the ring | [Construction and results](math/notes/hug-boundary.md) | The actual closed hug now shapes the smooth ring's stream function. Smooth, divergence-free initial data with zero face mismatch; nine new checks and four short unforced box runs completed |
+| Hug evolution refinement | [Saved grid and time comparisons](math/notes/hug-boundary.md#finer-grid-evolution-check) | Six saved runs through 256³ at time 0.08, with 128³ and 256³ half-step controls. Finest grid differences: velocity 0.23%, gradient 1.75%. The 256³ time-step differences are 0.0140% and 0.0582%. All 146 repository tests passed |
+| Separate trigonometric illustration | [Derivation, runs, and checks](math/notes/hidden-flow-evolution.md) | Assistant-chosen fields, distinct from the ring construction. One has an analytic smooth reduction; a 3D variant has refined finite-time results. The conversation-to-fluid mapping was not established |
 | Language reports | [Report guide](language/README.md) | Existing tables and charts preserved; available chart links repaired |
 | Conversation exploration | [Wordless map and observations](language/exploration/README.md) | Sequence, overlapping saved categories, reply length, and unmarked replies exposed without exporting reply text |
 | Conversation study | [Full study and sources](language/conversation-study/README.md) | Three preserved snapshots, 53 selected observations, eight word paths, six context comparisons, and nine integrity regression checks |
 | Optional K-means comparison | [Method and saved results](language/clustering/README.md) | Count and length-adjusted representations compared; seed sensitivity and limitations recorded |
 | Two working papers | [Paper guide](papers/README.md) | Existing documents preserved, with missing source material identified |
 
-**Verification:** the consolidated suite now has 100 passing tests: the existing 91 plus nine conversation-study integrity checks. The study also verifies 66 exact fragments and 6,811 local HTML links, source hashes, preserved overlap, and generated GitHub views. These checks establish an intact evidence trail, not the truth of every source claim or interpretation. The earlier numerical record reproduced in Python 3.12.14 with NumPy 2.3.5, pytest 9.1.1, scikit-learn 1.9.0, and SciPy 1.18.1. The longer box runs reuse their saved results. The standalone LaTeX source is preserved; PDF compilation remains unverified because the editor compiler could not find its platform directories.
+**Verification:** all **146 repository tests passed** in the current publication check. This includes the field, cube, projection, array-backend, comparison, conversation-study, and earlier prototype checks. The long numerical runs were reused when their source fingerprint matched. The conversation study separately retains its source hashes, 66 exact fragments, and 6,811 validated local HTML links. These checks establish implementation and evidence integrity; they do not establish every interpretation or a global Navier–Stokes result. The standalone LaTeX source is preserved; its earlier editor compilation remained unverified because the compiler could not find its platform directories.
 
 ## Next conversation step
 
@@ -27,9 +32,13 @@ Continue collecting and observing. Keep each conversation identifiable, preserve
 
 ## Next math step
 
-Choose the boundary treatment for the evolution study. The current field is defined on all of space; the cube wraps periodically, which creates a seam when the field is still appreciable at its faces.
+The [separate trigonometric illustration](math/notes/hidden-flow-evolution.md) retains seven saved runs and ten checks, now included in the passing 146-test suite. Its fields were chosen by the assistant and were not derived from the ring or the contributor's A/B/C meaning. The current ring study continues below; those earlier long runs were not repeated.
 
-Then use the **existing** box runner to refine space and time at a fixed physical domain and boundary treatment. Record an error measure against a reference solution or a finer run. The present short runs do not establish convergence, long-time stability, or a singularity theorem.
+The user resumed the ring work by explicitly requesting the existing hug for the boundary. [That connection is now implemented](math/notes/hug-boundary.md): a C∞ gate from the closed hug is applied to the stream function, preserving incompressibility and leaving an unchanged inner core. Opposite physical faces match exactly, and external force remains zero. Nine new checks and seven existing integration checks passed. Four new runs used the existing cube solver, with no rerun of the unrelated trigonometric illustration.
+
+The refinement now includes [six saved runs](math/notes/hug-boundary.md#finer-grid-evolution-check): 32³, 64³, 128³, and 256³ grids at time step 0.001, plus 128³ and 256³ controls at time step 0.0005, all reaching time 0.08. Completed runs were reused. Successive final velocity differences are 3.18%, 0.86%, and 0.23%; full-gradient differences are 17.03%, 6.15%, and 1.75%. On the 256³ grid, halving the time step changes velocity by **0.0140%** and gradient by **0.0582%**. The two time-step runs start from identical arrays. External force remains zero. These are finite-time numerical comparisons, without a rigorous error bound.
+
+Next for this construction: extend the time interval with the same field and zero external force, while continuing grid and time-step comparisons. Use the cached completed runs and the recorded source fingerprint. The current study supplies numerical evidence, not an all-time smoothness or breakdown proof.
 
 ## Material still missing
 

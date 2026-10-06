@@ -36,7 +36,11 @@ class PurePythonNavierStokes3D:
         N = self.N
         return (i + 1) % N, (i - 1) % N, (j + 1) % N, (j - 1) % N, (k + 1) % N, (k - 1) % N
 
-    def step(self, dt, P_U):
+    def step(self, dt, P_U, backend="python"):
+        if backend == "numpy":
+            return self._step_numpy(dt, P_U)
+        if backend != "python":
+            raise ValueError("step backend must be python or numpy")
         N = self.N
         next_u = [[[0.0 for _ in range(N)] for _ in range(N)] for _ in range(N)]
         next_v = [[[0.0 for _ in range(N)] for _ in range(N)] for _ in range(N)]
@@ -76,6 +80,60 @@ class PurePythonNavierStokes3D:
                     next_S[i][j][k] = self.S[i][j][k] + dt * (-adv_S + self.D * lap_S + self.rho_epsilon[i][j][k] * P_U)
         self.u, self.v, self.w, self.S = next_u, next_v, next_w, next_S
 
+    def _step_numpy(self, dt, P_U):
+        """Array evaluation of the same explicit stencils, including S and force.
+
+        The default loop implementation is retained as an independent reference.
+        This backend keeps arrays after stepping to support larger-grid studies.
+        """
+        import numpy as np
+        velocity = np.asarray((self.u, self.v, self.w))
+        scalar = np.asarray(self.S)
+        def derivative(a, d):
+            return (np.roll(a, -1, d)-np.roll(a, 1, d))/(2*self.dx)
+        def laplacian(a):
+            return (sum(np.roll(a, -1, d)+np.roll(a, 1, d)
+                        for d in range(3))-6*a)/self.dx**2
+        grad_s = [derivative(scalar, d) for d in range(3)]
+        delta = np.sqrt(sum(g*g for g in grad_s))-self.gamma_crit
+        force = (self.sigma/self.rho)*delta*(.5+.5*np.tanh(delta/self.epsilon))
+        updated = []
+        for c in range(3):
+            adv = sum(velocity[d]*derivative(velocity[c], d) for d in range(3))
+            updated.append(velocity[c]+dt*(-adv+self.nu*laplacian(velocity[c])
+                                           -force*self.e_k[c]))
+        self.S = scalar+dt*(-sum(velocity[d]*grad_s[d] for d in range(3))
+                           +self.D*laplacian(scalar)+np.asarray(self.rho_epsilon)*P_U)
+        self.u, self.v, self.w = updated
+
+    def _project_fft(self, atol, rtol):
+        """The original centered projection, evaluated with array operations."""
+        import numpy as np
+        keep_arrays = isinstance(self.u, np.ndarray)
+        velocity = np.asarray((self.u, self.v, self.w))
+        def derivative(a, d):
+            return (np.roll(a, -1, d)-np.roll(a, 1, d))/(2*self.dx)
+        rhs = sum(derivative(velocity[d], d) for d in range(3))
+        before = float(np.max(np.abs(rhs)))
+        tolerance = atol+rtol*before
+        wave = np.sin(2*np.pi*np.fft.fftfreq(self.N))/self.dx
+        wave[0] = 0.
+        if self.N % 2 == 0:
+            wave[self.N//2] = 0.
+        squared = (wave[:, None, None]**2+wave[None, :, None]**2
+                   +wave[None, None, :]**2)
+        potential_hat = np.zeros(rhs.shape, dtype=complex)
+        np.divide(-np.fft.fftn(rhs), squared, out=potential_hat, where=squared > 0)
+        chi = np.fft.ifftn(potential_hat).real
+        corrected = [velocity[d]-derivative(chi, d) for d in range(3)]
+        after = float(np.max(np.abs(sum(derivative(corrected[d], d) for d in range(3)))))
+        if not np.isfinite(after) or after > tolerance:
+            raise RuntimeError(f"Projected divergence {after:.3g} exceeds {tolerance:.3g}.")
+        self.u, self.v, self.w = corrected if keep_arrays else [a.tolist() for a in corrected]
+        self.projection_potential = chi if keep_arrays else chi.tolist()
+        return dict(backend="fft", iterations=0, before=before, after=after,
+                    tolerance=tolerance)
+
     def max_w(self):
         return max(max(max(row) for row in plane) for plane in self.w)
 
@@ -104,6 +162,8 @@ class PurePythonNavierStokes3D:
             raise ValueError("Require positive dx, iterations, atol and nonnegative rtol.")
         if backend not in ("jacobi", "fft"):
             raise ValueError("backend must be 'jacobi' or 'fft'.")
+        if backend == "fft":
+            return self._project_fft(atol, rtol)
         N = self.N
         rhs = [[[self.divergence_at(i, j, k) for k in range(N)]
                 for j in range(N)] for i in range(N)]
@@ -111,59 +171,45 @@ class PurePythonNavierStokes3D:
         tolerance = atol + rtol * before
         scale = 4.0 * self.dx**2
         used = 0
-        if backend == "fft":
-            import numpy as np
-            # Symbols of the centered first derivatives, not continuous k.
-            wave = np.sin(2.0 * np.pi * np.fft.fftfreq(N)) / self.dx
-            wave[0] = 0.0
-            if N % 2 == 0:
-                wave[N // 2] = 0.0
-            squared = (wave[:, None, None]**2 + wave[None, :, None]**2
-                       + wave[None, None, :]**2)
-            rhs_hat = np.fft.fftn(rhs)
-            potential_hat = np.zeros_like(rhs_hat)
-            np.divide(-rhs_hat, squared, out=potential_hat, where=squared > 0)
-            chi = np.fft.ifftn(potential_hat).real.tolist()
-        else:
-            chi = [[[0.0 for _ in range(N)] for _ in range(N)] for _ in range(N)]
-            # Undamped Jacobi can alternate forever on quarter-wave modes.
-            omega = 2.0 / 3.0
-            plus2 = [(i + 2) % N for i in range(N)]
-            minus2 = [(i - 2) % N for i in range(N)]
-            residual = before
-            for used in range(1, iterations + 1):
-                if residual <= tolerance:
-                    used -= 1
-                    break
-                nxt = [[[0.0 for _ in range(N)] for _ in range(N)] for _ in range(N)]
+        chi = [[[0.0 for _ in range(N)] for _ in range(N)] for _ in range(N)]
+        # Undamped Jacobi can alternate forever on quarter-wave modes.
+        omega = 2.0 / 3.0
+        plus2 = [(i + 2) % N for i in range(N)]
+        minus2 = [(i - 2) % N for i in range(N)]
+        residual = before
+        for used in range(1, iterations + 1):
+            if residual <= tolerance:
+                used -= 1
+                break
+            nxt = [[[0.0 for _ in range(N)] for _ in range(N)] for _ in range(N)]
+            for i in range(N):
+                for j in range(N):
+                    for k in range(N):
+                        neighbors = (
+                            chi[plus2[i]][j][k] + chi[minus2[i]][j][k]
+                            + chi[i][plus2[j]][k] + chi[i][minus2[j]][k]
+                            + chi[i][j][plus2[k]] + chi[i][j][minus2[k]]
+                        )
+                        target = (neighbors - scale * rhs[i][j][k]) / 6.0
+                        nxt[i][j][k] = (1.0 - omega) * chi[i][j][k] + omega * target
+            chi = nxt
+            if used % 10 == 0 or used == iterations:
+                residual = 0.0
                 for i in range(N):
                     for j in range(N):
                         for k in range(N):
-                            neighbors = (
+                            lap = (
                                 chi[plus2[i]][j][k] + chi[minus2[i]][j][k]
                                 + chi[i][plus2[j]][k] + chi[i][minus2[j]][k]
                                 + chi[i][j][plus2[k]] + chi[i][j][minus2[k]]
-                            )
-                            target = (neighbors - scale * rhs[i][j][k]) / 6.0
-                            nxt[i][j][k] = (1.0 - omega) * chi[i][j][k] + omega * target
-                chi = nxt
-                if used % 10 == 0 or used == iterations:
-                    residual = 0.0
-                    for i in range(N):
-                        for j in range(N):
-                            for k in range(N):
-                                lap = (
-                                    chi[plus2[i]][j][k] + chi[minus2[i]][j][k]
-                                    + chi[i][plus2[j]][k] + chi[i][minus2[j]][k]
-                                    + chi[i][j][plus2[k]] + chi[i][j][minus2[k]]
-                                    - 6.0 * chi[i][j][k]
-                                ) / scale
-                                residual = max(residual, abs(rhs[i][j][k] - lap))
-            if residual > tolerance:
-                raise RuntimeError(
-                    f"Projection did not converge: residual={residual:.3g}, "
-                    f"tolerance={tolerance:.3g}; increase iterations or use fft."
-                )
+                                - 6.0 * chi[i][j][k]
+                            ) / scale
+                            residual = max(residual, abs(rhs[i][j][k] - lap))
+        if residual > tolerance:
+            raise RuntimeError(
+                f"Projection did not converge: residual={residual:.3g}, "
+                f"tolerance={tolerance:.3g}; increase iterations or use fft."
+            )
         for i in range(N):
             for j in range(N):
                 for k in range(N):
@@ -179,11 +225,14 @@ class PurePythonNavierStokes3D:
         return dict(backend=backend, iterations=used, before=before, after=after,
                     tolerance=tolerance)
 
-    def step_with_pressure(self, dt, P_U, **projection_options):
+    def step_with_pressure(self, dt, P_U, step_backend="python", **projection_options):
         """Apply the original explicit step, then a discrete projection."""
         if not math.isfinite(dt) or dt <= 0:
             raise ValueError("dt must be positive and finite.")
-        self.step(dt, P_U)
+        if step_backend == "python":
+            self.step(dt, P_U)
+        else:
+            self.step(dt, P_U, backend=step_backend)
         return self.project(**projection_options)
 
     def mean_S(self):

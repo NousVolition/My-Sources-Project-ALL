@@ -8,6 +8,7 @@ the FFT projection and diagnostics; the original pure-Python step is used.
 import argparse
 import copy
 import csv
+from functools import lru_cache
 import math
 from pathlib import Path
 
@@ -15,6 +16,7 @@ import numpy as np
 
 from navier import PurePythonNavierStokes3D
 from initial_field import SmoothRingField
+from hugged_ring import HuggedRingField
 from stokes import meridional_velocity, swirl
 
 R0, ALPHA = 1.5, 1.0
@@ -22,9 +24,18 @@ R0, ALPHA = 1.5, 1.0
 SMOOTH = SmoothRingField(radial_scale=math.sqrt(2 * R0 * ALPHA), axial_scale=ALPHA)
 
 
-def field_velocity(profile, x, y, z):
+@lru_cache(maxsize=16)
+def hug_for_box(box):
+    return HuggedRingField(base=SMOOTH, box_length=box)
+
+
+def field_velocity(profile, x, y, z, box=6.0):
     if profile == "smooth":
         return SMOOTH.velocity(x, y, z)
+    if profile == "hug":
+        return hug_for_box(box).velocity(x, y, z)
+    if profile != "legacy":
+        raise ValueError("profile must be legacy, smooth, or hug")
     r = math.hypot(x, y)
     ur, uz = meridional_velocity(r, z, R0, ALPHA)
     if r == 0.0:
@@ -43,7 +54,7 @@ def sample_stokes(sim, profile="legacy"):
             for k in range(sim.N):
                 z = (k - mid) * sim.dx
                 sim.u[i][j][k], sim.v[i][j][k], sim.w[i][j][k] = field_velocity(
-                    profile, x, y, z)
+                    profile, x, y, z, box=sim.N*sim.dx)
                 sim.S[i][j][k] = 0.0
 
 
@@ -84,7 +95,7 @@ def boundary_jump(profile, box, N):
                 plus[axis], minus[axis] = box / 2, -box / 2
                 for d, v in zip(tangents, (a, b)):
                     plus[d] = minus[d] = float(v)
-                up, um = field_velocity(profile, *plus), field_velocity(profile, *minus)
+                up, um = field_velocity(profile, *plus, box=box), field_velocity(profile, *minus, box=box)
                 worst = max(worst, math.sqrt(sum((p - m)**2 for p, m in zip(up, um))))
     return worst
 
@@ -123,7 +134,7 @@ def run_case(profile, start, box, N, dt=0.02, steps=4):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--profile", choices=("legacy", "smooth"), default="legacy")
+    parser.add_argument("--profile", choices=("legacy", "smooth", "hug"), default="legacy")
     parser.add_argument("--start", choices=("raw", "projected"), default="raw")
     parser.add_argument("--box", type=float, default=6.0)
     parser.add_argument("--points", nargs="+", type=int, default=[8, 16, 32])
