@@ -1,0 +1,84 @@
+{
+  "conversation_id": "chemistry-conversation-partial",
+  "snapshot_version": 2,
+  "completeness": "Three partial snapshots; true original beginning and completeness remain unknown.",
+  "publication": "Full supplied snapshots included with the contributor’s explicit permission. The files record what was said; their contents are not independently verified biographical or medical facts.",
+  "sources": [
+    {
+      "id": "source-01",
+      "sha256": "f60d855c10898d13264b7177c43aa94185da69ece58a3c01c17e2af0ad7d07b1",
+      "bytes": 192886,
+      "lines": 1677,
+      "words_including_quotes_and_ui": 30672,
+      "role": "Earlier pasted conversation copy"
+    },
+    {
+      "id": "source-02",
+      "sha256": "adfcfa1e10ae67100172c9cf8bcbf45ed3ebde923fb1ee019ae1496cb311562e",
+      "bytes": 233429,
+      "lines": 1341,
+      "words_including_quotes_and_ui": 38176,
+      "role": "Later retrieval discussion containing AI reconstructions"
+    },
+    {
+      "id": "source-03",
+      "sha256": "04154f98a08134aefe7f906db09e1357d879b0dab0adfc493d0fc60f1a9a404d",
+      "bytes": 397795,
+      "lines": 2761,
+      "words_including_quotes_and_ui": 61269,
+      "role": "Overlapping continuation with further reconstructions and conceptual exploration"
+    }
+  ],
+  "analysis_revision": 3,
+  "index_summary": {
+    "earlier_exchange_blocks": 88,
+    "reconstruction_entries_including_one_empty_truncation": 134,
+    "question_alignment": {
+      "exact": 128,
+      "near": 3,
+      "partial": 2,
+      "unmatched": 1
+    },
+    "selected_evidence_episodes": 53,
+    "selected_word_paths": 8,
+    "context_comparisons_reusing_existing_evidence": 6
+  },
+  "context_method": "Track prior context, request, answer interpretation, next clarification, and separate semantic/formal repair. One exact repeated prompt supplies an observed contrast, not an isolated causal test.",
+  "overlap": [
+    {
+      "previous_source": "source-02",
+      "previous_lines": [
+        777,
+        1341
+      ],
+      "new_source": "source-03",
+      "new_lines": [
+        1,
+        565
+      ],
+      "kind": "exact line-for-line match",
+      "treatment": "Retained in both immutable sources; not a new independent exchange."
+    }
+  ],
+  "reading_coverage": {
+    "source_03_new_lines": [
+      566,
+      2761
+    ],
+    "new_line_count": 2196,
+    "method": "Close reading of all 18 contiguous reading chunks, then targeted cross-source verification.",
+    "qualification": "Non-overlapping lines still contain quotations, reconstructed messages, repeated tables, code, and UI material; they are not all new utterances."
+  },
+  "rules": {
+    "first_source": "Explicit UI user markers plus date separators; repeated user headers are not counted twice.",
+    "second_source": "Embedded User/AI blocks are retained as reconstructions; later unmarked speaker boundaries are not auto-certified.",
+    "partial": "The earliest original message and the complete conversation length remain unknown.",
+    "duplicates": "All three raw snapshots remain byte-for-byte unchanged. The 565-line overlap is linked. UI echoes, embedded reconstructions, repeated tables, and displayed code are distinct occurrence types, not independent evidence.",
+    "counts": "No full-conversation speech totals or prevalence claims. Later speaker boundaries are manually inferred locally and not fully certified. Whitespace totals include quotations and UI.",
+    "analysis": "Selected overlapping categories and word paths; no intent score, personal diagnosis, or automatic classification ground truth.",
+    "comparison": "New categories applied in new pass only; blanks in earlier panels do not imply absence.",
+    "causality": "Sequence links do not prove causation, hidden programming, or motive."
+  },
+  "public_edition": 1,
+  "repository_path": "language/conversation-study"
+}
