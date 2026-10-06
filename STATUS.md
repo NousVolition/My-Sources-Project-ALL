@@ -13,12 +13,15 @@
 | Small & large box runs | [Results and interpretation](math/EXPERIMENTS.md) | Lengths 6 and 18, a fixed-spacing comparison, and a half-time-step check already run |
 | Language reports | [Report guide](language/README.md) | Existing tables and charts preserved; available chart links repaired |
 | Conversation exploration | [Wordless map and observations](language/exploration/README.md) | Sequence, overlapping saved categories, reply length, and unmarked replies exposed without exporting reply text |
+| Conversation study | [Full study and sources](language/conversation-study/README.md) | Three preserved snapshots, 53 selected observations, eight word paths, six context comparisons, and nine integrity regression checks |
 | Optional K-means comparison | [Method and saved results](language/clustering/README.md) | Count and length-adjusted representations compared; seed sensitivity and limitations recorded |
 | Two working papers | [Paper guide](papers/README.md) | Existing documents preserved, with missing source material identified |
 
-**Verification:** the consolidated suite has 91 passing tests in Python 3.12.14 with NumPy 2.3.5 and pytest 9.1.1. The original 80 checks remain; 11 checks cover the new data pipeline and wordless export. The optional clustering record reproduced with scikit-learn 1.9.0 and SciPy 1.18.1. The longer box runs reuse their saved results. The standalone LaTeX source is preserved; PDF compilation remains unverified because the editor compiler could not find its platform directories.
+**Verification:** the consolidated suite now has 100 passing tests: the existing 91 plus nine conversation-study integrity checks. The study also verifies 66 exact fragments and 6,811 local HTML links, source hashes, preserved overlap, and generated GitHub views. These checks establish an intact evidence trail, not the truth of every source claim or interpretation. The earlier numerical record reproduced in Python 3.12.14 with NumPy 2.3.5, pytest 9.1.1, scikit-learn 1.9.0, and SciPy 1.18.1. The longer box runs reuse their saved results. The standalone LaTeX source is preserved; PDF compilation remains unverified because the editor compiler could not find its platform directories.
 
 ## Next conversation step
+
+Review selected context comparisons with a second reader and record disagreements. For new pastes, match overlap first and extend existing evidence IDs when appropriate. [The study method](language/conversation-study/METHOD.md) keeps the new snapshots separate from the earlier 68-reply map.
 
 Continue collecting and observing. Keep each conversation identifiable, preserve reply order, and record changes to category definitions. [The collection guide](language/exploration/COLLECTING.md) explains how to add observations without overwriting earlier work. A fixed hypothesis or fixed number of categories is not required to explore.
 
