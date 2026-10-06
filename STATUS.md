@@ -15,6 +15,7 @@
 | Soft-envelope prototypes | [Hug, imprint, and pressure](math/notes/soft-envelope.md) | Timed mirrored arms and a separate chosen pressure-opening rule pass nine checks; material-response labels and pressure for conversation data remain undefined |
 | Hug joined to the ring | [Construction and results](math/notes/hug-boundary.md) | The actual closed hug now shapes the smooth ring's stream function. Smooth, divergence-free initial data with zero face mismatch; nine new checks and four short unforced box runs completed |
 | Hug evolution refinement | [Saved grid and time comparisons](math/notes/hug-boundary.md#finer-grid-evolution-check) | Six saved runs through 256³ at time 0.08, with 128³ and 256³ half-step controls. Finest grid differences: velocity 0.23%, gradient 1.75%. The 256³ time-step differences are 0.0140% and 0.0582%. All 146 repository tests passed |
+| Longer hug evolution | [Continuation to time 0.16](math/notes/hug-boundary.md#longer-run-to-model-time-016) | Three exact checkpoint restarts completed; two restart checks passed. 256³ time-step differences: 0.0240% velocity, 0.0819% gradient. External force 0 |
 | Separate trigonometric illustration | [Derivation, runs, and checks](math/notes/hidden-flow-evolution.md) | Assistant-chosen fields, distinct from the ring construction. One has an analytic smooth reduction; a 3D variant has refined finite-time results. The conversation-to-fluid mapping was not established |
 | Language reports | [Report guide](language/README.md) | Existing tables and charts preserved; available chart links repaired |
 | Conversation exploration | [Wordless map and observations](language/exploration/README.md) | Sequence, overlapping saved categories, reply length, and unmarked replies exposed without exporting reply text |
@@ -22,7 +23,7 @@
 | Optional K-means comparison | [Method and saved results](language/clustering/README.md) | Count and length-adjusted representations compared; seed sensitivity and limitations recorded |
 | Two working papers | [Paper guide](papers/README.md) | Existing documents preserved, with missing source material identified |
 
-**Verification:** all **146 repository tests passed** in the current publication check. This includes the field, cube, projection, array-backend, comparison, conversation-study, and earlier prototype checks. The long numerical runs were reused when their source fingerprint matched. The conversation study separately retains its source hashes, 66 exact fragments, and 6,811 validated local HTML links. These checks establish implementation and evidence integrity; they do not establish every interpretation or a global Navier–Stokes result. The standalone LaTeX source is preserved; its earlier editor compilation remained unverified because the compiler could not find its platform directories.
+**Verification:** all **146 repository tests passed** in the preceding publication check; the two new checkpoint-continuation checks also passed. This includes the field, cube, projection, array-backend, comparison, conversation-study, and earlier prototype checks. The long numerical runs were reused when their source fingerprint matched. The conversation study separately retains its source hashes, 66 exact fragments, and 6,811 validated local HTML links. These checks establish implementation and evidence integrity; they do not establish every interpretation or a global Navier–Stokes result. The standalone LaTeX source is preserved; its earlier editor compilation remained unverified because the compiler could not find its platform directories.
 
 ## Next conversation step
 
@@ -38,7 +39,9 @@ The user resumed the ring work by explicitly requesting the existing hug for the
 
 The refinement now includes [six saved runs](math/notes/hug-boundary.md#finer-grid-evolution-check): 32³, 64³, 128³, and 256³ grids at time step 0.001, plus 128³ and 256³ controls at time step 0.0005, all reaching time 0.08. Completed runs were reused. Successive final velocity differences are 3.18%, 0.86%, and 0.23%; full-gradient differences are 17.03%, 6.15%, and 1.75%. On the 256³ grid, halving the time step changes velocity by **0.0140%** and gradient by **0.0582%**. The two time-step runs start from identical arrays. External force remains zero. These are finite-time numerical comparisons, without a rigorous error bound.
 
-Next for this construction: extend the time interval with the same field and zero external force, while continuing grid and time-step comparisons. Use the cached completed runs and the recorded source fingerprint. The current study supplies numerical evidence, not an all-time smoothness or breakdown proof.
+**Longer interval completed:** Three existing runs now continue to time **0.16**, reusing their saved 0.08 states. On 256³ with dt 0.0005, the largest sampled gradient changes from **10.500958** to **9.600445**. At the new final time, the grid comparison gives **0.3287%** velocity difference and **1.8051%** gradient difference; the 256³ time-step comparison gives **0.0240%** and **0.0819%**. External force remains zero. [Read the continued study](math/notes/hug-boundary.md#longer-run-to-model-time-016).
+
+Next accuracy check: add a finer-grid comparison at the same final time 0.16. The spatial difference remains larger than the time-step difference. The study supplies finite-time numerical evidence, without a rigorous error bound or an all-time smoothness proof.
 
 ## Material still missing
 

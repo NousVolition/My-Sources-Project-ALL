@@ -1,8 +1,8 @@
-# Following the hidden-flow example through time
+# Following the trigonometric example through time
 
-**Scope correction:** this is a separate assistant-chosen trigonometric example. It does not evolve the project's original Stokes ring or its corrected smooth replacement. The conversation did not establish a mathematical equivalence between the contributor's A/B/C idea and these velocity fields. Their behavior does not validate or refute that idea.
+**Scope correction:** this is a separate trigonometric example chosen by the assistant. It does not evolve the project's original Stokes ring or its corrected smooth replacement. The results describe how these mathematical velocity fields change over time. No mathematical mapping from the contributor's A/B/C idea to these fields was established, so this example does not test that idea.
 
-**Result:** the original C remains smooth by an analytic reduction. A separately constructed, genuinely three-dimensional extension steepens temporarily, then relaxes in the completed numerical runs. No numerical breakdown appeared in the tested interval.
+**Result:** the velocity field C remains smooth by an analytic reduction. A separately constructed three-dimensional extension steepens temporarily, then relaxes in the completed numerical runs. No numerical breakdown appeared in the tested interval.
 
 The A/B/C labels identify constructed fluid fields. They do not measure personalities, diagnoses, or intent. These examples retain the unforced Navier–Stokes equation.
 
@@ -66,7 +66,7 @@ Each component of D is independent of its own coordinate, so `div D = 0`. Its mo
 <!-- RESULTS_START -->
 Seven runs completed. All use **zero external force**, viscosity 0.05, and time interval 0–4. The new three-dimensional field changes only the initial velocity.
 
-**Provenance correction:** these runs use separate trigonometric fields selected by the assistant. They do not evolve the original Stokes ring or its corrected smooth replacement. No mathematical equivalence to the contributor's A/B/C conversation idea was established. Their outcomes must not be presented as validation or rejection of that construction or idea.
+**Provenance correction:** these runs use separate trigonometric velocity fields selected by the assistant. The numerical results describe the evolution of those fields. The original Stokes ring, its corrected smooth replacement, and the contributor's A/B/C conversation idea were not tested by these calculations.
 
 | Field | Grid | Time step | Initial gradient | Sampled peak gradient | Final gradient | Final energy |
 | --- | --- | --- | --- | --- | --- | --- |
