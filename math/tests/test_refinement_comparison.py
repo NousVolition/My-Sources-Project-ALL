@@ -23,6 +23,13 @@ def test_identical_fields_have_zero_comparison_error():
     assert result == dict(velocity_relative_l2=0., gradient_relative_l2=0.)
 
 
+def test_three_to_two_grid_transfer_keeps_physical_alignment():
+    errors = [np.max(np.abs(sample_on_grid(wave(3*n//2), n)-wave(n)))
+              for n in (16, 32)]
+    assert errors[1] < errors[0]/12
+    assert errors[1] < 2e-5
+
+
 def test_amplitude_error_is_detected_in_velocity_and_gradient():
     a = np.array([wave(12), wave(12)*2, -wave(12)])
     result = compare_fields(a*.9, a)

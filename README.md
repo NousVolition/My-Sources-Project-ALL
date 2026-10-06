@@ -20,7 +20,7 @@ Explore how a conversation changes over time: repeated categories, overlaps, unm
 
 The smooth initial field and its energy calculation are finished. The existing hug now shapes the ring's starting field, giving smooth matching boundaries without external force. [Read the hug construction, grid comparisons, and time-step checks →](math/notes/hug-boundary.md)
 
-The saved study compares 32³, 64³, 128³, and 256³ grids. [Three saved runs now continue to model time 0.16](math/notes/hug-boundary.md#longer-run-to-model-time-016), including the 256³ half-time-step control. Code, checks, numerical records, and figures are together in [math/](math/README.md). [What is finished and what comes next →](STATUS.md#next-math-step)
+The saved study now includes [a 384³ comparison at time 0.16](math/notes/hug-boundary.md#finer-grid-at-time-016), alongside the earlier 32³, 64³, 128³, and 256³ grids. [Three saved runs now continue to model time 0.16](math/notes/hug-boundary.md#longer-run-to-model-time-016), including the 256³ half-time-step control. Code, checks, numerical records, and figures are together in [math/](math/README.md). [What is finished and what comes next →](STATUS.md#next-math-step)
 
 ## Run the existing work
 

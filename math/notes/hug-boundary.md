@@ -1,6 +1,6 @@
 # The hug now prepares the ring's boundary
 
-**Latest:** [Longer run to model time 0.16](#longer-run-to-model-time-016).
+**Latest:** [The 384³ grid comparison at time 0.16](#finer-grid-at-time-016).
 
 **Completed:** the existing closed hug shapes the existing smooth ring's initial field. Velocity becomes zero smoothly before every cube face, so opposite faces and all their derivatives match. The continuum field remains divergence-free. The Navier–Stokes equation and zero-external-force choice remain unchanged.
 
@@ -181,6 +181,56 @@ The continuation command uses the original checkpoint arrays under ignored `scra
 
 [Continuation code](../continue_hug_refinement.py) · [Results and provenance](../results/hug-longer-time.json) · [Measurements by time](../results/hug-longer-time.csv)
 
-**Next accuracy check:** add a finer-grid comparison at the same final time 0.16 to assess the larger remaining spatial difference. Keep the existing construction and zero external force.
+**Completed next step:** [The 384³ grid comparison](#finer-grid-at-time-016) is recorded below.
 
 <!-- LONGER_END -->
+
+<!-- GRID384_START -->
+## Finer grid at time 0.16
+
+**Completed:** a new **384³** run reaches model time **0.16** with time step **0.001**. The saved **256³ / 0.001** result is reused. Both use the same initial-field construction, length-6 periodic box, viscosity 0.01, and **zero external force**.
+
+**Both measured differences are smaller on the new grid pair.** The final velocity difference changes from **0.3287%** (128³ vs 256³) to **0.0619%** (256³ vs 384³). The full-gradient difference changes from **1.8051%** to **0.3509%**.
+
+| Comparison at time 0.16 | Velocity difference | Full-gradient difference |
+| --- | --- | --- |
+| 128³ vs 256³, dt 0.001 | 0.3287% | 1.8051% |
+| 256³ vs 384³, dt 0.001 | 0.0619% | 0.3509% |
+| Earlier 256³ time-step control | 0.0240% | 0.0819% |
+
+The grid changes have different refinement ratios: **2** and **1.5**. A smaller difference on the new pair therefore does not, by itself, establish a convergence order. The time-step control remains at 256³; a 384³ half-step run has not been performed.
+
+![Comparison including the 384 cubed grid](../figures/hug-grid-384.png)
+
+| Grid | Initial max gradient | Final max gradient | Final energy | Final max divergence |
+| --- | --- | --- | --- | --- |
+| 128³ | 11.516387 | 9.490098 | 38.701445 | 6.22e-15 |
+| 256³ | 11.715300 | 9.601384 | 38.706818 | 1.31e-14 |
+| 384³ | 11.751008 | 9.620783 | 38.707794 | 1.95e-14 |
+
+The new 384³ run starts with a sampled maximum gradient of **11.751008** and ends at **9.620783**. This maximum is a different measurement from the relative L2 difference of the full gradient tensor.
+
+### Verification and reuse
+
+- The numerical source fingerprint matches the previous runs. The existing centered update, pressure projection, analytic starting field, and force settings were retained.
+- The 384³ field was sampled on its own grid from the same analytic construction. It was not created by stretching a saved 256³ result.
+- Checkpoints at **0.04, 0.08, 0.12, and 0.16** preserve the new work. Restarts use the saved velocity exactly, without a new initial projection; the scalar remains zero.
+- Six targeted checks passed: four field-comparison checks, including a new **3:2 grid-alignment check**, and two checkpoint-restart checks. The new transfer ratio is tested at matching physical coordinates.
+- The comparison uses the existing periodic cubic interpolation and centered-gradient tensor. The interpolation error is not enclosed by a rigorous bound. Centered-grid null modes and finite resolution remain limitations.
+
+These are finite-time numerical measurements. They do not establish an all-time smoothness or breakdown proof.
+
+### Reproduce this comparison
+
+```sh
+python -m pytest math/tests/test_refinement_comparison.py math/tests/test_hug_continuation.py -q
+python math/extend_hug_refinement.py --finer-grid 384
+```
+
+This command extends the saved longer-time study. On a fresh checkout, first follow the preceding refinement and continuation commands to create the earlier checkpoint arrays. Completed matching runs and checkpoints are reused; raw arrays remain under ignored `scratch/hug-refinement/`.
+
+[Measured results](../results/hug-grid-384.json) · [Rows by time](../results/hug-grid-384.csv) · [Shared extension runner](../extend_hug_refinement.py)
+
+**Next numerical check:** compare the 384³ result with half the time step at the same final time before extending the interval further.
+
+<!-- GRID384_END -->
