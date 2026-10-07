@@ -1,6 +1,6 @@
 # The hug now prepares the ring's boundary
 
-**Latest:** [Continuation to model time 0.4](#continuation-to-model-time-04).
+**Latest:** [Grid-pattern check through model time 0.4](#grid-pattern-check-through-model-time-04).
 
 **Completed:** the existing closed hug shapes the existing smooth ring's initial field. Velocity becomes zero smoothly before every cube face, so opposite faces and all their derivatives match. The continuum field remains divergence-free. The Navier–Stokes equation and zero-external-force choice remain unchanged.
 
@@ -508,3 +508,65 @@ These commands use the saved checkpoint arrays in ignored `scratch/hug-refinemen
 [Evolution results and provenance](../results/hug-continued-0.4.json) · [Evolution measurements](../results/hug-continued-0.4.csv) · [Shape results and provenance](../results/hug-shape-0.4.json) · [Shape measurements](../results/hug-shape-0.4.csv)
 
 <!-- CONTINUED040_END -->
+
+<!-- GRID_RESOLUTION_START -->
+## Grid-pattern check through model time 0.4
+
+**Completed:** inspected the existing 256³ and 384³ controls for alternating patterns that centered derivatives can miss. The equation, saved velocities, initial field, viscosity and external force were unchanged. **No evolution steps were added.**
+
+**The largest measured energy fraction in the seven exact checkerboard modes was 4.061e-22. The broader short-wave band held at most 1.266e-08 of the energy.** These measurements do not show a substantial hidden checkerboard component in the saved arrays.
+
+![Short-wave energy, derivative comparison, and common-frequency tails](../figures/hug-resolution.png)
+
+The first panel uses each grid's own four-cell wavelength cutoff. Its physical cutoff differs between grids. The last panel compares tails at the **same physical mode numbers** in the same length-6 box; its dotted line marks mode 64. The middle panel compares two discrete RMS gradient measurements, not the previously reported maximum gradient.
+
+### What was measured
+
+For a Fourier coordinate mode m on N points with spacing h, the centered derivative has magnitude |sin(2πm/N)|/h. It vanishes at m=N/2. The adjacent-cell difference has magnitude 2|sin(πm/N)|/h and detects every nonconstant grid mode. Summing their squared symbols times Fourier power gives the two RMS norms, independently checked against differences taken directly in real space.
+
+- **Exact checkerboards:** the seven nonconstant modes whose three coordinates are each zero or Nyquist. All centered partial derivatives vanish on these modes.
+- **Nyquist planes:** any coordinate at Nyquist, including patterns that still vary visibly in another direction. These include the seven checkerboards.
+- **Short waves:** any coordinate with |m|≥N/4, equivalent to wavelength ≤four cells in at least one direction. This broader band includes the Nyquist planes. The three fractions overlap; do not add them.
+- **RMS gap:** 100×(1 − centered RMS / adjacent-cell RMS). This includes normal finite-difference attenuation of resolved waves and is not a measured continuum error.
+
+The real FFT uses one copy of DC and Nyquist power and two copies of interior reduced-axis power. The resulting energy matches a direct sum of squared velocities (Parseval check). [SciPy transform convention](https://docs.scipy.org/doc/scipy/reference/generated/scipy.fft.rfftn.html).
+
+### Largest fractions over all saved times, including the start
+
+Fractions use **1 = all energy**, or all squared adjacent-cell gradients in the last column. Each column reports its own maximum; maxima need not occur at the same time.
+
+| Grid | Time step | Exact checkerboard energy | Nyquist-plane energy | Short-wave energy | Short-wave squared-gradient share |
+| --- | --- | --- | --- | --- | --- |
+| 256³ | 0.001 | 4.061e-22 | 1.754e-13 | 1.266e-08 | 5.674e-06 |
+| 384³ | 0.001 | 1.131e-23 | 2.903e-16 | 1.487e-10 | 1.438e-07 |
+| 384³ | 0.0005 | 1.131e-23 | 2.903e-16 | 1.487e-10 | 1.438e-07 |
+
+### Derivative comparison at time 0.40
+
+| Grid | Time step | Centered gradient RMS | Adjacent-cell gradient RMS | RMS gap | Energy fraction at modes ≥64 |
+| --- | --- | --- | --- | --- | --- |
+| 256³ | 0.001 | 1.90905951 | 1.91182926 | 0.144874% | 5.667e-16 |
+| 384³ | 0.001 | 1.91081373 | 1.91204658 | 0.064478% | 4.463e-16 |
+| 384³ | 0.0005 | 1.91031898 | 1.91155049 | 0.064425% | 4.128e-16 |
+
+The largest RMS gap anywhere in these saved histories is **0.245939%**. At the endpoint it is **0.144874%** on 256³ and **0.064478%** on 384³ at the same time step. The smaller-step 384³ value is **0.064425%**.
+
+### Verification and limits
+
+- **15 focused checks passed:** all seven pure checkerboards; ordinary sinusoids along all three axes; a near-Nyquist wave; a Nyquist plane with visible variation in another direction; constant and random fields; invalid inputs. The random-field check uses independent real-space derivatives and confirms translation invariance and unchanged input arrays.
+- **31 observations from 30 distinct saved fields.** The identical 384³ starting field's diagnostic was reused across time steps. All 28 checkpoint-file hashes match the existing study; every measured energy matches its earlier record. Earlier fluid intervals were not repeated.
+- The spatial and temporal settings are identical to the [completed 0.40 comparison](#continuation-to-model-time-04). This is postprocessing, not a solver replacement or a filtering operation.
+- The test cannot detect signals that aliased before sampling, content above the grid's resolution, or events between saved times. Very small FFT tails can reflect floating-point roundoff. Small tails and small differences between the two derivative norms give no rigorous continuum-error bound or all-time smoothness proof.
+
+From the repository root, with the existing local checkpoints:
+
+```sh
+python math/hug_resolution.py
+python -m pytest -q math/tests/test_hug_resolution.py
+```
+
+The analysis caches each measurement in ignored `scratch/hug-resolution/`. Cached values are reused only with matching checkpoint and analysis hashes. A fresh checkout can read the published tables and figure immediately; reproducing this analysis requires the checkpoint-producing runs recorded above.
+
+[Diagnostic code](../hug_resolution.py) · [Independent checks](../tests/test_hug_resolution.py) · [Measurements and spectra](../results/hug-resolution.json) · [Measurement table](../results/hug-resolution.csv)
+
+<!-- GRID_RESOLUTION_END -->

@@ -8,7 +8,7 @@
 
 The **“hug”** is a soft enclosing shape applied to the starting flow. After that preparation, the flow evolves with zero external force. A *velocity field* gives the speed and direction at each position; its *gradient* measures how quickly that velocity changes from place to place.
 
-1. **See the current result:** [the continuation through time 0.4](notes/hug-boundary.md#continuation-to-model-time-04).
+1. **See the current result:** [the saved-flow grid-pattern check](notes/hug-boundary.md#grid-pattern-check-through-model-time-04).
 2. **Understand the construction:** [how the hug shapes the starting field](notes/hug-boundary.md).
 3. **Follow the work:** [completed checks and the next experiment](../STATUS.md#next-math-step).
 
@@ -50,6 +50,7 @@ The editable derivation is [smooth-initial-field.tex](notes/smooth-initial-field
 | [continue_hug_refinement.py](continue_hug_refinement.py) | Continues the saved 128³ and 256³ states to time 0.16, preserving the original step sizes and zero force; checks restart identity |
 | [hidden_flow_experiment.py](hidden_flow_experiment.py) | Unforced periodic Fourier evolution for A/B/C and the three-dimensional continuation |
 | [hug_shape.py](hug_shape.py) | Measures energy-weighted widths from existing checkpoint arrays; adds no solver steps |
+| [hug_resolution.py](hug_resolution.py) | Checks saved fields for checkerboards, short waves and differences between two discrete gradient measurements; adds no solver steps |
 | [tests/](tests/) | Consolidated checks from the repositories and this review |
 
 From the repository root:
