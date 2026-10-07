@@ -20,6 +20,7 @@
 | 384³ time-step control | [Half-step comparison](math/notes/hug-boundary.md#half-time-step-on-the-384-grid) | At time 0.16: 0.0242% velocity difference and 0.0840% gradient difference; identical starting arrays, zero force, four saved checkpoints, eight targeted checks passed |
 | Hug continuation to 0.24 | [New interval](math/notes/hug-boundary.md#continuation-to-model-time-024) | Three exact restarts completed; grid and time-step comparisons retained; eight targeted checks passed |
 | Hug shape measurement | [Spread of motion](math/notes/hug-boundary.md#how-the-motion-changes-shape) | Nineteen observations from saved arrays; all three runs narrow in both directions; three targeted checks passed |
+| Hug continuation to 0.32 | [Evolution and shape](math/notes/hug-boundary.md#continuation-to-model-time-032) | Three exact restarts; six new checkpoints; prior shape observations reused; fourteen targeted checks passed |
 | Separate trigonometric illustration | [Derivation, runs, and checks](math/notes/hidden-flow-evolution.md) | Assistant-chosen fields, distinct from the ring construction. One has an analytic smooth reduction; a 3D variant has refined finite-time results. The conversation-to-fluid mapping was not established |
 | Language reports | [Report guide](language/README.md) | Existing tables and charts preserved; available chart links repaired |
 | Conversation exploration | [Wordless map and observations](language/exploration/README.md) | Sequence, overlapping saved categories, reply length, and unmarked replies exposed without exporting reply text |
@@ -53,7 +54,9 @@ The [384³ half-step control](math/notes/hug-boundary.md#half-time-step-on-the-3
 
 The [continuation to model time 0.24](math/notes/hug-boundary.md#continuation-to-model-time-024) is complete. The 256³/384³ grid differences are 0.0749% in velocity and 0.3639% in its gradient. The 384³ time-step differences are 0.0328% and 0.0977%. All three exact 0.16 checkpoints were reused; six new checkpoints preserve progress at 0.20 and 0.24. Eight targeted checks passed. The equation, field, viscosity, and zero external force are retained. These finite-time measurements supply no rigorous error bound or all-time smoothness proof.
 
-**Shape measurement completed:** [all three saved flows narrow in both directions](math/notes/hug-boundary.md#how-the-motion-changes-shape). The finest control changes by −4.81% sideways and −6.75% vertically. No solver steps were added. A widening phase has not been observed at these saved times. The next evolution study can resume the three existing 0.24 checkpoints and retain these shape measurements at future checkpoints.
+**Shape measurement completed:** [all three saved flows narrow in both directions](math/notes/hug-boundary.md#how-the-motion-changes-shape). The finest control changes by −4.81% sideways and −6.75% vertically. No solver steps were added. A widening phase has not been observed at these saved times. That continuation is now [completed through 0.32](math/notes/hug-boundary.md#continuation-to-model-time-032).
+
+**Continuation to 0.32 completed:** The largest sampled velocity gradient decreased at every recorded new time in all three runs. Grid differences are 0.0829% in velocity and 0.3697% in its gradient. Time-step differences are 0.0410% and 0.1099%. Both energy-weighted widths decreased at the new saved times in all three runs. [All measurements](math/notes/hug-boundary.md#continuation-to-model-time-032).
 
 ## Material still missing
 

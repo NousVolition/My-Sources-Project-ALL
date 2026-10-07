@@ -4,6 +4,7 @@
 --finer-grid 384 adds a finer comparison at the saved longer time, t=0.16.
 --time-control-grid 384 halves the time step at that same grid and final time.
 --continue-to 0.24 resumes the saved 256/384 grid and 384 time-step controls.
+--from-study selects a later published continuation as the exact restart baseline.
 """
 import argparse
 import csv
@@ -198,18 +199,35 @@ def resume_through_checkpoints(summary_path, stops, cache):
     return saved, arrays_path
 
 
-def continue_grid_time_study(end):
-    """Extend the published 0.16 controls with unchanged grids and time steps."""
+def continuation_baseline(baseline_path=None):
+    """Select a recorded three-run continuation, or the original 0.16 controls."""
+    if baseline_path is not None:
+        previous = json.loads(Path(baseline_path).read_text())
+        expected = previous['runs']
+        if [(r['N'], r['dt']) for r in expected] != [(256, .001), (384, .001), (384, .0005)]:
+            raise ValueError('Require the published 256/384 grid and 384 time-step controls')
+        start = previous['end_time']
+        if any(r['end_time'] != start for r in expected) or previous['external_force'] != 0:
+            raise ValueError('Baseline runs must share the unforced endpoint')
+        return previous, expected, previous['spatial_comparison']
     previous = json.loads(Path('math/results/hug-time-384.json').read_text())
     grid = json.loads(Path('math/results/hug-grid-384.json').read_text())
+    if previous['end_time'] != grid['end_time']:
+        raise ValueError('Baseline studies must share the endpoint')
+    expected = [next(r for r in grid['runs'] if r['N'] == 256), *previous['runs']]
+    return previous, expected, previous['spatial_comparison']['final']
+
+
+def continue_grid_time_study(end, baseline_path=None):
+    """Extend the selected published controls with unchanged grids and time steps."""
+    previous, expected, earlier_spatial = continuation_baseline(baseline_path)
     start, cache = previous['end_time'], Path('scratch/hug-refinement')
-    if not math.isfinite(end) or end <= start or start != grid['end_time']:
+    if not math.isfinite(end) or end <= start:
         raise ValueError('End must exceed the matching published checkpoint times')
     stops, t = [], start
     while t < end:
         t = min(round(t+.04, 12), end)
         stops.append(t)
-    expected = [next(r for r in grid['runs'] if r['N'] == 256), *previous['runs']]
     if [(r['N'], r['dt']) for r in expected] != [(256, .001), (384, .001), (384, .0005)]:
         raise ValueError('Require the published 256/384 grid and 384 time-step controls')
     source, paths = numerical_source_hash(), []
@@ -246,7 +264,7 @@ def continue_grid_time_study(end):
                   spatial_comparison=dict(coarse=256, fine=384, dt=.001, **spatial),
                   time_comparison=dict(grid=384, steps=[.001, .0005], **temporal),
                   earlier_comparisons=dict(time=start,
-                      spatial=previous['spatial_comparison']['final'],
+                      spatial=earlier_spatial,
                       temporal=previous['time_comparison']),
                   comparison='Grid comparison uses periodic cubic interpolation at matching '
                              'physical cell centers; time-step comparison uses the identical grid.',
@@ -268,9 +286,13 @@ def main():
     mode.add_argument("--finer-grid", type=int)
     mode.add_argument("--time-control-grid", type=int)
     mode.add_argument("--continue-to", type=float)
+    parser.add_argument("--from-study", type=Path,
+                        help="Published continuation JSON to resume instead of the original 0.16 controls")
     args = parser.parse_args()
+    if args.from_study is not None and args.continue_to is None:
+        parser.error('--from-study requires --continue-to')
     if args.continue_to is not None:
-        continue_grid_time_study(args.continue_to)
+        continue_grid_time_study(args.continue_to, args.from_study)
         return
     if args.time_control_grid is not None:
         extend_time_control(args.time_control_grid)
