@@ -17,11 +17,11 @@ You can read the studies on GitHub without installing anything.
 
 The **“hug”** is the name for a soft enclosing shape used to prepare the flow's starting pattern. The simulation then follows that flow using the Navier–Stokes equations with zero external force.
 
-The latest check used the same starting flow and **half the time between calculation steps**. At the same stopping point, the two runs differed by **0.0242% in velocity** and **0.0840% in its spatial gradient**—how quickly velocity changes from place to place.
+The latest check continued three saved runs from **model time 0.16 to 0.24**. At the new endpoint, the finer-grid comparison gives **0.0749% in velocity** and **0.3639% in its spatial gradient**—how quickly velocity changes from place to place. Halving the time between calculation steps on the finer grid gives differences of **0.0328%** and **0.0977%**, respectively.
 
 These are measurements over a limited simulated interval. The Clay problem still requires a mathematical proof.
 
-**[See the comparison and chart →](math/notes/hug-boundary.md#half-time-step-on-the-384-grid)**
+**[See the comparison and chart →](math/notes/hug-boundary.md#continuation-to-model-time-024)**
 
 ## Explore the conversations
 
@@ -32,7 +32,7 @@ The [earlier category map](language/exploration/README.md) shows reply order, ov
 ## What is finished, and what comes next?
 
 - **Completed:** the smooth starting-field construction and energy calculation; saved grid and time-step comparisons; conversation maps with evidence links and checks.
-- **Next math check:** continue the saved runs from model time 0.16 to 0.24 and compare them again.
+- **Latest math check completed:** [the three-run continuation to model time 0.24](math/notes/hug-boundary.md#continuation-to-model-time-024).
 - **Next conversation work:** review interpretations with another reader and add new material while recording overlaps.
 
 [Full project status and completed work →](STATUS.md)

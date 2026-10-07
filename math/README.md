@@ -8,11 +8,11 @@
 
 The **“hug”** is a soft enclosing shape applied to the starting flow. After that preparation, the flow evolves with zero external force. A *velocity field* gives the speed and direction at each position; its *gradient* measures how quickly that velocity changes from place to place.
 
-1. **See the current result:** [the chart and half-time-step comparison](notes/hug-boundary.md#half-time-step-on-the-384-grid).
+1. **See the current result:** [the chart and continuation comparison](notes/hug-boundary.md#continuation-to-model-time-024).
 2. **Understand the construction:** [how the hug shapes the starting field](notes/hug-boundary.md).
 3. **Follow the work:** [completed checks and the next experiment](../STATUS.md#next-math-step).
 
-The latest run uses **384 grid points along each of three directions**, written **384³**. At model time **0.16**, halving the time step changes the final velocity by **0.0242%** and its gradient by **0.0840%**, measured across the complete fields. Model time is the simulation's time coordinate. This comparison measures numerical sensitivity over that interval; a mathematical proof of smoothness for all time remains open.
+The latest continuation reaches **model time 0.24** using **256 and 384 grid points along each of three directions**. The grid differences are **0.0749%** in velocity and **0.3639%** in its gradient. On 384³, halving the time step gives **0.0328%** and **0.0977%**, respectively. Model time is the simulation's time coordinate. These measurements assess sensitivity over the tested interval; the Clay problem requires a mathematical proof.
 
 ## Background and earlier experiments
 
@@ -44,7 +44,7 @@ The editable derivation is [smooth-initial-field.tex](notes/smooth-initial-field
 | [hug_envelope.py](hug_envelope.py) · [pressure_envelope.py](pressure_envelope.py) | Shared mirrored-arm geometry, timed release, and a separate pressure-triggered opening prototype |
 | [hugged_ring.py](hugged_ring.py) | The existing closed hug applied to the existing smooth ring through its stream function; used by `box_experiment.py --profile hug` |
 | [hug_refinement.py](hug_refinement.py) | Grid and time-step comparisons of the same hugged ring, using the existing cube stencils; caches completed runs |
-| [extend_hug_refinement.py](extend_hug_refinement.py) | Extends the grid study; `--half-step` checks 256³ at time 0.08, and `--finer-grid 384` compares the saved 256³ field with 384³ at time 0.16, preserving checkpoints; `--time-control-grid 384` adds the half-step control |
+| [extend_hug_refinement.py](extend_hug_refinement.py) | Extends the grid study; `--half-step` checks 256³ at time 0.08, and `--finer-grid 384` compares the saved 256³ field with 384³ at time 0.16, preserving checkpoints; `--time-control-grid 384` adds the half-step control; `--continue-to 0.24` resumes all three controls |
 | [continue_hug_refinement.py](continue_hug_refinement.py) | Continues the saved 128³ and 256³ states to time 0.16, preserving the original step sizes and zero force; checks restart identity |
 | [hidden_flow_experiment.py](hidden_flow_experiment.py) | Unforced periodic Fourier evolution for A/B/C and the three-dimensional continuation |
 | [tests/](tests/) | Consolidated checks from the repositories and this review |
