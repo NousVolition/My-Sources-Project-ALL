@@ -21,6 +21,7 @@
 | Hug continuation to 0.24 | [New interval](math/notes/hug-boundary.md#continuation-to-model-time-024) | Three exact restarts completed; grid and time-step comparisons retained; eight targeted checks passed |
 | Hug shape measurement | [Spread of motion](math/notes/hug-boundary.md#how-the-motion-changes-shape) | Nineteen observations from saved arrays; all three runs narrow in both directions; three targeted checks passed |
 | Hug continuation to 0.32 | [Evolution and shape](math/notes/hug-boundary.md#continuation-to-model-time-032) | Three exact restarts; six new checkpoints; prior shape observations reused; fourteen targeted checks passed |
+| Hug continuation to 0.4 | [Evolution and shape](math/notes/hug-boundary.md#continuation-to-model-time-04) | Three exact restarts; six new checkpoints; prior shape observations reused; new data validated using unchanged code |
 | Separate trigonometric illustration | [Derivation, runs, and checks](math/notes/hidden-flow-evolution.md) | Assistant-chosen fields, distinct from the ring construction. One has an analytic smooth reduction; a 3D variant has refined finite-time results. The conversation-to-fluid mapping was not established |
 | Language reports | [Report guide](language/README.md) | Existing tables and charts preserved; available chart links repaired |
 | Conversation exploration | [Wordless map and observations](language/exploration/README.md) | Sequence, overlapping saved categories, reply length, and unmarked replies exposed without exporting reply text |
@@ -58,6 +59,8 @@ The [continuation to model time 0.24](math/notes/hug-boundary.md#continuation-to
 
 **Continuation to 0.32 completed:** The largest sampled velocity gradient decreased at every recorded new time in all three runs. Grid differences are 0.0829% in velocity and 0.3697% in its gradient. Time-step differences are 0.0410% and 0.1099%. Both energy-weighted widths decreased at the new saved times in all three runs. [All measurements](math/notes/hug-boundary.md#continuation-to-model-time-032).
 
+**Continuation to 0.4 completed:** The largest sampled velocity gradient decreased at every recorded new time in all three runs. Grid differences are 0.0875% in velocity and 0.3710% in its gradient. Time-step differences are 0.0491% and 0.1245%. Both energy-weighted widths decreased at the new saved times in all three runs. [All measurements](math/notes/hug-boundary.md#continuation-to-model-time-04).
+
 ## Material still missing
 
 - The original pasted inputs for the two language scripts and the generator for the third report.
@@ -70,3 +73,5 @@ The conversation reconstruction is preserved as a reconstruction; it is not subs
 ## Work history
 
 The [consolidation record](archive/CONSOLIDATION.md) identifies which Copilot branches were reused, which duplicate implementations were retired, and which sessions produced no file changes. It is the place to check before restarting an old task.
+
+**Comparison series complete through 0.40:** both new intervals are recorded above. Further evolution is not scheduled.
