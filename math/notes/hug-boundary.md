@@ -1,6 +1,6 @@
 # The hug now prepares the ring's boundary
 
-**Latest:** [Viscous energy check through model time 0.4](#viscous-energy-check-through-model-time-04).
+**Latest:** [One-step energy trace](#one-step-energy-trace-through-model-time-04).
 
 **Completed:** the existing closed hug shapes the existing smooth ring's initial field. Velocity becomes zero smoothly before every cube face, so opposite faces and all their derivatives match. The continuum field remains divergence-free. The Navier–Stokes equation and zero-external-force choice remain unchanged.
 
@@ -651,3 +651,80 @@ python -m pytest -q math/tests/test_hug_energy_balance.py
 [Calculation](../hug_energy_balance.py) · [Independent checks](../tests/test_hug_energy_balance.py) · [All estimates and provenance](../results/hug-energy-balance.json) · [Measurement table](../results/hug-energy-balance.csv)
 
 <!-- ENERGY_BALANCE_END -->
+
+<!-- STEP_ENERGY_START -->
+## One-step energy trace through model time 0.4
+
+**Question:** which part of a calculation step contributes to the small energy mismatch?
+
+**The positive finite-step contribution, after pressure correction removes part of it, is the largest non-viscous contribution in every sampled step. Transport adds or removes a smaller amount.** Every probe's total energy change is accounted for within **5.527e-14 energy units** of roundoff. This is a check of the numerical update's accounting.
+
+![Non-viscous energy contributions across saved states and their split at the final saved state](../figures/hug-step-energy.png)
+
+The plot divides each one-step contribution by its time-step size so the controls use the same units. These are sampled one-step quantities, not a continuously measured physical energy source. The left panel is relative to viscosity evaluated at the **start** of a step. It is not the same quantity as the earlier integrated viscous-budget gap.
+
+### What ran
+
+**31 independent one-step probes** started from the existing saved 256³ and 384³ fields. Each probe uses the actual unchanged NumPy predictor and FFT pressure correction in [navier.py](../navier.py). Copies at time 0.40 are probed to 0.401 or 0.4005 and then discarded; the saved trajectory still ends at **0.40**. No checkpoint was replaced, no new continuation was saved, and the original field, viscosity, grid settings and zero external force are retained.
+
+### The accounting identity
+
+Let F = −(u·D)u + νLₕu be the existing discrete transport-plus-viscosity update. The predictor is w = u + Δt F, and pressure correction gives v = Pₕw. For the grid inner product ⟨a,b⟩ₕ = h³∑ a·b and Eₕ(u)=½‖u‖²ₕ,
+
+$$E_h(v)-E_h(u)=\underbrace{-\Delta t\langle u,(u\cdot D)u\rangle_h}_{\text{transport work}}+\underbrace{\Delta t\nu\langle u,L_hu\rangle_h}_{\text{viscous work}}+\underbrace{\tfrac12\Delta t^2\lVert F\rVert_h^2}_{\text{finite-step quadratic term}}+\underbrace{E_h(v)-E_h(w)}_{\text{pressure correction}}.$$
+
+This follows by expanding the squared norm of u+ΔtF. The finite-step term contains cross terms between transport and viscosity; those parts of the predictor happen together. This is not a sequence of separate transport-only and viscosity-only simulations.
+
+The compatible orthogonal pressure projection also satisfies
+
+$$E_h(v)-E_h(w)=-\tfrac12\lVert w-v\rVert_h^2.$$
+
+Both the measured energy difference and this negative squared-norm expression are checked. Viscous work agrees with the previously measured adjacent-cell gradient norm. A positive contribution increases the numerical energy; a negative contribution decreases it. The positive quadratic term is part of discrete energy accounting, **not an added external force**.
+
+### Contributions from the saved state at time 0.40
+
+Values below are energy changes for **one probe step**, without division by Δt.
+
+| Grid | Time step | Viscosity | Transport | Finite-step quadratic | Pressure correction | Total change | Accounting remainder |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 256³ | 0.001 | -7.894997e-03 | +1.032523e-05 | +1.163558e-04 | -7.210212e-05 | -7.840418e-03 | +2.758210e-16 |
+| 384³ | 0.001 | -7.896792e-03 | +4.598201e-06 | +1.165331e-04 | -7.224011e-05 | -7.847901e-03 | -2.339795e-14 |
+| 384³ | 0.0005 | -3.946347e-03 | +2.286770e-06 | +2.909009e-05 | -1.805320e-05 | -3.933024e-03 | +1.098427e-14 |
+
+The pressure correction removes much of the positive quadratic contribution. Their combined contribution is still positive and larger than the magnitude of transport work in every saved-state probe. Transport work changes sign during these histories. This identifies the main sampled numerical contribution without assuming that transport is always energy-neutral on the centered grid.
+
+### Relation to the earlier energy-budget gap
+
+The [previous test](#viscous-energy-check-through-model-time-04) compared total measured loss with a time integral of viscous dissipation. Each actual Euler step evaluates viscosity at its start. Those two ways of accumulating viscosity differ even when every individual step balances exactly.
+
+For an approximate check across 0 to 0.40, integrate the sampled transport rate and the quadratic and projection contributions divided by Δt. Include the leading viscous start-of-step sampling correction, Δt[Qₕ(0.40)−Qₕ(0)]/2. The table uses quadratic interpolation between saved times; linear-interpolation values are also saved in JSON.
+
+| Grid | Time step | Integrated transport | Quadratic | Projection | Leading viscous sampling correction | Estimated gap | Earlier measured gap | Remaining difference |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 256³ | 0.001 | -0.003186 | +0.061790 | -0.040034 | -0.001719 | +0.016850 | +0.017110 | +0.000260 |
+| 384³ | 0.001 | -0.001405 | +0.061903 | -0.040108 | -0.001723 | +0.018666 | +0.018699 | +0.000033 |
+| 384³ | 0.0005 | -0.001406 | +0.030928 | -0.020051 | -0.000863 | +0.008609 | +0.008637 | +0.000028 |
+
+For the finer half-step control, this estimate gives **0.008609**, compared with the previously measured **0.008637**. The difference is **+0.000028**, or **+0.0008% of observed energy lost**.
+
+This interval comparison is approximate: the probes are sparse; they do not reconstruct the intervening steps. Only the leading **viscous** sampling correction is included; endpoint corrections for the other sampled rates, higher-order terms and quadrature uncertainty remain. The close step identities do not make that approximate interval reconstruction exact.
+
+### Verification and limits
+
+- **14 focused checks passed:** unchanged constant fields; known forward-Euler sine-shear decay on two grids; a steady inviscid flow whose pressure correction cancels the entire quadratic term; a random field checked against the original loop implementation; expected scaling with Δt on identical inputs; removal of initial gradient energy; invalid inputs.
+- All 28 input checkpoint hashes match prior provenance. Each probe starts at the previously recorded energy and viscous loss rate. The input arrays are preserved by the diagnostic, and the existing numerical-source fingerprint is unchanged.
+- Independent slab calculations match the solver's predictor; the full-step identity and projection norm identity are checked separately. The largest full-step accounting remainder is **5.527e-14**.
+- This diagnoses the current numerical method at sampled states. It does not establish a continuum error bound, prove global smoothness, or change the physical model.
+
+With the existing local checkpoints, from the repository root:
+
+```sh
+python math/hug_step_energy.py
+python -m pytest -q math/tests/test_hug_step_energy.py
+```
+
+Probe summaries are cached in ignored `scratch/hug-step-energy/` with the checkpoint, numerical settings and analysis hash. A fresh checkout can read the complete published tables; recomputation of the probes requires the earlier checkpoint-producing runs.
+
+[Probe calculation](../hug_step_energy.py) · [Independent checks](../tests/test_hug_step_energy.py) · [All contributions and provenance](../results/hug-step-energy.json) · [One-step table](../results/hug-step-energy.csv)
+
+<!-- STEP_ENERGY_END -->
