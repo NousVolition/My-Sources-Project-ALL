@@ -2,14 +2,26 @@
 
 [← Project home](../README.md) · [Done & next](../STATUS.md)
 
-## Read
+## Start here
+
+**The question:** how does a smooth, ring-shaped flow evolve, and how much do the numerical results change when we use a finer grid or smaller time steps?
+
+The **“hug”** is a soft enclosing shape applied to the starting flow. After that preparation, the flow evolves with zero external force. A *velocity field* gives the speed and direction at each position; its *gradient* measures how quickly that velocity changes from place to place.
+
+1. **See the current result:** [the chart and half-time-step comparison](notes/hug-boundary.md#half-time-step-on-the-384-grid).
+2. **Understand the construction:** [how the hug shapes the starting field](notes/hug-boundary.md).
+3. **Follow the work:** [completed checks and the next experiment](../STATUS.md#next-math-step).
+
+The latest run uses **384 grid points along each of three directions**, written **384³**. At model time **0.16**, halving the time step changes the final velocity by **0.0242%** and its gradient by **0.0840%**, measured across the complete fields. Model time is the simulation's time coordinate. This comparison measures numerical sensitivity over that interval; a mathematical proof of smoothness for all time remains open.
+
+## Background and earlier experiments
 
 1. **[The smooth initial field](notes/smooth-initial-field.md)** — the corrected construction and exact energy.
 2. **[The cube experiments](EXPERIMENTS.md)** — saved results, pressure correction, and what the tests establish.
 3. **[Review of the original framework](notes/math-review.md)** — mathematical claims still requiring work.
 4. **[Norm and Entropy: two mirrored halves](notes/norm-entropy-mirror.md)** — paired samples, K-means before and after alignment, and the separate boundary check.
 5. **[A soft envelope: hug, imprint, and pressure](notes/soft-envelope.md)** — small motion and memory prototypes, with explicit opening rules.
-6. **[The hug closes the ring's boundary](notes/hug-boundary.md)** — the actual closed hug shapes the maintained ring's stream function, giving a smooth, divergence-free start with matching cube faces. [Finer-grid evolution](notes/hug-boundary.md#finer-grid-evolution-check) follows the same field through a short unforced run; [the longer interval](notes/hug-boundary.md#longer-run-to-model-time-016) continues three saved states to time 0.16. [The 384³ comparison](notes/hug-boundary.md#finer-grid-at-time-016) adds spatial refinement at that same final time. [The 384³ half-step control](notes/hug-boundary.md#half-time-step-on-the-384-grid) checks time-step sensitivity at that same endpoint.
+6. **[The hug construction and run history](notes/hug-boundary.md)** — the smooth enclosing shape, grid comparisons, saved continuations, and time-step checks.
 7. **[Separate trigonometric illustration](notes/hidden-flow-evolution.md)** — assistant-chosen fields with an analytic reduction and refined numerical runs; these do not evolve the project's ring field or establish the proposed conversation-to-fluid mapping.
 
 ![Original and corrected ring profiles](figures/smooth-initial-profile.png)
