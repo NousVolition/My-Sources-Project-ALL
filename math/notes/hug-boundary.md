@@ -1,6 +1,6 @@
 # The hug now prepares the ring's boundary
 
-**Latest:** [Continuation to model time 0.24](#continuation-to-model-time-024).
+**Latest:** [How the motion changes shape](#how-the-motion-changes-shape).
 
 **Completed:** the existing closed hug shapes the existing smooth ring's initial field. Velocity becomes zero smoothly before every cube face, so opposite faces and all their derivatives match. The continuum field remains divergence-free. The Navier–Stokes equation and zero-external-force choice remain unchanged.
 
@@ -333,3 +333,56 @@ The command needs the three original 0.16 checkpoint arrays under ignored `scrat
 [Measured results and provenance](../results/hug-continued-0.24.json) · [Measurements by time](../results/hug-continued-0.24.csv) · [Continuation runner](../extend_hug_refinement.py)
 
 <!-- CONTINUED024_END -->
+
+<!-- SHAPE_START -->
+## How the motion changes shape
+
+**The motion becomes more concentrated: 4.81% narrower sideways and 6.75% narrower vertically.** These numbers use the 384³ run with time step 0.0005, from model time 0 to 0.24. Both widths decreased at every saved snapshot in all three runs.
+
+This adds a shape measurement to the already completed evolution. **No fluid steps were repeated or added.** Sixteen saved checkpoint files supply 19 observations, including the starting field for each run. The equation, hug construction, viscosity and zero external force are preserved.
+
+![Energy-weighted sideways and vertical spread across the saved times](../figures/hug-shape.png)
+
+| Grid | Time step | Sideways spread change | Vertical spread change |
+| --- | --- | --- | --- |
+| 256³ | 0.001 | -4.8094% | -6.7420% |
+| 384³ | 0.001 | -4.8086% | -6.7558% |
+| 384³ | 0.0005 | -4.8084% | -6.7498% |
+
+### What the widths mean
+
+At each grid position, use squared speed as a weight: `w = u_x² + u_y² + u_z²`. Faster-moving regions count more. Find the weighted center `c = Σ(w x)/Σw`, then take the root mean square distance from that center:
+
+$$
+R_E=\sqrt{\frac{\sum w[(x-c_x)^2+(y-c_y)^2]}{\sum w}},\qquad
+Z_E=\sqrt{\frac{\sum w(z-c_z)^2}{\sum w}}.
+$$
+
+These are the sideways and vertical **spread of kinetic energy**, in model length units. Dividing by each initial width gives the plotted percentage change. Multiplying every velocity by the same factor leaves the widths unchanged, so uniform slowing alone cannot cause this narrowing.
+
+### What this says about breathing
+
+The sampled sequence records a narrowing phase. It contains no measured widening phase and does not establish a repeating breathing cycle. The earlier hug animation is sampled once to prepare the initial field; its timed closing and opening are not imposed during fluid evolution.
+
+The widths follow where motion is concentrated. They do not track a material wall or the same fluid particles. Uneven slowing, transport and redistribution can all change these widths; this measurement does not identify which caused the trend. Changes between saved times remain unresolved.
+
+### Agreement and coordinate limits
+
+- At time 0.24, 256³/384³ differences in these widths are 0.00111% sideways and 0.01329% vertically.
+- On 384³, full/half time-step differences are 0.00024% and 0.00646%.
+- Moments use the fixed `[-3,3)` coordinates of the periodic box. At most 0.026210% of the energy falls in the union of face bands `max(|x|,|y|,|z|) ≥ 2.7`. The largest measured center offset is 1.02e-16. These localization checks do not make the widths intrinsic periodic distances or give a numerical error bound.
+
+**Three targeted checks passed:** a distribution with exactly known center and widths, invariance under uniform speed rescaling with no double-counting of corners, and rejection of undefined inputs. Recomputed energies match the checkpoint diagnostics. Results record checkpoint and analysis hashes. This is a finite-time numerical observation, without an all-time smoothness conclusion.
+
+### Reproduce the measurement
+
+```sh
+python -m pytest math/tests/test_hug_shape.py -q
+python math/hug_shape.py
+```
+
+The second command reads existing arrays under ignored `scratch/hug-refinement/`; it never advances the solver. A fresh checkout needs the checkpoint-producing runs documented above. The saved tables and figure are available directly.
+
+[Measurements and provenance](../results/hug-shape.json) · [Measurement table](../results/hug-shape.csv) · [Analysis code](../hug_shape.py)
+
+<!-- SHAPE_END -->
