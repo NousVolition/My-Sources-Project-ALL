@@ -1,6 +1,6 @@
 # The hug now prepares the ring's boundary
 
-**Latest:** [How the motion changes shape](#how-the-motion-changes-shape).
+**Latest:** [Continuation to model time 0.32](#continuation-to-model-time-032).
 
 **Completed:** the existing closed hug shapes the existing smooth ring's initial field. Velocity becomes zero smoothly before every cube face, so opposite faces and all their derivatives match. The continuum field remains divergence-free. The Navier–Stokes equation and zero-external-force choice remain unchanged.
 
@@ -386,3 +386,64 @@ The second command reads existing arrays under ignored `scratch/hug-refinement/`
 [Measurements and provenance](../results/hug-shape.json) · [Measurement table](../results/hug-shape.csv) · [Analysis code](../hug_shape.py)
 
 <!-- SHAPE_END -->
+
+<!-- CONTINUED032_START -->
+## Continuation to model time 0.32
+
+**Completed:** three saved simulations advanced from **0.24 to 0.32**. The grids remain 256³ and 384³; time steps remain 0.001 and 0.0005. The periodic box length is 6, viscosity is 0.01, and external force is zero.
+
+**The largest sampled velocity gradient decreased at every recorded new time in all three runs.**
+
+![Gradient and energy-width histories through model time 0.32](../figures/hug-continued-0.32.png)
+
+The shaded interval is the new calculation. Shape markers show saved observations; connecting lines do not resolve the flow between checkpoints.
+
+### Differences between calculations
+
+| Comparison at 0.32 | Velocity difference | Full-gradient difference |
+| --- | --- | --- |
+| 256³ vs 384³, dt 0.001 | 0.0829% | 0.3697% |
+| 384³, dt 0.001 vs 0.0005 | 0.0410% | 0.1099% |
+
+For reference, at 0.24 the grid differences were 0.0749% and 0.3639%; the time-step differences were 0.0328% and 0.0977%. These percentages compare numerical fields; they are not errors measured against a known exact solution.
+
+| Grid | Time step | Peak gradient 0.24 | Peak gradient 0.32 | Energy 0.24 | Energy 0.32 | Discrete divergence 0.32 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 256³ | 0.001 | 8.891290 | 8.297373 | 37.981798 | 37.303221 | 1.29e-14 |
+| 384³ | 0.001 | 8.902324 | 8.301088 | 37.982804 | 37.303918 | 2.04e-14 |
+| 384³ | 0.0005 | 8.900557 | 8.298887 | 37.976874 | 37.296414 | 2.00e-14 |
+
+### Changes in energy spread
+
+**Both energy-weighted widths decreased at the new saved times in all three runs.** The width definition remains the [kinetic-energy-weighted central second moment](#how-the-motion-changes-shape). The earlier 19 observations are reused exactly; six measurements are added at 0.28 and 0.32.
+
+| Grid | Time step | Sideways change 0.24→0.32 | Vertical change 0.24→0.32 | Sideways change from 0 | Vertical change from 0 |
+| --- | --- | --- | --- | --- | --- |
+| 256³ | 0.001 | -1.8038% | -1.8710% | -6.5264% | -8.4869% |
+| 384³ | 0.001 | -1.8045% | -1.8718% | -6.5264% | -8.5012% |
+| 384³ | 0.0005 | -1.8033% | -1.8686% | -6.5250% | -8.4923% |
+
+Widths measure the distribution of motion. They do not measure material-boundary displacement or isolate pressure as a cause. The timed breathing animation is not imposed during fluid evolution. At most 0.040314% of energy lies in the selected outer face bands at the new shape checkpoints. The fixed periodic coordinate cut and finite sampling remain limitations.
+
+### Work performed and verification
+
+- Reused the three exact 0.24 velocity checkpoints, preserving all prior diagnostic rows and the original starting arrays. No earlier evolution interval was repeated.
+- Added 80 steps on 256³, 80 on 384³ with dt 0.001, and 160 on 384³ with dt 0.0005. Saved complete checkpoints at 0.28 and 0.32.
+- Numerical source fingerprint, viscosity, initial-field construction and zero external force match the prior study. The scalar remains zero. The half-step controls retain identical original initial arrays.
+- **Ten restart and comparison checks passed**, including the new selection of an explicit later baseline. **Four shape checks passed**, including retention of old observations and reading only new arrays. The earlier code paths remain available.
+- Recomputed new shape energies match the solver diagnostics; CSV rows, checkpoint provenance, and report links are checked before publication.
+
+The periodic grid comparison uses cubic interpolation at matching physical centers. The time-step comparison uses the same grid. Centered derivatives retain checkerboard null modes. This finite-time study gives no rigorous exact-solution error bound or all-time smoothness proof.
+
+### Reproduce this interval
+
+```sh
+python math/extend_hug_refinement.py --from-study math/results/hug-continued-0.24.json --continue-to 0.32
+python math/hug_shape.py --from-study math/results/hug-shape.json --stops 0.28 0.32 --out math/results/hug-shape-0.32.json
+```
+
+These commands use the saved checkpoint arrays in ignored `scratch/hug-refinement/`. A fresh checkout needs the earlier checkpoint-producing runs. Published tables and figures are readable without rerunning them.
+
+[Evolution results and provenance](../results/hug-continued-0.32.json) · [Evolution measurements](../results/hug-continued-0.32.csv) · [Shape results and provenance](../results/hug-shape-0.32.json) · [Shape measurements](../results/hug-shape-0.32.csv)
+
+<!-- CONTINUED032_END -->
