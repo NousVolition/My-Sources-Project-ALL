@@ -1,30 +1,53 @@
 # Nous Volition
 
-**One home for the math, studies, and work already completed.**
+**Exploring patterns in fluid motion and human–AI conversations.**
 
-Start with a section below. [What is done and what comes next →](STATUS.md)
+This personal research project turns visual ideas and observations into diagrams, code, and recorded comparisons. The pages below explain what was tried, show the evidence, and identify questions that remain open.
 
-| Explore | Start here |
-| --- | --- |
-| **Math & fluid experiments** | [Smooth initial field, derivation, code, and saved results](math/README.md) |
-| **Conversation patterns** | [Explore the conversation without the reply text](language/exploration/README.md) |
-| **Conversation study** | [Sources, confusion, context comparisons, and evidence checks](language/conversation-study/README.md) |
-| **Working papers** | [The two papers and their source status](papers/README.md) |
-| **Earlier work** | [Original drafts, Copilot branches, and run history](archive/README.md) |
+## Start here
 
-## Current focus
+You can read the studies on GitHub without installing anything.
 
-The [conversation study](language/conversation-study/README.md) is now a separate, source-linked collection: 53 observations, eight word paths, and six context comparisons across three supplied snapshots. Its reading pages work directly on GitHub. The original text, annotations, interactive edition, and checks are together in the folder. It remains distinct from the earlier 68-reply table below.
+| Explore | The question | Start reading |
+| --- | --- | --- |
+| **Fluid motion** | How does a smooth, ring-shaped flow change over time, and how much do the computer's calculation settings affect the answer? | [The math in plain language](math/README.md) |
+| **Conversation patterns** | What repeats or changes across replies, and how does earlier wording carry into later answers? | [A concrete conversation example](language/conversation-study/CONTEXT.md#c01) · [See categories without the reply text](language/exploration/README.md) |
 
-Explore how a conversation changes over time: repeated categories, overlaps, unmarked replies, and reply length. The [new map](language/exploration/README.md) preserves the existing annotations and sequence. It is an exploratory view that can grow as more conversations are collected.
+## Current math result
 
-The smooth initial field and its energy calculation are finished. The existing hug now shapes the ring's starting field, giving smooth matching boundaries without external force. [Read the hug construction, grid comparisons, and time-step checks →](math/notes/hug-boundary.md)
+The **“hug”** is the name for a soft enclosing shape used to prepare the flow's starting pattern. The simulation then follows that flow using the Navier–Stokes equations with zero external force.
 
-The saved study now includes [a 384³ comparison at time 0.16](math/notes/hug-boundary.md#finer-grid-at-time-016), alongside the earlier 32³, 64³, 128³, and 256³ grids. [Three saved runs now continue to model time 0.16](math/notes/hug-boundary.md#longer-run-to-model-time-016), including the 256³ half-time-step control. Code, checks, numerical records, and figures are together in [math/](math/README.md). [What is finished and what comes next →](STATUS.md#next-math-step)
+The latest check used the same starting flow and **half the time between calculation steps**. At the same stopping point, the two runs differed by **0.0242% in velocity** and **0.0840% in its spatial gradient**—how quickly velocity changes from place to place.
 
-**Latest:** [The 384³ half-step comparison](math/notes/hug-boundary.md#half-time-step-on-the-384-grid) is complete. Starting from exactly identical arrays, time steps **0.001** and **0.0005** give **0.0242%** velocity difference and **0.0840%** full-gradient difference. The hug construction, equation, viscosity, and zero external force are retained. The previous full-step run was reused.
+These are measurements over a limited simulated interval. The Clay problem still requires a mathematical proof.
 
-## Run the existing work
+**[See the comparison and chart →](math/notes/hug-boundary.md#half-time-step-on-the-384-grid)**
+
+## Explore the conversations
+
+The [conversation study](language/conversation-study/README.md) links observations about confusion, repeated wording, and changed interpretations back to the supplied text. One example follows the same comparison request receiving different interpretations after different preceding exchanges.
+
+The [earlier category map](language/exploration/README.md) shows reply order, overlapping categories, and reply length across 68 replies. The two source collections are documented separately.
+
+## What is finished, and what comes next?
+
+- **Completed:** the smooth starting-field construction and energy calculation; saved grid and time-step comparisons; conversation maps with evidence links and checks.
+- **Next math check:** continue the saved runs from model time 0.16 to 0.24 and compare them again.
+- **Next conversation work:** review interpretations with another reader and add new material while recording overlaps.
+
+[Full project status and completed work →](STATUS.md)
+
+## Code, papers, and history
+
+- [Math code and instructions](math/README.md#use-the-code)
+- [Conversation study and its checks](language/conversation-study/README.md#run-the-checks)
+- [Working papers and their source status](papers/README.md)
+- [Earlier work and consolidation record](archive/README.md)
+
+This repository holds the current code, reports, and status. [Nous-Volition](https://github.com/NousVolition/Nous-Volition) preserves the original stream-function report. Check [project status](STATUS.md) before starting work so completed experiments can be reused.
+
+<details>
+<summary>Run a small example locally</summary>
 
 Use Python 3.12 from this repository's root:
 
@@ -35,10 +58,6 @@ python language/conversation_map.py --output scratch/conversation-map
 python math/box_experiment.py --profile smooth --start projected --points 8 --steps 1
 ```
 
-The [full comparison results](math/results/box-experiment-results.csv) are already saved; the short command above is just a way to try the runner.
+The measurements from completed experiments are already saved with their reports.
 
-## How the two repositories fit
-
-This repository maintains the code, corrected note, and project status. [Nous-Volition](https://github.com/NousVolition/Nous-Volition) keeps the original stream-function report and points here for current work.
-
-Check [STATUS.md](STATUS.md) before beginning a task. Update the existing implementation when extending it. Prior branch work is traced in the [consolidation record](archive/CONSOLIDATION.md).
+</details>
