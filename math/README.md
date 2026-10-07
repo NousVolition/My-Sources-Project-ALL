@@ -8,13 +8,13 @@
 
 The **“hug”** is a soft enclosing shape applied to the starting flow. After that preparation, the flow evolves with zero external force. A *velocity field* gives the speed and direction at each position; its *gradient* measures how quickly that velocity changes from place to place.
 
-1. **See the current result:** [the continuation through time 0.32](notes/hug-boundary.md#continuation-to-model-time-032).
+1. **See the current result:** [the continuation through time 0.4](notes/hug-boundary.md#continuation-to-model-time-04).
 2. **Understand the construction:** [how the hug shapes the starting field](notes/hug-boundary.md).
 3. **Follow the work:** [completed checks and the next experiment](../STATUS.md#next-math-step).
 
-The latest continuation reaches **model time 0.32** on **256³ and 384³** grids. The grid differences are **0.0829%** in velocity and **0.3697%** in its gradient. On 384³, halving the time step gives **0.0410%** and **0.1099%**. Model time is the simulation time coordinate. These are finite-time numerical measurements; the Clay problem requires a mathematical proof.
+The latest continuation reaches **model time 0.4** on **256³ and 384³** grids. The grid differences are **0.0875%** in velocity and **0.3710%** in its gradient. On 384³, halving the time step gives **0.0491%** and **0.1245%**. Model time is the simulation time coordinate. These are finite-time numerical measurements; the Clay problem requires a mathematical proof.
 
-**Latest shape measurement:** Both energy-weighted widths decreased at the new saved times in all three runs. [Values and definitions](notes/hug-boundary.md#continuation-to-model-time-032).
+**Latest shape measurement:** Both energy-weighted widths decreased at the new saved times in all three runs. [Values and definitions](notes/hug-boundary.md#continuation-to-model-time-04).
 
 ## Background and earlier experiments
 
@@ -46,7 +46,7 @@ The editable derivation is [smooth-initial-field.tex](notes/smooth-initial-field
 | [hug_envelope.py](hug_envelope.py) · [pressure_envelope.py](pressure_envelope.py) | Shared mirrored-arm geometry, timed release, and a separate pressure-triggered opening prototype |
 | [hugged_ring.py](hugged_ring.py) | The existing closed hug applied to the existing smooth ring through its stream function; used by `box_experiment.py --profile hug` |
 | [hug_refinement.py](hug_refinement.py) | Grid and time-step comparisons of the same hugged ring, using the existing cube stencils; caches completed runs |
-| [extend_hug_refinement.py](extend_hug_refinement.py) | Extends the grid study; `--half-step` checks 256³ at time 0.08, and `--finer-grid 384` compares the saved 256³ field with 384³ at time 0.16, preserving checkpoints; `--time-control-grid 384` adds the half-step control; `--continue-to 0.24` resumes all three controls; `--from-study math/results/hug-continued-0.24.json --continue-to 0.32` starts from the later saved state |
+| [extend_hug_refinement.py](extend_hug_refinement.py) | Extends the grid study; `--half-step` checks 256³ at time 0.08, and `--finer-grid 384` compares the saved 256³ field with 384³ at time 0.16, preserving checkpoints; `--time-control-grid 384` adds the half-step control; `--continue-to 0.24` resumes all three controls; `--from-study math/results/hug-continued-0.32.json --continue-to 0.4` starts from the later saved state |
 | [continue_hug_refinement.py](continue_hug_refinement.py) | Continues the saved 128³ and 256³ states to time 0.16, preserving the original step sizes and zero force; checks restart identity |
 | [hidden_flow_experiment.py](hidden_flow_experiment.py) | Unforced periodic Fourier evolution for A/B/C and the three-dimensional continuation |
 | [hug_shape.py](hug_shape.py) | Measures energy-weighted widths from existing checkpoint arrays; adds no solver steps |
