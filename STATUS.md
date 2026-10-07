@@ -18,6 +18,7 @@
 | Longer hug evolution | [Continuation to time 0.16](math/notes/hug-boundary.md#longer-run-to-model-time-016) | Three exact checkpoint restarts completed; two restart checks passed. 256³ time-step differences: 0.0240% velocity, 0.0819% gradient. External force 0 |
 | 384³ grid comparison | [Same-time refinement](math/notes/hug-boundary.md#finer-grid-at-time-016) | At time 0.16: 0.0619% velocity difference and 0.3509% gradient difference vs 256³, using dt 0.001. Four checkpoints saved; six targeted comparison/restart checks passed |
 | 384³ time-step control | [Half-step comparison](math/notes/hug-boundary.md#half-time-step-on-the-384-grid) | At time 0.16: 0.0242% velocity difference and 0.0840% gradient difference; identical starting arrays, zero force, four saved checkpoints, eight targeted checks passed |
+| Hug continuation to 0.24 | [New interval](math/notes/hug-boundary.md#continuation-to-model-time-024) | Three exact restarts completed; grid and time-step comparisons retained; eight targeted checks passed |
 | Separate trigonometric illustration | [Derivation, runs, and checks](math/notes/hidden-flow-evolution.md) | Assistant-chosen fields, distinct from the ring construction. One has an analytic smooth reduction; a 3D variant has refined finite-time results. The conversation-to-fluid mapping was not established |
 | Language reports | [Report guide](language/README.md) | Existing tables and charts preserved; available chart links repaired |
 | Conversation exploration | [Wordless map and observations](language/exploration/README.md) | Sequence, overlapping saved categories, reply length, and unmarked replies exposed without exporting reply text |
@@ -49,7 +50,7 @@ The [384³ comparison](math/notes/hug-boundary.md#finer-grid-at-time-016) is com
 
 The [384³ half-step control](math/notes/hug-boundary.md#half-time-step-on-the-384-grid) is complete at time **0.16**. Starting from exactly identical arrays, time steps **0.001** and **0.0005** give **0.0242%** velocity difference and **0.0840%** full-gradient difference. The hug construction, equation, viscosity, and zero external force are retained. The previous full-step run was reused.
 
-Next numerical study: continue the saved 256³ / 0.001, 384³ / 0.001, and 384³ / 0.0005 states from time 0.16 to 0.24, then compare both grid and time-step differences at the new endpoint. This continuation has not been run. The present study supplies finite-time numerical evidence without a rigorous error bound or an all-time smoothness proof.
+The [continuation to model time 0.24](math/notes/hug-boundary.md#continuation-to-model-time-024) is complete. The 256³/384³ grid differences are 0.0749% in velocity and 0.3639% in its gradient. The 384³ time-step differences are 0.0328% and 0.0977%. All three exact 0.16 checkpoints were reused; six new checkpoints preserve progress at 0.20 and 0.24. Eight targeted checks passed. The equation, field, viscosity, and zero external force are retained. These finite-time measurements supply no rigorous error bound or all-time smoothness proof.
 
 ## Material still missing
 

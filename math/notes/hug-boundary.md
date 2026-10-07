@@ -1,6 +1,6 @@
 # The hug now prepares the ring's boundary
 
-**Latest:** [Half time step on the 384 grid](#half-time-step-on-the-384-grid).
+**Latest:** [Continuation to model time 0.24](#continuation-to-model-time-024).
 
 **Completed:** the existing closed hug shapes the existing smooth ring's initial field. Velocity becomes zero smoothly before every cube face, so opposite faces and all their derivatives match. The continuum field remains divergence-free. The Navier–Stokes equation and zero-external-force choice remain unchanged.
 
@@ -277,6 +277,59 @@ The command requires the completed 384³ / 0.001 baseline and its checkpoint arr
 
 [Measured results](../results/hug-time-384.json) · [Measurements by time](../results/hug-time-384.csv) · [Shared runner](../extend_hug_refinement.py)
 
-**Next numerical study:** continue the saved 256³ / 0.001, 384³ / 0.001, and 384³ / 0.0005 states to time 0.24, preserving both a grid comparison and a time-step comparison at the new endpoint. That continuation has not been run.
+**Completed next step:** [The continuation to time 0.24](#continuation-to-model-time-024) is recorded below.
 
 <!-- HALF384_END -->
+
+<!-- CONTINUED024_START -->
+## Continuation to model time 0.24
+
+**Completed:** the same three saved runs now reach **model time 0.24**, continuing directly from **0.16**. The 256³ / 0.001, 384³ / 0.001, and 384³ / 0.0005 settings are retained. The hug-shaped starting field, length-6 periodic box, viscosity 0.01, numerical update, and **zero external force** are unchanged.
+
+**The largest sampled velocity gradient decreased at every recorded time in all three continuations.**
+
+| Comparison at time 0.24 | Velocity difference | Full-gradient difference |
+| --- | --- | --- |
+| 256³ vs 384³, dt 0.001 | 0.0749% | 0.3639% |
+| 384³, dt 0.001 vs 0.0005 | 0.0328% | 0.0977% |
+
+![Continued gradient histories and complete-field comparisons](../figures/hug-continued-0.24.png)
+
+### What changed over the extra interval?
+
+- Grid velocity difference increased: 0.0619% → 0.0749%.
+- Grid gradient difference increased: 0.3509% → 0.3639%.
+- Time-step velocity difference increased: 0.0242% → 0.0328%.
+- Time-step gradient difference increased: 0.0840% → 0.0977%.
+
+The gradient history measures how sharply velocity varies within each simulated flow. The percentages measure differences between calculations over the entire velocity field and all nine gradient components. They answer different questions.
+
+| Grid | Time step | Gradient at 0.16 | Gradient at 0.24 | Energy at 0.16 | Energy at 0.24 | Divergence at 0.24 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 256³ | 0.001 | 9.601384 | 8.891290 | 38.706818 | 37.981798 | 1.29e-14 |
+| 384³ | 0.001 | 9.620783 | 8.902324 | 38.707794 | 37.982804 | 2.04e-14 |
+| 384³ | 0.0005 | 9.619762 | 8.900557 | 38.703592 | 37.976874 | 1.95e-14 |
+
+### What was preserved and checked
+
+- Each run resumed its exact saved velocity at 0.16. The earlier interval was reused. There was no extra projection when restarting; the existing pressure correction operates during each new step.
+- New checkpoints were saved at **0.20** and **0.24** for each run. The two full-step runs added 80 steps each; the half-step run added 160.
+- The numerical source fingerprint matches the earlier study. Each checkpoint records hashes of its input summary, input arrays, and continuation code. The scalar stays zero.
+- The two 384³ time-step controls have exactly identical original initial arrays, checked before continuation and at completion. Their time-step comparison involves no interpolation.
+- The 256³/384³ grid comparison uses the existing periodic cubic interpolation at matching physical cell centers. It includes interpolation and discretization effects.
+- **Eight targeted checks passed.** The staged continuation matches uninterrupted evolution bit for bit on a small grid, adds only the required new steps, reuses completed checkpoints, and rejects invalid schedules. Existing restart and comparison checks also pass.
+
+These are finite-time numerical sensitivity measurements. The percentages are not rigorous bounds on error relative to an exact solution. Two grids and two time steps do not establish convergence orders or an all-time smoothness or breakdown proof. Centered-grid null modes and finite resolution remain limitations.
+
+### Reproduce this continuation
+
+```sh
+python -m pytest math/tests/test_hug_checkpoint_sequence.py math/tests/test_hug_continuation.py math/tests/test_refinement_comparison.py -q
+python math/extend_hug_refinement.py --continue-to 0.24
+```
+
+The command needs the three original 0.16 checkpoint arrays under ignored `scratch/hug-refinement/`. On a fresh checkout, follow the preceding grid and half-step studies to create them. Matching completed continuations are reused. The published tables and chart can be read without running the simulation.
+
+[Measured results and provenance](../results/hug-continued-0.24.json) · [Measurements by time](../results/hug-continued-0.24.csv) · [Continuation runner](../extend_hug_refinement.py)
+
+<!-- CONTINUED024_END -->

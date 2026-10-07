@@ -3,10 +3,12 @@
 --half-step adds the 256^3 time-step control while retaining previous results.
 --finer-grid 384 adds a finer comparison at the saved longer time, t=0.16.
 --time-control-grid 384 halves the time step at that same grid and final time.
+--continue-to 0.24 resumes the saved 256/384 grid and 384 time-step controls.
 """
 import argparse
 import csv
 import json
+import math
 from pathlib import Path
 import time
 
@@ -161,13 +163,115 @@ def extend_time_control(points):
     print(json.dumps(result['time_comparison'], indent=2), flush=True)
 
 
+def resume_through_checkpoints(summary_path, stops, cache):
+    """Continue only the new interval, retaining exact restart and cache checks."""
+    summary_path = Path(summary_path)
+    saved = json.loads(summary_path.read_text())
+    dt, start = saved['dt'], saved['end_time']
+    if (not stops or not math.isfinite(dt) or dt <= 0
+            or any(not math.isfinite(t) for t in stops)
+            or any(b <= a for a, b in zip((start,)+tuple(stops[:-1]), stops))
+            or any(abs(round(t/dt)*dt-t) > 1e-12 for t in stops)):
+        raise ValueError('Checkpoint times must increase after the saved time and align with dt')
+    original = PurePythonNavierStokes3D.step_with_pressure
+    current_step = saved['steps']
+    total = round(stops[-1]/dt)
+    began = time.perf_counter()
+
+    def progress(self, *args, **kwargs):
+        nonlocal current_step
+        result = original(self, *args, **kwargs)
+        current_step += 1
+        print(f'N={self.N} dt={dt:g}: global step {current_step}/{total}; '
+              f'elapsed {(time.perf_counter()-began)/60:.1f} min', flush=True)
+        return result
+
+    PurePythonNavierStokes3D.step_with_pressure = progress
+    try:
+        for stop in stops:
+            current_step = saved['steps']
+            saved, arrays_path = continue_run(summary_path, stop, cache)
+            summary_path = arrays_path.with_suffix('.json')
+            print(f'Saved N={saved["N"]} dt={dt:g} through t={stop:g}', flush=True)
+    finally:
+        PurePythonNavierStokes3D.step_with_pressure = original
+    return saved, arrays_path
+
+
+def continue_grid_time_study(end):
+    """Extend the published 0.16 controls with unchanged grids and time steps."""
+    previous = json.loads(Path('math/results/hug-time-384.json').read_text())
+    grid = json.loads(Path('math/results/hug-grid-384.json').read_text())
+    start, cache = previous['end_time'], Path('scratch/hug-refinement')
+    if not math.isfinite(end) or end <= start or start != grid['end_time']:
+        raise ValueError('End must exceed the matching published checkpoint times')
+    stops, t = [], start
+    while t < end:
+        t = min(round(t+.04, 12), end)
+        stops.append(t)
+    expected = [next(r for r in grid['runs'] if r['N'] == 256), *previous['runs']]
+    if [(r['N'], r['dt']) for r in expected] != [(256, .001), (384, .001), (384, .0005)]:
+        raise ValueError('Require the published 256/384 grid and 384 time-step controls')
+    source, paths = numerical_source_hash(), []
+    for saved in expected:
+        path = cache/f'n{saved["N"]}-dt{saved["dt"]:g}-t{start:g}.json'
+        if (json.loads(path.read_text()) != saved or not path.with_suffix('.npz').exists()
+                or saved['source_sha256'] != source or saved['sigma'] != 0
+                or saved['P_U'] != 0 or saved['end_time'] != start
+                or saved['box'] != expected[0]['box'] or saved['nu'] != expected[0]['nu']
+                or any(abs(round(t/saved['dt'])*saved['dt']-t) > 1e-12 for t in stops)):
+            raise ValueError('Checkpoint must exactly match the published unforced baseline')
+        paths.append(path)
+    print('All three checkpoints match the published results and unchanged numerical source',
+          flush=True)
+    with np.load(paths[1].with_suffix('.npz')) as a, np.load(paths[2].with_suffix('.npz')) as b:
+        if not np.array_equal(a['initial'], b['initial']):
+            raise ValueError('Time-step controls have different initial arrays')
+    print('384-grid time-step controls have exactly identical original starting arrays', flush=True)
+    runs, arrays = [], []
+    for path in paths:
+        saved, output = resume_through_checkpoints(path, stops, cache)
+        runs.append(saved)
+        arrays.append(output)
+    print('Comparing complete fields at the new endpoint', flush=True)
+    with np.load(arrays[0]) as low, np.load(arrays[1]) as full:
+        spatial = compare_fields(low['final'], full['final'], box=expected[0]['box'])
+    with np.load(arrays[1]) as full, np.load(arrays[2]) as half:
+        if not np.array_equal(full['initial'], half['initial']):
+            raise ValueError('Time-step controls have different initial arrays')
+        temporal = compare_fields(full['final'], half['final'], box=expected[0]['box'])
+    result = dict(field=previous['field'], domain=previous['domain'], external_force=0.,
+                  method=previous['method'], start_time=start, end_time=end, runs=runs,
+                  checkpoint_times=stops, initial_arrays_identical=True,
+                  spatial_comparison=dict(coarse=256, fine=384, dt=.001, **spatial),
+                  time_comparison=dict(grid=384, steps=[.001, .0005], **temporal),
+                  earlier_comparisons=dict(time=start,
+                      spatial=previous['spatial_comparison']['final'],
+                      temporal=previous['time_comparison']),
+                  comparison='Grid comparison uses periodic cubic interpolation at matching '
+                             'physical cell centers; time-step comparison uses the identical grid.',
+                  limits=previous['limits'])
+    path = Path(f'math/results/hug-continued-{end:g}.json')
+    path.write_text(json.dumps(result, indent=2, allow_nan=False)+'\n')
+    with path.with_suffix('.csv').open('w', newline='') as handle:
+        rows = [row for saved in runs for row in saved['rows']]
+        writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
+        writer.writeheader()
+        writer.writerows(rows)
+    print(json.dumps(dict(spatial=spatial, time=temporal), indent=2), flush=True)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     mode = parser.add_mutually_exclusive_group()
     mode.add_argument("--half-step", action="store_true")
     mode.add_argument("--finer-grid", type=int)
     mode.add_argument("--time-control-grid", type=int)
+    mode.add_argument("--continue-to", type=float)
     args = parser.parse_args()
+    if args.continue_to is not None:
+        continue_grid_time_study(args.continue_to)
+        return
     if args.time_control_grid is not None:
         extend_time_control(args.time_control_grid)
         return
