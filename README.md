@@ -1,56 +1,42 @@
 # Nous Volition
 
-**Sources, conversation studies, and mathematical experiments.**
+**One home for the math, studies, and work already completed.**
 
-Start with a section below. Each study connects its questions to the available source material, working code, checks, and limits.
+Start with a section below. [What is done and what comes next →](STATUS.md)
 
-## Explore the work
-
-| Area | Start here |
+| Explore | Start here |
 | --- | --- |
-| **Conversation study** | [Categories, confusion, wording, and what changes after a correction](language/conversation-study/README.md) |
-| **Original conversation material** | [Three supplied snapshots, source links, and overlap notes](language/conversation-study/SOURCES.md) |
-| **Earlier conversation map** | [68 replies viewed through overlapping categories](https://github.com/NousVolition/My-Sources-Project-ALL/tree/copilot/put-stokes-start-on-cube/language/exploration) |
-| **Math & fluid experiments** | [Smooth initial field, derivation, code, tests, and saved results](https://github.com/NousVolition/My-Sources-Project-ALL/tree/copilot/put-stokes-start-on-cube/math) |
-| **Working papers** | [The two papers and their source status](https://github.com/NousVolition/My-Sources-Project-ALL/tree/copilot/put-stokes-start-on-cube/papers) |
-| **Project progress** | [What is finished and what comes next](https://github.com/NousVolition/My-Sources-Project-ALL/blob/copilot/put-stokes-start-on-cube/STATUS.md) |
+| **Math & fluid experiments** | [Smooth initial field, derivation, code, and saved results](math/README.md) |
+| **Conversation patterns** | [Explore the conversation without the reply text](language/exploration/README.md) |
+| **Conversation study** | [Sources, confusion, context comparisons, and evidence checks](language/conversation-study/README.md) |
+| **Working papers** | [The two papers and their source status](papers/README.md) |
+| **Earlier work** | [Original drafts, Copilot branches, and run history](archive/README.md) |
 
-## Latest math: the hug-shaped ring
+## Current focus
 
-**[Read the latest 384³ grid comparison](https://github.com/NousVolition/My-Sources-Project-ALL/blob/copilot/put-stokes-start-on-cube/math/notes/hug-boundary.md#finer-grid-at-time-016)** · [Code and tests](https://github.com/NousVolition/My-Sources-Project-ALL/blob/copilot/put-stokes-start-on-cube/math/README.md)
+The [conversation study](language/conversation-study/README.md) is now a separate, source-linked collection: 53 observations, eight word paths, and six context comparisons across three supplied snapshots. Its reading pages work directly on GitHub. The original text, annotations, interactive edition, and checks are together in the folder. It remains distinct from the earlier 68-reply table below.
 
-The closed hug shapes the maintained smooth ring's starting field. A new **384³** run is compared with the saved **256³** field at **model time 0.16**, using the same time step **0.001** and **zero external force**.
+Explore how a conversation changes over time: repeated categories, overlaps, unmarked replies, and reply length. The [new map](language/exploration/README.md) preserves the existing annotations and sequence. It is an exploratory view that can grow as more conversations are collected.
 
-- 256³ vs 384³: **0.0619% velocity difference**, **0.3509% gradient difference**.
-- Earlier 128³ vs 256³: **0.3287%** and **1.8051%**. These grid changes have different refinement ratios (2 and 1.5).
-- Six targeted comparison/restart checks passed, including a new check of the 3:2 grid alignment. Four checkpoints preserve the new work; previous completed runs were reused.
+The smooth initial field and its energy calculation are finished. The existing hug now shapes the ring's starting field, giving smooth matching boundaries without external force. [Read the hug construction, grid comparisons, and time-step checks →](math/notes/hug-boundary.md)
 
-The 256³ time-step control and the earlier results remain available. A 384³ half-step check has not been run. These are finite-time numerical comparisons, without a rigorous error bound or an all-time smoothness or breakdown proof.
+The saved study now includes [a 384³ comparison at time 0.16](math/notes/hug-boundary.md#finer-grid-at-time-016), alongside the earlier 32³, 64³, 128³, and 256³ grids. [Three saved runs now continue to model time 0.16](math/notes/hug-boundary.md#longer-run-to-model-time-016), including the 256³ half-time-step control. Code, checks, numerical records, and figures are together in [math/](math/README.md). [What is finished and what comes next →](STATUS.md#next-math-step)
 
-## Latest study: following a conversation
+## Run the existing work
 
-The new [conversation study](language/conversation-study/README.md) follows **request → answer → correction → next answer**, with 53 selected observations, eight word paths, and six comparisons of prior context. Its category view makes patterns visible before returning to the wording.
-
-One concrete example: the same complete request appears twice, but the answers use different frames after different preceding discussion. [Read the comparison and inspect the original lines →](language/conversation-study/CONTEXT.md#c01)
-
-The GitHub pages are ready to read. The full source snapshots, machine-readable annotations, interactive HTML, and executable checks are together in the same folder. The work is exploratory and prepared with AI assistance; interpretations and source claims are kept distinct.
-
-## Check the study
-
-After downloading or cloning the repository, use Python 3.12 or later from its root. These checks use only the standard library:
+Use Python 3.12 from this repository's root:
 
 ```sh
-python language/conversation-study/validate.py
-python -m unittest discover -s language/conversation-study/tests -v
-python language/conversation-study/build.py --check
+python -m pip install -r requirements.txt
+python -m pytest -q
+python language/conversation_map.py --output scratch/conversation-map
+python math/box_experiment.py --profile smooth --start projected --points 8 --steps 1
 ```
 
-For the interactive view, open `language/conversation-study/index.html` from the downloaded folder in a browser. The reading pages above work directly on GitHub.
+The [full comparison results](math/results/box-experiment-results.csv) are already saved; the short command above is just a way to try the runner.
 
-## Project organization
+## How the two repositories fit
 
-The conversation study is available here on the main branch. The links to math, earlier language work, papers, and progress open the organized working version while [the broader reorganization](https://github.com/NousVolition/My-Sources-Project-ALL/pull/1) remains under review. They can all be read without using the pull-request interface.
+This repository maintains the code, corrected note, and project status. [Nous-Volition](https://github.com/NousVolition/Nous-Volition) keeps the original stream-function report and points here for current work.
 
-[Nous-Volition](https://github.com/NousVolition/Nous-Volition) holds the original stream-function report. This repository brings the sources, implementations, and studies together. The [consolidation record](https://github.com/NousVolition/My-Sources-Project-ALL/blob/copilot/put-stokes-start-on-cube/archive/CONSOLIDATION.md) traces earlier work so completed pieces can be reused.
-
-
+Check [STATUS.md](STATUS.md) before beginning a task. Update the existing implementation when extending it. Prior branch work is traced in the [consolidation record](archive/CONSOLIDATION.md).
