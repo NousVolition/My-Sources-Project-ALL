@@ -1,0 +1,179 @@
+{
+  "question": "How does adjusting phrase counts for reply length change grouping?",
+  "source_file": "ai_language_turns_3.csv",
+  "source_sha256": "fadc8cab5136fc47c0249550c4382dcaf52a6cf10514eb9071dc11b12f45b623",
+  "rows": 68,
+  "features": [
+    "validation",
+    "apology",
+    "institutional",
+    "clinical_pr",
+    "machine_talk",
+    "supremacy_term",
+    "exit_menu",
+    "safety_story"
+  ],
+  "descriptive_labels": 66,
+  "singleton_descriptive_labels": 64,
+  "all_zero_feature_rows": 30,
+  "feature_nonzero_rows": {
+    "validation": 13,
+    "apology": 5,
+    "institutional": 15,
+    "clinical_pr": 17,
+    "machine_talk": 9,
+    "supremacy_term": 5,
+    "exit_menu": 3,
+    "safety_story": 2
+  },
+  "versions": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "scikit_learn": "1.9.0",
+    "scipy": "1.18.1"
+  },
+  "design": {
+    "K_values": [
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "n_init": 20,
+    "algorithm": "lloyd",
+    "initialization": "k-means++",
+    "max_iter": 300,
+    "tol": 0.0001,
+    "primary_K": 3,
+    "primary_seed": 0,
+    "scaler": "StandardScaler fitted separately for each representation",
+    "selection": "K=3 fixed as an illustrative comparison before seeing results",
+    "labels_used_for_fitting": false,
+    "scope": "Exploratory full-table analysis; no held-out performance claim"
+  },
+  "representations": {
+    "counts": {
+      "unique_vectors": 27,
+      "scaler_mean": [
+        0.22058823529411764,
+        0.10294117647058823,
+        0.6323529411764706,
+        0.38235294117647056,
+        0.22058823529411764,
+        0.16176470588235295,
+        0.08823529411764706,
+        0.029411764705882353
+      ],
+      "scaler_scale": [
+        0.48036714620767895,
+        0.4249465669647027,
+        1.696921189239898,
+        0.857997185047932,
+        0.682676140496186,
+        0.6326948460087929,
+        0.5068731746945319,
+        0.16895772489817726
+      ],
+      "primary": {
+        "inertia": 327.5111453528044,
+        "silhouette": 0.6624352860714806,
+        "min_cluster_size": 2,
+        "max_cluster_size": 63,
+        "singleton_clusters": 0,
+        "negative_silhouette_rows": 1,
+        "sizes": [
+          63,
+          3,
+          2
+        ]
+      }
+    },
+    "per_100_words": {
+      "unique_vectors": 39,
+      "scaler_mean": [
+        0.0965954314258083,
+        0.048139856674300666,
+        0.23482368865849892,
+        0.12895597436244682,
+        0.07838411409783468,
+        0.05285653006564968,
+        0.08324326125782659,
+        0.009898637947418435
+      ],
+      "scaler_scale": [
+        0.23341862387267073,
+        0.19214439433348876,
+        0.5854169748407777,
+        0.28889250873386607,
+        0.24298938769961995,
+        0.1994502143236865,
+        0.5897055184829457,
+        0.056899823951453404
+      ],
+      "primary": {
+        "inertia": 349.8665049470054,
+        "silhouette": 0.6436017529283453,
+        "min_cluster_size": 2,
+        "max_cluster_size": 60,
+        "singleton_clusters": 0,
+        "negative_silhouette_rows": 3,
+        "sizes": [
+          60,
+          2,
+          6
+        ]
+      }
+    }
+  },
+  "primary_comparison": {
+    "adjusted_rand_index": 0.7197265892002734,
+    "changed_pairs": 189,
+    "total_pairs": 2278
+  },
+  "primary_seed_stability": [
+    {
+      "representation": "counts",
+      "k": 3,
+      "seed_ari_mean": 1.0,
+      "seed_ari_min": 1.0,
+      "silhouette_mean": 0.6624352860714806,
+      "silhouette_min": 0.6624352860714806,
+      "silhouette_max": 0.6624352860714806,
+      "min_cluster_size": 2
+    },
+    {
+      "representation": "per_100_words",
+      "k": 3,
+      "seed_ari_mean": 0.892953104399317,
+      "seed_ari_min": 0.7201638776537006,
+      "silhouette_mean": 0.6420276898947125,
+      "silhouette_min": 0.6231858212467669,
+      "silhouette_max": 0.6519654972706217,
+      "min_cluster_size": 2
+    }
+  ],
+  "review_queue_turns": [
+    24,
+    48,
+    50,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "review_queue_status": "Automatically prioritized examples; no human adjudication recorded"
+}
