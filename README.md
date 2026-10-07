@@ -19,7 +19,7 @@ The **“hug”** is the name for a soft enclosing shape used to prepare the flo
 
 The latest calculation continued three saved runs from **model time 0.32 to 0.4**. The finer-grid comparison gives **0.0875% in velocity** and **0.3710% in its spatial gradient**. Halving the time step on 384³ gives **0.0491%** and **0.1245%**, respectively.
 
-**Latest check:** the saved flow was inspected for alternating grid patterns that the original gradient measurement can miss. The largest exact-checkerboard energy fraction was **4.06e-22**. At time 0.40, two discrete gradient measurements differ by **0.0644%** on the smaller-step 384³ run. [Measurements and limits](math/notes/hug-boundary.md#grid-pattern-check-through-model-time-04).
+**Latest check:** viscosity accounts for most of the observed energy decrease. On the smaller-step 384³ run, two integration estimates leave **0.234%** and **0.279%** gaps relative to observed energy lost. Both gaps shrink when the time step is halved. [Measurements and limits](math/notes/hug-boundary.md#viscous-energy-check-through-model-time-04).
 
 These are measurements over a limited simulated interval. The Clay problem still requires a mathematical proof.
 
@@ -34,7 +34,7 @@ The [earlier category map](language/exploration/README.md) shows reply order, ov
 ## What is finished, and what comes next?
 
 - **Completed:** the smooth starting-field construction and energy calculation; saved grid and time-step comparisons; conversation maps with evidence links and checks.
-- **Latest math check completed:** [alternating grid patterns and derivative comparison](math/notes/hug-boundary.md#grid-pattern-check-through-model-time-04); prior evolution and shape results are preserved.
+- **Latest math check completed:** [viscous energy accounting](math/notes/hug-boundary.md#viscous-energy-check-through-model-time-04); prior grid, evolution and shape results are preserved.
 - **Next conversation work:** review interpretations with another reader and add new material while recording overlaps.
 
 [Full project status and completed work →](STATUS.md)

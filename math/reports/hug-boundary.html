@@ -5,6 +5,16 @@
 <div class="badge">Boundary mismatch: 0 · External force: 0</div>
 <p><strong>9 new checks passed</strong>, along with 7 existing integration checks. Four short runs used the existing cube solver.</p>
 <figure><img src="../figures/hug-ring-boundary.png" alt="Meridional flow inside the actual closed hug, with an unchanged inner core and a smooth weight that reaches zero before the cube faces."><figcaption>The existing closed pose is sampled once to prepare the starting field. Streamlines show the meridional flow; swirl remains in the full three-dimensional field.</figcaption></figure>
+<!-- ENERGY_BALANCE_START -->
+<section id="energy-balance"><h2>Does viscosity account for the energy decrease?</h2>
+<p><strong>Viscosity accounts for most of the observed energy decrease. On the 384³ half-step run, the two time-integration estimates leave a gap of 0.234% and 0.279% of the observed energy loss.</strong> Halving the time step reduces the gap with both estimates; the balance does not close exactly.</p>
+<figure><img src="../figures/hug-energy-balance.png" alt="Observed energy loss nearly matches the viscous estimate; the remaining gap decreases when the time step is halved."><figcaption>Gap percentages use observed energy lost. The two integration estimates are not rigorous error bounds.</figcaption></figure>
+<details><summary>Measurements and limits</summary><div class="scroll"><table><thead><tr><th>Grid</th><th>Time step</th><th>Saved times</th><th>Observed loss</th><th>Viscous estimate: quadratic</th><th>Gap: quadratic</th><th>Gap: linear</th></tr></thead><tbody><tr><td>256³</td><td>0.001</td><td>9</td><td>3.686426</td><td>3.703536</td><td>0.4641%</td><td>0.5848%</td></tr><tr><td>384³</td><td>0.001</td><td>11</td><td>3.686260</td><td>3.704958</td><td>0.5073%</td><td>0.5525%</td></tr><tr><td>384³</td><td>0.0005</td><td>11</td><td>3.695202</td><td>3.703839</td><td>0.2337%</td><td>0.2789%</td></tr></tbody></table></div>
+<p>A positive gap means the flow retained more energy than viscosity alone predicts. The half-step 384³ estimates differ by 0.0452% of observed loss when the integration method changes. Thinning observations changes the trapezoidal estimate by 0.1356%. These do not bound unsampled behavior.</p>
+<p>The loss rate uses the adjacent-cell gradient norm that matches the existing discrete Laplacian. Its identity was checked independently. The residual can include spatial and time discretization and estimation between saved times; it does not isolate the cause of that small remainder.</p>
+<p>15 focused checks passed. Reused 31 measurements with recorded provenance. No new flow steps or physical-model changes. The full report also compares matching observation times. No rigorous continuum error bound or Clay proof is established.</p></details>
+<p><a href="../results/hug-energy-balance.json">All estimates and provenance</a> · <a href="../results/hug-energy-balance.csv">Measurement table</a></p></section>
+<!-- ENERGY_BALANCE_END -->
 <!-- GRID_RESOLUTION_START -->
 <section id="grid-resolution"><h2>Grid-pattern check through time 0.40</h2>
 <p><strong>The largest measured energy fraction in the seven exact checkerboard modes was 4.061e-22. The broader short-wave band held at most 1.266e-08 of the energy.</strong> No substantial hidden checkerboard component was found in these saved arrays.</p>
