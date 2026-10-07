@@ -1,6 +1,6 @@
 # The hug now prepares the ring's boundary
 
-**Latest:** [One-step energy trace](#one-step-energy-trace-through-model-time-04).
+**Latest:** [Local time-method comparison](#local-time-method-comparison-at-model-time-04).
 
 **Completed:** the existing closed hug shapes the existing smooth ring's initial field. Velocity becomes zero smoothly before every cube face, so opposite faces and all their derivatives match. The continuum field remains divergence-free. The Navier–Stokes equation and zero-external-force choice remain unchanged.
 
@@ -728,3 +728,95 @@ Probe summaries are cached in ignored `scratch/hug-step-energy/` with the checkp
 [Probe calculation](../hug_step_energy.py) · [Independent checks](../tests/test_hug_step_energy.py) · [All contributions and provenance](../results/hug-step-energy.json) · [One-step table](../results/hug-step-energy.csv)
 
 <!-- STEP_ENERGY_END -->
+
+<!-- TIME_METHOD_START -->
+## Local time-method comparison at model time 0.4
+
+**Question:** does averaging the starting and predicted rates reduce the time-step calculation's energy mismatch?
+
+**Heun gives smaller energy and velocity changes when the time step is halved in all three local controls.** For the finest saved input, the endpoint energy sensitivity is **3,115.0 times smaller** and the relative velocity sensitivity is **257.2 times smaller**. These factors compare sensitivity to halving a step, not exact errors against the continuum solution.
+
+![Euler and Heun energy sensitivity, velocity sensitivity, and discrete energy defect on three saved flow inputs](../figures/hug-time-method.png)
+
+Every panel has a logarithmic vertical axis: equal vertical spacing represents equal multiplication, not equal subtraction. The first two panels compare one step of 0.001 with two steps of 0.0005. The last panel measures a different quantity: the one-step energy defect relative to the method's own stage work quadrature.
+
+### What changed in this control
+
+The physical Navier–Stokes equation, length-6 periodic box, viscosity 0.01, zero external force, centered spatial transport, nearest-neighbor Laplacian and compatible FFT pressure projection are retained. **Only the time integration is varied.** The original solver and saved Euler trajectory are unchanged.
+
+Three saved inputs are used at time **0.40**: 256³ with history dt 0.001, 384³ with history dt 0.001, and 384³ with history dt 0.0005. “History dt” identifies the earlier run that supplied the input. Each of those inputs supplies both methods, with exactly the same starting arrays.
+
+Each local control covers **0.40 to 0.401**, using one, two, or four substeps of 0.001, 0.0005, or 0.00025. There are **18 short controls**, containing **63 calls** to the existing Euler predictor/projection. Their endpoint arrays are discarded after comparison. The recorded long trajectory still ends at **0.40**; this is not a Heun rerun from time zero or a new saved continuation.
+
+### The two formulas
+
+Let $G(u)=P_h[-(u\cdot D)u+\nu L_hu]$ be the existing projected spatial right-hand side, and let $\Delta t$ be the time step. For a divergence-free grid input, the existing map is $A_{\Delta t}(u)=u+\Delta t G(u)$, up to floating-point roundoff.
+
+**Euler:** $v=A_{\Delta t}(u)$.
+
+**Projected Heun:** first $y=A_{\Delta t}(u)$, then $z=A_{\Delta t}(y)$, then $v=(u+z)/2$. Equivalently,
+
+$$y=u+\Delta t G(u),\qquad v=u+\tfrac{\Delta t}2[G(u)+G(y)].$$
+
+Both stages reuse the actual solver's predictor and pressure correction. The average of two projected fields is projected as well. Heun is a second-order explicit method; Euler is first-order ([method reference](https://www.mathworks.com/help/simulink/ug/fixed-step-solvers-in-simulink.html)). Heun requires two predictor/projection calls per step. Its higher order does not remove time-step stability restrictions.
+
+### Comparison at the same endpoint
+
+Energy sensitivity is $|E_1-E_2|$, where subscripts count substeps over the common interval. Relative velocity sensitivity is $\|u_1-u_2\|_{L^2_h}/\|u_2\|_{L^2_h}$, using the complete arrays on the same grid. Both are differences between numerical estimates, not rigorous error bounds.
+
+The refinement ratio compares the 1-versus-2 difference with the 2-versus-4 difference. Ratios near 2 for Euler and 4 for Heun are consistent with their expected orders in this local setting. Energy can have cancellations; the complete velocity norm is checked separately.
+
+| Input grid | History dt | Method | Energy sensitivity | Relative velocity sensitivity | Energy refinement ratio | Velocity refinement ratio |
+| --- | --- | --- | --- | --- | --- | --- |
+| 256³ | 0.001 | Euler | 2.108868e-05 | 1.044196e-06 | 2.0009 | 2.0003 |
+| 256³ | 0.001 | Heun | 6.744465e-09 | 4.074396e-09 | 3.9604 | 4.0019 |
+| 384³ | 0.001 | Euler | 2.111289e-05 | 1.048335e-06 | 2.0009 | 2.0004 |
+| 384³ | 0.001 | Heun | 6.812428e-09 | 4.134314e-09 | 3.9605 | 4.0020 |
+| 384³ | 0.0005 | Euler | 2.104035e-05 | 1.041410e-06 | 2.0009 | 2.0003 |
+| 384³ | 0.0005 | Heun | 6.754597e-09 | 4.048948e-09 | 3.9607 | 4.0019 |
+
+Each comparison is within one saved input. The different earlier histories are not treated as identical initial arrays across grids or across the two 384³ runs. All resulting fields and diagnostics remain finite; maximum stage divergence is **2.132e-14**.
+
+### Energy accounting for the two methods
+
+Use the grid kinetic energy $E(u)=\tfrac12\langle u,u\rangle_h$, where the inner product includes cell volume. Write $f=G(u)$ and $g=G(y)$. The energy rate of this spatially discrete system is $\langle u,G(u)\rangle_h$; it includes transport and viscosity.
+
+Euler uses $Q_E=\Delta t\langle u,f\rangle_h$. Expanding its squared norm gives
+
+$$E(v)-E(u)-Q_E=\tfrac12\Delta t^2\|f\|_h^2.$$
+
+Heun uses the stage quadrature $Q_H=\tfrac{\Delta t}2[\langle u,f\rangle_h+\langle y,g\rangle_h]$. Its corresponding identity is
+
+$$E(v)-E(u)-Q_H=\tfrac18\Delta t^2\|g-f\|_h^2.$$
+
+These identities follow directly from the update formulas. The right sides are measured using stage increments, and compared with measured energy change minus stage work. No extra physical energy source or force is introduced. The largest accumulated identity remainder is **1.058e-14 energy units**.
+
+| Input grid | History dt | Method | Energy change, one full step | Stage work quadrature | Temporal energy defect | Identity remainder |
+| --- | --- | --- | --- | --- | --- | --- |
+| 256³ | 0.001 | Euler | -7.840417853e-03 | -7.884671571e-03 | 4.425372e-05 | +2.678e-16 |
+| 256³ | 0.001 | Heun | -7.882591228e-03 | -7.882591388e-03 | 1.598073e-10 | +8.452e-15 |
+| 384³ | 0.001 | Euler | -7.847900623e-03 | -7.892193598e-03 | 4.429297e-05 | -2.082e-15 |
+| 384³ | 0.001 | Heun | -7.890122411e-03 | -7.890122572e-03 | 1.610777e-10 | -4.085e-15 |
+| 384³ | 0.0005 | Euler | -7.843973506e-03 | -7.888121079e-03 | 4.414757e-05 | +4.895e-15 |
+| 384³ | 0.0005 | Heun | -7.886050200e-03 | -7.886050359e-03 | 1.589176e-10 | +4.786e-16 |
+
+**This defect is not the earlier viscosity-only gap over 0 to 0.40.** It uses method-dependent stage quadrature and includes the spatial transport work. A smaller defect alone does not establish solution accuracy, which is why the same-endpoint refinement comparison is included. The prior Euler history and spatial error remain in each starting input.
+
+### Checks, limits and reproduction
+
+**17 focused checks passed:** unchanged constants; known Euler/Heun amplification of a viscously decaying sine shear on two grids; Heun compared with two original Python-loop solver maps and their average; refinement against the exact spatially discrete shear solution; unchanged input arrays; rejection of invalid or unprojected inputs. All three checkpoint hashes and the original numerical-source fingerprint match the prior record.
+
+This is a local numerical control at the final saved states. It supports improved local time accuracy where measured. It does not establish the accumulated improvement over the full prior interval, long-time stability, a continuum error bound, or a Clay proof. No further test or continuation starts automatically.
+
+With the existing local checkpoints, from the repository root:
+
+~~~sh
+python math/hug_time_method.py
+python -m pytest -q math/tests/test_hug_time_method.py
+~~~
+
+Completed summaries are cached in ignored scratch/hug-time-method/ with input, checkpoint and source hashes. A fresh checkout can read the published tables; recomputing them requires the earlier saved fields.
+
+[Control code](../hug_time_method.py) · [Independent checks](../tests/test_hug_time_method.py) · [Measurements, comparisons and provenance](../results/hug-time-method.json) · [All 18 controls](../results/hug-time-method.csv)
+
+<!-- TIME_METHOD_END -->

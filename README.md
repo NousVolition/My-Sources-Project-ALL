@@ -19,7 +19,7 @@ The **“hug”** is the name for a soft enclosing shape used to prepare the flo
 
 The latest calculation continued three saved runs from **model time 0.32 to 0.4**. The finer-grid comparison gives **0.0875% in velocity** and **0.3710% in its spatial gradient**. Halving the time step on 384³ gives **0.0491%** and **0.1245%**, respectively.
 
-**Latest check:** traced energy through 31 individual calculation steps. The positive finite-step contribution is partly removed by pressure correction; their remainder is larger than transport work in every sampled step. Individual energy accounting closes to roundoff. [Measurements and limits](math/notes/hug-boundary.md#one-step-energy-trace-through-model-time-04).
+**Latest check:** Heun gives smaller energy and velocity changes when the time step is halved in all three local controls. The comparison uses disposable short controls from the saved 0.40 states; the physical equation is unchanged. [Measurements and limits](math/notes/hug-boundary.md#local-time-method-comparison-at-model-time-04).
 
 These are measurements over a limited simulated interval. The Clay problem still requires a mathematical proof.
 
@@ -34,7 +34,7 @@ The [earlier category map](language/exploration/README.md) shows reply order, ov
 ## What is finished, and what comes next?
 
 - **Completed:** the smooth starting-field construction and energy calculation; saved grid and time-step comparisons; conversation maps with evidence links and checks.
-- **Latest math check completed:** [one-step energy tracing](math/notes/hug-boundary.md#one-step-energy-trace-through-model-time-04); earlier energy, grid, evolution and shape results are preserved.
+- **Latest math check completed:** [local Euler/Heun comparison](math/notes/hug-boundary.md#local-time-method-comparison-at-model-time-04); earlier energy, grid, evolution and shape results are preserved.
 - **Next conversation work:** review interpretations with another reader and add new material while recording overlaps.
 
 [Full project status and completed work →](STATUS.md)

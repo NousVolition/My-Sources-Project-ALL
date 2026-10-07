@@ -1,0 +1,463 @@
+{
+  "question": "Does projected Heun reduce local time-step sensitivity and temporal energy defect?",
+  "saved_trajectory_end": 0.4,
+  "saved_trajectory_extension_steps": 0,
+  "external_force": 0.0,
+  "box": 6.0,
+  "nu": 0.01,
+  "interval": 0.001,
+  "numerical_source_sha256": "327adfdcc140ddc13971fba985ba8b99598667eb4da234378a9f364228e078aa",
+  "analysis_source_sha256": "ab790efea128cfd56ef3c731fa2502d6c01251fb125ab20c717053f3812304a6",
+  "input_file": "hug-resolution.json",
+  "input_sha256": "c8a8ad3b350cb384917b7ba372d6a389b0d61567a8f9c20b89895f124f438b12",
+  "runs": [
+    {
+      "N": 256,
+      "history_dt": 0.001,
+      "start_time": 0.4,
+      "end_time": 0.401,
+      "provenance": {
+        "checkpoint": {
+          "N": 256,
+          "dt": 0.001,
+          "time": 0.4,
+          "file": "n256-dt0.001-t0.4.json",
+          "array_key": "final",
+          "summary_sha256": "fc901af1e57a7f8d065ee210a522e34cf365b7fa55f7b7b8acc474e40a46f5bd",
+          "arrays_sha256": "ab1f8c8cc89000b6896fc2d34e8af6083634fc48f6729eb84be5e195b923d81d"
+        },
+        "interval": 0.001,
+        "box": 6.0,
+        "nu": 0.01,
+        "input_sha256": "c8a8ad3b350cb384917b7ba372d6a389b0d61567a8f9c20b89895f124f438b12",
+        "numerical_source_sha256": "327adfdcc140ddc13971fba985ba8b99598667eb4da234378a9f364228e078aa",
+        "analysis_source_sha256": "ab790efea128cfd56ef3c731fa2502d6c01251fb125ab20c717053f3812304a6"
+      },
+      "rows": [
+        {
+          "method": "euler",
+          "substeps": 1,
+          "dt": 0.001,
+          "work_quadrature": -0.00788467157055877,
+          "temporal_energy_defect": 4.425371723515712e-05,
+          "stable_energy_change": -0.007840417853323612,
+          "max_identity_residual": 6.030874584450618e-19,
+          "max_stage_divergence": 1.3322676295501878e-14,
+          "energy_before": 36.660950591799285,
+          "energy_after": 36.65311017394596,
+          "energy_change": -0.007840417853323345,
+          "total_identity_residual": 2.6775050275887335e-16
+        },
+        {
+          "method": "euler",
+          "substeps": 2,
+          "dt": 0.0005,
+          "work_quadrature": -0.00788362839376269,
+          "temporal_energy_defect": 2.2121855503110248e-05,
+          "stable_energy_change": -0.007861506538259577,
+          "max_identity_residual": 1.0198276684941776e-18,
+          "max_stage_divergence": 1.2878587085651816e-14,
+          "energy_before": 36.660950591799285,
+          "energy_after": 36.65308908526103,
+          "energy_change": -0.007861506538255014,
+          "total_identity_residual": 4.564816406815719e-15
+        },
+        {
+          "method": "euler",
+          "substeps": 4,
+          "dt": 0.00025,
+          "work_quadrature": -0.007883105677268725,
+          "temporal_energy_defect": 1.1059662327675727e-05,
+          "stable_energy_change": -0.007872046014941049,
+          "max_identity_residual": 1.1756817307889689e-18,
+          "max_stage_divergence": 1.4210854715202004e-14,
+          "energy_before": 36.660950591799285,
+          "energy_after": 36.65307854578434,
+          "energy_change": -0.00787204601494551,
+          "total_identity_residual": -4.461329309451978e-15
+        },
+        {
+          "method": "heun",
+          "substeps": 1,
+          "dt": 0.001,
+          "work_quadrature": -0.007882591387705855,
+          "temporal_energy_defect": 1.5980725733014526e-10,
+          "stable_energy_change": -0.007882591227898599,
+          "max_identity_residual": 1.3601660133490807e-18,
+          "max_stage_divergence": 1.4210854715202004e-14,
+          "energy_before": 36.660950591799285,
+          "energy_after": 36.653068000571395,
+          "energy_change": -0.007882591227890146,
+          "total_identity_residual": 8.451947332421632e-15
+        },
+        {
+          "method": "heun",
+          "substeps": 2,
+          "dt": 0.0005,
+          "work_quadrature": -0.007882584503410114,
+          "temporal_energy_defect": 1.9973927346797134e-11,
+          "stable_energy_change": -0.007882584483436185,
+          "max_identity_residual": 3.862600281319191e-18,
+          "max_stage_divergence": 1.4210854715202004e-14,
+          "energy_before": 36.660950591799285,
+          "energy_after": 36.65306800731586,
+          "energy_change": -0.007882584483425603,
+          "total_identity_residual": 1.0583227369812663e-14
+        },
+        {
+          "method": "heun",
+          "substeps": 4,
+          "dt": 0.00025,
+          "work_quadrature": -0.007882582782954553,
+          "temporal_energy_defect": 2.496617169178159e-12,
+          "stable_energy_change": -0.007882582780457937,
+          "max_identity_residual": 9.134127316378286e-18,
+          "max_stage_divergence": 1.4210854715202004e-14,
+          "energy_before": 36.660950591799285,
+          "energy_after": 36.65306800901883,
+          "energy_change": -0.007882582780453617,
+          "total_identity_residual": 4.318053626320033e-15
+        }
+      ],
+      "comparisons": [
+        {
+          "method": "euler",
+          "coarse_substeps": 1,
+          "fine_substeps": 2,
+          "velocity_l2_difference": 8.94030576443695e-06,
+          "velocity_max_difference": 5.5281201658541335e-06,
+          "relative_velocity_l2_difference": 1.0441961393163452e-06,
+          "energy_difference": 2.1088684931669377e-05
+        },
+        {
+          "method": "euler",
+          "coarse_substeps": 2,
+          "fine_substeps": 4,
+          "velocity_l2_difference": 4.469378430804931e-06,
+          "velocity_max_difference": 2.7643633488949604e-06,
+          "relative_velocity_l2_difference": 5.220076915189701e-07,
+          "energy_difference": 1.0539476690496485e-05
+        },
+        {
+          "method": "heun",
+          "coarse_substeps": 1,
+          "fine_substeps": 2,
+          "velocity_l2_difference": 3.4884570692217645e-08,
+          "velocity_max_difference": 3.582787311273705e-08,
+          "relative_velocity_l2_difference": 4.074395828518223e-09,
+          "energy_difference": -6.744464542407513e-09
+        },
+        {
+          "method": "heun",
+          "coarse_substeps": 2,
+          "fine_substeps": 4,
+          "velocity_l2_difference": 8.717062027967431e-09,
+          "velocity_max_difference": 8.950837404597678e-09,
+          "relative_velocity_l2_difference": 1.018122352034087e-09,
+          "energy_difference": -1.7029719856509473e-09
+        }
+      ]
+    },
+    {
+      "N": 384,
+      "history_dt": 0.001,
+      "start_time": 0.4,
+      "end_time": 0.401,
+      "provenance": {
+        "checkpoint": {
+          "N": 384,
+          "dt": 0.001,
+          "time": 0.4,
+          "file": "n384-dt0.001-t0.4.json",
+          "array_key": "final",
+          "summary_sha256": "2b183f2a7e3f612ae3437b1e9e321d358444c90444a0c571813c538f4656710a",
+          "arrays_sha256": "fcb41710fbf771f65e50cce259764ad592d21f293465b204ca2c16d5afd44225"
+        },
+        "interval": 0.001,
+        "box": 6.0,
+        "nu": 0.01,
+        "input_sha256": "c8a8ad3b350cb384917b7ba372d6a389b0d61567a8f9c20b89895f124f438b12",
+        "numerical_source_sha256": "327adfdcc140ddc13971fba985ba8b99598667eb4da234378a9f364228e078aa",
+        "analysis_source_sha256": "ab790efea128cfd56ef3c731fa2502d6c01251fb125ab20c717053f3812304a6"
+      },
+      "rows": [
+        {
+          "method": "euler",
+          "substeps": 1,
+          "dt": 0.001,
+          "work_quadrature": -0.007892193598103196,
+          "temporal_energy_defect": 4.429297476587883e-05,
+          "stable_energy_change": -0.007847900623337315,
+          "max_identity_residual": 1.6263032587282567e-18,
+          "max_stage_divergence": 2.042810365310288e-14,
+          "energy_before": 36.66112236476547,
+          "energy_after": 36.65327446414213,
+          "energy_change": -0.007847900623339399,
+          "total_identity_residual": -2.081776591389417e-15
+        },
+        {
+          "method": "euler",
+          "substeps": 2,
+          "dt": 0.0005,
+          "work_quadrature": -0.007891154981648388,
+          "temporal_energy_defect": 2.2141466147637394e-05,
+          "stable_energy_change": -0.00786901351550075,
+          "max_identity_residual": 1.8550021544869177e-18,
+          "max_stage_divergence": 2.1316282072803006e-14,
+          "energy_before": 36.66112236476547,
+          "energy_after": 36.653253351249965,
+          "energy_change": -0.007869013515502843,
+          "total_identity_residual": -2.091791908957752e-15
+        },
+        {
+          "method": "euler",
+          "substeps": 4,
+          "dt": 0.00025,
+          "work_quadrature": -0.007890634524300812,
+          "temporal_energy_defect": 1.106946300564929e-05,
+          "stable_energy_change": -0.007879565061295158,
+          "max_identity_residual": 1.6741606202481246e-18,
+          "max_stage_divergence": 2.1316282072803006e-14,
+          "energy_before": 36.66112236476547,
+          "energy_after": 36.653242799704174,
+          "energy_change": -0.007879565061294613,
+          "total_identity_residual": 5.490315098171869e-16
+        },
+        {
+          "method": "heun",
+          "substeps": 1,
+          "dt": 0.001,
+          "work_quadrature": -0.007890122571986779,
+          "temporal_energy_defect": 1.6107772724331728e-10,
+          "stable_energy_change": -0.007890122410909053,
+          "max_identity_residual": 1.4328960496535646e-18,
+          "max_stage_divergence": 2.042810365310288e-14,
+          "energy_before": 36.66112236476547,
+          "energy_after": 36.653232242354555,
+          "energy_change": -0.007890122410913136,
+          "total_identity_residual": -4.0849719584990575e-15
+        },
+        {
+          "method": "heun",
+          "substeps": 2,
+          "dt": 0.0005,
+          "work_quadrature": -0.007890115618612935,
+          "temporal_energy_defect": 2.0132582094002198e-11,
+          "stable_energy_change": -0.007890115598480352,
+          "max_identity_residual": 1.770372430368391e-18,
+          "max_stage_divergence": 2.1316282072803006e-14,
+          "energy_before": 36.66112236476547,
+          "energy_after": 36.65323224916698,
+          "energy_change": -0.007890115598485181,
+          "total_identity_residual": -4.828463529941656e-15
+        },
+        {
+          "method": "heun",
+          "substeps": 4,
+          "dt": 0.00025,
+          "work_quadrature": -0.007890113880887707,
+          "temporal_energy_defect": 2.516439394323215e-12,
+          "stable_energy_change": -0.007890113878371274,
+          "max_identity_residual": 2.9661776041024483e-18,
+          "max_stage_divergence": 2.1316282072803006e-14,
+          "energy_before": 36.66112236476547,
+          "energy_after": 36.65323225088709,
+          "energy_change": -0.007890113878374905,
+          "total_identity_residual": -3.63692821957881e-15
+        }
+      ],
+      "comparisons": [
+        {
+          "method": "euler",
+          "coarse_substeps": 1,
+          "fine_substeps": 2,
+          "velocity_l2_difference": 8.975764756855202e-06,
+          "velocity_max_difference": 5.6418211769049265e-06,
+          "relative_velocity_l2_difference": 1.0483352752737142e-06,
+          "energy_difference": 2.111289216344403e-05
+        },
+        {
+          "method": "euler",
+          "coarse_substeps": 2,
+          "fine_substeps": 4,
+          "velocity_l2_difference": 4.4870766874407295e-06,
+          "velocity_max_difference": 2.8204675004417368e-06,
+          "relative_velocity_l2_difference": 5.240736114196511e-07,
+          "energy_difference": 1.0551545791770423e-05
+        },
+        {
+          "method": "heun",
+          "coarse_substeps": 1,
+          "fine_substeps": 2,
+          "velocity_l2_difference": 3.5397664542154134e-08,
+          "velocity_max_difference": 3.606948117962361e-08,
+          "relative_velocity_l2_difference": 4.134314132467955e-09,
+          "energy_difference": -6.812427955082967e-09
+        },
+        {
+          "method": "heun",
+          "coarse_substeps": 2,
+          "fine_substeps": 4,
+          "velocity_l2_difference": 8.845002225264352e-09,
+          "velocity_max_difference": 9.012515178596914e-09,
+          "relative_velocity_l2_difference": 1.0330630049678839e-09,
+          "energy_difference": -1.720110276437481e-09
+        }
+      ]
+    },
+    {
+      "N": 384,
+      "history_dt": 0.0005,
+      "start_time": 0.4,
+      "end_time": 0.401,
+      "provenance": {
+        "checkpoint": {
+          "N": 384,
+          "dt": 0.0005,
+          "time": 0.4,
+          "file": "n384-dt0.0005-t0.4.json",
+          "array_key": "final",
+          "summary_sha256": "eb34d5099fb536c502e339227f8082ff94cc3ae797c7f2eb073c7cdc24529e1f",
+          "arrays_sha256": "6dc4390e2bf0c5382333cd0b61d0b65579b0d117512fe9d5290cf5da85c1b711"
+        },
+        "interval": 0.001,
+        "box": 6.0,
+        "nu": 0.01,
+        "input_sha256": "c8a8ad3b350cb384917b7ba372d6a389b0d61567a8f9c20b89895f124f438b12",
+        "numerical_source_sha256": "327adfdcc140ddc13971fba985ba8b99598667eb4da234378a9f364228e078aa",
+        "analysis_source_sha256": "ab790efea128cfd56ef3c731fa2502d6c01251fb125ab20c717053f3812304a6"
+      },
+      "rows": [
+        {
+          "method": "euler",
+          "substeps": 1,
+          "dt": 0.001,
+          "work_quadrature": -0.007888121079286468,
+          "temporal_energy_defect": 4.414757305545178e-05,
+          "stable_energy_change": -0.007843973506231013,
+          "max_identity_residual": 3.3271454168148917e-18,
+          "max_stage_divergence": 2.042810365310288e-14,
+          "energy_before": 36.652179912513915,
+          "energy_after": 36.64433593900769,
+          "energy_change": -0.00784397350622612,
+          "total_identity_residual": 4.895247347671411e-15
+        },
+        {
+          "method": "euler",
+          "substeps": 2,
+          "dt": 0.0005,
+          "work_quadrature": -0.00788708263809544,
+          "temporal_energy_defect": 2.206878218349616e-05,
+          "stable_energy_change": -0.007865013855911943,
+          "max_identity_residual": 3.435565634063442e-18,
+          "max_stage_divergence": 2.1316282072803006e-14,
+          "energy_before": 36.652179912513915,
+          "energy_after": 36.644314898658,
+          "energy_change": -0.00786501385591265,
+          "total_identity_residual": -7.070488942592656e-16
+        },
+        {
+          "method": "euler",
+          "substeps": 4,
+          "dt": 0.00025,
+          "work_quadrature": -0.007886562281599292,
+          "temporal_energy_defect": 1.1033125443185046e-05,
+          "stable_energy_change": -0.007875529156156108,
+          "max_identity_residual": 8.588914085158605e-19,
+          "max_stage_divergence": 2.1316282072803006e-14,
+          "energy_before": 36.652179912513915,
+          "energy_after": 36.64430438335776,
+          "energy_change": -0.007875529156152083,
+          "total_identity_residual": 4.023701266923571e-15
+        },
+        {
+          "method": "heun",
+          "substeps": 1,
+          "dt": 0.001,
+          "work_quadrature": -0.0078860503593229,
+          "temporal_energy_defect": 1.5891763962490486e-10,
+          "stable_energy_change": -0.007886050200405264,
+          "max_identity_residual": 3.629834274197926e-18,
+          "max_stage_divergence": 2.042810365310288e-14,
+          "energy_before": 36.652179912513915,
+          "energy_after": 36.64429386231351,
+          "energy_change": -0.007886050200404782,
+          "total_identity_residual": 4.786232920473544e-16
+        },
+        {
+          "method": "heun",
+          "substeps": 2,
+          "dt": 0.0005,
+          "work_quadrature": -0.007886043465669939,
+          "temporal_energy_defect": 1.9862704994588003e-11,
+          "stable_energy_change": -0.007886043445807227,
+          "max_identity_residual": 4.202899617822746e-18,
+          "max_stage_divergence": 2.1316282072803006e-14,
+          "energy_before": 36.652179912513915,
+          "energy_after": 36.64429386906811,
+          "energy_change": -0.0078860434458079,
+          "total_identity_residual": -6.658978250189433e-16
+        },
+        {
+          "method": "heun",
+          "substeps": 4,
+          "dt": 0.00025,
+          "work_quadrature": -0.00788604174286615,
+          "temporal_energy_defect": 2.482713117747654e-12,
+          "stable_energy_change": -0.007886041740383433,
+          "max_identity_residual": 4.403168638944412e-18,
+          "max_stage_divergence": 2.1316282072803006e-14,
+          "energy_before": 36.652179912513915,
+          "energy_after": 36.64429387077353,
+          "energy_change": -0.007886041740384542,
+          "total_identity_residual": -1.1044491890324197e-15
+        }
+      ],
+      "comparisons": [
+        {
+          "method": "euler",
+          "coarse_substeps": 1,
+          "fine_substeps": 2,
+          "velocity_l2_difference": 8.915384236340795e-06,
+          "velocity_max_difference": 5.55745735875135e-06,
+          "relative_velocity_l2_difference": 1.0414100490951093e-06,
+          "energy_difference": 2.104034968652968e-05
+        },
+        {
+          "method": "euler",
+          "coarse_substeps": 2,
+          "fine_substeps": 4,
+          "velocity_l2_difference": 4.456913224996387e-06,
+          "velocity_max_difference": 2.778088811439261e-06,
+          "relative_velocity_l2_difference": 5.206141163816377e-07,
+          "energy_difference": 1.0515300239433145e-05
+        },
+        {
+          "method": "heun",
+          "coarse_substeps": 1,
+          "fine_substeps": 2,
+          "velocity_l2_difference": 3.466254219964293e-08,
+          "velocity_max_difference": 3.473590348690436e-08,
+          "relative_velocity_l2_difference": 4.048948331891866e-09,
+          "energy_difference": -6.754596881819452e-09
+        },
+        {
+          "method": "heun",
+          "coarse_substeps": 2,
+          "fine_substeps": 4,
+          "velocity_l2_difference": 8.661540074925107e-09,
+          "velocity_max_difference": 8.680023366736123e-09,
+          "relative_velocity_l2_difference": 1.011758688534038e-09,
+          "energy_difference": -1.7054233580893197e-09
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "These are disposable short-interval controls at the final saved state, not a replacement of the Euler trajectory through 0.40.",
+    "Within each control the physical equation and spatial operators are identical; only the time integrator and substep size vary.",
+    "Temporal energy defect is relative to each method's stage quadrature of the projected spatial energy rate, including both viscosity and transport. It is not the earlier viscosity-only interval gap.",
+    "Endpoint refinement differences measure time-step sensitivity, not errors against an exact solution or rigorous bounds.",
+    "Spatial discretization, initial-field sampling and earlier Euler history errors remain. This supplies no Clay proof."
+  ]
+}
