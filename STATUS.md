@@ -23,6 +23,7 @@
 | Hug continuation to 0.32 | [Evolution and shape](math/notes/hug-boundary.md#continuation-to-model-time-032) | Three exact restarts; six new checkpoints; prior shape observations reused; fourteen targeted checks passed |
 | Hug continuation to 0.4 | [Evolution and shape](math/notes/hug-boundary.md#continuation-to-model-time-04) | Three exact restarts; six new checkpoints; prior shape observations reused; new data validated using unchanged code |
 | Saved-flow grid-pattern check | [Measurements and limits](math/notes/hug-boundary.md#grid-pattern-check-through-model-time-04) | 31 observations from 30 distinct saved fields; checkpoint hashes and energies agree; 15 focused checks passed; no added evolution |
+| Viscous energy accounting | [Measured loss and estimates](math/notes/hug-boundary.md#viscous-energy-check-through-model-time-04) | 31 measurements reused; 15 focused checks passed; remaining gap shrinks with half-size time step; no added evolution |
 | Separate trigonometric illustration | [Derivation, runs, and checks](math/notes/hidden-flow-evolution.md) | Assistant-chosen fields, distinct from the ring construction. One has an analytic smooth reduction; a 3D variant has refined finite-time results. The conversation-to-fluid mapping was not established |
 | Language reports | [Report guide](language/README.md) | Existing tables and charts preserved; available chart links repaired |
 | Conversation exploration | [Wordless map and observations](language/exploration/README.md) | Sequence, overlapping saved categories, reply length, and unmarked replies exposed without exporting reply text |
@@ -63,6 +64,8 @@ The [continuation to model time 0.24](math/notes/hug-boundary.md#continuation-to
 **Continuation to 0.4 completed:** The largest sampled velocity gradient decreased at every recorded new time in all three runs. Grid differences are 0.0875% in velocity and 0.3710% in its gradient. Time-step differences are 0.0491% and 0.1245%. Both energy-weighted widths decreased at the new saved times in all three runs. [All measurements](math/notes/hug-boundary.md#continuation-to-model-time-04).
 
 **Grid-pattern check completed:** The largest measured energy fraction in the seven exact checkerboard modes was 4.061e-22. The broader short-wave band held at most 1.266e-08 of the energy. All three final derivative comparisons are recorded [here](math/notes/hug-boundary.md#grid-pattern-check-through-model-time-04). The equation and saved velocities were unchanged.
+
+**Viscous energy check completed:** Viscosity accounts for most of the observed energy decrease. On the 384³ half-step run, the two time-integration estimates leave a gap of 0.234% and 0.279% of the observed energy loss. Halving the time step reduces both estimates of the gap. Sampling sensitivity is recorded; the balance is not exact. [All estimates and limits](math/notes/hug-boundary.md#viscous-energy-check-through-model-time-04).
 
 ## Material still missing
 

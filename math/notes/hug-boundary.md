@@ -1,6 +1,6 @@
 # The hug now prepares the ring's boundary
 
-**Latest:** [Grid-pattern check through model time 0.4](#grid-pattern-check-through-model-time-04).
+**Latest:** [Viscous energy check through model time 0.4](#viscous-energy-check-through-model-time-04).
 
 **Completed:** the existing closed hug shapes the existing smooth ring's initial field. Velocity becomes zero smoothly before every cube face, so opposite faces and all their derivatives match. The continuum field remains divergence-free. The Navier–Stokes equation and zero-external-force choice remain unchanged.
 
@@ -570,3 +570,84 @@ The analysis caches each measurement in ignored `scratch/hug-resolution/`. Cache
 [Diagnostic code](../hug_resolution.py) · [Independent checks](../tests/test_hug_resolution.py) · [Measurements and spectra](../results/hug-resolution.json) · [Measurement table](../results/hug-resolution.csv)
 
 <!-- GRID_RESOLUTION_END -->
+
+<!-- ENERGY_BALANCE_START -->
+## Viscous energy check through model time 0.4
+
+**Question:** does viscosity account for the energy decrease already observed?
+
+**Viscosity accounts for most of the observed energy decrease. On the 384³ half-step run, the two time-integration estimates leave a gap of 0.234% and 0.279% of the observed energy loss.** On the same grid with the larger time step, those gaps are 0.507% and 0.552%. Halving the time step reduces the remaining gap with both estimates. The balance is close, but it does not close exactly.
+
+![Measured energy loss and the gap between viscous estimates and observed loss](../figures/hug-energy-balance.png)
+
+The left curves nearly overlap. The right panel shows their small difference more clearly using two ways to integrate between saved observations. These are two estimates, **not upper and lower error bounds**. All percentages in this section use **observed energy lost**, not initial energy, as the denominator.
+
+### The equation being checked
+
+For a smooth, incompressible, unforced periodic solution, multiplying the velocity equation by the velocity and integrating over one periodic box gives
+
+$$E(t)=\frac12\int |u(x,t)|^2\,dx,\qquad E(0)-E(t)=\nu\int_0^t\int |\nabla u(x,s)|^2\,dx\,ds.$$
+
+The pressure and transport terms integrate to zero under those assumptions. This identity follows by integration by parts from the [stated Navier–Stokes equation](https://www.claymath.org/wp-content/uploads/2022/06/navierstokes.pdf); it is not a new force or a replacement equation.
+
+For the **existing discrete Laplacian**, the corresponding instantaneous viscous loss rate is
+
+$$Q_h(t)=-\nu\langle u,L_hu\rangle_h=\nu h^3\sum_{x,i,j}\left(\frac{u_i(x+h e_j)-u_i(x)}h\right)^2=\nu L^3G_{\mathrm{adj}}(t)^2.$$
+
+Here L=6 is the box length, h=L/N, viscosity is 0.01, and the adjacent-cell gradient RMS was already measured in the [grid-pattern check](#grid-pattern-check-through-model-time-04). This norm matches the solver's nearest-neighbor Laplacian; the centered-gradient RMS does not give the same viscous identity. A separate small-grid check verifies this equality directly using the Laplacian's work.
+
+The full discrete update also includes centered advection, forward Euler time stepping and pressure projection. It does not satisfy the exact continuous-time energy identity automatically. This test measures the remaining gap without attributing it to any one numerical operation.
+
+### Measured loss and estimated viscous loss, 0 to 0.40
+
+The **gap** is estimated viscous loss minus observed loss. A **positive** gap means the saved flow retained more energy than the viscosity-only estimate predicts.
+
+| Grid | Time step | Saved times | Observed loss | Viscous estimate: quadratic | Gap: quadratic | Gap: linear |
+| --- | --- | --- | --- | --- | --- | --- |
+| 256³ | 0.001 | 9 | 3.686426 | 3.703536 | 0.4641% | 0.5848% |
+| 384³ | 0.001 | 11 | 3.686260 | 3.704958 | 0.5073% | 0.5525% |
+| 384³ | 0.0005 | 11 | 3.695202 | 3.703839 | 0.2337% | 0.2789% |
+
+The half-step 384³ energy falls from **40.347382** to **36.652180**. Its measured loss is **3.695202**; the quadratic estimate predicts **3.703839**, leaving **0.008637** in simulation energy units. Energy and the viscous loss rate decrease at every saved observation in all three runs.
+
+### Sensitivity to the gaps between saved observations
+
+We integrate the same recorded loss rates using piecewise linear interpolation (trapezoids) and quadratic interpolation ([composite Simpson integration](https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.simpson.html)). We also repeat the trapezoidal integration after dropping every other observation while keeping both endpoints.
+
+| Grid | Time step | Linear–quadratic difference | As % of observed loss | Difference after thinning | As % of observed loss |
+| --- | --- | --- | --- | --- | --- |
+| 256³ | 0.001 | 0.004447 | 0.1206% | 0.013340 | 0.3619% |
+| 384³ | 0.001 | 0.001666 | 0.0452% | 0.004998 | 0.1356% |
+| 384³ | 0.0005 | 0.001670 | 0.0452% | 0.005009 | 0.1356% |
+
+On the finer half-step run, changing the integration method changes the estimated loss by **0.001670**, or **0.0452% of observed loss**. The two full-resolution estimates both leave a positive gap. These sensitivity checks cannot bound behavior between observations; the residual has not been separated exactly into numerical and temporal-quadrature contributions.
+
+### Compare grids at matching observation times
+
+256³ has nine saved times; 384³ has eleven. To avoid mixing a grid change with an observation-schedule change, all three controls are also compared at the nine common times: 0, 0.08, 0.16, 0.20, 0.24, 0.28, 0.32, 0.36, 0.40. A second comparison uses only 0.16 to 0.40, where every control has spacing 0.04.
+
+| Grid | Time step | Common times: quadratic gap | Common times: linear gap | 0.16–0.40: quadratic gap | 0.16–0.40: linear gap |
+| --- | --- | --- | --- | --- | --- |
+| 256³ | 0.001 | 0.4641% | 0.5848% | 0.5555% | 0.5866% |
+| 384³ | 0.001 | 0.5143% | 0.6362% | 0.5494% | 0.5806% |
+| 384³ | 0.0005 | 0.2408% | 0.3627% | 0.2764% | 0.3075% |
+
+Refining the grid alone does **not** consistently reduce this energy gap across these intervals. Halving the time step on 384³ reduces it in every listed comparison. That supports time-step sensitivity; two time steps do not establish a convergence order or a rigorous exact-solution error.
+
+### Verification and reproducibility
+
+- **15 focused checks passed:** independent viscous work versus gradient norm; exact linear loss at uneven times; exact quadratic-rate integration; an analytically decaying sine shear with a known Simpson error bound; positive and negative gap signs; constant velocity; invalid inputs.
+- Reused **31 observations** and their prior checkpoint provenance. No saved field was changed or remeasured, and no solver steps were added. The equation, original hug field, viscosity, grids, time steps and zero external force are unchanged.
+- Source hashes link this report to the earlier grid measurements, shape history and evolution record. Input energies are checked against the earlier record. The computation requires only files already on GitHub; large checkpoint arrays are not needed to reproduce this budget.
+- The calculation uses discrete gradients and finite observations. It does not prove a continuous energy identity for the numerical trajectory or an all-time Clay result.
+
+From the repository root:
+
+```sh
+python math/hug_energy_balance.py
+python -m pytest -q math/tests/test_hug_energy_balance.py
+```
+
+[Calculation](../hug_energy_balance.py) · [Independent checks](../tests/test_hug_energy_balance.py) · [All estimates and provenance](../results/hug-energy-balance.json) · [Measurement table](../results/hug-energy-balance.csv)
+
+<!-- ENERGY_BALANCE_END -->
