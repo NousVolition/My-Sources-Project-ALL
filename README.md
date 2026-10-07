@@ -19,7 +19,7 @@ The **“hug”** is the name for a soft enclosing shape used to prepare the flo
 
 The latest calculation continued three saved runs from **model time 0.32 to 0.4**. The finer-grid comparison gives **0.0875% in velocity** and **0.3710% in its spatial gradient**. Halving the time step on 384³ gives **0.0491%** and **0.1245%**, respectively.
 
-**Latest observation:** The largest sampled velocity gradient decreased at every recorded new time in all three runs. Both energy-weighted widths decreased at the new saved times in all three runs. [Measurements and chart](math/notes/hug-boundary.md#continuation-to-model-time-04).
+**Latest check:** the saved flow was inspected for alternating grid patterns that the original gradient measurement can miss. The largest exact-checkerboard energy fraction was **4.06e-22**. At time 0.40, two discrete gradient measurements differ by **0.0644%** on the smaller-step 384³ run. [Measurements and limits](math/notes/hug-boundary.md#grid-pattern-check-through-model-time-04).
 
 These are measurements over a limited simulated interval. The Clay problem still requires a mathematical proof.
 
@@ -34,7 +34,7 @@ The [earlier category map](language/exploration/README.md) shows reply order, ov
 ## What is finished, and what comes next?
 
 - **Completed:** the smooth starting-field construction and energy calculation; saved grid and time-step comparisons; conversation maps with evidence links and checks.
-- **Latest math check completed:** [three-run continuation and energy spread through time 0.4](math/notes/hug-boundary.md#continuation-to-model-time-04).
+- **Latest math check completed:** [alternating grid patterns and derivative comparison](math/notes/hug-boundary.md#grid-pattern-check-through-model-time-04); prior evolution and shape results are preserved.
 - **Next conversation work:** review interpretations with another reader and add new material while recording overlaps.
 
 [Full project status and completed work →](STATUS.md)
