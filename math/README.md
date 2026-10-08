@@ -16,6 +16,10 @@ The original grid-comparison series reaches **model time 0.4** on **256³ and 38
 
 **Latest shape measurement:** Both energy-weighted widths decreased at the new saved times in all three runs. [Values and definitions](notes/hug-boundary.md#continuation-to-model-time-04).
 
+## Supplied hug-ns code
+
+[Read the import review](imports/hug-ns/REVIEW.md) before using the [supplied files](imports/hug-ns/README.md). The gate is retained. The review records short checks, three unresolved numerical defects, and differences from the existing ring construction. The longer results claimed in the submitted README were not included as data.
+
 ## Background and earlier experiments
 
 1. **[The smooth initial field](notes/smooth-initial-field.md)** — the corrected construction and exact energy.

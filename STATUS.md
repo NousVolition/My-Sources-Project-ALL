@@ -2,6 +2,10 @@
 
 [← Project home](README.md)
 
+## New submission reviewed
+
+[hug-ns.zip review](math/imports/hug-ns/REVIEW.md): gate and fluid evolution retained; pressure reporting corrected; fifteen focused checks pass and three numerical defects are marked expected failures. The source archive contains no saved evidence for its long-run results. Its initial gate and Fourier solver are documented separately from the earlier completed study.
+
 ## Already completed
 
 | Work | Where it lives | What is established |
