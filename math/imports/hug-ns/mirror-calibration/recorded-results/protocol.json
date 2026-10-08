@@ -1,0 +1,119 @@
+{
+  "purpose": "Define and check a signed fluid mirror coordinate",
+  "nu": 0.01,
+  "L": 6.0,
+  "end_time": 0.2,
+  "output_dt": 0.02,
+  "jobs": [
+    {
+      "n": 33,
+      "half": false,
+      "amplitude": 0.0
+    },
+    {
+      "n": 33,
+      "half": false,
+      "amplitude": 0.001
+    },
+    {
+      "n": 33,
+      "half": false,
+      "amplitude": -0.001
+    },
+    {
+      "n": 33,
+      "half": false,
+      "amplitude": 0.005
+    },
+    {
+      "n": 33,
+      "half": false,
+      "amplitude": -0.005
+    },
+    {
+      "n": 33,
+      "half": true,
+      "amplitude": 0.0
+    },
+    {
+      "n": 33,
+      "half": true,
+      "amplitude": 0.001
+    },
+    {
+      "n": 33,
+      "half": true,
+      "amplitude": -0.001
+    },
+    {
+      "n": 33,
+      "half": true,
+      "amplitude": 0.005
+    },
+    {
+      "n": 33,
+      "half": true,
+      "amplitude": -0.005
+    },
+    {
+      "n": 49,
+      "half": false,
+      "amplitude": 0.0
+    },
+    {
+      "n": 49,
+      "half": false,
+      "amplitude": 0.001
+    },
+    {
+      "n": 49,
+      "half": false,
+      "amplitude": -0.001
+    },
+    {
+      "n": 49,
+      "half": false,
+      "amplitude": 0.005
+    },
+    {
+      "n": 49,
+      "half": false,
+      "amplitude": -0.005
+    },
+    {
+      "n": 49,
+      "half": true,
+      "amplitude": 0.0
+    },
+    {
+      "n": 49,
+      "half": true,
+      "amplitude": 0.001
+    },
+    {
+      "n": 49,
+      "half": true,
+      "amplitude": -0.001
+    },
+    {
+      "n": 49,
+      "half": true,
+      "amplitude": 0.005
+    },
+    {
+      "n": 49,
+      "half": true,
+      "amplitude": -0.005
+    }
+  ],
+  "baseline": "Exact supplied four_node.py mirror-pair start, repeated at33 and49",
+  "template": "Project supplied removal_test.py Gaussian velocity bias, take (g-Mg)/2, normalize its spatial L2 norm to1",
+  "initial_condition": "u0 = u_sym + amplitude * norm(u_sym) * phi",
+  "signed_coordinate": "a = <(u-Mu)/2,phi>/<phi,phi>; s_calibrated = a/norm(u_sym at0)",
+  "unsigned_coordinate": "E = norm(u-Mu)/norm(u)",
+  "exact_identity": "E^2=4*(a^2*norm(phi)^2+norm(residual)^2)/norm(u)^2, residual=(u-Mu)/2-a*phi",
+  "initial_exact_values": "s_calibrated(0)=amplitude; E(0)=2*abs(amplitude)/sqrt(1+amplitude^2)",
+  "scope": "Calibration and reflection checks; does not fit or validate the cubic reduced evolution law",
+  "source_sha256": "422b7160f9e96badfc68fb76958c3cb512982905b73b37f8db92e5fd37379c01",
+  "script_sha256": "5bed6af895970efe3ea5e1b7c930bfeb8582f3586cdbca06a59207b0afef1fa1"
+}

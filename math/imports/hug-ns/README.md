@@ -8,7 +8,11 @@ This experiment prepares a flow with an enclosing gate, then evolves it using an
 
 **Report:** [Original two-page PDF](hug-runs.pdf) · [Checks and wording corrections](RESULTS-REVIEW.md#pdf-report). The PDF is preserved as received; the linked review states which conclusions the supplied files support.
 
-## Latest controls
+## Completed mirror tests
+
+[Four reproduced fluid tests and charts](mirror-fluid/README.md) · [20-run signed calibration](mirror-calibration/README.md). These use the documented mirror-pair starting field, with their own code and measured results. The earlier imported results below retain their original scope.
+
+## Earlier controls
 
 | Received file | Checked finding |
 | --- | --- |
@@ -82,3 +86,4 @@ python run.py compare --n 48 --time 2 --out compare.json
 For the mathematical argument, read [the vorticity bound](BOUND.md), [the proposed estimate](step-12.md), and [the short-time calculation](step-12-bound.md), and [the climbing-flow rate comparison](climb-bound.md).
 
 Original upload hashes and reviewed-file hashes are recorded in [provenance.json](provenance.json). [The patch](review-changes.patch) shows every change to the uploaded code and notes, including this wording revision.
+

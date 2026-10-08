@@ -1,0 +1,146 @@
+{
+  "status": "four_scripts_completed_and_checked",
+  "numeric_tolerance": {
+    "absolute": 1e-12,
+    "relative": 1e-10
+  },
+  "comparisons": {
+    "fluid-break-to-2": {
+      "all_values_match": true,
+      "compared_numeric_values": 40,
+      "max_abs_difference": 1.3145040611561853e-13,
+      "differences_outside_tolerance": []
+    },
+    "fluid-sources": {
+      "all_values_match": true,
+      "compared_numeric_values": 126,
+      "max_abs_difference": 5.5067062021407764e-14,
+      "differences_outside_tolerance": []
+    },
+    "fluid-pitchfork": {
+      "all_values_match": true,
+      "compared_numeric_values": 12,
+      "max_abs_difference": 2.7907548769981257e-16,
+      "differences_outside_tolerance": []
+    },
+    "fluid-correction": {
+      "all_values_match": false,
+      "compared_numeric_values": 20,
+      "max_abs_difference": 0.0004379295969171391,
+      "differences_outside_tolerance": [
+        {
+          "path": "/rows/1/E",
+          "reference": 0.0022442755812672323,
+          "actual": 0.002156676899027773,
+          "abs_error": 8.75986822394593e-05,
+          "passed": false
+        },
+        {
+          "path": "/rows/1/D",
+          "reference": 0.0003922641024051389,
+          "actual": 0.0003983647773035147,
+          "abs_error": 6.100674898375778e-06,
+          "passed": false
+        },
+        {
+          "path": "/rows/1/q",
+          "reference": 5.0808843204961575e-05,
+          "actual": 3.852162146053104e-05,
+          "abs_error": 1.2287221744430536e-05,
+          "passed": false
+        },
+        {
+          "path": "/rows/2/E",
+          "reference": 0.002244275581267641,
+          "actual": 0.002156676899028125,
+          "abs_error": 8.759868223951568e-05,
+          "passed": false
+        },
+        {
+          "path": "/rows/2/D",
+          "reference": -0.0003922641024052233,
+          "actual": -0.0003983647773035878,
+          "abs_error": 6.100674898364502e-06,
+          "passed": false
+        },
+        {
+          "path": "/rows/2/q",
+          "reference": -5.080884320496703e-05,
+          "actual": -3.852162146053468e-05,
+          "abs_error": 1.2287221744432352e-05,
+          "passed": false
+        },
+        {
+          "path": "/rows/3/E",
+          "reference": 0.011221124503023077,
+          "actual": 0.010783194906106143,
+          "abs_error": 0.0004379295969169344,
+          "passed": false
+        },
+        {
+          "path": "/rows/3/D",
+          "reference": 0.0019613077606481406,
+          "actual": 0.001991816342552094,
+          "abs_error": 3.0508581903953245e-05,
+          "passed": false
+        },
+        {
+          "path": "/rows/3/q",
+          "reference": 0.00025404362129075644,
+          "actual": 0.00019260784288191048,
+          "abs_error": 6.143577840884596e-05,
+          "passed": false
+        },
+        {
+          "path": "/rows/4/E",
+          "reference": 0.011221124503023544,
+          "actual": 0.010783194906106405,
+          "abs_error": 0.0004379295969171391,
+          "passed": false
+        },
+        {
+          "path": "/rows/4/D",
+          "reference": -0.0019613077606482157,
+          "actual": -0.0019918163425521485,
+          "abs_error": 3.0508581903932862e-05,
+          "passed": false
+        },
+        {
+          "path": "/rows/4/q",
+          "reference": -0.00025404362129076126,
+          "actual": -0.0001926078428819132,
+          "abs_error": 6.143577840884805e-05,
+          "passed": false
+        }
+      ]
+    },
+    "fluid-correction-at-0.16": {
+      "all_values_match": true,
+      "compared_numeric_values": 20,
+      "max_abs_difference": 1.7780915628762273e-16,
+      "only_change": "End time 0.12 -> 0.16; separate diagnostic copy; original script unchanged"
+    }
+  },
+  "latest_version_all_four_references_reproduced": true,
+  "latest_version": {
+    "new_archive": "fluid-scripts (1).zip",
+    "new_archive_sha256": "cabdc1021cc8855a19047f9e934df3978d89e865f2e966a471b956969bfc3b91",
+    "latest_correction_time": 0.16,
+    "correction_executable_AST_matches_tested_time_016": true,
+    "other_four_Python_files_byte_identical": true,
+    "reuse": "Completed local time0.16 correction results are reused because executable code is identical; only module docstring differs.",
+    "new_correction_sha256": "128ed536a3be09d37ade4e5ace8c3a887d84098f2ed2993ea250bacb5ee5a37c",
+    "tested_correction_sha256": "d6371d124630f66ab5d73829f7c6e1caa59cb74e9ba37c7a4e755550599e5cac"
+  },
+  "symmetry_checks": {
+    "source_pair_max_E_difference": 9.575673587391975e-16,
+    "source_pair_max_W_difference": 2.6645352591003757e-14,
+    "source_pair_max_D_sum": 2.949029909160572e-17,
+    "symmetric_ab_max_E": 4.296837491636153e-15,
+    "symmetric_ab_cd_max_E": 4.191654761487359e-15
+  },
+  "scope": "Execution and reproduction on the supplied33 grid, not grid convergence.",
+  "strip_intervention": "At0.12 replace u with (u+M[u])/2, then continue to0.24. This imposed symmetry reset is not spontaneous recovery.",
+  "q_is_a_record": true,
+  "q_is_a_force": false
+}

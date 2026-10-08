@@ -16,6 +16,10 @@ The original grid-comparison series reaches **model time 0.4** on **256³ and 38
 
 **Latest shape measurement:** Both energy-weighted widths decreased at the new saved times in all three runs. [Values and definitions](notes/hug-boundary.md#continuation-to-model-time-04).
 
+## Completed mirror-fluid tests
+
+[Four reproduced tests and charts](imports/hug-ns/mirror-fluid/README.md) and [20-run signed calibration](imports/hug-ns/mirror-calibration/README.md), with source and actual result files.
+
 ## Hug-ns code and results
 
 [Open the experiment overview](imports/hug-ns/README.md) for the code, sixteen result tables and measurement definitions. The latest N=64 table reaches time 0.12; the earlier no-stop table reaches 0.35. The [code review](imports/hug-ns/REVIEW.md) lists the corrected pressure diagnostic, 32 focused passes and three known failures. The [results review](imports/hug-ns/RESULTS-REVIEW.md) explains exactly which values were checked. This imported solver uses different starting data from the earlier ring study.
@@ -74,3 +78,4 @@ python math/box_experiment.py --profile smooth --start projected --box 18 --poin
 Read the [saved CSV](results/box-experiment-results.csv) for the completed full suite. To intentionally reproduce it, use `python math/box_experiment.py --suite --csv scratch/box-results.csv`.
 
 The field construction and the fluid evolution have separate scopes: the analytic initial field is established; the cube is an experimental discretization with known boundary and centered-grid limitations. [Next step →](../STATUS.md#next-math-step)
+
