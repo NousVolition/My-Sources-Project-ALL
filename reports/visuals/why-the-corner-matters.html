@@ -1,0 +1,49 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Why The Corner Matters</title><style>body{margin:0;padding:26px;background:#fafbf9;color:#233943;font:16px/1.6 system-ui;--color-text-primary:#233943;--color-text-secondary:#566b75;--color-background-primary:#fff;--color-background-secondary:#f0f4f4;--color-border-primary:#c6d1d5;--color-border-secondary:#dbe4e6;--color-text-info:#176b80}main{max-width:1120px;margin:auto}button,input,select{font:inherit}button{cursor:pointer}a{color:#126b78}svg,canvas{max-width:100%}*{box-sizing:border-box}.text-small{font-size:14px}nav{margin:0 0 24px}.card{background:white;border:1px solid #d3e0e2;padding:22px;border-radius:14px}h1{line-height:1.2}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}img{max-width:100%}code{overflow-wrap:anywhere}</style></head><body><main><nav><a href="../index.html">← All reports</a></nav><div id="join-corner-explainer">
+  <h3>Look at where the lines meet</h3>
+  <div class="join-comparison">
+    <div data-panel="corner"><div>Pointed join</div><div data-chart></div><div class="text-small">Upward tilt → downward tilt instantly</div></div>
+    <div data-panel="smooth"><div>Rounded join</div><div data-chart></div><div class="text-small">The tilt changes gradually through flat</div></div>
+  </div>
+  <div class="text-small text-muted">Illustrative velocity graphs · dot = joining point</div>
+</div>
+<style>
+  #join-corner-explainer .join-comparison {display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:20px;}
+  #join-corner-explainer .join-plot {display:block;}
+  #join-corner-explainer .join-plot text {fill:var(--foreground);font-size:12px;font-weight:400;}
+</style>
+<script>
+(() => {
+  const root=document.getElementById('join-corner-explainer');
+  const ns='http://www.w3.org/2000/svg';
+  function node(tag,attrs,parent,text){
+    const element=document.createElementNS(ns,tag);
+    for(const [key,value] of Object.entries(attrs))element.setAttribute(key,value);
+    if(text)element.textContent=text;
+    parent.appendChild(element);return element;
+  }
+  for(const type of ['corner','smooth']){
+    const panel=root.querySelector(`[data-panel="${type}"]`),host=panel.querySelector('[data-chart]');
+    const svg=node('svg',{class:'join-plot',role:'img'},host);
+    node('title',{},svg,type==='corner'?'A pointed join: the two pieces meet, but their tilts disagree.':'A rounded join: the curve flattens gradually at the top.');
+    node('desc',{},svg,'The horizontal direction is position. Height represents a velocity value, not a physical wall or a particle path. These are schematic comparison curves.');
+    const marks=node('g',{},svg);
+    function draw(){
+      marks.replaceChildren();
+      const w=host.getBoundingClientRect().width||320,h=230,left=64,right=w-12,top=22,bottom=182;
+      svg.setAttribute('width',w);svg.setAttribute('height',h);svg.setAttribute('viewBox',`0 0 ${w} ${h}`);
+      node('rect',{x:left,y:top,width:right-left,height:bottom-top,fill:'none',stroke:'var(--border)','stroke-width':1,'data-chart-frame':''},marks);
+      const samples=Array.from({length:201},(_,i)=>{const x=-1+2*i/200;return [x,type==='corner'?1-Math.abs(x):1-x*x];});
+      const xs=samples.map(p=>p[0]),ys=samples.map(p=>p[1]);
+      const xmin=Math.min(...xs)-.1,xmax=Math.max(...xs)+.1,ymin=Math.min(...ys)-.1,ymax=Math.max(...ys)+.2;
+      const X=x=>left+(x-xmin)/(xmax-xmin)*(right-left),Y=y=>bottom-(y-ymin)/(ymax-ymin)*(bottom-top);
+      node('path',{d:samples.map((p,i)=>`${i?'L':'M'}${X(p[0])},${Y(p[1])}`).join(' '),fill:'none',stroke:'var(--viz-series-1)','stroke-width':3},marks);
+      node('circle',{cx:X(0),cy:Y(1),r:5,fill:'var(--viz-series-1)'},marks);
+      node('text',{x:X(0),y:Y(1)-13,'text-anchor':'middle'},marks,type==='corner'?'CORNER':'FLAT HERE');
+      node('text',{x:(left+right)/2,y:216,'text-anchor':'middle',class:'axis-title','data-axis':'x'},marks,'Position across the join');
+      node('text',{transform:`translate(18,${(top+bottom)/2}) rotate(-90)`,'text-anchor':'middle',class:'axis-title','data-axis':'y'},marks,'Velocity (schematic)');
+    }
+    new ResizeObserver(draw).observe(host);draw();
+  }
+})();
+</script>
+</main></body></html>

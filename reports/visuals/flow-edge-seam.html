@@ -1,0 +1,76 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Flow Edge Seam</title><style>body{margin:0;padding:26px;background:#fafbf9;color:#233943;font:16px/1.6 system-ui;--color-text-primary:#233943;--color-text-secondary:#566b75;--color-background-primary:#fff;--color-background-secondary:#f0f4f4;--color-border-primary:#c6d1d5;--color-border-secondary:#dbe4e6;--color-text-info:#176b80}main{max-width:1120px;margin:auto}button,input,select{font:inherit}button{cursor:pointer}a{color:#126b78}svg,canvas{max-width:100%}*{box-sizing:border-box}.text-small{font-size:14px}nav{margin:0 0 24px}.card{background:white;border:1px solid #d3e0e2;padding:22px;border-radius:14px}h1{line-height:1.2}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}img{max-width:100%}code{overflow-wrap:anywhere}</style></head><body><main><nav><a href="../index.html">← All reports</a></nav><div id="flow-edge-seam">
+  <h3>Right half flipped upside down</h3>
+  <div class="text-small">Illustrative sketch of one velocity component.</div>
+  <svg class="seam-drawing" id="seam-original" role="img" aria-label="A smooth flow continues beyond the box. The box cuts out a piece whose left and right edge values differ."></svg>
+  <svg class="seam-drawing" id="seam-repeat" role="img" aria-label="The left copy is unchanged. The right copy is reflected vertically around the midpoint of the two endpoint values. B now meets flipped A, with a corner at the join. This is an edited sketch."></svg>
+</div>
+<style>
+#flow-edge-seam .seam-drawing{display:block;width:100%;height:220px;overflow:visible}
+#flow-edge-seam .seam-drawing text{fill:var(--foreground);font-size:12px;font-family:inherit;font-weight:400}
+#flow-edge-seam .seam-drawing .heading{font-weight:500}
+#flow-edge-seam .seam-drawing .structure{stroke:var(--border);fill:none;stroke-width:1}
+#flow-edge-seam .seam-drawing .flow{stroke:var(--viz-series-1);fill:none;stroke-width:3;stroke-linejoin:round}
+#flow-edge-seam .seam-drawing .outside{stroke:var(--muted-foreground);fill:none;stroke-width:2;opacity:.4}
+#flow-edge-seam .seam-drawing .end{fill:var(--viz-series-1)}
+</style>
+<script>
+(()=>{
+  const root=document.getElementById('flow-edge-seam');
+  const original=root.querySelector('#seam-original');
+  const repeated=root.querySelector('#seam-repeat');
+  const ns='http://www.w3.org/2000/svg';
+  function add(svg,tag,attrs,content){
+    const e=document.createElementNS(ns,tag);
+    for(const [key,value] of Object.entries(attrs))e.setAttribute(key,String(value));
+    if(content!==undefined)e.textContent=content;
+    svg.appendChild(e);return e;
+  }
+  const value=t=>.65*t+.35*Math.sin(2*Math.PI*t);
+  const y=t=>158-88*value(t);
+  function curve(svg,low,high,x,cls,vertical=y){
+    let d='';
+    for(let i=0;i<=120;i++){
+      const t=low+(high-low)*i/120;
+      d+=(i?'L':'M')+x(t).toFixed(2)+','+vertical(t).toFixed(2);
+    }
+    add(svg,'path',{d,class:cls});
+  }
+  function draw(){
+    const width=Math.max(280,root.getBoundingClientRect().width);
+    for(const svg of [original,repeated]){svg.replaceChildren();svg.setAttribute('viewBox',`0 0 ${width} 220`);}
+    const left=24,right=width-24;
+    const x=t=>left+(t+.25)/1.5*(right-left);
+    const a=x(0),b=x(1);
+    add(original,'text',{x:12,y:28,class:'heading'},'1. The original flow is smooth');
+    add(original,'rect',{x:a,y:56,width:b-a,height:126,fill:'var(--viz-series-1)',opacity:.06});
+    add(original,'line',{x1:a,x2:a,y1:56,y2:182,class:'structure'});
+    add(original,'line',{x1:b,x2:b,y1:56,y2:182,class:'structure'});
+    add(original,'text',{x:(a+b)/2,y:72,'text-anchor':'middle'},'piece inside the box');
+    curve(original,-.25,0,x,'outside');
+    curve(original,0,1,x,'flow');
+    curve(original,1,1.25,x,'outside');
+    for(const [t,label] of [[0,'A'],[1,'B']]){
+      add(original,'circle',{cx:x(t),cy:y(t),r:5,class:'end'});
+      add(original,'text',{x:x(t)+(t?10:-10),y:y(t)-10,'text-anchor':t?'start':'end'},label);
+    }
+    add(original,'text',{x:a,y:214,'text-anchor':'middle'},'left edge');
+    add(original,'text',{x:b,y:214,'text-anchor':'middle'},'right edge');
+    const half=(right-left)/2,seam=left+half;
+    add(repeated,'text',{x:12,y:27,class:'heading'},'2. Your change at the join');
+    add(repeated,'text',{x:left+half/2,y:59,'text-anchor':'middle'},'box');
+    add(repeated,'text',{x:seam+half/2,y:59,'text-anchor':'middle'},'flipped upside down');
+    const flippedY=t=>y(0)+y(1)-y(t);
+    for(let copy=0;copy<2;copy++){
+      add(repeated,'rect',{x:left+copy*half,y:70,width:half,height:112,fill:'var(--viz-series-1)',opacity:.06});
+      curve(repeated,0,1,t=>left+copy*half+t*half,'flow',copy===1?flippedY:y);
+    }
+    add(repeated,'line',{x1:seam,x2:seam,y1:70,y2:182,class:'structure'});
+    add(repeated,'circle',{cx:seam,cy:y(1),r:5,class:'end'});
+    add(repeated,'text',{x:seam,y:y(1)-12,'text-anchor':'middle'},'B = flipped A');
+    add(repeated,'text',{x:seam,y:207,'text-anchor':'middle'},'The ends meet here.');
+  }
+  draw();
+  new ResizeObserver(draw).observe(root);
+})();
+</script>
+</main></body></html>

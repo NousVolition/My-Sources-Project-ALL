@@ -1,0 +1,4606 @@
+{
+  "status": "passed",
+  "started": "2026-10-08T08:39:27.942977+00:00",
+  "source_hashes": {
+    "initial_design.py": "008d8ae42332377afcb068f0689d4f418c7e27e29cc08233a5fde2b554250c30",
+    "solver.py": "5fecfe44050c47f374111a52e46e624a3fd4b6427575b3b5109086fe2789b821",
+    "protocol.py": "e776a5e0f3cca7e1a53aca39f0b4b7a6aeb96a3996a31c107a301ff01cf4db7c",
+    "run_study.py": "f81bf25ea96658ca8fcea089579930367290ce62fd442b8f2972fcc25ce093f3"
+  },
+  "solver_validation": [
+    {
+      "method": "fourier",
+      "projection_divergence": 2.3905388281531313e-15,
+      "shear_decay_error": 3.3306690738754696e-16,
+      "energy_semidiscrete_residual": 1.1102230246251565e-16
+    },
+    {
+      "method": "fd4",
+      "projection_divergence": 1.9457171543933294e-15,
+      "shear_decay_error": 3.3306690738754696e-16,
+      "energy_semidiscrete_residual": 0.0
+    },
+    {
+      "benchmark_method": "fourier",
+      "n": 80,
+      "step_seconds": 0.7414912000531331,
+      "cfl": 0.0848947219923992,
+      "initial_projection_change": 1.183954635685566e-16
+    },
+    {
+      "benchmark_method": "fd4",
+      "n": 80,
+      "step_seconds": 1.069689300027676,
+      "cfl": 0.08489422442618548,
+      "initial_projection_change": 6.707069523100842e-06
+    }
+  ],
+  "initial_rows": [
+    {
+      "case": "aligned",
+      "n": 48,
+      "method": "fourier",
+      "initial_projection_relative_l2_change": 1.0575981065523571e-16,
+      "geometry": {
+        "n": 48,
+        "case": "aligned",
+        "gamma": 12.138737596974998,
+        "center_spin": [
+          2.251833430531743e-16,
+          -3.216887534943236e-16,
+          79.99999999994166
+        ],
+        "max_spin": 79.99999999994166,
+        "center_background_strain": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            -4.000000000000001,
+            -3.866422492135208e-17
+          ],
+          [
+            0.0,
+            -3.866422492135208e-17,
+            4.0
+          ]
+        ],
+        "eigenvalues": [
+          -4.000000000000001,
+          0.0,
+          4.0
+        ],
+        "alignment_to_largest_eigenvector": 1.0,
+        "parallel_stretch": 4.0,
+        "outer_mean_outward_speeds": [
+          -1.491862189340054e-16,
+          3.469446951953614e-18,
+          -1.8388068845354155e-16,
+          -4.85722573273506e-17
+        ],
+        "max_speed": 17.83603985954975,
+        "mean_velocity": [
+          -6.938893903907228e-18,
+          1.3158198810372225e-16,
+          -2.3129646346357427e-18
+        ],
+        "core_radius_cells": 5.6,
+        "outer_radius_cells": 5.6
+      },
+      "diagnostics": {
+        "t": 0.0,
+        "Wmax": 79.99999999994166,
+        "W_central_roi": 79.99999999994166,
+        "rms_spin": 8.028703156771074,
+        "spin_ratio": 9.964249323687225,
+        "peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "central_peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 2128.337275619428,
+        "native_enstrophy": 6961.688032990952,
+        "spectral_enstrophy": 6961.688032990952,
+        "divergence_native": 4.759334319841749e-16,
+        "divergence_physical": 4.759334319841749e-16,
+        "mean_velocity": [
+          -1.3877787807814457e-17,
+          0.0,
+          -2.152342090563816e-18
+        ],
+        "central_parallel_stretch": 4.0,
+        "central_strain_eigenvalues": [
+          -4.000000000000002,
+          2.1883961194840582e-16,
+          3.9999999999999996
+        ],
+        "central_alignment": 1.0,
+        "central_marker_parallel_stretch_mean": -2.7755575615628914e-17,
+        "central_marker_parallel_stretch_spin_weighted": 2.811821105855196,
+        "central_marker_parallel_stretch_min": -4.000000000000001,
+        "central_marker_parallel_stretch_max": 4.0,
+        "central_marker_Wmax": 79.99999999994166,
+        "origin_axial_strain": 4.0,
+        "direct_spectral_enstrophy_production": 16685.759357998853,
+        "outer_marker_distances": [
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          }
+        ],
+        "high_band_enstrophy_fraction": 6.347865982451753e-18,
+        "I": 0.0,
+        "I_native": 0.0,
+        "energy_balance_residual": 0.0,
+        "energy_time_integral_residual": 0.0,
+        "native_enstrophy_balance_residual": 0.0,
+        "integrated_viscous_energy_loss": 0.0,
+        "integrated_native_production": 0.0,
+        "integrated_native_enstrophy_loss": 0.0,
+        "core_width": {
+          "minimum_half_peak_chord": 1.0465310522412203,
+          "maximum_half_peak_chord": 1.0673304595842046,
+          "minimum_chord_cells": 8.372248417929763,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.03125
+        },
+        "global_width": {
+          "minimum_half_peak_chord": 1.0465310522412203,
+          "maximum_half_peak_chord": 1.0673304595842046,
+          "minimum_chord_cells": 8.372248417929763,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.03125
+        },
+        "cells_50": 421,
+        "volume_50": 0.822265625,
+        "cells_100": 0,
+        "volume_100": 0.0,
+        "cells_200": 0,
+        "volume_200": 0.0,
+        "cells_400": 0,
+        "volume_400": 0.0,
+        "half_peak_cells": 757,
+        "half_peak_volume": 1.478515625,
+        "max_speed": 17.83603985954975,
+        "scaled_native_divergence": 3.335475781983572e-18,
+        "energy_balance_relative": 0.0,
+        "enstrophy_balance_relative": 0.0,
+        "resolution_flags": []
+      }
+    },
+    {
+      "case": "aligned",
+      "n": 48,
+      "method": "fd4",
+      "initial_projection_relative_l2_change": 5.101885635792756e-05,
+      "geometry": {
+        "n": 48,
+        "case": "aligned",
+        "gamma": 12.138737596974998,
+        "center_spin": [
+          2.251833430531743e-16,
+          -3.216887534943236e-16,
+          79.99999999994166
+        ],
+        "max_spin": 79.99999999994166,
+        "center_background_strain": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            -4.000000000000001,
+            -3.866422492135208e-17
+          ],
+          [
+            0.0,
+            -3.866422492135208e-17,
+            4.0
+          ]
+        ],
+        "eigenvalues": [
+          -4.000000000000001,
+          0.0,
+          4.0
+        ],
+        "alignment_to_largest_eigenvector": 1.0,
+        "parallel_stretch": 4.0,
+        "outer_mean_outward_speeds": [
+          -1.491862189340054e-16,
+          3.469446951953614e-18,
+          -1.8388068845354155e-16,
+          -4.85722573273506e-17
+        ],
+        "max_speed": 17.83603985954975,
+        "mean_velocity": [
+          -6.938893903907228e-18,
+          1.3158198810372225e-16,
+          -2.3129646346357427e-18
+        ],
+        "core_radius_cells": 5.6,
+        "outer_radius_cells": 5.6
+      },
+      "diagnostics": {
+        "t": 0.0,
+        "Wmax": 79.99998767359344,
+        "W_central_roi": 79.99998767359344,
+        "rms_spin": 8.028703062226324,
+        "spin_ratio": 9.96424790573956,
+        "peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "central_peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 2128.337270079528,
+        "native_enstrophy": 6958.826155681898,
+        "spectral_enstrophy": 6961.687869031456,
+        "divergence_native": 7.354982742632918e-16,
+        "divergence_physical": 0.0062042980237685804,
+        "mean_velocity": [
+          3.148201863809761e-17,
+          0.0,
+          -2.730583249222752e-19
+        ],
+        "central_parallel_stretch": 3.9998372417154315,
+        "central_strain_eigenvalues": [
+          -3.9998372417154324,
+          9.826090688756076e-18,
+          3.999837241715431
+        ],
+        "central_alignment": 1.0,
+        "central_marker_parallel_stretch_mean": -5.551115123125783e-17,
+        "central_marker_parallel_stretch_spin_weighted": 2.8118199408380584,
+        "central_marker_parallel_stretch_min": -3.9998372417154324,
+        "central_marker_parallel_stretch_max": 3.9998372417154315,
+        "central_marker_Wmax": 79.99998767359344,
+        "origin_axial_strain": 3.9998372417154315,
+        "direct_spectral_enstrophy_production": 16685.512239592044,
+        "outer_marker_distances": [
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          }
+        ],
+        "high_band_enstrophy_fraction": 6.344312987664017e-18,
+        "I": 0.0,
+        "I_native": 0.0,
+        "energy_balance_residual": 0.0,
+        "energy_time_integral_residual": 0.0,
+        "native_enstrophy_balance_residual": 0.0,
+        "integrated_viscous_energy_loss": 0.0,
+        "integrated_native_production": 0.0,
+        "integrated_native_enstrophy_loss": 0.0,
+        "core_width": {
+          "minimum_half_peak_chord": 1.0465312202157984,
+          "maximum_half_peak_chord": 1.0673306030956002,
+          "minimum_chord_cells": 8.372249761726387,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.03125
+        },
+        "global_width": {
+          "minimum_half_peak_chord": 1.0465312202157984,
+          "maximum_half_peak_chord": 1.0673306030956002,
+          "minimum_chord_cells": 8.372249761726387,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.03125
+        },
+        "cells_50": 421,
+        "volume_50": 0.822265625,
+        "cells_100": 0,
+        "volume_100": 0.0,
+        "cells_200": 0,
+        "volume_200": 0.0,
+        "cells_400": 0,
+        "volume_400": 0.0,
+        "half_peak_cells": 757,
+        "half_peak_volume": 1.478515625,
+        "max_speed": 17.835202015205766,
+        "scaled_native_divergence": 5.154821582874613e-18,
+        "energy_balance_relative": 0.0,
+        "enstrophy_balance_relative": 0.0,
+        "resolution_flags": []
+      }
+    },
+    {
+      "case": "aligned",
+      "n": 64,
+      "method": "fourier",
+      "initial_projection_relative_l2_change": 1.0373759367545558e-16,
+      "geometry": {
+        "n": 64,
+        "case": "aligned",
+        "gamma": 12.138737596974998,
+        "center_spin": [
+          7.861685537278442e-16,
+          3.191867008778508e-16,
+          80.00000000000004
+        ],
+        "max_spin": 80.00000000000004,
+        "center_background_strain": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            -4.000000000000001,
+            2.2824854872469243e-16
+          ],
+          [
+            0.0,
+            2.2824854872469243e-16,
+            4.000000000000001
+          ]
+        ],
+        "eigenvalues": [
+          -4.000000000000001,
+          0.0,
+          4.000000000000001
+        ],
+        "alignment_to_largest_eigenvector": 1.0,
+        "parallel_stretch": 4.000000000000001,
+        "outer_mean_outward_speeds": [
+          -2.0469737016526324e-16,
+          9.71445146547012e-17,
+          -1.3877787807814457e-16,
+          -1.734723475976807e-17
+        ],
+        "max_speed": 17.81192555355437,
+        "mean_velocity": [
+          -1.5829351718288365e-17,
+          0.0,
+          2.7460808149984417e-18
+        ],
+        "core_radius_cells": 7.466666666666666,
+        "outer_radius_cells": 7.466666666666666
+      },
+      "diagnostics": {
+        "t": 0.0,
+        "Wmax": 80.00000000000006,
+        "W_central_roi": 80.00000000000006,
+        "rms_spin": 8.028703156771078,
+        "spin_ratio": 9.964249323694494,
+        "peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "central_peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 2128.3372756194285,
+        "native_enstrophy": 6961.688032990955,
+        "spectral_enstrophy": 6961.688032990955,
+        "divergence_native": 3.2133543698515214e-16,
+        "divergence_physical": 3.2133543698515214e-16,
+        "mean_velocity": [
+          -2.2768245622195593e-18,
+          0.0,
+          2.44951340434103e-19
+        ],
+        "central_parallel_stretch": 4.000000000000001,
+        "central_strain_eigenvalues": [
+          -4.000000000000001,
+          1.0703640532543814e-16,
+          4.000000000000001
+        ],
+        "central_alignment": 1.0,
+        "central_marker_parallel_stretch_mean": -6.938893903907228e-18,
+        "central_marker_parallel_stretch_spin_weighted": 2.8181093333453537,
+        "central_marker_parallel_stretch_min": -4.000000000000001,
+        "central_marker_parallel_stretch_max": 4.000000000000001,
+        "central_marker_Wmax": 80.00000000000006,
+        "origin_axial_strain": 4.000000000000001,
+        "direct_spectral_enstrophy_production": 16685.759357998882,
+        "outer_marker_distances": [
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          }
+        ],
+        "high_band_enstrophy_fraction": 1.225382331643431e-29,
+        "I": 0.0,
+        "I_native": 0.0,
+        "energy_balance_residual": 0.0,
+        "energy_time_integral_residual": 0.0,
+        "native_enstrophy_balance_residual": 0.0,
+        "integrated_viscous_energy_loss": 0.0,
+        "integrated_native_production": 0.0,
+        "integrated_native_enstrophy_loss": 0.0,
+        "core_width": {
+          "minimum_half_peak_chord": 1.046508262799291,
+          "maximum_half_peak_chord": 1.0663402854240238,
+          "minimum_chord_cells": 11.162754803192437,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.0234375
+        },
+        "global_width": {
+          "minimum_half_peak_chord": 1.046508262799291,
+          "maximum_half_peak_chord": 1.0663402854240238,
+          "minimum_chord_cells": 11.162754803192437,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.0234375
+        },
+        "cells_50": 1017,
+        "volume_50": 0.837982177734375,
+        "cells_100": 0,
+        "volume_100": 0.0,
+        "cells_200": 0,
+        "volume_200": 0.0,
+        "cells_400": 0,
+        "volume_400": 0.0,
+        "half_peak_cells": 1835,
+        "half_peak_volume": 1.511993408203125,
+        "max_speed": 17.81192555355437,
+        "scaled_native_divergence": 1.6912936856142726e-18,
+        "energy_balance_relative": 0.0,
+        "enstrophy_balance_relative": 0.0,
+        "resolution_flags": []
+      }
+    },
+    {
+      "case": "aligned",
+      "n": 64,
+      "method": "fd4",
+      "initial_projection_relative_l2_change": 1.629889320151402e-05,
+      "geometry": {
+        "n": 64,
+        "case": "aligned",
+        "gamma": 12.138737596974998,
+        "center_spin": [
+          7.861685537278442e-16,
+          3.191867008778508e-16,
+          80.00000000000004
+        ],
+        "max_spin": 80.00000000000004,
+        "center_background_strain": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            -4.000000000000001,
+            2.2824854872469243e-16
+          ],
+          [
+            0.0,
+            2.2824854872469243e-16,
+            4.000000000000001
+          ]
+        ],
+        "eigenvalues": [
+          -4.000000000000001,
+          0.0,
+          4.000000000000001
+        ],
+        "alignment_to_largest_eigenvector": 1.0,
+        "parallel_stretch": 4.000000000000001,
+        "outer_mean_outward_speeds": [
+          -2.0469737016526324e-16,
+          9.71445146547012e-17,
+          -1.3877787807814457e-16,
+          -1.734723475976807e-17
+        ],
+        "max_speed": 17.81192555355437,
+        "mean_velocity": [
+          -1.5829351718288365e-17,
+          0.0,
+          2.7460808149984417e-18
+        ],
+        "core_radius_cells": 7.466666666666666,
+        "outer_radius_cells": 7.466666666666666
+      },
+      "diagnostics": {
+        "t": 0.0,
+        "Wmax": 79.99999871315336,
+        "W_central_roi": 79.99999871315336,
+        "rms_spin": 8.028703147086093,
+        "spin_ratio": 9.964249175433551,
+        "peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "central_peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 2128.337275054028,
+        "native_enstrophy": 6960.7741501832315,
+        "spectral_enstrophy": 6961.688016195252,
+        "divergence_native": 9.65953765324339e-16,
+        "divergence_physical": 0.0019786097122961774,
+        "mean_velocity": [
+          -9.432558900623889e-18,
+          0.0,
+          -1.7305941903589424e-19
+        ],
+        "central_parallel_stretch": 3.9999482211243755,
+        "central_strain_eigenvalues": [
+          -3.999948221124376,
+          1.3476087762600577e-16,
+          3.999948221124376
+        ],
+        "central_alignment": 1.0,
+        "central_marker_parallel_stretch_mean": -4.163336342344337e-17,
+        "central_marker_parallel_stretch_spin_weighted": 2.8181088631830202,
+        "central_marker_parallel_stretch_min": -3.999948221124377,
+        "central_marker_parallel_stretch_max": 3.9999482211243755,
+        "central_marker_Wmax": 79.99999871315336,
+        "origin_axial_strain": 3.999948221124376,
+        "direct_spectral_enstrophy_production": 16685.680723411544,
+        "outer_marker_distances": [
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          }
+        ],
+        "high_band_enstrophy_fraction": 1.2247796379382882e-29,
+        "I": 0.0,
+        "I_native": 0.0,
+        "energy_balance_residual": 0.0,
+        "energy_time_integral_residual": 0.0,
+        "native_enstrophy_balance_residual": 0.0,
+        "integrated_viscous_energy_loss": 0.0,
+        "integrated_native_production": 0.0,
+        "integrated_native_enstrophy_loss": 0.0,
+        "core_width": {
+          "minimum_half_peak_chord": 1.0465082794194127,
+          "maximum_half_peak_chord": 1.0663403002960061,
+          "minimum_chord_cells": 11.162754980473736,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.0234375
+        },
+        "global_width": {
+          "minimum_half_peak_chord": 1.0465082794194127,
+          "maximum_half_peak_chord": 1.0663403002960061,
+          "minimum_chord_cells": 11.162754980473736,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.0234375
+        },
+        "cells_50": 1017,
+        "volume_50": 0.837982177734375,
+        "cells_100": 0,
+        "volume_100": 0.0,
+        "cells_200": 0,
+        "volume_200": 0.0,
+        "cells_400": 0,
+        "volume_400": 0.0,
+        "half_peak_cells": 1835,
+        "half_peak_volume": 1.511993408203125,
+        "max_speed": 17.811655143114745,
+        "scaled_native_divergence": 5.0842083327760165e-18,
+        "energy_balance_relative": 0.0,
+        "enstrophy_balance_relative": 0.0,
+        "resolution_flags": []
+      }
+    },
+    {
+      "case": "aligned",
+      "n": 80,
+      "method": "fourier",
+      "initial_projection_relative_l2_change": 1.183954635685566e-16,
+      "geometry": {
+        "n": 80,
+        "case": "aligned",
+        "gamma": 12.138737596974998,
+        "center_spin": [
+          1.033374490026367e-15,
+          -6.5796109981324255e-16,
+          80.00000000000014
+        ],
+        "max_spin": 80.00000000000014,
+        "center_background_strain": [
+          [
+            0.0,
+            -1.0970144876526704e-34,
+            3.0995050543237624e-33
+          ],
+          [
+            -1.0970144876526704e-34,
+            -4.000000000000002,
+            4.107537318807207e-16
+          ],
+          [
+            3.0995050543237624e-33,
+            4.107537318807207e-16,
+            4.000000000000002
+          ]
+        ],
+        "eigenvalues": [
+          -4.000000000000002,
+          -2.3987242934793366e-66,
+          4.000000000000002
+        ],
+        "alignment_to_largest_eigenvector": 1.0,
+        "parallel_stretch": 4.000000000000003,
+        "outer_mean_outward_speeds": [
+          5.204170427930421e-17,
+          6.938893903907228e-17,
+          -3.8163916471489756e-17,
+          2.914335439641036e-16
+        ],
+        "max_speed": 17.813657833061786,
+        "mean_velocity": [
+          1.2212453270876721e-18,
+          0.0,
+          4.3298697960381105e-18
+        ],
+        "core_radius_cells": 9.333333333333334,
+        "outer_radius_cells": 9.333333333333334
+      },
+      "diagnostics": {
+        "t": 0.0,
+        "Wmax": 80.00000000000014,
+        "W_central_roi": 80.00000000000014,
+        "rms_spin": 8.028703156771078,
+        "spin_ratio": 9.964249323694505,
+        "peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "central_peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 2128.337275619429,
+        "native_enstrophy": 6961.688032990955,
+        "spectral_enstrophy": 6961.688032990955,
+        "divergence_native": 3.512264778176307e-16,
+        "divergence_physical": 3.512264778176307e-16,
+        "mean_velocity": [
+          -7.049916206369744e-18,
+          0.0,
+          2.4147350785597153e-18
+        ],
+        "central_parallel_stretch": 4.000000000000003,
+        "central_strain_eigenvalues": [
+          -4.000000000000002,
+          3.584768221766663e-17,
+          4.000000000000002
+        ],
+        "central_alignment": 1.0,
+        "central_marker_parallel_stretch_mean": 6.938893903907228e-18,
+        "central_marker_parallel_stretch_spin_weighted": 2.815844442192935,
+        "central_marker_parallel_stretch_min": -4.000000000000002,
+        "central_marker_parallel_stretch_max": 4.000000000000003,
+        "central_marker_Wmax": 80.00000000000014,
+        "origin_axial_strain": 4.000000000000002,
+        "direct_spectral_enstrophy_production": 16685.759357998882,
+        "outer_marker_distances": [
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          }
+        ],
+        "high_band_enstrophy_fraction": 9.09369292118076e-31,
+        "I": 0.0,
+        "I_native": 0.0,
+        "energy_balance_residual": 0.0,
+        "energy_time_integral_residual": 0.0,
+        "native_enstrophy_balance_residual": 0.0,
+        "integrated_viscous_energy_loss": 0.0,
+        "integrated_native_production": 0.0,
+        "integrated_native_enstrophy_loss": 0.0,
+        "core_width": {
+          "minimum_half_peak_chord": 1.0472641494621244,
+          "maximum_half_peak_chord": 1.0661730759778778,
+          "minimum_chord_cells": 13.963521992828326,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.01875
+        },
+        "global_width": {
+          "minimum_half_peak_chord": 1.0472641494621244,
+          "maximum_half_peak_chord": 1.0661730759778778,
+          "minimum_chord_cells": 13.963521992828326,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.01875
+        },
+        "cells_50": 1943,
+        "volume_50": 0.8197031249999999,
+        "cells_100": 0,
+        "volume_100": 0.0,
+        "cells_200": 0,
+        "volume_200": 0.0,
+        "cells_400": 0,
+        "volume_400": 0.0,
+        "half_peak_cells": 3513,
+        "half_peak_volume": 1.4820468749999998,
+        "max_speed": 17.813657833061786,
+        "scaled_native_divergence": 1.4787522070527317e-18,
+        "energy_balance_relative": 0.0,
+        "enstrophy_balance_relative": 0.0,
+        "resolution_flags": []
+      }
+    },
+    {
+      "case": "aligned",
+      "n": 80,
+      "method": "fd4",
+      "initial_projection_relative_l2_change": 6.707069523100842e-06,
+      "geometry": {
+        "n": 80,
+        "case": "aligned",
+        "gamma": 12.138737596974998,
+        "center_spin": [
+          1.033374490026367e-15,
+          -6.5796109981324255e-16,
+          80.00000000000014
+        ],
+        "max_spin": 80.00000000000014,
+        "center_background_strain": [
+          [
+            0.0,
+            -1.0970144876526704e-34,
+            3.0995050543237624e-33
+          ],
+          [
+            -1.0970144876526704e-34,
+            -4.000000000000002,
+            4.107537318807207e-16
+          ],
+          [
+            3.0995050543237624e-33,
+            4.107537318807207e-16,
+            4.000000000000002
+          ]
+        ],
+        "eigenvalues": [
+          -4.000000000000002,
+          -2.3987242934793366e-66,
+          4.000000000000002
+        ],
+        "alignment_to_largest_eigenvector": 1.0,
+        "parallel_stretch": 4.000000000000003,
+        "outer_mean_outward_speeds": [
+          5.204170427930421e-17,
+          6.938893903907228e-17,
+          -3.8163916471489756e-17,
+          2.914335439641036e-16
+        ],
+        "max_speed": 17.813657833061786,
+        "mean_velocity": [
+          1.2212453270876721e-18,
+          0.0,
+          4.3298697960381105e-18
+        ],
+        "core_radius_cells": 9.333333333333334,
+        "outer_radius_cells": 9.333333333333334
+      },
+      "diagnostics": {
+        "t": 0.0,
+        "Wmax": 79.99999977941417,
+        "W_central_roi": 79.99999977941417,
+        "rms_spin": 8.028703155127994,
+        "spin_ratio": 9.964249298259029,
+        "peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "central_peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 2128.337275523686,
+        "native_enstrophy": 6961.31213365098,
+        "spectral_enstrophy": 6961.688030141516,
+        "divergence_native": 9.003580680541904e-16,
+        "divergence_physical": 0.0008195986219486576,
+        "mean_velocity": [
+          -8.493206138382447e-18,
+          0.0,
+          -4.163336342344337e-19
+        ],
+        "central_parallel_stretch": 3.999978739419623,
+        "central_strain_eigenvalues": [
+          -3.999978739419623,
+          1.6219311913002492e-16,
+          3.9999787394196225
+        ],
+        "central_alignment": 1.0,
+        "central_marker_parallel_stretch_mean": 4.163336342344337e-17,
+        "central_marker_parallel_stretch_spin_weighted": 2.81584426151974,
+        "central_marker_parallel_stretch_min": -3.999978739419623,
+        "central_marker_parallel_stretch_max": 3.999978739419623,
+        "central_marker_Wmax": 79.99999977941417,
+        "origin_axial_strain": 3.999978739419623,
+        "direct_spectral_enstrophy_production": 16685.727046094205,
+        "outer_marker_distances": [
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          }
+        ],
+        "high_band_enstrophy_fraction": 9.06149915059354e-31,
+        "I": 0.0,
+        "I_native": 0.0,
+        "energy_balance_residual": 0.0,
+        "energy_time_integral_residual": 0.0,
+        "native_enstrophy_balance_residual": 0.0,
+        "integrated_viscous_energy_loss": 0.0,
+        "integrated_native_production": 0.0,
+        "integrated_native_enstrophy_loss": 0.0,
+        "core_width": {
+          "minimum_half_peak_chord": 1.0472641523711455,
+          "maximum_half_peak_chord": 1.0661730786021715,
+          "minimum_chord_cells": 13.963522031615273,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.01875
+        },
+        "global_width": {
+          "minimum_half_peak_chord": 1.0472641523711455,
+          "maximum_half_peak_chord": 1.0661730786021715,
+          "minimum_chord_cells": 13.963522031615273,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.01875
+        },
+        "cells_50": 1943,
+        "volume_50": 0.8197031249999999,
+        "cells_100": 0,
+        "volume_100": 0.0,
+        "cells_200": 0,
+        "volume_200": 0.0,
+        "cells_400": 0,
+        "volume_400": 0.0,
+        "half_peak_cells": 3513,
+        "half_peak_volume": 1.4820468749999998,
+        "max_speed": 17.813553837850908,
+        "scaled_native_divergence": 3.790757067272039e-18,
+        "energy_balance_relative": 0.0,
+        "enstrophy_balance_relative": 0.0,
+        "resolution_flags": []
+      }
+    },
+    {
+      "case": "aligned",
+      "n": 112,
+      "method": "fourier",
+      "initial_projection_relative_l2_change": 1.3710515993546487e-16,
+      "geometry": {
+        "n": 112,
+        "case": "aligned",
+        "gamma": 12.138737596974998,
+        "center_spin": [
+          -1.326525721152141e-15,
+          1.201505191950563e-16,
+          79.99999999999976
+        ],
+        "max_spin": 79.99999999999976,
+        "center_background_strain": [
+          [
+            0.0,
+            2.2563153935388073e-34,
+            7.42335218877414e-34
+          ],
+          [
+            2.2563153935388073e-34,
+            -4.000000000000002,
+            -6.684944664950022e-16
+          ],
+          [
+            7.42335218877414e-34,
+            -6.684944664950022e-16,
+            4.000000000000003
+          ]
+        ],
+        "eigenvalues": [
+          -4.0000000000000036,
+          -1.2503799640864395e-67,
+          4.0000000000000036
+        ],
+        "alignment_to_largest_eigenvector": 1.0,
+        "parallel_stretch": 4.000000000000003,
+        "outer_mean_outward_speeds": [
+          -2.636779683484747e-16,
+          -1.249000902703301e-16,
+          -2.8102520310824275e-16,
+          -1.3183898417423734e-16
+        ],
+        "max_speed": 17.836503472040206,
+        "mean_velocity": [
+          7.282804097395341e-18,
+          0.0,
+          -6.473603642129193e-19
+        ],
+        "core_radius_cells": 13.066666666666666,
+        "outer_radius_cells": 13.066666666666666
+      },
+      "diagnostics": {
+        "t": 0.0,
+        "Wmax": 79.99999999999976,
+        "W_central_roi": 79.99999999999976,
+        "rms_spin": 8.028703156771078,
+        "spin_ratio": 9.964249323694457,
+        "peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "central_peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 2128.3372756194294,
+        "native_enstrophy": 6961.688032990956,
+        "spectral_enstrophy": 6961.688032990956,
+        "divergence_native": 4.178273586024711e-16,
+        "divergence_physical": 4.178273586024711e-16,
+        "mean_velocity": [
+          8.09200455266149e-19,
+          0.0,
+          -1.5324233621602697e-18
+        ],
+        "central_parallel_stretch": 4.000000000000001,
+        "central_strain_eigenvalues": [
+          -4.000000000000003,
+          -2.009192679374687e-16,
+          4.000000000000002
+        ],
+        "central_alignment": 1.0,
+        "central_marker_parallel_stretch_mean": 6.938893903907228e-18,
+        "central_marker_parallel_stretch_spin_weighted": 2.8169536182940678,
+        "central_marker_parallel_stretch_min": -4.000000000000002,
+        "central_marker_parallel_stretch_max": 4.000000000000001,
+        "central_marker_Wmax": 79.99999999999976,
+        "origin_axial_strain": 4.000000000000002,
+        "direct_spectral_enstrophy_production": 16685.759357998882,
+        "outer_marker_distances": [
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          }
+        ],
+        "high_band_enstrophy_fraction": 6.367171225050671e-30,
+        "I": 0.0,
+        "I_native": 0.0,
+        "energy_balance_residual": 0.0,
+        "energy_time_integral_residual": 0.0,
+        "native_enstrophy_balance_residual": 0.0,
+        "integrated_viscous_energy_loss": 0.0,
+        "integrated_native_production": 0.0,
+        "integrated_native_enstrophy_loss": 0.0,
+        "core_width": {
+          "minimum_half_peak_chord": 1.0474190265696963,
+          "maximum_half_peak_chord": 1.0659499859193327,
+          "minimum_chord_cells": 19.551821829300998,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.013392857142857142
+        },
+        "global_width": {
+          "minimum_half_peak_chord": 1.0474190265696963,
+          "maximum_half_peak_chord": 1.0659499859193327,
+          "minimum_chord_cells": 19.551821829300998,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.013392857142857142
+        },
+        "cells_50": 5401,
+        "volume_50": 0.8303742255830903,
+        "cells_100": 0,
+        "volume_100": 0.0,
+        "cells_200": 0,
+        "volume_200": 0.0,
+        "cells_400": 0,
+        "volume_400": 0.0,
+        "half_peak_cells": 9651,
+        "half_peak_volume": 1.4837884930758016,
+        "max_speed": 17.83650347204021,
+        "scaled_native_divergence": 1.2549325338146347e-18,
+        "energy_balance_relative": 0.0,
+        "enstrophy_balance_relative": 0.0,
+        "resolution_flags": []
+      }
+    },
+    {
+      "case": "aligned",
+      "n": 112,
+      "method": "fd4",
+      "initial_projection_relative_l2_change": 1.7531431436915655e-06,
+      "geometry": {
+        "n": 112,
+        "case": "aligned",
+        "gamma": 12.138737596974998,
+        "center_spin": [
+          -1.326525721152141e-15,
+          1.201505191950563e-16,
+          79.99999999999976
+        ],
+        "max_spin": 79.99999999999976,
+        "center_background_strain": [
+          [
+            0.0,
+            2.2563153935388073e-34,
+            7.42335218877414e-34
+          ],
+          [
+            2.2563153935388073e-34,
+            -4.000000000000002,
+            -6.684944664950022e-16
+          ],
+          [
+            7.42335218877414e-34,
+            -6.684944664950022e-16,
+            4.000000000000003
+          ]
+        ],
+        "eigenvalues": [
+          -4.0000000000000036,
+          -1.2503799640864395e-67,
+          4.0000000000000036
+        ],
+        "alignment_to_largest_eigenvector": 1.0,
+        "parallel_stretch": 4.000000000000003,
+        "outer_mean_outward_speeds": [
+          -2.636779683484747e-16,
+          -1.249000902703301e-16,
+          -2.8102520310824275e-16,
+          -1.3183898417423734e-16
+        ],
+        "max_speed": 17.836503472040206,
+        "mean_velocity": [
+          7.282804097395341e-18,
+          0.0,
+          -6.473603642129193e-19
+        ],
+        "core_radius_cells": 13.066666666666666,
+        "outer_radius_cells": 13.066666666666666
+      },
+      "diagnostics": {
+        "t": 0.0,
+        "Wmax": 79.99999998475255,
+        "W_central_roi": 79.99999998475255,
+        "rms_spin": 8.028703156658626,
+        "spin_ratio": 9.96424932193493,
+        "peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "central_peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 2128.3372756128883,
+        "native_enstrophy": 6961.589828752764,
+        "spectral_enstrophy": 6961.688032795939,
+        "divergence_native": 5.245058320064188e-16,
+        "divergence_physical": 0.00021427798874193224,
+        "mean_velocity": [
+          -1.112650625990955e-17,
+          0.0,
+          -1.1581681515996759e-18
+        ],
+        "central_parallel_stretch": 3.999994454121997,
+        "central_strain_eigenvalues": [
+          -3.999994454121998,
+          -2.2962677222905005e-17,
+          3.999994454121998
+        ],
+        "central_alignment": 1.0000000000000002,
+        "central_marker_parallel_stretch_mean": 6.938893903907228e-17,
+        "central_marker_parallel_stretch_spin_weighted": 2.8169535691541587,
+        "central_marker_parallel_stretch_min": -3.999994454121997,
+        "central_marker_parallel_stretch_max": 3.999994454121997,
+        "central_marker_Wmax": 79.99999998475255,
+        "origin_axial_strain": 3.9999944541219974,
+        "direct_spectral_enstrophy_production": 16685.750920920385,
+        "outer_marker_distances": [
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          }
+        ],
+        "high_band_enstrophy_fraction": 6.393427222548967e-30,
+        "I": 0.0,
+        "I_native": 0.0,
+        "energy_balance_residual": 0.0,
+        "energy_time_integral_residual": 0.0,
+        "native_enstrophy_balance_residual": 0.0,
+        "integrated_viscous_energy_loss": 0.0,
+        "integrated_native_production": 0.0,
+        "integrated_native_enstrophy_loss": 0.0,
+        "core_width": {
+          "minimum_half_peak_chord": 1.0474190267654482,
+          "maximum_half_peak_chord": 1.065949986098122,
+          "minimum_chord_cells": 19.551821832955035,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.013392857142857142
+        },
+        "global_width": {
+          "minimum_half_peak_chord": 1.0474190267654482,
+          "maximum_half_peak_chord": 1.065949986098122,
+          "minimum_chord_cells": 19.551821832955035,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.013392857142857142
+        },
+        "cells_50": 5401,
+        "volume_50": 0.8303742255830903,
+        "cells_100": 0,
+        "volume_100": 0.0,
+        "cells_200": 0,
+        "volume_200": 0.0,
+        "cells_400": 0,
+        "volume_400": 0.0,
+        "half_peak_cells": 9651,
+        "half_peak_volume": 1.4837884930758016,
+        "max_speed": 17.83647393653763,
+        "scaled_native_divergence": 1.5753408893823095e-18,
+        "energy_balance_relative": 0.0,
+        "enstrophy_balance_relative": 0.0,
+        "resolution_flags": []
+      }
+    },
+    {
+      "case": "aligned",
+      "n": 160,
+      "method": "fourier",
+      "initial_projection_relative_l2_change": 1.2377529692539024e-16,
+      "geometry": {
+        "n": 160,
+        "case": "aligned",
+        "gamma": 12.138737596974998,
+        "center_spin": [
+          1.4121224512312757e-15,
+          -9.379300906346978e-16,
+          80.00000000000044
+        ],
+        "max_spin": 80.00000000000044,
+        "center_background_strain": [
+          [
+            0.0,
+            -4.6096159000586236e-35,
+            -2.809395698871225e-33
+          ],
+          [
+            -4.6096159000586236e-35,
+            -4.000000000000003,
+            1.2482663824248122e-16
+          ],
+          [
+            -2.809395698871225e-33,
+            1.2482663824248122e-16,
+            4.000000000000003
+          ]
+        ],
+        "eigenvalues": [
+          -4.000000000000002,
+          -1.9726448342403823e-66,
+          4.0000000000000036
+        ],
+        "alignment_to_largest_eigenvector": 1.0,
+        "parallel_stretch": 4.000000000000003,
+        "outer_mean_outward_speeds": [
+          4.163336342344337e-17,
+          -3.469446951953614e-17,
+          9.020562075079397e-17,
+          8.326672684688674e-17
+        ],
+        "max_speed": 17.840245898953047,
+        "mean_velocity": [
+          1.4710455076283324e-18,
+          0.0,
+          -1.1657341758564144e-18
+        ],
+        "core_radius_cells": 18.666666666666668,
+        "outer_radius_cells": 18.666666666666668
+      },
+      "diagnostics": {
+        "t": 0.0,
+        "Wmax": 80.00000000000044,
+        "W_central_roi": 80.00000000000044,
+        "rms_spin": 8.028703156771078,
+        "spin_ratio": 9.96424932369454,
+        "peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "central_peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 2128.337275619429,
+        "native_enstrophy": 6961.688032990955,
+        "spectral_enstrophy": 6961.688032990955,
+        "divergence_native": 2.1943943760651735e-16,
+        "divergence_physical": 2.1943943760651735e-16,
+        "mean_velocity": [
+          2.1038726316646717e-17,
+          -5.684341886080802e-17,
+          -5.056718932472392e-19
+        ],
+        "central_parallel_stretch": 4.000000000000003,
+        "central_strain_eigenvalues": [
+          -4.000000000000003,
+          2.044524420831077e-16,
+          4.000000000000003
+        ],
+        "central_alignment": 1.0,
+        "central_marker_parallel_stretch_mean": -4.163336342344337e-17,
+        "central_marker_parallel_stretch_spin_weighted": 2.8176562667332905,
+        "central_marker_parallel_stretch_min": -4.000000000000003,
+        "central_marker_parallel_stretch_max": 4.000000000000003,
+        "central_marker_Wmax": 80.00000000000044,
+        "origin_axial_strain": 4.000000000000003,
+        "direct_spectral_enstrophy_production": 16685.75935799888,
+        "outer_marker_distances": [
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          }
+        ],
+        "high_band_enstrophy_fraction": 5.388939800059512e-30,
+        "I": 0.0,
+        "I_native": 0.0,
+        "energy_balance_residual": 0.0,
+        "energy_time_integral_residual": 0.0,
+        "native_enstrophy_balance_residual": 0.0,
+        "integrated_viscous_energy_loss": 0.0,
+        "integrated_native_production": 0.0,
+        "integrated_native_enstrophy_loss": 0.0,
+        "core_width": {
+          "minimum_half_peak_chord": 1.0476310528388901,
+          "maximum_half_peak_chord": 1.0660111119774016,
+          "minimum_chord_cells": 27.936828075703737,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.009375
+        },
+        "global_width": {
+          "minimum_half_peak_chord": 1.0476310528388901,
+          "maximum_half_peak_chord": 1.0660111119774016,
+          "minimum_chord_cells": 27.936828075703737,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.009375
+        },
+        "cells_50": 15727,
+        "volume_50": 0.8293535156249999,
+        "cells_100": 0,
+        "volume_100": 0.0,
+        "cells_200": 0,
+        "volume_200": 0.0,
+        "cells_400": 0,
+        "volume_400": 0.0,
+        "half_peak_cells": 28239,
+        "half_peak_volume": 1.4891660156249997,
+        "max_speed": 17.840245898953043,
+        "scaled_native_divergence": 4.612592761811271e-19,
+        "energy_balance_relative": 0.0,
+        "enstrophy_balance_relative": 0.0,
+        "resolution_flags": []
+      }
+    },
+    {
+      "case": "aligned",
+      "n": 160,
+      "method": "fd4",
+      "initial_projection_relative_l2_change": 4.218717946182285e-07,
+      "geometry": {
+        "n": 160,
+        "case": "aligned",
+        "gamma": 12.138737596974998,
+        "center_spin": [
+          1.4121224512312757e-15,
+          -9.379300906346978e-16,
+          80.00000000000044
+        ],
+        "max_spin": 80.00000000000044,
+        "center_background_strain": [
+          [
+            0.0,
+            -4.6096159000586236e-35,
+            -2.809395698871225e-33
+          ],
+          [
+            -4.6096159000586236e-35,
+            -4.000000000000003,
+            1.2482663824248122e-16
+          ],
+          [
+            -2.809395698871225e-33,
+            1.2482663824248122e-16,
+            4.000000000000003
+          ]
+        ],
+        "eigenvalues": [
+          -4.000000000000002,
+          -1.9726448342403823e-66,
+          4.0000000000000036
+        ],
+        "alignment_to_largest_eigenvector": 1.0,
+        "parallel_stretch": 4.000000000000003,
+        "outer_mean_outward_speeds": [
+          4.163336342344337e-17,
+          -3.469446951953614e-17,
+          9.020562075079397e-17,
+          8.326672684688674e-17
+        ],
+        "max_speed": 17.840245898953047,
+        "mean_velocity": [
+          1.4710455076283324e-18,
+          0.0,
+          -1.1657341758564144e-18
+        ],
+        "core_radius_cells": 18.666666666666668,
+        "outer_radius_cells": 18.666666666666668
+      },
+      "diagnostics": {
+        "t": 0.0,
+        "Wmax": 79.99999999911172,
+        "W_central_roi": 79.99999999911172,
+        "rms_spin": 8.02870315676456,
+        "spin_ratio": 9.964249323591938,
+        "peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "central_peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 2128.33727561905,
+        "native_enstrophy": 6961.664409118071,
+        "spectral_enstrophy": 6961.688032979651,
+        "divergence_native": 5.994279319776108e-16,
+        "divergence_physical": 5.169114646524582e-05,
+        "mean_velocity": [
+          -3.2751579226442116e-18,
+          0.0,
+          -2.9750507613002244e-19
+        ],
+        "central_parallel_stretch": 3.9999986669777856,
+        "central_strain_eigenvalues": [
+          -3.9999986669777843,
+          4.810380647128067e-16,
+          3.999998666977785
+        ],
+        "central_alignment": 1.0,
+        "central_marker_parallel_stretch_mean": 5.551115123125783e-17,
+        "central_marker_parallel_stretch_spin_weighted": 2.8176562546235284,
+        "central_marker_parallel_stretch_min": -3.999998666977785,
+        "central_marker_parallel_stretch_max": 3.9999986669777856,
+        "central_marker_Wmax": 79.99999999911172,
+        "origin_axial_strain": 3.9999986669777856,
+        "direct_spectral_enstrophy_production": 16685.757328690772,
+        "outer_marker_distances": [
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          }
+        ],
+        "high_band_enstrophy_fraction": 5.358567437510123e-30,
+        "I": 0.0,
+        "I_native": 0.0,
+        "energy_balance_residual": 0.0,
+        "energy_time_integral_residual": 0.0,
+        "native_enstrophy_balance_residual": 0.0,
+        "integrated_viscous_energy_loss": 0.0,
+        "integrated_native_production": 0.0,
+        "integrated_native_enstrophy_loss": 0.0,
+        "core_width": {
+          "minimum_half_peak_chord": 1.0476310528503867,
+          "maximum_half_peak_chord": 1.0660111119879092,
+          "minimum_chord_cells": 27.936828076010315,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.009375
+        },
+        "global_width": {
+          "minimum_half_peak_chord": 1.0476310528503867,
+          "maximum_half_peak_chord": 1.0660111119879092,
+          "minimum_chord_cells": 27.936828076010315,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.009375
+        },
+        "cells_50": 15727,
+        "volume_50": 0.8293535156249999,
+        "cells_100": 0,
+        "volume_100": 0.0,
+        "cells_200": 0,
+        "volume_200": 0.0,
+        "cells_400": 0,
+        "volume_400": 0.0,
+        "half_peak_cells": 28239,
+        "half_peak_volume": 1.4891660156249997,
+        "max_speed": 17.840238791038598,
+        "scaled_native_divergence": 1.2599913999162216e-18,
+        "energy_balance_relative": 0.0,
+        "enstrophy_balance_relative": 0.0,
+        "resolution_flags": []
+      }
+    },
+    {
+      "case": "compressive",
+      "n": 48,
+      "method": "fourier",
+      "initial_projection_relative_l2_change": 1.0575981065523571e-16,
+      "geometry": {
+        "n": 48,
+        "case": "compressive",
+        "gamma": 12.138737596974998,
+        "center_spin": [
+          9.62245491159498e-16,
+          -3.216887534943236e-16,
+          79.99999999994166
+        ],
+        "max_spin": 79.99999999994166,
+        "center_background_strain": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            4.000000000000001,
+            3.866422492135208e-17
+          ],
+          [
+            0.0,
+            3.866422492135208e-17,
+            -4.0
+          ]
+        ],
+        "eigenvalues": [
+          -4.0,
+          0.0,
+          4.000000000000001
+        ],
+        "alignment_to_largest_eigenvector": 4.021109418681977e-18,
+        "parallel_stretch": -4.0,
+        "outer_mean_outward_speeds": [
+          2.5673907444456745e-16,
+          4.85722573273506e-17,
+          2.706168622523819e-16,
+          2.7755575615628914e-17
+        ],
+        "max_speed": 17.83603985954975,
+        "mean_velocity": [
+          -6.938893903907228e-18,
+          1.3158198810372225e-16,
+          2.3129646346357427e-18
+        ],
+        "core_radius_cells": 5.6,
+        "outer_radius_cells": 5.6
+      },
+      "diagnostics": {
+        "t": 0.0,
+        "Wmax": 79.99999999994166,
+        "W_central_roi": 79.99999999994166,
+        "rms_spin": 8.028703156771074,
+        "spin_ratio": 9.964249323687225,
+        "peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "central_peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 2128.337275619428,
+        "native_enstrophy": 6961.688032990952,
+        "spectral_enstrophy": 6961.688032990952,
+        "divergence_native": 4.759336064240027e-16,
+        "divergence_physical": 4.759336064240027e-16,
+        "mean_velocity": [
+          -1.3877787807814457e-17,
+          -6.579099405186112e-17,
+          2.457524924300477e-18
+        ],
+        "central_parallel_stretch": -4.0,
+        "central_strain_eigenvalues": [
+          -3.9999999999999996,
+          2.188396119483995e-16,
+          4.000000000000003
+        ],
+        "central_alignment": 3.3523057359284297e-17,
+        "central_marker_parallel_stretch_mean": 2.0816681711721685e-17,
+        "central_marker_parallel_stretch_spin_weighted": -2.8118211058551954,
+        "central_marker_parallel_stretch_min": -4.0,
+        "central_marker_parallel_stretch_max": 4.000000000000001,
+        "central_marker_Wmax": 79.99999999994166,
+        "origin_axial_strain": -4.0,
+        "direct_spectral_enstrophy_production": -16685.759357998853,
+        "outer_marker_distances": [
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          }
+        ],
+        "high_band_enstrophy_fraction": 6.347865982451753e-18,
+        "I": 0.0,
+        "I_native": 0.0,
+        "energy_balance_residual": 0.0,
+        "energy_time_integral_residual": 0.0,
+        "native_enstrophy_balance_residual": 0.0,
+        "integrated_viscous_energy_loss": 0.0,
+        "integrated_native_production": 0.0,
+        "integrated_native_enstrophy_loss": 0.0,
+        "core_width": {
+          "minimum_half_peak_chord": 1.0465310522412203,
+          "maximum_half_peak_chord": 1.0673304595842046,
+          "minimum_chord_cells": 8.372248417929763,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.03125
+        },
+        "global_width": {
+          "minimum_half_peak_chord": 1.0465310522412203,
+          "maximum_half_peak_chord": 1.0673304595842046,
+          "minimum_chord_cells": 8.372248417929763,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.03125
+        },
+        "cells_50": 421,
+        "volume_50": 0.822265625,
+        "cells_100": 0,
+        "volume_100": 0.0,
+        "cells_200": 0,
+        "volume_200": 0.0,
+        "cells_400": 0,
+        "volume_400": 0.0,
+        "half_peak_cells": 757,
+        "half_peak_volume": 1.478515625,
+        "max_speed": 17.83603985954975,
+        "scaled_native_divergence": 3.3354770045071053e-18,
+        "energy_balance_relative": 0.0,
+        "enstrophy_balance_relative": 0.0,
+        "resolution_flags": []
+      }
+    },
+    {
+      "case": "compressive",
+      "n": 48,
+      "method": "fd4",
+      "initial_projection_relative_l2_change": 5.101885635792756e-05,
+      "geometry": {
+        "n": 48,
+        "case": "compressive",
+        "gamma": 12.138737596974998,
+        "center_spin": [
+          9.62245491159498e-16,
+          -3.216887534943236e-16,
+          79.99999999994166
+        ],
+        "max_spin": 79.99999999994166,
+        "center_background_strain": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            4.000000000000001,
+            3.866422492135208e-17
+          ],
+          [
+            0.0,
+            3.866422492135208e-17,
+            -4.0
+          ]
+        ],
+        "eigenvalues": [
+          -4.0,
+          0.0,
+          4.000000000000001
+        ],
+        "alignment_to_largest_eigenvector": 4.021109418681977e-18,
+        "parallel_stretch": -4.0,
+        "outer_mean_outward_speeds": [
+          2.5673907444456745e-16,
+          4.85722573273506e-17,
+          2.706168622523819e-16,
+          2.7755575615628914e-17
+        ],
+        "max_speed": 17.83603985954975,
+        "mean_velocity": [
+          -6.938893903907228e-18,
+          1.3158198810372225e-16,
+          2.3129646346357427e-18
+        ],
+        "core_radius_cells": 5.6,
+        "outer_radius_cells": 5.6
+      },
+      "diagnostics": {
+        "t": 0.0,
+        "Wmax": 79.99998767359344,
+        "W_central_roi": 79.99998767359344,
+        "rms_spin": 8.028703062226324,
+        "spin_ratio": 9.96424790573956,
+        "peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "central_peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 2128.337270079528,
+        "native_enstrophy": 6958.826155681898,
+        "spectral_enstrophy": 6961.687869031456,
+        "divergence_native": 7.239587139391362e-16,
+        "divergence_physical": 0.006204298023768523,
+        "mean_velocity": [
+          3.148201863809761e-17,
+          0.0,
+          8.1917497476682555e-19
+        ],
+        "central_parallel_stretch": -3.9998372417154315,
+        "central_strain_eigenvalues": [
+          -3.9998372417154315,
+          9.826090688756076e-18,
+          3.9998372417154324
+        ],
+        "central_alignment": 1.3365338219577087e-19,
+        "central_marker_parallel_stretch_mean": 4.163336342344337e-17,
+        "central_marker_parallel_stretch_spin_weighted": -2.8118199408380584,
+        "central_marker_parallel_stretch_min": -3.9998372417154315,
+        "central_marker_parallel_stretch_max": 3.9998372417154324,
+        "central_marker_Wmax": 79.99998767359344,
+        "origin_axial_strain": -3.9998372417154315,
+        "direct_spectral_enstrophy_production": -16685.512239592044,
+        "outer_marker_distances": [
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          }
+        ],
+        "high_band_enstrophy_fraction": 6.344312987664017e-18,
+        "I": 0.0,
+        "I_native": 0.0,
+        "energy_balance_residual": 0.0,
+        "energy_time_integral_residual": 0.0,
+        "native_enstrophy_balance_residual": 0.0,
+        "integrated_viscous_energy_loss": 0.0,
+        "integrated_native_production": 0.0,
+        "integrated_native_enstrophy_loss": 0.0,
+        "core_width": {
+          "minimum_half_peak_chord": 1.0465312202157984,
+          "maximum_half_peak_chord": 1.0673306030956002,
+          "minimum_chord_cells": 8.372249761726387,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.03125
+        },
+        "global_width": {
+          "minimum_half_peak_chord": 1.0465312202157984,
+          "maximum_half_peak_chord": 1.0673306030956002,
+          "minimum_chord_cells": 8.372249761726387,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.03125
+        },
+        "cells_50": 421,
+        "volume_50": 0.822265625,
+        "cells_100": 0,
+        "volume_100": 0.0,
+        "cells_200": 0,
+        "volume_200": 0.0,
+        "cells_400": 0,
+        "volume_400": 0.0,
+        "half_peak_cells": 757,
+        "half_peak_volume": 1.478515625,
+        "max_speed": 17.835202015205763,
+        "scaled_native_divergence": 5.073945288942554e-18,
+        "energy_balance_relative": 0.0,
+        "enstrophy_balance_relative": 0.0,
+        "resolution_flags": []
+      }
+    },
+    {
+      "case": "compressive",
+      "n": 64,
+      "method": "fourier",
+      "initial_projection_relative_l2_change": 1.0373759367545558e-16,
+      "geometry": {
+        "n": 64,
+        "case": "compressive",
+        "gamma": 12.138737596974998,
+        "center_spin": [
+          -8.771017579946004e-16,
+          3.191867008778508e-16,
+          80.00000000000004
+        ],
+        "max_spin": 80.00000000000004,
+        "center_background_strain": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            4.000000000000001,
+            -2.2824854872469243e-16
+          ],
+          [
+            0.0,
+            -2.2824854872469243e-16,
+            -4.000000000000001
+          ]
+        ],
+        "eigenvalues": [
+          -4.000000000000001,
+          0.0,
+          4.000000000000001
+        ],
+        "alignment_to_largest_eigenvector": 3.9898337609731325e-18,
+        "parallel_stretch": -4.000000000000001,
+        "outer_mean_outward_speeds": [
+          2.393918396847994e-16,
+          -4.163336342344337e-17,
+          1.214306433183765e-16,
+          6.938893903907228e-18
+        ],
+        "max_speed": 17.81192555355437,
+        "mean_velocity": [
+          -1.5829351718288365e-17,
+          0.0,
+          -2.7460808149984417e-18
+        ],
+        "core_radius_cells": 7.466666666666666,
+        "outer_radius_cells": 7.466666666666666
+      },
+      "diagnostics": {
+        "t": 0.0,
+        "Wmax": 80.00000000000006,
+        "W_central_roi": 80.00000000000006,
+        "rms_spin": 8.028703156771078,
+        "spin_ratio": 9.964249323694494,
+        "peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "central_peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 2128.3372756194285,
+        "native_enstrophy": 6961.688032990955,
+        "spectral_enstrophy": 6961.688032990955,
+        "divergence_native": 3.2077242571477256e-16,
+        "divergence_physical": 3.2077242571477256e-16,
+        "mean_velocity": [
+          -2.2768245622195593e-18,
+          0.0,
+          -1.1945811534245804e-19
+        ],
+        "central_parallel_stretch": -4.000000000000001,
+        "central_strain_eigenvalues": [
+          -4.0,
+          1.0703640532543816e-16,
+          3.999999999999999
+        ],
+        "central_alignment": 1.0703789517178561e-16,
+        "central_marker_parallel_stretch_mean": -6.938893903907228e-18,
+        "central_marker_parallel_stretch_spin_weighted": -2.8181093333453537,
+        "central_marker_parallel_stretch_min": -4.000000000000001,
+        "central_marker_parallel_stretch_max": 4.000000000000001,
+        "central_marker_Wmax": 80.00000000000006,
+        "origin_axial_strain": -4.000000000000001,
+        "direct_spectral_enstrophy_production": -16685.759357998882,
+        "outer_marker_distances": [
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          }
+        ],
+        "high_band_enstrophy_fraction": 1.225382331643431e-29,
+        "I": 0.0,
+        "I_native": 0.0,
+        "energy_balance_residual": 0.0,
+        "energy_time_integral_residual": 0.0,
+        "native_enstrophy_balance_residual": 0.0,
+        "integrated_viscous_energy_loss": 0.0,
+        "integrated_native_production": 0.0,
+        "integrated_native_enstrophy_loss": 0.0,
+        "core_width": {
+          "minimum_half_peak_chord": 1.046508262799291,
+          "maximum_half_peak_chord": 1.0663402854240238,
+          "minimum_chord_cells": 11.162754803192437,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.0234375
+        },
+        "global_width": {
+          "minimum_half_peak_chord": 1.046508262799291,
+          "maximum_half_peak_chord": 1.0663402854240238,
+          "minimum_chord_cells": 11.162754803192437,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.0234375
+        },
+        "cells_50": 1017,
+        "volume_50": 0.837982177734375,
+        "cells_100": 0,
+        "volume_100": 0.0,
+        "cells_200": 0,
+        "volume_200": 0.0,
+        "cells_400": 0,
+        "volume_400": 0.0,
+        "half_peak_cells": 1835,
+        "half_peak_volume": 1.511993408203125,
+        "max_speed": 17.81192555355437,
+        "scaled_native_divergence": 1.6883303728360225e-18,
+        "energy_balance_relative": 0.0,
+        "enstrophy_balance_relative": 0.0,
+        "resolution_flags": []
+      }
+    },
+    {
+      "case": "compressive",
+      "n": 64,
+      "method": "fd4",
+      "initial_projection_relative_l2_change": 1.629889320151402e-05,
+      "geometry": {
+        "n": 64,
+        "case": "compressive",
+        "gamma": 12.138737596974998,
+        "center_spin": [
+          -8.771017579946004e-16,
+          3.191867008778508e-16,
+          80.00000000000004
+        ],
+        "max_spin": 80.00000000000004,
+        "center_background_strain": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            4.000000000000001,
+            -2.2824854872469243e-16
+          ],
+          [
+            0.0,
+            -2.2824854872469243e-16,
+            -4.000000000000001
+          ]
+        ],
+        "eigenvalues": [
+          -4.000000000000001,
+          0.0,
+          4.000000000000001
+        ],
+        "alignment_to_largest_eigenvector": 3.9898337609731325e-18,
+        "parallel_stretch": -4.000000000000001,
+        "outer_mean_outward_speeds": [
+          2.393918396847994e-16,
+          -4.163336342344337e-17,
+          1.214306433183765e-16,
+          6.938893903907228e-18
+        ],
+        "max_speed": 17.81192555355437,
+        "mean_velocity": [
+          -1.5829351718288365e-17,
+          0.0,
+          -2.7460808149984417e-18
+        ],
+        "core_radius_cells": 7.466666666666666,
+        "outer_radius_cells": 7.466666666666666
+      },
+      "diagnostics": {
+        "t": 0.0,
+        "Wmax": 79.99999871315336,
+        "W_central_roi": 79.99999871315336,
+        "rms_spin": 8.028703147086093,
+        "spin_ratio": 9.964249175433551,
+        "peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "central_peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 2128.337275054028,
+        "native_enstrophy": 6960.7741501832315,
+        "spectral_enstrophy": 6961.688016195252,
+        "divergence_native": 8.502371695166654e-16,
+        "divergence_physical": 0.0019786097122959784,
+        "mean_velocity": [
+          -9.432558900623889e-18,
+          0.0,
+          -1.9494992676649756e-19
+        ],
+        "central_parallel_stretch": -3.9999482211243755,
+        "central_strain_eigenvalues": [
+          -3.9999482211243755,
+          1.3476087762600577e-16,
+          3.999948221124375
+        ],
+        "central_alignment": 1.1024167669444147e-16,
+        "central_marker_parallel_stretch_mean": 1.3877787807814457e-17,
+        "central_marker_parallel_stretch_spin_weighted": -2.8181088631830202,
+        "central_marker_parallel_stretch_min": -3.9999482211243755,
+        "central_marker_parallel_stretch_max": 3.999948221124377,
+        "central_marker_Wmax": 79.99999871315336,
+        "origin_axial_strain": -3.999948221124376,
+        "direct_spectral_enstrophy_production": -16685.680723411544,
+        "outer_marker_distances": [
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          }
+        ],
+        "high_band_enstrophy_fraction": 1.2247796379382882e-29,
+        "I": 0.0,
+        "I_native": 0.0,
+        "energy_balance_residual": 0.0,
+        "energy_time_integral_residual": 0.0,
+        "native_enstrophy_balance_residual": 0.0,
+        "integrated_viscous_energy_loss": 0.0,
+        "integrated_native_production": 0.0,
+        "integrated_native_enstrophy_loss": 0.0,
+        "core_width": {
+          "minimum_half_peak_chord": 1.0465082794194127,
+          "maximum_half_peak_chord": 1.0663403002960061,
+          "minimum_chord_cells": 11.162754980473736,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.0234375
+        },
+        "global_width": {
+          "minimum_half_peak_chord": 1.0465082794194127,
+          "maximum_half_peak_chord": 1.0663403002960061,
+          "minimum_chord_cells": 11.162754980473736,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.0234375
+        },
+        "cells_50": 1017,
+        "volume_50": 0.837982177734375,
+        "cells_100": 0,
+        "volume_100": 0.0,
+        "cells_200": 0,
+        "volume_200": 0.0,
+        "cells_400": 0,
+        "volume_400": 0.0,
+        "half_peak_cells": 1835,
+        "half_peak_volume": 1.511993408203125,
+        "max_speed": 17.811655143114745,
+        "scaled_native_divergence": 4.475144729769816e-18,
+        "energy_balance_relative": 0.0,
+        "enstrophy_balance_relative": 0.0,
+        "resolution_flags": []
+      }
+    },
+    {
+      "case": "compressive",
+      "n": 80,
+      "method": "fourier",
+      "initial_projection_relative_l2_change": 1.1839546454057366e-16,
+      "geometry": {
+        "n": 80,
+        "case": "compressive",
+        "gamma": 12.138737596974998,
+        "center_spin": [
+          -5.859829982117581e-16,
+          -6.506076340744621e-16,
+          80.00000000000014
+        ],
+        "max_spin": 80.00000000000014,
+        "center_background_strain": [
+          [
+            0.0,
+            1.0970144876526704e-34,
+            -3.0995050543237624e-33
+          ],
+          [
+            1.0970144876526704e-34,
+            4.000000000000002,
+            -4.107537318807207e-16
+          ],
+          [
+            -3.0995050543237624e-33,
+            -4.107537318807207e-16,
+            -4.000000000000002
+          ]
+        ],
+        "eigenvalues": [
+          -4.000000000000002,
+          2.3987242934793366e-66,
+          4.000000000000002
+        ],
+        "alignment_to_largest_eigenvector": 1.191548978884464e-16,
+        "parallel_stretch": -4.000000000000003,
+        "outer_mean_outward_speeds": [
+          -1.734723475976807e-17,
+          -1.3877787807814457e-16,
+          9.71445146547012e-17,
+          -1.3877787807814457e-16
+        ],
+        "max_speed": 17.813657833061786,
+        "mean_velocity": [
+          1.2212453270876721e-18,
+          0.0,
+          -4.3298697960381105e-18
+        ],
+        "core_radius_cells": 9.333333333333334,
+        "outer_radius_cells": 9.333333333333334
+      },
+      "diagnostics": {
+        "t": 0.0,
+        "Wmax": 80.00000000000014,
+        "W_central_roi": 80.00000000000014,
+        "rms_spin": 8.028703156771078,
+        "spin_ratio": 9.964249323694505,
+        "peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "central_peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 2128.337275619429,
+        "native_enstrophy": 6961.688032990955,
+        "spectral_enstrophy": 6961.688032990955,
+        "divergence_native": 3.5070529027632263e-16,
+        "divergence_physical": 3.5070529027632263e-16,
+        "mean_velocity": [
+          -7.049916206369744e-18,
+          5.684341886080802e-17,
+          -1.845745778439323e-18
+        ],
+        "central_parallel_stretch": -4.000000000000003,
+        "central_strain_eigenvalues": [
+          -4.000000000000002,
+          3.584768221766018e-17,
+          4.000000000000002
+        ],
+        "central_alignment": 4.993938110699741e-17,
+        "central_marker_parallel_stretch_mean": -2.0816681711721685e-17,
+        "central_marker_parallel_stretch_spin_weighted": -2.815844442192935,
+        "central_marker_parallel_stretch_min": -4.000000000000003,
+        "central_marker_parallel_stretch_max": 4.000000000000002,
+        "central_marker_Wmax": 80.00000000000014,
+        "origin_axial_strain": -4.000000000000002,
+        "direct_spectral_enstrophy_production": -16685.759357998882,
+        "outer_marker_distances": [
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          }
+        ],
+        "high_band_enstrophy_fraction": 9.09354877397454e-31,
+        "I": 0.0,
+        "I_native": 0.0,
+        "energy_balance_residual": 0.0,
+        "energy_time_integral_residual": 0.0,
+        "native_enstrophy_balance_residual": 0.0,
+        "integrated_viscous_energy_loss": 0.0,
+        "integrated_native_production": 0.0,
+        "integrated_native_enstrophy_loss": 0.0,
+        "core_width": {
+          "minimum_half_peak_chord": 1.0472641494621244,
+          "maximum_half_peak_chord": 1.0661730759778778,
+          "minimum_chord_cells": 13.963521992828326,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.01875
+        },
+        "global_width": {
+          "minimum_half_peak_chord": 1.0472641494621244,
+          "maximum_half_peak_chord": 1.0661730759778778,
+          "minimum_chord_cells": 13.963521992828326,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.01875
+        },
+        "cells_50": 1943,
+        "volume_50": 0.8197031249999999,
+        "cells_100": 0,
+        "volume_100": 0.0,
+        "cells_200": 0,
+        "volume_200": 0.0,
+        "cells_400": 0,
+        "volume_400": 0.0,
+        "half_peak_cells": 3513,
+        "half_peak_volume": 1.4820468749999998,
+        "max_speed": 17.813657833061786,
+        "scaled_native_divergence": 1.4765578758286553e-18,
+        "energy_balance_relative": 0.0,
+        "enstrophy_balance_relative": 0.0,
+        "resolution_flags": []
+      }
+    },
+    {
+      "case": "compressive",
+      "n": 80,
+      "method": "fd4",
+      "initial_projection_relative_l2_change": 6.707069523100837e-06,
+      "geometry": {
+        "n": 80,
+        "case": "compressive",
+        "gamma": 12.138737596974998,
+        "center_spin": [
+          -5.859829982117581e-16,
+          -6.506076340744621e-16,
+          80.00000000000014
+        ],
+        "max_spin": 80.00000000000014,
+        "center_background_strain": [
+          [
+            0.0,
+            1.0970144876526704e-34,
+            -3.0995050543237624e-33
+          ],
+          [
+            1.0970144876526704e-34,
+            4.000000000000002,
+            -4.107537318807207e-16
+          ],
+          [
+            -3.0995050543237624e-33,
+            -4.107537318807207e-16,
+            -4.000000000000002
+          ]
+        ],
+        "eigenvalues": [
+          -4.000000000000002,
+          2.3987242934793366e-66,
+          4.000000000000002
+        ],
+        "alignment_to_largest_eigenvector": 1.191548978884464e-16,
+        "parallel_stretch": -4.000000000000003,
+        "outer_mean_outward_speeds": [
+          -1.734723475976807e-17,
+          -1.3877787807814457e-16,
+          9.71445146547012e-17,
+          -1.3877787807814457e-16
+        ],
+        "max_speed": 17.813657833061786,
+        "mean_velocity": [
+          1.2212453270876721e-18,
+          0.0,
+          -4.3298697960381105e-18
+        ],
+        "core_radius_cells": 9.333333333333334,
+        "outer_radius_cells": 9.333333333333334
+      },
+      "diagnostics": {
+        "t": 0.0,
+        "Wmax": 79.99999977941417,
+        "W_central_roi": 79.99999977941417,
+        "rms_spin": 8.028703155127994,
+        "spin_ratio": 9.964249298259029,
+        "peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "central_peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 2128.337275523686,
+        "native_enstrophy": 6961.31213365098,
+        "spectral_enstrophy": 6961.688030141516,
+        "divergence_native": 9.082504232609526e-16,
+        "divergence_physical": 0.0008195986219482319,
+        "mean_velocity": [
+          -8.382183835919932e-18,
+          0.0,
+          -2.7755575615628914e-20
+        ],
+        "central_parallel_stretch": -3.999978739419623,
+        "central_strain_eigenvalues": [
+          -3.999978739419623,
+          1.626262662838351e-16,
+          3.999978739419624
+        ],
+        "central_alignment": 1.4218654907054561e-18,
+        "central_marker_parallel_stretch_mean": -5.551115123125783e-17,
+        "central_marker_parallel_stretch_spin_weighted": -2.81584426151974,
+        "central_marker_parallel_stretch_min": -3.999978739419623,
+        "central_marker_parallel_stretch_max": 3.999978739419623,
+        "central_marker_Wmax": 79.99999977941417,
+        "origin_axial_strain": -3.999978739419623,
+        "direct_spectral_enstrophy_production": -16685.7270460942,
+        "outer_marker_distances": [
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          }
+        ],
+        "high_band_enstrophy_fraction": 9.061253999897141e-31,
+        "I": 0.0,
+        "I_native": 0.0,
+        "energy_balance_residual": 0.0,
+        "energy_time_integral_residual": 0.0,
+        "native_enstrophy_balance_residual": 0.0,
+        "integrated_viscous_energy_loss": 0.0,
+        "integrated_native_production": 0.0,
+        "integrated_native_enstrophy_loss": 0.0,
+        "core_width": {
+          "minimum_half_peak_chord": 1.0472641523711455,
+          "maximum_half_peak_chord": 1.0661730786021715,
+          "minimum_chord_cells": 13.963522031615273,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.01875
+        },
+        "global_width": {
+          "minimum_half_peak_chord": 1.0472641523711455,
+          "maximum_half_peak_chord": 1.0661730786021715,
+          "minimum_chord_cells": 13.963522031615273,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.01875
+        },
+        "cells_50": 1943,
+        "volume_50": 0.8197031249999999,
+        "cells_100": 0,
+        "volume_100": 0.0,
+        "cells_200": 0,
+        "volume_200": 0.0,
+        "cells_400": 0,
+        "volume_400": 0.0,
+        "half_peak_cells": 3513,
+        "half_peak_volume": 1.4820468749999998,
+        "max_speed": 17.81355383785091,
+        "scaled_native_divergence": 3.8239860706419e-18,
+        "energy_balance_relative": 0.0,
+        "enstrophy_balance_relative": 0.0,
+        "resolution_flags": []
+      }
+    },
+    {
+      "case": "compressive",
+      "n": 112,
+      "method": "fourier",
+      "initial_projection_relative_l2_change": 1.3710515807933822e-16,
+      "geometry": {
+        "n": 112,
+        "case": "compressive",
+        "gamma": 12.138737596974998,
+        "center_spin": [
+          6.9653276381311e-16,
+          1.2683619551857616e-16,
+          79.99999999999976
+        ],
+        "max_spin": 79.99999999999976,
+        "center_background_strain": [
+          [
+            0.0,
+            -2.2563153935388073e-34,
+            -7.42335218877414e-34
+          ],
+          [
+            -2.2563153935388073e-34,
+            4.000000000000002,
+            6.684944664950022e-16
+          ],
+          [
+            -7.42335218877414e-34,
+            6.684944664950022e-16,
+            -4.000000000000003
+          ]
+        ],
+        "eigenvalues": [
+          -4.0000000000000036,
+          1.2503799640864395e-67,
+          4.0000000000000036
+        ],
+        "alignment_to_largest_eigenvector": 1.1260775490649785e-16,
+        "parallel_stretch": -4.000000000000003,
+        "outer_mean_outward_speeds": [
+          1.7694179454963432e-16,
+          8.673617379884035e-17,
+          2.3245294578089215e-16,
+          2.1510571102112408e-16
+        ],
+        "max_speed": 17.83650347204021,
+        "mean_velocity": [
+          7.282804097395341e-18,
+          0.0,
+          6.473603642129193e-19
+        ],
+        "core_radius_cells": 13.066666666666666,
+        "outer_radius_cells": 13.066666666666666
+      },
+      "diagnostics": {
+        "t": 0.0,
+        "Wmax": 79.99999999999976,
+        "W_central_roi": 79.99999999999976,
+        "rms_spin": 8.028703156771078,
+        "spin_ratio": 9.964249323694457,
+        "peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "central_peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 2128.3372756194294,
+        "native_enstrophy": 6961.688032990956,
+        "spectral_enstrophy": 6961.688032990956,
+        "divergence_native": 4.115824109438798e-16,
+        "divergence_physical": 4.115824109438798e-16,
+        "mean_velocity": [
+          8.09200455266149e-19,
+          0.0,
+          6.524178670583327e-19
+        ],
+        "central_parallel_stretch": -4.000000000000003,
+        "central_strain_eigenvalues": [
+          -4.000000000000001,
+          -2.0091926793746957e-16,
+          3.999999999999999
+        ],
+        "central_alignment": 1.5855761084542944e-18,
+        "central_marker_parallel_stretch_mean": -4.85722573273506e-17,
+        "central_marker_parallel_stretch_spin_weighted": -2.8169536182940678,
+        "central_marker_parallel_stretch_min": -4.000000000000003,
+        "central_marker_parallel_stretch_max": 4.000000000000002,
+        "central_marker_Wmax": 79.99999999999976,
+        "origin_axial_strain": -4.000000000000003,
+        "direct_spectral_enstrophy_production": -16685.759357998882,
+        "outer_marker_distances": [
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          }
+        ],
+        "high_band_enstrophy_fraction": 6.367180317953478e-30,
+        "I": 0.0,
+        "I_native": 0.0,
+        "energy_balance_residual": 0.0,
+        "energy_time_integral_residual": 0.0,
+        "native_enstrophy_balance_residual": 0.0,
+        "integrated_viscous_energy_loss": 0.0,
+        "integrated_native_production": 0.0,
+        "integrated_native_enstrophy_loss": 0.0,
+        "core_width": {
+          "minimum_half_peak_chord": 1.0474190265696963,
+          "maximum_half_peak_chord": 1.0659499859193327,
+          "minimum_chord_cells": 19.551821829300998,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.013392857142857142
+        },
+        "global_width": {
+          "minimum_half_peak_chord": 1.0474190265696963,
+          "maximum_half_peak_chord": 1.0659499859193327,
+          "minimum_chord_cells": 19.551821829300998,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.013392857142857142
+        },
+        "cells_50": 5401,
+        "volume_50": 0.8303742255830903,
+        "cells_100": 0,
+        "volume_100": 0.0,
+        "cells_200": 0,
+        "volume_200": 0.0,
+        "cells_400": 0,
+        "volume_400": 0.0,
+        "half_peak_cells": 9651,
+        "half_peak_volume": 1.4837884930758016,
+        "max_speed": 17.83650347204021,
+        "scaled_native_divergence": 1.2361760119464916e-18,
+        "energy_balance_relative": 0.0,
+        "enstrophy_balance_relative": 0.0,
+        "resolution_flags": []
+      }
+    },
+    {
+      "case": "compressive",
+      "n": 112,
+      "method": "fd4",
+      "initial_projection_relative_l2_change": 1.7531431436915655e-06,
+      "geometry": {
+        "n": 112,
+        "case": "compressive",
+        "gamma": 12.138737596974998,
+        "center_spin": [
+          6.9653276381311e-16,
+          1.2683619551857616e-16,
+          79.99999999999976
+        ],
+        "max_spin": 79.99999999999976,
+        "center_background_strain": [
+          [
+            0.0,
+            -2.2563153935388073e-34,
+            -7.42335218877414e-34
+          ],
+          [
+            -2.2563153935388073e-34,
+            4.000000000000002,
+            6.684944664950022e-16
+          ],
+          [
+            -7.42335218877414e-34,
+            6.684944664950022e-16,
+            -4.000000000000003
+          ]
+        ],
+        "eigenvalues": [
+          -4.0000000000000036,
+          1.2503799640864395e-67,
+          4.0000000000000036
+        ],
+        "alignment_to_largest_eigenvector": 1.1260775490649785e-16,
+        "parallel_stretch": -4.000000000000003,
+        "outer_mean_outward_speeds": [
+          1.7694179454963432e-16,
+          8.673617379884035e-17,
+          2.3245294578089215e-16,
+          2.1510571102112408e-16
+        ],
+        "max_speed": 17.83650347204021,
+        "mean_velocity": [
+          7.282804097395341e-18,
+          0.0,
+          6.473603642129193e-19
+        ],
+        "core_radius_cells": 13.066666666666666,
+        "outer_radius_cells": 13.066666666666666
+      },
+      "diagnostics": {
+        "t": 0.0,
+        "Wmax": 79.99999998475255,
+        "W_central_roi": 79.99999998475255,
+        "rms_spin": 8.028703156658626,
+        "spin_ratio": 9.96424932193493,
+        "peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "central_peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 2128.3372756128883,
+        "native_enstrophy": 6961.589828752764,
+        "spectral_enstrophy": 6961.688032795939,
+        "divergence_native": 5.051748796134061e-16,
+        "divergence_physical": 0.00021427798874292013,
+        "mean_velocity": [
+          -1.1207426305436164e-17,
+          0.0,
+          -6.625328727491596e-19
+        ],
+        "central_parallel_stretch": -3.999994454121997,
+        "central_strain_eigenvalues": [
+          -3.9999944541219974,
+          -2.2507302072553034e-17,
+          3.9999944541219974
+        ],
+        "central_alignment": 4.1065174227140436e-17,
+        "central_marker_parallel_stretch_mean": -6.938893903907228e-17,
+        "central_marker_parallel_stretch_spin_weighted": -2.8169535691541587,
+        "central_marker_parallel_stretch_min": -3.999994454121997,
+        "central_marker_parallel_stretch_max": 3.999994454121997,
+        "central_marker_Wmax": 79.99999998475255,
+        "origin_axial_strain": -3.9999944541219974,
+        "direct_spectral_enstrophy_production": -16685.750920920385,
+        "outer_marker_distances": [
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          }
+        ],
+        "high_band_enstrophy_fraction": 6.393438109181188e-30,
+        "I": 0.0,
+        "I_native": 0.0,
+        "energy_balance_residual": 0.0,
+        "energy_time_integral_residual": 0.0,
+        "native_enstrophy_balance_residual": 0.0,
+        "integrated_viscous_energy_loss": 0.0,
+        "integrated_native_production": 0.0,
+        "integrated_native_enstrophy_loss": 0.0,
+        "core_width": {
+          "minimum_half_peak_chord": 1.0474190267654482,
+          "maximum_half_peak_chord": 1.065949986098122,
+          "minimum_chord_cells": 19.551821832955035,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.013392857142857142
+        },
+        "global_width": {
+          "minimum_half_peak_chord": 1.0474190267654482,
+          "maximum_half_peak_chord": 1.065949986098122,
+          "minimum_chord_cells": 19.551821832955035,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.013392857142857142
+        },
+        "cells_50": 5401,
+        "volume_50": 0.8303742255830903,
+        "cells_100": 0,
+        "volume_100": 0.0,
+        "cells_200": 0,
+        "volume_200": 0.0,
+        "cells_400": 0,
+        "volume_400": 0.0,
+        "half_peak_cells": 9651,
+        "half_peak_volume": 1.4837884930758016,
+        "max_speed": 17.83647393653763,
+        "scaled_native_divergence": 1.517280830032878e-18,
+        "energy_balance_relative": 0.0,
+        "enstrophy_balance_relative": 0.0,
+        "resolution_flags": []
+      }
+    },
+    {
+      "case": "compressive",
+      "n": 160,
+      "method": "fourier",
+      "initial_projection_relative_l2_change": 1.2377528666536347e-16,
+      "geometry": {
+        "n": 160,
+        "case": "compressive",
+        "gamma": 12.138737596974998,
+        "center_spin": [
+          -3.483706611953379e-15,
+          -9.379313662644914e-16,
+          80.00000000000044
+        ],
+        "max_spin": 80.00000000000044,
+        "center_background_strain": [
+          [
+            0.0,
+            4.6096159000586236e-35,
+            2.809395698871225e-33
+          ],
+          [
+            4.6096159000586236e-35,
+            4.000000000000003,
+            -1.2482663824248122e-16
+          ],
+          [
+            2.809395698871225e-33,
+            -1.2482663824248122e-16,
+            -4.000000000000003
+          ]
+        ],
+        "eigenvalues": [
+          -4.0000000000000036,
+          1.9726448342403823e-66,
+          4.000000000000002
+        ],
+        "alignment_to_largest_eigenvector": 9.929816038420957e-17,
+        "parallel_stretch": -4.000000000000003,
+        "outer_mean_outward_speeds": [
+          -1.1102230246251565e-16,
+          3.469446951953614e-17,
+          -5.551115123125783e-17,
+          3.469446951953614e-18
+        ],
+        "max_speed": 17.840245898953047,
+        "mean_velocity": [
+          1.4710455076283324e-18,
+          0.0,
+          1.1657341758564144e-18
+        ],
+        "core_radius_cells": 18.666666666666668,
+        "outer_radius_cells": 18.666666666666668
+      },
+      "diagnostics": {
+        "t": 0.0,
+        "Wmax": 80.00000000000044,
+        "W_central_roi": 80.00000000000044,
+        "rms_spin": 8.028703156771078,
+        "spin_ratio": 9.96424932369454,
+        "peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "central_peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 2128.337275619429,
+        "native_enstrophy": 6961.688032990955,
+        "spectral_enstrophy": 6961.688032990955,
+        "divergence_native": 2.18583331402192e-16,
+        "divergence_physical": 2.18583331402192e-16,
+        "mean_velocity": [
+          2.1038726316646717e-17,
+          -5.684341886080802e-17,
+          8.187894806610529e-19
+        ],
+        "central_parallel_stretch": -4.000000000000003,
+        "central_strain_eigenvalues": [
+          -4.000000000000002,
+          2.0445244208308265e-16,
+          4.0
+        ],
+        "central_alignment": 9.198661486821273e-18,
+        "central_marker_parallel_stretch_mean": 0.0,
+        "central_marker_parallel_stretch_spin_weighted": -2.8176562667332905,
+        "central_marker_parallel_stretch_min": -4.000000000000003,
+        "central_marker_parallel_stretch_max": 4.000000000000003,
+        "central_marker_Wmax": 80.00000000000044,
+        "origin_axial_strain": -4.000000000000003,
+        "direct_spectral_enstrophy_production": -16685.75935799888,
+        "outer_marker_distances": [
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          }
+        ],
+        "high_band_enstrophy_fraction": 5.3889659948369664e-30,
+        "I": 0.0,
+        "I_native": 0.0,
+        "energy_balance_residual": 0.0,
+        "energy_time_integral_residual": 0.0,
+        "native_enstrophy_balance_residual": 0.0,
+        "integrated_viscous_energy_loss": 0.0,
+        "integrated_native_production": 0.0,
+        "integrated_native_enstrophy_loss": 0.0,
+        "core_width": {
+          "minimum_half_peak_chord": 1.0476310528388901,
+          "maximum_half_peak_chord": 1.0660111119774016,
+          "minimum_chord_cells": 27.936828075703737,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.009375
+        },
+        "global_width": {
+          "minimum_half_peak_chord": 1.0476310528388901,
+          "maximum_half_peak_chord": 1.0660111119774016,
+          "minimum_chord_cells": 27.936828075703737,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.009375
+        },
+        "cells_50": 15727,
+        "volume_50": 0.8293535156249999,
+        "cells_100": 0,
+        "volume_100": 0.0,
+        "cells_200": 0,
+        "volume_200": 0.0,
+        "cells_400": 0,
+        "volume_400": 0.0,
+        "half_peak_cells": 28239,
+        "half_peak_volume": 1.4891660156249997,
+        "max_speed": 17.840245898953047,
+        "scaled_native_divergence": 4.594597503873662e-19,
+        "energy_balance_relative": 0.0,
+        "enstrophy_balance_relative": 0.0,
+        "resolution_flags": []
+      }
+    },
+    {
+      "case": "compressive",
+      "n": 160,
+      "method": "fd4",
+      "initial_projection_relative_l2_change": 4.2187179461822674e-07,
+      "geometry": {
+        "n": 160,
+        "case": "compressive",
+        "gamma": 12.138737596974998,
+        "center_spin": [
+          -3.483706611953379e-15,
+          -9.379313662644914e-16,
+          80.00000000000044
+        ],
+        "max_spin": 80.00000000000044,
+        "center_background_strain": [
+          [
+            0.0,
+            4.6096159000586236e-35,
+            2.809395698871225e-33
+          ],
+          [
+            4.6096159000586236e-35,
+            4.000000000000003,
+            -1.2482663824248122e-16
+          ],
+          [
+            2.809395698871225e-33,
+            -1.2482663824248122e-16,
+            -4.000000000000003
+          ]
+        ],
+        "eigenvalues": [
+          -4.0000000000000036,
+          1.9726448342403823e-66,
+          4.000000000000002
+        ],
+        "alignment_to_largest_eigenvector": 9.929816038420957e-17,
+        "parallel_stretch": -4.000000000000003,
+        "outer_mean_outward_speeds": [
+          -1.1102230246251565e-16,
+          3.469446951953614e-17,
+          -5.551115123125783e-17,
+          3.469446951953614e-18
+        ],
+        "max_speed": 17.840245898953047,
+        "mean_velocity": [
+          1.4710455076283324e-18,
+          0.0,
+          1.1657341758564144e-18
+        ],
+        "core_radius_cells": 18.666666666666668,
+        "outer_radius_cells": 18.666666666666668
+      },
+      "diagnostics": {
+        "t": 0.0,
+        "Wmax": 79.99999999911172,
+        "W_central_roi": 79.99999999911172,
+        "rms_spin": 8.02870315676456,
+        "spin_ratio": 9.964249323591938,
+        "peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "central_peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 2128.33727561905,
+        "native_enstrophy": 6961.664409118071,
+        "spectral_enstrophy": 6961.688032979651,
+        "divergence_native": 6.805995908607131e-16,
+        "divergence_physical": 5.1691146465197985e-05,
+        "mean_velocity": [
+          -3.2751579226442116e-18,
+          0.0,
+          4.588343593958655e-19
+        ],
+        "central_parallel_stretch": -3.9999986669777856,
+        "central_strain_eigenvalues": [
+          -3.9999986669777856,
+          4.808389067842046e-16,
+          3.999998666977783
+        ],
+        "central_alignment": 1.3865581681814803e-17,
+        "central_marker_parallel_stretch_mean": -5.551115123125783e-17,
+        "central_marker_parallel_stretch_spin_weighted": -2.8176562546235284,
+        "central_marker_parallel_stretch_min": -3.9999986669777856,
+        "central_marker_parallel_stretch_max": 3.999998666977785,
+        "central_marker_Wmax": 79.99999999911172,
+        "origin_axial_strain": -3.9999986669777856,
+        "direct_spectral_enstrophy_production": -16685.757328690772,
+        "outer_marker_distances": [
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          },
+          {
+            "minimum": 1.5,
+            "median": 2.1213203435596424
+          }
+        ],
+        "high_band_enstrophy_fraction": 5.358592940841579e-30,
+        "I": 0.0,
+        "I_native": 0.0,
+        "energy_balance_residual": 0.0,
+        "energy_time_integral_residual": 0.0,
+        "native_enstrophy_balance_residual": 0.0,
+        "integrated_viscous_energy_loss": 0.0,
+        "integrated_native_production": 0.0,
+        "integrated_native_enstrophy_loss": 0.0,
+        "core_width": {
+          "minimum_half_peak_chord": 1.0476310528503867,
+          "maximum_half_peak_chord": 1.0660111119879092,
+          "minimum_chord_cells": 27.936828076010315,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.009375
+        },
+        "global_width": {
+          "minimum_half_peak_chord": 1.0476310528503867,
+          "maximum_half_peak_chord": 1.0660111119879092,
+          "minimum_chord_cells": 27.936828076010315,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.009375
+        },
+        "cells_50": 15727,
+        "volume_50": 0.8293535156249999,
+        "cells_100": 0,
+        "volume_100": 0.0,
+        "cells_200": 0,
+        "volume_200": 0.0,
+        "cells_400": 0,
+        "volume_400": 0.0,
+        "half_peak_cells": 28239,
+        "half_peak_volume": 1.4891660156249997,
+        "max_speed": 17.840238791038598,
+        "scaled_native_divergence": 1.4306133990816897e-18,
+        "energy_balance_relative": 0.0,
+        "enstrophy_balance_relative": 0.0,
+        "resolution_flags": []
+      }
+    },
+    {
+      "case": "exodus",
+      "n": 48,
+      "method": "fourier",
+      "initial_projection_relative_l2_change": 1.1400087742980067e-16,
+      "geometry": {
+        "n": 48,
+        "case": "exodus",
+        "gamma": 12.138737596974998,
+        "center_spin": [
+          -9.195715503392034e-17,
+          -3.216887534943236e-16,
+          79.99999999994166
+        ],
+        "max_spin": 79.99999999994166,
+        "center_background_strain": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            4.731066036066923,
+            1.9131591397363173e-17
+          ],
+          [
+            0.0,
+            1.9131591397363173e-17,
+            -4.731066036066923
+          ]
+        ],
+        "eigenvalues": [
+          -4.731066036066923,
+          0.0,
+          4.731066036066923
+        ],
+        "alignment_to_largest_eigenvector": 4.021109418681977e-18,
+        "parallel_stretch": -4.731066036066922,
+        "outer_mean_outward_speeds": [
+          1.6178997115911844,
+          1.6178997115911842,
+          1.6178997115911844,
+          1.6178997115911842
+        ],
+        "max_speed": 18.125776459587524,
+        "mean_velocity": [
+          -6.938893903907228e-18,
+          -6.579099405186112e-17,
+          -7.709882115452476e-19
+        ],
+        "core_radius_cells": 5.6,
+        "outer_radius_cells": 5.6
+      },
+      "diagnostics": {
+        "t": 0.0,
+        "Wmax": 79.99999999994166,
+        "W_central_roi": 79.99999999994166,
+        "rms_spin": 7.751410357332958,
+        "spin_ratio": 10.320702467294922,
+        "peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "central_peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 1831.483154969616,
+        "native_enstrophy": 6489.1111529990185,
+        "spectral_enstrophy": 6489.1111529990185,
+        "divergence_native": 4.91928297822442e-16,
+        "divergence_physical": 4.91928297822442e-16,
+        "mean_velocity": [
+          -1.3877787807814457e-17,
+          -6.579099405186112e-17,
+          -4.336808689942018e-19
+        ],
+        "central_parallel_stretch": -4.731066036066922,
+        "central_strain_eigenvalues": [
+          -4.731066036066922,
+          2.188396119484e-16,
+          4.731066036066925
+        ],
+        "central_alignment": 6.375582588182255e-18,
+        "central_marker_parallel_stretch_mean": 3.469446951953614e-17,
+        "central_marker_parallel_stretch_spin_weighted": -2.626398139991948,
+        "central_marker_parallel_stretch_min": -4.731066036066922,
+        "central_marker_parallel_stretch_max": 2.362907833008306,
+        "central_marker_Wmax": 79.99999999994166,
+        "origin_axial_strain": -4.731066036066923,
+        "direct_spectral_enstrophy_production": -14681.411685632416,
+        "outer_marker_distances": [
+          {
+            "minimum": 1.5004686767806918,
+            "median": 2.1216517739723453
+          },
+          {
+            "minimum": 1.5004686767806918,
+            "median": 2.1216517739723453
+          },
+          {
+            "minimum": 1.5004686767806918,
+            "median": 2.1216517739723453
+          },
+          {
+            "minimum": 1.5004686767806918,
+            "median": 2.1216517739723453
+          }
+        ],
+        "high_band_enstrophy_fraction": 6.809256703297495e-18,
+        "I": 0.0,
+        "I_native": 0.0,
+        "energy_balance_residual": 0.0,
+        "energy_time_integral_residual": 0.0,
+        "native_enstrophy_balance_residual": 0.0,
+        "integrated_viscous_energy_loss": 0.0,
+        "integrated_native_production": 0.0,
+        "integrated_native_enstrophy_loss": 0.0,
+        "core_width": {
+          "minimum_half_peak_chord": 1.0465310522412203,
+          "maximum_half_peak_chord": 1.0673304595842046,
+          "minimum_chord_cells": 8.372248417929763,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.03125
+        },
+        "global_width": {
+          "minimum_half_peak_chord": 1.0465310522412203,
+          "maximum_half_peak_chord": 1.0673304595842046,
+          "minimum_chord_cells": 8.372248417929763,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.03125
+        },
+        "cells_50": 421,
+        "volume_50": 0.822265625,
+        "cells_100": 0,
+        "volume_100": 0.0,
+        "cells_200": 0,
+        "volume_200": 0.0,
+        "cells_400": 0,
+        "volume_400": 0.0,
+        "half_peak_cells": 757,
+        "half_peak_volume": 1.478515625,
+        "max_speed": 18.125776459587524,
+        "scaled_native_divergence": 3.392463620242868e-18,
+        "energy_balance_relative": 0.0,
+        "enstrophy_balance_relative": 0.0,
+        "resolution_flags": []
+      }
+    },
+    {
+      "case": "exodus",
+      "n": 48,
+      "method": "fd4",
+      "initial_projection_relative_l2_change": 5.5278527673825006e-05,
+      "geometry": {
+        "n": 48,
+        "case": "exodus",
+        "gamma": 12.138737596974998,
+        "center_spin": [
+          -9.195715503392034e-17,
+          -3.216887534943236e-16,
+          79.99999999994166
+        ],
+        "max_spin": 79.99999999994166,
+        "center_background_strain": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            4.731066036066923,
+            1.9131591397363173e-17
+          ],
+          [
+            0.0,
+            1.9131591397363173e-17,
+            -4.731066036066923
+          ]
+        ],
+        "eigenvalues": [
+          -4.731066036066923,
+          0.0,
+          4.731066036066923
+        ],
+        "alignment_to_largest_eigenvector": 4.021109418681977e-18,
+        "parallel_stretch": -4.731066036066922,
+        "outer_mean_outward_speeds": [
+          1.6178997115911844,
+          1.6178997115911842,
+          1.6178997115911844,
+          1.6178997115911842
+        ],
+        "max_speed": 18.125776459587524,
+        "mean_velocity": [
+          -6.938893903907228e-18,
+          -6.579099405186112e-17,
+          -7.709882115452476e-19
+        ],
+        "core_radius_cells": 5.6,
+        "outer_radius_cells": 5.6
+      },
+      "diagnostics": {
+        "t": 0.0,
+        "Wmax": 79.99998767359344,
+        "W_central_roi": 79.99998767359344,
+        "rms_spin": 7.751410259848817,
+        "spin_ratio": 10.320701006884102,
+        "peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "central_peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 1831.483149373124,
+        "native_enstrophy": 6486.226353789284,
+        "spectral_enstrophy": 6489.110989780871,
+        "divergence_native": 7.012124227852709e-16,
+        "divergence_physical": 0.006157692945354351,
+        "mean_velocity": [
+          3.148201863809761e-17,
+          0.0,
+          1.6865367127552291e-18
+        ],
+        "central_parallel_stretch": -4.731241836558408,
+        "central_strain_eigenvalues": [
+          -4.731241836558408,
+          9.826090688756076e-18,
+          4.7308133891179756
+        ],
+        "central_alignment": 1.3365338219577087e-19,
+        "central_marker_parallel_stretch_mean": 6.245004513516506e-17,
+        "central_marker_parallel_stretch_spin_weighted": -2.6264677708107533,
+        "central_marker_parallel_stretch_min": -4.731241836558408,
+        "central_marker_parallel_stretch_max": 2.3628236041180677,
+        "central_marker_Wmax": 79.99998767359344,
+        "origin_axial_strain": -4.731241836558408,
+        "direct_spectral_enstrophy_production": -14681.648776865859,
+        "outer_marker_distances": [
+          {
+            "minimum": 1.5004686767806918,
+            "median": 2.1216517739723453
+          },
+          {
+            "minimum": 1.5004686767806918,
+            "median": 2.1216517739723453
+          },
+          {
+            "minimum": 1.5004686767806918,
+            "median": 2.1216517739723453
+          },
+          {
+            "minimum": 1.5004686767806918,
+            "median": 2.1216517739723453
+          }
+        ],
+        "high_band_enstrophy_fraction": 6.805445461553e-18,
+        "I": 0.0,
+        "I_native": 0.0,
+        "energy_balance_residual": 0.0,
+        "energy_time_integral_residual": 0.0,
+        "native_enstrophy_balance_residual": 0.0,
+        "integrated_viscous_energy_loss": 0.0,
+        "integrated_native_production": 0.0,
+        "integrated_native_enstrophy_loss": 0.0,
+        "core_width": {
+          "minimum_half_peak_chord": 1.0465312202157984,
+          "maximum_half_peak_chord": 1.0673306030956002,
+          "minimum_chord_cells": 8.372249761726387,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.03125
+        },
+        "global_width": {
+          "minimum_half_peak_chord": 1.0465312202157984,
+          "maximum_half_peak_chord": 1.0673306030956002,
+          "minimum_chord_cells": 8.372249761726387,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.03125
+        },
+        "cells_50": 421,
+        "volume_50": 0.822265625,
+        "cells_100": 0,
+        "volume_100": 0.0,
+        "cells_200": 0,
+        "volume_200": 0.0,
+        "cells_400": 0,
+        "volume_400": 0.0,
+        "half_peak_cells": 757,
+        "half_peak_volume": 1.478515625,
+        "max_speed": 18.12490439248355,
+        "scaled_native_divergence": 4.835973252609719e-18,
+        "energy_balance_relative": 0.0,
+        "enstrophy_balance_relative": 0.0,
+        "resolution_flags": []
+      }
+    },
+    {
+      "case": "exodus",
+      "n": 64,
+      "method": "fourier",
+      "initial_projection_relative_l2_change": 1.1182912451345157e-16,
+      "geometry": {
+        "n": 64,
+        "case": "exodus",
+        "gamma": 12.138737596974998,
+        "center_spin": [
+          -3.4820137743372574e-16,
+          3.191867008778508e-16,
+          80.00000000000004
+        ],
+        "max_spin": 80.00000000000004,
+        "center_background_strain": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            4.731066036066927,
+            -1.6890736045219514e-16
+          ],
+          [
+            0.0,
+            -1.6890736045219514e-16,
+            -4.731066036066927
+          ]
+        ],
+        "eigenvalues": [
+          -4.731066036066927,
+          0.0,
+          4.731066036066927
+        ],
+        "alignment_to_largest_eigenvector": 3.9898337609731325e-18,
+        "parallel_stretch": -4.731066036066927,
+        "outer_mean_outward_speeds": [
+          1.6171439753399053,
+          1.6171439753399033,
+          1.617143975339905,
+          1.617143975339903
+        ],
+        "max_speed": 18.121528177902455,
+        "mean_velocity": [
+          -1.5829351718288365e-17,
+          0.0,
+          -1.4560496363301423e-18
+        ],
+        "core_radius_cells": 7.466666666666666,
+        "outer_radius_cells": 7.466666666666666
+      },
+      "diagnostics": {
+        "t": 0.0,
+        "Wmax": 80.00000000000006,
+        "W_central_roi": 80.00000000000006,
+        "rms_spin": 7.751410357332962,
+        "spin_ratio": 10.320702467302448,
+        "peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "central_peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 1831.4831549696166,
+        "native_enstrophy": 6489.11115299902,
+        "spectral_enstrophy": 6489.11115299902,
+        "divergence_native": 3.2134371031578263e-16,
+        "divergence_physical": 3.2134371031578263e-16,
+        "mean_velocity": [
+          -2.2768245622195593e-18,
+          0.0,
+          -1.245006083565813e-19
+        ],
+        "central_parallel_stretch": -4.731066036066927,
+        "central_strain_eigenvalues": [
+          -4.731066036066927,
+          1.0703640532543816e-16,
+          4.731066036066928
+        ],
+        "central_alignment": 1.0703789517178561e-16,
+        "central_marker_parallel_stretch_mean": 5.551115123125783e-17,
+        "central_marker_parallel_stretch_spin_weighted": -2.6348553708277445,
+        "central_marker_parallel_stretch_min": -4.731066036066927,
+        "central_marker_parallel_stretch_max": 2.36486684424312,
+        "central_marker_Wmax": 80.00000000000006,
+        "origin_axial_strain": -4.731066036066927,
+        "direct_spectral_enstrophy_production": -14681.411685632438,
+        "outer_marker_distances": [
+          {
+            "minimum": 1.5004686767806918,
+            "median": 2.1216517739723453
+          },
+          {
+            "minimum": 1.5004686767806918,
+            "median": 2.1216517739723453
+          },
+          {
+            "minimum": 1.5004686767806918,
+            "median": 2.1216517739723453
+          },
+          {
+            "minimum": 1.5004686767806918,
+            "median": 2.1216517739723453
+          }
+        ],
+        "high_band_enstrophy_fraction": 1.3147318799188493e-29,
+        "I": 0.0,
+        "I_native": 0.0,
+        "energy_balance_residual": 0.0,
+        "energy_time_integral_residual": 0.0,
+        "native_enstrophy_balance_residual": 0.0,
+        "integrated_viscous_energy_loss": 0.0,
+        "integrated_native_production": 0.0,
+        "integrated_native_enstrophy_loss": 0.0,
+        "core_width": {
+          "minimum_half_peak_chord": 1.046508262799291,
+          "maximum_half_peak_chord": 1.0663402854240238,
+          "minimum_chord_cells": 11.162754803192437,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.0234375
+        },
+        "global_width": {
+          "minimum_half_peak_chord": 1.046508262799291,
+          "maximum_half_peak_chord": 1.0663402854240238,
+          "minimum_chord_cells": 11.162754803192437,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.0234375
+        },
+        "cells_50": 1021,
+        "volume_50": 0.841278076171875,
+        "cells_100": 0,
+        "volume_100": 0.0,
+        "cells_200": 0,
+        "volume_200": 0.0,
+        "cells_400": 0,
+        "volume_400": 0.0,
+        "half_peak_cells": 1839,
+        "half_peak_volume": 1.515289306640625,
+        "max_speed": 18.121528177902455,
+        "scaled_native_divergence": 1.6624410781669336e-18,
+        "energy_balance_relative": 0.0,
+        "enstrophy_balance_relative": 0.0,
+        "resolution_flags": []
+      }
+    },
+    {
+      "case": "exodus",
+      "n": 64,
+      "method": "fd4",
+      "initial_projection_relative_l2_change": 1.7656982144227767e-05,
+      "geometry": {
+        "n": 64,
+        "case": "exodus",
+        "gamma": 12.138737596974998,
+        "center_spin": [
+          -3.4820137743372574e-16,
+          3.191867008778508e-16,
+          80.00000000000004
+        ],
+        "max_spin": 80.00000000000004,
+        "center_background_strain": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            4.731066036066927,
+            -1.6890736045219514e-16
+          ],
+          [
+            0.0,
+            -1.6890736045219514e-16,
+            -4.731066036066927
+          ]
+        ],
+        "eigenvalues": [
+          -4.731066036066927,
+          0.0,
+          4.731066036066927
+        ],
+        "alignment_to_largest_eigenvector": 3.9898337609731325e-18,
+        "parallel_stretch": -4.731066036066927,
+        "outer_mean_outward_speeds": [
+          1.6171439753399053,
+          1.6171439753399033,
+          1.617143975339905,
+          1.617143975339903
+        ],
+        "max_speed": 18.121528177902455,
+        "mean_velocity": [
+          -1.5829351718288365e-17,
+          0.0,
+          -1.4560496363301423e-18
+        ],
+        "core_radius_cells": 7.466666666666666,
+        "outer_radius_cells": 7.466666666666666
+      },
+      "diagnostics": {
+        "t": 0.0,
+        "Wmax": 79.99999871315336,
+        "W_central_roi": 79.99999871315336,
+        "rms_spin": 7.751410347347283,
+        "spin_ratio": 10.32070231458347,
+        "peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "central_peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 1831.4831543986168,
+        "native_enstrophy": 6488.190046974378,
+        "spectral_enstrophy": 6489.111136279952,
+        "divergence_native": 8.958933472065702e-16,
+        "divergence_physical": 0.001969224990972867,
+        "mean_velocity": [
+          -9.432558900623889e-18,
+          0.0,
+          1.729403050276866e-18
+        ],
+        "central_parallel_stretch": -4.731121614272647,
+        "central_strain_eigenvalues": [
+          -4.731121614272647,
+          1.3476087762600577e-16,
+          4.730985718112515
+        ],
+        "central_alignment": 1.1024167669444147e-16,
+        "central_marker_parallel_stretch_mean": -4.85722573273506e-17,
+        "central_marker_parallel_stretch_spin_weighted": -2.6348776840861015,
+        "central_marker_parallel_stretch_min": -4.731121614272647,
+        "central_marker_parallel_stretch_max": 2.364839695363873,
+        "central_marker_Wmax": 79.99999871315336,
+        "origin_axial_strain": -4.731121614272647,
+        "direct_spectral_enstrophy_production": -14681.486970097201,
+        "outer_marker_distances": [
+          {
+            "minimum": 1.5004686767806918,
+            "median": 2.1216517739723453
+          },
+          {
+            "minimum": 1.5004686767806918,
+            "median": 2.1216517739723453
+          },
+          {
+            "minimum": 1.5004686767806918,
+            "median": 2.1216517739723453
+          },
+          {
+            "minimum": 1.5004686767806918,
+            "median": 2.1216517739723453
+          }
+        ],
+        "high_band_enstrophy_fraction": 1.314083604904204e-29,
+        "I": 0.0,
+        "I_native": 0.0,
+        "energy_balance_residual": 0.0,
+        "energy_time_integral_residual": 0.0,
+        "native_enstrophy_balance_residual": 0.0,
+        "integrated_viscous_energy_loss": 0.0,
+        "integrated_native_production": 0.0,
+        "integrated_native_enstrophy_loss": 0.0,
+        "core_width": {
+          "minimum_half_peak_chord": 1.0465082794194127,
+          "maximum_half_peak_chord": 1.0663403002960061,
+          "minimum_chord_cells": 11.162754980473736,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.0234375
+        },
+        "global_width": {
+          "minimum_half_peak_chord": 1.0465082794194127,
+          "maximum_half_peak_chord": 1.0663403002960061,
+          "minimum_chord_cells": 11.162754980473736,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.0234375
+        },
+        "cells_50": 1021,
+        "volume_50": 0.841278076171875,
+        "cells_100": 0,
+        "volume_100": 0.0,
+        "cells_200": 0,
+        "volume_200": 0.0,
+        "cells_400": 0,
+        "volume_400": 0.0,
+        "half_peak_cells": 1839,
+        "half_peak_volume": 1.515289306640625,
+        "max_speed": 18.121245494978893,
+        "scaled_native_divergence": 4.6348912012636355e-18,
+        "energy_balance_relative": 0.0,
+        "enstrophy_balance_relative": 0.0,
+        "resolution_flags": []
+      }
+    },
+    {
+      "case": "exodus",
+      "n": 80,
+      "method": "fourier",
+      "initial_projection_relative_l2_change": 1.276244808577525e-16,
+      "geometry": {
+        "n": 80,
+        "case": "exodus",
+        "gamma": 12.138737596974998,
+        "center_spin": [
+          3.6127258067540494e-16,
+          -6.505813363099263e-16,
+          80.00000000000014
+        ],
+        "max_spin": 80.00000000000014,
+        "center_background_strain": [
+          [
+            0.0,
+            1.2685579683900998e-34,
+            -1.974771306765055e-33
+          ],
+          [
+            1.2685579683900998e-34,
+            4.731066036066928,
+            1.5224013763509678e-16
+          ],
+          [
+            -1.974771306765055e-33,
+            1.5224013763509678e-16,
+            -4.731066036066928
+          ]
+        ],
+        "eigenvalues": [
+          -4.731066036066927,
+          8.208782737810772e-67,
+          4.731066036066927
+        ],
+        "alignment_to_largest_eigenvector": 8.132266703874062e-18,
+        "parallel_stretch": -4.731066036066928,
+        "outer_mean_outward_speeds": [
+          1.6171792527990951,
+          1.617179252799093,
+          1.6171792527990951,
+          1.6171792527990934
+        ],
+        "max_speed": 18.117158765097773,
+        "mean_velocity": [
+          1.2212453270876721e-18,
+          0.0,
+          -2.6645352591003758e-18
+        ],
+        "core_radius_cells": 9.333333333333334,
+        "outer_radius_cells": 9.333333333333334
+      },
+      "diagnostics": {
+        "t": 0.0,
+        "Wmax": 80.00000000000014,
+        "W_central_roi": 80.00000000000014,
+        "rms_spin": 7.751410357332961,
+        "spin_ratio": 10.32070246730246,
+        "peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "central_peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 1831.4831549696164,
+        "native_enstrophy": 6489.11115299902,
+        "spectral_enstrophy": 6489.11115299902,
+        "divergence_native": 3.508810318602245e-16,
+        "divergence_physical": 3.508810318602245e-16,
+        "mean_velocity": [
+          -7.049916206369744e-18,
+          0.0,
+          -9.159339953157542e-19
+        ],
+        "central_parallel_stretch": -4.731066036066928,
+        "central_strain_eigenvalues": [
+          -4.731066036066929,
+          3.584768221766072e-17,
+          4.731066036066929
+        ],
+        "central_alignment": 1.2370150841755279e-17,
+        "central_marker_parallel_stretch_mean": -9.020562075079397e-17,
+        "central_marker_parallel_stretch_spin_weighted": -2.631805498156206,
+        "central_marker_parallel_stretch_min": -4.731066036066928,
+        "central_marker_parallel_stretch_max": 2.364260254995723,
+        "central_marker_Wmax": 80.00000000000014,
+        "origin_axial_strain": -4.731066036066928,
+        "direct_spectral_enstrophy_production": -14681.41168563244,
+        "outer_marker_distances": [
+          {
+            "minimum": 1.5004686767806918,
+            "median": 2.1216517739723453
+          },
+          {
+            "minimum": 1.5004686767806918,
+            "median": 2.1216517739723453
+          },
+          {
+            "minimum": 1.5004686767806918,
+            "median": 2.1216517739723453
+          },
+          {
+            "minimum": 1.5004686767806918,
+            "median": 2.1216517739723453
+          }
+        ],
+        "high_band_enstrophy_fraction": 9.738143837855226e-31,
+        "I": 0.0,
+        "I_native": 0.0,
+        "energy_balance_residual": 0.0,
+        "energy_time_integral_residual": 0.0,
+        "native_enstrophy_balance_residual": 0.0,
+        "integrated_viscous_energy_loss": 0.0,
+        "integrated_native_production": 0.0,
+        "integrated_native_enstrophy_loss": 0.0,
+        "core_width": {
+          "minimum_half_peak_chord": 1.0472641494621244,
+          "maximum_half_peak_chord": 1.0661730759778778,
+          "minimum_chord_cells": 13.963521992828326,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.01875
+        },
+        "global_width": {
+          "minimum_half_peak_chord": 1.0472641494621244,
+          "maximum_half_peak_chord": 1.0661730759778778,
+          "minimum_chord_cells": 13.963521992828326,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.01875
+        },
+        "cells_50": 1943,
+        "volume_50": 0.8197031249999999,
+        "cells_100": 0,
+        "volume_100": 0.0,
+        "cells_200": 0,
+        "volume_200": 0.0,
+        "cells_400": 0,
+        "volume_400": 0.0,
+        "half_peak_cells": 3521,
+        "half_peak_volume": 1.485421875,
+        "max_speed": 18.11715876509777,
+        "scaled_native_divergence": 1.4525499130809666e-18,
+        "energy_balance_relative": 0.0,
+        "enstrophy_balance_relative": 0.0,
+        "resolution_flags": []
+      }
+    },
+    {
+      "case": "exodus",
+      "n": 80,
+      "method": "fd4",
+      "initial_projection_relative_l2_change": 7.265389192583924e-06,
+      "geometry": {
+        "n": 80,
+        "case": "exodus",
+        "gamma": 12.138737596974998,
+        "center_spin": [
+          3.6127258067540494e-16,
+          -6.505813363099263e-16,
+          80.00000000000014
+        ],
+        "max_spin": 80.00000000000014,
+        "center_background_strain": [
+          [
+            0.0,
+            1.2685579683900998e-34,
+            -1.974771306765055e-33
+          ],
+          [
+            1.2685579683900998e-34,
+            4.731066036066928,
+            1.5224013763509678e-16
+          ],
+          [
+            -1.974771306765055e-33,
+            1.5224013763509678e-16,
+            -4.731066036066928
+          ]
+        ],
+        "eigenvalues": [
+          -4.731066036066927,
+          8.208782737810772e-67,
+          4.731066036066927
+        ],
+        "alignment_to_largest_eigenvector": 8.132266703874062e-18,
+        "parallel_stretch": -4.731066036066928,
+        "outer_mean_outward_speeds": [
+          1.6171792527990951,
+          1.617179252799093,
+          1.6171792527990951,
+          1.6171792527990934
+        ],
+        "max_speed": 18.117158765097773,
+        "mean_velocity": [
+          1.2212453270876721e-18,
+          0.0,
+          -2.6645352591003758e-18
+        ],
+        "core_radius_cells": 9.333333333333334,
+        "outer_radius_cells": 9.333333333333334
+      },
+      "diagnostics": {
+        "t": 0.0,
+        "Wmax": 79.99999977941417,
+        "W_central_roi": 79.99999977941417,
+        "rms_spin": 7.751410355638893,
+        "spin_ratio": 10.320702441100519,
+        "peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "central_peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 1831.4831548729398,
+        "native_enstrophy": 6488.732300517026,
+        "spectral_enstrophy": 6489.111150162634,
+        "divergence_native": 9.019469389592074e-16,
+        "divergence_physical": 0.0008121568946867193,
+        "mean_velocity": [
+          -8.382183835919932e-18,
+          0.0,
+          1.8943180357666735e-18
+        ],
+        "central_parallel_stretch": -4.73108878547184,
+        "central_strain_eigenvalues": [
+          -4.731088785471839,
+          1.6240433548581833e-16,
+          4.731033067723278
+        ],
+        "central_alignment": 1.3752300162171134e-18,
+        "central_marker_parallel_stretch_mean": -2.636779683484747e-16,
+        "central_marker_parallel_stretch_spin_weighted": -2.631814631343526,
+        "central_marker_parallel_stretch_min": -4.73108878547184,
+        "central_marker_parallel_stretch_max": 2.3642491499686344,
+        "central_marker_Wmax": 79.99999977941417,
+        "origin_axial_strain": -4.73108878547184,
+        "direct_spectral_enstrophy_production": -14681.442557643473,
+        "outer_marker_distances": [
+          {
+            "minimum": 1.5004686767806918,
+            "median": 2.1216517739723453
+          },
+          {
+            "minimum": 1.5004686767806918,
+            "median": 2.1216517739723453
+          },
+          {
+            "minimum": 1.5004686767806918,
+            "median": 2.1216517739723453
+          },
+          {
+            "minimum": 1.5004686767806918,
+            "median": 2.1216517739723453
+          }
+        ],
+        "high_band_enstrophy_fraction": 9.703515893621457e-31,
+        "I": 0.0,
+        "I_native": 0.0,
+        "energy_balance_residual": 0.0,
+        "energy_time_integral_residual": 0.0,
+        "native_enstrophy_balance_residual": 0.0,
+        "integrated_viscous_energy_loss": 0.0,
+        "integrated_native_production": 0.0,
+        "integrated_native_enstrophy_loss": 0.0,
+        "core_width": {
+          "minimum_half_peak_chord": 1.0472641523711455,
+          "maximum_half_peak_chord": 1.0661730786021715,
+          "minimum_chord_cells": 13.963522031615273,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.01875
+        },
+        "global_width": {
+          "minimum_half_peak_chord": 1.0472641523711455,
+          "maximum_half_peak_chord": 1.0661730786021715,
+          "minimum_chord_cells": 13.963522031615273,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.01875
+        },
+        "cells_50": 1943,
+        "volume_50": 0.8197031249999999,
+        "cells_100": 0,
+        "volume_100": 0.0,
+        "cells_200": 0,
+        "volume_200": 0.0,
+        "cells_400": 0,
+        "volume_400": 0.0,
+        "half_peak_cells": 3521,
+        "half_peak_volume": 1.485421875,
+        "max_speed": 18.11703511914805,
+        "scaled_native_divergence": 3.7338350329985786e-18,
+        "energy_balance_relative": 0.0,
+        "enstrophy_balance_relative": 0.0,
+        "resolution_flags": []
+      }
+    },
+    {
+      "case": "exodus",
+      "n": 112,
+      "method": "fourier",
+      "initial_projection_relative_l2_change": 1.4776324759692472e-16,
+      "geometry": {
+        "n": 112,
+        "case": "exodus",
+        "gamma": 12.138737596974998,
+        "center_spin": [
+          -1.5782106264055985e-16,
+          1.631634139767811e-16,
+          79.99999999999976
+        ],
+        "max_spin": 79.99999999999976,
+        "center_background_strain": [
+          [
+            0.0,
+            -7.850842577233795e-34,
+            -1.2945046477426949e-33
+          ],
+          [
+            -7.850842577233795e-34,
+            4.731066036066928,
+            1.5644016874983163e-16
+          ],
+          [
+            -1.2945046477426949e-33,
+            1.5644016874983163e-16,
+            -4.731066036066928
+          ]
+        ],
+        "eigenvalues": [
+          -4.731066036066928,
+          2.2392099015871407e-67,
+          4.731066036066928
+        ],
+        "alignment_to_largest_eigenvector": 2.0395426747097703e-18,
+        "parallel_stretch": -4.731066036066928,
+        "outer_mean_outward_speeds": [
+          1.617151518982603,
+          1.6171515189826027,
+          1.617151518982603,
+          1.617151518982603
+        ],
+        "max_speed": 18.137989056065262,
+        "mean_velocity": [
+          7.282804097395341e-18,
+          -8.286212661925366e-17,
+          1.5273658593148563e-18
+        ],
+        "core_radius_cells": 13.066666666666666,
+        "outer_radius_cells": 13.066666666666666
+      },
+      "diagnostics": {
+        "t": 0.0,
+        "Wmax": 79.99999999999976,
+        "W_central_roi": 79.99999999999976,
+        "rms_spin": 7.751410357332962,
+        "spin_ratio": 10.32070246730241,
+        "peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "central_peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 1831.4831549696166,
+        "native_enstrophy": 6489.111152999022,
+        "spectral_enstrophy": 6489.111152999022,
+        "divergence_native": 3.983181325571787e-16,
+        "divergence_physical": 3.983181325571787e-16,
+        "mean_velocity": [
+          8.09200455266149e-19,
+          0.0,
+          1.2795482198895983e-18
+        ],
+        "central_parallel_stretch": -4.731066036066928,
+        "central_strain_eigenvalues": [
+          -4.731066036066928,
+          -2.009192679374692e-16,
+          4.7310660360669266
+        ],
+        "central_alignment": 2.04090056829247e-18,
+        "central_marker_parallel_stretch_mean": -1.1102230246251565e-16,
+        "central_marker_parallel_stretch_spin_weighted": -2.6332985717696324,
+        "central_marker_parallel_stretch_min": -4.731066036066928,
+        "central_marker_parallel_stretch_max": 2.364525749024606,
+        "central_marker_Wmax": 79.99999999999976,
+        "origin_axial_strain": -4.731066036066928,
+        "direct_spectral_enstrophy_production": -14681.41168563244,
+        "outer_marker_distances": [
+          {
+            "minimum": 1.5004686767806918,
+            "median": 2.1216517739723453
+          },
+          {
+            "minimum": 1.5004686767806918,
+            "median": 2.1216517739723453
+          },
+          {
+            "minimum": 1.5004686767806918,
+            "median": 2.1216517739723453
+          },
+          {
+            "minimum": 1.5004686767806918,
+            "median": 2.1216517739723453
+          }
+        ],
+        "high_band_enstrophy_fraction": 6.823031307763591e-30,
+        "I": 0.0,
+        "I_native": 0.0,
+        "energy_balance_residual": 0.0,
+        "energy_time_integral_residual": 0.0,
+        "native_enstrophy_balance_residual": 0.0,
+        "integrated_viscous_energy_loss": 0.0,
+        "integrated_native_production": 0.0,
+        "integrated_native_enstrophy_loss": 0.0,
+        "core_width": {
+          "minimum_half_peak_chord": 1.0474190265696963,
+          "maximum_half_peak_chord": 1.0659499859193327,
+          "minimum_chord_cells": 19.551821829300998,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.013392857142857142
+        },
+        "global_width": {
+          "minimum_half_peak_chord": 1.0474190265696963,
+          "maximum_half_peak_chord": 1.0659499859193327,
+          "minimum_chord_cells": 19.551821829300998,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.013392857142857142
+        },
+        "cells_50": 5409,
+        "volume_50": 0.8316041818513119,
+        "cells_100": 0,
+        "volume_100": 0.0,
+        "cells_200": 0,
+        "volume_200": 0.0,
+        "cells_400": 0,
+        "volume_400": 0.0,
+        "half_peak_cells": 9667,
+        "half_peak_volume": 1.4862484056122447,
+        "max_speed": 18.137989056065262,
+        "scaled_native_divergence": 1.176451883449352e-18,
+        "energy_balance_relative": 0.0,
+        "enstrophy_balance_relative": 0.0,
+        "resolution_flags": []
+      }
+    },
+    {
+      "case": "exodus",
+      "n": 112,
+      "method": "fd4",
+      "initial_projection_relative_l2_change": 1.8989554500774422e-06,
+      "geometry": {
+        "n": 112,
+        "case": "exodus",
+        "gamma": 12.138737596974998,
+        "center_spin": [
+          -1.5782106264055985e-16,
+          1.631634139767811e-16,
+          79.99999999999976
+        ],
+        "max_spin": 79.99999999999976,
+        "center_background_strain": [
+          [
+            0.0,
+            -7.850842577233795e-34,
+            -1.2945046477426949e-33
+          ],
+          [
+            -7.850842577233795e-34,
+            4.731066036066928,
+            1.5644016874983163e-16
+          ],
+          [
+            -1.2945046477426949e-33,
+            1.5644016874983163e-16,
+            -4.731066036066928
+          ]
+        ],
+        "eigenvalues": [
+          -4.731066036066928,
+          2.2392099015871407e-67,
+          4.731066036066928
+        ],
+        "alignment_to_largest_eigenvector": 2.0395426747097703e-18,
+        "parallel_stretch": -4.731066036066928,
+        "outer_mean_outward_speeds": [
+          1.617151518982603,
+          1.6171515189826027,
+          1.617151518982603,
+          1.617151518982603
+        ],
+        "max_speed": 18.137989056065262,
+        "mean_velocity": [
+          7.282804097395341e-18,
+          -8.286212661925366e-17,
+          1.5273658593148563e-18
+        ],
+        "core_radius_cells": 13.066666666666666,
+        "outer_radius_cells": 13.066666666666666
+      },
+      "diagnostics": {
+        "t": 0.0,
+        "Wmax": 79.99999998475255,
+        "W_central_roi": 79.99999998475255,
+        "rms_spin": 7.751410357217021,
+        "spin_ratio": 10.320702465489758,
+        "peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "central_peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 1831.4831549630123,
+        "native_enstrophy": 6489.01218126488,
+        "spectral_enstrophy": 6489.1111528049005,
+        "divergence_native": 5.44740129840066e-16,
+        "divergence_physical": 0.000213002988063705,
+        "mean_velocity": [
+          -1.112650625990955e-17,
+          0.0,
+          1.0115005690826863e-19
+        ],
+        "central_parallel_stretch": -4.731071953465613,
+        "central_strain_eigenvalues": [
+          -4.731071953465613,
+          -2.310252290525392e-17,
+          4.731057438502063
+        ],
+        "central_alignment": 2.0234916398799982e-17,
+        "central_marker_parallel_stretch_mean": -9.71445146547012e-17,
+        "central_marker_parallel_stretch_spin_weighted": -2.6333009572161057,
+        "central_marker_parallel_stretch_min": -4.731071953465613,
+        "central_marker_parallel_stretch_max": 2.364522846336471,
+        "central_marker_Wmax": 79.99999998475255,
+        "origin_axial_strain": -4.731071953465613,
+        "direct_spectral_enstrophy_production": -14681.419727781173,
+        "outer_marker_distances": [
+          {
+            "minimum": 1.5004686767806918,
+            "median": 2.1216517739723453
+          },
+          {
+            "minimum": 1.5004686767806918,
+            "median": 2.1216517739723453
+          },
+          {
+            "minimum": 1.5004686767806918,
+            "median": 2.1216517739723453
+          },
+          {
+            "minimum": 1.5004686767806918,
+            "median": 2.1216517739723453
+          }
+        ],
+        "high_band_enstrophy_fraction": 6.851222289990591e-30,
+        "I": 0.0,
+        "I_native": 0.0,
+        "energy_balance_residual": 0.0,
+        "energy_time_integral_residual": 0.0,
+        "native_enstrophy_balance_residual": 0.0,
+        "integrated_viscous_energy_loss": 0.0,
+        "integrated_native_production": 0.0,
+        "integrated_native_enstrophy_loss": 0.0,
+        "core_width": {
+          "minimum_half_peak_chord": 1.0474190267654482,
+          "maximum_half_peak_chord": 1.065949986098122,
+          "minimum_chord_cells": 19.551821832955035,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.013392857142857142
+        },
+        "global_width": {
+          "minimum_half_peak_chord": 1.0474190267654482,
+          "maximum_half_peak_chord": 1.065949986098122,
+          "minimum_chord_cells": 19.551821832955035,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.013392857142857142
+        },
+        "cells_50": 5409,
+        "volume_50": 0.8316041818513119,
+        "cells_100": 0,
+        "volume_100": 0.0,
+        "cells_200": 0,
+        "volume_200": 0.0,
+        "cells_400": 0,
+        "volume_400": 0.0,
+        "half_peak_cells": 9667,
+        "half_peak_volume": 1.4862484056122447,
+        "max_speed": 18.137958269132522,
+        "scaled_native_divergence": 1.608919070311298e-18,
+        "energy_balance_relative": 0.0,
+        "enstrophy_balance_relative": 0.0,
+        "resolution_flags": []
+      }
+    },
+    {
+      "case": "exodus",
+      "n": 160,
+      "method": "fourier",
+      "initial_projection_relative_l2_change": 1.3343394870623753e-16,
+      "geometry": {
+        "n": 160,
+        "case": "exodus",
+        "gamma": 12.138737596974998,
+        "center_spin": [
+          -2.0482483191536836e-15,
+          -9.714558323083184e-16,
+          80.00000000000044
+        ],
+        "max_spin": 80.00000000000044,
+        "center_background_strain": [
+          [
+            0.0,
+            -1.0860770325757405e-34,
+            -8.422041062418733e-34
+          ],
+          [
+            -1.0860770325757405e-34,
+            4.731066036066929,
+            -5.91705347579367e-17
+          ],
+          [
+            -8.422041062418733e-34,
+            -5.91705347579367e-17,
+            -4.731066036066929
+          ]
+        ],
+        "eigenvalues": [
+          -4.731066036066928,
+          1.474323372462688e-67,
+          4.731066036066931
+        ],
+        "alignment_to_largest_eigenvector": 1.2143197903853913e-17,
+        "parallel_stretch": -4.731066036066928,
+        "outer_mean_outward_speeds": [
+          1.617179252799095,
+          1.617179252799093,
+          1.6171792527990951,
+          1.6171792527990931
+        ],
+        "max_speed": 18.138321910665304,
+        "mean_velocity": [
+          1.4710455076283324e-18,
+          0.0,
+          1.8873791418627663e-18
+        ],
+        "core_radius_cells": 18.666666666666668,
+        "outer_radius_cells": 18.666666666666668
+      },
+      "diagnostics": {
+        "t": 0.0,
+        "Wmax": 80.00000000000044,
+        "W_central_roi": 80.00000000000044,
+        "rms_spin": 7.751410357332961,
+        "spin_ratio": 10.3207024673025,
+        "peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "central_peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 1831.483154969616,
+        "native_enstrophy": 6489.11115299902,
+        "spectral_enstrophy": 6489.11115299902,
+        "divergence_native": 2.1906170398155424e-16,
+        "divergence_physical": 2.1906170398155424e-16,
+        "mean_velocity": [
+          2.1038726316646717e-17,
+          0.0,
+          7.485331798839923e-19
+        ],
+        "central_parallel_stretch": -4.731066036066928,
+        "central_strain_eigenvalues": [
+          -4.731066036066931,
+          2.0445244208308462e-16,
+          4.731066036066928
+        ],
+        "central_alignment": 5.321263826986928e-18,
+        "central_marker_parallel_stretch_mean": 1.457167719820518e-16,
+        "central_marker_parallel_stretch_spin_weighted": -2.634244960045587,
+        "central_marker_parallel_stretch_min": -4.731066036066928,
+        "central_marker_parallel_stretch_max": 2.364652774868196,
+        "central_marker_Wmax": 80.00000000000044,
+        "origin_axial_strain": -4.731066036066929,
+        "direct_spectral_enstrophy_production": -14681.411685632436,
+        "outer_marker_distances": [
+          {
+            "minimum": 1.5004686767806918,
+            "median": 2.1216517739723453
+          },
+          {
+            "minimum": 1.5004686767806918,
+            "median": 2.1216517739723453
+          },
+          {
+            "minimum": 1.5004686767806918,
+            "median": 2.1216517739723453
+          },
+          {
+            "minimum": 1.5004686767806918,
+            "median": 2.1216517739723453
+          }
+        ],
+        "high_band_enstrophy_fraction": 5.7817584760207736e-30,
+        "I": 0.0,
+        "I_native": 0.0,
+        "energy_balance_residual": 0.0,
+        "energy_time_integral_residual": 0.0,
+        "native_enstrophy_balance_residual": 0.0,
+        "integrated_viscous_energy_loss": 0.0,
+        "integrated_native_production": 0.0,
+        "integrated_native_enstrophy_loss": 0.0,
+        "core_width": {
+          "minimum_half_peak_chord": 1.0476310528388901,
+          "maximum_half_peak_chord": 1.0660111119774016,
+          "minimum_chord_cells": 27.936828075703737,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.009375
+        },
+        "global_width": {
+          "minimum_half_peak_chord": 1.0476310528388901,
+          "maximum_half_peak_chord": 1.0660111119774016,
+          "minimum_chord_cells": 27.936828075703737,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.009375
+        },
+        "cells_50": 15735,
+        "volume_50": 0.8297753906249998,
+        "cells_100": 0,
+        "volume_100": 0.0,
+        "cells_200": 0,
+        "volume_200": 0.0,
+        "cells_400": 0,
+        "volume_400": 0.0,
+        "half_peak_cells": 28279,
+        "half_peak_volume": 1.4912753906249998,
+        "max_speed": 18.138321910665304,
+        "scaled_native_divergence": 4.528982305953004e-19,
+        "energy_balance_relative": 0.0,
+        "enstrophy_balance_relative": 0.0,
+        "resolution_flags": []
+      }
+    },
+    {
+      "case": "exodus",
+      "n": 160,
+      "method": "fd4",
+      "initial_projection_relative_l2_change": 4.5694343583426904e-07,
+      "geometry": {
+        "n": 160,
+        "case": "exodus",
+        "gamma": 12.138737596974998,
+        "center_spin": [
+          -2.0482483191536836e-15,
+          -9.714558323083184e-16,
+          80.00000000000044
+        ],
+        "max_spin": 80.00000000000044,
+        "center_background_strain": [
+          [
+            0.0,
+            -1.0860770325757405e-34,
+            -8.422041062418733e-34
+          ],
+          [
+            -1.0860770325757405e-34,
+            4.731066036066929,
+            -5.91705347579367e-17
+          ],
+          [
+            -8.422041062418733e-34,
+            -5.91705347579367e-17,
+            -4.731066036066929
+          ]
+        ],
+        "eigenvalues": [
+          -4.731066036066928,
+          1.474323372462688e-67,
+          4.731066036066931
+        ],
+        "alignment_to_largest_eigenvector": 1.2143197903853913e-17,
+        "parallel_stretch": -4.731066036066928,
+        "outer_mean_outward_speeds": [
+          1.617179252799095,
+          1.617179252799093,
+          1.6171792527990951,
+          1.6171792527990931
+        ],
+        "max_speed": 18.138321910665304,
+        "mean_velocity": [
+          1.4710455076283324e-18,
+          0.0,
+          1.8873791418627663e-18
+        ],
+        "core_radius_cells": 18.666666666666668,
+        "outer_radius_cells": 18.666666666666668
+      },
+      "diagnostics": {
+        "t": 0.0,
+        "Wmax": 79.99999999911172,
+        "W_central_roi": 79.99999999911172,
+        "rms_spin": 7.751410357326241,
+        "spin_ratio": 10.320702467196794,
+        "peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "central_peak_location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 1831.4831549692342,
+        "native_enstrophy": 6489.087345006203,
+        "spectral_enstrophy": 6489.111152987769,
+        "divergence_native": 6.753367775412508e-16,
+        "divergence_physical": 5.13318910399643e-05,
+        "mean_velocity": [
+          -3.2751579226442116e-18,
+          0.0,
+          8.933825901280556e-20
+        ],
+        "central_parallel_stretch": -4.731067456174599,
+        "central_strain_eigenvalues": [
+          -4.7310674561746,
+          4.808511292289707e-16,
+          4.731063969822132
+        ],
+        "central_alignment": 7.829666661524439e-18,
+        "central_marker_parallel_stretch_mean": 9.020562075079397e-17,
+        "central_marker_parallel_stretch_spin_weighted": -2.6342455339029183,
+        "central_marker_parallel_stretch_min": -4.731067456174599,
+        "central_marker_parallel_stretch_max": 2.3646520765195227,
+        "central_marker_Wmax": 79.99999999911172,
+        "origin_axial_strain": -4.731067456174599,
+        "direct_spectral_enstrophy_production": -14681.413617106715,
+        "outer_marker_distances": [
+          {
+            "minimum": 1.5004686767806918,
+            "median": 2.1216517739723453
+          },
+          {
+            "minimum": 1.5004686767806918,
+            "median": 2.1216517739723453
+          },
+          {
+            "minimum": 1.5004686767806918,
+            "median": 2.1216517739723453
+          },
+          {
+            "minimum": 1.5004686767806918,
+            "median": 2.1216517739723453
+          }
+        ],
+        "high_band_enstrophy_fraction": 5.749164796342023e-30,
+        "I": 0.0,
+        "I_native": 0.0,
+        "energy_balance_residual": 0.0,
+        "energy_time_integral_residual": 0.0,
+        "native_enstrophy_balance_residual": 0.0,
+        "integrated_viscous_energy_loss": 0.0,
+        "integrated_native_production": 0.0,
+        "integrated_native_enstrophy_loss": 0.0,
+        "core_width": {
+          "minimum_half_peak_chord": 1.0476310528503867,
+          "maximum_half_peak_chord": 1.0660111119879092,
+          "minimum_chord_cells": 27.936828076010315,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.009375
+        },
+        "global_width": {
+          "minimum_half_peak_chord": 1.0476310528503867,
+          "maximum_half_peak_chord": 1.0660111119879092,
+          "minimum_chord_cells": 27.936828076010315,
+          "censored_chord_directions": 0,
+          "sample_spacing": 0.009375
+        },
+        "cells_50": 15735,
+        "volume_50": 0.8297753906249998,
+        "cells_100": 0,
+        "volume_100": 0.0,
+        "cells_200": 0,
+        "volume_200": 0.0,
+        "cells_400": 0,
+        "volume_400": 0.0,
+        "half_peak_cells": 28279,
+        "half_peak_volume": 1.4912753906249998,
+        "max_speed": 18.138314508065875,
+        "scaled_native_divergence": 1.3962228489606981e-18,
+        "energy_balance_relative": 0.0,
+        "enstrophy_balance_relative": 0.0,
+        "resolution_flags": []
+      }
+    }
+  ],
+  "distinct_initial_interactions": {
+    "half_box_translation_max_velocity_difference": 13.27423440990204,
+    "aligned_origin_domega_z_dt": 319.17920895781043,
+    "compressive_origin_domega_z_dt": -320.82079104055373
+  },
+  "finished": "2026-10-08T08:40:06.528214+00:00"
+}

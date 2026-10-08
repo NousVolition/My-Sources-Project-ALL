@@ -1,0 +1,129 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Peak And Reference</title><style>body{margin:0;padding:26px;background:#fafbf9;color:#233943;font:16px/1.6 system-ui;--color-text-primary:#233943;--color-text-secondary:#566b75;--color-background-primary:#fff;--color-background-secondary:#f0f4f4;--color-border-primary:#c6d1d5;--color-border-secondary:#dbe4e6;--color-text-info:#176b80}main{max-width:1120px;margin:auto}button,input,select{font:inherit}button{cursor:pointer}a{color:#126b78}svg,canvas{max-width:100%}*{box-sizing:border-box}.text-small{font-size:14px}nav{margin:0 0 24px}.card{background:white;border:1px solid #d3e0e2;padding:22px;border-radius:14px}h1{line-height:1.2}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}img{max-width:100%}code{overflow-wrap:anywhere}</style></head><body><main><nav><a href="../index.html">← All reports</a></nav><section id="peak-reference-explore">
+  <style>
+    #peak-reference-explore .measure-space { margin-block: 14px; }
+    #peak-reference-explore .measure-header { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 16px; }
+    #peak-reference-explore .bar-picture { display: block; width: 100%; height: 268px; overflow: visible; }
+    #peak-reference-explore .bar-picture text { fill: var(--foreground); }
+    #peak-reference-explore .source-label { overflow-wrap: anywhere; }
+    #peak-reference-explore .moving-bar { transition: width 180ms ease; }
+    @media (prefers-reduced-motion: reduce) { #peak-reference-explore .moving-bar { transition: none; } }
+  </style>
+  <h3>Peak and comparison level</h3>
+  <div class="viz-controls">
+    <label class="form-label">Saved run
+      <select class="form-select" id="peak-reference-run" aria-label="Saved run"></select>
+    </label>
+  </div>
+  <div class="measure-space">
+    <label class="form-label" for="peak-reference-time">Saved time · <output id="peak-reference-time-value" class="tabular-nums">0.2625</output></label>
+    <input id="peak-reference-time" class="form-range" type="range" min="0" max="13" value="2" step="1">
+  </div>
+  <div class="measure-header text-small text-muted"><span>Each measure’s starting value = 100</span><span>│ Starting value</span></div>
+  <svg class="bar-picture" role="img" aria-labelledby="peak-reference-chart-title peak-reference-chart-description">
+    <title id="peak-reference-chart-title">Changes relative to each measure's own start</title>
+    <desc id="peak-reference-chart-description">Peak spin, whole-flow RMS and their ratio at a selected saved time.</desc>
+    <g data-bars></g>
+  </svg>
+  <div id="peak-reference-direction" class="text-small" aria-live="polite"></div>
+  <div id="peak-reference-source" class="source-label text-small text-muted measure-space"></div>
+</section>
+<!--DATA_START-->
+<script type="application/json" id="peak-reference-data">[{"file":"spin-ratio-64.json","label":"Earlier 64\u00b3 run","rows":[{"t":0.0,"biggest":72.53863506923008,"average":3.6227359722554016,"ratio":20.0231636047354},{"t":0.1313,"biggest":69.68415627767254,"average":3.450932023878888,"ratio":20.19285103139955},{"t":0.2625,"biggest":67.17948776294625,"average":3.302258475638364,"ratio":20.343497717864043},{"t":0.3938,"biggest":63.73112091354686,"average":3.1734322174207272,"ratio":20.08271062595616},{"t":0.525,"biggest":53.28881957841277,"average":3.0630991745093596,"ratio":17.397027174919483},{"t":0.6562,"biggest":54.690981798588616,"average":2.984996416022771,"ratio":18.32195894943795},{"t":0.7875,"biggest":49.024883903475434,"average":2.9620304704719014,"ratio":16.551107219253197},{"t":0.9188,"biggest":48.73614854590097,"average":2.8852239594370643,"ratio":16.891634490450397},{"t":1.05,"biggest":48.297737012589394,"average":2.8390136889607636,"ratio":17.01215362236208},{"t":1.1813,"biggest":45.19806015058342,"average":2.8030085157905797,"ratio":16.124838685277933},{"t":1.3125,"biggest":43.873983268819764,"average":2.7740214668813237,"ratio":15.816021538630995},{"t":1.4438,"biggest":43.65829175804707,"average":2.759549322733685,"ratio":15.82080501275403},{"t":1.575,"biggest":48.18697650389698,"average":2.7438057536525586,"ratio":17.562094707232973},{"t":1.6,"biggest":45.34869205106124,"average":2.7395712976573936,"ratio":16.553207463459298}]},{"file":"ratio-rose.json","label":"Tight tube and stretch","rows":[{"t":0.0,"biggest":241.71226800762796,"average":7.893465257763422,"ratio":30.621819456277183},{"t":0.0395,"biggest":238.83752410199077,"average":7.79886967992921,"ratio":30.624633299957733},{"t":0.0791,"biggest":233.39934107876115,"average":7.713823332615731,"ratio":30.25728371194317},{"t":0.1186,"biggest":236.36209854912434,"average":7.636125684141075,"ratio":30.953144084572617},{"t":0.1582,"biggest":242.37386587956033,"average":7.563972990399896,"ratio":32.04319557819394},{"t":0.1977,"biggest":241.45869042214395,"average":7.498485084964524,"ratio":32.200996292744684},{"t":0.2372,"biggest":235.81149564108776,"average":7.4547921136199005,"ratio":31.63220275589715},{"t":0.2768,"biggest":237.4083084369138,"average":7.496535158088964,"ratio":31.669071568449038},{"t":0.3163,"biggest":250.8118778481618,"average":7.828666619090992,"ratio":32.03762403632462},{"t":0.3559,"biggest":238.99430248866258,"average":8.745222288963758,"ratio":27.32855662116984},{"t":0.3954,"biggest":205.05309385426526,"average":9.34972976051673,"ratio":21.931446053145883},{"t":0.4,"biggest":198.70698170843679,"average":9.318543957466224,"ratio":21.32382297228188}]},{"file":"spin-ratio.json","label":"Earlier 48\u00b3 run","rows":[{"t":0.0,"biggest":71.68763586631763,"average":3.3940327043448897,"ratio":21.121669150254892},{"t":0.1643,"biggest":66.34782513341173,"average":3.233624525308037,"ratio":20.518098070489923},{"t":0.3287,"biggest":62.592914092780106,"average":3.084183006471373,"ratio":20.294811936076687},{"t":0.493,"biggest":56.972745012946405,"average":2.956944063103923,"ratio":19.26744091098624},{"t":0.6573,"biggest":37.94380208856887,"average":2.856428726153498,"ratio":13.28365092437103},{"t":0.8216,"biggest":45.57616336892311,"average":2.8101805503139063,"ratio":16.218233153678366},{"t":0.986,"biggest":38.14851263140219,"average":2.7405913772912056,"ratio":13.919810500574549},{"t":1.1503,"biggest":33.39731900765231,"average":2.6751719753483654,"ratio":12.484176462450886},{"t":1.3146,"biggest":36.24154765130824,"average":2.6508441036252455,"ratio":13.671700875108034},{"t":1.479,"biggest":31.27728182346764,"average":2.6490427154184797,"ratio":11.807013016974565},{"t":1.6433,"biggest":28.827383847550156,"average":2.672206287980739,"ratio":10.787858698339363},{"t":1.8076,"biggest":30.316299564454866,"average":2.6756829296767504,"ratio":11.330303463167581},{"t":1.9719,"biggest":28.681742479483027,"average":2.630845242288911,"ratio":10.90210173462316},{"t":2.0,"biggest":29.30359027177893,"average":2.6198856893607303,"ratio":11.185064444139623}]},{"file":"spin-ratio-low-nu.json","label":"Reduced-viscosity run","rows":[{"t":0.0,"biggest":71.68763586631763,"average":3.3940327043448897,"ratio":21.121669150254892},{"t":0.0833,"biggest":69.95046471914365,"average":3.369735900411178,"ratio":20.758441250724793},{"t":0.1667,"biggest":68.37215578209666,"average":3.342768015350725,"ratio":20.45375433416758},{"t":0.25,"biggest":67.66109159632055,"average":3.317250003218555,"ratio":20.39674173808803},{"t":0.3333,"biggest":66.31613521065887,"average":3.2953870174933635,"ratio":20.123929255842686},{"t":0.4167,"biggest":63.87215641965279,"average":3.2791190475010916,"ratio":19.478450002700466},{"t":0.5,"biggest":61.11117424798499,"average":3.2705716798548177,"ratio":18.685165845592397},{"t":0.5833,"biggest":51.88945866245626,"average":3.270532838722254,"ratio":15.865750696063538},{"t":0.6667,"biggest":45.44942711979547,"average":3.285381312052935,"ratio":13.833836259145063},{"t":0.75,"biggest":61.776732631404805,"average":3.3334736581320668,"ratio":18.532239629582612},{"t":0.8333,"biggest":46.725192217763286,"average":3.364033557779094,"ratio":13.889633208240305},{"t":0.9167,"biggest":48.40545059681834,"average":3.4047289068989897,"ratio":14.217123277784188},{"t":1.0,"biggest":46.7347676742367,"average":3.441429733058959,"ratio":13.580044138427287}]}]</script>
+<!--DATA_END-->
+<script>
+(() => {
+  const root = document.getElementById('peak-reference-explore');
+  const datasets = JSON.parse(document.getElementById('peak-reference-data').textContent);
+  const select = root.querySelector('#peak-reference-run');
+  const slider = root.querySelector('#peak-reference-time');
+  const timeValue = root.querySelector('#peak-reference-time-value');
+  const direction = root.querySelector('#peak-reference-direction');
+  const sourceLabel = root.querySelector('#peak-reference-source');
+  const svg = root.querySelector('.bar-picture');
+  const group = root.querySelector('[data-bars]');
+  const description = root.querySelector('#peak-reference-chart-description');
+  const ns = 'http://www.w3.org/2000/svg';
+  const measures = [
+    {key:'biggest', label:'Peak spin', color:'var(--viz-series-1)'},
+    {key:'average', label:'Whole-flow RMS', color:'var(--viz-series-2)'},
+    {key:'ratio', label:'Peak / RMS ratio', color:'var(--viz-series-3)'}
+  ];
+  const ceiling = Math.ceil(Math.max(100, ...datasets.flatMap(d => d.rows.flatMap(r => measures.map(m => 100*r[m.key]/d.rows[0][m.key])))) / 10) * 10;
+  let currentRun = 0;
+  let rowIndex = datasets[0].rows.reduce((best,r,i,rows) => r.ratio > rows[best].ratio ? i : best, 0);
+  const bars = [];
+  const fmt = value => value.toLocaleString('en-US', {minimumFractionDigits:3, maximumFractionDigits:3});
+  const change = (value, start) => 100*(value/start - 1);
+  const changeText = value => `${value > 0 ? '+' : ''}${Math.abs(value) < .05 ? '0.0' : value.toFixed(1)}%`;
+  function element(name, attrs, parent=group) {
+    const node = document.createElementNS(ns, name);
+    for (const [key, value] of Object.entries(attrs)) node.setAttribute(key, value);
+    parent.appendChild(node);
+    return node;
+  }
+  datasets.forEach((d,i) => {
+    const option = document.createElement('option');
+    option.value = i; option.textContent = d.label; select.appendChild(option);
+  });
+  measures.forEach((m,i) => {
+    const y = 22 + 84*i;
+    const label = element('text', {x:0,y}); label.textContent = m.label;
+    const delta = element('text', {y,'text-anchor':'end',class:'tabular-nums'});
+    const values = element('text', {x:0,y:y+23,class:'text-small tabular-nums'});
+    const initial = element('rect', {x:0,y:y+39,height:12,fill:'var(--foreground)',opacity:'.08'});
+    const bar = element('rect', {x:0,y:y+39,height:12,fill:m.color,class:'moving-bar'});
+    const marker = element('line', {y1:y+34,y2:y+57,stroke:'var(--foreground)','stroke-width':'1.5'});
+    bars.push({label,delta,values,initial,bar,marker});
+  });
+  function applyState(state) {
+    const value = state?.modelContent;
+    if (!value || value.visual !== 'peak-reference-v1') return;
+    const found = datasets.findIndex(d => d.file === value.file);
+    if (found < 0) return;
+    currentRun = found;
+    rowIndex = Number.isInteger(value.savedRow) ? Math.max(0,Math.min(value.savedRow,datasets[found].rows.length-1)) : 0;
+  }
+  function persist() {
+    if (typeof window.openai?.setWidgetState !== 'function') return;
+    window.openai.setWidgetState({modelContent:{visual:'peak-reference-v1',file:datasets[currentRun].file,savedRow:rowIndex,time:datasets[currentRun].rows[rowIndex].t},privateContent:null}).catch(() => {});
+  }
+  function draw(animate=true) {
+    const data = datasets[currentRun], first = data.rows[0], row = data.rows[rowIndex];
+    select.value = String(currentRun); slider.max = String(data.rows.length-1); slider.value = String(rowIndex);
+    timeValue.textContent = row.t.toFixed(4);
+    slider.setAttribute('aria-valuetext',`Saved time ${row.t}; observation ${rowIndex+1} of ${data.rows.length}`);
+    const width = Math.max(260, svg.getBoundingClientRect().width);
+    const inner = width-10;
+    svg.setAttribute('viewBox',`0 0 ${width} 268`);
+    const selected = [];
+    measures.forEach((m,i) => {
+      const b = bars[i], percent = change(row[m.key], first[m.key]);
+      b.bar.style.transition = animate ? '' : 'none';
+      b.delta.setAttribute('x',inner); b.delta.textContent = changeText(percent);
+      b.values.textContent = `${fmt(first[m.key])} → ${fmt(row[m.key])}`;
+      b.initial.setAttribute('width',String(inner*100/ceiling));
+      b.bar.setAttribute('width',String(inner*(100+percent)/ceiling));
+      b.marker.setAttribute('x1',String(inner*100/ceiling)); b.marker.setAttribute('x2',String(inner*100/ceiling));
+      selected.push(`${m.label} ${percent > 1e-9 ? 'up' : percent < -1e-9 ? 'down' : 'unchanged'}`);
+    });
+    direction.textContent = selected.join(' · ');
+    sourceLabel.textContent = `${data.file} · ${rowIndex+1} / ${data.rows.length} saved observations`;
+    description.textContent = `Time ${row.t}. ${measures.map(m => `${m.label}: ${fmt(first[m.key])} at start, ${fmt(row[m.key])} now, ${changeText(change(row[m.key],first[m.key]))}`).join('. ')}. RMS includes the whole flow, including its peak.`;
+  }
+  select.addEventListener('change',() => {
+    currentRun = Number(select.value);
+    rowIndex = datasets[currentRun].rows.reduce((best,r,i,rows) => r.ratio > rows[best].ratio ? i : best,0);
+    draw(); persist();
+  });
+  slider.addEventListener('input',drawFromSlider);
+  slider.addEventListener('change',persist);
+  function drawFromSlider() { rowIndex = Number(slider.value); draw(); }
+  window.addEventListener('openai:set_globals',event => {
+    if (event.detail?.globals?.widgetState) { applyState(event.detail.globals.widgetState); draw(); }
+  });
+  applyState(window.openai?.widgetState);
+  draw(false);
+  new ResizeObserver(() => draw(false)).observe(root);
+})();
+</script>
+</main></body></html>

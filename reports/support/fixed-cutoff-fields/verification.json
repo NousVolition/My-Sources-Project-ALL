@@ -1,0 +1,226 @@
+{
+  "status": "verified",
+  "method": "Direct recount of supplied 48 cubed snapshots; no evolution performed by this verifier.",
+  "fixed_cutoff": 30.099175616728076,
+  "rows": [
+    {
+      "t": 0.0,
+      "n": 48,
+      "dx": 0.125,
+      "biggest": 60.19835123345615,
+      "thresholds": {
+        "fixed_initial_half": 30.099175616728076,
+        "moving_half": 30.099175616728076,
+        "fixed_50": 50.0,
+        "fixed_100": 100.0
+      },
+      "cells": {
+        "fixed_initial_half": 27191,
+        "moving_half": 27191,
+        "fixed_50": 930,
+        "fixed_100": 0
+      },
+      "volumes": {
+        "fixed_initial_half": 53.107421875,
+        "moving_half": 53.107421875,
+        "fixed_50": 1.81640625,
+        "fixed_100": 0.0
+      },
+      "half_equivalent_volume_width": 3.7588218231019495,
+      "member": "fields-48/field-n48-t0.00.npz",
+      "selected_volume_accounting": {
+        "total_moving_volume_change": 0.0,
+        "field_change_at_fixed_initial_cutoff": 0.0,
+        "cutoff_change_on_current_field": 0.0
+      }
+    },
+    {
+      "t": 0.11999999999999998,
+      "n": 48,
+      "dx": 0.125,
+      "biggest": 180.95177570382515,
+      "thresholds": {
+        "fixed_initial_half": 30.099175616728076,
+        "moving_half": 90.47588785191257,
+        "fixed_50": 50.0,
+        "fixed_100": 100.0
+      },
+      "cells": {
+        "fixed_initial_half": 41640,
+        "moving_half": 2146,
+        "fixed_50": 15815,
+        "fixed_100": 1210
+      },
+      "volumes": {
+        "fixed_initial_half": 81.328125,
+        "moving_half": 4.19140625,
+        "fixed_50": 30.888671875,
+        "fixed_100": 2.36328125
+      },
+      "half_equivalent_volume_width": 1.612327465865728,
+      "member": "fields-48/field-n48-t0.12.npz",
+      "selected_volume_accounting": {
+        "total_moving_volume_change": -48.916015625,
+        "field_change_at_fixed_initial_cutoff": 28.220703125,
+        "cutoff_change_on_current_field": -77.13671875
+      }
+    },
+    {
+      "t": 0.23999999999999996,
+      "n": 48,
+      "dx": 0.125,
+      "biggest": 492.7326046395627,
+      "thresholds": {
+        "fixed_initial_half": 30.099175616728076,
+        "moving_half": 246.36630231978134,
+        "fixed_50": 50.0,
+        "fixed_100": 100.0
+      },
+      "cells": {
+        "fixed_initial_half": 71423,
+        "moving_half": 485,
+        "fixed_50": 40524,
+        "fixed_100": 11013
+      },
+      "volumes": {
+        "fixed_initial_half": 139.498046875,
+        "moving_half": 0.947265625,
+        "fixed_50": 79.1484375,
+        "fixed_100": 21.509765625
+      },
+      "half_equivalent_volume_width": 0.9821035009809996,
+      "member": "fields-48/field-n48-t0.24.npz",
+      "selected_volume_accounting": {
+        "total_moving_volume_change": -52.16015625,
+        "field_change_at_fixed_initial_cutoff": 86.390625,
+        "cutoff_change_on_current_field": -138.55078125
+      }
+    }
+  ],
+  "checks": [
+    {
+      "member": "fields-48/field-n48-t0.00.npz",
+      "sha256": "58dad3bd4b7f79dabced16d1e20fcb849d80b18b722aa5f27444ed5391f38416",
+      "finite": true,
+      "max_spin_recomputation_error": 1.2079226507921703e-13,
+      "all_counts_match_recomputed_spin": true,
+      "all_uploaded_measurements_match": true,
+      "max_initial_velocity_difference": 7.460698725481052e-14
+    },
+    {
+      "member": "fields-48/field-n48-t0.12.npz",
+      "sha256": "d7d8cf846e5ef964fe28f4770f48000896cd00fa76c9dd3c3b0f2f49d9de9fb9",
+      "finite": true,
+      "max_spin_recomputation_error": 1.7053025658242404e-13,
+      "all_counts_match_recomputed_spin": true,
+      "all_uploaded_measurements_match": true
+    },
+    {
+      "member": "fields-48/field-n48-t0.24.npz",
+      "sha256": "6279591cab12bfe4a4662c4b5b7ca0bffccbe0b00b2fbc5e4a9e4086ae79d428",
+      "finite": true,
+      "max_spin_recomputation_error": 3.410605131648481e-13,
+      "all_counts_match_recomputed_spin": true,
+      "all_uploaded_measurements_match": true
+    }
+  ],
+  "duplicate_time_zero_max_array_errors": {
+    "u0": 0.0,
+    "u1": 0.0,
+    "u2": 0.0,
+    "spin": 0.0,
+    "dx": 0.0
+  },
+  "duplicate_time_zero_counted_once": true,
+  "uploaded_fixed_cutoff_json_matches": true,
+  "percent_change": {
+    "fixed_initial_half": 162.6714721782943,
+    "moving_half": -98.21632157699239,
+    "fixed_50": 4257.419354838709
+  },
+  "scope": "The supplied time-zero velocity matches grids_compared.build(48). These three snapshots do not establish the producing evolution schedule, convergence, or the history between snapshots.",
+  "width_definition": "Cube root of total selected volume, not minimum region thickness.",
+  "accounting_definition": "Exact change in selected volume from holding or changing its cutoff; not a force decomposition.",
+  "sources": [
+    {
+      "file": "C:\\Users\\ziman\\Downloads\\hug-github.zip",
+      "sha256": "faa387119c91968ef03bee0fe9eddb097cf93fb4ca0ac9090bf221b6fbfe8cf9"
+    },
+    {
+      "file": "C:\\Users\\ziman\\Downloads\\hug-work (1).zip",
+      "sha256": "19eae8b2f08954a20a91439af2fbc238c06e5fbeeee0fb5d9048d5f098033b1a"
+    },
+    {
+      "file": "C:\\Users\\ziman\\Downloads\\fixed-cutoff.json",
+      "sha256": "360d08016b4c8ae7eed9dcfd8b011a553f9e46852c183c774c7d5d9c16ba31c5"
+    }
+  ],
+  "archive_inventory": [
+    {
+      "name": "grids_compared.py",
+      "bytes": 3701,
+      "sha256": "2f6dc58ed215fc705250a5b0525583c53b13510fa09b51fa130f7e1698adba26",
+      "identical_in_previous_archive": true
+    },
+    {
+      "name": "clay_hug.py",
+      "bytes": 6953,
+      "sha256": "422b7160f9e96badfc68fb76958c3cb512982905b73b37f8db92e5fd37379c01",
+      "identical_in_previous_archive": true
+    },
+    {
+      "name": "grids-compared.json",
+      "bytes": 5206,
+      "sha256": "3c4b78462d6dda4de8676bab6ad3089c2188960418a92508f1ed6635deb9ac01",
+      "identical_in_previous_archive": true
+    },
+    {
+      "name": "fixed-cutoff.json",
+      "bytes": 846,
+      "sha256": "360d08016b4c8ae7eed9dcfd8b011a553f9e46852c183c774c7d5d9c16ba31c5",
+      "identical_in_previous_archive": false
+    },
+    {
+      "name": "width-longer.json",
+      "bytes": 1759,
+      "sha256": "bce0c5cc3322129a8c9c4ea4136fda3ea87e693cb81f8f46b10d17669ef97d28",
+      "identical_in_previous_archive": true
+    },
+    {
+      "name": "from-the-hug.pdf",
+      "bytes": 19428,
+      "sha256": "48aa1c05c73bb4f6796896b6296eec1216d089a5f8b301167c47b239e80e215e",
+      "identical_in_previous_archive": false
+    },
+    {
+      "name": "spin-slices.png",
+      "bytes": 25803,
+      "sha256": "480bec0efcc90724d1fc1797afa169c1accae6e46544b07560946780ba81c64e",
+      "identical_in_previous_archive": false
+    },
+    {
+      "name": "fields-48/field-n48-t0.00.npz",
+      "bytes": 3347191,
+      "sha256": "58dad3bd4b7f79dabced16d1e20fcb849d80b18b722aa5f27444ed5391f38416",
+      "identical_in_previous_archive": true
+    },
+    {
+      "name": "fields-48/field-n48-t0.12.npz",
+      "bytes": 3397183,
+      "sha256": "d7d8cf846e5ef964fe28f4770f48000896cd00fa76c9dd3c3b0f2f49d9de9fb9",
+      "identical_in_previous_archive": true
+    },
+    {
+      "name": "fields-48/field-n48-t0.24.npz",
+      "bytes": 3395966,
+      "sha256": "6279591cab12bfe4a4662c4b5b7ca0bffccbe0b00b2fbc5e4a9e4086ae79d428",
+      "identical_in_previous_archive": true
+    },
+    {
+      "name": "README.md",
+      "bytes": 284,
+      "sha256": "995afb1110215d4cf430704ca544a1100fe956e9ca1c0f6c7bf6e6b5c4b7e23f",
+      "identical_in_previous_archive": false
+    }
+  ]
+}

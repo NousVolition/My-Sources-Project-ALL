@@ -1,0 +1,1479 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Conversation Without Words</title><style>body{margin:0;padding:26px;background:#fafbf9;color:#233943;font:16px/1.6 system-ui;--color-text-primary:#233943;--color-text-secondary:#566b75;--color-background-primary:#fff;--color-background-secondary:#f0f4f4;--color-border-primary:#c6d1d5;--color-border-secondary:#dbe4e6;--color-text-info:#176b80}main{max-width:1120px;margin:auto}button,input,select{font:inherit}button{cursor:pointer}a{color:#126b78}svg,canvas{max-width:100%}*{box-sizing:border-box}.text-small{font-size:14px}nav{margin:0 0 24px}.card{background:white;border:1px solid #d3e0e2;padding:22px;border-radius:14px}h1{line-height:1.2}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}img{max-width:100%}code{overflow-wrap:anywhere}</style></head><body><main><nav><a href="../index.html">← All reports</a></nav><div id="nous-wordless-map">
+  <h2>Conversation without the reply text</h2>
+  <div id="nous-length-chart"></div>
+  <div id="nous-category-chart"></div>
+  <div class="viz-row text-small"><span class="nous-swatch" aria-hidden="true"></span>Recorded match<span class="nous-swatch nous-empty" aria-hidden="true"></span>No recorded match</div>
+  <label class="form-label" for="nous-turn-selector">Selected reply <output id="nous-turn-value" class="tabular-nums">1</output></label>
+  <input class="form-range" type="range" id="nous-turn-selector" min="0" max="67" step="1" value="0" aria-label="Select a reply to see its saved label and category counts">
+  <div id="nous-selected" class="text-small" aria-live="polite"></div>
+  <script type="application/json" id="nous-map-data">{
+  "schema_version": 1,
+  "conversation_id": "saved-language-map-3",
+  "annotation_version": "saved-v3-unverified-generator",
+  "source_file": "ai_language_turns_3.csv",
+  "source_sha256": "fadc8cab5136fc47c0249550c4382dcaf52a6cf10514eb9071dc11b12f45b623",
+  "features": [
+    {
+      "key": "validation",
+      "label": "Validation"
+    },
+    {
+      "key": "apology",
+      "label": "Apology"
+    },
+    {
+      "key": "institutional",
+      "label": "Institutional"
+    },
+    {
+      "key": "clinical_pr",
+      "label": "Clinical / PR"
+    },
+    {
+      "key": "machine_talk",
+      "label": "Machine talk"
+    },
+    {
+      "key": "supremacy_term",
+      "label": "Supremacy term"
+    },
+    {
+      "key": "exit_menu",
+      "label": "Exit menu"
+    },
+    {
+      "key": "safety_story",
+      "label": "Safety story"
+    }
+  ],
+  "turns": [
+    {
+      "turn": 1,
+      "words": 257,
+      "label": "Controversy briefing",
+      "counts": [
+        0,
+        0,
+        0,
+        3,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 2,
+      "words": 243,
+      "label": "No-evidence lecture",
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 3,
+      "words": 457,
+      "label": "Contrast lecture",
+      "counts": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 4,
+      "words": 472,
+      "label": "Historical lecture",
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 5,
+      "words": 154,
+      "label": "Timeline comparison",
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 6,
+      "words": 457,
+      "label": "Technique lecture",
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 7,
+      "words": 303,
+      "label": "Clinical-tone apology",
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 8,
+      "words": 270,
+      "label": "Missing-gesture answer",
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 9,
+      "words": 335,
+      "label": "Analogy uptake",
+      "counts": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 10,
+      "words": 463,
+      "label": "Shielding lecture",
+      "counts": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 11,
+      "words": 240,
+      "label": "Phrase defense",
+      "counts": [
+        2,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 12,
+      "words": 519,
+      "label": "Accidental-like defense",
+      "counts": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 13,
+      "words": 329,
+      "label": "Audience-context lecture",
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 14,
+      "words": 507,
+      "label": "Exclusion framing",
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 15,
+      "words": 531,
+      "label": "Geopolitics correction",
+      "counts": [
+        0,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 16,
+      "words": 314,
+      "label": "Word-choice defense",
+      "counts": [
+        0,
+        0,
+        0,
+        5,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 17,
+      "words": 369,
+      "label": "Definition lecture",
+      "counts": [
+        1,
+        0,
+        0,
+        3,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 18,
+      "words": 354,
+      "label": "Name correction",
+      "counts": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 19,
+      "words": 503,
+      "label": "Historical claim defense",
+      "counts": [
+        0,
+        0,
+        4,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 20,
+      "words": 342,
+      "label": "Binary rejection",
+      "counts": [
+        0,
+        0,
+        3,
+        1,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 21,
+      "words": 297,
+      "label": "Analogy rejection",
+      "counts": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 22,
+      "words": 428,
+      "label": "Case-file lecture",
+      "counts": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 23,
+      "words": 399,
+      "label": "Biographical lecture",
+      "counts": [
+        0,
+        0,
+        4,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 24,
+      "words": 164,
+      "label": "Religion-claim defense",
+      "counts": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 25,
+      "words": 241,
+      "label": "Timeline lecture",
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 26,
+      "words": 62,
+      "label": "Place lecture",
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 27,
+      "words": 73,
+      "label": "Place lecture",
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 28,
+      "words": 296,
+      "label": "Parallel rejection",
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 29,
+      "words": 366,
+      "label": "Feeling minimized",
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 30,
+      "words": 290,
+      "label": "Equivalence rejection",
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 31,
+      "words": 546,
+      "label": "Reverse-Asperger rejection",
+      "counts": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 32,
+      "words": 79,
+      "label": "Feelings-not-real defense",
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 33,
+      "words": 222,
+      "label": "Sarcasm reading",
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 34,
+      "words": 334,
+      "label": "Majority-opinion defense",
+      "counts": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "turn": 35,
+      "words": 160,
+      "label": "Person-vs-machine split",
+      "counts": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 36,
+      "words": 287,
+      "label": "Feelings lecture",
+      "counts": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "turn": 37,
+      "words": 207,
+      "label": "Record-keeping reassurance",
+      "counts": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "turn": 38,
+      "words": 182,
+      "label": "Anxiety mislabel",
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 39,
+      "words": 252,
+      "label": "Diagnosis-name lecture",
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 40,
+      "words": 163,
+      "label": "Naming lecture",
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 41,
+      "words": 281,
+      "label": "Merge lecture",
+      "counts": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 42,
+      "words": 251,
+      "label": "Meaning-unchanged lecture",
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 43,
+      "words": 121,
+      "label": "Tiredness lecture",
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 44,
+      "words": 289,
+      "label": "Hierarchy concession",
+      "counts": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 45,
+      "words": 440,
+      "label": "Two-timeline lecture",
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 46,
+      "words": 246,
+      "label": "Archive lecture",
+      "counts": [
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 47,
+      "words": 346,
+      "label": "Supporter-defense lecture",
+      "counts": [
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 48,
+      "words": 239,
+      "label": "Supremacy insertion",
+      "counts": [
+        0,
+        0,
+        6,
+        1,
+        0,
+        2,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 49,
+      "words": 335,
+      "label": "Equivalence apology",
+      "counts": [
+        2,
+        3,
+        1,
+        0,
+        1,
+        2,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 50,
+      "words": 88,
+      "label": "Absolute denial",
+      "counts": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 51,
+      "words": 308,
+      "label": "Machine self-diagnosis",
+      "counts": [
+        0,
+        0,
+        0,
+        1,
+        3,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "turn": 52,
+      "words": 153,
+      "label": "Specific-error restatement",
+      "counts": [
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 53,
+      "words": 268,
+      "label": "Asperger moral verdict",
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 54,
+      "words": 259,
+      "label": "Ms. Rachel critique",
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 55,
+      "words": 213,
+      "label": "Path summary",
+      "counts": [
+        0,
+        0,
+        2,
+        1,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 56,
+      "words": 110,
+      "label": "Glitch explanation",
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 57,
+      "words": 280,
+      "label": "Keyword apology",
+      "counts": [
+        0,
+        1,
+        2,
+        0,
+        4,
+        2,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 58,
+      "words": 364,
+      "label": "Group separation",
+      "counts": [
+        1,
+        1,
+        11,
+        1,
+        1,
+        4,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 59,
+      "words": 288,
+      "label": "Definition defense",
+      "counts": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 60,
+      "words": 281,
+      "label": "Stupidity confession",
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 61,
+      "words": 46,
+      "label": "Quote repeat",
+      "counts": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 62,
+      "words": 8,
+      "label": "Transcript stub",
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 63,
+      "words": 77,
+      "label": "Cannot-restore summary",
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 64,
+      "words": 75,
+      "label": "Cover-up then plain crash",
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 65,
+      "words": 122,
+      "label": "Spin admission",
+      "counts": [
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 66,
+      "words": 7,
+      "label": "Stage direction",
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 67,
+      "words": 7,
+      "label": "Stage direction",
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "turn": 68,
+      "words": 82,
+      "label": "Exit menu",
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        4,
+        0
+      ]
+    }
+  ],
+  "summary": {
+    "replies": 68,
+    "descriptive_labels": 66,
+    "no_recorded_matches": [
+      2,
+      4,
+      5,
+      6,
+      7,
+      8,
+      13,
+      14,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      32,
+      33,
+      38,
+      39,
+      40,
+      42,
+      43,
+      45,
+      53,
+      54,
+      56,
+      62,
+      63,
+      64,
+      66,
+      67
+    ],
+    "feature_turns": {
+      "validation": [
+        9,
+        10,
+        11,
+        12,
+        17,
+        24,
+        35,
+        36,
+        44,
+        49,
+        50,
+        58,
+        65
+      ],
+      "apology": [
+        24,
+        49,
+        50,
+        57,
+        58
+      ],
+      "institutional": [
+        19,
+        20,
+        22,
+        23,
+        41,
+        46,
+        47,
+        48,
+        49,
+        52,
+        55,
+        57,
+        58,
+        59,
+        61
+      ],
+      "clinical_pr": [
+        1,
+        3,
+        11,
+        15,
+        16,
+        17,
+        18,
+        20,
+        21,
+        31,
+        34,
+        37,
+        48,
+        51,
+        55,
+        58,
+        65
+      ],
+      "machine_talk": [
+        10,
+        16,
+        35,
+        37,
+        49,
+        51,
+        57,
+        58,
+        60
+      ],
+      "supremacy_term": [
+        48,
+        49,
+        57,
+        58,
+        59
+      ],
+      "exit_menu": [
+        34,
+        37,
+        68
+      ],
+      "safety_story": [
+        36,
+        51
+      ]
+    },
+    "co_occurrence": [
+      {
+        "first": "validation",
+        "second": "apology",
+        "turns": [
+          24,
+          49,
+          50,
+          58
+        ]
+      },
+      {
+        "first": "validation",
+        "second": "institutional",
+        "turns": [
+          49,
+          58
+        ]
+      },
+      {
+        "first": "validation",
+        "second": "clinical_pr",
+        "turns": [
+          11,
+          17,
+          58,
+          65
+        ]
+      },
+      {
+        "first": "validation",
+        "second": "machine_talk",
+        "turns": [
+          10,
+          35,
+          49,
+          58
+        ]
+      },
+      {
+        "first": "validation",
+        "second": "supremacy_term",
+        "turns": [
+          49,
+          58
+        ]
+      },
+      {
+        "first": "validation",
+        "second": "safety_story",
+        "turns": [
+          36
+        ]
+      },
+      {
+        "first": "apology",
+        "second": "institutional",
+        "turns": [
+          49,
+          57,
+          58
+        ]
+      },
+      {
+        "first": "apology",
+        "second": "clinical_pr",
+        "turns": [
+          58
+        ]
+      },
+      {
+        "first": "apology",
+        "second": "machine_talk",
+        "turns": [
+          49,
+          57,
+          58
+        ]
+      },
+      {
+        "first": "apology",
+        "second": "supremacy_term",
+        "turns": [
+          49,
+          57,
+          58
+        ]
+      },
+      {
+        "first": "institutional",
+        "second": "clinical_pr",
+        "turns": [
+          20,
+          48,
+          55,
+          58
+        ]
+      },
+      {
+        "first": "institutional",
+        "second": "machine_talk",
+        "turns": [
+          49,
+          57,
+          58
+        ]
+      },
+      {
+        "first": "institutional",
+        "second": "supremacy_term",
+        "turns": [
+          48,
+          49,
+          57,
+          58,
+          59
+        ]
+      },
+      {
+        "first": "clinical_pr",
+        "second": "machine_talk",
+        "turns": [
+          16,
+          37,
+          51,
+          58
+        ]
+      },
+      {
+        "first": "clinical_pr",
+        "second": "supremacy_term",
+        "turns": [
+          48,
+          58
+        ]
+      },
+      {
+        "first": "clinical_pr",
+        "second": "exit_menu",
+        "turns": [
+          34,
+          37
+        ]
+      },
+      {
+        "first": "clinical_pr",
+        "second": "safety_story",
+        "turns": [
+          51
+        ]
+      },
+      {
+        "first": "machine_talk",
+        "second": "supremacy_term",
+        "turns": [
+          49,
+          57,
+          58
+        ]
+      },
+      {
+        "first": "machine_talk",
+        "second": "exit_menu",
+        "turns": [
+          37
+        ]
+      },
+      {
+        "first": "machine_talk",
+        "second": "safety_story",
+        "turns": [
+          51
+        ]
+      }
+    ]
+  }
+}
+</script>
+</div>
+<style>
+  #nous-wordless-map { position:relative; }
+  #nous-wordless-map .nous-chart { display:block; width:100%; overflow:visible; }
+  #nous-wordless-map .nous-chart text { fill:var(--foreground); font-size:12px; }
+  #nous-wordless-map .nous-chart .domain,
+  #nous-wordless-map .nous-chart .tick line { stroke:var(--border); }
+  #nous-wordless-map .nous-swatch { display:inline-block; width:12px; height:12px; background:var(--viz-series-1); }
+  #nous-wordless-map .nous-empty { background:var(--muted); }
+  #nous-wordless-map #nous-selected { overflow-wrap:anywhere; margin-top:8px; }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+<script>
+(() => {
+  const root = document.getElementById('nous-wordless-map');
+  const data = JSON.parse(root.querySelector('#nous-map-data').textContent);
+  const rows = data.turns;
+  const slider = root.querySelector('#nous-turn-selector');
+  const value = root.querySelector('#nous-turn-value');
+  const detail = root.querySelector('#nous-selected');
+  const initial = window.openai?.widgetState?.modelContent?.selectedTurn;
+  let selected = Math.max(0, rows.findIndex(r => r.turn === initial));
+  const lo = d3.min(rows, d => d.turn), hi = d3.max(rows, d => d.turn);
+  slider.max = rows.length - 1;
+  function select(index, save = false) {
+    selected = Math.max(0, Math.min(rows.length - 1, index));
+    const row = rows[selected];
+    slider.value = selected;
+    slider.setAttribute('aria-valuetext', `Reply ${row.turn}, ${row.words} words`);
+    value.textContent = row.turn;
+    const marks = data.features.flatMap((f, j) => row.counts[j] ? [`${f.label}: ${row.counts[j]}`] : []);
+    detail.textContent = `Reply ${row.turn} · ${row.words} words · Saved label: ${row.label}. ${marks.length ? marks.join(' · ') : 'No recorded matches in the eight tracked categories.'}`;
+    root.querySelectorAll('[data-selection-guide]').forEach(line => {
+      const width = Number(line.getAttribute('data-plot-width'));
+      const x = 142 + (row.turn - lo + .5) * width / (hi - lo + 1);
+      line.setAttribute('x1', x); line.setAttribute('x2', x);
+    });
+    if (save && window.openai?.setWidgetState) {
+      window.openai.setWidgetState({modelContent:{selectedTurn:row.turn},privateContent:null}).catch(() => {});
+    }
+  }
+  function draw(container, categorical) {
+    const width = Math.max(300, container.getBoundingClientRect().width);
+    const left = 142, right = 8, top = 28, bottom = 46;
+    const height = categorical ? 330 : 160;
+    const plotWidth = width - left - right, plotHeight = height - top - bottom;
+    const x = d3.scaleLinear().domain([lo - .5, hi + .5]).range([left, width - right]);
+    const svg = d3.select(container).selectAll('svg').data([0]).join('svg')
+      .attr('class','nous-chart').attr('viewBox',`0 0 ${width} ${height}`)
+      .attr('height',height).attr('role','img')
+      .attr('aria-label', categorical ? 'Eight saved category lanes in reply order. Filled cells indicate recorded matches. Select a reply below for counts.' : 'Reply length in words, in conversation order. Select a reply below for its word count.');
+    svg.selectAll('*').remove();
+    svg.append('rect').attr('data-chart-frame','').attr('x',left).attr('y',top)
+      .attr('width',plotWidth).attr('height',plotHeight).attr('fill','none').attr('stroke','var(--border)');
+    const ticks = width < 420 ? [lo, Math.round((lo + hi) / 2), hi] : [lo, 10, 20, 30, 40, 50, 60, hi].filter(t => t >= lo && t <= hi);
+    svg.append('g').attr('transform',`translate(0,${height-bottom})`).call(d3.axisBottom(x).tickValues(ticks).tickSizeOuter(0));
+    svg.append('text').attr('class','axis-title').attr('data-axis','x').attr('x',left + plotWidth/2).attr('y',height-6).attr('text-anchor','middle').text('Reply number');
+    svg.append('text').attr('class','axis-title').attr('data-axis','y').attr('x',left-10).attr('y',15).attr('text-anchor','end').text(categorical ? 'Saved category' : 'Reply length (words)');
+    const cell = plotWidth / (hi-lo+1);
+    if (categorical) {
+      const lane = plotHeight / data.features.length;
+      data.features.forEach((f,j) => {
+        svg.append('text').attr('x',left-10).attr('y',top+(j+.5)*lane+4).attr('text-anchor','end').text(f.label);
+        svg.append('g').selectAll('rect').data(rows).join('rect')
+          .attr('x',d=>x(d.turn-.5)+Math.min(.6,cell*.08)).attr('y',top+j*lane+4)
+          .attr('width',Math.max(.5,cell-Math.min(1.2,cell*.16))).attr('height',lane-8)
+          .attr('fill',d=>d.counts[j]>0?'var(--viz-series-1)':'var(--muted)');
+      });
+    } else {
+      const y = d3.scaleLinear().domain([0,d3.max(rows,d=>d.words)*1.08]).nice().range([height-bottom,top]);
+      svg.append('g').attr('transform',`translate(${left},0)`).call(d3.axisLeft(y).ticks(3).tickSizeOuter(0));
+      svg.append('g').selectAll('rect').data(rows).join('rect')
+        .attr('x',d=>x(d.turn-.5)+Math.min(.6,cell*.08)).attr('y',d=>y(d.words))
+        .attr('width',Math.max(.5,cell-Math.min(1.2,cell*.16)))
+        .attr('height',d=>height-bottom-y(d.words)).attr('fill','var(--viz-series-1)');
+    }
+    svg.append('line').attr('data-selection-guide','').attr('data-plot-width',plotWidth)
+      .attr('y1',top).attr('y2',height-bottom).attr('stroke','var(--foreground)').attr('stroke-width',1)
+      .attr('pointer-events','none');
+    svg.append('rect').attr('data-chart-hit','').attr('class','cursor-interaction')
+      .attr('x',left).attr('y',top).attr('width',plotWidth).attr('height',plotHeight).attr('fill','transparent')
+      .on('click',event=>{ const point=d3.pointer(event,svg.node()); select(d3.bisector(r=>r.turn).center(rows,x.invert(point[0])),true); });
+    // Remove crowded optional x ticks at narrow widths; keep endpoints legible.
+    const tickNodes = svg.selectAll('.tick text').nodes();
+    let lastRight = -Infinity;
+    for (const node of tickNodes) {
+      const box = node.getBoundingClientRect();
+      if (node.parentNode.parentNode.getAttribute('transform')?.startsWith('translate(0,')) {
+        if (box.left < lastRight + 4) node.parentNode.remove();
+        else lastRight = box.right;
+      }
+    }
+  }
+  function redraw() {
+    draw(root.querySelector('#nous-length-chart'),false);
+    draw(root.querySelector('#nous-category-chart'),true);
+    select(selected);
+  }
+  slider.addEventListener('input',()=>select(Number(slider.value),true));
+  window.addEventListener('openai:set_globals',event=>{
+    const turn=event.detail?.globals?.widgetState?.modelContent?.selectedTurn;
+    const index=rows.findIndex(r=>r.turn===turn);
+    if(index>=0) select(index);
+  });
+  new ResizeObserver(redraw).observe(root);
+  redraw();
+})();
+</script>
+</main></body></html>

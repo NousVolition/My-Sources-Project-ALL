@@ -1,0 +1,96 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>People In Context</title><style>body{margin:0;padding:26px;background:#fafbf9;color:#233943;font:16px/1.6 system-ui;--color-text-primary:#233943;--color-text-secondary:#566b75;--color-background-primary:#fff;--color-background-secondary:#f0f4f4;--color-border-primary:#c6d1d5;--color-border-secondary:#dbe4e6;--color-text-info:#176b80}main{max-width:1120px;margin:auto}button,input,select{font:inherit}button{cursor:pointer}a{color:#126b78}svg,canvas{max-width:100%}*{box-sizing:border-box}.text-small{font-size:14px}nav{margin:0 0 24px}.card{background:white;border:1px solid #d3e0e2;padding:22px;border-radius:14px}h1{line-height:1.2}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}img{max-width:100%}code{overflow-wrap:anywhere}</style></head><body><main><nav><a href="../index.html">← All reports</a></nav><div id="people-in-context">
+  <h3>Who, when, and what happened next</h3>
+  <div class="viz-controls" role="group" aria-label="Information shown">
+    <button class="btn" type="button" data-view="context" aria-pressed="true">Keep the context</button>
+    <button class="btn" type="button" data-view="flat" aria-pressed="false">Flat list of traits</button>
+  </div>
+  <div class="people-grid">
+    <section aria-labelledby="person-a-heading">
+      <h3 id="person-a-heading">A</h3>
+      <div class="text-small text-muted">Your label: Norm</div>
+      <div data-flat hidden>
+        <div class="flat-values">Blue · infidelity · married</div>
+      </div>
+      <dl data-context>
+        <dt>Preference</dt><dd>Likes blue.</dd>
+        <dt>Event + time</dt><dd>Infidelity as a teenager, <strong>27 years ago</strong>.</dd>
+        <dt>Present context</dt><dd>Married for 27 years; you describe the marriage as not unhappy.</dd>
+        <dt>Response to consequences</dt><dd class="unknown">Not specified for that event.</dd>
+      </dl>
+    </section>
+    <section aria-labelledby="person-c-heading">
+      <h3 id="person-c-heading">C</h3>
+      <div class="text-small text-muted">Your label: Conflict / confusion</div>
+      <div data-flat hidden>
+        <div class="flat-values">War books · dog accident · anger</div>
+      </div>
+      <dl data-context>
+        <dt>Reading interest</dt><dd>War books by controversial leaders.</dd>
+        <dt>Event + time</dt><dd>Accident involving a friend’s dog. <span class="unknown">Date not specified.</span></dd>
+        <dt>Challenge</dt><dd>Confronted and asked to contribute to vet costs.</dd>
+        <dt>Response to consequences</dt><dd><strong>Anger about paying; no empathy when caught</strong>, as you describe this character.</dd>
+      </dl>
+    </section>
+    <section aria-labelledby="person-b-heading">
+      <h3 id="person-b-heading">B</h3>
+      <div class="text-small text-muted">Your label: Entropy</div>
+      <div data-flat hidden>
+        <div class="flat-values">ND · cat books · neighbor conflict</div>
+      </div>
+      <dl data-context>
+        <dt>Background + interest</dt><dd>You describe B as ND and reading extensively about <strong>cats</strong>.</dd>
+        <dt>Situation + time</dt><dd>Conflict involving a neighbor and a cat. <span class="unknown">Date not specified.</span></dd>
+        <dt>Context you supplied</dt><dd>Asserting some control in a difficult situation; you describe B as not harmful.</dd>
+        <dt>Response to a comparable harm claim</dt><dd class="unknown">Not specified.</dd>
+      </dl>
+    </section>
+  </div>
+  <div class="text-small" data-status role="status">Time, situation, and response remain attached to each person.</div>
+  <div class="text-small text-muted">Your invented examples · supplied descriptions, not measured clusters</div>
+</div>
+<style>
+  #people-in-context {container-type:inline-size;}
+  #people-in-context .people-grid {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin:16px 0;}
+  #people-in-context .people-grid section {min-width:0;}
+  #people-in-context .people-grid h3 {margin-bottom:4px;}
+  #people-in-context dl {margin:16px 0 0;}
+  #people-in-context dt {font-weight:500;margin-top:16px;}
+  #people-in-context dd {margin:4px 0 0;overflow-wrap:anywhere;}
+  #people-in-context strong {font-weight:500;}
+  #people-in-context .unknown {color:var(--muted-foreground);}
+  #people-in-context .flat-values {margin-top:16px;}
+  #people-in-context [hidden] {display:none;}
+  @container (max-width:620px) {
+    #people-in-context .people-grid {grid-template-columns:1fr;gap:20px;}
+    #people-in-context dl {display:grid;grid-template-columns:minmax(90px, .8fr) minmax(0,1.6fr);gap:12px;margin-top:16px;}
+    #people-in-context dt,#people-in-context dd {margin:0;}
+  }
+</style>
+<script>
+(() => {
+  const root=document.getElementById('people-in-context');
+  const buttons=[...root.querySelectorAll('[data-view]')];
+  let mode='context';
+  function restore(state){
+    if(state?.experiment==='people-in-context')mode=state.view==='flat'?'flat':'context';
+  }
+  function draw(){
+    root.querySelectorAll('[data-context]').forEach(n=>n.hidden=mode!=='context');
+    root.querySelectorAll('[data-flat]').forEach(n=>n.hidden=mode!=='flat');
+    buttons.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.view===mode)));
+    root.querySelector('[data-status]').textContent=mode==='context'
+      ?'Time, situation, and response remain attached to each person.'
+      :'Dates, circumstances, and the order of events are missing here.';
+  }
+  restore(window.openai?.widgetState?.modelContent);
+  buttons.forEach(button=>button.addEventListener('click',()=>{
+    mode=button.dataset.view;draw();
+    if(window.openai?.setWidgetState)Promise.resolve(window.openai.setWidgetState({
+      modelContent:{experiment:'people-in-context',view:mode},privateContent:null
+    })).catch(()=>{});
+  }));
+  window.addEventListener('openai:set_globals',event=>{restore(event.detail?.globals?.widgetState?.modelContent);draw();});
+  draw();
+})();
+</script>
+</main></body></html>
