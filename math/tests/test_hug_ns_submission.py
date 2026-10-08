@@ -18,13 +18,14 @@ def measured():
 
 
 @pytest.mark.parametrize('filename', ['README.md', 'BOUND.md', 'requirements.txt'])
-def test_supplied_content_preserved(filename):
+def test_reviewed_content_matches_recorded_version(filename):
     manifest = json.loads((FOLDER / 'provenance.json').read_text(encoding='utf-8'))
     source = next(row for row in manifest['source_files'] if row['published_path'] == filename)
     content = (FOLDER / filename).read_bytes()
-    if filename in ('README.md', 'BOUND.md'):
-        content = content.split(b'<!-- END IMPORT REVIEW BANNER -->\n\n', 1)[1]
-    assert hashlib.sha256(content).hexdigest() == source['sha256']
+    # Notes are editable; their original and reviewed hashes are recorded separately.
+    assert hashlib.sha256(content).hexdigest() == source['published_sha256']
+    if filename == 'requirements.txt':
+        assert source['published_sha256'] == source['sha256']
 
 
 def test_projection_removes_divergence_without_adding_energy(measured):

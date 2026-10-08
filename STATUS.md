@@ -4,7 +4,7 @@
 
 ## Latest hug-ns update
 
-[Code and results](math/imports/hug-ns/README.md) are available with fifteen result tables. The latest table reaches time 0.35. The focused checks record **31 passes and three known failures**. Pressure reporting is corrected; the gate and evolution code are retained. [What passed and what needs work](math/imports/hug-ns/REVIEW.md) · [Results and their limits](math/imports/hug-ns/RESULTS-REVIEW.md).
+[Code and results](math/imports/hug-ns/README.md) are available with sixteen result tables. The latest N=64 table reaches time 0.12; the earlier no-stop table reaches 0.35. The focused checks record **32 passes and three known failures**. Pressure reporting is corrected; the gate and evolution code are retained. [What passed and what needs work](math/imports/hug-ns/REVIEW.md) · [Results and their limits](math/imports/hug-ns/RESULTS-REVIEW.md).
 
 ## Already completed
 

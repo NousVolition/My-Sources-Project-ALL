@@ -89,7 +89,7 @@
 +The estimate is established. The bound needed to complete this argument remains open.
 --- received/hug-ns/README.md
 +++ reviewed/README.md
-@@ -1,44 +1,68 @@
+@@ -1,44 +1,71 @@
 -# Hug start, then the fluid equation
 -
 -The circle is the thing. The cube is only the grid the calculation sits in. Opposite sides of the cube are the same side, so the flow that leaves one side comes back on the other.
@@ -140,17 +140,20 @@
 +
 +This experiment prepares a flow with an enclosing gate, then evolves it using an approximation of the unforced, incompressible Navier–Stokes equation in a periodic cube.
 +
-+**Current status:** the pressure diagnostic is corrected. Fifteen result files are available. The focused checks record **31 passes and three known failures**, listed in [the code review](REVIEW.md#findings-that-need-correction-before-relying-on-larger-runs).
++**Current status:** the pressure diagnostic is corrected. Sixteen result files are available. The focused checks record **32 passes and three known failures**, listed in [the code review](REVIEW.md#findings-that-need-correction-before-relying-on-larger-runs).
++
++**Report:** [Original two-page PDF](hug-runs.pdf) · [Checks and wording corrections](RESULTS-REVIEW.md#pdf-report). The PDF is preserved as received; the linked review states which conclusions the supplied files support.
 +
 +## Latest results
 +
 +| File | What is recorded |
 +| --- | --- |
++| [matched-finer.json](results/matched-finer.json) | N=64; eight samples through time 0.12. Maximum vorticity rises from 59.28 to 200.62. |
 +| [matched-nostop.json](results/matched-nostop.json) | 16 samples through time 0.35. Maximum vorticity starts at 60.20, reaches a saved high of 611.14, and ends at 513.81. |
 +| [matched-continue.json](results/matched-continue.json) | Nine samples through time 0.1999. The file reports stopping after the maximum passed 400. |
 +| [matched-strain.json](results/matched-strain.json) | Eight samples through time 0.08. Maximum vorticity rises from 60.20 to 102.46. |
 +
-+The starting maximum matches across these three files. Later sample times differ. Their settings and full velocity fields were not included, so the records do not establish a single reproduced trajectory or a comparison between resolutions. [Detailed findings](RESULTS-REVIEW.md#matched-no-stop-attachment).
++The starting maximum matches across `matched-strain`, `matched-continue` and `matched-nostop`. The N=64 table starts at 59.28 rather than 60.20. Later sample times differ. Their settings and full velocity fields were not included, so the records do not establish a single reproduced trajectory or a comparison between resolutions. [Detailed findings](RESULTS-REVIEW.md#matched-no-stop-attachment).
 +
 +## What the boundary does
 +
@@ -199,7 +202,7 @@
 +- The result files pass checks for finite entries, increasing sample times and recorded arithmetic. The 48³ and 64³ starting fields were also rebuilt.
 +- The later trajectories have not been independently replayed. Finite saved values establish finite numerical observations; they do not prove smoothness of the continuous equation.
 +
-+For the mathematical argument, read [the vorticity bound](BOUND.md), [the proposed estimate](step-12.md), and [the short-time calculation](step-12-bound.md).
++For the mathematical argument, read [the vorticity bound](BOUND.md), [the proposed estimate](step-12.md), and [the short-time calculation](step-12-bound.md), and [the climbing-flow rate comparison](climb-bound.md).
 +
 +Original upload hashes and reviewed-file hashes are recorded in [provenance.json](provenance.json). [The patch](review-changes.patch) shows every change to the uploaded code and notes, including this wording revision.
 --- received/hug-ns/run.py
@@ -385,3 +388,49 @@
 +This is a conditional calculation. Navier–Stokes vorticity stretching depends on the velocity gradient. A derivation is needed before replacing that dependence with the unit-coefficient inequality `B′ ≤ B²`.
 +
 +The saved run reaches time 0.4 with finite reported values. That observation does not prove the assumed inequality. The number 0.004137 is therefore not an established lifespan bound for this flow, and it is not a predicted failure time.
+--- received/climb-bound.md
++++ reviewed/climb-bound.md
+@@ -1,11 +1,32 @@
+-# Climbing start, bound from the start only
+-
+-Biggest spin at time 0 is 60.2.
+-If it grew as fast as its own square, the earliest blowup would be time 0.0166.
+-That number uses only the start.
+-
+-The run passed 0.0166 and was still finite at time 0.35, biggest spin 514, high 611.
+-The fastest observed growth was 16 percent of the square rate, near time 0.075.
+-Later the fraction fell below 2 percent, and the spin dipped as well as rose.
+-
+-So the short bound held, and it was loose. It still does not say the spin stays finite for all time.
++# Climbing flow: observed rates and a conditional bound
++
++[Saved observations](results/matched-nostop.json) · [Vorticity argument](BOUND.md) · [Result review](RESULTS-REVIEW.md#climbing-start-bound)
++
++**The saved growth-rate calculation is reproducible. The proposed differential bound still needs a derivation.**
++
++## What the saved samples show
++
++Maximum vorticity starts at `B(0) = 60.198351`. The no-stop table reaches time 0.35, with a largest saved value of `611.139126` and a final value of `513.808318`.
++
++For each adjacent pair of saved times, define
++
++```text
++q_i = (B_(i+1) − B_i) / ((t_(i+1) − t_i) B_i²)
++```
++
++This compares the average increase over that interval with the square of the value at its start. The largest recorded `q_i` is **0.16394196**, or **16.39%**, on the interval **0.0747–0.0997**.
++
++Later, the interval 0.1993–0.2242 gives **1.12%**. Three saved intervals have decreases. The final short interval gives **2.13%**, so the later rates do not all stay below 2%.
++
++These are finite differences between observations. They do not measure the largest instantaneous growth rate inside each interval.
++
++## What the proposed bound assumes
++
++If the actual maximum satisfied `B′ ≤ B²`, scalar comparison would give
++
++```text
++B(t) ≤ B(0) / (1 − B(0)t), for t < 1/B(0)
++1/B(0) ≈ 0.01661175
++```
++
++The reciprocal uses only the starting value. Its application to this flow requires proving the assumed differential inequality. Finite observations after 0.0166 do not prove that assumption. This calculation does not predict a failure at 0.0166 or establish smoothness for all time.

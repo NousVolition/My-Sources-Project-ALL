@@ -15,7 +15,7 @@ You can read the studies on GitHub without installing anything.
 
 ## Latest hug-ns files
 
-[Explore the hug-ns experiment](math/imports/hug-ns/README.md): code, fifteen result files and clear descriptions of what has been checked. The latest [matched-nostop.json](math/imports/hug-ns/results/matched-nostop.json) records 16 samples through time 0.35. Pressure reporting is corrected; three numerical issues remain listed in the [code review](math/imports/hug-ns/REVIEW.md). This solver and its starting fields are documented separately from the earlier ring study below.
+[Explore the hug-ns experiment](math/imports/hug-ns/README.md): code, sixteen result files and clear descriptions of what has been checked. The latest [matched-finer.json](math/imports/hug-ns/results/matched-finer.json) records eight samples on N=64 through time 0.12. The earlier no-stop table reaches time 0.35. Pressure reporting is corrected; three numerical issues remain listed in the [code review](math/imports/hug-ns/REVIEW.md). This solver and its starting fields are documented separately from the earlier ring study below.
 
 ## Current math result
 
