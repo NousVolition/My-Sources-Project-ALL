@@ -13,9 +13,9 @@ You can read the studies on GitHub without installing anything.
 | **Fluid motion** | How does a smooth, ring-shaped flow change over time, and how much do the computer's calculation settings affect the answer? | [The math in plain language](math/README.md) |
 | **Conversation patterns** | What repeats or changes across replies, and how does earlier wording carry into later answers? | [A concrete conversation example](language/conversation-study/CONTEXT.md#c01) · [See categories without the reply text](language/exploration/README.md) |
 
-## New code submission
+## Latest hug-ns files
 
-[Review of the supplied hug-ns ZIP](math/imports/hug-ns/REVIEW.md): the latest five-file upload is included, with corrected pressure reporting, small reproducible checks, and three remaining numerical defects. The invisible initial boundary remains in the code. This is a different starting flow and solver from the saved grid study below.
+[Explore the hug-ns experiment](math/imports/hug-ns/README.md): code, fifteen result files and clear descriptions of what has been checked. The latest [matched-nostop.json](math/imports/hug-ns/results/matched-nostop.json) records 16 samples through time 0.35. Pressure reporting is corrected; three numerical issues remain listed in the [code review](math/imports/hug-ns/REVIEW.md). This solver and its starting fields are documented separately from the earlier ring study below.
 
 ## Current math result
 

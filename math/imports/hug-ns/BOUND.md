@@ -1,42 +1,48 @@
-> **Review correction:** The conditional continuum argument below needs an actual solution and a bound on its vorticity. A finite grid estimate such as `86.1` does not certify continuum smoothness, including on the measured interval. The final paragraph overstates what those reported numbers establish. The numbers were supplied without logs. [Review and derivation](REVIEW.md#review-of-boundmd). The received text is preserved below.
+# What the vorticity bound requires
 
-<!-- END IMPORT REVIEW BANNER -->
+[Experiment overview](README.md) · [Numerical observations](RESULTS-REVIEW.md#the-vorticity-integral-needs-its-calculation-record) · [Mathematical review](REVIEW.md#review-of-boundmd)
 
-# The bound, and where it stops
+**The estimate below is valid for a smooth, periodic, divergence-free solution. The missing step is a bound on the time integral of its maximum vorticity.**
 
-The equation after the start is
+## Starting from the equation
 
-    d_t u + (u·grad) u = -grad p + nu * laplacian u
-    div u = 0
+The gate prepares the initial data. The subsequent equation is
 
-The gate is not in this. It only built the start.
+```text
+∂t u + (u · ∇)u = −∇p + ν Δu
+∇ · u = 0
+```
 
-## What the equation does give
+Let `ω = curl u` be vorticity. Taking the curl gives
 
-Let w = curl u, the spin. Taking the curl of the equation and dropping the pressure, because the curl of a gradient is zero,
+```text
+∂t ω + (u · ∇)ω = (ω · ∇)u + ν Δω
+```
 
-    d_t w + (u·grad) w = (w·grad) u + nu * laplacian w
+The pressure term disappears because the curl of a gradient is zero. The two terms on the right describe stretching and viscous diffusion.
 
-The first term on the right is the stretch. It can make the spin larger. The last term smooths it.
+For the periodic domain, the vorticity energy estimate is
 
-From that, the size of the spin over the whole cube satisfies
+```text
+d/dt ||ω||₂² + 2ν ||∇ω||₂² ≤ 2 ||ω||∞ ||ω||₂²
+```
 
-    d/dt ||w||_2^2 + 2 nu ||grad w||_2^2 <= 2 ||w||_∞ ||w||_2^2
+`||ω||∞` is the maximum vorticity magnitude. `||ω||₂` is its volume-integrated root-square norm. The estimate follows from the vorticity energy identity and `||∇u||₂ = ||curl u||₂` for periodic, divergence-free fields.
 
-Smoothing is on the left. Stretching is on the right, and it is paid for by the biggest spin, not by the average spin.
+## The step still required
 
-## The bound that would finish step 10
+For a smooth solution approaching a finite time `T`, the continuation criterion uses
 
-If the biggest spin stays integrable in time,
+```text
+∫₀ᵀ ||ω(t)||∞ dt < ∞
+```
 
-    integral from 0 to T of ||w(t)||_∞ dt  <  infinity
+A bound on this integral allows smooth continuation past `T`. Applying the argument for all time requires control for every finite `T`. A result covering every admissible starting field must establish that control for each such field. See the [Navier–Stokes continuation criterion discussed by Chemin and Zhang, p. 133](https://smf.emath.fr/sites/default/files/2024-05/ens_ann-sc_49_131-167__sample.pdf).
 
-then the solution stays smooth up to T, and a little past it. That is the Beale–Kato–Majda bound. It is a real theorem. It is conditional.
+## What the saved table establishes
 
-Step 10 needs this integral to be finite for every finite T, for every smooth divergence-free start, with no extra stop put in by hand.
+For the reported 48³ pulled-tube run, maximum vorticity starts at about 71.7 and ends at about 29.3 at time 2. The file records an integral of **86.12856**. Integrating only its saved rows by the trapezoidal rule gives **88.67728**.
 
-## Why the runs do not meet it
+The file does not include the internal integration samples or quadrature rule. That calculation record is needed to reconcile the two values. Even a fully reproduced finite grid integral is a numerical observation, not the required bound on the continuous solution.
 
-The inequality does not close. In three dimensions the biggest spin is not controlled by the average spin. A start can raise the biggest spin without raising the energy. The pulled tube did that, then faded. One faded climb does not bound every climb.
-
-On the pulled tube, 48 cubed, nu 0.002, the biggest spin starts at 71.7 and is 29.3 at time 2. The time integral through time 2 is 86.1. Finite on that interval means this run stayed smooth on that interval. It was already known to stay smooth there. It is not the bound for all time.
+The estimate is established. The bound needed to complete this argument remains open.

@@ -2,10 +2,9 @@
 
 [Math guide](../README.md) · [Mirror-family check](norm-entropy-mirror.md)
 
-The contributor describes two mirrored halves that round inward like arms,
-connect, breathe gently, and let go. They then distinguish **pressure-triggered
-opening** from that timed release: an enclosure holds until a pressure limit
-is reached, while retaining an imprint and remaining able to change.
+These two geometry prototypes use mirrored curves to demonstrate timed motion,
+pressure-triggered opening and a relaxing shape memory. The table below describes
+the behavior implemented in each prototype.
 
 ## Two small prototypes
 
@@ -16,10 +15,8 @@ is reached, while retaining an imprint and remaining able to change.
 
 The second prototype has no automatic timed release. Lower pressure does not
 rejoin an envelope whose opening has already been triggered. A fresh envelope
-starts a new trial. These are prescribed geometry/response experiments, not
-calibrated clay mechanics, fracture calculations, fluid solvers, or transport
-models. An enclosed curve is tested; physical trapping and permeability are
-not simulated.
+starts a new trial. The checks cover prescribed curve geometry and response
+rules. Physical trapping, permeability and material fracture are not simulated.
 
 ## What the equations mean
 
@@ -51,26 +48,7 @@ and heights express relative increases. This is a change in the displayed
 quantity. Multiplying `f(x)` by `A > 1` makes values taller; using `f(x/s)` with
 `s > 1` stretches horizontally. Changing graph limits only changes the view.
 
-## Response modes to explore next
-
-The contributor proposes **fog, rain, ice, soft clay, hard clay, and broken**
-as response names for points, ideas, or interactions. These are currently
-proposed labels; no classifier or validated prediction is implemented.
-The contributor's later sketch is `fire -> clay <- water`: clay as a candidate
-adaptable intermediary, rather than an automatic pairing with the direct
-opposite. This remains a brainstorm, not a fixed response rule. An accidental
-"yes" response did not resolve the definition of pressure.
-The latest proposed distinction is adaptation that preserves the boundary
-versus repeated pressure followed by boundary failure. For conversation data,
-candidate observations include the stated limit, subsequent repetitions,
-whether the input changes in response, and the observed outcome. An outlier
-is an unusual observation; that alone does not establish harmful behavior
-or an intention to break a boundary. These labels concern observable exchanges,
-not a diagnosis or a fixed category of person.
-The meaning and observable measure of "pressure" for those data still need
-to be specified. Save examples, their prior context, and the chosen response
-before fitting thresholds. Material state cannot in general be predicted
-from physical pressure alone.
+## Run the checks
 
 ```sh
 python -m pytest math/tests/test_hug_envelope.py math/tests/test_pressure_envelope.py -q

@@ -1,24 +1,208 @@
---- received/BOUND.md
+--- received/hug-ns/BOUND.md
 +++ reviewed/BOUND.md
-@@ -1,3 +1,7 @@
-+> **Review correction:** The conditional continuum argument below needs an actual solution and a bound on its vorticity. A finite grid estimate such as `86.1` does not certify continuum smoothness, including on the measured interval. The final paragraph overstates what those reported numbers establish. The numbers were supplied without logs. [Review and derivation](REVIEW.md#review-of-boundmd). The received text is preserved below.
-+
-+<!-- END IMPORT REVIEW BANNER -->
-+
- # The bound, and where it stops
- 
- The equation after the start is
---- received/README.md
+@@ -1,38 +1,48 @@
+-# The bound, and where it stops
+-
+-The equation after the start is
+-
+-    d_t u + (u·grad) u = -grad p + nu * laplacian u
+-    div u = 0
+-
+-The gate is not in this. It only built the start.
+-
+-## What the equation does give
+-
+-Let w = curl u, the spin. Taking the curl of the equation and dropping the pressure, because the curl of a gradient is zero,
+-
+-    d_t w + (u·grad) w = (w·grad) u + nu * laplacian w
+-
+-The first term on the right is the stretch. It can make the spin larger. The last term smooths it.
+-
+-From that, the size of the spin over the whole cube satisfies
+-
+-    d/dt ||w||_2^2 + 2 nu ||grad w||_2^2 <= 2 ||w||_∞ ||w||_2^2
+-
+-Smoothing is on the left. Stretching is on the right, and it is paid for by the biggest spin, not by the average spin.
+-
+-## The bound that would finish step 10
+-
+-If the biggest spin stays integrable in time,
+-
+-    integral from 0 to T of ||w(t)||_∞ dt  <  infinity
+-
+-then the solution stays smooth up to T, and a little past it. That is the Beale–Kato–Majda bound. It is a real theorem. It is conditional.
+-
+-Step 10 needs this integral to be finite for every finite T, for every smooth divergence-free start, with no extra stop put in by hand.
+-
+-## Why the runs do not meet it
+-
+-The inequality does not close. In three dimensions the biggest spin is not controlled by the average spin. A start can raise the biggest spin without raising the energy. The pulled tube did that, then faded. One faded climb does not bound every climb.
+-
+-On the pulled tube, 48 cubed, nu 0.002, the biggest spin starts at 71.7 and is 29.3 at time 2. The time integral through time 2 is 86.1. Finite on that interval means this run stayed smooth on that interval. It was already known to stay smooth there. It is not the bound for all time.
++# What the vorticity bound requires
++
++[Experiment overview](README.md) · [Numerical observations](RESULTS-REVIEW.md#the-vorticity-integral-needs-its-calculation-record) · [Mathematical review](REVIEW.md#review-of-boundmd)
++
++**The estimate below is valid for a smooth, periodic, divergence-free solution. The missing step is a bound on the time integral of its maximum vorticity.**
++
++## Starting from the equation
++
++The gate prepares the initial data. The subsequent equation is
++
++```text
++∂t u + (u · ∇)u = −∇p + ν Δu
++∇ · u = 0
++```
++
++Let `ω = curl u` be vorticity. Taking the curl gives
++
++```text
++∂t ω + (u · ∇)ω = (ω · ∇)u + ν Δω
++```
++
++The pressure term disappears because the curl of a gradient is zero. The two terms on the right describe stretching and viscous diffusion.
++
++For the periodic domain, the vorticity energy estimate is
++
++```text
++d/dt ||ω||₂² + 2ν ||∇ω||₂² ≤ 2 ||ω||∞ ||ω||₂²
++```
++
++`||ω||∞` is the maximum vorticity magnitude. `||ω||₂` is its volume-integrated root-square norm. The estimate follows from the vorticity energy identity and `||∇u||₂ = ||curl u||₂` for periodic, divergence-free fields.
++
++## The step still required
++
++For a smooth solution approaching a finite time `T`, the continuation criterion uses
++
++```text
++∫₀ᵀ ||ω(t)||∞ dt < ∞
++```
++
++A bound on this integral allows smooth continuation past `T`. Applying the argument for all time requires control for every finite `T`. A result covering every admissible starting field must establish that control for each such field. See the [Navier–Stokes continuation criterion discussed by Chemin and Zhang, p. 133](https://smf.emath.fr/sites/default/files/2024-05/ens_ann-sc_49_131-167__sample.pdf).
++
++## What the saved table establishes
++
++For the reported 48³ pulled-tube run, maximum vorticity starts at about 71.7 and ends at about 29.3 at time 2. The file records an integral of **86.12856**. Integrating only its saved rows by the trapezoidal rule gives **88.67728**.
++
++The file does not include the internal integration samples or quadrature rule. That calculation record is needed to reconcile the two values. Even a fully reproduced finite grid integral is a numerical observation, not the required bound on the continuous solution.
++
++The estimate is established. The bound needed to complete this argument remains open.
+--- received/hug-ns/README.md
 +++ reviewed/README.md
-@@ -1,3 +1,7 @@
-+> **Reviewed import.** Start with [REVIEW.md](REVIEW.md). The gate and fluid evolution are retained. The pressure diagnostic was corrected and connected to the runner; [the exact changes](review-changes.patch) are recorded. Three numerical defects remain documented. Longer-run numbers below are supplied claims whose logs were not included. See also [the bound note and its review correction](BOUND.md).
-+
-+<!-- END IMPORT REVIEW BANNER -->
-+
- # Hug start, then the fluid equation
- 
- The circle is the thing. The cube is only the grid the calculation sits in. Opposite sides of the cube are the same side, so the flow that leaves one side comes back on the other.
---- received/run.py
+@@ -1,44 +1,68 @@
+-# Hug start, then the fluid equation
+-
+-The circle is the thing. The cube is only the grid the calculation sits in. Opposite sides of the cube are the same side, so the flow that leaves one side comes back on the other.
+-
+-The hug is the smooth start. A flat gate is zero near the sides of the cube and one in the middle. It multiplies the stream function, not the velocity. The velocity is then made divergence-free. After time zero that gate does not act. It is not a wall, a pressure limit, or a memory inside the run.
+-
+-The step after that is unforced periodic Navier-Stokes:
+-
+-    d_t u + (u·grad) u = -grad p + nu * laplacian u
+-    div u = 0
+-
+-No body force.
+-
+-## Run
+-
+-```
+-pip install -r requirements.txt
+-python run.py hug --n 32 --time 0.4
+-python run.py sharper --n 64 --time 2
+-python run.py tube --n 48 --time 2
+-python run.py tubes --n 48 --time 2
+-python run.py compare --n 48 --time 2 --out compare.json
+-```
+-
+-`compare` is the pulled tube, and it also prints steepening against smoothing.
+-
+-## What the runs showed
+-
+-- Hug ring, nu 0.01: speed falls. On 48³ it was still falling at time 40, peak about 0.06.
+-- Tighter ring, 64³, nu 0.01: peak 5.47 to 0.86 by time 2. Slope 66 to 3.7.
+-- Pulled tube, nu 0.002: peak rises, 3.74 to 5.22, then falls to 1.46 by time 4. Energy falls the whole time.
+-- Same tube, 64³: the climb is larger, 3.60 to 6.16, then below the start by time 1.60.
+-- Two opposite tubes: peak never beats the start, 2.98 to 2.19 by time 2.
+-- On the pulled tube, the biggest steepening stays larger than the biggest smoothing at every sample. The speed still fades. Those two maxima may not be in the same spot, and pressure is not in that comparison.
+-
+-These runs do not prove that every smooth start stays smooth for all time.
+-
+-
+-## Later checks
+-
+-- Same spot, pulled tube: smoothing is smaller than steepening at the fastest point on every sample. The speed still fades. `results/same-spot.json`
+-- Pressure at that point switches sign. It is not a steady brake. `results/pressure-at-peak.json`
+-- Biggest spin over average spin falls, 21 to 11 on 48 cubed, 20 to 16.6 on 64 cubed. The hole does not open on this start. `results/spin-ratio.json`, `results/spin-ratio-64.json`
+-- The conditional bound is in `BOUND.md`. On the faded climb the time integral of the biggest spin through time 2 is 86.1. `results/bound-check.json`
++# Hug flow: code and results
++
++[Project home](../../../README.md) · [All result files](results/) · [Code checks](REVIEW.md) · [Result checks](RESULTS-REVIEW.md)
++
++This experiment prepares a flow with an enclosing gate, then evolves it using an approximation of the unforced, incompressible Navier–Stokes equation in a periodic cube.
++
++**Current status:** the pressure diagnostic is corrected. Fifteen result files are available. The focused checks record **31 passes and three known failures**, listed in [the code review](REVIEW.md#findings-that-need-correction-before-relying-on-larger-runs).
++
++## Latest results
++
++| File | What is recorded |
++| --- | --- |
++| [matched-nostop.json](results/matched-nostop.json) | 16 samples through time 0.35. Maximum vorticity starts at 60.20, reaches a saved high of 611.14, and ends at 513.81. |
++| [matched-continue.json](results/matched-continue.json) | Nine samples through time 0.1999. The file reports stopping after the maximum passed 400. |
++| [matched-strain.json](results/matched-strain.json) | Eight samples through time 0.08. Maximum vorticity rises from 60.20 to 102.46. |
++
++The starting maximum matches across these three files. Later sample times differ. Their settings and full velocity fields were not included, so the records do not establish a single reproduced trajectory or a comparison between resolutions. [Detailed findings](RESULTS-REVIEW.md#matched-no-stop-attachment).
++
++## What the boundary does
++
++The gate is a function in `solver.py`. Its value is one in the interior and zero near the cube faces. It shapes the starting velocity through the stream function. It is used only at initialization; subsequent steps evolve the velocity and pressure.
++
++The cube has side length 6. Opposite faces connect, so flow leaving one face re-enters through the opposite face. The gate remains in the code. Its written formula has corners in its transition region, and the solver does not measure a gap between two arms.
++
++## Equation and measurements
++
++```text
++∂t u + (u · ∇)u = −∇p + ν Δu
++∇ · u = 0
++external force = 0
++```
++
++Here `u` is velocity, `p` is pressure and `ν` is viscosity. The code uses Fourier derivatives, pressure projection and two-stage Heun time stepping. This imported solver has different starting fields from the [earlier ring study](../../notes/hug-boundary.md).
++
++| Term in these files | Meaning |
++| --- | --- |
++| Peak speed | Largest recorded velocity magnitude on the grid |
++| Vorticity, sometimes called “spin” | Curl of velocity: a measure of local rotation |
++| Maximum vorticity / `biggest` | Largest reported vorticity magnitude |
++| `average` | Matches vorticity RMS at the two independently rebuilt starting states; later attachments do not always specify the normalization |
++| `peak_split` | Carrying, pressure and viscosity contributions to the change in local kinetic energy, all evaluated at the fastest grid point |
++
++The pressure correction fixes the reporting function. It does not alter the evolution equation. The older [pressure table](results/pressure-at-peak.json) is preserved as received and needs recalculation before its magnitudes or total can be used.
++
++## Run the code
++
++From this folder:
++
++```sh
++python -m pip install -r requirements.txt
++python run.py hug --n 32 --time 0.4
++python run.py sharper --n 64 --time 2
++python run.py tube --n 48 --time 2
++python run.py tubes --n 48 --time 2
++python run.py compare --n 48 --time 2 --out compare.json
++```
++
++`compare` runs the pulled-tube case and records both global term magnitudes and the signed split at the fastest point. The three known numerical issues affect interpretation of longer runs; see [the code review](REVIEW.md).
++
++## What is established
++
++- The code passes the listed projection, short-step, energy and corrected-pressure checks.
++- The result files pass checks for finite entries, increasing sample times and recorded arithmetic. The 48³ and 64³ starting fields were also rebuilt.
++- The later trajectories have not been independently replayed. Finite saved values establish finite numerical observations; they do not prove smoothness of the continuous equation.
++
++For the mathematical argument, read [the vorticity bound](BOUND.md), [the proposed estimate](step-12.md), and [the short-time calculation](step-12-bound.md).
++
++Original upload hashes and reviewed-file hashes are recorded in [provenance.json](provenance.json). [The patch](review-changes.patch) shows every change to the uploaded code and notes, including this wording revision.
+--- received/hug-ns/run.py
 +++ reviewed/run.py
 @@ -15,6 +15,7 @@
      build,
@@ -51,7 +235,7 @@
  
  
  def main():
---- received/solver.py
+--- received/hug-ns/solver.py
 +++ reviewed/solver.py
 @@ -200,31 +200,41 @@
      return steep, smooth
@@ -104,3 +288,100 @@
 +        "smoothing": smoothing,
 +        "total_local_energy_rate": carry + pressure + smoothing,
      }
+--- received/step-12 (1).md
++++ reviewed/step-12.md
+@@ -1,21 +1,37 @@
+-# Step 12 attempt
+-
+-Claim that would finish it: for every smooth divergence-free start, the biggest spin B stays a fixed multiple of the average spin A,
+-
+-    B <= C A
+-
+-with C depending only on the start, and not growing in time.
+-
+-Checked on the rise. At time 0, C would be 30.6. The ratio then hit 32.2. So the constant from the start is already too small on this one run. A larger fixed C, 32.2, covers this run through time 0.40. That C was read off the run. It was not derived.
+-
+-A slower candidate, B <= C A (1 + log(1+A)), also fits this run. The needed C there is 10.3. Again read off the run.
+-
+-Neither constant comes from the equation. The equation gives
+-
+-    d/dt A^2 <= 2 B A^2
+-
+-If B were <= C A with C known in advance, this would still not close: dA/dt <= C A^2 can blow up in finite time. The linear guess is the wrong shape even if it were true.
+-
+-The shape that would close is B integrable in time, with a bound that does not depend on watching the run. That bound is not here.
+-
+-Step 12 is not done.
++# Step 12: a proposed bound on maximum vorticity
++
++[Vorticity estimate](BOUND.md) · [Data and fitted constants](RESULTS-REVIEW.md#review-of-step-12md)
++
++**The proposed formulas fit the saved samples with the constants below. Neither constant has been derived from the equation.**
++
++Let `B` be maximum vorticity and `A` its RMS over the fixed periodic volume. The normalization of `average` must be confirmed in the producing script before applying this definition to every table.
++
++## Candidate estimates
++
++The first proposal is
++
++```text
++B(t) ≤ C A(t)
++```
++
++Here `C` may depend on the full starting field but must remain fixed in time. In [ratio-rose.json](results/ratio-rose.json), `B/A` starts at 30.62182 and reaches **32.2009963**. The starting ratio is too small to bound the later samples. A fitted constant at least as large as the saved maximum covers those samples through time 0.4.
++
++The second proposal is
++
++```text
++B(t) ≤ C A(t) (1 + log(1 + A(t)))
++```
++
++With the file's numerical convention, the smallest fitted constant is **10.2554604**; 10.3 covers the saved rows. A dimensionless convention or reference scale for `A` must be specified inside the logarithm. At the same `C`, this formula allows larger `B` than the linear formula.
++
++## Why this does not finish the argument
++
++Dropping the nonnegative viscous term from the vorticity energy estimate gives
++
++```text
++d/dt A² ≤ 2 B A²
++```
++
++Even if `B ≤ C A` were proved, it would give only `A′ ≤ C A²` when `A > 0`. The scalar equation `a′ = C a²` can become unbounded in finite time. This estimate therefore does not rule out such growth; it also does not show that the actual flow becomes unbounded.
++
++The next mathematical requirement is control of the time integral of `B`, as explained in [BOUND.md](BOUND.md). Fitting constants to saved samples does not supply that control between samples or after the recorded interval.
+--- received/step-12-bound.md
++++ reviewed/step-12-bound.md
+@@ -1,11 +1,22 @@
+-# Bound known before the run
+-
+-From the start alone, the biggest spin is 241.7.
+-
+-If that spin grew at a rate no faster than its own square, it could not explode before
+-
+-    T = 1 / 241.7 = 0.0041
+-
+-That number uses only the start. The run then went to time 0.40 and the biggest spin was still finite, so this lower bound held. It is a short time, not all time.
+-
+-Nothing computed from the start gives a time that cannot run out. Step 12 is still open past 0.0041.
++# The proposed short-time estimate
++
++[Full argument](BOUND.md) · [Review of this assumption](RESULTS-REVIEW.md#review-of-the-proposed-starting-time-bound)
++
++**The reciprocal calculation is correct under the stated assumption. That assumption has not been established for this flow.**
++
++Take a starting maximum vorticity `B(0) = 241.7`. If a nonnegative quantity `B` satisfies
++
++```text
++B′ ≤ B²
++```
++
++then scalar comparison gives
++
++```text
++B(t) ≤ B(0) / (1 − B(0)t), for 0 ≤ t < 1/B(0)
++1/B(0) ≈ 0.004137
++```
++
++This is a conditional calculation. Navier–Stokes vorticity stretching depends on the velocity gradient. A derivation is needed before replacing that dependence with the unit-coefficient inequality `B′ ≤ B²`.
++
++The saved run reaches time 0.4 with finite reported values. That observation does not prove the assumed inequality. The number 0.004137 is therefore not an established lifespan bound for this flow, and it is not a predicted failure time.

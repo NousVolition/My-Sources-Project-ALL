@@ -1,0 +1,212 @@
+{
+  "scope": "Received JSON arithmetic and starting values only; no long trajectory replay.",
+  "solver_sha256": "c78ab244202a29c6cb52cb3c8ec7efa613f492f1fa724a9ac32353a645c35f22",
+  "all_numeric_values_finite": true,
+  "sha256": {
+    "bound-check.json": "c3a461fc9d106c0fad426006e1b402b48253d96b74b3eb37ad1762cf086dbaaa",
+    "high-fraction.json": "eef6c0bb4947ca3fe01b9f4920c746ef7f32bdaf503bde832be05a084100bf97",
+    "matched-continue.json": "a7f623d9dacef89a784bbf4347f5e9db89031c9f6d78a57b7d8c50b3af1b3411",
+    "matched-nostop.json": "99db752242e3621273bacb9cc5b125879bded6b92c1498ee07ff6a0e37a58374",
+    "matched-strain.json": "c2744cebf7e486cecdfff4b27f1ff9bde32278be71171a04a8da48182c767655",
+    "pressure-at-peak.json": "2516c67824390aa7cd5bccdae83feb243be38537ad5ea1f1c44138eaef7f331f",
+    "ratio-rose.json": "163259b81078f10c2754e85c8053c6fb382915d789fb50685b507378262d809c",
+    "same-spot.json": "48cbd504d2ef872b7ff8ee82a24f5a3ddf2ab5c3baa2bdc3626106fc9f841adf",
+    "spin-ratio-64.json": "76c4bc096c0fb238b72dbb1cbef3393b77e9d4d7b6d9c8a9c7e0ae63ab6f8cc7",
+    "spin-ratio-low-nu.json": "4d1e085b9b0fe5f516e845a5ae963ed201c9ff9c1137fa9544232bc52c48e6c7",
+    "spin-ratio.json": "4645c8d7f141ad9710db91454ab4decfa0e21febad13704f1f5456738b1447dc",
+    "stretch-at-max.json": "9c80397978ed213b1a9ecd6a8dff6d07c6f899707bf8b14bdb70d63c1411c32d",
+    "stretch-rate.json": "b4a2a59bb227362c9b8290e6dbbf1578ee254549ba1ed5dd6857e5a2a07e63b8",
+    "tube-finer.json": "7c4da5876e37abcd3e08c6d8cca61a08f07d707d3e69768bb88e3d807eaa5849",
+    "two-tubes.json": "59adb94bb6023cc1af4728406ca2b741c8707c71c1066579dac40b67b03eb7a7"
+  },
+  "series": {
+    "tube-finer.json": {
+      "samples": 17,
+      "end_time": 1.6,
+      "start_peak": 3.5997432828396323,
+      "end_peak": 3.3413454641259674,
+      "largest_saved_peak": 6.15678243392749,
+      "energy_decreases_at_saved_samples": true
+    },
+    "two-tubes.json": {
+      "samples": 18,
+      "end_time": 2.0,
+      "start_peak": 2.9776864587067235,
+      "end_peak": 2.1862293658005925,
+      "largest_saved_peak": 2.9776864587067235,
+      "energy_decreases_at_saved_samples": true
+    },
+    "spin-ratio.json": {
+      "samples": 14,
+      "end_time": 2.0,
+      "start_ratio": 21.121669150254892,
+      "end_ratio": 11.185064444139623,
+      "monotone_decrease": false
+    },
+    "spin-ratio-64.json": {
+      "samples": 14,
+      "end_time": 1.6,
+      "start_peak": 3.5997432828396323,
+      "end_peak": 3.3413454641259674,
+      "largest_saved_peak": 6.0601034314459685,
+      "start_ratio": 20.0231636047354,
+      "end_ratio": 16.553207463459298,
+      "monotone_decrease": false
+    },
+    "spin-ratio-low-nu.json": {
+      "samples": 13,
+      "end_time": 1.0,
+      "start_peak": 3.740683047704348,
+      "end_peak": 4.811850930052774,
+      "largest_saved_peak": 5.826252592168035,
+      "start_ratio": 21.121669150254892,
+      "end_ratio": 13.580044138427287,
+      "monotone_decrease": false
+    },
+    "ratio-rose.json": {
+      "samples": 12,
+      "end_time": 0.4,
+      "start_peak": 10.85154281138417,
+      "end_peak": 10.695120696114401,
+      "largest_saved_peak": 10.85154281138417,
+      "start_ratio": 30.621819456277183,
+      "end_ratio": 21.32382297228188,
+      "monotone_decrease": false,
+      "highest_ratio_row": {
+        "t": 0.1977,
+        "biggest": 241.45869042214395,
+        "average": 7.498485084964524,
+        "ratio": 32.200996292744684,
+        "peak": 10.673372495027085
+      },
+      "highest_vorticity_row": {
+        "t": 0.3163,
+        "biggest": 250.8118778481618,
+        "average": 7.828666619090992,
+        "ratio": 32.03762403632462,
+        "peak": 9.938144163188099
+      },
+      "required_linear_constant_on_samples": 32.200996292744684,
+      "required_log_constant_on_samples": 10.255460414336675
+    },
+    "stretch-at-max.json": {
+      "samples": 10,
+      "end_time": 0.24,
+      "positive_stretch_samples": 7,
+      "negative_stretch_samples": 3,
+      "all_smoothing_negative": true,
+      "initial_max": 241.71226800762798,
+      "final_max": 235.54589534259722,
+      "largest_saved_max": 243.03807171263873
+    },
+    "pressure-n48": {
+      "samples": 14,
+      "end_time": 2.0,
+      "start_peak": 3.740683047704345,
+      "end_peak": 2.194138890862687,
+      "largest_saved_peak": 5.21788079437745,
+      "negative_pressure_samples": 7,
+      "positive_pressure_samples": 7,
+      "all_smoothing_negative": true
+    },
+    "pressure-n64": {
+      "samples": 14,
+      "end_time": 1.6,
+      "start_peak": 3.5997432828396323,
+      "end_peak": 3.3413454641259674,
+      "largest_saved_peak": 6.0601034314459685,
+      "negative_pressure_samples": 9,
+      "positive_pressure_samples": 5,
+      "all_smoothing_negative": true
+    },
+    "same-spot.json": {
+      "samples": 17,
+      "end_time": 2.0,
+      "start_peak": 3.740683047704345,
+      "end_peak": 2.1920313270938583,
+      "largest_saved_peak": 5.285641503810562
+    },
+    "bound-check.json": {
+      "samples": 12,
+      "end_time": 2.0,
+      "start_peak": 3.740683047704348,
+      "end_peak": 2.194138890862688,
+      "largest_saved_peak": 5.262816354720087,
+      "reported_integral": 86.12855895414485,
+      "trapezoid_from_saved_samples": 88.67727603418292
+    },
+    "stretch-rate.json": {
+      "samples": 10,
+      "end_time": 0.4,
+      "reported_signed_integral": -0.18822887547388004,
+      "trapezoid_from_saved_samples": -0.25912846236195664,
+      "initial_rate": -1.638126875374319,
+      "final_rate": -11.277794652069915
+    },
+    "high-fraction.json": {
+      "samples": 10,
+      "end_time": 0.15,
+      "initial_max": 128.90739771919542,
+      "final_max": 106.860564214875,
+      "highest_saved_max": 133.67527526386908,
+      "min_fraction": -0.052376958504369055,
+      "max_fraction": 0.02716899666819785,
+      "negative_fraction_samples": 1
+    },
+    "matched-strain.json": {
+      "samples": 8,
+      "end_time": 0.08,
+      "initial_max": 60.19835123345615,
+      "final_max": 102.46184770347982,
+      "highest_saved_max": 102.46184770347982,
+      "min_fraction": -0.5264075534105422,
+      "max_fraction": 0.2792972184056783,
+      "negative_fraction_samples": 1
+    },
+    "matched-continue.json": {
+      "samples": 9,
+      "end_time": 0.1999,
+      "initial_max": 60.19835123345615,
+      "final_max": 462.3014716841215,
+      "highest_saved_max": 462.3014716841215,
+      "min_fraction": -0.5264075534105422,
+      "max_fraction": 0.1780656765664767,
+      "negative_fraction_samples": 2,
+      "reported_high": 475.5442531785751,
+      "reported_stop_reason": "biggest passed 400",
+      "initial_row_matches_matched_strain": true,
+      "reported_high_present_in_saved_rows": false
+    },
+    "matched-nostop.json": {
+      "samples": 16,
+      "end_time": 0.35,
+      "initial_max": 60.19835123345615,
+      "final_max": 513.8083177240829,
+      "highest_saved_row": {
+        "t": 0.3239,
+        "biggest": 611.139126161215
+      },
+      "saved_decreases": 3,
+      "reported_stop_reason": "time 0.35",
+      "initial_max_matches_matched_continue": true
+    }
+  },
+  "rebuilt_starts": [
+    {
+      "n": 48,
+      "reproduced_peak": 3.74068304770435,
+      "reproduced_vorticity_max": 71.68763586631769,
+      "reproduced_vorticity_rms": 3.394032704344894,
+      "steps_advanced": 0
+    },
+    {
+      "n": 64,
+      "reproduced_peak": 3.5997432828396323,
+      "reproduced_vorticity_max": 72.53863506923008,
+      "reproduced_vorticity_rms": 3.6227359722554016,
+      "steps_advanced": 0
+    }
+  ],
+  "pressure_status": "Historical values supplied alongside the uncorrected diagnostic. Preserved as received; not corrected result data.",
+  "starting_value_check_reused": true
+}

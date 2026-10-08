@@ -16,9 +16,9 @@ The original grid-comparison series reaches **model time 0.4** on **256³ and 38
 
 **Latest shape measurement:** Both energy-weighted widths decreased at the new saved times in all three runs. [Values and definitions](notes/hug-boundary.md#continuation-to-model-time-04).
 
-## Supplied hug-ns code
+## Hug-ns code and results
 
-[Read the import review](imports/hug-ns/REVIEW.md) before using the [supplied files](imports/hug-ns/README.md). The gate is retained. The review records short checks, three unresolved numerical defects, and differences from the existing ring construction. The longer results claimed in the submitted README were not included as data.
+[Open the experiment overview](imports/hug-ns/README.md) for the code, fifteen result tables and measurement definitions. The latest table reaches time 0.35. The [code review](imports/hug-ns/REVIEW.md) lists the corrected pressure diagnostic, 31 focused passes and three known failures. The [results review](imports/hug-ns/RESULTS-REVIEW.md) explains exactly which values were checked. This imported solver uses different starting data from the earlier ring study.
 
 ## Background and earlier experiments
 
