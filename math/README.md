@@ -8,11 +8,11 @@
 
 The **“hug”** is a soft enclosing shape applied to the starting flow. After that preparation, the flow evolves with zero external force. A *velocity field* gives the speed and direction at each position; its *gradient* measures how quickly that velocity changes from place to place.
 
-1. **See the current result:** [the local time-method comparison](notes/hug-boundary.md#local-time-method-comparison-at-model-time-04).
+1. **See the current result:** [the longer time-method comparison](notes/hug-boundary.md#longer-time-method-comparison-to-model-time-041).
 2. **Understand the construction:** [how the hug shapes the starting field](notes/hug-boundary.md).
 3. **Follow the work:** [completed checks and the next experiment](../STATUS.md#next-math-step).
 
-The latest continuation reaches **model time 0.4** on **256³ and 384³** grids. The grid differences are **0.0875%** in velocity and **0.3710%** in its gradient. On 384³, halving the time step gives **0.0491%** and **0.1245%**. Model time is the simulation time coordinate. These are finite-time numerical measurements; the Clay problem requires a mathematical proof.
+The original grid-comparison series reaches **model time 0.4** on **256³ and 384³** grids. The grid differences are **0.0875%** in velocity and **0.3710%** in its gradient. On 384³, halving the time step gives **0.0491%** and **0.1245%**. Model time is the simulation time coordinate. These are finite-time numerical measurements; the Clay problem requires a mathematical proof.
 
 **Latest shape measurement:** Both energy-weighted widths decreased at the new saved times in all three runs. [Values and definitions](notes/hug-boundary.md#continuation-to-model-time-04).
 
@@ -54,6 +54,7 @@ The editable derivation is [smooth-initial-field.tex](notes/smooth-initial-field
 | [hug_energy_balance.py](hug_energy_balance.py) | Compares observed energy loss with viscosity using published measurements; records sensitivity to integration and observation spacing |
 | [hug_step_energy.py](hug_step_energy.py) | Traces viscosity, transport, finite-step and pressure-correction energy contributions on disposable copies of saved states |
 | [hug_time_method.py](hug_time_method.py) | Compares Euler and projected Heun over the same short interval from saved flow, with one, two and four steps |
+| [hug_method_interval.py](hug_method_interval.py) | Continues Euler and Heun from the same saved state, with reusable checkpoints and full-step / half-step controls |
 | [tests/](tests/) | Consolidated checks from the repositories and this review |
 
 From the repository root:

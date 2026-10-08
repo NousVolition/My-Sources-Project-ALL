@@ -5,6 +5,16 @@
 <div class="badge">Boundary mismatch: 0 · External force: 0</div>
 <p><strong>9 new checks passed</strong>, along with 7 existing integration checks. Four short runs used the existing cube solver.</p>
 <figure><img src="../figures/hug-ring-boundary.png" alt="Meridional flow inside the actual closed hug, with an unchanged inner core and a smooth weight that reaches zero before the cube faces."><figcaption>The existing closed pose is sampled once to prepare the starting field. Streamlines show the meridional flow; swirl remains in the full three-dimensional field.</figcaption></figure>
+<!-- METHOD_INTERVAL_START -->
+<section id="method-interval"><h2>Does the improvement persist over a longer interval?</h2>
+<p><strong>The averaging method remains less sensitive to halving the time step over the longer interval.</strong> At 0.41, the energy difference caused by halving the time step is 3,114.5 times smaller with Heun. Velocity sensitivity is 259.2 times smaller.</p>
+<figure><img src="../figures/hug-method-interval.png" alt="Energy sensitivity and accumulated temporal defect from time 0.40 to 0.41."><figcaption>Logarithmic heights. Left: full-step versus half-step energy difference. Right: accumulated defect relative to each method's stage work quadrature.</figcaption></figure>
+<details><summary>Measurements and limits</summary><div class="scroll"><table><thead><tr><th>Method</th><th>Time</th><th>Energy sensitivity</th><th>Velocity difference</th><th>Gradient difference</th></tr></thead><tbody><tr><td>Euler</td><td>0.405</td><td>1.049756e-04</td><td>0.0005199%</td><td>0.0013121%</td></tr><tr><td>Euler</td><td>0.410</td><td>2.093871e-04</td><td>0.0010378%</td><td>0.0026159%</td></tr><tr><td>Heun</td><td>0.405</td><td>3.369860e-08</td><td>0.0000020%</td><td>0.0000080%</td></tr><tr><td>Heun</td><td>0.410</td><td>6.723035e-08</td><td>0.0000040%</td><td>0.0000158%</td></tr></tbody></table></div>
+<p>Four branches start from the identical saved 384³ half-step Euler state at 0.40. Both methods use dt 0.001 and 0.0005 through 0.41. Eight checkpoints are saved at 0.405 and 0.410. Energy decreased at every recorded time in all four branches.</p>
+<p>Eight new restart and integrity checks passed. Maximum checkpoint divergence: 3.908e-14; accumulated energy-accounting remainder: 6.469e-15. The equation, spatial operators, viscosity and zero force are retained. Each method's stage work includes transport and viscosity.</p>
+<p>This is a separate method comparison on one grid. The original three-run series remains preserved through 0.40. These finite numerical differences do not supply an exact error bound or a Clay proof.</p></details>
+<p><a href="../results/hug-method-interval.json">Full result and provenance</a> · <a href="../results/hug-method-interval.csv">Energy observations</a></p></section>
+<!-- METHOD_INTERVAL_END -->
 <!-- TIME_METHOD_START -->
 <section id="time-method"><h2>Does a more accurate time method help?</h2>
 <p><strong>Heun gives smaller energy and velocity changes when the time step is halved in all three local controls.</strong> For the finest saved input, energy sensitivity is 3,115.0 times smaller and velocity sensitivity is 257.2 times smaller.</p>

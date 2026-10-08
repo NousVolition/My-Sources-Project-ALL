@@ -26,6 +26,7 @@
 | Viscous energy accounting | [Measured loss and estimates](math/notes/hug-boundary.md#viscous-energy-check-through-model-time-04) | 31 measurements reused; 15 focused checks passed; remaining gap shrinks with half-size time step; no added evolution |
 | One-step energy trace | [Contributions and limits](math/notes/hug-boundary.md#one-step-energy-trace-through-model-time-04) | 31 disposable one-step probes; 14 focused checks passed; exact step accounting closes to roundoff; saved trajectory remains at 0.40 |
 | Local time-method comparison | [Measurements and limits](math/notes/hug-boundary.md#local-time-method-comparison-at-model-time-04) | 18 disposable controls from time 0.40; Euler and Heun use identical inputs and spatial operators; 17 focused checks passed |
+| Longer time-method comparison | [Measurements and limits](math/notes/hug-boundary.md#longer-time-method-comparison-to-model-time-041) | Four branches from identical 384³ state at 0.40 to 0.41; eight reusable checkpoints; eight new focused checks passed |
 | Separate trigonometric illustration | [Derivation, runs, and checks](math/notes/hidden-flow-evolution.md) | Assistant-chosen fields, distinct from the ring construction. One has an analytic smooth reduction; a 3D variant has refined finite-time results. The conversation-to-fluid mapping was not established |
 | Language reports | [Report guide](language/README.md) | Existing tables and charts preserved; available chart links repaired |
 | Conversation exploration | [Wordless map and observations](language/exploration/README.md) | Sequence, overlapping saved categories, reply length, and unmarked replies exposed without exporting reply text |
@@ -73,6 +74,8 @@ The [continuation to model time 0.24](math/notes/hug-boundary.md#continuation-to
 
 **Local time-method comparison completed:** Heun gives smaller energy and velocity changes when the time step is halved in all three local controls. These are short controls from time 0.40, without replacing the saved Euler trajectory. [Measurements and limits](math/notes/hug-boundary.md#local-time-method-comparison-at-model-time-04). Further tests await the contributor's go-ahead.
 
+**Longer time-method comparison completed:** The averaging method remains less sensitive to halving the time step over the longer interval. Four branches share the same starting arrays and now reach 0.41. [Measurements and limits](math/notes/hug-boundary.md#longer-time-method-comparison-to-model-time-041). Further tests await the contributor's go-ahead.
+
 ## Material still missing
 
 - The original pasted inputs for the two language scripts and the generator for the third report.
@@ -86,4 +89,4 @@ The conversation reconstruction is preserved as a reconstruction; it is not subs
 
 The [consolidation record](archive/CONSOLIDATION.md) identifies which Copilot branches were reused, which duplicate implementations were retired, and which sessions produced no file changes. It is the place to check before restarting an old task.
 
-**Comparison series complete through 0.40:** both new intervals are recorded above. Further evolution is not scheduled.
+**Original grid-comparison series complete through 0.40; separate Euler/Heun controls complete through 0.41.** Further evolution is not scheduled.
