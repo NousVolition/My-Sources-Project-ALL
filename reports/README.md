@@ -4,6 +4,12 @@ These reports are saved on the author’s computer and copied into this GitHub f
 
 **To use the interactive controls:** [download the project](https://github.com/NousVolition/My-Sources-Project-ALL/archive/refs/heads/main.zip), extract it, and open `reports/index.html`. GitHub’s file viewer displays HTML source rather than running its controls.
 
+## Numerical progress — October 8
+
+- **[Matched-stretch controls](matched-stretch/README.md): 5/48 runs complete.** Charts, time-step comparisons, widths and budgets; spatial resolution remains inadequate in the current 64³ runs.
+- **[Three vortex surroundings](study/README.md): 28/48 runs complete.** Updated measurements and comparisons; the older interactive display is dated separately below.
+- [Verification of this saved snapshot](numerical-progress-verification.json).
+
 ## Completed mirror tests — October 8
 
 - **[Four reproduced fluid tests](../math/imports/hug-ns/mirror-fluid/README.md):** [charts](files/fluid-tests-completed.png), [HTML report](files/fluid-tests-completed.html), code and result tables.
@@ -41,4 +47,5 @@ Earlier vortex snapshot: 2026-10-08T20:40:59.597392+00:00. The vortex matrix is 
 - [Conversation sources](../language/conversation-study/README.md)
 
 The full restart arrays remain in the local calculation workspace. They are large solver files; this folder includes the display data, measurement tables and source code needed to inspect the reports. Private next-step notes and temporary verification screenshots are not part of this report collection.
+
 
