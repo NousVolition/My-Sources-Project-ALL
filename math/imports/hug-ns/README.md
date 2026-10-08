@@ -4,17 +4,20 @@
 
 This experiment prepares a flow with an enclosing gate, then evolves it using an approximation of the unforced, incompressible Navier–Stokes equation in a periodic cube.
 
-**Current status:** the pressure diagnostic is corrected. Fifteen result files are available. The focused checks record **31 passes and three known failures**, listed in [the code review](REVIEW.md#findings-that-need-correction-before-relying-on-larger-runs).
+**Current status:** the pressure diagnostic is corrected. Sixteen result files are available. The focused checks record **32 passes and three known failures**, listed in [the code review](REVIEW.md#findings-that-need-correction-before-relying-on-larger-runs).
+
+**Report:** [Original two-page PDF](hug-runs.pdf) · [Checks and wording corrections](RESULTS-REVIEW.md#pdf-report). The PDF is preserved as received; the linked review states which conclusions the supplied files support.
 
 ## Latest results
 
 | File | What is recorded |
 | --- | --- |
+| [matched-finer.json](results/matched-finer.json) | N=64; eight samples through time 0.12. Maximum vorticity rises from 59.28 to 200.62. |
 | [matched-nostop.json](results/matched-nostop.json) | 16 samples through time 0.35. Maximum vorticity starts at 60.20, reaches a saved high of 611.14, and ends at 513.81. |
 | [matched-continue.json](results/matched-continue.json) | Nine samples through time 0.1999. The file reports stopping after the maximum passed 400. |
 | [matched-strain.json](results/matched-strain.json) | Eight samples through time 0.08. Maximum vorticity rises from 60.20 to 102.46. |
 
-The starting maximum matches across these three files. Later sample times differ. Their settings and full velocity fields were not included, so the records do not establish a single reproduced trajectory or a comparison between resolutions. [Detailed findings](RESULTS-REVIEW.md#matched-no-stop-attachment).
+The starting maximum matches across `matched-strain`, `matched-continue` and `matched-nostop`. The N=64 table starts at 59.28 rather than 60.20. Later sample times differ. Their settings and full velocity fields were not included, so the records do not establish a single reproduced trajectory or a comparison between resolutions. [Detailed findings](RESULTS-REVIEW.md#matched-no-stop-attachment).
 
 ## What the boundary does
 
@@ -63,6 +66,6 @@ python run.py compare --n 48 --time 2 --out compare.json
 - The result files pass checks for finite entries, increasing sample times and recorded arithmetic. The 48³ and 64³ starting fields were also rebuilt.
 - The later trajectories have not been independently replayed. Finite saved values establish finite numerical observations; they do not prove smoothness of the continuous equation.
 
-For the mathematical argument, read [the vorticity bound](BOUND.md), [the proposed estimate](step-12.md), and [the short-time calculation](step-12-bound.md).
+For the mathematical argument, read [the vorticity bound](BOUND.md), [the proposed estimate](step-12.md), and [the short-time calculation](step-12-bound.md), and [the climbing-flow rate comparison](climb-bound.md).
 
 Original upload hashes and reviewed-file hashes are recorded in [provenance.json](provenance.json). [The patch](review-changes.patch) shows every change to the uploaded code and notes, including this wording revision.

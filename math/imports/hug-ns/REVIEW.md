@@ -2,7 +2,7 @@
 
 [Project home](../../../README.md) · [Math index](../../README.md) · [Experiment overview](README.md) · [Recorded checks](review-results.json)
 
-**Pressure reporting is corrected. The focused checks record 31 passes and three known numerical failures. Fifteen result tables are included.**
+**Pressure reporting is corrected. The focused checks record 32 passes and three known numerical failures. Sixteen result tables are included.**
 
 The latest supplied archive is `hug-ns (5).zip`, containing five code/document files and eight result JSON files. Its contents match `hug-ns (4).zip` exactly. Its `solver.py` matches the separately attached file, and its `BOUND.md` matches the separate note. Earlier receipts added the pressure function and bound note; this update adds the result tables. One current copy of each is published. See [the results review](RESULTS-REVIEW.md).
 
@@ -106,7 +106,7 @@ The conclusion about the finite numerical integral is too strong. The newer `bou
 
 Environment: Python 3.12.14, NumPy 2.3.5. The repository's pinned requirements provide these numerical dependencies; the uploaded `requirements.txt` itself specifies only `numpy`.
 
-The code import passed the full local repository suite: **243 passed and 3 expected failures**. After adding the fifteen result files, the focused code-and-data suite records **31 passed and 3 expected failures**. These totals come from different test scopes; they are not added together. Each expected failure reproduces one of the three open numerical defects. Syntax and undefined-name checks passed.
+The code import passed the full local repository suite: **243 passed and 3 expected failures**. After adding the sixteen result files, the focused code-and-data suite records **32 passed and 3 expected failures**. These totals come from different test scopes; they are not added together. Each expected failure reproduces one of the three open numerical defects. Syntax and undefined-name checks passed.
 
 | Check | Observation |
 | --- | --- |
@@ -129,8 +129,8 @@ python -m pytest -q math/tests/test_hug_ns_submission.py -rx
 python math/imports/hug-ns/review_checks.py --out scratch/hug-ns-review.json
 ```
 
-Create `scratch/` first if it does not exist. Fifteen checks should pass and three should be reported as `XFAIL` (known defects), not as passing requirements. Unexpected success is also an error so a later repair must update the review.
+Create `scratch/` first if it does not exist. Fifteen code checks should pass and three should be reported as `XFAIL` (known defects). The separate result-file checks are not included in that command. Unexpected success is also an error so a later repair must update the review.
 
 ## Included files
 
-This folder contains the reviewed solver, runner, mathematical notes, fifteen result tables, check scripts and source hashes. The patch records the diagnostic fixes and documentation edits. Main project and math-index links make the work discoverable. The three remaining numerical fixes are recommendations, not implemented changes. The gate is retained, and the solver core before `pressure_at_peak` is byte-identical to the received source.
+This folder contains the reviewed solver, runner, mathematical notes, sixteen result tables, check scripts and source hashes. The patch records the diagnostic fixes and documentation edits. Main project and math-index links make the work discoverable. The three remaining numerical fixes are recommendations, not implemented changes. The gate is retained, and the solver core before `pressure_at_peak` is byte-identical to the received source.

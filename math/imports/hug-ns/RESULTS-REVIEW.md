@@ -4,13 +4,13 @@
 
 The latest `hug-ns (5).zip` contains the same files, byte for byte, as `hug-ns (4).zip`; only the ZIP container differs. This update adds one copy of eight supplied JSON files and the README's “Later checks” section. The received solver matches the earlier upload. The previously published pressure-diagnostic correction is retained.
 
-Later separate attachments are also included: [ratio-rose.json](results/ratio-rose.json), [stretch-at-max.json](results/stretch-at-max.json), and the revised [step-12.md](step-12.md). The later [stretch-rate.json](results/stretch-rate.json) and [high-fraction.json](results/high-fraction.json) plus [matched-strain.json](results/matched-strain.json) are followed by [matched-continue.json](results/matched-continue.json), then [matched-nostop.json](results/matched-nostop.json), bringing the total to fifteen result tables. Their source hashes are recorded separately from the ZIP entries; the superseded step-12 source hash is retained.
+Later separate attachments are also included: [ratio-rose.json](results/ratio-rose.json), [stretch-at-max.json](results/stretch-at-max.json), and the revised [step-12.md](step-12.md). The later [stretch-rate.json](results/stretch-rate.json) and [high-fraction.json](results/high-fraction.json) plus [matched-strain.json](results/matched-strain.json) are followed by [matched-continue.json](results/matched-continue.json), then [matched-nostop.json](results/matched-nostop.json) and [matched-finer.json](results/matched-finer.json), bringing the total to sixteen result tables. Their source hashes are recorded separately from the ZIP entries; the superseded step-12 source hash is retained.
 
 ## Results at a glance
 
-- All fifteen files pass checks for finite values, increasing saved times and the arithmetic present in each file.
+- All sixteen files pass checks for finite values, increasing saved times and the arithmetic present in each file.
 - The 48³ and 64³ starting fields were rebuilt. The later trajectories were not replayed.
-- The latest file reaches time 0.35 with a largest saved maximum vorticity of 611.139126.
+- The no-stop table reaches time 0.35 with a largest saved maximum vorticity of 611.139126. The newer N=64 table reaches 0.12 and ends at 200.615406.
 - Two calculations need their source records: the historical pressure split and the vorticity time integral. Their specific issues are described below.
 
 ## What was checked
@@ -126,6 +126,34 @@ The table documents numerical growth and a reported stopping threshold. It does 
 The largest saved maximum is `611.139126` at time `0.3239`; the last is `513.808318`. The series includes rises and falls. It supplies observations beyond the preceding file's reported 400 stopping threshold and ends with the reason `time 0.35`.
 
 Crossing that chosen threshold was therefore not, by itself, evidence of a numerical failure. This table still omits the grid, viscosity, step schedule, source revision and full velocity fields. It does not verify that the same trajectory continued, distinguish resolved growth from numerical error, or establish a singularity.
+
+## Matched finer-grid attachment
+
+[matched-finer.json](results/matched-finer.json) records `N=64` and eight finite samples through time 0.12. Maximum vorticity increases at every saved time, from `59.279954` to `200.615406`.
+
+The preceding matched tables start at `60.198351` and use different sample times. The new file provides a grid size, but omits viscosity, initial-field parameters, time-step settings and full velocity fields. The saved tables therefore record growth in both sets of observations; they do not yet establish a controlled resolution comparison or a convergence rate.
+
+## Climbing-start bound
+
+[climb-bound.md](climb-bound.md) compares the no-stop table with a proposed square-growth estimate. The largest forward difference, divided by the square of the value at the interval start, is **0.16394196** on **0.0747–0.0997**. This reproduces the note's rounded 16% observation. It is an interval average, not a measured maximum instantaneous derivative. The final short interval gives 2.13%, so the later values do not all remain below 2%.
+
+The reciprocal of the starting maximum is **0.01661175**. Its use as a lifespan estimate depends on deriving `B′ ≤ B²` for the actual solution. That derivation is absent. The revised note states the assumption and calculation separately; the original source hash and exact wording changes are preserved.
+
+## PDF report
+
+[hug-runs.pdf](hug-runs.pdf) is preserved byte for byte. Both pages were rendered and inspected; the table and plotted curve are readable. The figure has no numeric vertical tick labels, so the JSON tables remain the source for exact values.
+
+The report's rounded no-stop values (60, 611 and 514 at time 0.35) and N=64 final value (201 at time 0.12) agree with the corresponding saved tables. Its rounded 16% growth figure is reproduced by the interval calculation in [climb-bound.md](climb-bound.md).
+
+The following statements need qualification:
+
+- **“Not a coarse-grid effect”:** growth is recorded at N=64, but matched times, full run settings and resolution-error estimates are missing. This does not establish convergence or rule out numerical error.
+- **“Also falls with no smoothing”:** no zero-viscosity result table was supplied. `spin-ratio-low-nu.json` records viscosity 0.0005, which is positive.
+- **“Earliest blowup” at 0.0166:** the reciprocal is conditional on `B′ ≤ B²`; that inequality has not been derived for this flow.
+- **“The hug is the smooth start”:** the finite Fourier field is smooth, but the written gate formula has a corner in its transition region. The [code review](REVIEW.md#1-the-underlying-gate-has-corners-in-its-transition-region) distinguishes the two.
+- **Pressure at the fastest point:** the saved pressure table uses the older diagnostic. Its signs and magnitudes need a consistent recalculation before use in the local energy balance.
+
+The ring-to-time-40 and other longer-run summaries repeat claims from the uploaded README. Their full trajectories were not supplied or rerun in this review. The PDF correctly leaves the all-time bound open.
 
 ## Reproduce these checks
 

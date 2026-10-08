@@ -18,7 +18,7 @@ The original grid-comparison series reaches **model time 0.4** on **256³ and 38
 
 ## Hug-ns code and results
 
-[Open the experiment overview](imports/hug-ns/README.md) for the code, fifteen result tables and measurement definitions. The latest table reaches time 0.35. The [code review](imports/hug-ns/REVIEW.md) lists the corrected pressure diagnostic, 31 focused passes and three known failures. The [results review](imports/hug-ns/RESULTS-REVIEW.md) explains exactly which values were checked. This imported solver uses different starting data from the earlier ring study.
+[Open the experiment overview](imports/hug-ns/README.md) for the code, sixteen result tables and measurement definitions. The latest N=64 table reaches time 0.12; the earlier no-stop table reaches 0.35. The [code review](imports/hug-ns/REVIEW.md) lists the corrected pressure diagnostic, 32 focused passes and three known failures. The [results review](imports/hug-ns/RESULTS-REVIEW.md) explains exactly which values were checked. This imported solver uses different starting data from the earlier ring study.
 
 ## Background and earlier experiments
 

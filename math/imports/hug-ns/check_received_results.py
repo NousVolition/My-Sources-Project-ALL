@@ -124,6 +124,20 @@ def check_results(rebuild_starts=False):
         highest_saved_row=max(rows,key=lambda r:r['biggest']),
         saved_decreases=sum(b['biggest']<a['biggest'] for a,b in zip(rows,rows[1:])),
         reported_stop_reason=data['reason'],initial_max_matches_matched_continue=True)
+    growth=[{'start_time':a['t'],'end_time':b['t'],
+             'fraction_of_start_square':(b['biggest']-a['biggest'])/((b['t']-a['t'])*a['biggest']**2)}
+            for a,b in zip(rows,rows[1:])]
+    series['matched-nostop.json'].update(reciprocal_initial_max=1/rows[0]['biggest'],
+        largest_forward_difference_fraction=max(growth,key=lambda r:r['fraction_of_start_square']),
+        forward_difference_fractions=growth)
+    data=received['matched-finer.json']
+    rows=data['series']
+    assert isinstance(data['n'],int) and data['n']>0
+    assert all(r['biggest']>0 for r in rows)
+    series['matched-finer.json']=series_summary(rows)
+    series['matched-finer.json'].update(n=data['n'],initial_max=rows[0]['biggest'],final_max=rows[-1]['biggest'],
+        highest_saved_row=max(rows,key=lambda r:r['biggest']),
+        saved_decreases=sum(b['biggest']<a['biggest'] for a,b in zip(rows,rows[1:])))
     starts=[]
     if rebuild_starts:
         for n,name in ((48,'spin-ratio.json'),(64,'spin-ratio-64.json')):
