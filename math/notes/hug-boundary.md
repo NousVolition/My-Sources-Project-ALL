@@ -1,6 +1,6 @@
 # The hug now prepares the ring's boundary
 
-**Latest:** [Longer time-method comparison](#longer-time-method-comparison-to-model-time-041).
+**Latest:** [Time-method comparison on both grids](#time-method-comparison-on-both-grids).
 
 **Completed:** the existing closed hug shapes the existing smooth ring's initial field. Velocity becomes zero smoothly before every cube face, so opposite faces and all their derivatives match. The continuum field remains divergence-free. The Navier–Stokes equation and zero-external-force choice remain unchanged.
 
@@ -899,3 +899,90 @@ The complete-field checkpoints remain in ignored scratch/hug-method-interval/ fo
 [Continuation control](../hug_method_interval.py) · [Restart and integrity checks](../tests/test_hug_method_interval.py) · [Full result](../results/hug-method-interval.json) · [All 44 energy observations](../results/hug-method-interval.csv)
 
 <!-- METHOD_INTERVAL_END -->
+
+<!-- METHOD_GRID_START -->
+## Time-method comparison on both grids
+
+**Question:** does the averaging method's improvement also hold on the 256³ grid over model time 0.40 to 0.41?
+
+**The averaging method gives smaller energy changes when the step is halved on both grids.** Each comparison uses dt **0.001** versus **0.0005**, within the same method and grid. The completed 384³ measurements are reused.
+
+![Energy sensitivity to halving the time step on 256 and 384 grids](../figures/hug-method-grid.png)
+
+The panels share the same logarithmic vertical scale. Lower values mean smaller changes when the time step is halved. Each curve measures differences between two computed energies; it is not an exact physical error.
+
+### Improvement at time 0.41
+
+These factors divide Euler's sensitivity by Heun's sensitivity. They compare methods **within each grid**.
+
+| Grid | Energy sensitivity reduction factor | Velocity sensitivity reduction factor | Gradient sensitivity reduction factor |
+| --- | --- | --- | --- |
+| 256³ | 3,126.5 | 258.3 | 165.5 |
+| 384³ | 3,114.5 | 259.2 | 165.3 |
+
+### What was run and reused
+
+- **New:** four 256³ branches, Euler and Heun at both step sizes, all starting from the **same saved 256³ velocity at 0.40**. Energy is recorded every 0.001. Eight complete velocity checkpoints at **0.405 and 0.410** support restart and full-field comparisons. There are 60 method steps and 90 calls to the existing Euler predictor/projection.
+- **Reused:** all four [384³ branches and measurements](#longer-time-method-comparison-to-model-time-041). Their saved result is identified by its file hash. No 384³ evolution is repeated.
+- **Retained:** the physical equation, length-6 periodic box, viscosity 0.01, zero external force, original hug starting-field history, spatial operators, pressure projection, and already tested Euler/Heun and checkpoint functions.
+
+**The grids have different prior histories:** the 256³ input reached 0.40 using Euler dt 0.001; the 384³ input used Euler dt 0.0005. The four branches within each grid share identical starting arrays. This answers whether the method improvement persists on each saved flow. It does **not** isolate a spatial-convergence rate between grids.
+
+### Matched comparisons within each grid
+
+Velocity and centered-gradient differences compare the complete arrays and are normalized by the corresponding half-step field's norm. No transfer between grids is used.
+
+| Grid | Method | Time | Absolute energy difference | Relative velocity difference | Relative gradient difference |
+| --- | --- | --- | --- | --- | --- |
+| 256³ | Euler | 0.405 | 1.052180e-04 | 0.0005213% | 0.0013136% |
+| 256³ | Euler | 0.410 | 2.098739e-04 | 0.0010406% | 0.0026189% |
+| 256³ | Heun | 0.405 | 3.364753e-08 | 0.0000020% | 0.0000080% |
+| 256³ | Heun | 0.410 | 6.712742e-08 | 0.0000040% | 0.0000158% |
+| 384³ | Euler | 0.405 | 1.049756e-04 | 0.0005199% | 0.0013121% |
+| 384³ | Euler | 0.410 | 2.093871e-04 | 0.0010378% | 0.0026159% |
+| 384³ | Heun | 0.405 | 3.369860e-08 | 0.0000020% | 0.0000080% |
+| 384³ | Heun | 0.410 | 6.723035e-08 | 0.0000040% | 0.0000158% |
+
+### New 256³ endpoint measurements
+
+Energy decreases at every recorded time in all eight branches. All new saved fields and diagnostics are finite. Maximum checkpoint divergence is **2.576e-14**.
+
+| Method | dt | Energy at 0.41 | Peak speed | Peak centered gradient | Maximum divergence | Radial energy width | Axial energy width |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Euler | 0.001 | 36.582729572 | 2.4198154 | 7.7277746 | 1.377e-14 | 1.58432893 | 0.62171507 |
+| Euler | 0.0005 | 36.582519698 | 2.4197836 | 7.7277489 | 1.332e-14 | 1.58433067 | 0.62171666 |
+| Heun | 0.001 | 36.582309878 | 2.4197518 | 7.7277232 | 2.376e-14 | 1.58433241 | 0.62171825 |
+| Heun | 0.0005 | 36.582309945 | 2.4197518 | 7.7277233 | 2.376e-14 | 1.58433242 | 0.62171825 |
+
+The widths use the existing kinetic-energy-weighted second moments in the fixed periodic coordinates. The hug gate shapes the initial field; no moving wall or imposed breathing schedule is added during evolution.
+
+### New 256³ energy accounting
+
+Each actual step contributes its stage work and temporal defect using the [previously verified energy identities](#local-time-method-comparison-at-model-time-04). Summing those contributions accounts for the measured energy change.
+
+| Method | dt | Energy change | Accumulated stage work | Accumulated temporal defect | Accounting remainder |
+| --- | --- | --- | --- | --- | --- |
+| Euler | 0.001 | -7.822101979e-02 | -7.866177264e-02 | 4.407528e-04 | +3.932e-15 |
+| Euler | 0.0005 | -7.843089364e-02 | -7.865121312e-02 | 2.203195e-04 | -1.189e-15 |
+| Heun | 0.001 | -7.864071372e-02 | -7.864071531e-02 | 1.586209e-09 | +2.397e-15 |
+| Heun | 0.0005 | -7.864064660e-02 | -7.864064680e-02 | 1.982570e-10 | +3.347e-15 |
+
+The largest absolute accounting remainder is **3.932e-15 energy units**. Stage work includes transport and viscosity. Temporal defect is measured against each method's own stage quadrature; it is separate from the full-step/half-step comparison and the earlier viscosity-only energy gap.
+
+### Verification and limits
+
+The continuation and integrator code are reused unchanged, including the existing restart checks. Validation checks the common input and source fingerprints, all eight new checkpoint hashes, 44 new energy observations and their accumulated identities, finite diagnostics, complete-field comparison normalization, and agreement with the previously published local comparison at 0.401. The 384³ reference hash, earlier report sections, and published file hashes are also checked.
+
+These results concern a finite interval and two saved flows. They provide no exact continuum error bound, all-time smoothness result, or Clay proof. A further experiment requires the contributor's preview and approval.
+
+From the repository root, with the earlier local checkpoints available:
+
+~~~sh
+python math/hug_method_grid.py
+~~~
+
+Raw checkpoints remain in ignored scratch/hug-method-grid/n256/ for reuse.
+
+[Comparison driver](../hug_method_grid.py) · [Full new measurements and reused-reference hash](../results/hug-method-grid.json) · [44 new energy observations](../results/hug-method-grid.csv)
+
+<!-- METHOD_GRID_END -->
