@@ -20,7 +20,10 @@ Snapshot: 2026-10-08T20:40:59.597392+00:00. The vortex matrix is still running; 
 | [People in context](visuals/people-in-context.html) | The A/B/C conversation illustration. |
 | [Conversation without words](visuals/conversation-without-words.html) | Inspect categories, reply order and lengths. |
 | [Conversation study](../language/conversation-study/README.md) | Source-linked observations and conversation patterns. |
-| [Separate trigonometric example](files/hidden-flow-results.html) | Historical assistant-chosen fields, explicitly separate from the ring construction. |
+
+## Earlier experiments
+
+- [Earlier test using a different starting flow](files/hidden-flow-results.html)
 
 ## Supporting files
 
