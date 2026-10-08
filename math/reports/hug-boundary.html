@@ -5,6 +5,16 @@
 <div class="badge">Boundary mismatch: 0 · External force: 0</div>
 <p><strong>9 new checks passed</strong>, along with 7 existing integration checks. Four short runs used the existing cube solver.</p>
 <figure><img src="../figures/hug-ring-boundary.png" alt="Meridional flow inside the actual closed hug, with an unchanged inner core and a smooth weight that reaches zero before the cube faces."><figcaption>The existing closed pose is sampled once to prepare the starting field. Streamlines show the meridional flow; swirl remains in the full three-dimensional field.</figcaption></figure>
+<!-- METHOD_REFINEMENT_START -->
+<section id="method-refinement"><h2>Do the remaining differences shrink?</h2>
+<p><strong>The remaining differences shrink when the averaging step is halved again.</strong> At 0.41 the energy difference shrinks by 3.961, and the absolute velocity difference by 4.002.</p>
+<figure><img src="../figures/hug-method-refinement.png" alt="Successive energy differences for three Heun time steps."><figcaption>Logarithmic vertical scale. Both curves compare the same model times on the same 256³ grid.</figcaption></figure>
+<div class="scroll"><table><thead><tr><th>Time</th><th>Energy reduction factor</th><th>Velocity L2 reduction factor</th><th>Relative gradient reduction factor</th></tr></thead><tbody><tr><td>0.405</td><td>3.96044</td><td>4.00185</td><td>4.00289</td></tr><tr><td>0.410</td><td>3.96050</td><td>4.00183</td><td>4.00280</td></tr></tbody></table></div>
+<details><summary>Setup and limits</summary><p>One new Heun branch uses dt 0.00025. The completed dt 0.001 and 0.0005 branches are reused. All three start from identical saved 256³ arrays at 0.40 and end at 0.41.</p>
+<p>Energy decreases at every new recorded time. Maximum new checkpoint divergence: 2.487e-14. Two checkpoints are saved. The equation, viscosity, zero force and spatial operators are retained.</p>
+<p>These finite-interval differences measure time-step sensitivity. They do not remove spatial or inherited errors, supply exact error bounds, or establish a Clay proof.</p></details>
+<p><a href="../results/hug-method-refinement.json">Full result and provenance</a> · <a href="../results/hug-method-refinement.csv">All three energy traces</a></p></section>
+<!-- METHOD_REFINEMENT_END -->
 <!-- METHOD_GRID_START -->
 <section id="method-grid"><h2>Does the averaging improvement hold on both grids?</h2>
 <p><strong>The averaging method gives smaller energy changes when the step is halved on both grids.</strong> The new 256³ controls cover 0.40 to 0.41. The completed 384³ controls are reused.</p>

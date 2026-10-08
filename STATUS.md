@@ -28,6 +28,7 @@
 | Local time-method comparison | [Measurements and limits](math/notes/hug-boundary.md#local-time-method-comparison-at-model-time-04) | 18 disposable controls from time 0.40; Euler and Heun use identical inputs and spatial operators; 17 focused checks passed |
 | Longer time-method comparison | [Measurements and limits](math/notes/hug-boundary.md#longer-time-method-comparison-to-model-time-041) | Four branches from identical 384³ state at 0.40 to 0.41; eight reusable checkpoints; eight new focused checks passed |
 | Time-method comparison on both grids | [Measurements and limits](math/notes/hug-boundary.md#time-method-comparison-on-both-grids) | Four new 256³ controls through 0.41; eight checkpoints; completed 384³ controls reused |
+| Quarter-time-step Heun check | [Measurements and limits](math/notes/hug-boundary.md#quarter-time-step-check-for-the-averaging-method) | One new 256³ dt 0.00025 branch; two checkpoints; both larger steps reused |
 | Separate trigonometric illustration | [Derivation, runs, and checks](math/notes/hidden-flow-evolution.md) | Assistant-chosen fields, distinct from the ring construction. One has an analytic smooth reduction; a 3D variant has refined finite-time results. The conversation-to-fluid mapping was not established |
 | Language reports | [Report guide](language/README.md) | Existing tables and charts preserved; available chart links repaired |
 | Conversation exploration | [Wordless map and observations](language/exploration/README.md) | Sequence, overlapping saved categories, reply length, and unmarked replies exposed without exporting reply text |
@@ -78,6 +79,8 @@ The [continuation to model time 0.24](math/notes/hug-boundary.md#continuation-to
 **Longer time-method comparison completed:** The averaging method remains less sensitive to halving the time step over the longer interval. Four branches share the same starting arrays and now reach 0.41. [Measurements and limits](math/notes/hug-boundary.md#longer-time-method-comparison-to-model-time-041). Further tests await the contributor's go-ahead.
 
 **Time-method comparison on both grids completed:** The averaging method gives smaller energy changes when the step is halved on both grids. [Measurements and limits](math/notes/hug-boundary.md#time-method-comparison-on-both-grids). Further experiments await a preview and approval.
+
+**Quarter-time-step check completed:** The remaining differences shrink when the averaging step is halved again. [Measurements and limits](math/notes/hug-boundary.md#quarter-time-step-check-for-the-averaging-method). Further experiments await a preview and approval.
 
 ## Material still missing
 
