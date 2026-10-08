@@ -62,9 +62,11 @@ The JSON column named `D` is a signed measurement, distinct from the surrounding
 | Zero-break control | E remains at numerical roundoff. |
 | Changes in surrounding sources | Five source configurations were evolved to time 0.5. |
 | q integrates a fluid measurement | The executed rule is dq/dt = -0.2q + 0.8D. q is recorded after each step and does not force the fluid. |
-| Separate source weights and cross term | Individual directional contributions still need measurement and weight fitting. |
+| Separate source weights and cross term | [Endpoint source additions measured](source-attribution/README.md): C alone, D alone and combined at 50/50 and 70/30, with half-step checks. Dynamic weights and the proposed cross-pair term are not yet fitted. |
 | Cubic feedback and branch selection | The current fluid-record script has no cubic term. This part remains to be tested. |
-| Prediction on held-out runs | The full versus reduced model comparison remains to be performed. |
+| Prediction on held-out runs | Separate source effects closely reproduce the two known combined endpoints retrospectively. Unseen-run validation of the full versus reduced q models remains to be performed. |
+
+The new source-addition test measures an interaction contrast relative to the fixed A–B background. It does not uniquely decompose the evolving fluid or establish competition between pairings. Its 33³ results pass the time-step comparison; spatial convergence is not established.
 
 The fitting comparison uses A–B alone, A–B plus C, A–B plus C and D, and the full model including cross-pair contributions. Compare predictions on runs withheld from fitting, then check the reflected versions with the same fitted rule.
 
@@ -73,3 +75,4 @@ Cancellation in q does not require small E: different directional contributions 
 These tests concern symmetry and directional response. Peak vorticity, divergence, and grid and timestep comparisons continue to measure the accuracy of the fluid computation.
 
 [Completed results and runnable code](README.md) · [Actual verification](verification.json)
+

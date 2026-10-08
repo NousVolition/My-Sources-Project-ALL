@@ -1,0 +1,221 @@
+{
+  "status": "complete",
+  "snapshot_utc": "2026-10-08T23:43:55.177386+00:00",
+  "n": 33,
+  "time": 0.5,
+  "new_runs": 10,
+  "reused_source_runs": 5,
+  "contrasts": {
+    "equal": {
+      "base": {
+        "baseline_S": 5.260517096686343e-18,
+        "C_alone_S": 0.0018931072647508152,
+        "D_alone_S": -0.001893107264750843,
+        "C_contribution": 0.00189310726475081,
+        "D_contribution": -0.0018931072647508482,
+        "additive_prediction": -3.2959746043559335e-17,
+        "combined_S": -2.592079653526307e-17,
+        "interaction": 6.99524057266315e-18,
+        "combined_E": 4.191654761487359e-15,
+        "interaction_relative_to_sum_absolute_effects": 1.8475552608435696e-15
+      },
+      "half": {
+        "baseline_S": 5.260517096686343e-18,
+        "C_alone_S": 0.0018930963862078371,
+        "D_alone_S": -0.001893096386207941,
+        "C_contribution": 0.001893096386207832,
+        "D_contribution": -0.0018930963862079462,
+        "additive_prediction": -1.0907073855204175e-16,
+        "combined_S": -3.1912446142144355e-17,
+        "interaction": 7.725154134972384e-17,
+        "combined_E": 7.929506976245217e-15,
+        "interaction_relative_to_sum_absolute_effects": 2.0403488674041693e-14
+      },
+      "interaction_dt_change": 7.025630077706069e-17,
+      "interaction_dt_change_fraction": null
+    },
+    "unequal": {
+      "base": {
+        "baseline_S": 5.260517096686343e-18,
+        "C_alone_S": 0.0026517346563080767,
+        "D_alone_S": -0.0011351488124804493,
+        "C_contribution": 0.0026517346563080715,
+        "D_contribution": -0.0011351488124804545,
+        "additive_prediction": 0.0015165858438276221,
+        "combined_S": 0.0015166059833035925,
+        "interaction": 2.013947597042425e-08,
+        "combined_E": 0.013176271995339738,
+        "interaction_relative_to_sum_absolute_effects": 5.318219093989479e-06
+      },
+      "half": {
+        "baseline_S": 5.260517096686343e-18,
+        "C_alone_S": 0.002651719888192847,
+        "D_alone_S": -0.0011351420939695702,
+        "C_contribution": 0.0026517198881928416,
+        "D_contribution": -0.0011351420939695754,
+        "additive_prediction": 0.0015165777942232714,
+        "combined_S": 0.0015165979347102133,
+        "interaction": 2.0140486941895717e-08,
+        "combined_E": 0.013176265559215543,
+        "interaction_relative_to_sum_absolute_effects": 5.318516237656717e-06
+      },
+      "interaction_dt_change": 1.010971471468447e-12,
+      "interaction_dt_change_fraction": 5.0195979590019266e-05
+    }
+  },
+  "mirror_checks": [
+    {
+      "step": "base",
+      "full_field_relative_mirror_error": 4.4571236437548646e-15,
+      "signed_sum": -2.7755575615628914e-17,
+      "E_difference": -9.43689570931383e-16
+    },
+    {
+      "step": "half",
+      "full_field_relative_mirror_error": 8.328640154678618e-15,
+      "signed_sum": -1.0386656812411132e-16,
+      "E_difference": -2.0747292772682613e-15
+    }
+  ],
+  "timestep_checks": [
+    {
+      "case": "half_c",
+      "coarse_dt": 0.006666666666666667,
+      "fine_dt": 0.0033333333333333335,
+      "max_absolute_observable_changes": {
+        "S": 1.0878542978107544e-08,
+        "E": 3.110140421244689e-08,
+        "W": 1.4379734906810882e-05
+      }
+    },
+    {
+      "case": "half_d",
+      "coarse_dt": 0.006666666666666667,
+      "fine_dt": 0.0033333333333333335,
+      "max_absolute_observable_changes": {
+        "S": 1.0878542901996552e-08,
+        "E": 3.1101404323469195e-08,
+        "W": 1.4379734894376384e-05
+      }
+    },
+    {
+      "case": "seven_c",
+      "coarse_dt": 0.006666666666666667,
+      "fine_dt": 0.0033333333333333335,
+      "max_absolute_observable_changes": {
+        "S": 1.4768115229844836e-08,
+        "E": 4.3577830104862825e-08,
+        "W": 1.4722168602432362e-05
+      }
+    },
+    {
+      "case": "three_d",
+      "coarse_dt": 0.006666666666666667,
+      "fine_dt": 0.0033333333333333335,
+      "max_absolute_observable_changes": {
+        "S": 6.718510879143852e-09,
+        "E": 1.865816078201743e-08,
+        "W": 1.4275904730354227e-05
+      }
+    },
+    {
+      "case": "equal",
+      "coarse_dt": 0.006666666666666667,
+      "fine_dt": 0.0033333333333333335,
+      "max_absolute_observable_changes": {
+        "S": 1.2451994996490369e-17,
+        "E": 3.7378522147578585e-15,
+        "W": 1.4574543788725691e-05
+      }
+    },
+    {
+      "case": "unequal",
+      "coarse_dt": 0.006666666666666667,
+      "fine_dt": 0.0033333333333333335,
+      "max_absolute_observable_changes": {
+        "S": 8.048593379229516e-09,
+        "E": 2.4923965781867286e-08,
+        "W": 1.4893309087327111e-05
+      }
+    }
+  ],
+  "field_and_record_checks": [
+    {
+      "run": "equal-half",
+      "endpoint_recalculated_max_absolute_error": 0.0,
+      "energy_decreases_at_saved_times": true,
+      "max_divergence_times_dx": 5.082641220778183e-16,
+      "max_high_band_enstrophy_fraction": 0.16647848344097316
+    },
+    {
+      "run": "half_c-base",
+      "endpoint_recalculated_max_absolute_error": 0.0,
+      "energy_decreases_at_saved_times": true,
+      "max_divergence_times_dx": 5.659929595709783e-16,
+      "max_high_band_enstrophy_fraction": 0.1664372457214836
+    },
+    {
+      "run": "half_c-half",
+      "endpoint_recalculated_max_absolute_error": 0.0,
+      "energy_decreases_at_saved_times": true,
+      "max_divergence_times_dx": 4.988357405896843e-16,
+      "max_high_band_enstrophy_fraction": 0.1664372457214836
+    },
+    {
+      "run": "half_d-base",
+      "endpoint_recalculated_max_absolute_error": 0.0,
+      "energy_decreases_at_saved_times": true,
+      "max_divergence_times_dx": 5.828190380591993e-16,
+      "max_high_band_enstrophy_fraction": 0.1664372457214836
+    },
+    {
+      "run": "half_d-half",
+      "endpoint_recalculated_max_absolute_error": 0.0,
+      "energy_decreases_at_saved_times": true,
+      "max_divergence_times_dx": 5.828190380591993e-16,
+      "max_high_band_enstrophy_fraction": 0.1664372457214836
+    },
+    {
+      "run": "seven_c-base",
+      "endpoint_recalculated_max_absolute_error": 0.0,
+      "energy_decreases_at_saved_times": true,
+      "max_divergence_times_dx": 5.83497896464926e-16,
+      "max_high_band_enstrophy_fraction": 0.16644939607635573
+    },
+    {
+      "run": "seven_c-half",
+      "endpoint_recalculated_max_absolute_error": 0.0,
+      "energy_decreases_at_saved_times": true,
+      "max_divergence_times_dx": 5.83497896464926e-16,
+      "max_high_band_enstrophy_fraction": 0.16644939607635573
+    },
+    {
+      "run": "three_d-base",
+      "endpoint_recalculated_max_absolute_error": 0.0,
+      "energy_decreases_at_saved_times": true,
+      "max_divergence_times_dx": 5.292717712176482e-16,
+      "max_high_band_enstrophy_fraction": 0.16642266964339206
+    },
+    {
+      "run": "three_d-half",
+      "endpoint_recalculated_max_absolute_error": 0.0,
+      "energy_decreases_at_saved_times": true,
+      "max_divergence_times_dx": 5.40602915968045e-16,
+      "max_high_band_enstrophy_fraction": 0.16642266964339206
+    },
+    {
+      "run": "unequal-half",
+      "endpoint_recalculated_max_absolute_error": 0.0,
+      "energy_decreases_at_saved_times": true,
+      "max_divergence_times_dx": 4.858211371073683e-16,
+      "max_high_band_enstrophy_fraction": 0.1664760172047318
+    }
+  ],
+  "reading": "Equal source amplitudes cancel the measured signed asymmetry. At70/30, the separate effects predict almost all of the combined endpoint; the interaction contrast is small and stable under dt halving.",
+  "limits": [
+    "This is an endpoint comparison at33 cubed; high-band enstrophy remains about11.7percent at the endpoint. Spatial convergence is not established.",
+    "The contrast measures nonadditivity of source additions relative to AB. It is not a unique fluid-component decomposition or proof of competition between pairings.",
+    "The combined runs were already known; this is a retrospective additive comparison, not unseen held-out validation.",
+    "No q weights or cubic term were fitted. AB-bias and an independently shaped D were not varied. The full dynamic multi-source model remains uncalibrated."
+  ]
+}

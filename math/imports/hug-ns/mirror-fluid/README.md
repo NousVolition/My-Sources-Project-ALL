@@ -13,6 +13,12 @@
 | [Mirror-averaging intervention](results/fluid-pitchfork.json) | 0.24 | At 0.12 the code replaces the field by its mirror average, then evolves for another 0.12. |
 | [Signed q record](results/fluid-correction.json) | 0.16 | Positive and negative inputs give opposite q. The zero-break control remains at numerical roundoff. |
 
+## Separate source contributions
+
+[Ten new source-control runs](source-attribution/README.md) measure C alone, D alone and their combined effect at the existing 50/50 and 70/30 settings. The 50/50 directions cancel. At 70/30, the difference from adding the separate effects is 0.00133% of the combined signed endpoint. Half-step checks agree; these are measurements at 33³.
+
+![Separate source effects](source-attribution/source-effects.png)
+
 ## Measurements
 
 ```text
@@ -44,3 +50,4 @@ python run_all.py
 ```
 
 New calculations go into `rerun/`. The saved `results/` and supplied `references/` remain available for comparison.
+
