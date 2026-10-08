@@ -1,69 +1,57 @@
-# Nous Volition
+# Navier–Stokes research: hug-ns
 
-**Exploring patterns in fluid motion and human–AI conversations.**
+**Working toward a solution to the Clay Navier–Stokes existence and smoothness problem.**
 
-This personal research project turns visual ideas and observations into diagrams, code, and recorded comparisons. The pages below explain what was tried, show the evidence, and identify questions that remain open.
+The central question is whether smooth three-dimensional fluid motion must remain smooth, or whether it can develop a singularity in finite time. This project develops flow constructions, follows their evolution, and checks the mechanisms that amplify or disperse vorticity.
 
-## Start here
+The **hug** is the starting idea: a form that surrounds, yields, and changes shape. Its mathematical implementations and their limits are recorded in the studies below. The current fluid calculations use periodic boundaries and no external force after initialization.
 
-You can read the studies on GitHub without installing anything.
+## Start with the mathematics
 
-| Explore | The question | Start reading |
-| --- | --- | --- |
-| **Fluid motion** | How does a smooth, ring-shaped flow change over time, and how much do the computer's calculation settings affect the answer? | [The math in plain language](math/README.md) |
-| **Conversation patterns** | What repeats or changes across replies, and how does earlier wording carry into later answers? | [A concrete conversation example](language/conversation-study/CONTEXT.md#c01) · [See categories without the reply text](language/exploration/README.md) |
+| Study | What it contains |
+| --- | --- |
+| **[Vortex stress tests and 3D viewer](reports/README.md)** | One central vortex with aligned, reverse, and departing surroundings; saved shapes, measurements, grid comparisons and time-step controls. |
+| **[Hug-ns code and results](math/imports/hug-ns/README.md)** | The supplied solver, matched-stretch calculations, result tables and reviewed numerical controls. |
+| **[Hugged-ring construction](math/notes/hug-boundary.md)** | The earlier smooth ring, its enclosing starting shape, and the calculation history through model time 0.40. |
+| **[Math notes and code](math/README.md)** | Definitions, derivations, earlier experiments and instructions for using the code. |
 
-## Latest hug-ns files
+The new vortex stress tests, the imported hug-ns calculations, and the earlier ring study have different starting fields. Their records identify which construction each result belongs to.
 
-[Explore the hug-ns experiment](math/imports/hug-ns/README.md): code, sixteen result files and clear descriptions of what has been checked. The latest [matched-finer.json](math/imports/hug-ns/results/matched-finer.json) records eight samples on N=64 through time 0.12. The earlier no-stop table reaches time 0.35. Pressure reporting is corrected; three numerical issues remain listed in the [code review](math/imports/hug-ns/REVIEW.md). This solver and its starting fields are documented separately from the earlier ring study below.
+## See the flow
 
-## Current math result
+![Vortex field and cross-sections](reports/files/adversarial-vortex-study-visual-preview.png)
 
-The **“hug”** is the name for a soft enclosing shape used to prepare the flow's starting pattern. The simulation then follows that flow using the Navier–Stokes equations with zero external force.
+**[Reports and visuals →](reports/README.md)**
 
-The three-run grid comparison reached **model time 0.4**. The finer-grid comparison gives **0.0875% in velocity** and **0.3710% in its spatial gradient**. Halving the time step on 384³ gives **0.0491%** and **0.1245%**, respectively.
+For the interactive controls, [download the project](https://github.com/NousVolition/My-Sources-Project-ALL/archive/refs/heads/main.zip), extract it, and open `reports/index.html`. The same report collection is saved locally and in this repository. GitHub’s file viewer shows HTML source; the downloaded pages run the controls in a browser.
 
-**Latest check:** The remaining differences shrink when the averaging step is halved again. One new 256³ Heun run uses dt 0.00025; the two completed larger steps are reused. [Measurements and limits](math/notes/hug-boundary.md#quarter-time-step-check-for-the-averaging-method).
+## What the work needs to establish
 
-These are measurements over a limited simulated interval. The Clay problem still requires a mathematical proof.
+The objective is a mathematical result about smoothness or breakdown for the Navier–Stokes equations. The numerical studies examine peak vorticity, accumulated maximum vorticity, core width, stretching, energy, and sensitivity to the calculation settings.
 
-**[See the comparison and chart →](math/notes/hug-boundary.md#continuation-to-model-time-04)**
+**Current stage:** saved numerical experiments and checks. A proof resolving the Clay problem has not been established. A finite recorded peak is an observation over the calculated interval, not a proof about all later times or all allowed starting flows.
 
-## Explore the conversations
+- [New stress-test settings](reports/study/protocol.json)
+- [Saved grid, time-step and method comparisons](reports/study/comparisons.json)
+- [Hug-ns results review](math/imports/hug-ns/RESULTS-REVIEW.md)
+- [Hug-ns code review](math/imports/hug-ns/REVIEW.md)
+- [Report inventory and publication snapshot](reports/manifest.json)
 
-The [conversation study](language/conversation-study/README.md) links observations about confusion, repeated wording, and changed interpretations back to the supplied text. One example follows the same comparison request receiving different interpretations after different preceding exchanges.
+## Background: where the ideas came from
 
-The [earlier category map](language/exploration/README.md) shows reply order, overlapping categories, and reply length across 68 replies. The two source collections are documented separately.
+The human–AI conversations, mirrored categories, and pressure-and-memory illustrations document the development of the ideas. They provide context for the mathematical project.
 
-## What is finished, and what comes next?
+- [Pressure, imprint and the soft envelope](math/notes/soft-envelope.md)
+- [Norm and Entropy: mirrored halves](math/notes/norm-entropy-mirror.md)
+- [Conversation study and source records](language/conversation-study/README.md)
+- [Conversation categories](language/exploration/README.md)
 
-- **Completed:** the smooth starting-field construction and energy calculation; saved grid and time-step comparisons; conversation maps with evidence links and checks.
-- **Latest math check completed:** [Quarter-time-step Heun comparison](math/notes/hug-boundary.md#quarter-time-step-check-for-the-averaging-method); earlier results are preserved.
-- **Next conversation work:** review interpretations with another reader and add new material while recording overlaps.
+## Source, history and reproduction
 
-[Full project status and completed work →](STATUS.md)
+- [Math source and instructions](math/README.md#use-the-code)
+- [Project history](STATUS.md)
+- [Working papers](papers/README.md)
+- [Earlier archive](archive/README.md)
+- [Original stream-function repository](https://github.com/NousVolition/Nous-Volition)
 
-## Code, papers, and history
-
-- [Math code and instructions](math/README.md#use-the-code)
-- [Conversation study and its checks](language/conversation-study/README.md#run-the-checks)
-- [Working papers and their source status](papers/README.md)
-- [Earlier work and consolidation record](archive/README.md)
-
-This repository holds the current code, reports, and status. [Nous-Volition](https://github.com/NousVolition/Nous-Volition) preserves the original stream-function report. Check [project status](STATUS.md) before starting work so completed experiments can be reused.
-
-<details>
-<summary>Run a small example locally</summary>
-
-Use Python 3.12 from this repository's root:
-
-```sh
-python -m pip install -r requirements.txt
-python -m pytest -q
-python language/conversation_map.py --output scratch/conversation-map
-python math/box_experiment.py --profile smooth --start projected --points 8 --steps 1
-```
-
-The measurements from completed experiments are already saved with their reports.
-
-</details>
+The report collection is a dated copy of saved local work. Ongoing calculations can produce newer results locally before the next publication; the snapshot date is recorded in its [index](reports/README.md).

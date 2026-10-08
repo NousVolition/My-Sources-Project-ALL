@@ -1,0 +1,750 @@
+{
+  "claim": "The simulations record decay in some configurations and spin amplification that remains above its starting value through the sampled matched-stretch interval. Resolution dependence and incomplete numerical controls prevent a conclusion about singularity or global regularity.",
+  "initial_field_and_interval_scope": "At each grid size, the projected initial field is represented by a finite Fourier sum and is smooth as a periodic interpolant. A common smooth continuum initial field across the refined grids has not been established here. Amplification over the recorded interval does not mean monotone growth: the peak rises and falls.",
+  "definitions": [
+    [
+      "Speed",
+      "U_N(t) = max over grid points of |u_N|; Euclidean velocity magnitude.",
+      "Length / time"
+    ],
+    [
+      "Biggest spin / peak vorticity",
+      "W_N(t) = max over grid points of |curl_N u_N|. curl_N uses the solver\u2019s Fourier derivatives. The continuous quantity is W(t) = ||curl u||\u221e.",
+      "1 / time"
+    ],
+    [
+      "RMS spin",
+      "\u03c9_rms,N = sqrt(mean over all cells of |curl_N u_N|\u00b2). Earlier files call this average; it is RMS, not the arithmetic mean.",
+      "1 / time"
+    ],
+    [
+      "Spin ratio",
+      "R_N = W_N / \u03c9_rms,N when the denominator is nonzero. Includes every cell in the reference.",
+      "Dimensionless"
+    ],
+    [
+      "Half-peak region",
+      "Grid cells where |curl_N u_N| \u2265 W_N/2; its threshold changes at each observation.",
+      "Region; volume in length\u00b3"
+    ],
+    [
+      "Fixed-cutoff region",
+      "Grid cells where |curl_N u_N| \u2265 c, with c held fixed. Here c = 30.0991756, 50, 100; extra supplied claims at 200 and 400 are also recounted.",
+      "c in 1/time; volume in length\u00b3"
+    ],
+    [
+      "Hot region",
+      "Informal wording only. A result must specify the half-peak or numerical fixed cutoff before a region size is compared.",
+      "No separate measurement"
+    ],
+    [
+      "Reported width",
+      "\u2113_eq = (selected cell count \u00d7 dx\u00b3)^(1/3). \u2113_eq/dx is an equivalent cube side in cells; it is not the narrowest thickness or a connectivity test.",
+      "Length; or cells"
+    ],
+    [
+      "Accumulated maximum spin",
+      "I_N(T) \u2248 integral from 0 to T of W_N(t) dt. The 119.9026 value uses trapezoids between 14 saved, rounded sample times.",
+      "Dimensionless"
+    ],
+    [
+      "Kinetic energy",
+      "E_N = \u00bd dx\u00b3 \u03a3 |u_N|\u00b2, per unit density over the box. Also report E_N/E_N(0).",
+      "Length\u2075 / time\u00b2; ratio dimensionless"
+    ],
+    [
+      "Incompressibility error",
+      "D_N = max over grid points of |div_N u_N| using the same spectral derivative. Scaled error = dx D_N / U_N.",
+      "1/time; scaled error dimensionless"
+    ]
+  ],
+  "control_status": [
+    [
+      "Equation and domain",
+      "Inspected in code",
+      "Unforced periodic incompressible Navier\u2013Stokes on a cube of side 6. Pressure is implemented by Fourier projection."
+    ],
+    [
+      "Initial conditions",
+      "Inspected in code; time-zero arrays matched",
+      "grids_compared.build uses the direct matched stretch plus a tight tube, then projection. It does not use the separate gated ring constructor."
+    ],
+    [
+      "Viscosity across grid study",
+      "Same in supplied producer",
+      "grids_compared.py sets \u03bd = 0.001 for 48\u00b3, 64\u00b3 and 80\u00b3. The imported clay_hug.py default 0.01 is overridden. Separate fading configurations use other viscosities."
+    ],
+    [
+      "Spatial discretization",
+      "Inspected in code",
+      "Fourier collocation; spectral differentiation, nonlinear products on the physical grid, rectangular mode filter and pressure projection. Retains |m_j| \u2264 floor(N/3). No padding is used."
+    ],
+    [
+      "Aliasing at the filter edge",
+      "Not eliminated by a complete audit",
+      "The cutoff includes the N/3 endpoint when N is divisible by 3 (including 48). This should not be described as guaranteed full 2/3 dealiasing; endpoint interactions can alias into retained modes."
+    ],
+    [
+      "Time integration",
+      "Inspected in code",
+      "Explicit two-stage Heun step, followed by projection. Fixed dt from the initial speed, adjusted to land at the requested endpoint; it is not an adaptive CFL controller."
+    ],
+    [
+      "Time-step refinement",
+      "New reported dt versus dt/2 summary through 0.16",
+      "timestep-half.json records exactly halved dt and matching printed times. The final peak difference is 0.001915%; the largest saved difference is 0.002977%. The producing schedule, viscosity and full arrays are not supplied, so this is a checked summary rather than a reproduced run."
+    ],
+    [
+      "Incompressibility",
+      "Measured on three supplied 48\u00b3 fields",
+      "D_N and its scaled value appear below. A projection in code is not a substitute for recording its numerical residual. Later 64\u00b3/80\u00b3 full fields were not supplied for this recount."
+    ],
+    [
+      "Energy",
+      "Measured on three supplied 48\u00b3 fields; budget-48.json independently recounted",
+      "Snapshot energy and enstrophy match the supplied arrays. E_N decreases. The budget file contains no integrated viscous loss or balance residual, so the full energy budget remains unverified."
+    ],
+    [
+      "Saved-field provenance",
+      "Initial identity checked; evolution schedule incomplete",
+      "The t = 0 field matches the supplied matched constructor. The NPZ files record t and dx but not dt or \u03bd; the exact producing schedule through t = 0.24 is not established. The t = 0.36 integral is a separate supplied series."
+    ],
+    [
+      "Longer finer-grid coverage",
+      "New 64\u00b3 summary through t = 0.24",
+      "finer-longer.json supplies 10 finite peak samples and matches the earlier 64\u00b3 initial peak. It contains no dt, viscosity, restart record or full fields. It supersedes the earlier statement that no 64\u00b3 data beyond 0.16 are available."
+    ],
+    [
+      "Resolution and replication",
+      "New 32\u00b3 finite-difference summary; method agreement incomplete",
+      "fd-check.json supplies an increasing peak through 0.12. It omits the stencil, viscosity, dt and initial arrays, and no same-grid Fourier counterpart is supplied. A reported alternative method is now available; controlled agreement remains unestablished. Historical 256\u00b3/384\u00b3 tests use another start."
+    ]
+  ],
+  "prescribed_schedules": [
+    {
+      "n": 48,
+      "end_time": 0.2,
+      "samples": 8,
+      "dt": 0.00012978585334198574,
+      "steps": 1541,
+      "initial_peak": 60.19835123345609,
+      "initial_half_cutoff": 30.099175616728044,
+      "initial_counts_match": true,
+      "one_step_seconds": 0.22255970002152026,
+      "estimated_step_seconds": 342.9644977331627,
+      "preflight_seconds": 0.3224320999579504
+    },
+    {
+      "n": 64,
+      "end_time": 0.16,
+      "samples": 8,
+      "dt": 9.750152346130409e-05,
+      "steps": 1641,
+      "initial_peak": 59.27995437091912,
+      "initial_half_cutoff": 29.63997718545956,
+      "initial_counts_match": true,
+      "one_step_seconds": 0.5869375999900512,
+      "estimated_step_seconds": 963.1646015836741,
+      "preflight_seconds": 0.8582869999809191
+    },
+    {
+      "n": 80,
+      "end_time": 0.12,
+      "samples": 6,
+      "dt": 7.807417046193883e-05,
+      "steps": 1537,
+      "initial_peak": 58.75128035316415,
+      "initial_half_cutoff": 29.375640176582074,
+      "initial_counts_match": true,
+      "one_step_seconds": 1.102511599950958,
+      "estimated_step_seconds": 1694.5603291246225,
+      "preflight_seconds": 1.6319733000127599
+    }
+  ],
+  "measured_48_snapshot_diagnostics": [
+    {
+      "t": 0.0,
+      "n": 48,
+      "dx": 0.125,
+      "max_speed": 38.51709774945355,
+      "energy": 18126.75734947732,
+      "divergence_max": 1.2434497875801753e-13,
+      "scaled_divergence": 4.035382532156828e-16,
+      "omega_rms": 23.799346148083206,
+      "cells_200": 0,
+      "cells_400": 0,
+      "member": "fields-48/field-n48-t0.00.npz",
+      "sha256": "58dad3bd4b7f79dabced16d1e20fcb849d80b18b722aa5f27444ed5391f38416",
+      "energy_over_initial": 1.0
+    },
+    {
+      "t": 0.11999999999999998,
+      "n": 48,
+      "dx": 0.125,
+      "max_speed": 35.52068400715749,
+      "energy": 18105.441977089144,
+      "divergence_max": 1.1723955140041653e-13,
+      "scaled_divergence": 4.125749358345426e-16,
+      "omega_rms": 36.2352977806156,
+      "cells_200": 0,
+      "cells_400": 0,
+      "member": "fields-48/field-n48-t0.12.npz",
+      "sha256": "d7d8cf846e5ef964fe28f4770f48000896cd00fa76c9dd3c3b0f2f49d9de9fb9",
+      "energy_over_initial": 0.998824093467065
+    },
+    {
+      "t": 0.23999999999999996,
+      "n": 48,
+      "dx": 0.125,
+      "max_speed": 39.179048227694416,
+      "energy": 18041.823050876632,
+      "divergence_max": 1.1368683772161603e-13,
+      "scaled_divergence": 3.6271566967665143e-16,
+      "omega_rms": 65.22056604564686,
+      "cells_200": 1342,
+      "cells_400": 11,
+      "member": "fields-48/field-n48-t0.24.npz",
+      "sha256": "6279591cab12bfe4a4662c4b5b7ca0bffccbe0b00b2fbc5e4a9e4086ae79d428",
+      "energy_over_initial": 0.9953144240327607
+    }
+  ],
+  "energy_change_percent": -0.4685575967239286,
+  "measurement_method": "Passive calculations from supplied fields using unchanged spectral operators; no new evolution.",
+  "results": {
+    "pulled_tube_first": {
+      "t": 0.0,
+      "biggest": 71.68763586631763,
+      "average": 3.3940327043448897,
+      "ratio": 21.121669150254892
+    },
+    "pulled_tube_last": {
+      "t": 2.0,
+      "biggest": 29.30359027177893,
+      "average": 2.6198856893607303,
+      "ratio": 11.185064444139623
+    },
+    "matched_first": {
+      "t": 0.0,
+      "biggest": 60.19835123345615
+    },
+    "matched_peak": {
+      "t": 0.3239,
+      "biggest": 611.139126161215
+    },
+    "matched_last": {
+      "t": 0.35,
+      "biggest": 513.8083177240829
+    },
+    "grid_48_at_01246": {
+      "t": 0.1246,
+      "biggest": 194.4840591097178,
+      "halfCells": 1631,
+      "halfVolume": 3.185546875,
+      "width": 1.4713906772555283,
+      "dx": 0.125,
+      "widthsPerCell": 11.771125418044226,
+      "integral": 12.709064862621002
+    },
+    "grid_64_at_01199": {
+      "t": 0.1199,
+      "biggest": 200.4463125946153,
+      "halfCells": 3532,
+      "halfVolume": 2.9102783203125,
+      "width": 1.4277259110341218,
+      "dx": 0.09375,
+      "widthsPerCell": 15.229076384363966,
+      "integral": 12.708568947518502
+    },
+    "grid_80_at_01199": {
+      "t": 0.1199,
+      "biggest": 234.16203697060357,
+      "width": 1.1570767157962059,
+      "dx": 0.075,
+      "widthsPerCell": 15.427689543949413
+    },
+    "finer_64_through_024": [
+      {
+        "t": 0.0,
+        "biggest": 59.27995437091913,
+        "n": 64
+      },
+      {
+        "t": 0.0299,
+        "biggest": 76.5759944895836,
+        "n": 64
+      },
+      {
+        "t": 0.0599,
+        "biggest": 91.59935658595704,
+        "n": 64
+      },
+      {
+        "t": 0.0898,
+        "biggest": 137.9777964544116,
+        "n": 64
+      },
+      {
+        "t": 0.1198,
+        "biggest": 200.0903145256406,
+        "n": 64
+      },
+      {
+        "t": 0.1497,
+        "biggest": 312.85904557201604,
+        "n": 64
+      },
+      {
+        "t": 0.1797,
+        "biggest": 445.0661394981632,
+        "n": 64
+      },
+      {
+        "t": 0.2096,
+        "biggest": 576.2409805966862,
+        "n": 64
+      },
+      {
+        "t": 0.2396,
+        "biggest": 697.6095775367696,
+        "n": 64
+      },
+      {
+        "t": 0.24,
+        "biggest": 701.7970425874782,
+        "n": 64
+      }
+    ],
+    "finer_64_vs_48_at_nominal_024_percent": 42.42959284191223,
+    "sparse_integral": 119.9026437600029
+  },
+  "time_estimate_correction": "Loss of a finite comparison bound is not a prediction of actual blowup. The unit-coefficient inequality is not established for this construction.",
+  "new_archive": {
+    "method": "Read and recount supplied files; no new evolution or execution of uploaded code.",
+    "archive_sha256": "a7134879399aaea4d6cfc40cd363c58acf534a9b28892c3b0e497d93e2b03ce2",
+    "previous_archive_sha256": "b87cf52448ad203e128779580464e0b2ccb9966ca41dd4b71908249bea67b59e",
+    "members": [
+      {
+        "name": "README.md",
+        "sha256": "e78d9cdb41805c9c92b5f9cf8193d5d7bcdf5423f339f16dc916534d31a1c4e2",
+        "status": "unchanged"
+      },
+      {
+        "name": "grids_compared.py",
+        "sha256": "2f6dc58ed215fc705250a5b0525583c53b13510fa09b51fa130f7e1698adba26",
+        "status": "unchanged"
+      },
+      {
+        "name": "clay_hug.py",
+        "sha256": "422b7160f9e96badfc68fb76958c3cb512982905b73b37f8db92e5fd37379c01",
+        "status": "unchanged"
+      },
+      {
+        "name": "grids-compared.json",
+        "sha256": "3c4b78462d6dda4de8676bab6ad3089c2188960418a92508f1ed6635deb9ac01",
+        "status": "unchanged"
+      },
+      {
+        "name": "fixed-cutoff.json",
+        "sha256": "360d08016b4c8ae7eed9dcfd8b011a553f9e46852c183c774c7d5d9c16ba31c5",
+        "status": "unchanged"
+      },
+      {
+        "name": "width-longer.json",
+        "sha256": "bce0c5cc3322129a8c9c4ea4136fda3ea87e693cb81f8f46b10d17669ef97d28",
+        "status": "unchanged"
+      },
+      {
+        "name": "spin-bound.json",
+        "sha256": "b620353f76bf33614a672eb3b641d6d94d5458734b4a9aa4b6691f49d9cb126f",
+        "status": "unchanged"
+      },
+      {
+        "name": "spin-bound.md",
+        "sha256": "db3fc95468ba7e60969adcd54669f5cb66b88508c5b3c96b256a47bd48ae5da9",
+        "status": "unchanged"
+      },
+      {
+        "name": "resolved-check.json",
+        "sha256": "cbe998fcd9d17ea2b6c2ddfc3ccee507e0cfb9ee5b4c680c0851af0594dc6ea2",
+        "status": "unchanged"
+      },
+      {
+        "name": "resolved-80.json",
+        "sha256": "b5cacc51aa7e6a24b32bc9a7ee14dd7ab5410e1701a2f6ab1703d6d09985498e",
+        "status": "unchanged"
+      },
+      {
+        "name": "matched-nostop.json",
+        "sha256": "99db752242e3621273bacb9cc5b125879bded6b92c1498ee07ff6a0e37a58374",
+        "status": "unchanged"
+      },
+      {
+        "name": "matched-continue.json",
+        "sha256": "a7f623d9dacef89a784bbf4347f5e9db89031c9f6d78a57b7d8c50b3af1b3411",
+        "status": "unchanged"
+      },
+      {
+        "name": "matched-finer.json",
+        "sha256": "79d73219d298769452f50ef95ccea0a055a616f58c3c93084d7acf7adeb33229",
+        "status": "unchanged"
+      },
+      {
+        "name": "from-the-hug.pdf",
+        "sha256": "48aa1c05c73bb4f6796896b6296eec1216d089a5f8b301167c47b239e80e215e",
+        "status": "unchanged"
+      },
+      {
+        "name": "hug-work.pdf",
+        "sha256": "9a6d230276cb2bc0513bd0baa4694afe9b0e1a8febddea5cc21a84ef12df7b49",
+        "status": "unchanged"
+      },
+      {
+        "name": "spin-slices.png",
+        "sha256": "480bec0efcc90724d1fc1797afa169c1accae6e46544b07560946780ba81c64e",
+        "status": "unchanged"
+      },
+      {
+        "name": "spin-fixed-scale.png",
+        "sha256": "003c9739a3c102b4467eea01c1dc0fff335c34f2e4e84d2a2b0bab75b3ce9240",
+        "status": "unchanged"
+      },
+      {
+        "name": "grids-compared.png",
+        "sha256": "42a7101c7fea5b9b37d0fd74701d6c0a9c7dd70e0745d7bdd95588eddd0bceb5",
+        "status": "unchanged"
+      },
+      {
+        "name": "matched-nostop.png",
+        "sha256": "09f3129d3e174170e55389845375ccdc97c8c7e44cc772c0a1685b3860b16237",
+        "status": "unchanged"
+      },
+      {
+        "name": "fields-48/field-n48-t0.00.npz",
+        "sha256": "58dad3bd4b7f79dabced16d1e20fcb849d80b18b722aa5f27444ed5391f38416",
+        "status": "unchanged"
+      },
+      {
+        "name": "fields-48/field-n48-t0.12.npz",
+        "sha256": "d7d8cf846e5ef964fe28f4770f48000896cd00fa76c9dd3c3b0f2f49d9de9fb9",
+        "status": "unchanged"
+      },
+      {
+        "name": "fields-48/field-n48-t0.24.npz",
+        "sha256": "6279591cab12bfe4a4662c4b5b7ca0bffccbe0b00b2fbc5e4a9e4086ae79d428",
+        "status": "unchanged"
+      },
+      {
+        "name": "hug-ns/BOUND.md",
+        "sha256": "586768f6a85f46d2cd5a507dfc69ceeb52a2cb0f893f8c5279be8e43aa4d1789",
+        "status": "unchanged"
+      },
+      {
+        "name": "hug-ns/README.md",
+        "sha256": "c234b061d662cad7034823e844fdaa49c12d3132eb931913ece28c3125fbf11c",
+        "status": "unchanged"
+      },
+      {
+        "name": "hug-ns/requirements.txt",
+        "sha256": "e09f656c130b9c08b2c5ab7187c891295e449ed77febea2a6ceee9cc98ccb0fc",
+        "status": "unchanged"
+      },
+      {
+        "name": "hug-ns/run.py",
+        "sha256": "79a47cb0d655aaf3a7dd71c3caf12e8cf1f0deb827b6c066924bba43b75a0d2a",
+        "status": "unchanged"
+      },
+      {
+        "name": "hug-ns/solver.py",
+        "sha256": "01123dbb6fc4f8a93dc31825298b31c67deaa9c7f3b84b86312d6964d7d4e682",
+        "status": "unchanged"
+      },
+      {
+        "name": "hug-ns/results/bound-check.json",
+        "sha256": "c3a461fc9d106c0fad426006e1b402b48253d96b74b3eb37ad1762cf086dbaaa",
+        "status": "unchanged"
+      },
+      {
+        "name": "hug-ns/results/pressure-at-peak.json",
+        "sha256": "2516c67824390aa7cd5bccdae83feb243be38537ad5ea1f1c44138eaef7f331f",
+        "status": "unchanged"
+      },
+      {
+        "name": "hug-ns/results/ratio-rose.json",
+        "sha256": "163259b81078f10c2754e85c8053c6fb382915d789fb50685b507378262d809c",
+        "status": "unchanged"
+      },
+      {
+        "name": "hug-ns/results/same-spot.json",
+        "sha256": "48cbd504d2ef872b7ff8ee82a24f5a3ddf2ab5c3baa2bdc3626106fc9f841adf",
+        "status": "unchanged"
+      },
+      {
+        "name": "hug-ns/results/spin-ratio-64.json",
+        "sha256": "76c4bc096c0fb238b72dbb1cbef3393b77e9d4d7b6d9c8a9c7e0ae63ab6f8cc7",
+        "status": "unchanged"
+      },
+      {
+        "name": "hug-ns/results/spin-ratio-euler.json",
+        "sha256": "bd0d334e28861ba324af4aa870f0712d930ea4c941e3743375c22c9d45897719",
+        "status": "unchanged"
+      },
+      {
+        "name": "hug-ns/results/spin-ratio-low-nu.json",
+        "sha256": "4d1e085b9b0fe5f516e845a5ae963ed201c9ff9c1137fa9544232bc52c48e6c7",
+        "status": "unchanged"
+      },
+      {
+        "name": "hug-ns/results/spin-ratio.json",
+        "sha256": "4645c8d7f141ad9710db91454ab4decfa0e21febad13704f1f5456738b1447dc",
+        "status": "unchanged"
+      },
+      {
+        "name": "hug-ns/results/tube-finer.json",
+        "sha256": "7c4da5876e37abcd3e08c6d8cca61a08f07d707d3e69768bb88e3d807eaa5849",
+        "status": "unchanged"
+      },
+      {
+        "name": "hug-ns/results/two-tubes.json",
+        "sha256": "59adb94bb6023cc1af4728406ca2b741c8707c71c1066579dac40b67b03eb7a7",
+        "status": "unchanged"
+      },
+      {
+        "name": "matched-report.pdf",
+        "sha256": "b04b5de1dc031df6ca5e6ed167a05dad47b9edfcb7539c546295fe9f5024b573",
+        "status": "unchanged"
+      },
+      {
+        "name": "what-is-missing.pdf",
+        "sha256": "1866bf4f102c520b45c6ce83f93e97e08fdbd5823317175fb7b21e3e3303742b",
+        "status": "unchanged"
+      },
+      {
+        "name": "timestep-half.json",
+        "sha256": "b87293572becbd5c11dbe01a0b3676f5fb3e5398b6f10c3d99a7147b1d03d475",
+        "status": "new"
+      },
+      {
+        "name": "finer-longer.json",
+        "sha256": "2325d95caa1a3e81136f6b524648103b3d4477cea1c735c7529065f2a6450bae",
+        "status": "new"
+      },
+      {
+        "name": "reverse-status.json",
+        "sha256": "97c81789a455f278a2b95c2919ad0b173fb1064a3e6ada7c26e8736f1e09ba1a",
+        "status": "new"
+      },
+      {
+        "name": "ladder-48.json",
+        "sha256": "901f332c6e882b8032657638613813773e37e64091fb6cd06ce38ba54a4e7781",
+        "status": "new"
+      }
+    ],
+    "timestep_comparison": {
+      "dt_base": 0.000129764801297648,
+      "dt_half": 6.4882400648824e-05,
+      "differences": [
+        {
+          "printed_time": 0.0,
+          "W_base": 60.19835123345615,
+          "W_half": 60.19835123345615,
+          "W_difference_percent": 0.0,
+          "I_base": 0.0,
+          "I_half": 0.0,
+          "I_difference": 0.0
+        },
+        {
+          "printed_time": 0.02,
+          "W_base": 68.68283280700092,
+          "W_half": 68.68258893364852,
+          "W_difference_percent": -0.0003550717733058484,
+          "I_base": 1.2616755560504005,
+          "I_half": 1.2616705914440365,
+          "I_difference": -4.9646063640107485e-06
+        },
+        {
+          "printed_time": 0.04,
+          "W_base": 79.35525890495107,
+          "W_half": 79.35580505510639,
+          "W_difference_percent": 0.0006882343563052729,
+          "I_base": 2.7780938446643213,
+          "I_half": 2.778094271326761,
+          "I_difference": 4.266624396009888e-07
+        },
+        {
+          "printed_time": 0.06,
+          "W_base": 89.53160860557568,
+          "W_half": 89.53234944246968,
+          "W_difference_percent": 0.0008274584870404667,
+          "I_base": 4.464214609835151,
+          "I_half": 4.4642127517941566,
+          "I_difference": -1.8580409948398824e-06
+        },
+        {
+          "printed_time": 0.0799,
+          "W_base": 102.26751679940325,
+          "W_half": 102.26447274033296,
+          "W_difference_percent": -0.0029765649597779387,
+          "I_base": 6.350624168630565,
+          "I_half": 6.350624969738448,
+          "I_difference": 8.011078822534046e-07
+        },
+        {
+          "printed_time": 0.0999,
+          "W_base": 137.19782670298227,
+          "W_half": 137.19580669080122,
+          "W_difference_percent": -0.0014723354076262574,
+          "I_base": 8.785344132454432,
+          "I_half": 8.785309257367937,
+          "I_difference": -3.4875086495134155e-05
+        },
+        {
+          "printed_time": 0.1199,
+          "W_base": 180.60323624767187,
+          "W_half": 180.60265428118714,
+          "W_difference_percent": -0.00032223480421755823,
+          "I_base": 11.826691110274204,
+          "I_half": 11.826610657347928,
+          "I_difference": -8.045292627656409e-05
+        },
+        {
+          "printed_time": 0.1399,
+          "W_base": 225.15259700976895,
+          "W_half": 225.15044889003912,
+          "W_difference_percent": -0.0009540728192147796,
+          "I_base": 15.845478453663551,
+          "I_half": 15.845386659963108,
+          "I_difference": -9.179370044343216e-05
+        },
+        {
+          "printed_time": 0.1599,
+          "W_base": 287.7502353150019,
+          "W_half": 287.7554163806148,
+          "W_difference_percent": 0.001800542615448819,
+          "I_base": 20.87641805180679,
+          "I_half": 20.876399771217606,
+          "I_difference": -1.828058918462716e-05
+        },
+        {
+          "printed_time": 0.16,
+          "W_base": 288.47115117116033,
+          "W_half": 288.47667629732007,
+          "W_difference_percent": 0.0019153132426952268,
+          "I_base": 20.91380467866721,
+          "I_half": 20.91378719511674,
+          "I_difference": -1.7483550468710973e-05
+        }
+      ],
+      "largest_absolute_W_percent": 0.0029765649597779387,
+      "inferred_dx": 0.125,
+      "scope": "Supplied same-grid summary at matching printed times. dx inferred as 0.125 from width/cells (48 cubed if side 6). Producing code for this pair, full fields, viscosity and unrounded observation times are not recorded.",
+      "classification": "Reported timestep refinement available; not independently reproduced."
+    },
+    "budget_verification": {
+      "status": "verified_against_full_fields",
+      "rows": [
+        {
+          "t": 0.0,
+          "energy": 18126.757349477324,
+          "enstrophy": 61172.15872423855,
+          "all_fixed_and_relative_counts_match": true
+        },
+        {
+          "t": 0.11999999999999998,
+          "energy": 18105.44197708914,
+          "enstrophy": 141803.65496698767,
+          "all_fixed_and_relative_counts_match": true
+        },
+        {
+          "t": 0.23999999999999996,
+          "energy": 18041.823050876636,
+          "enstrophy": 459402.0014139751,
+          "all_fixed_and_relative_counts_match": true
+        }
+      ],
+      "scope": "Snapshot energy/enstrophy and region counts. This file contains no integrated dissipation or energy/enstrophy balance residual."
+    },
+    "reverse_status": {
+      "first": {
+        "Wmax": 55.076554770758165,
+        "stretchRate": 5.521462541816936,
+        "width": 0.7768081264884648,
+        "widthsPerCell": 6.214465011907718,
+        "cells_50": 48,
+        "volume_50": 0.09375,
+        "cells_100": 0,
+        "volume_100": 0.0,
+        "cells_200": 0,
+        "volume_200": 0.0,
+        "cells_400": 0,
+        "volume_400": 0.0,
+        "t": 0.0,
+        "I": 0.0
+      },
+      "largest_saved": {
+        "Wmax": 79.825407066814,
+        "stretchRate": 5.40601195953904,
+        "width": 0.524792056726051,
+        "widthsPerCell": 4.198336453808408,
+        "cells_50": 25,
+        "volume_50": 0.048828125,
+        "cells_100": 0,
+        "volume_100": 0.0,
+        "cells_200": 0,
+        "volume_200": 0.0,
+        "cells_400": 0,
+        "volume_400": 0.0,
+        "t": 0.1317,
+        "I": 9.240776687062594
+      },
+      "last": {
+        "Wmax": 57.790121720712456,
+        "stretchRate": 3.4696058966311076,
+        "width": 0.819709023271214,
+        "widthsPerCell": 6.557672186169712,
+        "cells_50": 24,
+        "volume_50": 0.046875,
+        "cells_100": 0,
+        "volume_100": 0.0,
+        "cells_200": 0,
+        "volume_200": 0.0,
+        "cells_400": 0,
+        "volume_400": 0.0,
+        "t": 0.4,
+        "I": 26.965711385480876
+      },
+      "all_reported_stretch_rates_positive": true,
+      "scope": "Reported reverse example with unspecified constructor, viscosity, timestep and stretchRate definition. It is not a verified reverse counterpart of the new paired construction."
+    },
+    "fd_check": {
+      "first": {
+        "t": 0.0,
+        "Wmax": 50.492915793317295,
+        "n": 32,
+        "method": "finite-difference advection"
+      },
+      "last": {
+        "t": 0.12,
+        "Wmax": 196.14039961416742,
+        "n": 32,
+        "method": "finite-difference advection"
+      },
+      "samples": 8,
+      "scope": "Reported 32-cubed finite-difference-advection calculation. Its initial peak differs from the 48-cubed Fourier start. No matched same-grid Fourier table, initial arrays, FD stencil, viscosity or timestep is supplied; independent-method agreement is not established."
+    },
+    "standalone_hashes": {
+      "budget-48.json": "84afb16e209a7c7a3a081655ba188d71b037662a6c0132ea484802c57f985a31",
+      "fd-check.json": "7702f48197cfb08e196c0e83612fe85c36bce135bdb6cad1cfb82fa9c0db8a0c"
+    }
+  },
+  "source_hashes": {
+    "C:\\Users\\ziman\\Downloads\\grids-compared.json": "3c4b78462d6dda4de8676bab6ad3089c2188960418a92508f1ed6635deb9ac01",
+    "C:\\Users\\ziman\\Downloads\\spin-bound.json": "b620353f76bf33614a672eb3b641d6d94d5458734b4a9aa4b6691f49d9cb126f",
+    "C:\\Users\\ziman\\Downloads\\width-longer.json": "bce0c5cc3322129a8c9c4ea4136fda3ea87e693cb81f8f46b10d17669ef97d28",
+    "C:\\Users\\ziman\\Downloads\\finer-longer.json": "2325d95caa1a3e81136f6b524648103b3d4477cea1c735c7529065f2a6450bae",
+    "C:\\Users\\ziman\\Documents\\Codex\\2026-10-05\\ca\\work\\organized\\My-Sources-Project-ALL\\math\\imports\\hug-ns\\results\\spin-ratio.json": "4645c8d7f141ad9710db91454ab4decfa0e21febad13704f1f5456738b1447dc",
+    "C:\\Users\\ziman\\Documents\\Codex\\2026-10-05\\ca\\work\\organized\\My-Sources-Project-ALL\\math\\imports\\hug-ns\\results\\matched-nostop.json": "99db752242e3621273bacb9cc5b125879bded6b92c1498ee07ff6a0e37a58374",
+    "C:\\Users\\ziman\\Documents\\Codex\\2026-10-05\\ca\\work\\fixed-cutoff-run\\source\\clay_hug.py": "422b7160f9e96badfc68fb76958c3cb512982905b73b37f8db92e5fd37379c01",
+    "C:\\Users\\ziman\\Documents\\Codex\\2026-10-05\\ca\\work\\fixed-cutoff-run\\source\\grids_compared.py": "2f6dc58ed215fc705250a5b0525583c53b13510fa09b51fa130f7e1698adba26"
+  },
+  "publication": "Local report revision"
+}

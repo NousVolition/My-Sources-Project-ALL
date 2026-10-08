@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Trigonometric velocity fields — completed evolution results</title>
+<style>
+:root{color-scheme:light;--ink:#233746;--muted:#526570;--accent:#9b446b}
+*{box-sizing:border-box}body{margin:0;background:#f6f8f8;color:var(--ink);font:16px/1.6 system-ui,sans-serif}
+main{max-width:1060px;margin:auto;padding:36px 22px 70px}header p{max-width:760px}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+h1{font-size:clamp(27px,4vw,42px);line-height:1.15;margin:12px 0 16px}h2{font-size:22px;margin-top:30px}
+.force{display:inline-block;background:#e5f1ed;border:1px solid #b6d1c5;border-radius:6px;padding:8px 13px;font-weight:650}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:25px 0}
+.card{padding:18px;background:white;border:1px solid #dce3e5;border-radius:9px}.card strong{display:block;font-size:22px}.card span{color:var(--muted)}
+figure{margin:26px 0;background:white;border:1px solid #dce3e5;border-radius:9px;padding:12px}img{width:100%;display:block}figcaption{font-size:13px;padding:8px;color:var(--muted)}
+.scroll{overflow-x:auto}table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums;background:white;font-size:14px}th,td{text-align:right;padding:10px;border-bottom:1px solid #e0e6e8;white-space:nowrap}th:first-child,td:first-child{text-align:left}th{background:#eaf0f1}
+details{background:white;border:1px solid #dce3e5;border-radius:8px;padding:14px 18px;margin-top:20px}summary{font-weight:650;cursor:pointer}pre{white-space:pre-wrap;background:#f2f5f6;padding:14px;border-radius:5px;font-size:14px}a{color:#136c76}.small{font-size:14px;color:var(--muted)}
+</style></head><body><main>
+<header><div class="eyebrow">Completed local experiment · 7 runs · 10 new checks</div>
+<h1>A separate example steepens, then settles.</h1>
+<p><strong>Scope correction:</strong> these seven runs calculate how trigonometric velocity fields chosen by the assistant change over time. The original Stokes ring, its smooth replacement, and your A/B/C conversation idea were not tested by these calculations.</p>
+<p>The original C has an analytic smoothness argument. Its three-dimensional continuation developed a temporary increase in gradients, then relaxed in the completed runs.</p>
+<div class="force">External force: f(x,t) = 0 throughout</div>
+<p class="small">Pressure and viscosity are included. The 3D variation changes only the starting velocity. No smooth external-force variant was used.</p></header>
+<section class="cards" aria-label="Main results">
+<div class="card"><strong>Original C: smooth</strong><span>Its special structure reduces to a decaying shear and linear transport-diffusion.</span></div>
+<div class="card"><strong>5.89 → 7.90 → 2.35</strong><span>3D gradient: start → sampled peak → end. No numerical breakdown through time 4.</span></div>
+<div class="card"><strong>0.0028%</strong><span>Difference between the final velocity fields on the two finest grids.</span></div>
+</section>
+<figure><img src="hidden-flow-evolution.png" alt="The A and B gradients decay. Original C briefly grows then decays. The three-dimensional extension rises from 5.89 to 7.90 then drops to 2.35. Energy decreases for all fields."><figcaption>Viscosity 0.05; unforced periodic cube of side 2π; model time 0–4. A and B overlap exactly in these measures. The 3D curve uses the 64³ run.</figcaption></figure>
+<h2>What was run</h2><div class="scroll"><table><thead><tr><th>Field</th><th>Grid</th><th>Time step</th><th>Start gradient</th><th>Peak gradient</th><th>End gradient</th><th>End energy</th></tr></thead><tbody><tr><td>A</td><td>16³</td><td>0.02</td><td>4.898979</td><td>4.898979</td><td>2.201253</td><td>0.302844777</td></tr><tr><td>B</td><td>16³</td><td>0.02</td><td>4.898979</td><td>4.898979</td><td>2.201253</td><td>0.302844777</td></tr><tr><td>C</td><td>32³</td><td>0.01</td><td>5.385165</td><td>5.451225</td><td>1.977085</td><td>0.183312199</td></tr><tr><td>C3D</td><td>32³</td><td>0.02</td><td>5.887841</td><td>7.732045</td><td>2.348184</td><td>0.122669852</td></tr><tr><td>C3D</td><td>32³</td><td>0.01</td><td>5.887841</td><td>7.732044</td><td>2.348184</td><td>0.122669851</td></tr><tr><td>C3D</td><td>48³</td><td>0.01</td><td>5.887841</td><td>7.882796</td><td>2.348545</td><td>0.122667914</td></tr><tr><td>C3D</td><td>64³</td><td>0.01</td><td>5.887841</td><td>7.903966</td><td>2.348882</td><td>0.122667944</td></tr></tbody></table></div>
+<h2>Checks on the result</h2><ul>
+<li>All fields start smooth and divergence-free, with the same mean kinetic energy of 1.5 and the same zero coarse view.</li>
+<li>Halving the time step changes the final field by 0.00000623%.</li>
+<li>The 32³/48³ difference of 0.1053% triggered the additional 64³ run. The 48³/64³ difference is 0.002762%.</li>
+<li>The finest run has RMS divergence below 4.695e-17 and an energy-balance error below 1.492e-09 at recorded times.</li>
+<li>Ten new numerical checks passed. Earlier independent runs were reused.</li></ul>
+<details><summary>Why the original C stays smooth</summary><p>Although it has three velocity components, C does not vary with z. Its horizontal part is an explicitly decaying shear:</p>
+<pre>(u₁,u₂) = exp(−5νt) cos(2x+y) (1,−2)
+∂ₜw + exp(−5νt) cos(2x+y)(∂ₓw − 2∂ᵧw) = ν(∂ₓₓw + ∂ᵧᵧw)
+w(x,y,0) = cos(2x)
+‖∇w(t)‖∞ ≤ 2 exp((1 − exp(−5νt))/ν)</pre>
+<p>The coefficient is smooth and the displayed gradient bound stays finite. Linear diffusion gives smooth higher derivatives on finite time intervals. This particular C therefore cannot provide a breakdown example.</p></details>
+<details><summary>Initial fields and method</summary><pre>A = (0, √6 cos(2x), 0)
+B = −A
+C = (cos(2x+y), −2cos(2x+y), cos(2x))
+D = (cos(2z), cos(2x), cos(2y))
+C₃D = √(3/(3+1.5ε²)) (C + εD), ε = 0.5</pre>
+<p>The names identify constructed fluid fields. They are illustrative choices motivated by the discussion. The new D term belongs to the initial data; it is not applied as a force during evolution.</p>
+<p>Fourier differentiation, strict 2/3 truncation, pressure projection at every stage, and fourth-order Runge–Kutta. The coarse view retains |k| ≤ 1; the actual evolution retains many more modes. Gradients are Frobenius norms sampled on the grid every 0.1 model time units.</p></details>
+<h2>What this establishes</h2><p>The original C remains smooth by its explicit reduction. For the 3D extension, the refined numerical runs show temporary steepening followed by relaxation through time 4. This finite experiment supplies no general smoothness or breakdown proof for the Clay problem.</p>
+<p><a href="hidden-flow-results.json">Full saved numerical record</a> · <a href="https://www.claymath.org/wp-content/uploads/2022/06/navierstokes.pdf">Official Clay equation</a></p>
+<p class="small">These results are saved locally. This page does not assert that they have been published to GitHub.</p>
+</main></body></html>

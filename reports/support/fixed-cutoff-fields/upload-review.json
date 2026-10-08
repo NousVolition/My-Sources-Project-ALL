@@ -1,0 +1,299 @@
+{
+  "duplicate_scripts": [
+    {
+      "new": "grids_compared (1).py",
+      "previous": "grids_compared.py",
+      "identical_bytes": true,
+      "sha256": "2f6dc58ed215fc705250a5b0525583c53b13510fa09b51fa130f7e1698adba26"
+    },
+    {
+      "new": "clay_hug (1).py",
+      "previous": "clay_hug.py",
+      "identical_bytes": true,
+      "sha256": "422b7160f9e96badfc68fb76958c3cb512982905b73b37f8db92e5fd37379c01"
+    },
+    {
+      "new": "solver (1).py",
+      "previous": "solver.py",
+      "identical_bytes": true,
+      "sha256": "01123dbb6fc4f8a93dc31825298b31c67deaa9c7f3b84b86312d6964d7d4e682"
+    }
+  ],
+  "spin_integral": {
+    "reported": 119.9026437600029,
+    "recomputed_sparse_trapezoid": 119.9026437600029,
+    "max_cumulative_error": 0.0,
+    "samples": 14,
+    "peak_and_time_rows_match_width_longer": true,
+    "interpretation": "A finite numerical diagnostic calculated from the supplied rounded sample times. It does not establish a bound on the continuous solution."
+  },
+  "wording_correction": {
+    "source": "spin-bound.md",
+    "original": "It is finite. So this run stayed smooth through time 0.36.",
+    "replacement": "The recorded maximum-spin samples are finite through time 0.36. Trapezoidal integration of those samples gives 119.9026. This is a numerical observation; smoothness of the continuous flow is not established by this calculation."
+  },
+  "pdf_review": [
+    {
+      "page": 1,
+      "finding": "The equation displays a replacement character in the carrying term; write (u dot grad)u or typeset the dot."
+    },
+    {
+      "page": 2,
+      "finding": "The roughly 194 peak from the 48 cubed comparison is at printed time 0.1246, while the 64 and 80 cubed endpoints are 0.12. Preserve the actual times when comparing."
+    },
+    {
+      "page": 2,
+      "finding": "Cube-root selected volume does not measure minimum thickness. The 6.6-to-11.6-cell statistic cannot establish that the field is resolved or does not collapse to the grid."
+    },
+    {
+      "page": 3,
+      "finding": "The value 0.0166 is approximately 1/initial_peak. The supplied files do not justify it as an earliest blowup time for this Navier-Stokes flow."
+    }
+  ],
+  "image_review": "Each supplied spin-slices.png panel has its own peak-based color scale. Equal brightness across panels does not indicate equal spin.",
+  "sources": [
+    {
+      "file": "C:\\Users\\ziman\\Downloads\\spin-bound.json",
+      "sha256": "b620353f76bf33614a672eb3b641d6d94d5458734b4a9aa4b6691f49d9cb126f"
+    },
+    {
+      "file": "C:\\Users\\ziman\\Downloads\\spin-bound.md",
+      "sha256": "db3fc95468ba7e60969adcd54669f5cb66b88508c5b3c96b256a47bd48ae5da9"
+    },
+    {
+      "file": "C:\\Users\\ziman\\Downloads\\width-longer.json",
+      "sha256": "bce0c5cc3322129a8c9c4ea4136fda3ea87e693cb81f8f46b10d17669ef97d28"
+    }
+  ],
+  "criterion_reference": "https://math.stanford.edu/~ryzhik/STANFORD/STANF256B-19/notes-256B-19.pdf#page=67",
+  "publication": "Local review only.",
+  "latest_archive": {
+    "file": "C:\\Users\\ziman\\Downloads\\hug-github (2).aaf",
+    "format": "ZIP despite .aaf extension",
+    "sha256": "589fdf51efdac19b1704ad097100a773290dc7fb9cb9858201cfbe4728edb7a2",
+    "members": [
+      {
+        "name": "README.md",
+        "bytes": 714,
+        "sha256": "e78d9cdb41805c9c92b5f9cf8193d5d7bcdf5423f339f16dc916534d31a1c4e2",
+        "prior_identical": null
+      },
+      {
+        "name": "grids_compared.py",
+        "bytes": 3701,
+        "sha256": "2f6dc58ed215fc705250a5b0525583c53b13510fa09b51fa130f7e1698adba26",
+        "prior_identical": "hug-github.zip::grids_compared.py"
+      },
+      {
+        "name": "clay_hug.py",
+        "bytes": 6953,
+        "sha256": "422b7160f9e96badfc68fb76958c3cb512982905b73b37f8db92e5fd37379c01",
+        "prior_identical": "hug-github.zip::clay_hug.py"
+      },
+      {
+        "name": "grids-compared.json",
+        "bytes": 5206,
+        "sha256": "3c4b78462d6dda4de8676bab6ad3089c2188960418a92508f1ed6635deb9ac01",
+        "prior_identical": "hug-github.zip::grids-compared.json"
+      },
+      {
+        "name": "fixed-cutoff.json",
+        "bytes": 846,
+        "sha256": "360d08016b4c8ae7eed9dcfd8b011a553f9e46852c183c774c7d5d9c16ba31c5",
+        "prior_identical": "hug-github.zip::fixed-cutoff.json"
+      },
+      {
+        "name": "width-longer.json",
+        "bytes": 1759,
+        "sha256": "bce0c5cc3322129a8c9c4ea4136fda3ea87e693cb81f8f46b10d17669ef97d28",
+        "prior_identical": "hug-github.zip::width-longer.json"
+      },
+      {
+        "name": "spin-bound.json",
+        "bytes": 1173,
+        "sha256": "b620353f76bf33614a672eb3b641d6d94d5458734b4a9aa4b6691f49d9cb126f",
+        "prior_identical": "C:\\Users\\ziman\\Downloads\\spin-bound.json"
+      },
+      {
+        "name": "spin-bound.md",
+        "bytes": 531,
+        "sha256": "db3fc95468ba7e60969adcd54669f5cb66b88508c5b3c96b256a47bd48ae5da9",
+        "prior_identical": "C:\\Users\\ziman\\Downloads\\spin-bound.md"
+      },
+      {
+        "name": "resolved-check.json",
+        "bytes": 4138,
+        "sha256": "cbe998fcd9d17ea2b6c2ddfc3ccee507e0cfb9ee5b4c680c0851af0594dc6ea2",
+        "prior_identical": "hug-work.zip::resolved-check.json"
+      },
+      {
+        "name": "resolved-80.json",
+        "bytes": 998,
+        "sha256": "b5cacc51aa7e6a24b32bc9a7ee14dd7ab5410e1701a2f6ab1703d6d09985498e",
+        "prior_identical": "hug-work.zip::resolved-80.json"
+      },
+      {
+        "name": "matched-nostop.json",
+        "bytes": 751,
+        "sha256": "99db752242e3621273bacb9cc5b125879bded6b92c1498ee07ff6a0e37a58374",
+        "prior_identical": "hug-work.zip::matched-nostop.json"
+      },
+      {
+        "name": "matched-continue.json",
+        "bytes": 1018,
+        "sha256": "a7f623d9dacef89a784bbf4347f5e9db89031c9f6d78a57b7d8c50b3af1b3411",
+        "prior_identical": "hug-work.zip::matched-continue.json"
+      },
+      {
+        "name": "matched-finer.json",
+        "bytes": 371,
+        "sha256": "79d73219d298769452f50ef95ccea0a055a616f58c3c93084d7acf7adeb33229",
+        "prior_identical": "C:\\Users\\ziman\\Downloads\\matched-finer.json"
+      },
+      {
+        "name": "from-the-hug.pdf",
+        "bytes": 19428,
+        "sha256": "48aa1c05c73bb4f6796896b6296eec1216d089a5f8b301167c47b239e80e215e",
+        "prior_identical": "hug-github.zip::from-the-hug.pdf"
+      },
+      {
+        "name": "hug-work.pdf",
+        "bytes": 13381,
+        "sha256": "9a6d230276cb2bc0513bd0baa4694afe9b0e1a8febddea5cc21a84ef12df7b49",
+        "prior_identical": "hug-work (1).zip::hug-work.pdf"
+      },
+      {
+        "name": "spin-slices.png",
+        "bytes": 25803,
+        "sha256": "480bec0efcc90724d1fc1797afa169c1accae6e46544b07560946780ba81c64e",
+        "prior_identical": "hug-github.zip::spin-slices.png"
+      },
+      {
+        "name": "spin-fixed-scale.png",
+        "bytes": 19614,
+        "sha256": "003c9739a3c102b4467eea01c1dc0fff335c34f2e4e84d2a2b0bab75b3ce9240",
+        "prior_identical": null
+      },
+      {
+        "name": "grids-compared.png",
+        "bytes": 6819,
+        "sha256": "42a7101c7fea5b9b37d0fd74701d6c0a9c7dd70e0745d7bdd95588eddd0bceb5",
+        "prior_identical": null
+      },
+      {
+        "name": "matched-nostop.png",
+        "bytes": 7295,
+        "sha256": "09f3129d3e174170e55389845375ccdc97c8c7e44cc772c0a1685b3860b16237",
+        "prior_identical": null
+      },
+      {
+        "name": "fields-48/field-n48-t0.00.npz",
+        "bytes": 3347191,
+        "sha256": "58dad3bd4b7f79dabced16d1e20fcb849d80b18b722aa5f27444ed5391f38416",
+        "prior_identical": "hug-github.zip::fields-48/field-n48-t0.00.npz"
+      },
+      {
+        "name": "fields-48/field-n48-t0.12.npz",
+        "bytes": 3397183,
+        "sha256": "d7d8cf846e5ef964fe28f4770f48000896cd00fa76c9dd3c3b0f2f49d9de9fb9",
+        "prior_identical": "hug-github.zip::fields-48/field-n48-t0.12.npz"
+      },
+      {
+        "name": "fields-48/field-n48-t0.24.npz",
+        "bytes": 3395966,
+        "sha256": "6279591cab12bfe4a4662c4b5b7ca0bffccbe0b00b2fbc5e4a9e4086ae79d428",
+        "prior_identical": "hug-github.zip::fields-48/field-n48-t0.24.npz"
+      },
+      {
+        "name": "hug-ns/BOUND.md",
+        "bytes": 1747,
+        "sha256": "586768f6a85f46d2cd5a507dfc69ceeb52a2cb0f893f8c5279be8e43aa4d1789",
+        "prior_identical": "hug-work.zip::hug-ns/BOUND.md"
+      },
+      {
+        "name": "hug-ns/README.md",
+        "bytes": 2341,
+        "sha256": "c234b061d662cad7034823e844fdaa49c12d3132eb931913ece28c3125fbf11c",
+        "prior_identical": "hug-work.zip::hug-ns/README.md"
+      },
+      {
+        "name": "hug-ns/requirements.txt",
+        "bytes": 6,
+        "sha256": "e09f656c130b9c08b2c5ab7187c891295e449ed77febea2a6ceee9cc98ccb0fc",
+        "prior_identical": "hug-work.zip::hug-ns/requirements.txt"
+      },
+      {
+        "name": "hug-ns/run.py",
+        "bytes": 2313,
+        "sha256": "79a47cb0d655aaf3a7dd71c3caf12e8cf1f0deb827b6c066924bba43b75a0d2a",
+        "prior_identical": "hug-work.zip::hug-ns/run.py"
+      },
+      {
+        "name": "hug-ns/solver.py",
+        "bytes": 7468,
+        "sha256": "01123dbb6fc4f8a93dc31825298b31c67deaa9c7f3b84b86312d6964d7d4e682",
+        "prior_identical": "hug-work.zip::hug-ns/solver.py"
+      },
+      {
+        "name": "hug-ns/results/bound-check.json",
+        "bytes": 1327,
+        "sha256": "c3a461fc9d106c0fad426006e1b402b48253d96b74b3eb37ad1762cf086dbaaa",
+        "prior_identical": "hug-work.zip::hug-ns/results/bound-check.json"
+      },
+      {
+        "name": "hug-ns/results/pressure-at-peak.json",
+        "bytes": 4570,
+        "sha256": "2516c67824390aa7cd5bccdae83feb243be38537ad5ea1f1c44138eaef7f331f",
+        "prior_identical": "hug-work.zip::hug-ns/results/pressure-at-peak.json"
+      },
+      {
+        "name": "hug-ns/results/ratio-rose.json",
+        "bytes": 1643,
+        "sha256": "163259b81078f10c2754e85c8053c6fb382915d789fb50685b507378262d809c",
+        "prior_identical": "hug-work.zip::hug-ns/results/ratio-rose.json"
+      },
+      {
+        "name": "hug-ns/results/same-spot.json",
+        "bytes": 2548,
+        "sha256": "48cbd504d2ef872b7ff8ee82a24f5a3ddf2ab5c3baa2bdc3626106fc9f841adf",
+        "prior_identical": "hug-work.zip::hug-ns/results/same-spot.json"
+      },
+      {
+        "name": "hug-ns/results/spin-ratio-64.json",
+        "bytes": 1835,
+        "sha256": "76c4bc096c0fb238b72dbb1cbef3393b77e9d4d7b6d9c8a9c7e0ae63ab6f8cc7",
+        "prior_identical": "hug-work.zip::hug-ns/results/spin-ratio-64.json"
+      },
+      {
+        "name": "hug-ns/results/spin-ratio-euler.json",
+        "bytes": 1610,
+        "sha256": "bd0d334e28861ba324af4aa870f0712d930ea4c941e3743375c22c9d45897719",
+        "prior_identical": "hug-work.zip::hug-ns/results/spin-ratio-euler.json"
+      },
+      {
+        "name": "hug-ns/results/spin-ratio-low-nu.json",
+        "bytes": 1722,
+        "sha256": "4d1e085b9b0fe5f516e845a5ae963ed201c9ff9c1137fa9544232bc52c48e6c7",
+        "prior_identical": "hug-work.zip::hug-ns/results/spin-ratio-low-nu.json"
+      },
+      {
+        "name": "hug-ns/results/spin-ratio.json",
+        "bytes": 1457,
+        "sha256": "4645c8d7f141ad9710db91454ab4decfa0e21febad13704f1f5456738b1447dc",
+        "prior_identical": "hug-work.zip::hug-ns/results/spin-ratio.json"
+      },
+      {
+        "name": "hug-ns/results/tube-finer.json",
+        "bytes": 1788,
+        "sha256": "7c4da5876e37abcd3e08c6d8cca61a08f07d707d3e69768bb88e3d807eaa5849",
+        "prior_identical": "hug-work.zip::hug-ns/results/tube-finer.json"
+      },
+      {
+        "name": "hug-ns/results/two-tubes.json",
+        "bytes": 1907,
+        "sha256": "59adb94bb6023cc1af4728406ca2b741c8707c71c1066579dac40b67b03eb7a7",
+        "prior_identical": "hug-work.zip::hug-ns/results/two-tubes.json"
+      }
+    ]
+  }
+}

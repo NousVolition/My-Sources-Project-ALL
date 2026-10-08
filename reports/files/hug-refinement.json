@@ -1,0 +1,680 @@
+{
+  "field": {
+    "base": "existing SmoothRingField",
+    "hug_source": "hug_envelope.state_at",
+    "hug_seconds": 4.0,
+    "box_length": 6.0,
+    "radial_extent": 2.7,
+    "axial_extent": 2.3148148148148144,
+    "inner_fraction": 0.7,
+    "margin_fraction": 0.1,
+    "construction": "C-infinity gate on stream function; swirl uses the same gate",
+    "evolution": "initial-data preparation only; f(x,t)=0 in the box runner"
+  },
+  "domain": "periodic cube [-3,3]^3",
+  "external_force": 0.0,
+  "method": "original centered stencils, Euler, centered FFT projection",
+  "verification": "NumPy backend compared to original loop updates and Jacobi projection",
+  "comparison": "periodic cubic interpolation at matching physical cell centers",
+  "runs": [
+    {
+      "N": 32,
+      "dt": 0.001,
+      "steps": 80,
+      "end_time": 0.08,
+      "box": 6.0,
+      "nu": 0.01,
+      "sigma": 0.0,
+      "P_U": 0.0,
+      "source_sha256": "327adfdcc140ddc13971fba985ba8b99598667eb4da234378a9f364228e078aa",
+      "seconds": 0.6383798999886494,
+      "sampled": {
+        "max_div": 0.9089680182211475,
+        "interior_div": 0.9089680182211475,
+        "max_div_on_edge": 0,
+        "max_grad": 8.511824948102218,
+        "energy": 40.348690752856825
+      },
+      "correction_fraction": 0.033072707940348084,
+      "rows": [
+        {
+          "N": 32,
+          "dt": 0.001,
+          "step": 0,
+          "time": 0.0,
+          "max_div": 1.3322676295501878e-15,
+          "interior_div": 1.3322676295501878e-15,
+          "max_div_on_edge": 0,
+          "max_grad": 8.496596209599433,
+          "energy": 40.30455719309262,
+          "max_speed": 2.267056205528781,
+          "advective_cfl": 0.017355631637919196,
+          "diffusion_number": 0.0017066666666666667,
+          "linear_advection_diffusion_ratio": 0.25697719195132773
+        },
+        {
+          "N": 32,
+          "dt": 0.001,
+          "step": 20,
+          "time": 0.02,
+          "max_div": 1.4432899320127035e-15,
+          "interior_div": 1.4432899320127035e-15,
+          "max_div_on_edge": 0,
+          "max_grad": 8.394765510467144,
+          "energy": 40.07467032218551,
+          "max_speed": 2.2746483263372324,
+          "advective_cfl": 0.01752884364699802,
+          "diffusion_number": 0.0017066666666666667,
+          "linear_advection_diffusion_ratio": 0.2587012504254386
+        },
+        {
+          "N": 32,
+          "dt": 0.001,
+          "step": 40,
+          "time": 0.04,
+          "max_div": 1.3322676295501878e-15,
+          "interior_div": 1.3322676295501878e-15,
+          "max_div_on_edge": 0,
+          "max_grad": 8.285654256970586,
+          "energy": 39.8484739750165,
+          "max_speed": 2.27883692085562,
+          "advective_cfl": 0.017682949579591347,
+          "diffusion_number": 0.0017066666666666667,
+          "linear_advection_diffusion_ratio": 0.2596548855927361
+        },
+        {
+          "N": 32,
+          "dt": 0.001,
+          "step": 60,
+          "time": 0.06,
+          "max_div": 1.7763568394002505e-15,
+          "interior_div": 1.7763568394002505e-15,
+          "max_div_on_edge": 0,
+          "max_grad": 8.17125613868009,
+          "energy": 39.62608985988157,
+          "max_speed": 2.283460315180858,
+          "advective_cfl": 0.017814969307356324,
+          "diffusion_number": 0.0017066666666666667,
+          "linear_advection_diffusion_ratio": 0.26070955055029316
+        },
+        {
+          "N": 32,
+          "dt": 0.001,
+          "step": 80,
+          "time": 0.08,
+          "max_div": 1.3322676295501878e-15,
+          "interior_div": 1.3322676295501878e-15,
+          "max_div_on_edge": 0,
+          "max_grad": 8.05946956196649,
+          "energy": 39.40764187869434,
+          "max_speed": 2.2926482188551733,
+          "advective_cfl": 0.017922298835025413,
+          "diffusion_number": 0.0017066666666666667,
+          "linear_advection_diffusion_ratio": 0.26281179277098987
+        }
+      ]
+    },
+    {
+      "N": 64,
+      "dt": 0.001,
+      "steps": 80,
+      "end_time": 0.08,
+      "box": 6.0,
+      "nu": 0.01,
+      "sigma": 0.0,
+      "P_U": 0.0,
+      "source_sha256": "327adfdcc140ddc13971fba985ba8b99598667eb4da234378a9f364228e078aa",
+      "seconds": 10.939387999998871,
+      "sampled": {
+        "max_div": 0.5149685365720154,
+        "interior_div": 0.5149685365720154,
+        "max_div_on_edge": 0,
+        "max_grad": 10.713149210322936,
+        "energy": 40.347377994309255
+      },
+      "correction_fraction": 0.007831095163741735,
+      "rows": [
+        {
+          "N": 64,
+          "dt": 0.001,
+          "step": 0,
+          "time": 0.0,
+          "max_div": 2.4424906541753444e-15,
+          "interior_div": 2.4424906541753444e-15,
+          "max_div_on_edge": 0,
+          "max_grad": 10.710468178915445,
+          "energy": 40.34490364892996,
+          "max_speed": 2.292033085120972,
+          "advective_cfl": 0.03503245634088213,
+          "diffusion_number": 0.006826666666666667,
+          "linear_advection_diffusion_ratio": 0.26267078316445813
+        },
+        {
+          "N": 64,
+          "dt": 0.001,
+          "step": 20,
+          "time": 0.02,
+          "max_div": 2.6645352591003757e-15,
+          "interior_div": 2.6645352591003757e-15,
+          "max_div_on_edge": 0,
+          "max_grad": 10.448211706954798,
+          "energy": 40.11944979304755,
+          "max_speed": 2.300837741561592,
+          "advective_cfl": 0.03532473872368315,
+          "diffusion_number": 0.006826666666666667,
+          "linear_advection_diffusion_ratio": 0.2646927156497125
+        },
+        {
+          "N": 64,
+          "dt": 0.001,
+          "step": 40,
+          "time": 0.04,
+          "max_div": 2.6645352591003757e-15,
+          "interior_div": 2.6645352591003757e-15,
+          "max_div_on_edge": 0,
+          "max_grad": 10.208059881711533,
+          "energy": 39.89923747752773,
+          "max_speed": 2.3090488605935016,
+          "advective_cfl": 0.035576310915544564,
+          "diffusion_number": 0.006826666666666667,
+          "linear_advection_diffusion_ratio": 0.26658533203040735
+        },
+        {
+          "N": 64,
+          "dt": 0.001,
+          "step": 60,
+          "time": 0.06,
+          "max_div": 2.886579864025407e-15,
+          "interior_div": 2.886579864025407e-15,
+          "max_div_on_edge": 0,
+          "max_grad": 9.982838955730125,
+          "energy": 39.684096108927044,
+          "max_speed": 2.3156036112801566,
+          "advective_cfl": 0.03578791731256149,
+          "diffusion_number": 0.006826666666666667,
+          "linear_advection_diffusion_ratio": 0.26810100422868516
+        },
+        {
+          "N": 64,
+          "dt": 0.001,
+          "step": 80,
+          "time": 0.08,
+          "max_div": 2.886579864025407e-15,
+          "interior_div": 2.886579864025407e-15,
+          "max_div_on_edge": 0,
+          "max_grad": 9.77179126406626,
+          "energy": 39.473865653655324,
+          "max_speed": 2.3213292267201404,
+          "advective_cfl": 0.03596354558948423,
+          "diffusion_number": 0.006826666666666667,
+          "linear_advection_diffusion_ratio": 0.26942846894125627
+        }
+      ]
+    },
+    {
+      "N": 128,
+      "dt": 0.001,
+      "steps": 80,
+      "end_time": 0.08,
+      "box": 6.0,
+      "nu": 0.01,
+      "sigma": 0.0,
+      "P_U": 0.0,
+      "source_sha256": "327adfdcc140ddc13971fba985ba8b99598667eb4da234378a9f364228e078aa",
+      "seconds": 91.35763959999895,
+      "sampled": {
+        "max_div": 0.20163733906090692,
+        "interior_div": 0.20163733906090692,
+        "max_div_on_edge": 0,
+        "max_grad": 11.513890366338417,
+        "energy": 40.347383389279244
+      },
+      "correction_fraction": 0.0017444795814292743,
+      "rows": [
+        {
+          "N": 128,
+          "dt": 0.001,
+          "step": 0,
+          "time": 0.0,
+          "max_div": 4.773959005888173e-15,
+          "interior_div": 4.773959005888173e-15,
+          "max_div_on_edge": 0,
+          "max_grad": 11.51638686705209,
+          "energy": 40.347260603758585,
+          "max_speed": 2.2988961996281936,
+          "advective_cfl": 0.07029746851422289,
+          "diffusion_number": 0.027306666666666667,
+          "linear_advection_diffusion_ratio": 0.2642461868332475
+        },
+        {
+          "N": 128,
+          "dt": 0.001,
+          "step": 20,
+          "time": 0.02,
+          "max_div": 5.662137425588298e-15,
+          "interior_div": 5.662137425588298e-15,
+          "max_div_on_edge": 0,
+          "max_grad": 11.190829628603375,
+          "energy": 40.12390478617262,
+          "max_speed": 2.3080778234918515,
+          "advective_cfl": 0.07080890919157752,
+          "diffusion_number": 0.027306666666666667,
+          "linear_advection_diffusion_ratio": 0.2663611619647441
+        },
+        {
+          "N": 128,
+          "dt": 0.001,
+          "step": 40,
+          "time": 0.04,
+          "max_div": 5.551115123125783e-15,
+          "interior_div": 5.551115123125783e-15,
+          "max_div_on_edge": 0,
+          "max_grad": 10.884760723731123,
+          "energy": 39.90631990380326,
+          "max_speed": 2.3159940873558793,
+          "advective_cfl": 0.07125016592307686,
+          "diffusion_number": 0.027306666666666667,
+          "linear_advection_diffusion_ratio": 0.26819143063336964
+        },
+        {
+          "N": 128,
+          "dt": 0.001,
+          "step": 60,
+          "time": 0.06,
+          "max_div": 5.551115123125783e-15,
+          "interior_div": 5.551115123125783e-15,
+          "max_div_on_edge": 0,
+          "max_grad": 10.599750267384355,
+          "energy": 39.69405293708844,
+          "max_speed": 2.322727459401743,
+          "advective_cfl": 0.07176362926254387,
+          "diffusion_number": 0.027306666666666667,
+          "linear_advection_diffusion_ratio": 0.26975314253294375
+        },
+        {
+          "N": 128,
+          "dt": 0.001,
+          "step": 80,
+          "time": 0.08,
+          "max_div": 5.773159728050814e-15,
+          "interior_div": 5.773159728050814e-15,
+          "max_div_on_edge": 0,
+          "max_grad": 10.348072325276078,
+          "energy": 39.486738983791085,
+          "max_speed": 2.328301662204094,
+          "advective_cfl": 0.07219196480145626,
+          "diffusion_number": 0.027306666666666667,
+          "linear_advection_diffusion_ratio": 0.2710494315111173
+        }
+      ]
+    },
+    {
+      "N": 128,
+      "dt": 0.0005,
+      "steps": 160,
+      "end_time": 0.08,
+      "box": 6.0,
+      "nu": 0.01,
+      "sigma": 0.0,
+      "P_U": 0.0,
+      "source_sha256": "327adfdcc140ddc13971fba985ba8b99598667eb4da234378a9f364228e078aa",
+      "seconds": 175.04149769997457,
+      "sampled": {
+        "max_div": 0.20163733906090692,
+        "interior_div": 0.20163733906090692,
+        "max_div_on_edge": 0,
+        "max_grad": 11.513890366338417,
+        "energy": 40.347383389279244
+      },
+      "correction_fraction": 0.0017444795814292743,
+      "rows": [
+        {
+          "N": 128,
+          "dt": 0.0005,
+          "step": 0,
+          "time": 0.0,
+          "max_div": 4.773959005888173e-15,
+          "interior_div": 4.773959005888173e-15,
+          "max_div_on_edge": 0,
+          "max_grad": 11.51638686705209,
+          "energy": 40.347260603758585,
+          "max_speed": 2.2988961996281936,
+          "advective_cfl": 0.035148734257111444,
+          "diffusion_number": 0.013653333333333333,
+          "linear_advection_diffusion_ratio": 0.13212309341662376
+        },
+        {
+          "N": 128,
+          "dt": 0.0005,
+          "step": 40,
+          "time": 0.02,
+          "max_div": 5.88418203051333e-15,
+          "interior_div": 5.88418203051333e-15,
+          "max_div_on_edge": 0,
+          "max_grad": 11.190637681156241,
+          "energy": 40.12331141226947,
+          "max_speed": 2.3080265399651063,
+          "advective_cfl": 0.03540385772966487,
+          "diffusion_number": 0.013653333333333333,
+          "linear_advection_diffusion_ratio": 0.13317466272958253
+        },
+        {
+          "N": 128,
+          "dt": 0.0005,
+          "step": 80,
+          "time": 0.04,
+          "max_div": 5.551115123125783e-15,
+          "interior_div": 5.551115123125783e-15,
+          "max_div_on_edge": 0,
+          "max_grad": 10.884358711141328,
+          "energy": 39.90516148811752,
+          "max_speed": 2.315889748432298,
+          "advective_cfl": 0.035623849483635915,
+          "diffusion_number": 0.013653333333333333,
+          "linear_advection_diffusion_ratio": 0.1340836331723453
+        },
+        {
+          "N": 128,
+          "dt": 0.0005,
+          "step": 120,
+          "time": 0.06,
+          "max_div": 5.551115123125783e-15,
+          "interior_div": 5.551115123125783e-15,
+          "max_div_on_edge": 0,
+          "max_grad": 10.599071514667385,
+          "energy": 39.69235430687279,
+          "max_speed": 2.3225689363352005,
+          "advective_cfl": 0.035879919978594535,
+          "diffusion_number": 0.013653333333333333,
+          "linear_advection_diffusion_ratio": 0.1348581616007306
+        },
+        {
+          "N": 128,
+          "dt": 0.0005,
+          "step": 160,
+          "time": 0.08,
+          "max_div": 5.995204332975845e-15,
+          "interior_div": 5.995204332975845e-15,
+          "max_div_on_edge": 0,
+          "max_grad": 10.347793114888836,
+          "energy": 39.484521855728644,
+          "max_speed": 2.328087974481975,
+          "advective_cfl": 0.03609340249729295,
+          "diffusion_number": 0.013653333333333333,
+          "linear_advection_diffusion_ratio": 0.13549984042318963
+        }
+      ]
+    },
+    {
+      "N": 256,
+      "dt": 0.001,
+      "steps": 80,
+      "end_time": 0.08,
+      "box": 6.0,
+      "nu": 0.01,
+      "sigma": 0.0,
+      "P_U": 0.0,
+      "source_sha256": "327adfdcc140ddc13971fba985ba8b99598667eb4da234378a9f364228e078aa",
+      "seconds": 749.7230478000129,
+      "sampled": {
+        "max_div": 0.06301777892724758,
+        "interior_div": 0.06301777892724758,
+        "max_div_on_edge": 0,
+        "max_grad": 11.714717225760117,
+        "energy": 40.34738337480942
+      },
+      "correction_fraction": 0.0004204429055383164,
+      "rows": [
+        {
+          "N": 256,
+          "dt": 0.001,
+          "step": 0,
+          "time": 0.0,
+          "max_div": 1.2434497875801753e-14,
+          "interior_div": 1.2434497875801753e-14,
+          "max_div_on_edge": 0,
+          "max_grad": 11.71530046030924,
+          "energy": 40.347376242512205,
+          "max_speed": 2.3005293670172926,
+          "advective_cfl": 0.14069556951109763,
+          "diffusion_number": 0.10922666666666667,
+          "linear_advection_diffusion_ratio": 0.2646217684254492
+        },
+        {
+          "N": 256,
+          "dt": 0.001,
+          "step": 20,
+          "time": 0.02,
+          "max_div": 1.1879386363489175e-14,
+          "interior_div": 1.1879386363489175e-14,
+          "max_div_on_edge": 0,
+          "max_grad": 11.373897622159284,
+          "energy": 40.124624347800506,
+          "max_speed": 2.309850441376596,
+          "advective_cfl": 0.141671914618145,
+          "diffusion_number": 0.10922666666666667,
+          "linear_advection_diffusion_ratio": 0.2667704530763828
+        },
+        {
+          "N": 256,
+          "dt": 0.001,
+          "step": 40,
+          "time": 0.04,
+          "max_div": 1.2212453270876722e-14,
+          "interior_div": 1.2212453270876722e-14,
+          "max_div_on_edge": 0,
+          "max_grad": 11.05750173993029,
+          "energy": 39.907793469402435,
+          "max_speed": 2.31782016471991,
+          "advective_cfl": 0.14262395823803242,
+          "diffusion_number": 0.10922666666666667,
+          "linear_advection_diffusion_ratio": 0.2686145157991115
+        },
+        {
+          "N": 256,
+          "dt": 0.001,
+          "step": 60,
+          "time": 0.06,
+          "max_div": 1.3100631690576847e-14,
+          "interior_div": 1.3100631690576847e-14,
+          "max_div_on_edge": 0,
+          "max_grad": 10.767317679282556,
+          "energy": 39.696330064639994,
+          "max_speed": 2.324519689405954,
+          "advective_cfl": 0.1435252727675035,
+          "diffusion_number": 0.10922666666666667,
+          "linear_advection_diffusion_ratio": 0.27016958932179763
+        },
+        {
+          "N": 256,
+          "dt": 0.001,
+          "step": 80,
+          "time": 0.08,
+          "max_div": 1.2656542480726785e-14,
+          "interior_div": 1.2656542480726785e-14,
+          "max_div_on_edge": 0,
+          "max_grad": 10.501478878506463,
+          "energy": 39.48980484504906,
+          "max_speed": 2.3300724123756824,
+          "advective_cfl": 0.14446184858446914,
+          "diffusion_number": 0.10922666666666667,
+          "linear_advection_diffusion_ratio": 0.2714618723457116
+        }
+      ]
+    },
+    {
+      "N": 256,
+      "dt": 0.0005,
+      "steps": 160,
+      "end_time": 0.08,
+      "box": 6.0,
+      "nu": 0.01,
+      "sigma": 0.0,
+      "P_U": 0.0,
+      "source_sha256": "327adfdcc140ddc13971fba985ba8b99598667eb4da234378a9f364228e078aa",
+      "seconds": 1458.8479071000183,
+      "sampled": {
+        "max_div": 0.06301777892724758,
+        "interior_div": 0.06301777892724758,
+        "max_div_on_edge": 0,
+        "max_grad": 11.714717225760117,
+        "energy": 40.34738337480942
+      },
+      "correction_fraction": 0.0004204429055383164,
+      "rows": [
+        {
+          "N": 256,
+          "dt": 0.0005,
+          "step": 0,
+          "time": 0.0,
+          "max_div": 1.2434497875801753e-14,
+          "interior_div": 1.2434497875801753e-14,
+          "max_div_on_edge": 0,
+          "max_grad": 11.71530046030924,
+          "energy": 40.347376242512205,
+          "max_speed": 2.3005293670172926,
+          "advective_cfl": 0.07034778475554881,
+          "diffusion_number": 0.05461333333333333,
+          "linear_advection_diffusion_ratio": 0.1323108842127246
+        },
+        {
+          "N": 256,
+          "dt": 0.0005,
+          "step": 40,
+          "time": 0.02,
+          "max_div": 1.1879386363489175e-14,
+          "interior_div": 1.1879386363489175e-14,
+          "max_div_on_edge": 0,
+          "max_grad": 11.37368992531302,
+          "energy": 40.124020079828554,
+          "max_speed": 2.3097985881552137,
+          "advective_cfl": 0.07083475146313434,
+          "diffusion_number": 0.05461333333333333,
+          "linear_advection_diffusion_ratio": 0.13337923794609546
+        },
+        {
+          "N": 256,
+          "dt": 0.0005,
+          "step": 80,
+          "time": 0.04,
+          "max_div": 1.2212453270876722e-14,
+          "interior_div": 1.2212453270876722e-14,
+          "max_div_on_edge": 0,
+          "max_grad": 11.057057875664789,
+          "energy": 39.90661421980856,
+          "max_speed": 2.3177147720034297,
+          "advective_cfl": 0.07130944893345965,
+          "diffusion_number": 0.05461333333333333,
+          "linear_advection_diffusion_ratio": 0.13429504410907273
+        },
+        {
+          "N": 256,
+          "dt": 0.0005,
+          "step": 120,
+          "time": 0.06,
+          "max_div": 1.3988810110276972e-14,
+          "interior_div": 1.3988810110276972e-14,
+          "max_div_on_edge": 0,
+          "max_grad": 10.76701833667683,
+          "energy": 39.694601417734496,
+          "max_speed": 2.324359932657822,
+          "advective_cfl": 0.07175891183163492,
+          "diffusion_number": 0.05461333333333333,
+          "linear_advection_diffusion_ratio": 0.13506622741362684
+        },
+        {
+          "N": 256,
+          "dt": 0.0005,
+          "step": 160,
+          "time": 0.08,
+          "max_div": 1.176836406102666e-14,
+          "interior_div": 1.176836406102666e-14,
+          "max_div_on_edge": 0,
+          "max_grad": 10.50095811274869,
+          "energy": 39.48754914562619,
+          "max_speed": 2.329857516320416,
+          "advective_cfl": 0.07222584828519842,
+          "diffusion_number": 0.05461333333333333,
+          "linear_advection_diffusion_ratio": 0.1357059011588684
+        }
+      ]
+    }
+  ],
+  "spatial_comparisons": [
+    {
+      "kind": "grid",
+      "coarse": 32,
+      "fine": 64,
+      "initial": {
+        "velocity_relative_l2": 0.027693406269200367,
+        "gradient_relative_l2": 0.18103646135874513
+      },
+      "final": {
+        "velocity_relative_l2": 0.03176574279298544,
+        "gradient_relative_l2": 0.1702619810339123
+      }
+    },
+    {
+      "kind": "grid",
+      "coarse": 64,
+      "fine": 128,
+      "initial": {
+        "velocity_relative_l2": 0.006196278800186034,
+        "gradient_relative_l2": 0.07693103893981927
+      },
+      "final": {
+        "velocity_relative_l2": 0.008612522511083812,
+        "gradient_relative_l2": 0.061471835570888596
+      }
+    },
+    {
+      "kind": "grid",
+      "coarse": 128,
+      "fine": 256,
+      "initial": {
+        "velocity_relative_l2": 0.0013261938835619318,
+        "gradient_relative_l2": 0.0237287503651883
+      },
+      "final": {
+        "velocity_relative_l2": 0.0022610608636565656,
+        "gradient_relative_l2": 0.017510274856313734
+      }
+    }
+  ],
+  "time_comparison": {
+    "velocity_relative_l2": 0.0001399074650184427,
+    "gradient_relative_l2": 0.0005824891007279973
+  },
+  "limits": "Finite-time numerical evidence; no error bound or convergence theorem. Centered derivatives have checkerboard null modes. Interpolation is approximate.",
+  "time_comparison_grid": 256,
+  "time_comparison_steps": [
+    0.001,
+    0.0005
+  ],
+  "extension": "256^3 half-step completed; all earlier completed runs reused",
+  "time_comparisons": [
+    {
+      "grid": 128,
+      "steps": [
+        0.001,
+        0.0005
+      ],
+      "velocity_relative_l2": 0.00013175585320744697,
+      "gradient_relative_l2": 0.00048443460178530925
+    },
+    {
+      "grid": 256,
+      "steps": [
+        0.001,
+        0.0005
+      ],
+      "velocity_relative_l2": 0.0001399074650184427,
+      "gradient_relative_l2": 0.0005824891007279973
+    }
+  ],
+  "publication_validation": {
+    "repository_tests_passed": 146,
+    "note": "Full suite passed; temporary test files were placed in the writable workspace.",
+    "long_runs_reused": true
+  }
+}
