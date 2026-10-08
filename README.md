@@ -19,7 +19,7 @@ The **“hug”** is the name for a soft enclosing shape used to prepare the flo
 
 The three-run grid comparison reached **model time 0.4**. The finer-grid comparison gives **0.0875% in velocity** and **0.3710% in its spatial gradient**. Halving the time step on 384³ gives **0.0491%** and **0.1245%**, respectively.
 
-**Latest check:** The averaging method gives smaller energy changes when the step is halved on both grids. New 256³ controls cover 0.40 to 0.41; the completed 384³ results are reused. [Measurements and limits](math/notes/hug-boundary.md#time-method-comparison-on-both-grids).
+**Latest check:** The remaining differences shrink when the averaging step is halved again. One new 256³ Heun run uses dt 0.00025; the two completed larger steps are reused. [Measurements and limits](math/notes/hug-boundary.md#quarter-time-step-check-for-the-averaging-method).
 
 These are measurements over a limited simulated interval. The Clay problem still requires a mathematical proof.
 
@@ -34,7 +34,7 @@ The [earlier category map](language/exploration/README.md) shows reply order, ov
 ## What is finished, and what comes next?
 
 - **Completed:** the smooth starting-field construction and energy calculation; saved grid and time-step comparisons; conversation maps with evidence links and checks.
-- **Latest math check completed:** [Euler/Heun comparison on both grids](math/notes/hug-boundary.md#time-method-comparison-on-both-grids); earlier results are preserved.
+- **Latest math check completed:** [Quarter-time-step Heun comparison](math/notes/hug-boundary.md#quarter-time-step-check-for-the-averaging-method); earlier results are preserved.
 - **Next conversation work:** review interpretations with another reader and add new material while recording overlaps.
 
 [Full project status and completed work →](STATUS.md)

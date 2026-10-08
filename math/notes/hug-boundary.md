@@ -1,6 +1,6 @@
 # The hug now prepares the ring's boundary
 
-**Latest:** [Time-method comparison on both grids](#time-method-comparison-on-both-grids).
+**Latest:** [Quarter-time-step check](#quarter-time-step-check-for-the-averaging-method).
 
 **Completed:** the existing closed hug shapes the existing smooth ring's initial field. Velocity becomes zero smoothly before every cube face, so opposite faces and all their derivatives match. The continuum field remains divergence-free. The Navier–Stokes equation and zero-external-force choice remain unchanged.
 
@@ -986,3 +986,77 @@ Raw checkpoints remain in ignored scratch/hug-method-grid/n256/ for reuse.
 [Comparison driver](../hug_method_grid.py) · [Full new measurements and reused-reference hash](../results/hug-method-grid.json) · [44 new energy observations](../results/hug-method-grid.csv)
 
 <!-- METHOD_GRID_END -->
+
+<!-- METHOD_REFINEMENT_START -->
+## Quarter-time-step check for the averaging method
+
+**Question:** do the remaining differences shrink if Heun's time step is halved once more on 256³?
+
+**The remaining differences shrink when the averaging step is halved again.** At model time **0.41**, the energy difference shrinks by **3.961**, the absolute velocity L2 difference by **4.002**, and the relative gradient difference by **4.003**. These factors compare successive time-step pairs.
+
+![Successive Heun energy differences over model time 0.40 to 0.41](../figures/hug-method-refinement.png)
+
+The vertical scale is logarithmic. Blue uses the completed dt 0.001 / 0.0005 comparison. Teal compares dt 0.0005 / 0.00025. Each point compares the same model time and the same spatial grid.
+
+### What changed
+
+Only **one new branch** is evolved: Heun at **dt 0.00025**, from **0.40 to 0.41**. It uses 40 Heun steps, or 80 calls to the existing projected Euler map. The completed dt 0.001 and dt 0.0005 branches are reused with their saved measurements and checkpoints; no earlier evolution is repeated.
+
+All three branches start from **exactly the same saved 256³ velocity at 0.40**, whose earlier history used Euler dt 0.001. The length-6 periodic domain, viscosity **0.01**, zero external force, original hug starting-field history, spatial operators and pressure projection are retained. The existing Heun and continuation implementations are unchanged.
+
+### Complete-field comparisons
+
+The absolute velocity L2 difference includes the cell-volume weight. Relative velocity and centered-gradient differences are normalized by the finer-step field's corresponding norm. The 0.001 / 0.0005 rows are copied from the verified earlier result; the 0.0005 / 0.00025 rows compare the complete saved arrays.
+
+| Model time | Step pair | Absolute energy difference | Absolute velocity L2 difference | Relative velocity difference | Relative gradient difference |
+| --- | --- | --- | --- | --- | --- |
+| 0.405 | 0.001 → 0.0005 | 3.3647531e-08 | 1.7347856e-07 | 0.00000203% | 0.00000797% |
+| 0.405 | 0.0005 → 0.00025 | 8.4959169e-09 | 4.3349578e-08 | 0.00000051% | 0.00000199% |
+| 0.410 | 0.001 → 0.0005 | 6.7127417e-08 | 3.4463306e-07 | 0.00000403% | 0.00001582% |
+| 0.410 | 0.0005 → 0.00025 | 1.6949215e-08 | 8.6118939e-08 | 0.00000101% | 0.00000395% |
+
+### Reduction between successive pairs
+
+Each factor is the first pair's difference divided by the second pair's difference. Values above 1 mean that the measured difference shrank. The gradient factor uses the reported relative differences, whose normalization uses each pair's finer-step field.
+
+| Model time | Energy factor | Absolute velocity L2 factor | Relative gradient factor |
+| --- | --- | --- | --- |
+| 0.405 | 3.96044 | 4.00185 | 4.00289 |
+| 0.410 | 3.96050 | 4.00183 | 4.00280 |
+
+The energy comparison includes all ten recorded times after 0.40; full velocity and gradient arrays are compared at 0.405 and 0.410. These are measurements at one fixed spatial resolution, not rigorous bounds on the exact solution.
+
+### New branch at 0.41
+
+Energy decreases at every new recorded time. The new fields and saved diagnostics are finite. Two new full velocity checkpoints are retained, at **0.405** and **0.410**.
+
+| Measurement | Value |
+| --- | --- |
+| Total kinetic energy | 36.582309962151 |
+| Peak speed | 2.419751749 |
+| Peak centered gradient | 7.727723279 |
+| Maximum divergence at 0.41 | 2.487e-14 |
+| Radial energy width | 1.5843324167 |
+| Axial energy width | 0.6217182525 |
+| Energy change from 0.40 | -7.864062964784e-02 |
+| Accumulated stage work | -7.864062967263e-02 |
+| Accumulated temporal energy defect | 2.478092824e-11 |
+| Energy-accounting remainder | +8.048e-15 |
+
+Stage work and temporal defect use the previously verified [Heun energy identity](#local-time-method-comparison-at-model-time-04), accumulated at every actual step. Stage work includes transport and viscosity. The energy-weighted widths use the existing fixed periodic coordinates; no imposed breathing cycle or moving wall is added.
+
+### Verification and limits
+
+Validation checks the unchanged numerical-source fingerprints, the shared initial arrays, the published full/half result and four retained checkpoint hashes, both new checkpoint hashes, energy identities at every recorded time, finite diagnostics, CSV/JSON consistency, comparison normalization and reduction factors. The first new recorded point at 0.401 is checked against the previously published local four-substep Heun control. Earlier report sections and numerical data remain preserved.
+
+This is additional time-step consistency evidence over 0.40 to 0.41. It does not remove spatial error or errors inherited from the prior Euler history, rerun Heun from zero, establish an exact error bound, or prove the Clay result. Further experiments require a preview and approval.
+
+From the repository root, with the earlier checkpoints available:
+
+~~~sh
+python math/hug_method_refinement.py
+~~~
+
+[Comparison driver](../hug_method_refinement.py) · [New measurements and reused-file hashes](../results/hug-method-refinement.json) · [Three energies at each recorded time](../results/hug-method-refinement.csv)
+
+<!-- METHOD_REFINEMENT_END -->
