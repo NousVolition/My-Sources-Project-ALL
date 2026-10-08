@@ -1,0 +1,238 @@
+{
+  "scope": "Review of the supplied implementation, not a continuation or a verification of the README long-run claims.",
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "source_sha256": {
+    "solver.py": "c78ab244202a29c6cb52cb3c8ec7efa613f492f1fa724a9ac32353a645c35f22",
+    "run.py": "60c01f1db6e63e7a495fac5af62b98cd9838375ac70593141554ea200bdbcbb5",
+    "requirements.txt": "e09f656c130b9c08b2c5ab7187c891295e449ed77febea2a6ceee9cc98ccb0fc"
+  },
+  "projection": {
+    "divergence": 7.216449660063518e-16,
+    "idempotence_error": 3.3306690738754696e-16,
+    "energy_before": 162.0,
+    "energy_after": 26.999999999999993
+  },
+  "analytic_shear": {
+    "rk2_error": 4.440892098500626e-16,
+    "exact_decay_error": 1.4802973661668753e-16,
+    "energy_before": 54.0,
+    "energy_after": 53.998815660459655
+  },
+  "energy_rate": {
+    "observed_energy_rate": -3.896519817550078,
+    "viscous_energy_rate": -3.896519817550078,
+    "absolute_error": 0.0
+  },
+  "short_runs": [
+    {
+      "case": "hug",
+      "n": 16,
+      "dt": 0.001,
+      "steps": 10,
+      "t_end": 0.01,
+      "initial": {
+        "n": 16,
+        "nu": 0.01,
+        "divergence": 1.349614864309956e-15,
+        "collarBeforeProjection": 2.1517272921335556e-05,
+        "collarAfterProjection": 0.20184895415139148,
+        "energy": 15.449724441526307,
+        "slope": 6.304753718149091,
+        "peak": 2.222789229956498,
+        "checker": 4.8901255471887156e-37
+      },
+      "final_peak": 2.2175528065472725,
+      "final_energy": 15.393965384235718,
+      "finite_at_every_step": true,
+      "max_divergence": 1.8283985436795547e-15,
+      "largest_step_energy_increase": 0.0
+    },
+    {
+      "case": "sharper",
+      "n": 16,
+      "dt": 0.001,
+      "steps": 10,
+      "t_end": 0.01,
+      "initial": {
+        "n": 16,
+        "nu": 0.01,
+        "divergence": 8.465450562766819e-16,
+        "collarBeforeProjection": 2.2651970393224135e-14,
+        "collarAfterProjection": 0.2620886920511094,
+        "energy": 4.621471170313092,
+        "slope": 4.987072909465132,
+        "peak": 1.5317467583102777,
+        "checker": 2.178475719009198e-36
+      },
+      "final_peak": 1.527457857395916,
+      "final_energy": 4.6005285636555815,
+      "finite_at_every_step": true,
+      "max_divergence": 1.2906342661267445e-15,
+      "largest_step_energy_increase": 0.0
+    },
+    {
+      "case": "tube",
+      "n": 16,
+      "dt": 0.001,
+      "steps": 10,
+      "t_end": 0.01,
+      "initial": {
+        "n": 16,
+        "nu": 0.002,
+        "divergence": 1.2758891165809416e-15,
+        "collarBeforeProjection": 0.5684104593851906,
+        "collarAfterProjection": 0.5229150759067736,
+        "energy": 9.25963933885089,
+        "slope": 5.421006215400464,
+        "peak": 1.2795716545702478,
+        "checker": 2.6927063931316874e-36
+      },
+      "final_peak": 1.2791340031181737,
+      "final_energy": 9.254259219382462,
+      "finite_at_every_step": true,
+      "max_divergence": 1.440254165929744e-15,
+      "largest_step_energy_increase": 0.0
+    },
+    {
+      "case": "tubes",
+      "n": 16,
+      "dt": 0.001,
+      "steps": 10,
+      "t_end": 0.01,
+      "initial": {
+        "n": 16,
+        "nu": 0.002,
+        "divergence": 9.185360805297194e-16,
+        "collarBeforeProjection": 9.628680527032112e-05,
+        "collarAfterProjection": 0.08032932461709044,
+        "energy": 3.1213345377368715,
+        "slope": 5.950385372433133,
+        "peak": 2.022705498017794,
+        "checker": 1.2050847868409753e-36
+      },
+      "final_peak": 2.021742470077906,
+      "final_energy": 3.118556632517205,
+      "finite_at_every_step": true,
+      "max_divergence": 1.4883927423881005e-15,
+      "largest_step_energy_increase": 0.0
+    }
+  ],
+  "gate_join": {
+    "x": 2.325,
+    "y": 2.325,
+    "z": 0.0,
+    "measurements": [
+      {
+        "h": 0.0001,
+        "left_derivative": 0.0,
+        "right_derivative": -4.444444151814331,
+        "derivative_jump": 4.444444151814331
+      },
+      {
+        "h": 1e-05,
+        "left_derivative": 0.0,
+        "right_derivative": -4.444444441553674,
+        "derivative_jump": 4.444444441553674
+      },
+      {
+        "h": 1e-06,
+        "left_derivative": 0.0,
+        "right_derivative": -4.44444444491765,
+        "derivative_jump": 4.44444444491765
+      }
+    ]
+  },
+  "cutoff_aliasing": [
+    {
+      "n": 12,
+      "mode": 4,
+      "boundary_mode_retained": true,
+      "max_alias_amplitude_after_filter": 0.5,
+      "expected_for_alias_free_projection": 0.0
+    },
+    {
+      "n": 48,
+      "mode": 16,
+      "boundary_mode_retained": true,
+      "max_alias_amplitude_after_filter": 0.5000000000000029,
+      "expected_for_alias_free_projection": 0.0
+    }
+  ],
+  "runner": {
+    "recommended_initial_dt": 0.03797919182054547,
+    "requested_end": 0.056588995812612744,
+    "actual_steps": 1,
+    "actual_dt_over_recommended": 1.49,
+    "comparison_terms_in_json": true,
+    "comparison_terms_in_stdout": true
+  },
+  "pressure_split": [
+    {
+      "case": "low_modes",
+      "split": {
+        "peak": 2.230150734341674,
+        "index": [
+          13,
+          12,
+          5
+        ],
+        "position": [
+          1.875,
+          1.5,
+          -1.125
+        ],
+        "carry": -0.32707085010614656,
+        "pressure": 1.0513816447913076,
+        "smoothing": -0.04397316431996731,
+        "total_local_energy_rate": 0.6803376303651937
+      },
+      "rhs_local_energy_rate": 0.6803376303651939,
+      "absolute_sum_error": 2.220446049250313e-16
+    },
+    {
+      "case": "retained_high_modes",
+      "split": {
+        "peak": 2.0612425927498137,
+        "index": [
+          12,
+          4,
+          11
+        ],
+        "position": [
+          1.5,
+          -1.5,
+          1.125
+        ],
+        "carry": 1.3960875196783393,
+        "pressure": -0.8787130768445292,
+        "smoothing": -1.3599307242136955,
+        "total_local_energy_rate": -0.8425562813798854
+      },
+      "rhs_local_energy_rate": -0.8425562813798857,
+      "absolute_sum_error": 3.3306690738754696e-16
+    },
+    {
+      "case": "analytic_shear",
+      "split": {
+        "peak": 0.9999999999999998,
+        "index": [
+          0,
+          4,
+          0
+        ],
+        "position": [
+          -3.0,
+          -1.5,
+          -3.0
+        ],
+        "carry": -0.0,
+        "pressure": -0.0,
+        "smoothing": -0.010966227112321482,
+        "total_local_energy_rate": -0.010966227112321482
+      },
+      "rhs_local_energy_rate": -0.010966227112321494,
+      "absolute_sum_error": 1.214306433183765e-17
+    }
+  ]
+}
