@@ -8,7 +8,7 @@
 
 The **“hug”** is a soft enclosing shape applied to the starting flow. After that preparation, the flow evolves with zero external force. A *velocity field* gives the speed and direction at each position; its *gradient* measures how quickly that velocity changes from place to place.
 
-1. **See the current result:** [the longer time-method comparison](notes/hug-boundary.md#longer-time-method-comparison-to-model-time-041).
+1. **See the current result:** [the time-method comparison on both grids](notes/hug-boundary.md#time-method-comparison-on-both-grids).
 2. **Understand the construction:** [how the hug shapes the starting field](notes/hug-boundary.md).
 3. **Follow the work:** [completed checks and the next experiment](../STATUS.md#next-math-step).
 
@@ -55,6 +55,7 @@ The editable derivation is [smooth-initial-field.tex](notes/smooth-initial-field
 | [hug_step_energy.py](hug_step_energy.py) | Traces viscosity, transport, finite-step and pressure-correction energy contributions on disposable copies of saved states |
 | [hug_time_method.py](hug_time_method.py) | Compares Euler and projected Heun over the same short interval from saved flow, with one, two and four steps |
 | [hug_method_interval.py](hug_method_interval.py) | Continues Euler and Heun from the same saved state, with reusable checkpoints and full-step / half-step controls |
+| [hug_method_grid.py](hug_method_grid.py) | Adds the 256³ method controls using the same continuation functions and reuses the completed 384³ results |
 | [tests/](tests/) | Consolidated checks from the repositories and this review |
 
 From the repository root:
