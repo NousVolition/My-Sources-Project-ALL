@@ -10,6 +10,8 @@ The **hug** is the starting idea: a form that surrounds, yields, and changes sha
 
 | Study | What it contains |
 | --- | --- |
+| **[Completed mirror-fluid tests](math/imports/hug-ns/mirror-fluid/README.md)** | Four reproduced tests, peak-spin and symmetry charts, actual results and runnable scripts. |
+| **[Signed mirror calibration](math/imports/hug-ns/mirror-calibration/README.md)** | 20 completed runs with reflected starts, two grids and half-timestep controls. |
 | **[Vortex stress tests and 3D viewer](reports/README.md)** | One central vortex with aligned, reverse, and departing surroundings; saved shapes, measurements, grid comparisons and time-step controls. |
 | **[Hug-ns code and results](math/imports/hug-ns/README.md)** | The supplied solver, matched-stretch calculations, result tables and reviewed numerical controls. |
 | **[Hugged-ring construction](math/notes/hug-boundary.md)** | The earlier smooth ring, its enclosing starting shape, and the calculation history through model time 0.40. |
@@ -55,3 +57,4 @@ The human–AI conversations, mirrored categories, and pressure-and-memory illus
 - [Original stream-function repository](https://github.com/NousVolition/Nous-Volition)
 
 The report collection is a dated copy of saved local work. Ongoing calculations can produce newer results locally before the next publication; the snapshot date is recorded in its [index](reports/README.md).
+
