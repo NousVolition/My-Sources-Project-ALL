@@ -6,7 +6,43 @@ The latest `hug-ns (5).zip` contains the same files, byte for byte, as `hug-ns (
 
 Later separate attachments are also included: [ratio-rose.json](results/ratio-rose.json), [stretch-at-max.json](results/stretch-at-max.json), and the revised [step-12.md](step-12.md). The later [stretch-rate.json](results/stretch-rate.json) and [high-fraction.json](results/high-fraction.json) plus [matched-strain.json](results/matched-strain.json) are followed by [matched-continue.json](results/matched-continue.json), then [matched-nostop.json](results/matched-nostop.json) and [matched-finer.json](results/matched-finer.json), bringing the total to sixteen result tables. Their source hashes are recorded separately from the ZIP entries; the superseded step-12 source hash is retained.
 
-## Results at a glance
+## October 8 control update
+
+**The supplied simulations record decay in some configurations and amplification in the matched-stretch records. Peak convergence remains unestablished.** A new timestep comparison supplies close agreement within its reported interval; it does not establish grid or independent-method convergence.
+
+### Measurements
+
+- `W_N(t)` is the sampled maximum vorticity magnitude, `max_grid |curl_N u|`; it has inverse-time units. Speed is `max_grid |u|`, a different quantity.
+- RMS spin is `sqrt(mean |curl_N u|²)`; the spin ratio is maximum divided by RMS.
+- `I_N` is a numerical time integral of sampled maximum spin. A finite computed value is not a bound on the continuum spatial supremum.
+- Region volumes are cell count times `dx³`. The supplied “width” is the cube root of selected volume, not minimum filament thickness.
+- Energy is `0.5 dx³ sum |u|²`; enstrophy is `0.5 dx³ sum |curl_N u|²`. Units are the model's length and time units, without SI calibration.
+
+### Observed results and verification
+
+| Check | Recorded result | Evidence |
+| --- | --- | --- |
+| Half timestep | At time 0.16, W is 288.471151171 versus 288.476676297: 0.001915% difference. Largest saved-pair difference is 0.002977%. | dt is exactly halved. Ten pairs have matching printed times. Full fields, viscosity and the producing implementation are not supplied for this pair. |
+| Snapshot energy | 18126.757349 → 18105.441977 → 18041.823051 at times 0, 0.12 and 0.24; decrease 0.468558%. | Recomputed directly from the supplied 48³ velocity arrays. |
+| Snapshot enstrophy | 61172.158724 → 141803.654967 → 459402.001414. | Recomputed from the supplied spin arrays; spin itself was checked against Fourier curl of velocity. |
+| Threshold counts | Every fixed count at 50/100/200/400/600 and relative count at 25%/50%/75% matches. | Direct recount of the three supplied fields. |
+| Longer finer grid | 64³ W reaches 701.797 at time 0.24, compared with 492.733 in the 48³ snapshot. | The newer 64³ summary omits dt and viscosity. This is not an isolated measurement of grid error. |
+| Alternative method | 32³ finite-difference-advection W rises from 50.493 to 196.140 by time 0.12. | No FD stencil, dt, viscosity, initial arrays or same-grid Fourier comparison accompanies the table. |
+| Reverse summary | W starts at 55.077, reaches a saved peak 79.825 at 0.1317, and ends at 57.790 at 0.40. | All reported stretchRate values are positive, but the measurement's definition/location and initial construction are missing. The filename does not establish an anti-stretch counterpart. |
+
+`budget-48.json` records snapshots; it does not contain the time-integrated viscous losses needed for a full budget residual. Small snapshot divergence and decreasing energy do not determine peak resolution.
+
+### Interpretation
+
+The timestep pair strengthens the numerical record for the reported run through 0.16. The independent-method summary makes another calculation available, but controlled agreement has not been demonstrated. The 48³ fixed-threshold regions grow while the moving half-peak region shrinks; both are observations of the same fields under different cutoffs.
+
+Passing time 0.0166 does not invalidate a hypothetical inequality `dW/dt <= W²`. Its comparison upper bound becomes uninformative at `1/W(0)`; the actual solution need not blow up then. The supplied files do not establish that unit-coefficient inequality for this flow. A continuum smoothness conclusion would require the corresponding continuous bound, not a finite grid sum.
+
+The latest ZIP preserves 39 earlier files and adds four JSON tables. Two of those duplicate earlier standalone uploads and are stored only once. The two later standalone files, budget-48 and fd-check, are also included. [Machine-readable verification and original member hashes](latest-controls-review.json). The full source arrays remain in the supplied archive and are not included in this table-only update.
+
+The earlier review below is retained as the record of its earlier attachments and checks.
+
+## Earlier results at a glance
 
 - All sixteen files pass checks for finite values, increasing saved times and the arithmetic present in each file.
 - The 48³ and 64³ starting fields were rebuilt. The later trajectories were not replayed.

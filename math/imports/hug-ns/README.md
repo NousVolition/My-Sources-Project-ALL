@@ -4,11 +4,24 @@
 
 This experiment prepares a flow with an enclosing gate, then evolves it using an approximation of the unforced, incompressible Navier–Stokes equation in a periodic cube.
 
-**Current status:** the pressure diagnostic is corrected. Sixteen result files are available. The focused checks record **32 passes and three known failures**, listed in [the code review](REVIEW.md#findings-that-need-correction-before-relying-on-larger-runs).
+**Current status:** the pressure diagnostic is corrected. Twenty-two result files are available. The newest six are reviewed in [the October 8 control update](RESULTS-REVIEW.md#october-8-control-update). The focused checks record **32 passes and three known failures**, listed in [the code review](REVIEW.md#findings-that-need-correction-before-relying-on-larger-runs).
 
 **Report:** [Original two-page PDF](hug-runs.pdf) · [Checks and wording corrections](RESULTS-REVIEW.md#pdf-report). The PDF is preserved as received; the linked review states which conclusions the supplied files support.
 
-## Latest results
+## Latest controls
+
+| Received file | Checked finding |
+| --- | --- |
+| [timestep-half.json](results/timestep-half.json) | Halving dt changes the saved endpoint maximum vorticity by 0.001915% at time 0.16. The producing configuration is only partly documented. |
+| [budget-48.json](results/budget-48.json) | Snapshot energy, enstrophy and counts match the supplied 48³ arrays. Integrated dissipation is not included. |
+| [ladder-48.json](results/ladder-48.json) | All fixed and relative threshold counts match the supplied arrays. |
+| [finer-longer.json](results/finer-longer.json) | 64³ summary reaches maximum vorticity 701.797 at time 0.24; dt and viscosity are omitted. |
+| [fd-check.json](results/fd-check.json) | Reports a 32³ finite-difference-advection example. Same-grid method agreement is not established. |
+| [reverse-status.json](results/reverse-status.json) | Reports a peak followed by decline and renewed growth through 0.40; the precise starting field is unspecified. |
+
+These are received records, not results from the separately running aligned/reverse/exodus experiment. [Definitions, verification and limits](RESULTS-REVIEW.md#october-8-control-update).
+
+## Earlier results
 
 | File | What is recorded |
 | --- | --- |
