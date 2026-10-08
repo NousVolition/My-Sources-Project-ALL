@@ -2,9 +2,9 @@
 
 [← Project home](README.md)
 
-## New submission reviewed
+## Latest hug-ns update
 
-[hug-ns.zip review](math/imports/hug-ns/REVIEW.md): gate and fluid evolution retained; pressure reporting corrected; fifteen focused checks pass and three numerical defects are marked expected failures. The source archive contains no saved evidence for its long-run results. Its initial gate and Fourier solver are documented separately from the earlier completed study.
+[Code and results](math/imports/hug-ns/README.md) are available with fifteen result tables. The latest table reaches time 0.35. The focused checks record **31 passes and three known failures**. Pressure reporting is corrected; the gate and evolution code are retained. [What passed and what needs work](math/imports/hug-ns/REVIEW.md) · [Results and their limits](math/imports/hug-ns/RESULTS-REVIEW.md).
 
 ## Already completed
 
@@ -17,7 +17,7 @@
 | Small & large box runs | [Results and interpretation](math/EXPERIMENTS.md) | Lengths 6 and 18, a fixed-spacing comparison, and a half-time-step check already run |
 | Mirror and boundary checks | [Norm and Entropy](math/notes/norm-entropy-mirror.md) | The 65 generated pairs match after alignment; K-means depends on representation. The endpoint-matched fluid copy still has a corner and nonzero divergence |
 | Soft-envelope prototypes | [Hug, imprint, and pressure](math/notes/soft-envelope.md) | Timed mirrored arms and a separate chosen pressure-opening rule pass nine checks; material-response labels and pressure for conversation data remain undefined |
-| Hug joined to the ring | [Construction and results](math/notes/hug-boundary.md) | The actual closed hug now shapes the smooth ring's stream function. Smooth, divergence-free initial data with zero face mismatch; nine new checks and four short unforced box runs completed |
+| Hug joined to the ring | [Construction and results](math/notes/hug-boundary.md) | The actual closed hug now shapes the smooth ring's stream function. Smooth, divergence-free initial data with zero face mismatch; fourteen new checks and four short unforced box runs completed |
 | Hug evolution refinement | [Saved grid and time comparisons](math/notes/hug-boundary.md#finer-grid-evolution-check) | Six saved runs through 256³ at time 0.08, with 128³ and 256³ half-step controls. Finest grid differences: velocity 0.23%, gradient 1.75%. The 256³ time-step differences are 0.0140% and 0.0582%. All 146 repository tests passed |
 | Longer hug evolution | [Continuation to time 0.16](math/notes/hug-boundary.md#longer-run-to-model-time-016) | Three exact checkpoint restarts completed; two restart checks passed. 256³ time-step differences: 0.0240% velocity, 0.0819% gradient. External force 0 |
 | 384³ grid comparison | [Same-time refinement](math/notes/hug-boundary.md#finer-grid-at-time-016) | At time 0.16: 0.0619% velocity difference and 0.3509% gradient difference vs 256³, using dt 0.001. Four checkpoints saved; six targeted comparison/restart checks passed |

@@ -1,16 +1,16 @@
 # Review of the supplied hug-ns files
 
-[Project home](../../../README.md) · [Math index](../../README.md) · [Supplied README](README.md) · [Recorded checks](review-results.json)
+[Project home](../../../README.md) · [Math index](../../README.md) · [Experiment overview](README.md) · [Recorded checks](review-results.json)
 
-**Status: reviewed import; pressure reporting corrected; three numerical defects remain documented.**
+**Pressure reporting is corrected. The focused checks record 31 passes and three known numerical failures. Fifteen result tables are included.**
 
-The latest supplied archive is `hug-ns (2).zip`, containing five files. Its `solver.py` matches the separately attached file, and its `BOUND.md` matches the separate note. The first ZIP had four files; the second added `pressure_at_peak`; the third added `BOUND.md`. The other received files match across revisions. One current copy of each is published.
+The latest supplied archive is `hug-ns (5).zip`, containing five code/document files and eight result JSON files. Its contents match `hug-ns (4).zip` exactly. Its `solver.py` matches the separately attached file, and its `BOUND.md` matches the separate note. Earlier receipts added the pressure function and bound note; this update adds the result tables. One current copy of each is published. See [the results review](RESULTS-REVIEW.md).
 
-[Source hashes](provenance.json) and [an exact patch](review-changes.patch) record received and published versions. The gate, initial fields, projection, fluid right-hand side, time integrator, cutoff, and time-step scheduler are retained. Changes are confined to pressure reporting, runner diagnostics, and review notes. Earlier project code and saved runs remain intact.
+[Source hashes](provenance.json) and [an exact patch](review-changes.patch) record received and published versions. The gate, initial fields, projection, fluid right-hand side, time integrator, cutoff, and time-step scheduler are retained. Code changes affect pressure reporting and runner diagnostics. The documentation has also been revised for clear descriptions of results and limits. Earlier project code and saved runs remain intact.
 
 ### What was corrected in the same-point calculation
 
-The updated ZIP does contain `pressure_at_peak`. For a divergence-free flow, pressure satisfies `Delta p = -div(advection)`, so `p_hat = div_hat / k²`. The supplied function used the negative of that Fourier coefficient. Its reported pressure contribution therefore had the wrong sign. The main `rhs` projection had the correct sign; this defect was in the diagnostic.
+The uploaded solver includes `pressure_at_peak`. For a divergence-free flow, pressure satisfies `Delta p = -div(advection)`, so `p_hat = div_hat / k²`. The supplied function used the negative of that Fourier coefficient. Its reported pressure contribution therefore had the wrong sign. The main `rhs` projection had the correct sign; this defect was in the diagnostic.
 
 An independent low-mode check found a reported sum of `-1.4224256592`, while the solver's actual local energy rate was `+0.6803376304`. Reversing the pressure sign closes that difference. [Before-correction evidence](received-pressure-check.json).
 
@@ -24,7 +24,7 @@ Each term is a rate of **speed squared divided by two**, not speed itself. Posit
 
 The user quoted Grok reporting that smoothing slows the fastest point in a coarse run, carrying and pressure switch sign, speed rises to `5.22` and later falls to `2.19`, and a finer run is at `6.06` at time `0.53` while still climbing. That message also states the gate is used only at the start.
 
-These are attributed reports; the archives contain no saved long-run arrays or logs. The pressure interpretations need recalculation with the corrected diagnostic. A pressure-diagnostic error does not by itself invalidate velocity results from `rhs`. The reported finer run was unfinished in that message. No new long run was launched for this import.
+The supplied JSON files record these runs. Arithmetic checks pass, and the two original starting fields were rebuilt. The later velocity arrays and producing scripts were not supplied. The pressure interpretations need recalculation with the corrected diagnostic. A pressure-diagnostic error does not by itself invalidate velocity results from `rhs`. The newer tables now include the finer run through time 1.6. No new long run was launched for this import.
 
 ## The invisible boundary
 
@@ -86,7 +86,7 @@ The original missing console comparison has been corrected as described above. `
 - **“Steepening” is an advection magnitude.** `terms` measures `max |(u·grad)u|` and `max |nu*laplacian(u)|`. Neither directly measures growth of a velocity gradient. The maxima may occur in different places, and the pressure contribution is omitted. Their relative sizes do not decide whether speed or gradients will grow.
 - **“Slope” has a specific definition.** `slope_max` is the largest absolute individual partial derivative. Earlier reports use a different gradient norm. Their values cannot be compared directly as the same diagnostic.
 - **The checkerboard diagnostic is narrow.** `checker` measures one all-axis alternating mode, which this solver's filter removes; it does not test all short waves. It divides by zero for a zero-energy field. The tested starts have nonzero energy.
-- **No restart evidence was supplied.** The latest archive contains five text files, no checkpoints or numerical result logs. The reviewed runner now records `dt` and step count, but it does not save evolving divergence or per-step finite checks. The separate review does record those quantities for its small runs.
+- **No restart evidence was supplied.** The latest archive includes result tables, but no velocity checkpoints or exact producing scripts/step records. The reviewed runner now records `dt` and step count, but it does not save evolving divergence or per-step finite checks. The separate review does record those quantities for its small runs.
 
 ## Review of BOUND.md
 
@@ -100,13 +100,13 @@ abs(integral omega · (grad u) omega)
 
 The last equality uses periodicity and incompressibility: `||grad u||_2 = ||curl u||_2`. Combining it with the vorticity energy identity gives the inequality in the supplied note. It remains conditional on controlling the time integral of the continuum vorticity maximum. BKM-type continuation criteria for Navier–Stokes are established results; see [Chemin and Zhang, introduction, p. 133](https://smf.emath.fr/sites/default/files/2024-05/ens_ann-sc_49_131-167__sample.pdf).
 
-The conclusion about the finite numerical integral is too strong. The reported `71.7`, `29.3`, and `86.1` were not supplied with logs, a vorticity routine, a time-quadrature method, or error bounds. Even verified finite grid measurements would not establish smoothness of the continuous PDE up to time 2. The received text is preserved with this correction at its top. “Step 10” refers to an outline absent from the archive.
+The conclusion about the finite numerical integral is too strong. The newer `bound-check.json` supplies sample values corresponding to `71.7`, `29.3`, and `86.1`, but no producing vorticity routine, time-quadrature method, or error bounds. The initial maximum was independently reproduced. Integrating the saved samples does not reproduce the recorded integral; see [the results review](RESULTS-REVIEW.md). Even verified finite grid measurements would not establish smoothness of the continuous PDE up to time 2. BOUND.md now states the estimate and this remaining requirement directly. Original source hashes and the documentation changes are retained in the provenance record and patch.
 
 ## Checks performed on the reviewed version
 
 Environment: Python 3.12.14, NumPy 2.3.5. The repository's pinned requirements provide these numerical dependencies; the uploaded `requirements.txt` itself specifies only `numpy`.
 
-Full local repository check: **243 passed, 3 expected failures**. The three expected failures are the open numerical defects below; they have not been counted as passes. Syntax and undefined-name checks also passed.
+The code import passed the full local repository suite: **243 passed and 3 expected failures**. After adding the fifteen result files, the focused code-and-data suite records **31 passed and 3 expected failures**. These totals come from different test scopes; they are not added together. Each expected failure reproduces one of the three open numerical defects. Syntax and undefined-name checks passed.
 
 | Check | Observation |
 | --- | --- |
@@ -119,7 +119,7 @@ Full local repository check: **243 passed, 3 expected failures**. The three expe
 | Corrected same-point split | Agrees with the solver at the selected point on three independent fields |
 | Gate join, cutoff alias, step rounding | Three reproduced defects; marked strict expected failures in tests |
 
-These short checks establish limited implementation behavior. They do not reproduce the submitted README's runs through times 2, 4, or 40, validate their reported numbers, establish long-term convergence, or prove the Clay result. Those statements remain attributed claims from the supplied README.
+These checks verify the listed code behavior on short runs. The longer trajectories described in the original upload, including runs to times 2, 4 and 40, were not replayed in this review. Their accuracy over those intervals needs separate resolution and time-step evidence.
 
 To reproduce just this review from the repository root:
 
@@ -131,6 +131,6 @@ python math/imports/hug-ns/review_checks.py --out scratch/hug-ns-review.json
 
 Create `scratch/` first if it does not exist. Fifteen checks should pass and three should be reported as `XFAIL` (known defects), not as passing requirements. Unexpected success is also an error so a later repair must update the review.
 
-## What was published
+## Included files
 
-The latest five-file submission, with explicit diagnostic corrections; this review; exact archive/file hashes and a patch; measured results; a reproduction script; and focused tests. Main project and math-index links make the work discoverable. The three remaining numerical fixes are recommendations, not implemented changes. The gate is retained, and the solver core before `pressure_at_peak` is byte-identical to the received source.
+This folder contains the reviewed solver, runner, mathematical notes, fifteen result tables, check scripts and source hashes. The patch records the diagnostic fixes and documentation edits. Main project and math-index links make the work discoverable. The three remaining numerical fixes are recommendations, not implemented changes. The gate is retained, and the solver core before `pressure_at_peak` is byte-identical to the received source.
