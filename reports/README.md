@@ -12,6 +12,8 @@ These reports are saved on the author’s computer and copied into this GitHub f
 
 ## Completed mirror tests — October 8
 
+- **[Separate C and D contributions](../math/imports/hug-ns/mirror-fluid/source-attribution/README.md):** ten new fluid controls and [chart](../math/imports/hug-ns/mirror-fluid/source-attribution/source-effects.png).
+
 - **[Four reproduced fluid tests](../math/imports/hug-ns/mirror-fluid/README.md):** [charts](files/fluid-tests-completed.png), [HTML report](files/fluid-tests-completed.html), code and result tables.
 - **[Signed mirror calibration](../math/imports/hug-ns/mirror-calibration/README.md):** 20 completed runs, [charts](files/mirror-calibration.png) and [HTML report](files/mirror-calibration.html).
 - [Files and hashes for this addition](verified-mirror-publication.json).
@@ -47,5 +49,6 @@ Earlier vortex snapshot: 2026-10-08T20:40:59.597392+00:00. The vortex matrix is 
 - [Conversation sources](../language/conversation-study/README.md)
 
 The full restart arrays remain in the local calculation workspace. They are large solver files; this folder includes the display data, measurement tables and source code needed to inspect the reports. Private next-step notes and temporary verification screenshots are not part of this report collection.
+
 
 

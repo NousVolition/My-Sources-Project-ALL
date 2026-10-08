@@ -1,0 +1,150 @@
+{
+  "purpose": "Measure individual source additions and their interaction at the existing endpoint",
+  "n": 33,
+  "end": 0.5,
+  "nu": 0.01,
+  "domain_side": 6.0,
+  "force": 0,
+  "method": "Unchanged supplied Heun solver and projection",
+  "starting_field": "Exact supplied fluid_sources.py AB, C, and D=mirror(C)",
+  "template": "Same normalized antisymmetric part of C as fluid_sources.py",
+  "jobs": [
+    {
+      "id": "half_c-base",
+      "case": "half_c",
+      "half": false
+    },
+    {
+      "id": "half_d-base",
+      "case": "half_d",
+      "half": false
+    },
+    {
+      "id": "seven_c-base",
+      "case": "seven_c",
+      "half": false
+    },
+    {
+      "id": "three_d-base",
+      "case": "three_d",
+      "half": false
+    },
+    {
+      "id": "half_c-half",
+      "case": "half_c",
+      "half": true
+    },
+    {
+      "id": "half_d-half",
+      "case": "half_d",
+      "half": true
+    },
+    {
+      "id": "seven_c-half",
+      "case": "seven_c",
+      "half": true
+    },
+    {
+      "id": "three_d-half",
+      "case": "three_d",
+      "half": true
+    },
+    {
+      "id": "equal-half",
+      "case": "equal",
+      "half": true
+    },
+    {
+      "id": "unequal-half",
+      "case": "unequal",
+      "half": true
+    }
+  ],
+  "weights": {
+    "half_c": [
+      0.5,
+      0.0
+    ],
+    "half_d": [
+      0.0,
+      0.5
+    ],
+    "seven_c": [
+      0.7,
+      0.0
+    ],
+    "three_d": [
+      0.0,
+      0.3
+    ],
+    "equal": [
+      0.5,
+      0.5
+    ],
+    "unequal": [
+      0.7,
+      0.3
+    ]
+  },
+  "reference_sha256": "de2d76fadf5a1284d65c8ec7bd4a49314f61cce5b0509914ad8843c810ecd69e",
+  "reuse": "Five completed source trajectories are retained. Only missing single-source amplitudes and timestep controls are evolved.",
+  "observables": {
+    "S": "<u-M[u],phi>; called D in the supplied JSON",
+    "E": "norm(u-M[u])/norm(u)",
+    "interaction": "S(AB+aC+bD)-S(AB+aC)-S(AB+bD)+S(AB), evaluated at t=0.5"
+  },
+  "limits": [
+    "Initial weights are controlled amplitudes, not fitted q couplings.",
+    "A nonzero interaction contrast detects nonadditivity, not automatically cross-pair competition.",
+    "E is a nonlinear unsigned norm and is not decomposed by addition.",
+    "AB is held mirror-symmetric; these controls do not identify an independent AB-bias response.",
+    "D is the exact mirror of C, not an independently shaped source. No grid refinement is included in this bounded attribution test."
+  ],
+  "source_hashes": {
+    "measure_sources.py": "c18c489004ff325608abe84135a99714c509fca8a2ebc182c67bb7f559c52578",
+    "source\\clay_hug.py": "422b7160f9e96badfc68fb76958c3cb512982905b73b37f8db92e5fd37379c01",
+    "source\\fluid_sources.py": "740578d25e015bf913a819137c3f051c1fcaedfad55d43c43f2dfb304068bacf"
+  },
+  "initial_checks": [
+    {
+      "case": "ab",
+      "initial_errors": {
+        "S": 0.0,
+        "E": 0.0,
+        "W": 0.0
+      }
+    },
+    {
+      "case": "ab_cd",
+      "initial_errors": {
+        "S": 1.0810239439275894e-18,
+        "E": 3.014787141487444e-18,
+        "W": 0.0
+      }
+    },
+    {
+      "case": "ab_c",
+      "initial_errors": {
+        "S": 0.0,
+        "E": 0.0,
+        "W": 0.0
+      }
+    },
+    {
+      "case": "ab_uneven",
+      "initial_errors": {
+        "S": 4.336808689942018e-19,
+        "E": 3.469446951953614e-18,
+        "W": 1.7763568394002505e-15
+      }
+    },
+    {
+      "case": "ab_c_mirror",
+      "initial_errors": {
+        "S": 0.0,
+        "E": 0.0,
+        "W": 0.0
+      }
+    }
+  ]
+}
