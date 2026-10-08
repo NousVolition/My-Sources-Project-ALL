@@ -1,6 +1,6 @@
 # Mirror-fluid tests: reproduced results
 
-[Hug-ns overview](../README.md) · [Charts and report](../../../../reports/files/fluid-tests-completed.html) · [Verification](verification.json) · [Finalized model and test coverage](FINALIZED-MODEL.md)
+[Hug-ns overview](../README.md) · [Charts and report](../../../../reports/files/fluid-tests-completed.html) · [Verification](verification.json) · [Model and test coverage](MODEL.md)
 
 **All four supplied tests were executed and their current reference results reproduced.** Grid: 33³. Domain side: 6. Viscosity: 0.01. The fluid solver uses Fourier derivatives, projection and two-stage Heun stepping with zero external force.
 
