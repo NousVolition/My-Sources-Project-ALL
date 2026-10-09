@@ -1,5 +1,7 @@
 # Matched-stretch numerical controls
 
+**Completed 128-grid baseline and higher strain:** [64/128 grid curves and strain x1.1 through 0.40](completed-grid128-strain/README.md). All 82 saved fields verified; peak spatial-resolution checks still fail.
+
 **Two more completed parameter runs:** [Tube spin x1.1 and background strain x0.9 through 0.40](completed-spin-strain/README.md). All 82 saved fields verified; peak spatial-resolution checks still fail.
 
 **Completed marker analyses:** [Individual paths and numerical controls](marker-stress/README.md), [changing fastest-separation labels](marker-stress/separation-roles.md), and [carpet, random-interval and Menger marker tests](marker-stress/fractal/README.md). Passive tracking reuses saved fields; the underlying fluid matrices remain in progress.
