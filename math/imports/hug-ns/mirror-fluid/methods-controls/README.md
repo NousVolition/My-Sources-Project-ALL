@@ -2,13 +2,13 @@
 
 **Mirror responses reproduce, but the coarse grid misses substantial peak spin.** The corrected spectrum check exposes energy and enstrophy near the retained cutoff that the uploaded dashboard's empty-band check could not see.
 
-[Definitions and methods](METHODS.md) · [Measured comparisons](analysis.json) · [Field verification](field-verification.json) · [Breathing animations](../breathing-rerun/timeline/README.md)
+[Definitions and methods](METHODS.md) Â· [Measured comparisons](analysis.json) Â· [Field verification](field-verification.json) Â· [Breathing animations](../breathing-rerun/timeline/README.md)
 
 ## Completed in this publication
 
 Snapshot: 2026-10-09T01:37:44.015173+00:00. **6 of 22 new control runs complete through 0.4.** Only completed runs are included below. Remaining runs continue locally under the fixed [protocol](protocol.json).
 
-- All 48 one-step checks: 3 grids × 2 timesteps × 2 starts × 4 transformations. Largest mirror residual: 2.84e-16; largest transformation residual: 5.51e-16.
+- All 48 one-step checks: 3 grids Ã— 2 timesteps Ã— 2 starts Ã— 4 transformations. Largest mirror residual: 2.84e-16; largest transformation residual: 5.51e-16.
 - All 516 previously saved breathing fields remeasured, including the prescribed input in energy and enstrophy accounting. No breathing evolution was repeated.
 - Five existing source starts audited for energy, enstrophy, circulation and spectra.
 - Completed opposite pairs compared using full saved fields. Largest relative mirror error: 5.99e-15.
@@ -48,6 +48,8 @@ Errors are relative curve L2 differences against the finer control, through the 
 
 ![Spectra](spectra.png)
 
+The nominal 33-grid cutoff is 11, but its floating-point mask actually retains component indices only through 10. The 49 and 65 limits are 16 and 21. The chart marks these measured limits. [Mask audit](mask-audit.json).
+
 ## Saved breathing fields
 
 ![Breathing diagnostics](breathing-checks.png)
@@ -56,7 +58,7 @@ The small-lean run uses dt=0.4/76 and the gap-hug run dt=0.4/134. Outputs occur 
 
 The small-lean final energy residual is -2.21e-07 of its initial energy; the gap-hug residual is -1.76e-05. This accounting includes the kicks. Their maximum high-band enstrophy fractions are 16.64% and 31.09%. Small energy residuals therefore coexist with inadequate spatial resolution.
 
-[Six-case summary](breathing-audit-summary.json) · [Per-step measurements](breathing-diagnostics/) · [Unforced enstrophy budgets](enstrophy-budgets.json)
+[Six-case summary](breathing-audit-summary.json) Â· [Per-step measurements](breathing-diagnostics/) Â· [Unforced enstrophy budgets](enstrophy-budgets.json)
 
 Unforced enstrophy-budget quadrature uses full diagnostic outputs about 0.02 apart; breathing budgets use every step. This difference is recorded explicitly and must be retained when comparing residuals.
 
@@ -70,7 +72,7 @@ Unforced enstrophy-budget quadrature uses full diagnostic outputs about 0.02 apa
 | mirrored_C | 4.60066363 | 209.626762 | -2.276537 | 2.326800 |
 | uneven_70_30 | 4.59986480 | 209.607957 | -2.311721 | 2.291616 |
 
-The loops are counterclockwise 0.6-by-0.6 rectangles centered at x=−0.9 and +0.9, y=0, z=0. Values are exact line integrals of each retained Fourier interpolant. Source addition changes energy by up to 0.213% in this set. The new odd-shape controls match velocity norm and energy; their enstrophy and spectra are measured separately.
+The loops are counterclockwise 0.6-by-0.6 rectangles centered at x=âˆ’0.9 and +0.9, y=0, z=0. Values are exact line integrals of each retained Fourier interpolant. Source addition changes energy by up to 0.213% in this set. The new odd-shape controls match velocity norm and energy; their enstrophy and spectra are measured separately.
 
 ## Reading the outcome
 

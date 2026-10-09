@@ -85,9 +85,9 @@ The supplied `clay_hug.py` uses Fourier differentiation and two-stage explicit H
 
 NumPy's forward FFT is unnormalized; its inverse divides by `N³`. Modal integrated energy is `0.5 L³ Σ_components |û|²/N⁶`; multiply by `|k|²` for modal enstrophy. All three velocity components contribute.
 
-The supplied mask retains component indices satisfying `|j_x|,|j_y|,|j_z| ≤ floor(N/3)` as evaluated by its existing code. This inclusive rule is retained and audited; it should not be silently replaced by a stricter mask. Boundary-mode aliasing must be tested for grids divisible by three. Passing a symmetry check on particular fields does not prove that the mask removes every possible quadratic alias.
+The supplied mask retains component indices satisfying `|j_x|,|j_y|,|j_z| ≤ floor(N/3)` as evaluated by its existing code. The [actual mask audit](mask-audit.json) matters: floating-point frequency construction excludes the nominal ±11 boundary on 33 cubed, so its largest retained component index is 10. The 49 and 65 grids retain indices through 16 and 21. The existing mask is preserved. Passing a symmetry check on particular fields does not prove that a different mask or grid removes every possible quadratic alias.
 
-The reported high band is the **retained** set where at least one component index reaches 80% of that cutoff. Shell plots sum modes by rounded radial index and mark the component cutoff and outer corner of retained support. The mask is cubical, so there is no single spherical cutoff.
+The reported high band is the **retained** set where at least one component index reaches 80% of the nominal `floor(N/3)` cutoff. On 33 cubed this selects retained component indices 9 and 10. Shell plots sum modes by rounded radial index and mark the actual retained component limit. JSON `component_cutoff` is the nominal index; `radial_support_max` measures the actual outer corner of support. The mask is cubical, so there is no single spherical cutoff.
 
 At every full diagnostic output, record maximum and RMS divergence, relative projection residual, energy and enstrophy spectra, and high-band fractions. The original uploaded band `k²>0.6 max_grid(k²)` contains no retained modes on its 33³ grid. Its reported zero could not diagnose resolution.
 
