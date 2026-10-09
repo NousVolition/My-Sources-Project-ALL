@@ -1,0 +1,896 @@
+{
+  "protocol": {
+    "version": 1,
+    "authorization": "User requested more cheese/Menger, Romeo-Juliet and Koch tests together; confirmed Koch snowflake and requested both passive relationship tracking and motion coupling.",
+    "scope": "Local exploratory comparison. No publication of this new interaction model is authorized by this protocol.",
+    "fluid": "Read existing original matched-stretch baseline fields only. Approved Navier-Stokes solver, Heun method and zero body force remain unchanged. No new fluid simulations.",
+    "time_window": [
+      0,
+      0.1
+    ],
+    "markers_per_case": 192,
+    "geometries": [
+      "Menger depth-2 sample",
+      "Koch depth-3 boundary",
+      "mixed Menger/Koch",
+      "smooth circle control",
+      "filled ball control"
+    ],
+    "geometry_matching": "Every cloud has 192 distinct labels, zero initial centroid and RMS radius 0.15. The Menger cloud is a seeded subset of the 400 retained depth-2 cells. The Koch cloud has all 192 depth-3 vertices. The mixture uses 96 points from each. Sampling, embedding and dimension differ; this is not an isolated test of dimension. Holes are empty marker locations, not solid porous walls.",
+    "geometry_seed": 617,
+    "relationship_equation": "dz_i/dt = a_i*z_i + b_i*sum_j P_ij(x)*z_j. Initial symmetric eight-nearest-neighbor graph includes all distance ties. Edge weights exp(-|r_ij|^2/(2*ell^2)) change with separation; P is row normalized. Edges remain between initial neighbors. For two connected nodes this is the Romeo-Juliet linear system.",
+    "profiles": {
+      "fading": {
+        "a": -20,
+        "b": 10
+      },
+      "mutual_amplification": {
+        "a": -20,
+        "b": 30
+      },
+      "opposing_responses": {
+        "a": 0,
+        "b": "Equal counts +20 and -20, assigned with fixed seed 701. Network behavior is measured; the two-node center classification does not automatically apply."
+      }
+    },
+    "initial_states": "Three matched states using fixed seed 719: balanced uniform noise centered to zero; +0.2 plus that noise; exact negative of the positive state. These are three conditions, not independent experimental replicates.",
+    "motion_equation": "dx_i/dt = u_saved(x_i,t) + mu/dbar0 * sum_j w_ij*tanh((z_i+z_j)/2)*r_ij. r_ij is shortest periodic displacement toward j. dbar0 is initial mean weighted degree. mu=0 is passive; mu=20 adds bounded signed attraction/repulsion coefficients. Pair contributions are equal and opposite, so their sum is zero. This is an overdamped particle drift rule, not a molecular force field or a self-consistent coupled Navier-Stokes model.",
+    "coupling_length": 0.1,
+    "motion_coupling": [
+      0,
+      20
+    ],
+    "primary_cases": 90,
+    "case_design": "5 geometries x 3 response profiles x 3 initial states x 2 motion couplings; 45 matched passive/active comparisons.",
+    "integrator": "RK4 for positions and relationship states together; trilinear spatial and linear saved-time velocity interpolation. The pre-existing fluid solver remains Heun.",
+    "controls": [
+      "all 90 cases at 64 grid, 32 steps per .01 snapshot interval",
+      "all 90 cases at 64 grid, 64 steps per .01 interval",
+      "all 90 cases at 128 grid, 64 steps per .01 interval",
+      "all 90 cases at 64 grid, velocity snapshots coarsened to .02 with 128 steps per interval"
+    ],
+    "checks": [
+      "Koch and Menger exact construction counts",
+      "two-person RK4 against matrix exponential for all three profiles",
+      "uniform zero-flow marker translation/interpolation",
+      "zero relationship state implies zero added drift",
+      "permutation invariance carrying coefficients, edges and states with labels",
+      "sum of added pair drifts is zero",
+      "all saved values finite",
+      "per-run source and input-field hashes"
+    ],
+    "tracking_screen": {
+      "max_position_step_difference": 0.001,
+      "relative_state_RMS_step_difference": 0.005
+    },
+    "reporting": "Report active-minus-passive changes, state norms, cloud radius, initial-neighbor retention, minimum pair separation, step/grid/snapshot differences and all failed screens. No significance tests across the three different initial-state conditions.",
+    "limitations": [
+      "Coefficients, graph rule and tanh motion coupling are chosen examples, not fitted water physics.",
+      "The added drift does not feed back on the saved fluid field and need not preserve tracer-cloud volume.",
+      "Original raw strain has nonsmooth periodic joins and unresolved peaks; 64/128 starting fields differ.",
+      "Finite labels and finite construction depth do not demonstrate a limiting fractal dimension.",
+      "A two-person saddle/center classification need not hold for an entire network.",
+      "No new Navier-Stokes regularity, molecular-personality, permanent-leader or real-water validation claim."
+    ]
+  },
+  "cases": [
+    {
+      "id": "menger_fading_balanced_m0",
+      "geometry": "menger",
+      "profile": "fading",
+      "initial_state": "balanced",
+      "mu": 0,
+      "edges": 1059
+    },
+    {
+      "id": "menger_fading_balanced_m20",
+      "geometry": "menger",
+      "profile": "fading",
+      "initial_state": "balanced",
+      "mu": 20,
+      "edges": 1059
+    },
+    {
+      "id": "menger_fading_positive_m0",
+      "geometry": "menger",
+      "profile": "fading",
+      "initial_state": "positive",
+      "mu": 0,
+      "edges": 1059
+    },
+    {
+      "id": "menger_fading_positive_m20",
+      "geometry": "menger",
+      "profile": "fading",
+      "initial_state": "positive",
+      "mu": 20,
+      "edges": 1059
+    },
+    {
+      "id": "menger_fading_negative_m0",
+      "geometry": "menger",
+      "profile": "fading",
+      "initial_state": "negative",
+      "mu": 0,
+      "edges": 1059
+    },
+    {
+      "id": "menger_fading_negative_m20",
+      "geometry": "menger",
+      "profile": "fading",
+      "initial_state": "negative",
+      "mu": 20,
+      "edges": 1059
+    },
+    {
+      "id": "menger_mutual_amplification_balanced_m0",
+      "geometry": "menger",
+      "profile": "mutual_amplification",
+      "initial_state": "balanced",
+      "mu": 0,
+      "edges": 1059
+    },
+    {
+      "id": "menger_mutual_amplification_balanced_m20",
+      "geometry": "menger",
+      "profile": "mutual_amplification",
+      "initial_state": "balanced",
+      "mu": 20,
+      "edges": 1059
+    },
+    {
+      "id": "menger_mutual_amplification_positive_m0",
+      "geometry": "menger",
+      "profile": "mutual_amplification",
+      "initial_state": "positive",
+      "mu": 0,
+      "edges": 1059
+    },
+    {
+      "id": "menger_mutual_amplification_positive_m20",
+      "geometry": "menger",
+      "profile": "mutual_amplification",
+      "initial_state": "positive",
+      "mu": 20,
+      "edges": 1059
+    },
+    {
+      "id": "menger_mutual_amplification_negative_m0",
+      "geometry": "menger",
+      "profile": "mutual_amplification",
+      "initial_state": "negative",
+      "mu": 0,
+      "edges": 1059
+    },
+    {
+      "id": "menger_mutual_amplification_negative_m20",
+      "geometry": "menger",
+      "profile": "mutual_amplification",
+      "initial_state": "negative",
+      "mu": 20,
+      "edges": 1059
+    },
+    {
+      "id": "menger_opposing_responses_balanced_m0",
+      "geometry": "menger",
+      "profile": "opposing_responses",
+      "initial_state": "balanced",
+      "mu": 0,
+      "edges": 1059
+    },
+    {
+      "id": "menger_opposing_responses_balanced_m20",
+      "geometry": "menger",
+      "profile": "opposing_responses",
+      "initial_state": "balanced",
+      "mu": 20,
+      "edges": 1059
+    },
+    {
+      "id": "menger_opposing_responses_positive_m0",
+      "geometry": "menger",
+      "profile": "opposing_responses",
+      "initial_state": "positive",
+      "mu": 0,
+      "edges": 1059
+    },
+    {
+      "id": "menger_opposing_responses_positive_m20",
+      "geometry": "menger",
+      "profile": "opposing_responses",
+      "initial_state": "positive",
+      "mu": 20,
+      "edges": 1059
+    },
+    {
+      "id": "menger_opposing_responses_negative_m0",
+      "geometry": "menger",
+      "profile": "opposing_responses",
+      "initial_state": "negative",
+      "mu": 0,
+      "edges": 1059
+    },
+    {
+      "id": "menger_opposing_responses_negative_m20",
+      "geometry": "menger",
+      "profile": "opposing_responses",
+      "initial_state": "negative",
+      "mu": 20,
+      "edges": 1059
+    },
+    {
+      "id": "koch_fading_balanced_m0",
+      "geometry": "koch",
+      "profile": "fading",
+      "initial_state": "balanced",
+      "mu": 0,
+      "edges": 936
+    },
+    {
+      "id": "koch_fading_balanced_m20",
+      "geometry": "koch",
+      "profile": "fading",
+      "initial_state": "balanced",
+      "mu": 20,
+      "edges": 936
+    },
+    {
+      "id": "koch_fading_positive_m0",
+      "geometry": "koch",
+      "profile": "fading",
+      "initial_state": "positive",
+      "mu": 0,
+      "edges": 936
+    },
+    {
+      "id": "koch_fading_positive_m20",
+      "geometry": "koch",
+      "profile": "fading",
+      "initial_state": "positive",
+      "mu": 20,
+      "edges": 936
+    },
+    {
+      "id": "koch_fading_negative_m0",
+      "geometry": "koch",
+      "profile": "fading",
+      "initial_state": "negative",
+      "mu": 0,
+      "edges": 936
+    },
+    {
+      "id": "koch_fading_negative_m20",
+      "geometry": "koch",
+      "profile": "fading",
+      "initial_state": "negative",
+      "mu": 20,
+      "edges": 936
+    },
+    {
+      "id": "koch_mutual_amplification_balanced_m0",
+      "geometry": "koch",
+      "profile": "mutual_amplification",
+      "initial_state": "balanced",
+      "mu": 0,
+      "edges": 936
+    },
+    {
+      "id": "koch_mutual_amplification_balanced_m20",
+      "geometry": "koch",
+      "profile": "mutual_amplification",
+      "initial_state": "balanced",
+      "mu": 20,
+      "edges": 936
+    },
+    {
+      "id": "koch_mutual_amplification_positive_m0",
+      "geometry": "koch",
+      "profile": "mutual_amplification",
+      "initial_state": "positive",
+      "mu": 0,
+      "edges": 936
+    },
+    {
+      "id": "koch_mutual_amplification_positive_m20",
+      "geometry": "koch",
+      "profile": "mutual_amplification",
+      "initial_state": "positive",
+      "mu": 20,
+      "edges": 936
+    },
+    {
+      "id": "koch_mutual_amplification_negative_m0",
+      "geometry": "koch",
+      "profile": "mutual_amplification",
+      "initial_state": "negative",
+      "mu": 0,
+      "edges": 936
+    },
+    {
+      "id": "koch_mutual_amplification_negative_m20",
+      "geometry": "koch",
+      "profile": "mutual_amplification",
+      "initial_state": "negative",
+      "mu": 20,
+      "edges": 936
+    },
+    {
+      "id": "koch_opposing_responses_balanced_m0",
+      "geometry": "koch",
+      "profile": "opposing_responses",
+      "initial_state": "balanced",
+      "mu": 0,
+      "edges": 936
+    },
+    {
+      "id": "koch_opposing_responses_balanced_m20",
+      "geometry": "koch",
+      "profile": "opposing_responses",
+      "initial_state": "balanced",
+      "mu": 20,
+      "edges": 936
+    },
+    {
+      "id": "koch_opposing_responses_positive_m0",
+      "geometry": "koch",
+      "profile": "opposing_responses",
+      "initial_state": "positive",
+      "mu": 0,
+      "edges": 936
+    },
+    {
+      "id": "koch_opposing_responses_positive_m20",
+      "geometry": "koch",
+      "profile": "opposing_responses",
+      "initial_state": "positive",
+      "mu": 20,
+      "edges": 936
+    },
+    {
+      "id": "koch_opposing_responses_negative_m0",
+      "geometry": "koch",
+      "profile": "opposing_responses",
+      "initial_state": "negative",
+      "mu": 0,
+      "edges": 936
+    },
+    {
+      "id": "koch_opposing_responses_negative_m20",
+      "geometry": "koch",
+      "profile": "opposing_responses",
+      "initial_state": "negative",
+      "mu": 20,
+      "edges": 936
+    },
+    {
+      "id": "mixed_fading_balanced_m0",
+      "geometry": "mixed",
+      "profile": "fading",
+      "initial_state": "balanced",
+      "mu": 0,
+      "edges": 1014
+    },
+    {
+      "id": "mixed_fading_balanced_m20",
+      "geometry": "mixed",
+      "profile": "fading",
+      "initial_state": "balanced",
+      "mu": 20,
+      "edges": 1014
+    },
+    {
+      "id": "mixed_fading_positive_m0",
+      "geometry": "mixed",
+      "profile": "fading",
+      "initial_state": "positive",
+      "mu": 0,
+      "edges": 1014
+    },
+    {
+      "id": "mixed_fading_positive_m20",
+      "geometry": "mixed",
+      "profile": "fading",
+      "initial_state": "positive",
+      "mu": 20,
+      "edges": 1014
+    },
+    {
+      "id": "mixed_fading_negative_m0",
+      "geometry": "mixed",
+      "profile": "fading",
+      "initial_state": "negative",
+      "mu": 0,
+      "edges": 1014
+    },
+    {
+      "id": "mixed_fading_negative_m20",
+      "geometry": "mixed",
+      "profile": "fading",
+      "initial_state": "negative",
+      "mu": 20,
+      "edges": 1014
+    },
+    {
+      "id": "mixed_mutual_amplification_balanced_m0",
+      "geometry": "mixed",
+      "profile": "mutual_amplification",
+      "initial_state": "balanced",
+      "mu": 0,
+      "edges": 1014
+    },
+    {
+      "id": "mixed_mutual_amplification_balanced_m20",
+      "geometry": "mixed",
+      "profile": "mutual_amplification",
+      "initial_state": "balanced",
+      "mu": 20,
+      "edges": 1014
+    },
+    {
+      "id": "mixed_mutual_amplification_positive_m0",
+      "geometry": "mixed",
+      "profile": "mutual_amplification",
+      "initial_state": "positive",
+      "mu": 0,
+      "edges": 1014
+    },
+    {
+      "id": "mixed_mutual_amplification_positive_m20",
+      "geometry": "mixed",
+      "profile": "mutual_amplification",
+      "initial_state": "positive",
+      "mu": 20,
+      "edges": 1014
+    },
+    {
+      "id": "mixed_mutual_amplification_negative_m0",
+      "geometry": "mixed",
+      "profile": "mutual_amplification",
+      "initial_state": "negative",
+      "mu": 0,
+      "edges": 1014
+    },
+    {
+      "id": "mixed_mutual_amplification_negative_m20",
+      "geometry": "mixed",
+      "profile": "mutual_amplification",
+      "initial_state": "negative",
+      "mu": 20,
+      "edges": 1014
+    },
+    {
+      "id": "mixed_opposing_responses_balanced_m0",
+      "geometry": "mixed",
+      "profile": "opposing_responses",
+      "initial_state": "balanced",
+      "mu": 0,
+      "edges": 1014
+    },
+    {
+      "id": "mixed_opposing_responses_balanced_m20",
+      "geometry": "mixed",
+      "profile": "opposing_responses",
+      "initial_state": "balanced",
+      "mu": 20,
+      "edges": 1014
+    },
+    {
+      "id": "mixed_opposing_responses_positive_m0",
+      "geometry": "mixed",
+      "profile": "opposing_responses",
+      "initial_state": "positive",
+      "mu": 0,
+      "edges": 1014
+    },
+    {
+      "id": "mixed_opposing_responses_positive_m20",
+      "geometry": "mixed",
+      "profile": "opposing_responses",
+      "initial_state": "positive",
+      "mu": 20,
+      "edges": 1014
+    },
+    {
+      "id": "mixed_opposing_responses_negative_m0",
+      "geometry": "mixed",
+      "profile": "opposing_responses",
+      "initial_state": "negative",
+      "mu": 0,
+      "edges": 1014
+    },
+    {
+      "id": "mixed_opposing_responses_negative_m20",
+      "geometry": "mixed",
+      "profile": "opposing_responses",
+      "initial_state": "negative",
+      "mu": 20,
+      "edges": 1014
+    },
+    {
+      "id": "circle_fading_balanced_m0",
+      "geometry": "circle",
+      "profile": "fading",
+      "initial_state": "balanced",
+      "mu": 0,
+      "edges": 768
+    },
+    {
+      "id": "circle_fading_balanced_m20",
+      "geometry": "circle",
+      "profile": "fading",
+      "initial_state": "balanced",
+      "mu": 20,
+      "edges": 768
+    },
+    {
+      "id": "circle_fading_positive_m0",
+      "geometry": "circle",
+      "profile": "fading",
+      "initial_state": "positive",
+      "mu": 0,
+      "edges": 768
+    },
+    {
+      "id": "circle_fading_positive_m20",
+      "geometry": "circle",
+      "profile": "fading",
+      "initial_state": "positive",
+      "mu": 20,
+      "edges": 768
+    },
+    {
+      "id": "circle_fading_negative_m0",
+      "geometry": "circle",
+      "profile": "fading",
+      "initial_state": "negative",
+      "mu": 0,
+      "edges": 768
+    },
+    {
+      "id": "circle_fading_negative_m20",
+      "geometry": "circle",
+      "profile": "fading",
+      "initial_state": "negative",
+      "mu": 20,
+      "edges": 768
+    },
+    {
+      "id": "circle_mutual_amplification_balanced_m0",
+      "geometry": "circle",
+      "profile": "mutual_amplification",
+      "initial_state": "balanced",
+      "mu": 0,
+      "edges": 768
+    },
+    {
+      "id": "circle_mutual_amplification_balanced_m20",
+      "geometry": "circle",
+      "profile": "mutual_amplification",
+      "initial_state": "balanced",
+      "mu": 20,
+      "edges": 768
+    },
+    {
+      "id": "circle_mutual_amplification_positive_m0",
+      "geometry": "circle",
+      "profile": "mutual_amplification",
+      "initial_state": "positive",
+      "mu": 0,
+      "edges": 768
+    },
+    {
+      "id": "circle_mutual_amplification_positive_m20",
+      "geometry": "circle",
+      "profile": "mutual_amplification",
+      "initial_state": "positive",
+      "mu": 20,
+      "edges": 768
+    },
+    {
+      "id": "circle_mutual_amplification_negative_m0",
+      "geometry": "circle",
+      "profile": "mutual_amplification",
+      "initial_state": "negative",
+      "mu": 0,
+      "edges": 768
+    },
+    {
+      "id": "circle_mutual_amplification_negative_m20",
+      "geometry": "circle",
+      "profile": "mutual_amplification",
+      "initial_state": "negative",
+      "mu": 20,
+      "edges": 768
+    },
+    {
+      "id": "circle_opposing_responses_balanced_m0",
+      "geometry": "circle",
+      "profile": "opposing_responses",
+      "initial_state": "balanced",
+      "mu": 0,
+      "edges": 768
+    },
+    {
+      "id": "circle_opposing_responses_balanced_m20",
+      "geometry": "circle",
+      "profile": "opposing_responses",
+      "initial_state": "balanced",
+      "mu": 20,
+      "edges": 768
+    },
+    {
+      "id": "circle_opposing_responses_positive_m0",
+      "geometry": "circle",
+      "profile": "opposing_responses",
+      "initial_state": "positive",
+      "mu": 0,
+      "edges": 768
+    },
+    {
+      "id": "circle_opposing_responses_positive_m20",
+      "geometry": "circle",
+      "profile": "opposing_responses",
+      "initial_state": "positive",
+      "mu": 20,
+      "edges": 768
+    },
+    {
+      "id": "circle_opposing_responses_negative_m0",
+      "geometry": "circle",
+      "profile": "opposing_responses",
+      "initial_state": "negative",
+      "mu": 0,
+      "edges": 768
+    },
+    {
+      "id": "circle_opposing_responses_negative_m20",
+      "geometry": "circle",
+      "profile": "opposing_responses",
+      "initial_state": "negative",
+      "mu": 20,
+      "edges": 768
+    },
+    {
+      "id": "ball_fading_balanced_m0",
+      "geometry": "ball",
+      "profile": "fading",
+      "initial_state": "balanced",
+      "mu": 0,
+      "edges": 919
+    },
+    {
+      "id": "ball_fading_balanced_m20",
+      "geometry": "ball",
+      "profile": "fading",
+      "initial_state": "balanced",
+      "mu": 20,
+      "edges": 919
+    },
+    {
+      "id": "ball_fading_positive_m0",
+      "geometry": "ball",
+      "profile": "fading",
+      "initial_state": "positive",
+      "mu": 0,
+      "edges": 919
+    },
+    {
+      "id": "ball_fading_positive_m20",
+      "geometry": "ball",
+      "profile": "fading",
+      "initial_state": "positive",
+      "mu": 20,
+      "edges": 919
+    },
+    {
+      "id": "ball_fading_negative_m0",
+      "geometry": "ball",
+      "profile": "fading",
+      "initial_state": "negative",
+      "mu": 0,
+      "edges": 919
+    },
+    {
+      "id": "ball_fading_negative_m20",
+      "geometry": "ball",
+      "profile": "fading",
+      "initial_state": "negative",
+      "mu": 20,
+      "edges": 919
+    },
+    {
+      "id": "ball_mutual_amplification_balanced_m0",
+      "geometry": "ball",
+      "profile": "mutual_amplification",
+      "initial_state": "balanced",
+      "mu": 0,
+      "edges": 919
+    },
+    {
+      "id": "ball_mutual_amplification_balanced_m20",
+      "geometry": "ball",
+      "profile": "mutual_amplification",
+      "initial_state": "balanced",
+      "mu": 20,
+      "edges": 919
+    },
+    {
+      "id": "ball_mutual_amplification_positive_m0",
+      "geometry": "ball",
+      "profile": "mutual_amplification",
+      "initial_state": "positive",
+      "mu": 0,
+      "edges": 919
+    },
+    {
+      "id": "ball_mutual_amplification_positive_m20",
+      "geometry": "ball",
+      "profile": "mutual_amplification",
+      "initial_state": "positive",
+      "mu": 20,
+      "edges": 919
+    },
+    {
+      "id": "ball_mutual_amplification_negative_m0",
+      "geometry": "ball",
+      "profile": "mutual_amplification",
+      "initial_state": "negative",
+      "mu": 0,
+      "edges": 919
+    },
+    {
+      "id": "ball_mutual_amplification_negative_m20",
+      "geometry": "ball",
+      "profile": "mutual_amplification",
+      "initial_state": "negative",
+      "mu": 20,
+      "edges": 919
+    },
+    {
+      "id": "ball_opposing_responses_balanced_m0",
+      "geometry": "ball",
+      "profile": "opposing_responses",
+      "initial_state": "balanced",
+      "mu": 0,
+      "edges": 919
+    },
+    {
+      "id": "ball_opposing_responses_balanced_m20",
+      "geometry": "ball",
+      "profile": "opposing_responses",
+      "initial_state": "balanced",
+      "mu": 20,
+      "edges": 919
+    },
+    {
+      "id": "ball_opposing_responses_positive_m0",
+      "geometry": "ball",
+      "profile": "opposing_responses",
+      "initial_state": "positive",
+      "mu": 0,
+      "edges": 919
+    },
+    {
+      "id": "ball_opposing_responses_positive_m20",
+      "geometry": "ball",
+      "profile": "opposing_responses",
+      "initial_state": "positive",
+      "mu": 20,
+      "edges": 919
+    },
+    {
+      "id": "ball_opposing_responses_negative_m0",
+      "geometry": "ball",
+      "profile": "opposing_responses",
+      "initial_state": "negative",
+      "mu": 0,
+      "edges": 919
+    },
+    {
+      "id": "ball_opposing_responses_negative_m20",
+      "geometry": "ball",
+      "profile": "opposing_responses",
+      "initial_state": "negative",
+      "mu": 20,
+      "edges": 919
+    }
+  ],
+  "checks": {
+    "construction_counts": {
+      "menger": [
+        20,
+        400,
+        8000
+      ],
+      "koch": [
+        3,
+        12,
+        48,
+        192
+      ]
+    },
+    "pair_exact_solution_errors": {
+      "fading": 1.9667947825929843e-12,
+      "mutual": 3.6060598951337397e-12,
+      "opposed": 5.907552225181689e-12
+    },
+    "pair_drift_sum_error": 1.5265566588595902e-16,
+    "permutation_error": 0.0,
+    "zero_state_zero_extra_motion": true,
+    "constant_velocity_interpolation": true
+  },
+  "source_hashes": {
+    "C:\\Users\\ziman\\Documents\\Codex\\2026-10-05\\ca\\work\\relationship-fractal-study\\study.py": "df819459d8bc015b0562aadf740cf6b9d8fa244117cadcde818fdc1f993d0aec",
+    "C:\\Users\\ziman\\Documents\\Codex\\2026-10-05\\ca\\work\\relationship-fractal-study\\protocol.json": "37cebe94ede3821a4b157b25e58984088a3cb47da7c09429ef63887d3b581318",
+    "C:\\Users\\ziman\\Documents\\Codex\\2026-10-05\\ca\\work\\matched-stretch-study\\numerics.py": "22b169971aaf2efd56d47f685495a575e1622edd56c199b07a785fc97e952f46",
+    "C:\\Users\\ziman\\Documents\\Codex\\2026-10-05\\ca\\work\\matched-stretch-study\\run_suite.py": "270da92c7e69e123aa1aa79e449e894dc3acca4a06e41a54b9419b61efff0d07",
+    "C:\\Users\\ziman\\Documents\\Codex\\2026-10-05\\ca\\work\\matched-stretch-study\\marker-stress\\run.py": "4683a52a479afd6163f9e82fe3ca001e2ae37bb8b0aab8b32dd67cd6fb7c2775"
+  },
+  "fields": {
+    "baseline-n64-base/field-000.npy": "35380d1671cea4e16c0da5a58d38f491c68f11ad0d13fdcc9ebdb0f702e81ccf",
+    "baseline-n64-base/field-001.npy": "032a92d4bdf65df936d818d1d3b712384c1e495c2cdd08fb1efda12d45f5f397",
+    "baseline-n64-base/field-002.npy": "ab15a7ec6c45893496800e4eccf8ab95f639b8ce3924d308dc3a1f4ce8b00a02",
+    "baseline-n64-base/field-003.npy": "423f21645435783e5618dc234f6a0e91566c9de0fc3b87a28f1f7c634aa35767",
+    "baseline-n64-base/field-004.npy": "6790b7566b77cd6bf52833a33091470e6c4d3b89b45e10221b49c1ec460f1dce",
+    "baseline-n64-base/field-005.npy": "1aa37355b60df14ff0f4d5a0f0a2c643a2129a7c412b80f74fd6478b02bd8dfe",
+    "baseline-n64-base/field-006.npy": "b070bfaf302c8c40bc5c437f83d2949d4c8b9c1d769ac97f3e4dcd0438b4e185",
+    "baseline-n64-base/field-007.npy": "0076d930684d5ad2cb3572ed9af5faf45fe24a251ba63ee1c328e0fff294c660",
+    "baseline-n64-base/field-008.npy": "6ed2b94b0f74f44ca0f8d4ae2c2a47b951c2b6c678b7ed0ea6f19d4bdd1837a6",
+    "baseline-n64-base/field-009.npy": "95071b9de42936a40b2154a7ee37303708b2502d73f404f0cc86173744f2f949",
+    "baseline-n64-base/field-010.npy": "86eb34e79e02e08bdcfac193e2ef377d0e167bd9f6d9458956ab1491ccec1f26",
+    "baseline-n128-base/field-000.npy": "a6a2337be12ffa0a0b00cfbb6530f4f4db76dc28e1016fe87baa9e56b812c403",
+    "baseline-n128-base/field-001.npy": "45823ece8231f67ce9b77abd50d93d060602b999eadd282607f77e16341f9d4f",
+    "baseline-n128-base/field-002.npy": "021496b4e146afd0f5a6b9c09b8d08c502e6d5d3fb2fe21794b15929adb72be9",
+    "baseline-n128-base/field-003.npy": "aa738bd56fae749fa2c2bd2d2cb50223d765826fa882ed501dbeb77499b4f81a",
+    "baseline-n128-base/field-004.npy": "bfb81d447702ee7943ed8c1202c30ebef5dcea6b5696895c1d2b1c1266e878c5",
+    "baseline-n128-base/field-005.npy": "f5cefd48f017c37ae74faaea7103112d4687056568f4f1b093969beab574e234",
+    "baseline-n128-base/field-006.npy": "ee7dda91cb617fe1ad1568af4e6e66e21c28e15b9eaddd5eacb07e964b2c6388",
+    "baseline-n128-base/field-007.npy": "d23ba29d93b5bd0501e103ab38c658ca41fe38c9d0fb546cb7e7842d277c1add",
+    "baseline-n128-base/field-008.npy": "5e25f511921b83931247423cd186d13b48f1f20294fc2f38887a8233e3e30f6d",
+    "baseline-n128-base/field-009.npy": "3309d13b19cb07e3a59c0358d4156f5e174bf5e846c2199e33dada6493ba472c",
+    "baseline-n128-base/field-010.npy": "4796e343eba6757dff66b6051545ccfb2f2a99aa6b194fa480d32ff4108e9320"
+  },
+  "runs": {
+    "base64": {
+      "source": "baseline-n64-base",
+      "n": 64,
+      "snapshot_dt": 0.01,
+      "dt": 0.0003125,
+      "sha256": "a586b42e2b49b913dd7a79d5961e5391f4935c17ec889b95e3623b7ca75352db",
+      "seconds": 45.676403760910034,
+      "max_sum_added_drifts": 1.4988010832439613e-15,
+      "cases": 90
+    },
+    "step64": {
+      "source": "baseline-n64-base",
+      "n": 64,
+      "snapshot_dt": 0.01,
+      "dt": 0.00015625,
+      "sha256": "e0781481b42bcbf30b978e5298ef3d72901041f60815167a5b83c65fb06392b8",
+      "seconds": 84.59895539283752,
+      "max_sum_added_drifts": 1.4432899320127035e-15,
+      "cases": 90
+    },
+    "grid128": {
+      "source": "baseline-n128-base",
+      "n": 128,
+      "snapshot_dt": 0.01,
+      "dt": 0.00015625,
+      "sha256": "685697a8e02a02f9e6a112817a53e714eb83c62bfe68120161393d3d3608f3d2",
+      "seconds": 90.54970860481262,
+      "max_sum_added_drifts": 1.1518563880486e-15,
+      "cases": 90
+    },
+    "snapshot_coarse": {
+      "source": "baseline-n64-base",
+      "n": 64,
+      "snapshot_dt": 0.02,
+      "dt": 0.00015625,
+      "sha256": "2fcf9fff09ea25acf5c7e0d76158b02a3ef2676ce432299fd97f02346b92df3f",
+      "seconds": 86.90017557144165,
+      "max_sum_added_drifts": 1.27675647831893e-15,
+      "cases": 90
+    }
+  },
+  "new_fluid_simulations": 0
+}
