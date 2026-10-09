@@ -1,0 +1,75 @@
+<div id="saved-fluid-motion-v1">
+  <h3>Direction of the saved fluid motion</h3>
+  <div class="viz-controls">
+    <label class="form-label">Starting flow
+      <select class="form-select" data-case>
+        <option value="original">Original matched-stretch · 64³</option>
+        <option value="aligned">Aligned surroundings · 160³</option>
+        <option value="compressive">Compressive surroundings · 160³</option>
+      </select>
+    </label>
+    <label class="form-label">View
+      <select class="form-select" data-view><option value="3d">3D</option><option value="side">Side</option><option value="top">Top</option></select>
+    </label>
+  </div>
+  <div class="viz-row"><button type="button" class="btn" data-play>Play saved frames</button><span class="tabular-nums" data-time aria-live="polite">Time 0.00</span></div>
+  <label class="form-label">Saved time<input class="form-range" type="range" min="0" max="8" step="1" value="0" data-frame></label>
+  <canvas data-scene role="img" aria-label="Saved velocity arrows in a periodic cube, with moving fluid labels for the two surroundings cases."></canvas>
+  <div class="viz-row text-small" data-legend><span>Arrows: velocity direction and relative speed</span><span>Drag: rotate</span></div>
+  <div class="text-small tabular-nums" data-detail aria-live="polite"></div>
+  <div class="text-small text-muted">Saved numerical fields · zero external force · later peaks unresolved · dots are fluid labels, not molecules</div>
+  <style>
+    #saved-fluid-motion-v1 canvas{display:block;width:100%;height:390px;touch-action:none}
+    #saved-fluid-motion-v1 [data-detail]{min-height:1.6em}
+    #saved-fluid-motion-v1 .motion-key{display:inline-flex;align-items:center;gap:6px}
+    #saved-fluid-motion-v1 .motion-dot{display:inline-block;width:8px;height:8px;border-radius:50%}
+    @media(max-width:440px){#saved-fluid-motion-v1 canvas{height:320px}}
+  </style>
+  <script type="application/json" data-fluid>__MOTION_DATA__</script>
+  <script>
+  (()=>{
+    const root=document.getElementById('saved-fluid-motion-v1');
+    const data=JSON.parse(root.querySelector('[data-fluid]').textContent);
+    const canvas=root.querySelector('[data-scene]'),ctx=canvas.getContext('2d');
+    const choice=root.querySelector('[data-case]'),view=root.querySelector('[data-view]'),slider=root.querySelector('[data-frame]');
+    const play=root.querySelector('[data-play]'),time=root.querySelector('[data-time]'),detail=root.querySelector('[data-detail]'),legend=root.querySelector('[data-legend]');
+    let az=.67,el=.34,index=0,timer=null,drag=null;
+    const probe=document.createElement('span');probe.hidden=true;root.append(probe);
+    function color(variable){probe.style.color='var('+variable+')';return getComputedStyle(probe).color;}
+    function selected(){return data.cases.find(c=>c.id===choice.value)||data.cases[0];}
+    function state(){return {visual:'saved-fluid-motion-v1',case:choice.value,frame:index,time:selected().frames[index].t,view:view.value};}
+    function remember(){window.openai?.setWidgetState?.({modelContent:state(),privateContent:{az,el}})?.catch(()=>{});}
+    function stop(){if(timer!==null)clearInterval(timer);timer=null;play.textContent='Play saved frames';}
+    function project(p,w,h){const a=p[0]*Math.cos(az)-p[1]*Math.sin(az),b=p[0]*Math.sin(az)+p[1]*Math.cos(az),y=p[2]*Math.cos(el)-b*Math.sin(el);const scale=Math.min(w/9.8,h/8.8);return [w/2+a*scale,h/2-y*scale,b*Math.cos(el)+p[2]*Math.sin(el)];}
+    function draw(){
+      const box=canvas.getBoundingClientRect(),w=box.width,h=box.height,dpr=window.devicePixelRatio||1;
+      canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,w,h);
+      const c=selected(),f=c.frames[index],ink=color('--foreground'),neutral=color('--border'),flow=color('--viz-series-1'),center=color('--viz-series-2'),winner=color('--viz-series-3');
+      function line(a,b,stroke,width=1,alpha=1){const x=project(a,w,h),y=project(b,w,h);ctx.globalAlpha=alpha;ctx.strokeStyle=stroke;ctx.lineWidth=width;ctx.beginPath();ctx.moveTo(x[0],x[1]);ctx.lineTo(y[0],y[1]);ctx.stroke();ctx.globalAlpha=1;return [x,y];}
+      for(let axis=0;axis<3;axis++)for(let a of [-3,3])for(let b of [-3,3]){const p=[0,0,0],q=[0,0,0];p[axis]=-3;q[axis]=3;p[(axis+1)%3]=q[(axis+1)%3]=a;p[(axis+2)%3]=q[(axis+2)%3]=b;line(p,q,neutral);}
+      const arrows=data.points.map((p,i)=>({p,v:f.velocity[i],z:project(p,w,h)[2]})).sort((a,b)=>a.z-b.z);
+      for(const {p,v} of arrows){const end=p.map((x,j)=>x+v[j]*c.arrow_scale);const [a,b]=line(p,end,flow,1.2,.64);const dx=b[0]-a[0],dy=b[1]-a[1],length=Math.hypot(dx,dy);if(length<2)continue;const theta=Math.atan2(dy,dx),tip=Math.min(4,length*.4);ctx.fillStyle=flow;ctx.globalAlpha=.8;ctx.beginPath();ctx.moveTo(b[0],b[1]);ctx.lineTo(b[0]-tip*Math.cos(theta-.5),b[1]-tip*Math.sin(theta-.5));ctx.lineTo(b[0]-tip*Math.cos(theta+.5),b[1]-tip*Math.sin(theta+.5));ctx.closePath();ctx.fill();ctx.globalAlpha=1;}
+      if(f.markers){
+        for(const p of f.markers){const q=project(p,w,h);ctx.fillStyle=ink;ctx.globalAlpha=.4;ctx.beginPath();ctx.arc(q[0],q[1],2.3,0,Math.PI*2);ctx.fill();}ctx.globalAlpha=1;
+        for(const [id,col,shape] of [[32,center,'circle'],[c.final_winner,winner,'diamond']]){const q=project(f.markers[id],w,h);ctx.fillStyle=col;ctx.beginPath();if(shape==='circle')ctx.arc(q[0],q[1],6,0,Math.PI*2);else{ctx.moveTo(q[0],q[1]-7);ctx.lineTo(q[0]+7,q[1]);ctx.lineTo(q[0],q[1]+7);ctx.lineTo(q[0]-7,q[1]);ctx.closePath();}ctx.fill();}
+      }
+      const font=getComputedStyle(root).fontFamily;ctx.font='12px '+font;ctx.fillStyle=ink;ctx.textAlign='center';
+      for(const [p,label] of [[[3.55,0,0],'x'],[[0,3.55,0],'y'],[[0,0,3.55],'z']]){const q=project(p,w,h);ctx.fillText(label,Math.max(12,Math.min(w-12,q[0])),Math.max(16,Math.min(h-8,q[1])));}
+      time.textContent='Time '+f.t.toFixed(2)+' · saved frame '+(index+1)+'/'+c.frames.length;
+      legend.innerHTML='<span>Arrows: velocity</span><span>Drag: rotate</span>'+(f.markers?'<span class="motion-key"><i class="motion-dot" style="background:var(--viz-series-2)"></i>Center at start</span><span class="motion-key"><i class="motion-dot" style="background:var(--viz-series-3);border-radius:0;transform:rotate(45deg)"></i>Strongest point at end</span>':'');
+      detail.textContent=f.markers?'Spin at center label: '+f.spin[32].toFixed(2)+' · at end-winner label: '+f.spin[c.final_winner].toFixed(2):'Original start · velocity samples · moving-point labels were not saved';
+    }
+    function apply(saved){if(!saved||saved.visual!=='saved-fluid-motion-v1')return;if(data.cases.some(c=>c.id===saved.case))choice.value=saved.case;index=Math.max(0,Math.min(selected().frames.length-1,Number(saved.frame)||0));slider.max=selected().frames.length-1;slider.value=index;if(['3d','side','top'].includes(saved.view))view.value=saved.view;setView();}
+    function setView(){if(view.value==='side'){az=0;el=0;}else if(view.value==='top'){az=0;el=Math.PI/2;}else{az=.67;el=.34;}draw();}
+    choice.addEventListener('change',()=>{stop();index=0;slider.max=selected().frames.length-1;slider.value=0;draw();remember();});
+    view.addEventListener('change',()=>{setView();remember();});
+    slider.addEventListener('input',()=>{stop();index=Number(slider.value);draw();});slider.addEventListener('change',remember);
+    play.addEventListener('click',()=>{if(timer!==null){stop();return;}if(index===selected().frames.length-1)index=0;play.textContent='Pause';timer=setInterval(()=>{index++;slider.value=index;draw();if(index===selected().frames.length-1){stop();remember();}},900);});
+    canvas.addEventListener('pointerdown',e=>{drag=[e.clientX,e.clientY];canvas.setPointerCapture(e.pointerId);});
+    canvas.addEventListener('pointermove',e=>{if(!drag)return;az+=(e.clientX-drag[0])*.01;el=Math.max(-1.4,Math.min(1.4,el+(e.clientY-drag[1])*.01));drag=[e.clientX,e.clientY];draw();});
+    canvas.addEventListener('pointerup',()=>{drag=null;remember();});canvas.addEventListener('pointercancel',()=>{drag=null;});
+    new ResizeObserver(draw).observe(canvas);new MutationObserver(draw).observe(document.documentElement,{attributes:true,attributeFilter:['class','style']});
+    apply(window.openai?.widgetState?.modelContent||window.openai?.widgetState);window.addEventListener('openai:set_globals',e=>apply(e.detail?.globals?.widgetState?.modelContent||e.detail?.globals?.widgetState));draw();
+  })();
+  </script>
+</div>

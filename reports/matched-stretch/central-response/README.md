@@ -4,6 +4,8 @@
 
 This is an analysis of saved unforced runs. It adds no force, boundary rule, new initial field or time evolution. The original matched-stretch start and the separate periodic surroundings study are shown separately. New analysis is authorized for publication; no private source documents or their extracted contents are included.
 
+[Explore the saved velocity directions](motion.html). The motion view contains 19 saved fields and 125 velocity arrows per field. Arrow locations are fixed samples; arrows are not particle tracks. Dots in the surroundings cases are saved material labels, not individual molecules. No impact or molecular collision was simulated. Data and JavaScript syntax checks passed; automated browser inspection was blocked by the app's local-file URL policy.
+
 ## 1. Original matched-stretch start
 
 ![Original timeline](original-timeline.png)
