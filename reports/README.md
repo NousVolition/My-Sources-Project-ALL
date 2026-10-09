@@ -7,7 +7,7 @@ These reports are saved on the authorâ€™s computer and copied into this Git
 ## Numerical reports and earlier snapshots
 
 - **[Matched-stretch controls](matched-stretch/README.md): 5/48 runs in this earlier snapshot.** Charts, time-step comparisons, widths and budgets; spatial resolution remains inadequate in the current 64Â³ runs.
-- **[Three vortex surroundings](study/README.md): 42/48 completed locally; 42 verified results published.** Latest: [112-grid ordinary-step departure results](study/completed-departure112-base/README.md). Remaining departure controls continue.
+- **[Three vortex surroundings](study/README.md): 43/48 completed locally; 43 verified results published.** Latest: [112-grid Fourier departure half-step control](study/completed-departure-112-half/README.md). Finer departure controls continue.
 - [Verification of this saved snapshot](numerical-progress-verification.json).
 
 ## Completed mirror tests â€” October 8
