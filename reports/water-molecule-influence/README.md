@@ -6,6 +6,14 @@ A reproducible experiment asking whether identical molecules can acquire unequal
 
 ![Experimental results](results.png)
 
+## Oscillators, damping, and bifurcations
+
+[Controlled oscillator tests](oscillator-extension/README.md) compare weak and strong van der Pol motion, conservative Duffing orbits, cubic velocity damping, pendulum frequency, a pumped swing, and explicit Hopf/pitchfork normal forms. At μ=40, the measured outer-branch segment takes 439 times as long as the central jump. Includes analytic predictions, independent solver and energy controls, four figure sets, and saved trajectories. These are mathematical benchmarks, separate from the water molecular dynamics.
+
+## Stability, phase portraits, and reversibility
+
+[The stability test](stability-extension/README.md) calibrates RK4 against eight exact linear systems, tests nonlinear local approximations, maps 2,209 rabbit–sheep outcomes, and checks both supplied reversible exercises. The local saddle tangent predicts 33/33 nearby sampled outcomes but misses 64/2,209 across the full grid; halving the integration step changes no basin labels. Includes phase portraits, exact-solution controls, a damped/undamped reversal comparison, and reproducible numeric results.
+
 ## Switching, hysteresis, and synchronization
 
 [New reproducible ODE tests](switching-extension/README.md) analyze a supplied biochemical feedback equation, pulse-triggered persistence, slow-sweep hysteresis, uniform lapping, nonuniform rotation, bottlenecks, the overdamped pendulum, and firefly phase locking. Includes analytic thresholds, saved trajectories, solver and feedback controls, and two figure sets. These illustrative concentration and phase models are separate from the water molecular dynamics; the biochemical example explicitly assumes a fixed A pool.

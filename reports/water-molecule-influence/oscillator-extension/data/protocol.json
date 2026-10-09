@@ -1,0 +1,70 @@
+{
+  "date": "2026-10-09",
+  "python": "3.12.14",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "van_der_pol": "x_dot=v; v_dot=mu*(1-x^2)*v-x",
+  "weak": {
+    "mu": [
+      0.05,
+      0.1,
+      0.2
+    ],
+    "initial_x": [
+      0.2,
+      1.0,
+      3.0
+    ],
+    "initial_v": 0.0,
+    "slow_time_end_mu_t": 16.0,
+    "solver": "DOP853",
+    "rtol": 1e-10,
+    "atol": 1e-12,
+    "max_step": 0.2,
+    "observable": "positive maxima located by v=0, direction=-1"
+  },
+  "relaxation": {
+    "mu": [
+      5.0,
+      10.0,
+      20.0,
+      40.0
+    ],
+    "initial_xy": [
+      2.0,
+      0.0
+    ],
+    "coordinates": "F(x)=x^3/3-x; y=F(x)+v/mu; x_dot=mu*(y-F(x)); y_dot=-x/mu",
+    "time_end": "12*mu+40",
+    "solver": "Radau",
+    "rtol": 1e-09,
+    "atol": 1e-11,
+    "refined_rtol": 1e-11,
+    "refined_atol": 1e-13,
+    "slow_interval": "descending positive branch from x=1.8 to x=1.2",
+    "fast_interval": "descending jump from x=0.5 to x=-0.5"
+  },
+  "duffing": {
+    "equation": "x_dot=v; v_dot=-x-epsilon*x^3",
+    "epsilon": 0.1,
+    "initial_amplitudes": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "initial_v": 0.0,
+    "time_end": 200.0,
+    "solver": "DOP853",
+    "rtol": 1e-11,
+    "atol": 1e-13,
+    "max_step": 0.1
+  },
+  "acceptance": {
+    "weak_limit_cycle": "last positive peaks within 0.01 of 2; initial-state spread below 0.002 at mu*t=16",
+    "weak_averaging": "maximum peak-envelope discrepancy at mu=0.05 below 0.03",
+    "RK4_refinement": "observed endpoint order 3.5 to 4.5 against DOP853",
+    "relaxation_numerics": "period changes by less than 1e-6 relative under tighter tolerance; last periods differ by less than 1e-6 relative",
+    "relaxation_asymptotics": "period relative error decreases with mu; slow time/mu within 0.02 and fast time*mu within 0.15 of asymptotic constants at mu=40",
+    "duffing_energy": "maximum relative energy error below 1e-7; period quadrature error below 1e-7 relative; peak amplitude error below 1e-7"
+  }
+}

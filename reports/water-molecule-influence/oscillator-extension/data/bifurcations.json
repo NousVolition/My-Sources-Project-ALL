@@ -1,0 +1,226 @@
+{
+  "hopf": {
+    "model": "x_dot=mu*x-y-x*(x^2+y^2); y_dot=x+mu*y-y*(x^2+y^2)",
+    "polar": "r_dot=mu*r-r^3; theta_dot=1",
+    "initial_radii": [
+      0.1,
+      1.0
+    ],
+    "time_end": 80.0,
+    "solver": "DOP853; rtol=1e-11, atol=1e-13, max_step=0.1",
+    "rows": [
+      {
+        "mu": -0.2,
+        "initial_radius": 0.1,
+        "final_radius": 1.0982308521780744e-08,
+        "exact_max_distance": 1.4253685612487205e-15,
+        "origin_trace": -0.4,
+        "origin_determinant": 1.04,
+        "origin_eigenvalues": [
+          [
+            -0.2,
+            1.0
+          ],
+          [
+            -0.2,
+            -1.0
+          ]
+        ],
+        "stable_cycle_radius": null
+      },
+      {
+        "mu": -0.2,
+        "initial_radius": 1.0,
+        "final_radius": 4.594229269618952e-08,
+        "exact_max_distance": 1.4931523354657206e-12,
+        "origin_trace": -0.4,
+        "origin_determinant": 1.04,
+        "origin_eigenvalues": [
+          [
+            -0.2,
+            1.0
+          ],
+          [
+            -0.2,
+            -1.0
+          ]
+        ],
+        "stable_cycle_radius": null
+      },
+      {
+        "mu": 0.0,
+        "initial_radius": 0.1,
+        "final_radius": 0.062017367294604,
+        "exact_max_distance": 3.0507468685964945e-15,
+        "origin_trace": 0.0,
+        "origin_determinant": 1.0,
+        "origin_eigenvalues": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            -1.0
+          ]
+        ],
+        "stable_cycle_radius": null
+      },
+      {
+        "mu": 0.0,
+        "initial_radius": 1.0,
+        "final_radius": 0.07881104062391013,
+        "exact_max_distance": 1.47881663954775e-12,
+        "origin_trace": 0.0,
+        "origin_determinant": 1.0,
+        "origin_eigenvalues": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            -1.0
+          ]
+        ],
+        "stable_cycle_radius": null
+      },
+      {
+        "mu": 0.2,
+        "initial_radius": 0.1,
+        "final_radius": 0.44721359549990547,
+        "exact_max_distance": 2.0223608353851254e-14,
+        "origin_trace": 0.4,
+        "origin_determinant": 1.04,
+        "origin_eigenvalues": [
+          [
+            0.2,
+            1.0
+          ],
+          [
+            0.2,
+            -1.0
+          ]
+        ],
+        "stable_cycle_radius": 0.4472135954999579
+      },
+      {
+        "mu": 0.2,
+        "initial_radius": 1.0,
+        "final_radius": 0.44721359549996154,
+        "exact_max_distance": 1.4658300619553578e-12,
+        "origin_trace": 0.4,
+        "origin_determinant": 1.04,
+        "origin_eigenvalues": [
+          [
+            0.2,
+            1.0
+          ],
+          [
+            0.2,
+            -1.0
+          ]
+        ],
+        "stable_cycle_radius": 0.4472135954999579
+      }
+    ],
+    "interpretation": "At mu=0 the eigenvalues are +/-i, not zero; determinant=1. For mu>0 the origin is unstable and the stable periodic orbit has radius sqrt(mu). At mu=0 cubic damping makes the origin asymptotically stable."
+  },
+  "pitchfork": {
+    "model": "x_dot=mu*x-x^3; y_dot=-y",
+    "rows": [
+      {
+        "mu": -0.2,
+        "equilibria": [
+          {
+            "point": [
+              0.0,
+              0.0
+            ],
+            "eigenvalues": [
+              -0.2,
+              -1.0
+            ]
+          }
+        ]
+      },
+      {
+        "mu": 0.0,
+        "equilibria": [
+          {
+            "point": [
+              0.0,
+              0.0
+            ],
+            "eigenvalues": [
+              0.0,
+              -1.0
+            ]
+          }
+        ]
+      },
+      {
+        "mu": 0.2,
+        "equilibria": [
+          {
+            "point": [
+              -0.4472135954999579,
+              0.0
+            ],
+            "eigenvalues": [
+              -0.39999999999999997,
+              -1.0
+            ]
+          },
+          {
+            "point": [
+              0.0,
+              0.0
+            ],
+            "eigenvalues": [
+              0.2,
+              -1.0
+            ]
+          },
+          {
+            "point": [
+              0.4472135954999579,
+              0.0
+            ],
+            "eigenvalues": [
+              -0.39999999999999997,
+              -1.0
+            ]
+          }
+        ]
+      }
+    ],
+    "interpretation": "At mu=0 the origin has eigenvalues 0,-1. For positive mu two stable equilibria appear and the origin becomes a saddle."
+  },
+  "green_theorem": {
+    "model": "van der Pol x_dot=v, v_dot=mu*(1-x^2)*v-x",
+    "divergence": "mu*(1-x^2)",
+    "circular_region_integral": "mu*pi*r^2*(1-r^2/4)",
+    "nonzero_predicted_radius": 2.0,
+    "quadrature": [
+      {
+        "disk_radius": 1.0,
+        "integral_divergence_divided_by_mu": 2.3561944901923466,
+        "analytic_formula": 2.356194490192345
+      },
+      {
+        "disk_radius": 2.0,
+        "integral_divergence_divided_by_mu": 1.004535737987953e-15,
+        "analytic_formula": 0.0
+      },
+      {
+        "disk_radius": 3.0,
+        "integral_divergence_divided_by_mu": -35.3429173528852,
+        "analytic_formula": -35.34291735288517
+      }
+    ],
+    "limitation": "The circular boundary is a weak-nonlinearity approximation; finite-mu cycles are not exactly circular. Zero net flux is necessary for the actual cycle, not sufficient to prove existence or attraction."
+  },
+  "source": "Explicit illustrative normal forms chosen to test the distinction described in the supplied bifurcation page; the cropped phase portrait has no complete equation.",
+  "passed": true
+}

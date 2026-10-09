@@ -1,0 +1,367 @@
+{
+  "pendulum": [
+    {
+      "amplitude": 0.1,
+      "period": 6.287114549310483,
+      "elliptic_integral_period": 6.28711454931048,
+      "relative_period_error": 5.650785667950227e-16,
+      "exact_frequency": 0.9993750325208686,
+      "averaged_frequency": 0.999375,
+      "averaging_error": 3.252086855365377e-08
+    },
+    {
+      "amplitude": 0.2,
+      "period": 6.298929362500291,
+      "elliptic_integral_period": 6.298929362500288,
+      "relative_period_error": 5.640186568769986e-16,
+      "exact_frequency": 0.9975005188319095,
+      "averaged_frequency": 0.9975,
+      "averaging_error": 5.188319094351357e-07
+    },
+    {
+      "amplitude": 0.4,
+      "period": 6.346599230137952,
+      "elliptic_integral_period": 6.346599230137947,
+      "relative_period_error": 6.997278286317916e-16,
+      "exact_frequency": 0.9900082042903814,
+      "averaged_frequency": 0.99,
+      "averaging_error": 8.20429038139725e-06
+    }
+  ],
+  "pendulum_averaging_error_orders": [
+    3.9958295176708805,
+    3.9830394385338885
+  ],
+  "cubic_velocity_damping": {
+    "equation": "x_ddot+epsilon*x_dot^3+x=0",
+    "averaged_amplitude": "dr/dt=-3*epsilon*r^3/8; r(t)=a/sqrt(1+3*epsilon*a^2*t/4)",
+    "position_approximation": "x(t)=r(t)*cos(t)",
+    "energy_identity": "E=(x^2+v^2)/2; dE/dt=-epsilon*v^4",
+    "solver": "DOP853; rtol=1e-12, atol=1e-14, max_step=0.05; integrate the loss integral alongside x,v.",
+    "rows": [
+      {
+        "epsilon": 0.1,
+        "initial": [
+          1.0,
+          0.0
+        ],
+        "end_time": 50.0,
+        "maximum_position_error": 0.02358372999072611,
+        "RMS_position_error": 0.011804898010700653,
+        "maximum_energy_balance_residual": 1.3322676295501878e-15,
+        "final_energy": 0.10478977570079383,
+        "initial_energy": 0.5
+      },
+      {
+        "epsilon": 0.2,
+        "initial": [
+          1.0,
+          0.0
+        ],
+        "end_time": 50.0,
+        "maximum_position_error": 0.044766639566265976,
+        "RMS_position_error": 0.019179411889068586,
+        "maximum_energy_balance_residual": 7.771561172376096e-16,
+        "final_energy": 0.0585013711874267,
+        "initial_energy": 0.5
+      },
+      {
+        "epsilon": 2.0,
+        "initial": [
+          1.0,
+          0.0
+        ],
+        "end_time": 50.0,
+        "maximum_position_error": 0.2532844745946029,
+        "RMS_position_error": 0.07445908855410785,
+        "maximum_energy_balance_residual": 1.5432100042289676e-14,
+        "final_energy": 0.006500475291127376,
+        "initial_energy": 0.5
+      }
+    ],
+    "limitation": "The epsilon=2 case is outside a controlled small-parameter expansion. The leading approximation matches x(0)=a, but its envelope derivative gives an O(epsilon) mismatch to v(0)=0; no uniform high-accuracy claim is made."
+  },
+  "swing": {
+    "equation": "x_ddot+(1+epsilon*gamma+epsilon*cos(2*t))*sin(x)=0",
+    "linearized_equation": "x_ddot+(1+epsilon*gamma+epsilon*cos(2*t))*x=0",
+    "averaged_equations": "dr/dT=r*sin(2*phi)/4; dphi/dT=(gamma+cos(2*phi)/2)/2; T=epsilon*t",
+    "phase_convention": "x=r*cos(t+phi), x_dot=-r*sin(t+phi)",
+    "leading_instability_band": "abs(gamma)<1/2; finite-epsilon boundaries can shift",
+    "floquet_method": "Integrate the 2x2 fundamental matrix over pi with DOP853, rtol=2e-13, atol=1e-15; growth=log(max(abs(eigenvalues)))/pi.",
+    "floquet": [
+      {
+        "epsilon": 0.1,
+        "gamma": -0.75,
+        "growth_rate_per_time": -7.06789929214115e-17,
+        "averaged_growth_rate": 0.0,
+        "determinant": 0.9999999999999997,
+        "multipliers": [
+          [
+            -0.9960572540459989,
+            0.08871271984526324
+          ],
+          [
+            -0.9960572540459989,
+            -0.08871271984526324
+          ]
+        ]
+      },
+      {
+        "epsilon": 0.1,
+        "gamma": -0.25,
+        "growth_rate_per_time": 0.02187133740146802,
+        "averaged_growth_rate": 0.021650635094610966,
+        "determinant": 1.0,
+        "multipliers": [
+          [
+            -1.071126429843028,
+            0.0
+          ],
+          [
+            -0.9335966064683405,
+            0.0
+          ]
+        ]
+      },
+      {
+        "epsilon": 0.1,
+        "gamma": 0.0,
+        "growth_rate_per_time": 0.024992680919296132,
+        "averaged_growth_rate": 0.025,
+        "determinant": 0.999999999999999,
+        "multipliers": [
+          [
+            -1.081681551888717,
+            0.0
+          ],
+          [
+            -0.9244865073772457,
+            0.0
+          ]
+        ]
+      },
+      {
+        "epsilon": 0.1,
+        "gamma": 0.25,
+        "growth_rate_per_time": 0.021420537952360583,
+        "averaged_growth_rate": 0.021650635094610966,
+        "determinant": 1.0,
+        "multipliers": [
+          [
+            -0.9349197290455381,
+            0.0
+          ],
+          [
+            -1.0696105440206107,
+            0.0
+          ]
+        ]
+      },
+      {
+        "epsilon": 0.1,
+        "gamma": 0.75,
+        "growth_rate_per_time": -1.0601848938211725e-16,
+        "averaged_growth_rate": 0.0,
+        "determinant": 0.9999999999999996,
+        "multipliers": [
+          [
+            -0.996230746884331,
+            0.08674271705617462
+          ],
+          [
+            -0.996230746884331,
+            -0.08674271705617462
+          ]
+        ]
+      },
+      {
+        "epsilon": 0.05,
+        "gamma": -0.75,
+        "growth_rate_per_time": 0.0,
+        "averaged_growth_rate": 0.0,
+        "determinant": 0.9999999999999999,
+        "multipliers": [
+          [
+            -0.9990252854836882,
+            0.04414157863324801
+          ],
+          [
+            -0.9990252854836882,
+            -0.04414157863324801
+          ]
+        ]
+      },
+      {
+        "epsilon": 0.05,
+        "gamma": -0.25,
+        "growth_rate_per_time": 0.010881104143815058,
+        "averaged_growth_rate": 0.010825317547305483,
+        "determinant": 1.0000000000000002,
+        "multipliers": [
+          [
+            -0.9663936748944604,
+            0.0
+          ],
+          [
+            -1.0347749845415843,
+            0.0
+          ]
+        ]
+      },
+      {
+        "epsilon": 0.05,
+        "gamma": 0.0,
+        "growth_rate_per_time": 0.012499084633335222,
+        "averaged_growth_rate": 0.0125,
+        "determinant": 0.9999999999999999,
+        "multipliers": [
+          [
+            -0.9614939247743468,
+            0.0
+          ],
+          [
+            -1.0400481731953637,
+            0.0
+          ]
+        ]
+      },
+      {
+        "epsilon": 0.05,
+        "gamma": 0.25,
+        "growth_rate_per_time": 0.010768356395563927,
+        "averaged_growth_rate": 0.010825317547305483,
+        "determinant": 1.0,
+        "multipliers": [
+          [
+            -1.034408524389014,
+            0.0
+          ],
+          [
+            -0.9667360394102149,
+            0.0
+          ]
+        ]
+      },
+      {
+        "epsilon": 0.05,
+        "gamma": 0.75,
+        "growth_rate_per_time": 0.0,
+        "averaged_growth_rate": 0.0,
+        "determinant": 0.9999999999999999,
+        "multipliers": [
+          [
+            -0.9990469717417512,
+            0.04364800400518596
+          ],
+          [
+            -0.9990469717417512,
+            -0.04364800400518596
+          ]
+        ]
+      },
+      {
+        "epsilon": 0.025,
+        "gamma": -0.75,
+        "growth_rate_per_time": -7.06789929214115e-17,
+        "averaged_growth_rate": 0.0,
+        "determinant": 0.9999999999999996,
+        "multipliers": [
+          [
+            -0.9997576847985558,
+            0.02201298903445819
+          ],
+          [
+            -0.9997576847985558,
+            -0.02201298903445819
+          ]
+        ]
+      },
+      {
+        "epsilon": 0.025,
+        "gamma": -0.25,
+        "growth_rate_per_time": 0.005426680327031695,
+        "averaged_growth_rate": 0.005412658773652742,
+        "determinant": 0.9999999999999999,
+        "multipliers": [
+          [
+            -1.017194572726541,
+            0.0
+          ],
+          [
+            -0.9830960829053069,
+            0.0
+          ]
+        ]
+      },
+      {
+        "epsilon": 0.025,
+        "gamma": 0.0,
+        "growth_rate_per_time": 0.006249885564104178,
+        "averaged_growth_rate": 0.00625,
+        "determinant": 0.9999999999999998,
+        "multipliers": [
+          [
+            -0.9805569086671585,
+            0.0
+          ],
+          [
+            -1.019828621022384,
+            0.0
+          ]
+        ]
+      },
+      {
+        "epsilon": 0.025,
+        "gamma": 0.25,
+        "growth_rate_per_time": 0.005398490394597963,
+        "averaged_growth_rate": 0.005412658773652742,
+        "determinant": 0.9999999999999998,
+        "multipliers": [
+          [
+            -1.0171044926573147,
+            0.0
+          ],
+          [
+            -0.9831831510127074,
+            0.0
+          ]
+        ]
+      },
+      {
+        "epsilon": 0.025,
+        "gamma": 0.75,
+        "growth_rate_per_time": -1.0601848938211725e-16,
+        "averaged_growth_rate": 0.0,
+        "determinant": 0.9999999999999996,
+        "multipliers": [
+          [
+            -0.999760395569978,
+            0.02188952831288676
+          ],
+          [
+            -0.999760395569978,
+            -0.02188952831288676
+          ]
+        ]
+      }
+    ],
+    "nonlinear_seed_test": [
+      {
+        "initial_x": 0.0,
+        "initial_v": 0.0,
+        "final_radius": 0.0,
+        "maximum_radius": 0.0
+      },
+      {
+        "initial_x": 0.0001,
+        "initial_v": 0.0,
+        "final_radius": 0.0038512861921622347,
+        "maximum_radius": 0.0038512861921622347
+      }
+    ],
+    "seed_test_epsilon": 0.1,
+    "seed_test_gamma": 0.0,
+    "seed_test_end": 160.0
+  },
+  "passed": true
+}
