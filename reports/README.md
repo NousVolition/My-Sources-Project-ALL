@@ -60,3 +60,6 @@ The full restart arrays remain in the local calculation workspace. They are larg
 - [Breathing rerun: six reproduced cases with prescribed per-step driving](../math/imports/hug-ns/mirror-fluid/breathing-rerun/README.md).
 
 - [Breathing run followed through every step: actual-fluid animations and the changing E/D measurements](../math/imports/hug-ns/mirror-fluid/breathing-rerun/timeline/README.md).
+
+- [Three completed 0.5% perturbation seeds](matched-stretch/completed-halfpercent/README.md).
+- [Reproduced one-lean ball and breathing-fluid series](../math/imports/hug-ns/mirror-fluid/breathing-rerun/one-lean/README.md).
