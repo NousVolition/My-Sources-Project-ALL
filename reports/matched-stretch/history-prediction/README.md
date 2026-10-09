@@ -1,0 +1,86 @@
+# Causal marker history prediction pilot
+
+**A small out-of-sample continuous-error gain; event results depend on the threshold; resolution-independent benefit remains unproven.**
+
+This study implements the marker-arrangement hypothesis in the existing matched-stretch 3D Navier–Stokes project. It reuses the unchanged parent `numerics.Flow` solver and audits all eight original marker-stress trajectory archives. Those archives share one initial-condition family and cannot constitute independent train/test runs, so a new, explicitly different **smooth random periodic initial-condition ensemble** supplies the prediction experiment. This is not a rerun of the original sharp strain/tube start.
+
+Open [the complete report](results/report.html) for methods, all metrics, plots, controls, numerical failures/limitations, sources and interpretation. [The frozen protocol](protocol.json) specifies seeds and comparisons before evaluation.
+
+## Main results
+
+Thirty-two independent initial-condition seeds are split **16 train / 8 validation / 8 test**. Thirty-two additional simulations change grid, timestep or viscosity for the same test seeds and are dependent sensitivity checks. The primary target is delayed forward FTLE: prediction inputs stop at `t`, while target deformation spans `[t+0.025, t+0.225]`.
+
+| Mean over 8 held-out runs | Current full gradient + current geometry (A) | A + causal geometry history (B) |
+|---|---:|---:|
+| RMSE | 0.067804 | 0.067109 |
+| MAE | 0.050145 | 0.049886 |
+| R² | 0.902771 | 0.904660 |
+| Top-10% event average precision | 0.872350 | 0.862546 |
+| Brier score | 0.023203 | 0.023281 |
+
+The RMSE reduction is **1.025%**. The paired difference is −0.000695, with a run-bootstrap 95% interval [−0.001041, −0.000335]. The event AP difference is −0.009804, with an interval spanning zero. The stricter top-5% secondary event comparison improves AP by 0.033420, but is exploratory, sensitive to rare counts, and requires confirmation. The largest per-run AP change in that comparison comes from a run with two events.
+
+The finer 38³ grid gives an RMSE-difference interval spanning zero. Changes to numerical target values across grids (~0.052 RMS) greatly exceed the tiny prediction gain. Trilinear velocity interpolation introduces volume error despite the spectral fluid field being divergence-free. We therefore report FTLE of the **numerical interpolated flow**, not demonstrated continuum-converged FTLE.
+
+![History controls](results/figures/controls.png)
+
+![Event prediction and calibration](results/figures/events.png)
+
+## What A and B observe
+
+A has 31 current features: velocity (3), complete interpolant gradient (9), strain eigenvalues (3), strain/rotation norms and speed (3), and local geometry (13). B appends 23 history features describing pair distance changes, angular paths, neighbor turnover, alignment, finite-neighborhood affine deformation and shape changes. Current neighbors are selected at prediction time and followed backward only within the measured lookback. The target interval is strictly later. Feature names and model coefficients are in `results/`.
+
+Neither model gets seed, particle ID, current position, time, viscosity, future position, future gradient, future velocity, or future tangent matrices. The model has an incomplete local observation; it does not observe the entire current fluid state.
+
+Controls include equally sized current-only nonlinear features, identical-capacity trees, weaker instantaneous inputs, history-only and feature ablations, three independently permuted histories, distant-marker histories, past-time reversal, shuffled training labels and consistent particle-ID permutations. A consistent relabeling preserves features to about 1e-15. Reversed histories retain a similar small gain; the result does not demonstrate that temporal direction is essential. Stratified shuffled-label controls preserve run/time marginals and therefore need not produce chance-level AP.
+
+## Reproduce
+
+Python 3.12 was used. From this directory:
+
+```text
+python -m pip install -r requirements.txt
+python -m pytest test_history_prediction.py -q
+python simulate.py --pilot
+python simulate.py --sensitivity
+python evaluate.py
+python audit_existing.py
+python verify_results.py
+python export_models.py
+python report.py
+```
+
+`simulate.py --pilot` runs the first two training seeds as a compute/numerical check. `--sensitivity` then generates or verifies all 64 runs, including base runs. The original eight marker archives are only read by `audit_existing.py`. No new raw field grid snapshots are needed: positions, local gradients, velocities and tangent matrices are retained. Every data file has JSON provenance with content and solver hashes. Existing results are resumed only when hashes and configuration agree; source changes intentionally invalidate cached simulations. The completed numeric trajectories and metadata are published in [recorded-data](recorded-data/), with the original file hashes. Fresh reproductions write to the ignored `data/` directory. The recorded cache requires the exact executed source bytes (including line endings); use a fresh `data/` reproduction when your checkout differs. Do not mix runs from different protocol versions.
+
+`evaluate.py` saves selected regularization, standardized coefficients, macro/pooled/per-run metrics, calibration bins, full held-out predictions, 2,000-replicate paired run bootstrap intervals and unadjusted paired sign-flip comparisons. Ridge and logistic hyperparameters use validation only. No test label is used for preprocessing, selection, calibration, event quantiles or probability cutoffs. Secondary sensitivity tests are one-factor comparisons, not a full factorial analysis or multiplicity-adjusted discovery claim.
+
+For new observations with the same units and measurement definitions:
+
+```text
+python predict.py past_observation.npz forecasts.csv
+```
+
+The past-only NPZ contains `time[T]`, `positions[T,N,3]`, present `velocity[N,3]`, and present `gradient[N,3,3]` with `gradient[i,j]=du_i/dx_j`. Use nine evenly spaced times spanning the trained 0.2 lookback, including the current endpoint, and comparable marker density (training used 512 markers in volume 216). Coordinates are unwrapped or periodic in the side-6 box. The JSON models are inspectable numbers; no pickle loading is needed. The CSV reports each current marker location, future target window, predicted FTLE and event probability. This is an experimental model trained on the declared smooth-flow distribution, not a validated deployment model for arbitrary flows.
+
+## Files and provenance
+
+- `protocol.json`: prechosen split, solver settings, targets, feature families and comparisons.
+- `simulate.py`: independent initial conditions and joint fluid/marker/tangent evolution using the parent solver.
+- `features.py`: causal feature extraction and strictly later targets.
+- `evaluate.py`: grouped fitting, negative controls, metrics and uncertainty.
+- `audit_existing.py`: reuse/audit of the eight original marker-stress archives, excluding companion markers and clones.
+- `verify_results.py`: simulation hashes, numerical sensitivity and actual-run identity invariance.
+- `export_models.py`, `predict.py`: portable fitted models and past-only inference.
+- `test_history_prediction.py`: analytic numerical, causality, identity, split and fitting-leakage tests.
+- `report.py`: five PNG/SVG figures, HTML report and CSV tables.
+- `results/verification.json`: every simulation's seed group, split, configuration, SHA-256 and numerical diagnostics.
+- `results/existing_data_audit.json`: original archive paths and hashes, plus sensitivity results.
+- `results/primary_models.json`: exported primary fits, verified to reproduce saved test predictions exactly.
+
+Source repository: [NousVolition/My-Sources-Project-ALL](https://github.com/NousVolition/My-Sources-Project-ALL), source commit `17c14e89940d4c96ec9df315b1a689430d8c5ddf`. Executed parent solver byte SHA-256: `16d11a080c1559d428b33f803c1f83cfabbc3336e0bab9256989b9a2cef40d53`. The original archived solver hash is `22b169971aaf2efd56d47f685495a575e1622edd56c199b07a785fc97e952f46`; normalized source text is identical, but the Windows checkout has different line endings. The source/results bundle preserves the exact executed bytes required by the simulation cache checks. This directory is a local addition on branch `research/marker-history-prediction`; the original checkout and its unrelated in-progress work were preserved.
+
+## Interpretation limits
+
+This is evidence of a small predictive association in an incomplete-observation problem, with unresolved spatial accuracy. It does not identify a particular causal arrangement, marker leadership, an exact event onset time, or a future Eulerian event location. A complete deterministic present fluid state determines subsequent evolution while a unique solution exists; geometry history may proxy omitted spatial information or reduce model approximation error. Nothing here establishes a Navier–Stokes regularity result or breakthrough.
+
+Publication checksums for the uploaded files are recorded in [publication-manifest.json](publication-manifest.json). The original source_manifest.json retains the earlier local-delivery snapshot; publication edits add navigation and data links without changing the numerical analysis.

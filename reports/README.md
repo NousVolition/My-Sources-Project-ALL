@@ -84,3 +84,7 @@ The counts above describe the saved October 8 snapshot. Later verified batches a
 ## Identical water molecules: positional influence
 
 - [Reproducible toy-network and TIP3P water experiment](water-molecule-influence/README.md): methods, figures, complete saved trajectories, numerical controls, and limits on interpreting temporary response rankings as a hierarchy.
+
+## Marker-history prediction pilot
+
+- [Does past marker geometry predict future deformation?](matched-stretch/history-prediction/README.md) — 32 independent initial conditions, 64 simulations, whole-run holdouts, 13 passing local tests, complete numerical recordings and control plots. A small continuous-error gain; event results depend on the threshold, and the finer-grid comparison remains inconclusive.
