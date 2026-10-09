@@ -1,8 +1,12 @@
 # Matched-stretch numerical controls
 
-**Second completed 128-grid perturbation seed:** [Seed202 and comparison with seed101 through 0.40](completed-n128-seed202/README.md). **27/48 verified completed results published.** Two seeds reach similar endpoint separation; spatial and timestep limitations remain explicit.
+**All three 0.1% seeds at grid 128 complete:** [Three-seed comparison through 0.40](completed-n128-three-seeds/README.md). **28/48 verified completed results published.** Endpoint separations are close across all three seeds; spatial and timestep limitations remain explicit.
 
-**Completed 128-grid timestep control:** [Ordinary and half steps through 0.40](completed-timestep128/README.md). **26/48 verified completed results published.** The W-curve timestep screen fails from t=0.31; spatial resolution remains inadequate.
+## Earlier completed batches
+
+**Second completed 128-grid perturbation seed:** [Seed202 and comparison with seed101 through 0.40](completed-n128-seed202/README.md). Two seeds reach similar endpoint separation; spatial and timestep limitations remain explicit.
+
+**Completed 128-grid timestep control:** [Ordinary and half steps through 0.40](completed-timestep128/README.md). The W-curve timestep screen fails from t=0.31; spatial resolution remains inadequate.
 
 **First completed 128-grid perturbation seed:** [seed 101 at 0.1%, through 0.40](completed-n128-seed101/README.md). All 41 fields and separation from the saved baseline checked. Resolution warnings and finite-window rate limits remain explicit.
 
