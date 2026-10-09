@@ -7,7 +7,7 @@ These reports are saved on the authorâ€™s computer and copied into this Git
 ## Numerical reports and earlier snapshots
 
 - **[Matched-stretch controls](matched-stretch/README.md): 5/48 runs in this earlier snapshot.** Charts, time-step comparisons, widths and budgets; spatial resolution remains inadequate in the current 64Â³ runs.
-- **[Three vortex surroundings](study/README.md): 31/48 runs complete.** Updated October 9 with three verified 160-grid controls and resolution warnings; the older interactive display is dated separately below.
+- **[Three vortex surroundings](study/README.md): 36/48 completed locally; 32 verified results published.** All aligned and compressive runs are published, including [four 160-grid controls](study/completed-compressive160-final/README.md). Departure runs are progressing; the older interactive display remains dated separately below.
 - [Verification of this saved snapshot](numerical-progress-verification.json).
 
 ## Completed mirror tests â€” October 8

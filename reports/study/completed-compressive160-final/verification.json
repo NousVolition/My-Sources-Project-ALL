@@ -1,0 +1,85 @@
+{
+  "status": "passed",
+  "checked_utc": "2026-10-09T11:34:35.770478+00:00",
+  "new_simulations": 0,
+  "completed_runs": [
+    "compressive-fd4-n160-half"
+  ],
+  "saved_fields_checked": 5,
+  "source_hashes": {
+    "initial_design.py": "008d8ae42332377afcb068f0689d4f418c7e27e29cc08233a5fde2b554250c30",
+    "solver.py": "5fecfe44050c47f374111a52e46e624a3fd4b6427575b3b5109086fe2789b821",
+    "protocol.py": "e776a5e0f3cca7e1a53aca39f0b4b7a6aeb96a3996a31c107a301ff01cf4db7c",
+    "run_study.py": "f81bf25ea96658ca8fcea089579930367290ce62fd442b8f2972fcc25ce093f3"
+  },
+  "checks": [
+    {
+      "id": "compressive-fd4-n160-half",
+      "result_sha256": "96efb1dfffe7c1f4c1c26b882fc1f5d2975d33582f81784d7e13b8867f760482",
+      "fields": [
+        {
+          "file": "field-t0.00.npz",
+          "sha256": "d4c710ddb08837a9f5e77913deb3e6531fcbd68bebb01262d8372f5a768dd373",
+          "relative_errors": {
+            "Wmax": 0.0,
+            "energy": 2.1366319901256998e-16,
+            "spectral_enstrophy": 0.0,
+            "native_enstrophy": 2.6128656836193184e-16
+          }
+        },
+        {
+          "file": "field-t0.10.npz",
+          "sha256": "9745125256a02e468adc8c5168680a52fb3ee430d22a3fdc8cc030892b836457",
+          "relative_errors": {
+            "Wmax": 1.9088876339979662e-16,
+            "energy": 0.0,
+            "spectral_enstrophy": 1.389975121534e-16,
+            "native_enstrophy": 1.3899876232753306e-16
+          }
+        },
+        {
+          "file": "field-t0.20.npz",
+          "sha256": "393e23b53be8252018d6f8936f731230e555c4775ec52962fd36d728d31d62cb",
+          "relative_errors": {
+            "Wmax": 0.0,
+            "energy": 4.278899408785623e-16,
+            "spectral_enstrophy": 0.0,
+            "native_enstrophy": 4.1080257115234254e-16
+          }
+        },
+        {
+          "file": "field-t0.30.npz",
+          "sha256": "c2a6ee30ae3d1df548efbf78055769acee3c62bc5030c4a300451a9ec326f938",
+          "relative_errors": {
+            "Wmax": 2.070480768379026e-16,
+            "energy": 0.0,
+            "spectral_enstrophy": 2.6694518539405506e-16,
+            "native_enstrophy": 4.0565101050688194e-16
+          }
+        },
+        {
+          "file": "field-t0.40.npz",
+          "sha256": "b51c32a6ea7c21777bd722b4d0b2c8fa9d1876b2152c04f3e7583065ce3baa78",
+          "relative_errors": {
+            "Wmax": 1.2011268373171697e-16,
+            "energy": 0.0,
+            "spectral_enstrophy": 0.0,
+            "native_enstrophy": 3.304472637083953e-16
+          }
+        }
+      ],
+      "endpoint_errors": {
+        "high_band_enstrophy_fraction": 0.0,
+        "direct_spectral_enstrophy_production": 0.0,
+        "W_central_roi": 0.0,
+        "origin_axial_strain": 0.0,
+        "central_marker_parallel_stretch_spin_weighted": 0.0
+      },
+      "maximum_stage_cfl": 0.13585691631538235,
+      "maximum_absolute_energy_budget_relative": 1.5912112319056347e-08,
+      "first_spectral_warning": 0.3,
+      "first_width_warning": null
+    }
+  ],
+  "scope": "Physical W, energy and both enstrophies independently summed from saved arrays at 0, .1, .2, .3, .4. Endpoint widths, strain and spectra remeasured with frozen diagnostic code. Integrated I and budget rates retain recorded RK-stage accumulations; trajectories were not rerun. Numerical completion does not imply spatial convergence."
+}
