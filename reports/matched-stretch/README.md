@@ -1,5 +1,7 @@
 # Matched-stretch numerical controls
 
+**Two more completed parameter runs:** [Tube spin x1.1 and background strain x0.9 through 0.40](completed-spin-strain/README.md). All 82 saved fields verified; peak spatial-resolution checks still fail.
+
 **Completed marker analyses:** [Individual paths and numerical controls](marker-stress/README.md), [changing fastest-separation labels](marker-stress/separation-roles.md), and [carpet, random-interval and Menger marker tests](marker-stress/fractal/README.md). Passive tracking reuses saved fields; the underlying fluid matrices remain in progress.
 
 **Completed parameter batch:** [Viscosity, radius and tube-spin comparisons through 0.40](completed-parameters/README.md). Five additional runs and 205 saved fields verified. Peak spatial resolution still fails.
