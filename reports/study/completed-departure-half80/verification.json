@@ -1,0 +1,153 @@
+{
+  "status": "passed",
+  "checked_utc": "2026-10-09T12:19:15.971235+00:00",
+  "new_simulations": 0,
+  "completed_runs": [
+    "exodus-fourier-n80-half",
+    "exodus-fd4-n80-half"
+  ],
+  "saved_fields_checked": 10,
+  "source_hashes": {
+    "initial_design.py": "008d8ae42332377afcb068f0689d4f418c7e27e29cc08233a5fde2b554250c30",
+    "solver.py": "5fecfe44050c47f374111a52e46e624a3fd4b6427575b3b5109086fe2789b821",
+    "protocol.py": "e776a5e0f3cca7e1a53aca39f0b4b7a6aeb96a3996a31c107a301ff01cf4db7c",
+    "run_study.py": "f81bf25ea96658ca8fcea089579930367290ce62fd442b8f2972fcc25ce093f3"
+  },
+  "checks": [
+    {
+      "id": "exodus-fourier-n80-half",
+      "result_sha256": "0960e35ea2bff0c009df650e0a62aade34be5a5b7212ae82626e53e90933a1a2",
+      "fields": [
+        {
+          "file": "field-t0.00.npz",
+          "sha256": "9d4aa04350a4d5d80e1cc6e030ca5107f0131893ef6c9aa12ad6ac47ebffbc42",
+          "relative_errors": {
+            "Wmax": 7.105427357600989e-16,
+            "energy": 2.4829458553988625e-16,
+            "spectral_enstrophy": 1.4015705392141332e-16,
+            "native_enstrophy": 1.4015705392141332e-16
+          }
+        },
+        {
+          "file": "field-t0.10.npz",
+          "sha256": "1e7699c76c7b63e405284a39665bbb86b38c10c9f6f23bd6a5be8a625698525f",
+          "relative_errors": {
+            "Wmax": 1.7042867557337513e-16,
+            "energy": 3.7269085603158073e-16,
+            "spectral_enstrophy": 4.387757539896953e-16,
+            "native_enstrophy": 4.387757539896953e-16
+          }
+        },
+        {
+          "file": "field-t0.20.npz",
+          "sha256": "7274a0382a9ea34d5b02e3b8075920db25171b3f1131c77895256d9a49269aa7",
+          "relative_errors": {
+            "Wmax": 1.5298690071987212e-16,
+            "energy": 4.9731112796232e-16,
+            "spectral_enstrophy": 4.279225078193383e-16,
+            "native_enstrophy": 4.279225078193383e-16
+          }
+        },
+        {
+          "file": "field-t0.30.npz",
+          "sha256": "64ed158871f7852bf85fe445236264aac0dc400df8afb2511a0f920807d94aaf",
+          "relative_errors": {
+            "Wmax": 0.0,
+            "energy": 1.2447225780269995e-16,
+            "spectral_enstrophy": 4.135610335526053e-16,
+            "native_enstrophy": 4.135610335526053e-16
+          }
+        },
+        {
+          "file": "field-t0.40.npz",
+          "sha256": "99762ef1b68371714af6d4fbc37a5ae4acb4319ac980ec1690e845a6621370ab",
+          "relative_errors": {
+            "Wmax": 2.648473936991756e-16,
+            "energy": 3.7410938583286553e-16,
+            "spectral_enstrophy": 3.4140231201069375e-16,
+            "native_enstrophy": 3.4140231201069375e-16
+          }
+        }
+      ],
+      "endpoint_errors": {
+        "high_band_enstrophy_fraction": 0.0,
+        "direct_spectral_enstrophy_production": 0.0,
+        "W_central_roi": 0.0,
+        "origin_axial_strain": 0.0,
+        "central_marker_parallel_stretch_spin_weighted": 0.0
+      },
+      "maximum_stage_cfl": 0.1383323530799219,
+      "maximum_absolute_energy_budget_relative": 8.642295363857443e-08,
+      "first_spectral_warning": 0.22,
+      "first_width_warning": 0.24
+    },
+    {
+      "id": "exodus-fd4-n80-half",
+      "result_sha256": "3e5d7a1ac796f9fb677ab7b0c37eb0209566d4cb71586ebf7b9332db12b64eeb",
+      "fields": [
+        {
+          "file": "field-t0.00.npz",
+          "sha256": "d411c86cb43a57dbb4bd88286012878898ebde45c00c31e3b08f924f97cfafe3",
+          "relative_errors": {
+            "Wmax": 5.329070532894719e-16,
+            "energy": 3.72441878329489e-16,
+            "spectral_enstrophy": 4.2047116194802766e-16,
+            "native_enstrophy": 4.204957114814827e-16
+          }
+        },
+        {
+          "file": "field-t0.10.npz",
+          "sha256": "b6588d7c4d1805c2e709bb2c36f6c0ffc141629ef2eccb648a43004770cccb83",
+          "relative_errors": {
+            "Wmax": 1.7045323555810994e-16,
+            "energy": 3.7269085071575553e-16,
+            "spectral_enstrophy": 4.387961150944297e-16,
+            "native_enstrophy": 1.462869874417019e-16
+          }
+        },
+        {
+          "file": "field-t0.20.npz",
+          "sha256": "521903d814cbf0e0cf5d06b30c01170883826a2705bc619e02c2eb48dae9544a",
+          "relative_errors": {
+            "Wmax": 1.5321255601523806e-16,
+            "energy": 4.973107611960897e-16,
+            "spectral_enstrophy": 2.143619238390551e-16,
+            "native_enstrophy": 2.1561022383453402e-16
+          }
+        },
+        {
+          "file": "field-t0.30.npz",
+          "sha256": "46f336515cc8037d8883de386ce9c1c18b28335f0c0830d8ea18dee5a9245396",
+          "relative_errors": {
+            "Wmax": 1.9224129358624555e-16,
+            "energy": 4.978826192139047e-16,
+            "spectral_enstrophy": 0.0,
+            "native_enstrophy": 4.356879672028444e-16
+          }
+        },
+        {
+          "file": "field-t0.40.npz",
+          "sha256": "86d044c588cd71da43b939aab96afb9c9adcd8b965eb7a51bd4afd3235997feb",
+          "relative_errors": {
+            "Wmax": 4.1011323744960745e-16,
+            "energy": 2.493902253749454e-16,
+            "spectral_enstrophy": 3.48340661764826e-16,
+            "native_enstrophy": 0.0
+          }
+        }
+      ],
+      "endpoint_errors": {
+        "high_band_enstrophy_fraction": 0.0,
+        "direct_spectral_enstrophy_production": 0.0,
+        "W_central_roi": 0.0,
+        "origin_axial_strain": 0.0,
+        "central_marker_parallel_stretch_spin_weighted": 0.0
+      },
+      "maximum_stage_cfl": 0.13833155358761712,
+      "maximum_absolute_energy_budget_relative": 8.353493764290659e-08,
+      "first_spectral_warning": 0.24,
+      "first_width_warning": 0.24
+    }
+  ],
+  "scope": "Physical W, energy and both enstrophies independently summed from saved arrays at 0, .1, .2, .3, .4. Endpoint widths, strain and spectra remeasured with frozen diagnostic code. Integrated I and budget rates retain recorded RK-stage accumulations; trajectories were not rerun. Numerical completion does not imply spatial convergence."
+}

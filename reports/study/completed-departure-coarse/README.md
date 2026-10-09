@@ -1,6 +1,6 @@
 # Departure case: first six completed runs
 
-All ordinary-step Fourier and FD4 runs at **48, 64 and 80 grids** reached **t=0.40**. Finer grids and half-step controls remain in the existing authorized matrix. These six results bring verified published vortex records to **38/48**.
+All ordinary-step Fourier and FD4 runs at **48, 64 and 80 grids** reached **t=0.40**. Both 80-grid half-step controls are now [complete and verified](../completed-departure-half80/README.md). Finer grids and their half-step controls remain in the existing authorized matrix. These six results bring verified published vortex records to **38/48**.
 
 ![Curves, spectra, widths and budgets](curves.png)
 

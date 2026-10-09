@@ -1,8 +1,10 @@
 # Vortex comparison: current numerical results
 
-Snapshot: 2026-10-09T11:55:27.443559+00:00. **38/48 runs completed locally; 38 verified completed records are published below.** All aligned and compressive runs plus the first six departure runs are published. The remaining departure controls continue.
+Snapshot: 2026-10-09T12:21:14.566182+00:00. **40/48 runs completed locally; 40 verified completed records are published below.** All aligned and compressive runs, six ordinary-step departure runs and both 80-grid half-step controls are published. The remaining departure controls continue.
 
 ## Newly completed departure runs
+
+[Both 80-grid half-step controls](completed-departure-half80/README.md), with independent field comparisons and timestep-difference charts.
 
 [Six verified runs at grids 48, 64 and 80](completed-departure-coarse/README.md), with field checks, comparisons and resolution warnings.
 
@@ -47,9 +49,11 @@ Snapshot: 2026-10-09T11:55:27.443559+00:00. **38/48 runs completed locally; 38 v
 | exodus-fd4-n48-base | complete | 0.40 | 79.99999 | 79.14726 | 22.08779 |
 | exodus-fd4-n64-base | complete | 0.40 | 97.55390 | 97.55390 | 23.93819 |
 | exodus-fd4-n80-base | complete | 0.40 | 103.95238 | 103.95238 | 24.13931 |
+| exodus-fd4-n80-half | complete | 0.40 | 103.95315 | 103.95315 | 24.13934 |
 | exodus-fourier-n48-base | complete | 0.40 | 88.15757 | 88.15757 | 22.56190 |
 | exodus-fourier-n64-base | complete | 0.40 | 102.64848 | 102.64848 | 24.27390 |
 | exodus-fourier-n80-base | complete | 0.40 | 107.31294 | 107.31294 | 24.33402 |
+| exodus-fourier-n80-half | complete | 0.40 | 107.31353 | 107.31353 | 24.33409 |
 
 These are different starting fields from the imported matched-stretch study. Both solvers use SSP RK3 and the same filtering; FD4 independently discretizes transport and viscosity but shares the FFT pressure infrastructure. Method agreement has that limitation.
 
