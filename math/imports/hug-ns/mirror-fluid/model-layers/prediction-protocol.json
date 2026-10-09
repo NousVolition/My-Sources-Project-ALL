@@ -1,0 +1,25 @@
+{
+  "training": "n49-odd-lean-A0.15-P0.2-s1-base only",
+  "targets": "signed D/U0; other E,W,I,energy,gap,spectra are measured companions, not equated with scalar x",
+  "models": [
+    {
+      "r": -1,
+      "c": 0.4
+    },
+    {
+      "r": 1,
+      "c": 0.4
+    }
+  ],
+  "time_mapping": "ball time = 20*fluid time, fixed using training period0.2->4; other frequencies use ball period20*P without refitting time scale",
+  "initial_mapping": "x0=sign*0.1; predicted D/U0 = initial D/U0 + k*(x-x0), with k>=0 fitted only to low-amplitude training curve",
+  "held_out": "A0.5 atP0.2 and0.1, both mirrored signs, 65-grid strong control and half-step control; training mirror is only symmetry validation",
+  "baselines": [
+    "constant initial D/U0",
+    "training-fitted linear change in physical time"
+  ],
+  "primary_score": "Relative L2 over0..0.4 against measured D/U0; 10percent exploratory screen; compare scores to both simpler baselines",
+  "no_retrofit": "Keep r,c,time map and fit rules fixed when held-out data arrive. Failed prediction remains a result.",
+  "other_layers": "Four-node, listening and spatial symmetry checks are structural comparisons. No quantitative coupling/feedback/diffusion mapping to Navier-Stokes has been established.",
+  "created_before_odd_fluid_training_complete": true
+}
