@@ -4,10 +4,10 @@ These reports are saved on the authorâ€™s computer and copied into this Git
 
 **To use the interactive controls:** [download the project](https://github.com/NousVolition/My-Sources-Project-ALL/archive/refs/heads/main.zip), extract it, and open `reports/index.html`. GitHubâ€™s file viewer displays HTML source rather than running its controls.
 
-## Earlier numerical snapshot â€” October 8
+## Numerical reports and earlier snapshots
 
 - **[Matched-stretch controls](matched-stretch/README.md): 5/48 runs in this earlier snapshot.** Charts, time-step comparisons, widths and budgets; spatial resolution remains inadequate in the current 64Â³ runs.
-- **[Three vortex surroundings](study/README.md): 28/48 runs complete.** Updated measurements and comparisons; the older interactive display is dated separately below.
+- **[Three vortex surroundings](study/README.md): 31/48 runs complete.** Updated October 9 with three verified 160-grid controls and resolution warnings; the older interactive display is dated separately below.
 - [Verification of this saved snapshot](numerical-progress-verification.json).
 
 ## Completed mirror tests â€” October 8
@@ -73,7 +73,7 @@ The full restart arrays remain in the local calculation workspace. They are larg
 - [Corrected fluid dashboard, explicit definitions, 516 saved-field checks and completed controls](../math/imports/hug-ns/mirror-fluid/methods-controls/README.md).
 - [Norms, signs, reflection, numerical methods and evidence categories](../math/imports/hug-ns/mirror-fluid/methods-controls/METHODS.md).
 
-The counts above describe the saved October 8 snapshot. Later verified batches are linked under Newly completed comparisons; unfinished local runs are not presented as completed GitHub results.
+The matched-stretch count above describes the saved October 8 snapshot; the vortex count was updated October 9. Later verified batches are linked under Newly completed comparisons; unfinished local runs are not presented as completed GitHub results.
 
 ## New completed tests
 

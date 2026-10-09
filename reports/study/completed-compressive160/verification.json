@@ -1,0 +1,221 @@
+{
+  "status": "passed",
+  "checked_utc": "2026-10-09T09:05:08.100396+00:00",
+  "new_simulations": 0,
+  "completed_runs": [
+    "compressive-fourier-n160-base",
+    "compressive-fd4-n160-base",
+    "compressive-fourier-n160-half"
+  ],
+  "saved_fields_checked": 15,
+  "source_hashes": {
+    "initial_design.py": "008d8ae42332377afcb068f0689d4f418c7e27e29cc08233a5fde2b554250c30",
+    "solver.py": "5fecfe44050c47f374111a52e46e624a3fd4b6427575b3b5109086fe2789b821",
+    "protocol.py": "e776a5e0f3cca7e1a53aca39f0b4b7a6aeb96a3996a31c107a301ff01cf4db7c",
+    "run_study.py": "f81bf25ea96658ca8fcea089579930367290ce62fd442b8f2972fcc25ce093f3"
+  },
+  "checks": [
+    {
+      "id": "compressive-fourier-n160-base",
+      "result_sha256": "c7f651c87c2c7a59129aeaca82bc40a84d3f3d1304859494e71916d863d66496",
+      "fields": [
+        {
+          "file": "field-t0.00.npz",
+          "sha256": "ec4daa867aa57e78482c736a54d392f90c71fdb4584fc95ea97a7b4e1dd2f4bc",
+          "relative_errors": {
+            "Wmax": 0.0,
+            "energy": 2.1366319901253194e-16,
+            "spectral_enstrophy": 0.0,
+            "native_enstrophy": 0.0
+          }
+        },
+        {
+          "file": "field-t0.10.npz",
+          "sha256": "5f997e7bb757c24a3cba8456354eef353347e734738bdd7d098a29a2dcfe700f",
+          "relative_errors": {
+            "Wmax": 1.908870141513912e-16,
+            "energy": 4.275875653117316e-16,
+            "spectral_enstrophy": 1.389971145655459e-16,
+            "native_enstrophy": 1.389971145655459e-16
+          }
+        },
+        {
+          "file": "field-t0.20.npz",
+          "sha256": "ff83c72276cb35626dcac17ea241aed9ccaffc9c7cab0a8658199f4a61bd735b",
+          "relative_errors": {
+            "Wmax": 3.282566791830981e-16,
+            "energy": 0.0,
+            "spectral_enstrophy": 2.051128824987387e-16,
+            "native_enstrophy": 2.051128824987387e-16
+          }
+        },
+        {
+          "file": "field-t0.30.npz",
+          "sha256": "1ef9392b6523ae59dbb09e40c1f5aae9ecb879f90006775652f918f3e7a4588b",
+          "relative_errors": {
+            "Wmax": 2.0806320414479307e-16,
+            "energy": 2.1416670691698363e-16,
+            "spectral_enstrophy": 3.992035695792886e-16,
+            "native_enstrophy": 3.992035695792886e-16
+          }
+        },
+        {
+          "file": "field-t0.40.npz",
+          "sha256": "14422b0d99fb56018ca3608f0cab0e09c6483f8f293405939d618bb1cbbf6356",
+          "relative_errors": {
+            "Wmax": 2.171063201383675e-16,
+            "energy": 2.1453050643234967e-16,
+            "spectral_enstrophy": 1.5609349732400338e-16,
+            "native_enstrophy": 1.5609349732400338e-16
+          }
+        }
+      ],
+      "endpoint_errors": {
+        "high_band_enstrophy_fraction": 0.0,
+        "direct_spectral_enstrophy_production": 0.0,
+        "W_central_roi": 0.0,
+        "origin_axial_strain": 0.0,
+        "central_marker_parallel_stretch_spin_weighted": 0.0
+      },
+      "maximum_stage_cfl": 0.2717139407420135,
+      "maximum_absolute_energy_budget_relative": 1.2579308358287464e-07,
+      "first_spectral_warning": 0.28,
+      "first_width_warning": 0.36
+    },
+    {
+      "id": "compressive-fd4-n160-base",
+      "result_sha256": "6b08de3d613ecf2d870a84fdded230315bac43ab913934547728e3223b59167c",
+      "fields": [
+        {
+          "file": "field-t0.00.npz",
+          "sha256": "c0869ee9cbe62bec6a71f9b7fa074bddd6d3ab0db2b35ea3a0734ff45c9b1083",
+          "relative_errors": {
+            "Wmax": 0.0,
+            "energy": 2.1366319901256998e-16,
+            "spectral_enstrophy": 0.0,
+            "native_enstrophy": 2.6128656836193184e-16
+          }
+        },
+        {
+          "file": "field-t0.10.npz",
+          "sha256": "10ff4ebd416cf33db26eb9cc810e1dd14703c69a1f0f40d17d191e3a544505e3",
+          "relative_errors": {
+            "Wmax": 0.0,
+            "energy": 2.1379378249778535e-16,
+            "spectral_enstrophy": 1.3899751435414932e-16,
+            "native_enstrophy": 1.389987645281598e-16
+          }
+        },
+        {
+          "file": "field-t0.20.npz",
+          "sha256": "f3e3af420e8c9642adadfdf67ead8452cd3d96d2401e78d2a1ea660b74d017ac",
+          "relative_errors": {
+            "Wmax": 0.0,
+            "energy": 2.1394497186779935e-16,
+            "spectral_enstrophy": 4.1035914428029837e-16,
+            "native_enstrophy": 2.054013150169204e-16
+          }
+        },
+        {
+          "file": "field-t0.30.npz",
+          "sha256": "a28e3828d45b906ab81cea2eb4837a3842b300b6b817fb0957c4060dea6c9549",
+          "relative_errors": {
+            "Wmax": 2.070480348883667e-16,
+            "energy": 0.0,
+            "spectral_enstrophy": 2.6694571992036475e-16,
+            "native_enstrophy": 2.704344726947058e-16
+          }
+        },
+        {
+          "file": "field-t0.40.npz",
+          "sha256": "a835269e48dc5260c00caf339143a3eb8013d9827789f145cf1130e9196d2c89",
+          "relative_errors": {
+            "Wmax": 1.2011267157667929e-16,
+            "energy": 2.1452597365621964e-16,
+            "spectral_enstrophy": 1.570534405662726e-16,
+            "native_enstrophy": 1.6522579244509858e-16
+          }
+        }
+      ],
+      "endpoint_errors": {
+        "high_band_enstrophy_fraction": 0.0,
+        "direct_spectral_enstrophy_production": 0.0,
+        "W_central_roi": 0.0,
+        "origin_axial_strain": 0.0,
+        "central_marker_parallel_stretch_spin_weighted": 0.0
+      },
+      "maximum_stage_cfl": 0.2717138326307647,
+      "maximum_absolute_energy_budget_relative": 1.2727311310108694e-07,
+      "first_spectral_warning": 0.3,
+      "first_width_warning": null
+    },
+    {
+      "id": "compressive-fourier-n160-half",
+      "result_sha256": "49eb86e426d48f0ef8844be3ab6490d1ac34382324a6998e87faf77c39f1de39",
+      "fields": [
+        {
+          "file": "field-t0.00.npz",
+          "sha256": "dd434fee579c99055e01e83e986d64c6022ce9466e7b28afd9f36b0ae8b3ab6b",
+          "relative_errors": {
+            "Wmax": 0.0,
+            "energy": 2.1366319901253194e-16,
+            "spectral_enstrophy": 0.0,
+            "native_enstrophy": 0.0
+          }
+        },
+        {
+          "file": "field-t0.10.npz",
+          "sha256": "e99d0d774cbbaa911d828b5dd9e9c97723e251aec7c484a737c44f1038084b1d",
+          "relative_errors": {
+            "Wmax": 0.0,
+            "energy": 0.0,
+            "spectral_enstrophy": 4.1699133709267675e-16,
+            "native_enstrophy": 4.1699133709267675e-16
+          }
+        },
+        {
+          "file": "field-t0.20.npz",
+          "sha256": "83c0ceb1ff3e358509881af1a8edb7699f32a1aa71d4ad6e86f549659617e2c6",
+          "relative_errors": {
+            "Wmax": 3.2825666529609016e-16,
+            "energy": 2.139449901888995e-16,
+            "spectral_enstrophy": 2.0511285208280457e-16,
+            "native_enstrophy": 2.0511285208280457e-16
+          }
+        },
+        {
+          "file": "field-t0.30.npz",
+          "sha256": "2a75dc58d3f3e02514b3a20a1fb3738e6d277ec41702ed1c9a170fe8889653f9",
+          "relative_errors": {
+            "Wmax": 4.161263974047864e-16,
+            "energy": 2.1416670221067157e-16,
+            "spectral_enstrophy": 1.3306758561236602e-16,
+            "native_enstrophy": 1.3306758561236602e-16
+          }
+        },
+        {
+          "file": "field-t0.40.npz",
+          "sha256": "16886cadf2d932005a721019fcc1095e4facbce65b67d7e21d41f3364ef41b0f",
+          "relative_errors": {
+            "Wmax": 2.1710404969586755e-16,
+            "energy": 0.0,
+            "spectral_enstrophy": 1.5609075397934883e-16,
+            "native_enstrophy": 1.5609075397934883e-16
+          }
+        }
+      ],
+      "endpoint_errors": {
+        "high_band_enstrophy_fraction": 0.0,
+        "direct_spectral_enstrophy_production": 0.0,
+        "W_central_roi": 0.0,
+        "origin_axial_strain": 0.0,
+        "central_marker_parallel_stretch_spin_weighted": 0.0
+      },
+      "maximum_stage_cfl": 0.13585697037100675,
+      "maximum_absolute_energy_budget_relative": 1.5726255587616954e-08,
+      "first_spectral_warning": 0.28,
+      "first_width_warning": 0.36
+    }
+  ],
+  "scope": "Physical W, energy and both enstrophies independently summed from saved arrays at 0, .1, .2, .3, .4. Endpoint widths, strain and spectra remeasured with frozen diagnostic code. Integrated I and budget rates retain recorded RK-stage accumulations; trajectories were not rerun. Numerical completion does not imply spatial convergence."
+}
