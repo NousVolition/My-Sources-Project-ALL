@@ -2,7 +2,11 @@
 
 [← Project home](../README.md) · [Done & next](../STATUS.md)
 
-## Start here
+## Current studies
+
+The active [matched-stretch controls](../reports/matched-stretch/README.md) and [separate vortex controls](../reports/study/README.md) have their own starting fields, protocols and completion indexes. Read the [current status](../STATUS.md) and [cross-repository review](../REPOSITORY-REVIEW.md) before comparing their results with the earlier ring below.
+
+## Earlier smooth-ring study
 
 **The question:** how does a smooth, ring-shaped flow evolve, and how much do the numerical results change when we use a finer grid or smaller time steps?
 
@@ -20,9 +24,9 @@ The original grid-comparison series reaches **model time 0.4** on **256³ and 38
 
 [Four reproduced tests and charts](imports/hug-ns/mirror-fluid/README.md) and [20-run signed calibration](imports/hug-ns/mirror-calibration/README.md), with source and actual result files.
 
-## Hug-ns code and results
+## Earlier supplied hug-ns code and tables
 
-[Open the experiment overview](imports/hug-ns/README.md) for the code, sixteen result tables and measurement definitions. The latest N=64 table reaches time 0.12; the earlier no-stop table reaches 0.35. The [code review](imports/hug-ns/REVIEW.md) lists the corrected pressure diagnostic, 32 focused passes and three known failures. The [results review](imports/hug-ns/RESULTS-REVIEW.md) explains exactly which values were checked. This imported solver uses different starting data from the earlier ring study.
+[Open the experiment overview](imports/hug-ns/README.md) for the supplied code, sixteen original result tables and measurement definitions. The latest supplied N=64 table reaches time 0.12; the earlier no-stop table reaches 0.35. The [code review](imports/hug-ns/REVIEW.md) lists the corrected pressure diagnostic, 32 focused passes and three known failures. The [results review](imports/hug-ns/RESULTS-REVIEW.md) explains exactly which values were checked. This imported solver uses different starting data from the earlier ring study.
 
 ## Background and earlier experiments
 
