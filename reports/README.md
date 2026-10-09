@@ -78,5 +78,5 @@ The counts above describe the saved October 8 snapshot. Later verified batches a
 ## New completed tests
 
 - [Separate periodic starting field: five initial grids](matched-stretch/periodic-start-check/README.md). The 256-grid width check passes; the large change in starting energy is reported.
-- [Four reduced-model layers: 46 completed runs and plots](../math/imports/hug-ns/mirror-fluid/model-layers/README.md). Seventeen driven fluid comparisons are underway.
+- [Four reduced-model layers: 46 completed runs and plots](../math/imports/hug-ns/mirror-fluid/model-layers/README.md). All 17 driven fluid comparisons are complete: [prediction scores and numerical controls](../math/imports/hug-ns/mirror-fluid/model-layers/FLUID.md). The tested scalar mappings fail the unseen-run prediction check.
 - [All 22 numerical controls completed](../math/imports/hug-ns/mirror-fluid/methods-controls/README.md), including grid, timestep, translation, rotation and initial-shape checks.

@@ -67,4 +67,4 @@ New calculations go into `rerun/`. The saved `results/` and supplied `references
 
 ## Model enlargement tests
 
-[Four reduced-model layers and their fluid comparison](model-layers/README.md): breathing ball, four coupled states, listening feedback, and a spatial scalar field. Forty-six reduced runs are verified; the separate driven fluid matrix is underway.
+[Four reduced-model layers and their fluid comparison](model-layers/README.md): breathing ball, four coupled states, listening feedback, and a spatial scalar field. All 46 reduced runs and 17 driven fluid controls are complete. [Fluid prediction results](model-layers/FLUID.md): the tested scalar mappings fail the unseen-run prediction check; reflection checks pass, and spin-peak resolution remains insufficient.

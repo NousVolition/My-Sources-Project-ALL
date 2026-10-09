@@ -2,7 +2,7 @@
 
 [Where each experiment first changes](../first-change-audit/README.md): measured starting differences, first-step forcing and early response.
 
-**Four reduced-model layers are complete: 46 runs. Seventeen separate driven fluid controls are underway.** The reduced models show their own measured behavior; a match to fluid behavior must be checked separately.
+**All 46 reduced-model runs and 17 separate driven fluid controls are complete.** The reduced models show their own measured behavior; a match to fluid behavior must be checked separately.
 
 ## 1. Motion and breathing
 
@@ -59,20 +59,15 @@ Here reflection maps a(x) to -a(-x). The odd spatial forcing sin(x) is invariant
 
 The 128/256 final-field relative differences are at most 1.75e-10. Halving dt from 0.005 to 0.0025 changes the tested strong-drive final field by 2.11e-07. These controls concern this scalar equation.
 
-## 5. Fluid comparison: underway
+## 5. Fluid comparison: complete
 
-The new fluid matrix uses the existing mirrored starting field, L=6, viscosity=0.01 and Heun integration through 0.4. It tests two forcing patterns:
+**The tested scalar-to-fluid mappings failed the prediction check.** All 17 driven controls reached time 0.4 and passed their reflection, finite-field and energy-accounting checks. Their peak regions remain too narrow to pass the six-cell spatial-resolution screen.
 
-- **Even gap:** opening and closing preserves reflection and does not itself supply a signed lean.
-- **Odd lean:** the force has the antisymmetric template's direction; the reflected test reverses that force.
+[Read the completed fluid comparison, charts and prediction scores](FLUID.md).
 
-The amplitudes are 0.15 and 0.5 and periods are 0.2 and 0.1. The force has units U0/time and is included at both Heun stages with dt. This differs from the older uploaded per-step kick, whose strength changed with timestep.
+The tests use the existing mirrored start, domain side 6, viscosity 0.01 and Heun integration. Mirror-even gap and mirror-odd lean forces are integrated at both stages with dt. The original unforced studies remain separate.
 
-Tests include mirrored pairs at 49 cubed, stronger-drive 65-grid and half-step controls, and a zero-bias even-gap control. Existing unforced controls are reused. [Fluid protocol](fluid-protocol.json).
-
-The comparison records E, D, peak spin, its integral, spectra, divergence, energy input and the center-line half-peak gap. A gap diagnostic is not an imposed wall. Signed D and normalized unsigned E are not numerically identified with scalar x or E_model.
-
-A scalar-to-fluid calibration will be fitted on the low-amplitude odd-drive run and tested on the other drive settings without refitting. Four-node, listening and spatial coefficients have no established numerical mapping to the fluid. Their symmetry predictions are compared with fluid controls; their coefficients are not presented as fluid measurements.
+The scalar calibration uses one low-amplitude odd-drive run. Its coefficients and time scale were fixed before testing stronger forcing, changed frequency, a finer grid and half timestep. Both r = -1 and r = +1 candidates exceed the 10% prediction threshold on every held-out control. Four-node, listening and spatial coefficients have no established quantitative mapping to fluid coefficients.
 
 ## Verification and code
 
