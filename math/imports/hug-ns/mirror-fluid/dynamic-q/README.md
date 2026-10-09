@@ -1,6 +1,6 @@
 # Dynamic source weights and cubic term
 
-**The source features improve predictions when their measured histories are supplied. The cubic term adds no benefit. Forecasting without future source measurements is worse than simple decay, and the fluid remains sensitive to grid resolution. These tests do not establish the full proposed model.**
+**In the initial 33-grid test, the source features improve predictions when their measured histories are supplied. The cubic term adds no benefit. Forecasting without future source measurements is worse than simple decay, and the fluid remains sensitive to grid resolution. These tests do not establish the full proposed model.**
 
 26 fluid runs completed: 10 training starts, 4 unseen starts, and 12 mirror, timestep and grid controls. The fluid equation and supplied time stepper were unchanged. No fitted term forces the fluid.
 
@@ -77,3 +77,7 @@ A sign produced by signed source inputs is a response to those inputs. This mode
 ## Files
 
 [All measurements, fits and errors](analysis.json) · [Training fits](fitted-training-models.json) · [Protocol](protocol.json) · [Fluid runner](study.py) · [Analysis code](analyze.py) · [Run index](runs/index.json)
+
+## Additional 65-grid controls
+
+[Four further runs are complete](GRID65.md). The largest 49-to-65 curve difference is 3.431% for peak spin and 0.03280% for the signed fluid coordinate. The original training coefficients were kept fixed. These results and the earlier 26 runs are separate recorded batches.
