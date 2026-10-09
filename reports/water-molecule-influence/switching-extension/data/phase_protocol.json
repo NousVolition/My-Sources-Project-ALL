@@ -1,0 +1,12 @@
+{
+  "uniform": "phi_dot=2*pi/T1-2*pi/T2; Tlap=T1*T2/(T2-T1) for T2>T1.",
+  "nonuniform": "theta_dot=omega-a*sin(theta); positive rotation requires omega>a>=0.",
+  "period": "T=2*pi/sqrt(omega^2-a^2). Near a=omega from below: T~pi*sqrt(2/omega)*(omega-a)^(-1/2).",
+  "firefly": "Theta_dot=Omega; theta_dot=omega+A*sin(Theta-theta); phi=Theta-theta; tau=A*t; mu=(Omega-omega)/A; phi_prime=mu-sin(phi).",
+  "locking": "Strict |mu|<1: stable phase arcsin(mu) modulo 2*pi. At |mu|=1 the equilibrium is degenerate; |mu|>1 gives persistent phase slips.",
+  "boundary": "Exact unstable initial equilibria are exceptions to attraction. Locked phases need not coincide.",
+  "pendulum": "I*theta_tt+b*theta_t+mgL*sin(theta)=Gamma, I=mL^2. tau=(mgL/b)*t, mu=Gamma/(mgL), epsilon=I*mgL/b^2=m^2*g*L^3/b^2.",
+  "pendulum_initial_conditions": "theta=0, physical angular velocity=0; full and reduced angles compared at identical scaled times. Initial velocity layer is expected.",
+  "scope": "Illustrative deterministic phase models; no firefly data fitted, no inference of water synchronization.",
+  "numerics": "DOP853 for first-order dynamics; Radau for stiff inertial pendulum. Unwrapped phases used; independent quadrature validates periods."
+}

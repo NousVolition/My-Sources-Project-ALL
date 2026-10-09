@@ -1,0 +1,21 @@
+{
+  "source_equation": "dAp/dt = kp*S*A + beta*Ap^n/(K^n+Ap^n) - kd*Ap",
+  "assumption": "A is constant/clamped; no total A+Ap conservation is specified or imposed.",
+  "scaled_equation": "dx/dtau = s + a*x^n/(1+x^n) - x",
+  "scaling": {
+    "x": "Ap/K",
+    "tau": "kd*t",
+    "s": "kp*S*A/(kd*K)",
+    "a": "beta/(kd*K)"
+  },
+  "parameter_choice": "Illustrative dimensionless values, not measured biological parameters.",
+  "solver": "solve_ivp DOP853, rtol=1e-10, atol=1e-12; integrate discontinuous pulse segments separately.",
+  "sweep": "601 levels from s=0 to 0.3, then reverse, continuing from the previous final state. Each level held for a specified dwell. Up/down arrays aligned at equal s.",
+  "versions": {
+    "python": "3.12.14",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1"
+  },
+  "randomness": "None. All calculations deterministic; exact final digits may vary by platform.",
+  "scope": "Phenomenological concentration ODE; neither water MD nor an individual-molecule hierarchy model."
+}
