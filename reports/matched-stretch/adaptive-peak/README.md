@@ -67,3 +67,7 @@ The copied `source/numerics.py` has the same SHA-256 as the running study; it is
 Run `python audit.py --study-root PATH_TO_MATCHED_STRETCH --legacy-root PATH_TO_FIXED_CUTOFF --max-128-time 0.15`, then `python report.py`. Python dependencies: NumPy, SciPy and Matplotlib. The main saved-time cadence is 0.01; the 80-grid replay uses its recorded exact times approximately 0.02 apart. Actual dt values and all selected times are stored per run.
 
 This publication is a completed audit of saved observations. The fixed 128-grid simulation itself is still running toward 0.4; this audit freezes its available data through 0.15. The 64-grid record ends at 0.4 and the completed 80-grid replay ends at 0.12. Only 0 through 0.12 is used for their cross-grid curves.
+
+## Separate follow-up
+
+At the user’s request, a separate [periodic starting-field candidate](../periodic-start-check/README.md) was tested at initialization. The original results above remain unchanged. The candidate’s geometry and starting energy differences are reported explicitly.

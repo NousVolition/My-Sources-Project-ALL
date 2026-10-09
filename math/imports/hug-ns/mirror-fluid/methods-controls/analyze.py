@@ -69,6 +69,18 @@ def main():
     for kind in ('shift1','shifthalf','rotate'):
         a='n33-s1-shape0-none-base';b=a.replace('none',kind)
         if a in runs and b in runs:comparisons[a+' vs '+b]=compare(runs[a],runs[b])
+    transform_checks={}
+    for kind in ('shift1','shifthalf','rotate'):
+        a='n33-s1-shape0-none-base';b=a.replace('none',kind)
+        if a not in runs or b not in runs:continue
+        ra,rb=runs[a],runs[b];errors=[];peakerrors=[]
+        _,phi,ops,_=initial(m,33);meter=Meter(m,ops,phi)
+        for fa,fb in zip(ra['fields'],rb['fields']):
+            assert fa['step']==fb['step']
+            u=np.load(ROOT/'runs'/a/fa['file'])['u'];v=np.load(ROOT/'runs'/b/fb['file'])['u'];back=transform(v,kind,True)
+            errors.append(norm(back-u)/norm(u))
+            peakerrors.append(abs(meter.basic(back)['W']/meter.basic(u)['W']-1))
+        transform_checks[kind]=dict(max_pulled_back_field_relative_error=max(errors),max_pulled_back_W_relative_error=max(peakerrors),raw_sampled_W_curve_relative_difference=comparisons[a+' vs '+b]['W'])
     one=read(ROOT/'one-step-controls.json')
     audit=read(ROOT/'source-initial-audit.json');breath=read(ROOT/'breathing-audit-summary.json')
     budgets={}
@@ -81,7 +93,7 @@ def main():
         budgets[name]={'quadrature':'Trapezoid on full diagnostic outputs, approximately every 0.02; not every solver step.','series':budget}
     save(ROOT/'enstrophy-budgets.json',budgets)
     out=dict(completed=len(runs),planned=22,built_epoch=time.time(),one_step_max_by_transform={k:max(x['relative_step_residual'] for x in one if x['transform']==k) for k in ('mirror','shift1','shifthalf','rotate')},
-        mirror_pairs=pairs,curve_comparisons=comparisons,
+        mirror_pairs=pairs,curve_comparisons=comparisons,transformed_fields=transform_checks,
         source_energy_changes_percent={k:100*(v['energy_ratio_to_no_C']-1) for k,v in audit['cases'].items()},
         runs={name:dict(n=r['job']['n'],dt=r['dt'],steps=r['steps'],end_time=r['rows'][-1]['t'],
             initial_energy=r['rows'][0]['energy'],final_W=r['rows'][-1]['W'],final_E=r['rows'][-1]['E'],final_D=r['rows'][-1]['D'],

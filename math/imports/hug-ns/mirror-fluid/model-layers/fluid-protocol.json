@@ -1,0 +1,167 @@
+{
+  "jobs": [
+    {
+      "n": 49,
+      "parity": "even-gap",
+      "A": 0.15,
+      "P": 0.2,
+      "sign": 1,
+      "half": false,
+      "id": "n49-even-gap-A0.15-P0.2-s1-base"
+    },
+    {
+      "n": 49,
+      "parity": "even-gap",
+      "A": 0.15,
+      "P": 0.2,
+      "sign": -1,
+      "half": false,
+      "id": "n49-even-gap-A0.15-P0.2-s-1-base"
+    },
+    {
+      "n": 49,
+      "parity": "even-gap",
+      "A": 0.5,
+      "P": 0.2,
+      "sign": 1,
+      "half": false,
+      "id": "n49-even-gap-A0.5-P0.2-s1-base"
+    },
+    {
+      "n": 49,
+      "parity": "even-gap",
+      "A": 0.5,
+      "P": 0.2,
+      "sign": -1,
+      "half": false,
+      "id": "n49-even-gap-A0.5-P0.2-s-1-base"
+    },
+    {
+      "n": 49,
+      "parity": "even-gap",
+      "A": 0.5,
+      "P": 0.1,
+      "sign": 1,
+      "half": false,
+      "id": "n49-even-gap-A0.5-P0.1-s1-base"
+    },
+    {
+      "n": 49,
+      "parity": "even-gap",
+      "A": 0.5,
+      "P": 0.1,
+      "sign": -1,
+      "half": false,
+      "id": "n49-even-gap-A0.5-P0.1-s-1-base"
+    },
+    {
+      "n": 65,
+      "parity": "even-gap",
+      "A": 0.5,
+      "P": 0.2,
+      "sign": 1,
+      "half": false,
+      "id": "n65-even-gap-A0.5-P0.2-s1-base"
+    },
+    {
+      "n": 49,
+      "parity": "even-gap",
+      "A": 0.5,
+      "P": 0.2,
+      "sign": 1,
+      "half": true,
+      "id": "n49-even-gap-A0.5-P0.2-s1-half"
+    },
+    {
+      "n": 49,
+      "parity": "odd-lean",
+      "A": 0.15,
+      "P": 0.2,
+      "sign": 1,
+      "half": false,
+      "id": "n49-odd-lean-A0.15-P0.2-s1-base"
+    },
+    {
+      "n": 49,
+      "parity": "odd-lean",
+      "A": 0.15,
+      "P": 0.2,
+      "sign": -1,
+      "half": false,
+      "id": "n49-odd-lean-A0.15-P0.2-s-1-base"
+    },
+    {
+      "n": 49,
+      "parity": "odd-lean",
+      "A": 0.5,
+      "P": 0.2,
+      "sign": 1,
+      "half": false,
+      "id": "n49-odd-lean-A0.5-P0.2-s1-base"
+    },
+    {
+      "n": 49,
+      "parity": "odd-lean",
+      "A": 0.5,
+      "P": 0.2,
+      "sign": -1,
+      "half": false,
+      "id": "n49-odd-lean-A0.5-P0.2-s-1-base"
+    },
+    {
+      "n": 49,
+      "parity": "odd-lean",
+      "A": 0.5,
+      "P": 0.1,
+      "sign": 1,
+      "half": false,
+      "id": "n49-odd-lean-A0.5-P0.1-s1-base"
+    },
+    {
+      "n": 49,
+      "parity": "odd-lean",
+      "A": 0.5,
+      "P": 0.1,
+      "sign": -1,
+      "half": false,
+      "id": "n49-odd-lean-A0.5-P0.1-s-1-base"
+    },
+    {
+      "n": 65,
+      "parity": "odd-lean",
+      "A": 0.5,
+      "P": 0.2,
+      "sign": 1,
+      "half": false,
+      "id": "n65-odd-lean-A0.5-P0.2-s1-base"
+    },
+    {
+      "n": 49,
+      "parity": "odd-lean",
+      "A": 0.5,
+      "P": 0.2,
+      "sign": 1,
+      "half": true,
+      "id": "n49-odd-lean-A0.5-P0.2-s1-half"
+    },
+    {
+      "n": 49,
+      "parity": "even-gap",
+      "A": 0.5,
+      "P": 0.2,
+      "sign": 0,
+      "half": false,
+      "id": "n49-even-gap-A0.5-P0.2-s0-base"
+    }
+  ],
+  "T": 0.4,
+  "nu": 0.01,
+  "L": 6,
+  "base": "Same methods-control mirrored start, plus/minus one percent unit antisymmetric template",
+  "drive": "Separate driven experiment. Use actual dt in both Heun stages; no per-step unscaled kick.",
+  "force_parities": "Even gap preserves reflection. Odd lean drive reverses in the paired mirrored test.",
+  "reference": "Unforced controls reused from methods-controls, not rerun.",
+  "scope": "17 runs only; no automatic extensions",
+  "comparison": "49 versus65 and base versus half dt for strong P=.2 positive starts; whole-field mirrored pairs at49; even zero-bias control",
+  "interpretation": "A scalar signed additive drive and a mirror-even gap drive are distinct mechanisms."
+}
