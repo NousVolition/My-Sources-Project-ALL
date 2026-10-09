@@ -8,6 +8,7 @@
 - **[Separate vortex controls](reports/study/README.md): 46/48 completed and verified results published through 0.40.** The two 160-grid half-step departure controls remain. This study has different starting data and its own numerical method.
 - **[Separate smooth-start stress suite](reports/navier-stokes-stress/README.md): 39/39 completed runs published in a parallel study.** Its protocol, raw-data release and numerical limitations are linked in that report. It uses different starting fields from the two matrices above.
 - **[Cross-repository review and connections](REPOSITORY-REVIEW.md):** current checks, related measurements, and the remaining work.
+- **[Separate hug-ns solver repair](math/imports/hug-ns/corrected_v1/README.md):** the gate corner, cutoff alias and time-step scheduler are repaired in `corrected_v1`, with independent regression checks and four short N=16 runs to t=0.01. Its new gate changes the initial field. Historical source/results and the active study solvers are preserved; long-run convergence remains unverified.
 
 These are dated publication counts. The linked study indexes carry subsequent completions. Earlier test totals and supplied-table endpoints below describe their original verification scope.
 
