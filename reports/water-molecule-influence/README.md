@@ -6,6 +6,10 @@ A reproducible experiment asking whether identical molecules can acquire unequal
 
 ![Experimental results](results.png)
 
+## Switching, hysteresis, and synchronization
+
+[New reproducible ODE tests](switching-extension/README.md) analyze a supplied biochemical feedback equation, pulse-triggered persistence, slow-sweep hysteresis, uniform lapping, nonuniform rotation, bottlenecks, the overdamped pendulum, and firefly phase locking. Includes analytic thresholds, saved trajectories, solver and feedback controls, and two figure sets. These illustrative concentration and phase models are separate from the water molecular dynamics; the biochemical example explicitly assumes a fixed A pool.
+
 ## Damping and overdamped motion
 
 [The damping extension](damping-extension/README.md) adds adjustable drag, a literal damped leapfrog solver, analytic spring checks, and the rotating hoop's equilibrium and fast–slow tests. In 2,592 additional perturbed water trajectories from one matched state, drag rates of 5 and 50 ps⁻¹ reduce the mean 200-fs response to 45.0% and 3.38% of the undamped value. The water implementation uses constrained velocity Verlet with drag; friction-only probes cool and are not equilibrium liquid-water simulations.
