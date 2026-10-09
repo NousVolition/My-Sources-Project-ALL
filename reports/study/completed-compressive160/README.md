@@ -1,3 +1,5 @@
+> Update: all four 160-grid controls are now complete. See the [verified four-run report](../completed-compressive160-final/README.md). The three-run report below preserves its earlier publication snapshot.
+
 # Compressive vortex: completed 160-grid controls
 
 Three completed runs through model time **0.40**: Fourier at dt=0.0004 and dt=0.0002, and FD4 at dt=0.0004. The FD4 half-step run is still in progress. These records bring the separate vortex matrix to **31/48 completed runs**.
