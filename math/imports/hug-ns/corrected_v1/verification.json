@@ -1,0 +1,1922 @@
+{
+  "version": "hug-ns-corrected-v1",
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "scope": "Four 16^3 checks to 0.01, exact-shear time refinement, and direct gate/cutoff/scheduler probes; no physical convergence claim.",
+  "parent_commit": "8e1525f64b27909afb6dcf704848b8666ad2260a",
+  "source_sha256": {
+    "__init__.py": "e7dc0c14bcf760595346cfd7d7e10864fb6d1c32397e0b55d15bf4abdcb76430",
+    "solver.py": "e1d1476e0661980c36045afb39543e349b4a4661a38553a04959ca994586e3ed",
+    "run.py": "8ae3ac402b10d9442a1a277f43e69b9321709f2fd8fc2f9b9f4fb6699a87f312",
+    "verify.py": "155bc52ba23eb625159440e867fb38adb7898af04a6df650585edee588c11850"
+  },
+  "historical_source_sha256": {
+    "solver.py": "c78ab244202a29c6cb52cb3c8ec7efa613f492f1fa724a9ac32353a645c35f22",
+    "run.py": "60c01f1db6e63e7a495fac5af62b98cd9838375ac70593141554ea200bdbcbb5",
+    "provenance.json": "ce9171903605a6d231ae26d4a3a1f27ab3a9264dd56b19bab14181959b3e0122",
+    "review-results.json": "4abd7b0324061b798ee6092822e2f8ebd2b2ae9a3b6fec8d412391629924e803"
+  },
+  "gate_join": [
+    {
+      "h": 0.0001,
+      "historical": {
+        "left_derivative": 0.0,
+        "right_derivative": -4.444444151814331,
+        "absolute_jump": 4.444444151814331
+      },
+      "corrected_v1": {
+        "left_derivative": -2.2222220759077205,
+        "right_derivative": -2.2222220759071654,
+        "absolute_jump": 5.551115123125783e-13
+      }
+    },
+    {
+      "h": 1e-05,
+      "historical": {
+        "left_derivative": 0.0,
+        "right_derivative": -4.444444441553674,
+        "absolute_jump": 4.444444441553674
+      },
+      "corrected_v1": {
+        "left_derivative": -2.222222220776837,
+        "right_derivative": -2.222222220776837,
+        "absolute_jump": 0.0
+      }
+    },
+    {
+      "h": 1e-06,
+      "historical": {
+        "left_derivative": 0.0,
+        "right_derivative": -4.44444444491765,
+        "absolute_jump": 4.44444444491765
+      },
+      "corrected_v1": {
+        "left_derivative": -2.2222222225698474,
+        "right_derivative": -2.222222222458825,
+        "absolute_jump": 1.1102230246251565e-10
+      }
+    }
+  ],
+  "cutoff_endpoint_probe": [
+    {
+      "n": 12,
+      "historical": {
+        "endpoint_retained": true,
+        "endpoint_square_alias_after_filter": 0.5
+      },
+      "corrected_v1": {
+        "endpoint_retained": false,
+        "endpoint_square_alias_after_filter": 7.771561172376096e-16
+      }
+    },
+    {
+      "n": 48,
+      "historical": {
+        "endpoint_retained": true,
+        "endpoint_square_alias_after_filter": 0.5000000000000047
+      },
+      "corrected_v1": {
+        "endpoint_retained": false,
+        "endpoint_square_alias_after_filter": 4.6629367034256575e-15
+      }
+    }
+  ],
+  "initial_field_changes": [
+    {
+      "case": "hug",
+      "n": 16,
+      "initial_velocity_relative_l2_change": 0.001036398951324272,
+      "historical_start": {
+        "n": 16,
+        "nu": 0.01,
+        "divergence": 1.349614864309956e-15,
+        "collarBeforeProjection": 2.1517272921335556e-05,
+        "collarAfterProjection": 0.20184895415139148,
+        "energy": 15.449724441526307,
+        "slope": 6.304753718149091,
+        "peak": 2.222789229956498,
+        "checker": 4.8901255471887156e-37
+      },
+      "corrected_v1_start": {
+        "n": 16,
+        "nu": 0.01,
+        "divergence": 1.1362438767648086e-15,
+        "collarBeforeProjection": 2.9143811500192346e-05,
+        "collarAfterProjection": 0.20255515095795948,
+        "energy": 15.440335226785766,
+        "slope": 6.301929029571702,
+        "peak": 2.2220929057664893,
+        "checker": 1.4462775227284342e-36
+      },
+      "historical_mean": [
+        2.617331807015788e-19,
+        -1.734723475976807e-18,
+        2.355810384551019e-21
+      ],
+      "corrected_v1_mean": [
+        -2.340352033263632e-18,
+        1.734723475976807e-18,
+        -8.999725064577001e-22
+      ]
+    },
+    {
+      "case": "sharper",
+      "n": 16,
+      "initial_velocity_relative_l2_change": 0.0012587897826704048,
+      "historical_start": {
+        "n": 16,
+        "nu": 0.01,
+        "divergence": 8.465450562766819e-16,
+        "collarBeforeProjection": 2.2651970393224135e-14,
+        "collarAfterProjection": 0.2620886920511094,
+        "energy": 4.621471170313092,
+        "slope": 4.987072909465132,
+        "peak": 1.5317467583102777,
+        "checker": 2.178475719009198e-36
+      },
+      "corrected_v1_start": {
+        "n": 16,
+        "nu": 0.01,
+        "divergence": 1.186550857568136e-15,
+        "collarBeforeProjection": 3.048795611676047e-14,
+        "collarAfterProjection": 0.2624067997176269,
+        "energy": 4.620519081602544,
+        "slope": 4.989237481976364,
+        "peak": 1.5312798684840185,
+        "checker": 5.029441471888951e-36
+      },
+      "historical_mean": [
+        3.2441361879839703e-19,
+        -8.673617379884035e-19,
+        -3.1763735522036293e-21
+      ],
+      "corrected_v1_mean": [
+        2.795208725939191e-20,
+        8.673617379884035e-19,
+        -1.4081922748102743e-20
+      ]
+    },
+    {
+      "case": "tube",
+      "n": 16,
+      "initial_velocity_relative_l2_change": 0.053973547221264115,
+      "historical_start": {
+        "n": 16,
+        "nu": 0.002,
+        "divergence": 1.2758891165809416e-15,
+        "collarBeforeProjection": 0.5684104593851906,
+        "collarAfterProjection": 0.5229150759067736,
+        "energy": 9.25963933885089,
+        "slope": 5.421006215400464,
+        "peak": 1.2795716545702478,
+        "checker": 2.6927063931316874e-36
+      },
+      "corrected_v1_start": {
+        "n": 16,
+        "nu": 0.002,
+        "divergence": 9.5331864147577e-16,
+        "collarBeforeProjection": 0.5404245334226936,
+        "collarAfterProjection": 0.5074140789620719,
+        "energy": 9.18095565874524,
+        "slope": 5.414226603542003,
+        "peak": 1.2782929342614704,
+        "checker": 6.932542339744153e-36
+      },
+      "historical_mean": [
+        -5.107608671943431e-19,
+        8.673617379884035e-19,
+        1.3234889800848443e-20
+      ],
+      "corrected_v1_mean": [
+        -2.7308342219478643e-18,
+        8.673617379884035e-19,
+        -5.4263048183478615e-21
+      ]
+    },
+    {
+      "case": "tubes",
+      "n": 16,
+      "initial_velocity_relative_l2_change": 0.0006981859081164437,
+      "historical_start": {
+        "n": 16,
+        "nu": 0.002,
+        "divergence": 9.185360805297194e-16,
+        "collarBeforeProjection": 9.628680527032112e-05,
+        "collarAfterProjection": 0.08032932461709044,
+        "energy": 3.1213345377368715,
+        "slope": 5.950385372433133,
+        "peak": 2.022705498017794,
+        "checker": 1.2050847868409753e-36
+      },
+      "corrected_v1_start": {
+        "n": 16,
+        "nu": 0.002,
+        "divergence": 1.0824674490095276e-15,
+        "collarBeforeProjection": 0.00032772237738657833,
+        "collarAfterProjection": 0.08033478461434866,
+        "energy": 3.122833415608241,
+        "slope": 5.953038435553699,
+        "peak": 2.023434502332277,
+        "checker": 1.5263550161203043e-36
+      },
+      "historical_mean": [
+        -3.006751030860013e-19,
+        2.168404344971009e-18,
+        1.61465655570351e-21
+      ],
+      "corrected_v1_mean": [
+        3.6637582618349334e-19,
+        0.0,
+        -9.529120656610879e-22
+      ]
+    }
+  ],
+  "rounding_reproducer": {
+    "requested_time": 0.11175,
+    "initial_limit": 0.075,
+    "actual_final_time": 0.11175,
+    "step_log": [
+      {
+        "t_start": 0.0,
+        "t_end": 0.075,
+        "dt": 0.075,
+        "start_limit": 0.075,
+        "predictor_limit": 0.0750617358031697,
+        "end_limit": 0.07506171039444902,
+        "rejections": 0
+      },
+      {
+        "t_start": 0.075,
+        "t_end": 0.11175,
+        "dt": 0.036750000000000005,
+        "start_limit": 0.07506171039444902,
+        "predictor_limit": 0.07509197312390993,
+        "end_limit": 0.07509196702337799,
+        "rejections": 0
+      }
+    ]
+  },
+  "exact_shear_refinement": [
+    {
+      "steps": 4,
+      "dt": 0.05,
+      "max_exact_shear_error": 1.2566460567020599e-05
+    },
+    {
+      "steps": 8,
+      "dt": 0.025,
+      "max_exact_shear_error": 3.109437726633857e-06
+    },
+    {
+      "steps": 16,
+      "dt": 0.0125,
+      "max_exact_shear_error": 7.733708267121386e-07
+    }
+  ],
+  "short_runs": [
+    {
+      "version": "hug-ns-corrected-v1",
+      "case": "hug",
+      "n": 16,
+      "nu": 0.01,
+      "domain_length": 6.0,
+      "force": 0,
+      "method": "Heun",
+      "gate": "product of three flat coordinate gates; new starting field",
+      "cutoff": "3*abs(integer_mode)<N on each axis",
+      "source_sha256": {
+        "solver.py": "e1d1476e0661980c36045afb39543e349b4a4661a38553a04959ca994586e3ed",
+        "run.py": "8ae3ac402b10d9442a1a277f43e69b9321709f2fd8fc2f9b9f4fb6699a87f312"
+      },
+      "t_end": 0.01,
+      "samples": 10,
+      "steps": 10,
+      "start": {
+        "n": 16,
+        "nu": 0.01,
+        "divergence": 1.1362438767648086e-15,
+        "collarBeforeProjection": 2.9143811500192346e-05,
+        "collarAfterProjection": 0.20255515095795948,
+        "energy": 15.440335226785766,
+        "slope": 6.301929029571702,
+        "peak": 2.2220929057664893,
+        "checker": 1.4462775227284342e-36
+      },
+      "series": [
+        {
+          "t": 0.0,
+          "peak": 2.2220929057664893,
+          "energy": 15.440335226785766,
+          "slope": 6.301929029571702,
+          "divergence": 1.1362438767648086e-15,
+          "steepening": 8.788685107460239,
+          "smoothing": 0.5222964164193541,
+          "peak_split": {
+            "peak": 2.2220929057664893,
+            "index": [
+              6,
+              6,
+              8
+            ],
+            "position": [
+              -0.75,
+              -0.75,
+              0.0
+            ],
+            "carry": -3.552713678800501e-15,
+            "pressure": 1.9984014443252818e-15,
+            "smoothing": -1.1605911616327071,
+            "total_local_energy_rate": -1.1605911616327087
+          }
+        },
+        {
+          "t": 0.001,
+          "peak": 2.2215704964792544,
+          "energy": 15.434752285065134,
+          "slope": 6.3040164427191785,
+          "divergence": 1.5230872119076366e-15,
+          "steepening": 8.78360303915335,
+          "smoothing": 0.5221379354057147,
+          "peak_split": {
+            "peak": 2.2215704964792553,
+            "index": [
+              6,
+              6,
+              8
+            ],
+            "position": [
+              -0.75,
+              -0.75,
+              0.0
+            ],
+            "carry": -0.0007806642379515338,
+            "pressure": -7.078103925195478e-05,
+            "smoothing": -1.1599662323855577,
+            "total_local_energy_rate": -1.1608176776627612
+          }
+        },
+        {
+          "t": 0.002,
+          "peak": 2.2210478633628328,
+          "energy": 15.429172113259574,
+          "slope": 6.306090096725519,
+          "divergence": 1.2836953722228372e-15,
+          "steepening": 8.778502355132646,
+          "smoothing": 0.5219789312406476,
+          "peak_split": {
+            "peak": 2.2210478633628328,
+            "index": [
+              6,
+              6,
+              8
+            ],
+            "position": [
+              -0.75,
+              -0.75,
+              0.0
+            ],
+            "carry": -0.0015555826042938925,
+            "pressure": -0.00014385697957397525,
+            "smoothing": -1.1593401899349063,
+            "total_local_energy_rate": -1.1610396295187742
+          }
+        },
+        {
+          "t": 0.003,
+          "peak": 2.2205250082879555,
+          "energy": 15.423594711148153,
+          "slope": 6.3081500021019945,
+          "divergence": 1.5447712553573467e-15,
+          "steepening": 8.773383102762034,
+          "smoothing": 0.5218194051074051,
+          "peak_split": {
+            "peak": 2.220525008287956,
+            "index": [
+              10,
+              6,
+              8
+            ],
+            "position": [
+              0.75,
+              -0.75,
+              0.0
+            ],
+            "carry": -0.002324956709460757,
+            "pressure": -0.0002191400438791291,
+            "smoothing": -1.1587130388112685,
+            "total_local_energy_rate": -1.1612571355646084
+          }
+        },
+        {
+          "t": 0.004,
+          "peak": 2.2200019330738323,
+          "energy": 15.418020078506792,
+          "slope": 6.310196169342846,
+          "divergence": 1.824929096727601e-15,
+          "steepening": 8.76824532954061,
+          "smoothing": 0.5216593581778239,
+          "peak_split": {
+            "peak": 2.2200019330738323,
+            "index": [
+              6,
+              6,
+              8
+            ],
+            "position": [
+              -0.75,
+              -0.75,
+              0.0
+            ],
+            "carry": -0.0030889874891886215,
+            "pressure": -0.00029654274764667754,
+            "smoothing": -1.1580847834899464,
+            "total_local_energy_rate": -1.1614703137267817
+          }
+        },
+        {
+          "t": 0.005,
+          "peak": 2.2194786394882873,
+          "energy": 15.41244821510825,
+          "slope": 6.3122286089251745,
+          "divergence": 1.3357370765021415e-15,
+          "steepening": 8.76308908310153,
+          "smoothing": 0.5214987916123536,
+          "peak_split": {
+            "peak": 2.219478639488288,
+            "index": [
+              6,
+              6,
+              8
+            ],
+            "position": [
+              -0.75,
+              -0.75,
+              0.0
+            ],
+            "carry": -0.003847875200082118,
+            "pressure": -0.0003759779013237097,
+            "smoothing": -1.1574554283912208,
+            "total_local_energy_rate": -1.1616792814926267
+          }
+        },
+        {
+          "t": 0.006,
+          "peak": 2.2189551292479,
+          "energy": 15.406879120722094,
+          "slope": 6.314247331308833,
+          "divergence": 1.3791051634015616e-15,
+          "steepening": 8.757914411210926,
+          "smoothing": 0.5213377065600844,
+          "peak_split": {
+            "peak": 2.218955129247901,
+            "index": [
+              10,
+              6,
+              8
+            ],
+            "position": [
+              0.75,
+              -0.75,
+              0.0
+            ],
+            "carry": -0.004601819415301467,
+            "pressure": -0.00045735861267570677,
+            "smoothing": -1.1568249778805446,
+            "total_local_energy_rate": -1.1618841559085218
+          }
+        },
+        {
+          "t": 0.007,
+          "peak": 2.2184314040181454,
+          "energy": 15.401312795114707,
+          "slope": 6.316252346936329,
+          "divergence": 1.2151737949217534e-15,
+          "steepening": 8.75272136176681,
+          "smoothing": 0.5211761041587748,
+          "peak_split": {
+            "peak": 2.218431404018146,
+            "index": [
+              6,
+              6,
+              8
+            ],
+            "position": [
+              -0.75,
+              -0.75,
+              0.0
+            ],
+            "carry": -0.00535101902029389,
+            "pressure": -0.0005405982891248939,
+            "smoothing": -1.1561934362687372,
+            "total_local_energy_rate": -1.162085053578156
+          }
+        },
+        {
+          "t": 0.008,
+          "peak": 2.2179074654135347,
+          "energy": 15.39574923804927,
+          "slope": 6.318243666232709,
+          "divergence": 1.4849232954361469e-15,
+          "steepening": 8.747509982798002,
+          "smoothing": 0.5210139855348812,
+          "peak_split": {
+            "peak": 2.2179074654135347,
+            "index": [
+              6,
+              6,
+              8
+            ],
+            "position": [
+              -0.75,
+              -0.75,
+              0.0
+            ],
+            "carry": -0.0060956722084477555,
+            "pressure": -0.0006256106401067996,
+            "smoothing": -1.1555608078121822,
+            "total_local_energy_rate": -1.1622820906607367
+          }
+        },
+        {
+          "t": 0.009000000000000001,
+          "peak": 2.2173833149977566,
+          "energy": 15.390188449285729,
+          "slope": 6.3202212996054685,
+          "divergence": 1.263746052249104e-15,
+          "steepening": 8.742280322463076,
+          "smoothing": 0.5208513518035854,
+          "peak_split": {
+            "peak": 2.2173833149977575,
+            "index": [
+              6,
+              6,
+              8
+            ],
+            "position": [
+              -0.75,
+              -0.75,
+              0.0
+            ],
+            "carry": -0.006835976476961214,
+            "pressure": -0.0007123096793320016,
+            "smoothing": -1.154927096713024,
+            "total_local_energy_rate": -1.1624753828693173
+          }
+        },
+        {
+          "t": 0.01,
+          "peak": 2.216858954283825,
+          "energy": 15.384630428580811,
+          "slope": 6.322185257444446,
+          "divergence": 2.4771851236948805e-15,
+          "steepening": 8.737032429049322,
+          "smoothing": 0.5206882040688244,
+          "peak_split": {
+            "peak": 2.216858954283825,
+            "index": [
+              6,
+              6,
+              8
+            ],
+            "position": [
+              -0.75,
+              -0.75,
+              0.0
+            ],
+            "carry": -0.007572128622630903,
+            "pressure": -0.0008006097270782941,
+            "smoothing": -1.1542923071193654,
+            "total_local_energy_rate": -1.1626650454690746
+          }
+        }
+      ],
+      "step_log": [
+        {
+          "t_start": 0.0,
+          "t_end": 0.001,
+          "dt": 0.001,
+          "start_limit": 0.025313973080975705,
+          "predictor_limit": 0.02531991466999256,
+          "end_limit": 0.025319925741337044,
+          "rejections": 0
+        },
+        {
+          "t_start": 0.001,
+          "t_end": 0.002,
+          "dt": 0.001,
+          "start_limit": 0.025319925741337044,
+          "predictor_limit": 0.025325872695707588,
+          "end_limit": 0.025325883754181364,
+          "rejections": 0
+        },
+        {
+          "t_start": 0.002,
+          "t_end": 0.003,
+          "dt": 0.001,
+          "start_limit": 0.025325883754181364,
+          "predictor_limit": 0.025331836057894453,
+          "end_limit": 0.025331847103748334,
+          "rejections": 0
+        },
+        {
+          "t_start": 0.003,
+          "t_end": 0.004,
+          "dt": 0.001,
+          "start_limit": 0.025331847103748334,
+          "predictor_limit": 0.025337804741349522,
+          "end_limit": 0.025337815774833943,
+          "rejections": 0
+        },
+        {
+          "t_start": 0.004,
+          "t_end": 0.005,
+          "dt": 0.001,
+          "start_limit": 0.025337815774833943,
+          "predictor_limit": 0.0253437787314252,
+          "end_limit": 0.025343789752790204,
+          "rejections": 0
+        },
+        {
+          "t_start": 0.005,
+          "t_end": 0.006,
+          "dt": 0.001,
+          "start_limit": 0.025343789752790204,
+          "predictor_limit": 0.025349758014029604,
+          "end_limit": 0.025349769023524846,
+          "rejections": 0
+        },
+        {
+          "t_start": 0.006,
+          "t_end": 0.007,
+          "dt": 0.001,
+          "start_limit": 0.025349769023524846,
+          "predictor_limit": 0.025355742575626262,
+          "end_limit": 0.02535575357350103,
+          "rejections": 0
+        },
+        {
+          "t_start": 0.007,
+          "t_end": 0.008,
+          "dt": 0.001,
+          "start_limit": 0.02535575357350103,
+          "predictor_limit": 0.025361732403233812,
+          "end_limit": 0.02536174338973697,
+          "rejections": 0
+        },
+        {
+          "t_start": 0.008,
+          "t_end": 0.009000000000000001,
+          "dt": 0.0010000000000000009,
+          "start_limit": 0.02536174338973697,
+          "predictor_limit": 0.025367727484425624,
+          "end_limit": 0.025367738459805677,
+          "rejections": 0
+        },
+        {
+          "t_start": 0.009000000000000001,
+          "t_end": 0.01,
+          "dt": 0.0009999999999999992,
+          "start_limit": 0.025367738459805677,
+          "predictor_limit": 0.025373727807329494,
+          "end_limit": 0.02537373877183451,
+          "rejections": 0
+        }
+      ]
+    },
+    {
+      "version": "hug-ns-corrected-v1",
+      "case": "sharper",
+      "n": 16,
+      "nu": 0.01,
+      "domain_length": 6.0,
+      "force": 0,
+      "method": "Heun",
+      "gate": "product of three flat coordinate gates; new starting field",
+      "cutoff": "3*abs(integer_mode)<N on each axis",
+      "source_sha256": {
+        "solver.py": "e1d1476e0661980c36045afb39543e349b4a4661a38553a04959ca994586e3ed",
+        "run.py": "8ae3ac402b10d9442a1a277f43e69b9321709f2fd8fc2f9b9f4fb6699a87f312"
+      },
+      "t_end": 0.01,
+      "samples": 10,
+      "steps": 10,
+      "start": {
+        "n": 16,
+        "nu": 0.01,
+        "divergence": 1.186550857568136e-15,
+        "collarBeforeProjection": 3.048795611676047e-14,
+        "collarAfterProjection": 0.2624067997176269,
+        "energy": 4.620519081602544,
+        "slope": 4.989237481976364,
+        "peak": 1.5312798684840185,
+        "checker": 5.029441471888951e-36
+      },
+      "series": [
+        {
+          "t": 0.0,
+          "peak": 1.5312798684840185,
+          "energy": 4.620519081602544,
+          "slope": 4.989237481976364,
+          "divergence": 1.186550857568136e-15,
+          "steepening": 3.1425539856651747,
+          "smoothing": 0.4276647397452948,
+          "peak_split": {
+            "peak": 1.5312798684840192,
+            "index": [
+              6,
+              6,
+              8
+            ],
+            "position": [
+              -0.75,
+              -0.75,
+              0.0
+            ],
+            "carry": -8.881784197001252e-16,
+            "pressure": 4.440892098500626e-16,
+            "smoothing": -0.6548744064324272,
+            "total_local_energy_rate": -0.6548744064324277
+          }
+        },
+        {
+          "t": 0.001,
+          "peak": 1.530852092852934,
+          "energy": 4.618420340868743,
+          "slope": 4.988115532332697,
+          "divergence": 9.298117831235686e-16,
+          "steepening": 3.1407034618046965,
+          "smoothing": 0.4275169290669294,
+          "peak_split": {
+            "peak": 1.5308520928529346,
+            "index": [
+              10,
+              6,
+              8
+            ],
+            "position": [
+              0.75,
+              -0.75,
+              0.0
+            ],
+            "carry": 0.0005420641907289969,
+            "pressure": -0.001107364624007512,
+            "smoothing": -0.654465185022878,
+            "total_local_energy_rate": -0.6550304854561565
+          }
+        },
+        {
+          "t": 0.002,
+          "peak": 1.5304240961512723,
+          "energy": 4.616322776573526,
+          "slope": 4.9869902351409525,
+          "divergence": 9.08995101411847e-16,
+          "steepening": 3.1388541069404154,
+          "smoothing": 0.4273690852501706,
+          "peak_split": {
+            "peak": 1.5304240961512725,
+            "index": [
+              6,
+              6,
+              8
+            ],
+            "position": [
+              -0.75,
+              -0.75,
+              0.0
+            ],
+            "carry": 0.0010839530257691354,
+            "pressure": -0.002213098326566243,
+            "smoothing": -0.6540559437404592,
+            "total_local_energy_rate": -0.6551850890412563
+          }
+        },
+        {
+          "t": 0.003,
+          "peak": 1.5299958791533945,
+          "energy": 4.614226387836096,
+          "slope": 4.985861595864966,
+          "divergence": 9.020562075079397e-16,
+          "steepening": 3.137005919905006,
+          "smoothing": 0.427221208483897,
+          "peak_split": {
+            "peak": 1.5299958791533945,
+            "index": [
+              6,
+              6,
+              8
+            ],
+            "position": [
+              -0.75,
+              -0.75,
+              0.0
+            ],
+            "carry": 0.0016256514015962065,
+            "pressure": -0.003317198863814097,
+            "smoothing": -0.6536466833465344,
+            "total_local_energy_rate": -0.6553382308087523
+          }
+        },
+        {
+          "t": 0.004,
+          "peak": 1.529567442625546,
+          "energy": 4.612131173776907,
+          "slope": 4.984729619952936,
+          "divergence": 1.4467593789646571e-15,
+          "steepening": 3.135158899539446,
+          "smoothing": 0.42707329895393537,
+          "peak_split": {
+            "peak": 1.5295674426255463,
+            "index": [
+              10,
+              6,
+              8
+            ],
+            "position": [
+              0.75,
+              -0.75,
+              0.0
+            ],
+            "carry": 0.0021671442715389677,
+            "pressure": -0.004419664004801316,
+            "smoothing": -0.653237404593604,
+            "total_local_energy_rate": -0.6554899243268664
+          }
+        },
+        {
+          "t": 0.005,
+          "peak": 1.5291387873258795,
+          "energy": 4.610037133517647,
+          "slope": 4.983594312837459,
+          "divergence": 9.992007221626409e-16,
+          "steepening": 3.133313044692921,
+          "smoothing": 0.42692535684307076,
+          "peak_split": {
+            "peak": 1.5291387873258797,
+            "index": [
+              6,
+              6,
+              8
+            ],
+            "position": [
+              -0.75,
+              -0.75,
+              0.0
+            ],
+            "carry": 0.0027084166458533065,
+            "pressure": -0.005520491531506355,
+            "smoothing": -0.6528281082253409,
+            "total_local_energy_rate": -0.6556401831109939
+          }
+        },
+        {
+          "t": 0.006,
+          "peak": 1.5287099140044806,
+          "energy": 4.607944266181245,
+          "slope": 4.982455679935577,
+          "divergence": 1.429412144204889e-15,
+          "steepening": 3.131468354222744,
+          "smoothing": 0.42677738233105533,
+          "peak_split": {
+            "peak": 1.5287099140044809,
+            "index": [
+              6,
+              6,
+              8
+            ],
+            "position": [
+              -0.75,
+              -0.75,
+              0.0
+            ],
+            "carry": 0.003249453591791296,
+            "pressure": -0.006619679238849208,
+            "smoothing": -0.6524187949766285,
+            "total_local_energy_rate": -0.6557890206236864
+          }
+        },
+        {
+          "t": 0.007,
+          "peak": 1.5282808234033913,
+          "energy": 4.605852570891854,
+          "slope": 4.981313726648804,
+          "divergence": 9.506284648352903e-16,
+          "steepening": 3.1296248269942604,
+          "smoothing": 0.4266293755946192,
+          "peak_split": {
+            "peak": 1.5282808234033916,
+            "index": [
+              6,
+              6,
+              8
+            ],
+            "position": [
+              -0.75,
+              -0.75,
+              0.0
+            ],
+            "carry": 0.0037902402336775776,
+            "pressure": -0.0077172249347118305,
+            "smoothing": -0.6520094655735985,
+            "total_local_energy_rate": -0.6559364502746328
+          }
+        },
+        {
+          "t": 0.008,
+          "peak": 1.5278515162566357,
+          "energy": 4.603762046774856,
+          "slope": 4.980168458363174,
+          "divergence": 8.881784197001252e-16,
+          "steepening": 3.127782461880773,
+          "smoothing": 0.4264813368074794,
+          "peak_split": {
+            "peak": 1.527851516256636,
+            "index": [
+              6,
+              6,
+              8
+            ],
+            "position": [
+              -0.75,
+              -0.75,
+              0.0
+            ],
+            "carry": 0.0043307617529653175,
+            "pressure": -0.008813126439947916,
+            "smoothing": -0.6516001207336666,
+            "total_local_energy_rate": -0.6560824854206492
+          }
+        },
+        {
+          "t": 0.009000000000000001,
+          "peak": 1.5274219932902426,
+          "energy": 4.601672692956851,
+          "slope": 4.979019880449268,
+          "divergence": 9.71445146547012e-16,
+          "steepening": 3.1259412577634533,
+          "smoothing": 0.42633326614034983,
+          "peak_split": {
+            "peak": 1.5274219932902429,
+            "index": [
+              6,
+              6,
+              8
+            ],
+            "position": [
+              -0.75,
+              -0.75,
+              0.0
+            ],
+            "carry": 0.004871003388316364,
+            "pressure": -0.009907381588400432,
+            "smoothing": -0.6511907611655707,
+            "total_local_energy_rate": -0.6562271393656548
+          }
+        },
+        {
+          "t": 0.01,
+          "peak": 1.5269922552222708,
+          "energy": 4.599584508565654,
+          "slope": 4.977867998262264,
+          "divergence": 7.91033905045424e-16,
+          "steepening": 3.124101213531258,
+          "smoothing": 0.42618516376095117,
+          "peak_split": {
+            "peak": 1.526992255222271,
+            "index": [
+              6,
+              6,
+              8
+            ],
+            "position": [
+              -0.75,
+              -0.75,
+              0.0
+            ],
+            "carry": 0.0054109504356525395,
+            "pressure": -0.010999988226914836,
+            "smoothing": -0.6507813875694068,
+            "total_local_energy_rate": -0.6563704253606691
+          }
+        }
+      ],
+      "step_log": [
+        {
+          "t_start": 0.0,
+          "t_end": 0.001,
+          "dt": 0.001,
+          "start_limit": 0.03673397734647163,
+          "predictor_limit": 0.036744235547689706,
+          "end_limit": 0.03674424215285952,
+          "rejections": 0
+        },
+        {
+          "t_start": 0.001,
+          "t_end": 0.002,
+          "dt": 0.001,
+          "start_limit": 0.03674424215285952,
+          "predictor_limit": 0.03675451141006098,
+          "end_limit": 0.03675451800677872,
+          "rejections": 0
+        },
+        {
+          "t_start": 0.002,
+          "t_end": 0.003,
+          "dt": 0.001,
+          "start_limit": 0.03675451800677872,
+          "predictor_limit": 0.03676479831499351,
+          "end_limit": 0.036764804903347374,
+          "rejections": 0
+        },
+        {
+          "t_start": 0.003,
+          "t_end": 0.004,
+          "dt": 0.001,
+          "start_limit": 0.036764804903347374,
+          "predictor_limit": 0.03677509625778393,
+          "end_limit": 0.03677510283786197,
+          "rejections": 0
+        },
+        {
+          "t_start": 0.004,
+          "t_end": 0.005,
+          "dt": 0.001,
+          "start_limit": 0.03677510283786197,
+          "predictor_limit": 0.03678540523390717,
+          "end_limit": 0.036785411805797315,
+          "rejections": 0
+        },
+        {
+          "t_start": 0.005,
+          "t_end": 0.006,
+          "dt": 0.001,
+          "start_limit": 0.036785411805797315,
+          "predictor_limit": 0.03679572523901632,
+          "end_limit": 0.03679573180280633,
+          "rejections": 0
+        },
+        {
+          "t_start": 0.006,
+          "t_end": 0.007,
+          "dt": 0.001,
+          "start_limit": 0.03679573180280633,
+          "predictor_limit": 0.036806056268942476,
+          "end_limit": 0.03680606282471997,
+          "rejections": 0
+        },
+        {
+          "t_start": 0.007,
+          "t_end": 0.008,
+          "dt": 0.001,
+          "start_limit": 0.03680606282471997,
+          "predictor_limit": 0.03681639831969463,
+          "end_limit": 0.03681640486754708,
+          "rejections": 0
+        },
+        {
+          "t_start": 0.008,
+          "t_end": 0.009000000000000001,
+          "dt": 0.0010000000000000009,
+          "start_limit": 0.03681640486754708,
+          "predictor_limit": 0.036826751387459535,
+          "end_limit": 0.03682675792747427,
+          "rejections": 0
+        },
+        {
+          "t_start": 0.009000000000000001,
+          "t_end": 0.01,
+          "dt": 0.0009999999999999992,
+          "start_limit": 0.03682675792747427,
+          "predictor_limit": 0.03683711546860159,
+          "end_limit": 0.0368371220008658,
+          "rejections": 0
+        }
+      ]
+    },
+    {
+      "version": "hug-ns-corrected-v1",
+      "case": "tube",
+      "n": 16,
+      "nu": 0.002,
+      "domain_length": 6.0,
+      "force": 0,
+      "method": "Heun",
+      "gate": "product of three flat coordinate gates; new starting field",
+      "cutoff": "3*abs(integer_mode)<N on each axis",
+      "source_sha256": {
+        "solver.py": "e1d1476e0661980c36045afb39543e349b4a4661a38553a04959ca994586e3ed",
+        "run.py": "8ae3ac402b10d9442a1a277f43e69b9321709f2fd8fc2f9b9f4fb6699a87f312"
+      },
+      "t_end": 0.01,
+      "samples": 10,
+      "steps": 10,
+      "start": {
+        "n": 16,
+        "nu": 0.002,
+        "divergence": 9.5331864147577e-16,
+        "collarBeforeProjection": 0.5404245334226936,
+        "collarAfterProjection": 0.5074140789620719,
+        "energy": 9.18095565874524,
+        "slope": 5.414226603542003,
+        "peak": 1.2782929342614704,
+        "checker": 6.932542339744153e-36
+      },
+      "series": [
+        {
+          "t": 0.0,
+          "peak": 1.2782929342614704,
+          "energy": 9.18095565874524,
+          "slope": 5.414226603542003,
+          "divergence": 9.5331864147577e-16,
+          "steepening": 3.0269681370006825,
+          "smoothing": 0.07466628317926675,
+          "peak_split": {
+            "peak": 1.2782929342614704,
+            "index": [
+              7,
+              8,
+              3
+            ],
+            "position": [
+              -0.375,
+              0.0,
+              -1.875
+            ],
+            "carry": 0.5372635063719039,
+            "pressure": -0.49501759487680286,
+            "smoothing": -0.09528970921347972,
+            "total_local_energy_rate": -0.05304379771837868
+          }
+        },
+        {
+          "t": 0.001,
+          "peak": 1.2782512007505453,
+          "energy": 9.180421511111192,
+          "slope": 5.4141391769838725,
+          "divergence": 1.4844692857764186e-15,
+          "steepening": 3.0268355145960917,
+          "smoothing": 0.07466259075515147,
+          "peak_split": {
+            "peak": 1.2782512007505453,
+            "index": [
+              7,
+              8,
+              3
+            ],
+            "position": [
+              -0.375,
+              0.0,
+              -1.875
+            ],
+            "carry": 0.5369320483850658,
+            "pressure": -0.4953036394086853,
+            "smoothing": -0.09527801760973657,
+            "total_local_energy_rate": -0.05364960863335609
+          }
+        },
+        {
+          "t": 0.002,
+          "peak": 1.2782089920839108,
+          "energy": 9.179887424879215,
+          "slope": 5.41404883608244,
+          "divergence": 9.082429361546851e-16,
+          "steepening": 3.0267009979793156,
+          "smoothing": 0.07465885429516562,
+          "peak_split": {
+            "peak": 1.278208992083911,
+            "index": [
+              7,
+              8,
+              3
+            ],
+            "position": [
+              -0.375,
+              0.0,
+              -1.875
+            ],
+            "carry": 0.5366004604680146,
+            "pressure": -0.49558923722074955,
+            "smoothing": -0.09526623403456531,
+            "total_local_energy_rate": -0.05425501078730029
+          }
+        },
+        {
+          "t": 0.003,
+          "peak": 1.2781663085348531,
+          "energy": 9.179353400078764,
+          "slope": 5.413955581527363,
+          "divergence": 9.961649560796815e-16,
+          "steepening": 3.026564587756906,
+          "smoothing": 0.07465507380986727,
+          "peak_split": {
+            "peak": 1.2781663085348531,
+            "index": [
+              7,
+              8,
+              3
+            ],
+            "position": [
+              -0.375,
+              0.0,
+              -1.875
+            ],
+            "carry": 0.5362687427690691,
+            "pressure": -0.49587438697555997,
+            "smoothing": -0.09525435854770842,
+            "total_local_energy_rate": -0.05486000275419928
+          }
+        },
+        {
+          "t": 0.004,
+          "peak": 1.2781231503772836,
+          "energy": 9.178819436739271,
+          "slope": 5.413859414009417,
+          "divergence": 1.294103713078698e-15,
+          "steepening": 3.02642628453294,
+          "smoothing": 0.07465124930985863,
+          "peak_split": {
+            "peak": 1.2781231503772836,
+            "index": [
+              7,
+              8,
+              3
+            ],
+            "position": [
+              -0.375,
+              0.0,
+              -1.875
+            ],
+            "carry": 0.5359368954366505,
+            "pressure": -0.4961590873361177,
+            "smoothing": -0.09524239120912809,
+            "total_local_energy_rate": -0.05546458310859531
+          }
+        },
+        {
+          "t": 0.005,
+          "peak": 1.278079517885735,
+          "energy": 9.178285534890144,
+          "slope": 5.4137603342204965,
+          "divergence": 1.1029859751238158e-15,
+          "steepening": 3.026286088909007,
+          "smoothing": 0.07464738080578606,
+          "peak_split": {
+            "peak": 1.2780795178857352,
+            "index": [
+              7,
+              8,
+              3
+            ],
+            "position": [
+              -0.375,
+              0.0,
+              -1.875
+            ],
+            "carry": 0.5356049186192857,
+            "pressure": -0.4964433369658665,
+            "smoothing": -0.0952303320790058,
+            "total_local_energy_rate": -0.056068750425586594
+          }
+        },
+        {
+          "t": 0.006,
+          "peak": 1.2780354113353642,
+          "energy": 9.177751694560772,
+          "slope": 5.413658342853603,
+          "divergence": 8.494724021423927e-16,
+          "steepening": 3.0261440014842154,
+          "smoothing": 0.07464346830833976,
+          "peak_split": {
+            "peak": 1.2780354113353647,
+            "index": [
+              7,
+              8,
+              3
+            ],
+            "position": [
+              -0.375,
+              0.0,
+              -1.875
+            ],
+            "carry": 0.5352728124656138,
+            "pressure": -0.4967271345286986,
+            "smoothing": -0.09521818121774228,
+            "total_local_energy_rate": -0.056672503280827125
+          }
+        },
+        {
+          "t": 0.007,
+          "peak": 1.2779908310019532,
+          "energy": 9.177217915780528,
+          "slope": 5.413553440602857,
+          "divergence": 1.2983863116600158e-15,
+          "steepening": 3.0260000228551927,
+          "smoothing": 0.07463951182825379,
+          "peak_split": {
+            "peak": 1.2779908310019532,
+            "index": [
+              7,
+              8,
+              3
+            ],
+            "position": [
+              -0.375,
+              0.0,
+              -1.875
+            ],
+            "carry": 0.5349405771243892,
+            "pressure": -0.4970104786889629,
+            "smoothing": -0.09520593868595763,
+            "total_local_energy_rate": -0.0572758402505313
+          }
+        },
+        {
+          "t": 0.008,
+          "peak": 1.2779457771619087,
+          "energy": 9.176684198578752,
+          "slope": 5.413445628163483,
+          "divergence": 8.569533971325427e-16,
+          "steepening": 3.025854153616094,
+          "smoothing": 0.07463551137630574,
+          "peak_split": {
+            "peak": 1.2779457771619087,
+            "index": [
+              7,
+              8,
+              3
+            ],
+            "position": [
+              -0.375,
+              0.0,
+              -1.875
+            ],
+            "carry": 0.5346082127444882,
+            "pressure": -0.4972933681114688,
+            "smoothing": -0.09519360454449138,
+            "total_local_energy_rate": -0.057878759911471955
+          }
+        },
+        {
+          "t": 0.009000000000000001,
+          "peak": 1.277900250092264,
+          "energy": 9.176150542984773,
+          "slope": 5.413334906231819,
+          "divergence": 1.1143972029892257e-15,
+          "steepening": 3.025706394358593,
+          "smoothing": 0.07463146696331671,
+          "peak_split": {
+            "peak": 1.277900250092264,
+            "index": [
+              7,
+              8,
+              3
+            ],
+            "position": [
+              -0.375,
+              0.0,
+              -1.875
+            ],
+            "carry": 0.5342757194749123,
+            "pressure": -0.49757580146149427,
+            "smoothing": -0.0951811788544021,
+            "total_local_energy_rate": -0.05848126084098411
+          }
+        },
+        {
+          "t": 0.01,
+          "peak": 1.2778542500706775,
+          "energy": 9.175616949027889,
+          "slope": 5.413221275505301,
+          "divergence": 9.94104971951959e-16,
+          "steepening": 3.0255567456718913,
+          "smoothing": 0.07462737860015106,
+          "peak_split": {
+            "peak": 1.277854250070678,
+            "index": [
+              7,
+              8,
+              3
+            ],
+            "position": [
+              -0.375,
+              0.0,
+              -1.875
+            ],
+            "carry": 0.5339430974647923,
+            "pressure": -0.49785777740478976,
+            "smoothing": -0.09516866167696757,
+            "total_local_energy_rate": -0.05908334161696503
+          }
+        }
+      ],
+      "step_log": [
+        {
+          "t_start": 0.0,
+          "t_end": 0.001,
+          "dt": 0.001,
+          "start_limit": 0.04400399821696445,
+          "predictor_limit": 0.04400542451165958,
+          "end_limit": 0.04400543489962843,
+          "rejections": 0
+        },
+        {
+          "t_start": 0.001,
+          "t_end": 0.002,
+          "dt": 0.001,
+          "start_limit": 0.04400543489962843,
+          "predictor_limit": 0.04400687764926227,
+          "end_limit": 0.04400688803502592,
+          "rejections": 0
+        },
+        {
+          "t_start": 0.002,
+          "t_end": 0.003,
+          "dt": 0.001,
+          "start_limit": 0.04400688803502592,
+          "predictor_limit": 0.044008347233436274,
+          "end_limit": 0.04400835761699798,
+          "rejections": 0
+        },
+        {
+          "t_start": 0.003,
+          "t_end": 0.004,
+          "dt": 0.001,
+          "start_limit": 0.04400835761699798,
+          "predictor_limit": 0.04400983325803587,
+          "end_limit": 0.044009843639398756,
+          "rejections": 0
+        },
+        {
+          "t_start": 0.004,
+          "t_end": 0.005,
+          "dt": 0.001,
+          "start_limit": 0.044009843639398756,
+          "predictor_limit": 0.04401133571692827,
+          "end_limit": 0.04401134609609553,
+          "rejections": 0
+        },
+        {
+          "t_start": 0.005,
+          "t_end": 0.006,
+          "dt": 0.001,
+          "start_limit": 0.04401134609609553,
+          "predictor_limit": 0.04401285460399378,
+          "end_limit": 0.044012864980968555,
+          "rejections": 0
+        },
+        {
+          "t_start": 0.006,
+          "t_end": 0.007,
+          "dt": 0.001,
+          "start_limit": 0.044012864980968555,
+          "predictor_limit": 0.04401438991312557,
+          "end_limit": 0.044014400287911,
+          "rejections": 0
+        },
+        {
+          "t_start": 0.007,
+          "t_end": 0.008,
+          "dt": 0.001,
+          "start_limit": 0.044014400287911,
+          "predictor_limit": 0.04401594163822968,
+          "end_limit": 0.044015952010828883,
+          "rejections": 0
+        },
+        {
+          "t_start": 0.008,
+          "t_end": 0.009000000000000001,
+          "dt": 0.0010000000000000009,
+          "start_limit": 0.044015952010828883,
+          "predictor_limit": 0.04401750977322484,
+          "end_limit": 0.044017520143640916,
+          "rejections": 0
+        },
+        {
+          "t_start": 0.009000000000000001,
+          "t_end": 0.01,
+          "dt": 0.0009999999999999992,
+          "start_limit": 0.044017520143640916,
+          "predictor_limit": 0.04401909431204249,
+          "end_limit": 0.044019104680278545,
+          "rejections": 0
+        }
+      ]
+    },
+    {
+      "version": "hug-ns-corrected-v1",
+      "case": "tubes",
+      "n": 16,
+      "nu": 0.002,
+      "domain_length": 6.0,
+      "force": 0,
+      "method": "Heun",
+      "gate": "product of three flat coordinate gates; new starting field",
+      "cutoff": "3*abs(integer_mode)<N on each axis",
+      "source_sha256": {
+        "solver.py": "e1d1476e0661980c36045afb39543e349b4a4661a38553a04959ca994586e3ed",
+        "run.py": "8ae3ac402b10d9442a1a277f43e69b9321709f2fd8fc2f9b9f4fb6699a87f312"
+      },
+      "t_end": 0.01,
+      "samples": 10,
+      "steps": 10,
+      "start": {
+        "n": 16,
+        "nu": 0.002,
+        "divergence": 1.0824674490095276e-15,
+        "collarBeforeProjection": 0.00032772237738657833,
+        "collarAfterProjection": 0.08033478461434866,
+        "energy": 3.122833415608241,
+        "slope": 5.953038435553699,
+        "peak": 2.023434502332277,
+        "checker": 1.5263550161203043e-36
+      },
+      "series": [
+        {
+          "t": 0.0,
+          "peak": 2.023434502332277,
+          "energy": 3.122833415608241,
+          "slope": 5.953038435553699,
+          "divergence": 1.0824674490095276e-15,
+          "steepening": 4.37410837849376,
+          "smoothing": 0.08879632268420504,
+          "peak_split": {
+            "peak": 2.0234345023322775,
+            "index": [
+              8,
+              8,
+              8
+            ],
+            "position": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "carry": -3.8347340836436493e-16,
+            "pressure": 7.458670829280699e-17,
+            "smoothing": -0.17967354299945074,
+            "total_local_energy_rate": -0.17967354299945104
+          }
+        },
+        {
+          "t": 0.001,
+          "peak": 2.0233449491274382,
+          "energy": 3.1225553445156904,
+          "slope": 5.952736868620162,
+          "divergence": 1.2264494975156026e-15,
+          "steepening": 4.377743015173912,
+          "smoothing": 0.088791267044403,
+          "peak_split": {
+            "peak": 2.0233449491274387,
+            "index": [
+              8,
+              8,
+              8
+            ],
+            "position": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "carry": -0.0074193736197616265,
+            "pressure": 0.004346590699743713,
+            "smoothing": -0.17965536170091836,
+            "total_local_energy_rate": -0.18272814462093628
+          }
+        },
+        {
+          "t": 0.002,
+          "peak": 2.023253882484747,
+          "energy": 3.1222773036299962,
+          "slope": 5.9524307135689085,
+          "divergence": 1.160530005428484e-15,
+          "steepening": 4.381372721098961,
+          "smoothing": 0.08878610167465177,
+          "peak_split": {
+            "peak": 2.023253882484747,
+            "index": [
+              8,
+              8,
+              8
+            ],
+            "position": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "carry": -0.014836773105078476,
+            "pressure": 0.008691957396520743,
+            "smoothing": -0.17963682492392472,
+            "total_local_energy_rate": -0.18578164063248245
+          }
+        },
+        {
+          "t": 0.003,
+          "peak": 2.0231613027480835,
+          "energy": 3.121999293031568,
+          "slope": 5.952119971530905,
+          "divergence": 1.2276421199053367e-15,
+          "steepening": 4.384997477152671,
+          "smoothing": 0.08878082660272726,
+          "peak_split": {
+            "peak": 2.0231613027480835,
+            "index": [
+              8,
+              8,
+              8
+            ],
+            "position": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "carry": -0.022252176021999248,
+            "pressure": 0.01303608497541003,
+            "smoothing": -0.1796179328086254,
+            "total_local_energy_rate": -0.1888340238552146
+          }
+        },
+        {
+          "t": 0.004,
+          "peak": 2.023067210261547,
+          "energy": 3.121721312800779,
+          "slope": 5.951804643640228,
+          "divergence": 1.6740081543176188e-15,
+          "steepening": 4.388617264224901,
+          "smoothing": 0.08877544185651692,
+          "peak_split": {
+            "peak": 2.023067210261547,
+            "index": [
+              8,
+              8,
+              8
+            ],
+            "position": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "carry": -0.029665559949009625,
+            "pressure": 0.017378958331001417,
+            "smoothing": -0.17959868549639987,
+            "total_local_energy_rate": -0.19188528711440808
+          }
+        },
+        {
+          "t": 0.005,
+          "peak": 2.022971605369449,
+          "energy": 3.1214433630179537,
+          "slope": 5.9514847310340535,
+          "divergence": 1.268082860939046e-15,
+          "steepening": 4.392232063211661,
+          "smoothing": 0.08876994746401959,
+          "peak_split": {
+            "peak": 2.022971605369449,
+            "index": [
+              8,
+              8,
+              8
+            ],
+            "position": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "carry": -0.03707690247692941,
+            "pressure": 0.02172056236739116,
+            "smoothing": -0.17957908312984935,
+            "total_local_energy_rate": -0.1949354232393876
+          }
+        },
+        {
+          "t": 0.006,
+          "peak": 2.022874488416318,
+          "energy": 3.1211654437633785,
+          "slope": 5.9511602348526615,
+          "divergence": 1.3036446921965705e-15,
+          "steepening": 4.395841855015178,
+          "smoothing": 0.08876434345334563,
+          "peak_split": {
+            "peak": 2.022874488416318,
+            "index": [
+              8,
+              8,
+              8
+            ],
+            "position": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "carry": -0.04448618120881141,
+            "pressure": 0.026060881998172903,
+            "smoothing": -0.17955912585279687,
+            "total_local_energy_rate": -0.1979844250634354
+          }
+        },
+        {
+          "t": 0.007,
+          "peak": 2.022775859746899,
+          "energy": 3.1208875551172968,
+          "slope": 5.9508311562394365,
+          "divergence": 1.1657341758564144e-15,
+          "steepening": 4.399446620543959,
+          "smoothing": 0.08875862985271686,
+          "peak_split": {
+            "peak": 2.022775859746899,
+            "index": [
+              8,
+              8,
+              8
+            ],
+            "position": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "carry": -0.05189337375983322,
+            "pressure": 0.030399902146429653,
+            "smoothing": -0.1795388138102861,
+            "total_local_energy_rate": -0.20103228542368967
+          }
+        },
+        {
+          "t": 0.008,
+          "peak": 2.0226757197061564,
+          "energy": 3.1206096971599067,
+          "slope": 5.950497496340867,
+          "divergence": 1.3183898417423734e-15,
+          "steepening": 4.4030463407128595,
+          "smoothing": 0.08875280669046645,
+          "peak_split": {
+            "peak": 2.0226757197061564,
+            "index": [
+              8,
+              8,
+              8
+            ],
+            "position": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "carry": -0.059298457757195604,
+            "pressure": 0.034737607744726264,
+            "smoothing": -0.1795181471485806,
+            "total_local_energy_rate": -0.20407899716104994
+          }
+        },
+        {
+          "t": 0.009000000000000001,
+          "peak": 2.0225740686392704,
+          "energy": 3.1203318699713654,
+          "slope": 5.950159256306543,
+          "divergence": 1.7676832220203664e-15,
+          "steepening": 4.406640996443146,
+          "smoothing": 0.0887468739950391,
+          "peak_split": {
+            "peak": 2.0225740686392704,
+            "index": [
+              8,
+              8,
+              8
+            ],
+            "position": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "carry": -0.06670141084001951,
+            "pressure": 0.03907398373510118,
+            "smoothing": -0.17949712601516288,
+            "total_local_energy_rate": -0.2071245531200812
+          }
+        },
+        {
+          "t": 0.01,
+          "peak": 2.022470906891642,
+          "energy": 3.1200540736317834,
+          "slope": 5.949816437289164,
+          "divergence": 1.4641066137244252e-15,
+          "steepening": 4.410230568662562,
+          "smoothing": 0.08874083179499088,
+          "peak_split": {
+            "peak": 2.022470906891642,
+            "index": [
+              8,
+              8,
+              8
+            ],
+            "position": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "carry": -0.07410221065923829,
+            "pressure": 0.04340901506905843,
+            "smoothing": -0.17947575055873385,
+            "total_local_energy_rate": -0.2101689461489137
+          }
+        }
+      ],
+      "step_log": [
+        {
+          "t_start": 0.0,
+          "t_end": 0.001,
+          "dt": 0.001,
+          "start_limit": 0.027799268983090087,
+          "predictor_limit": 0.02780048897869028,
+          "end_limit": 0.027800499378149855,
+          "rejections": 0
+        },
+        {
+          "t_start": 0.001,
+          "t_end": 0.002,
+          "dt": 0.001,
+          "start_limit": 0.027800499378149855,
+          "predictor_limit": 0.027801740280386157,
+          "end_limit": 0.02780175067842681,
+          "rejections": 0
+        },
+        {
+          "t_start": 0.002,
+          "t_end": 0.003,
+          "dt": 0.001,
+          "start_limit": 0.02780175067842681,
+          "predictor_limit": 0.02780301248819077,
+          "end_limit": 0.02780302288482632,
+          "rejections": 0
+        },
+        {
+          "t_start": 0.003,
+          "t_end": 0.004,
+          "dt": 0.001,
+          "start_limit": 0.02780302288482632,
+          "predictor_limit": 0.027804305603099676,
+          "end_limit": 0.02780431599834385,
+          "rejections": 0
+        },
+        {
+          "t_start": 0.004,
+          "t_end": 0.005,
+          "dt": 0.001,
+          "start_limit": 0.02780431599834385,
+          "predictor_limit": 0.027805619626198513,
+          "end_limit": 0.02780563002006508,
+          "rejections": 0
+        },
+        {
+          "t_start": 0.005,
+          "t_end": 0.006,
+          "dt": 0.001,
+          "start_limit": 0.02780563002006508,
+          "predictor_limit": 0.0278069545586631,
+          "end_limit": 0.0278069649511658,
+          "rejections": 0
+        },
+        {
+          "t_start": 0.006,
+          "t_end": 0.007,
+          "dt": 0.001,
+          "start_limit": 0.0278069649511658,
+          "predictor_limit": 0.027808310401759358,
+          "end_limit": 0.027808320792911925,
+          "rejections": 0
+        },
+        {
+          "t_start": 0.007,
+          "t_end": 0.008,
+          "dt": 0.001,
+          "start_limit": 0.027808320792911925,
+          "predictor_limit": 0.02780968715684334,
+          "end_limit": 0.02780969754665948,
+          "rejections": 0
+        },
+        {
+          "t_start": 0.008,
+          "t_end": 0.009000000000000001,
+          "dt": 0.0010000000000000009,
+          "start_limit": 0.02780969754665948,
+          "predictor_limit": 0.02781108482536116,
+          "end_limit": 0.027811095213854577,
+          "rejections": 0
+        },
+        {
+          "t_start": 0.009000000000000001,
+          "t_end": 0.01,
+          "dt": 0.0009999999999999992,
+          "start_limit": 0.027811095213854577,
+          "predictor_limit": 0.027812503408849026,
+          "end_limit": 0.02781251379603341,
+          "rejections": 0
+        }
+      ]
+    }
+  ],
+  "short_run_summary": {
+    "count": 4,
+    "grid": 16,
+    "end_time": 0.01,
+    "max_recorded_divergence": 2.4771851236948805e-15,
+    "largest_sample_energy_change": -0.00027779633958191496,
+    "max_accepted_dt_over_limit": 0.039503873880293146
+  }
+}
