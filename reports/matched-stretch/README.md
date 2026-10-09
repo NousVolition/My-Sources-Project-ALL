@@ -1,5 +1,7 @@
 # Matched-stretch numerical controls
 
+**New central-tube analysis:** [Follow the moving points, stretching and whole-box peak](central-response/README.md). Four charts from 112 verified saved fields. The rising maximum changes which point it describes; late results still depend on the grid. Original matched-stretch and separate periodic surroundings runs are shown separately.
+
 **Completed join test:** [Remove the central tube and compare the early peak](join-isolation/README.md). Four short unforced controls through time 0.04, including timestep halving; the early peak persists without the tube.
 
 **Completed unforced check:** [Growth rates, the 16% statement, and linear versus squared models](unforced-growth-check/README.md). One saved start and its existing timestep control through 0.35; all 72 fields verified. Spatial resolution remains insufficient.
