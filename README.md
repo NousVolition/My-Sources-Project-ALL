@@ -52,6 +52,10 @@ The human–AI conversations, mirrored categories, and pressure-and-memory illus
 - [Conversation categories](language/exploration/README.md)
 - [Coordination with the freedom to refuse](models/decentralized_coordination/README.md): a separate nine-agent simulation and optional volunteer protocol exploring local organization, refusal, and identity versus network position. No human data or water-physics claims.
 
+## Connections and remaining work
+
+[Review of both repositories](REPOSITORY-REVIEW.md): related symmetry, identity/position, persistence and prediction tests; current numerical limitations; and the next unresolved decisions. [Streams and Rocks](https://github.com/NousVolition/Nous-Volition) contains the SIMS, recovery, oscillator and finite-fractal studies.
+
 ## Source, history and reproduction
 
 - [Math source and instructions](math/README.md#use-the-code)

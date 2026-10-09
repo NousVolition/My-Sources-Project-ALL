@@ -2,9 +2,9 @@
 
 [Where each experiment first changes](first-change-audit/README.md): measured starting differences, first-step forcing and early response.
 
-[Hug-ns overview](../README.md) Â· [Charts and report](../../../../reports/files/fluid-tests-completed.html) Â· [Verification](verification.json) Â· [Model and test coverage](MODEL.md)
+[Hug-ns overview](../README.md) · [Charts and report](../../../../reports/files/fluid-tests-completed.html) · [Verification](verification.json) · [Model and test coverage](MODEL.md)
 
-**All four supplied tests were executed and their current reference results reproduced.** Grid: 33Â³. Domain side: 6. Viscosity: 0.01. The fluid solver uses Fourier derivatives, projection and two-stage Heun stepping with zero external force.
+**All four supplied tests were executed and their current reference results reproduced.** Grid: 33³. Domain side: 6. Viscosity: 0.01. The fluid solver uses Fourier derivatives, projection and two-stage Heun stepping with zero external force.
 
 ![Completed fluid tests](../../../../reports/files/fluid-tests-completed.png)
 
@@ -17,7 +17,7 @@
 
 ## Separate source contributions
 
-[Ten new source-control runs](source-attribution/README.md) measure C alone, D alone and their combined effect at the existing 50/50 and 70/30 settings. The 50/50 directions cancel. At 70/30, the difference from adding the separate effects is 0.00133% of the combined signed endpoint. Half-step checks agree; these are measurements at 33Â³.
+[Ten new source-control runs](source-attribution/README.md) measure C alone, D alone and their combined effect at the existing 50/50 and 70/30 settings. The 50/50 directions cancel. At 70/30, the difference from adding the separate effects is 0.00133% of the combined signed endpoint. Half-step checks agree; these are measurements at 33³.
 
 ![Separate source effects](source-attribution/source-effects.png)
 

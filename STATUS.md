@@ -2,7 +2,16 @@
 
 [← Project home](README.md)
 
-## Latest hug-ns update
+## Current numerical status — October 9, 2026
+
+- **[Matched-stretch controls](reports/matched-stretch/README.md): 28/48 completed and verified results published through model time 0.40.** Twenty jobs remain, including the 256-grid controls and remaining 128-grid cases. All three 128-grid 0.1% seeds are complete. The [128-grid timestep screen fails](reports/matched-stretch/completed-timestep128/README.md); the raw strain has nonsmooth periodic joins, initial maxima lie outside the central tube, and peak spatial resolution remains inadequate.
+- **[Separate vortex controls](reports/study/README.md): 46/48 completed and verified results published through 0.40.** The two 160-grid half-step departure controls remain. This study has different starting data and its own numerical method.
+- **[Separate smooth-start stress suite](reports/navier-stokes-stress/README.md): 39/39 completed runs published in a parallel study.** Its protocol, raw-data release and numerical limitations are linked in that report. It uses different starting fields from the two matrices above.
+- **[Cross-repository review and connections](REPOSITORY-REVIEW.md):** current checks, related measurements, and the remaining work.
+
+These are dated publication counts. The linked study indexes carry subsequent completions. Earlier test totals and supplied-table endpoints below describe their original verification scope.
+
+## Earlier supplied hug-ns import
 
 [Code and results](math/imports/hug-ns/README.md) are available with sixteen result tables. The latest N=64 table reaches time 0.12; the earlier no-stop table reaches 0.35. The focused checks record **32 passes and three known failures**. Pressure reporting is corrected; the gate and evolution code are retained. [What passed and what needs work](math/imports/hug-ns/REVIEW.md) · [Results and their limits](math/imports/hug-ns/RESULTS-REVIEW.md).
 

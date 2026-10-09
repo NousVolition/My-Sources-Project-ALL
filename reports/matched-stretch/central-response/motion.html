@@ -1535,9 +1535,9 @@ html&gt;body{padding:0}&lt;/style&gt;
   &lt;div class=&quot;viz-controls&quot;&gt;
     &lt;label class=&quot;form-label&quot;&gt;Starting flow
       &lt;select class=&quot;form-select&quot; data-case&gt;
-        &lt;option value=&quot;original&quot;&gt;Original matched-stretch Â· 64Â³&lt;/option&gt;
-        &lt;option value=&quot;aligned&quot;&gt;Aligned surroundings Â· 160Â³&lt;/option&gt;
-        &lt;option value=&quot;compressive&quot;&gt;Compressive surroundings Â· 160Â³&lt;/option&gt;
+        &lt;option value=&quot;original&quot;&gt;Original matched-stretch · 64³&lt;/option&gt;
+        &lt;option value=&quot;aligned&quot;&gt;Aligned surroundings · 160³&lt;/option&gt;
+        &lt;option value=&quot;compressive&quot;&gt;Compressive surroundings · 160³&lt;/option&gt;
       &lt;/select&gt;
     &lt;/label&gt;
     &lt;label class=&quot;form-label&quot;&gt;View
@@ -1549,7 +1549,7 @@ html&gt;body{padding:0}&lt;/style&gt;
   &lt;canvas data-scene role=&quot;img&quot; aria-label=&quot;Saved velocity arrows in a periodic cube, with moving fluid labels for the two surroundings cases.&quot;&gt;&lt;/canvas&gt;
   &lt;div class=&quot;viz-row text-small&quot; data-legend&gt;&lt;span&gt;Arrows: velocity direction and relative speed&lt;/span&gt;&lt;span&gt;Drag: rotate&lt;/span&gt;&lt;/div&gt;
   &lt;div class=&quot;text-small tabular-nums&quot; data-detail aria-live=&quot;polite&quot;&gt;&lt;/div&gt;
-  &lt;div class=&quot;text-small text-muted&quot;&gt;Saved numerical fields Â· zero external force Â· later peaks unresolved Â· dots are fluid labels, not molecules&lt;/div&gt;
+  &lt;div class=&quot;text-small text-muted&quot;&gt;Saved numerical fields · zero external force · later peaks unresolved · dots are fluid labels, not molecules&lt;/div&gt;
   &lt;style&gt;
     #saved-fluid-motion-v1 canvas{display:block;width:100%;height:390px;touch-action:none}
     #saved-fluid-motion-v1 [data-detail]{min-height:1.6em}
@@ -1588,9 +1588,9 @@ html&gt;body{padding:0}&lt;/style&gt;
       }
       const font=getComputedStyle(root).fontFamily;ctx.font=&#x27;12px &#x27;+font;ctx.fillStyle=ink;ctx.textAlign=&#x27;center&#x27;;
       for(const [p,label] of [[[3.55,0,0],&#x27;x&#x27;],[[0,3.55,0],&#x27;y&#x27;],[[0,0,3.55],&#x27;z&#x27;]]){const q=project(p,w,h);ctx.fillText(label,Math.max(12,Math.min(w-12,q[0])),Math.max(16,Math.min(h-8,q[1])));}
-      time.textContent=&#x27;Time &#x27;+f.t.toFixed(2)+&#x27; Â· saved frame &#x27;+(index+1)+&#x27;/&#x27;+c.frames.length;
+      time.textContent=&#x27;Time &#x27;+f.t.toFixed(2)+&#x27; · saved frame &#x27;+(index+1)+&#x27;/&#x27;+c.frames.length;
       legend.innerHTML=&#x27;&lt;span&gt;Arrows: velocity&lt;/span&gt;&lt;span&gt;Drag: rotate&lt;/span&gt;&#x27;+(f.markers?&#x27;&lt;span class=&quot;motion-key&quot;&gt;&lt;i class=&quot;motion-dot&quot; style=&quot;background:var(--viz-series-2)&quot;&gt;&lt;/i&gt;Center at start&lt;/span&gt;&lt;span class=&quot;motion-key&quot;&gt;&lt;i class=&quot;motion-dot&quot; style=&quot;background:var(--viz-series-3);border-radius:0;transform:rotate(45deg)&quot;&gt;&lt;/i&gt;Strongest point at end&lt;/span&gt;&#x27;:&#x27;&#x27;);
-      detail.textContent=f.markers?&#x27;Spin at center label: &#x27;+f.spin[32].toFixed(2)+&#x27; Â· at end-winner label: &#x27;+f.spin[c.final_winner].toFixed(2):&#x27;Original start Â· velocity samples Â· moving-point labels were not saved&#x27;;
+      detail.textContent=f.markers?&#x27;Spin at center label: &#x27;+f.spin[32].toFixed(2)+&#x27; · at end-winner label: &#x27;+f.spin[c.final_winner].toFixed(2):&#x27;Original start · velocity samples · moving-point labels were not saved&#x27;;
     }
     function apply(saved){if(!saved||saved.visual!==&#x27;saved-fluid-motion-v1&#x27;)return;if(data.cases.some(c=&gt;c.id===saved.case))choice.value=saved.case;index=Math.max(0,Math.min(selected().frames.length-1,Number(saved.frame)||0));slider.max=selected().frames.length-1;slider.value=index;if([&#x27;3d&#x27;,&#x27;side&#x27;,&#x27;top&#x27;].includes(saved.view))view.value=saved.view;setView();}
     function setView(){if(view.value===&#x27;side&#x27;){az=0;el=0;}else if(view.value===&#x27;top&#x27;){az=0;el=Math.PI/2;}else{az=.67;el=.34;}draw();}

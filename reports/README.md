@@ -1,8 +1,8 @@
 # Reports and visuals
 
-These reports are saved on the authorâ€™s computer and copied into this GitHub folder.
+These reports are saved on the author’s computer and copied into this GitHub folder.
 
-**To use the interactive controls:** [download the project](https://github.com/NousVolition/My-Sources-Project-ALL/archive/refs/heads/main.zip), extract it, and open `reports/index.html`. GitHubâ€™s file viewer displays HTML source rather than running its controls.
+**To use the interactive controls:** [download the project](https://github.com/NousVolition/My-Sources-Project-ALL/archive/refs/heads/main.zip), extract it, and open `reports/index.html`. GitHub’s file viewer displays HTML source rather than running its controls.
 
 ## Numerical reports and earlier snapshots
 
@@ -10,7 +10,7 @@ These reports are saved on the authorâ€™s computer and copied into this Git
 - **[Three vortex surroundings](study/README.md): 46/48 completed locally; 46 verified results published.** Latest: [both 160-grid ordinary departure results](study/completed-departure160-base/README.md), with central/global peak and grid comparisons. Two half-step controls remain.
 - [Verification of this saved snapshot](numerical-progress-verification.json).
 
-## Completed mirror tests â€” October 8
+## Completed mirror tests — October 8
 
 - **[Separate C and D contributions](../math/imports/hug-ns/mirror-fluid/source-attribution/README.md):** ten new fluid controls and [chart](../math/imports/hug-ns/mirror-fluid/source-attribution/source-effects.png).
 
@@ -73,7 +73,7 @@ The full restart arrays remain in the local calculation workspace. They are larg
 - [Corrected fluid dashboard, explicit definitions, 516 saved-field checks and completed controls](../math/imports/hug-ns/mirror-fluid/methods-controls/README.md).
 - [Norms, signs, reflection, numerical methods and evidence categories](../math/imports/hug-ns/mirror-fluid/methods-controls/METHODS.md).
 
-The matched-stretch count above describes the saved October 8 snapshot; the vortex count was updated October 9. Later verified batches are linked under Newly completed comparisons; unfinished local runs are not presented as completed GitHub results.
+The completion counts at the top were updated October 9. Older snapshots and intake reviews retain their original dates and contents. The study indexes link later verified batches; unfinished local runs are not presented as completed GitHub results.
 
 ## New completed tests
 
