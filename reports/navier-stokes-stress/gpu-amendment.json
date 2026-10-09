@@ -1,0 +1,7 @@
+{
+  "reason": "CPU timings made the largest runs expensive. RTX 3080 hardware was discovered during execution. Add an optional validated CuPy backend for the same matrix and algorithm; do not alter equations, starts, tolerances, precision, timesteps or endpoints.",
+  "design_change": false,
+  "execution_change": "Run all 33 planned cases on GPU in data-gpu/. Keep completed and interrupted CPU records separately in data/ as backend controls. Primary analysis uses only data-gpu/ when present. No partial CPU result may be counted complete.",
+  "required_checks": "Six CPU/GPU comparisons: three flow families at N16 and N32, same fields and 20 steps; relative RHS and full-trajectory error each below 1e-11. Compare complete overlapping production checkpoints separately.",
+  "source": "https://docs.cupy.dev/en/stable/install.html"
+}
