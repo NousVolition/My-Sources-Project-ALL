@@ -1,0 +1,122 @@
+{
+  "status": "all_six_supplied_cases_reproduced",
+  "end_time": 0.4,
+  "grid": 33,
+  "viscosity": 0.01,
+  "absolute_tolerance": 1e-12,
+  "largest_absolute_difference": 1.1102230246251565e-15,
+  "unchanged_sources": true,
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "numpy": "2.3.5",
+  "cases": [
+    {
+      "case": "even",
+      "max_absolute_errors": {
+        "t": 0.0,
+        "E": 3.63378816408266e-16,
+        "D": 1.575277389164257e-18
+      },
+      "initial": {
+        "t": 0.0,
+        "E": 2.1121637388526847e-16,
+        "D": -5.2959911136281915e-20
+      },
+      "final": {
+        "t": 0.4,
+        "E": 4.565981619768081e-15,
+        "D": -3.643424841837885e-17
+      }
+    },
+    {
+      "case": "small lean",
+      "max_absolute_errors": {
+        "t": 0.0,
+        "E": 1.1102230246251565e-16,
+        "D": 5.421010862427522e-17
+      },
+      "initial": {
+        "t": 0.0,
+        "E": 0.019999000074993754,
+        "D": 0.004131873506876209
+      },
+      "final": {
+        "t": 0.4,
+        "E": 0.021437604101693816,
+        "D": 0.002953723661480791
+      }
+    },
+    {
+      "case": "minus lean",
+      "max_absolute_errors": {
+        "t": 0.0,
+        "E": 1.734723475976807e-17,
+        "D": 2.2551405187698492e-17
+      },
+      "initial": {
+        "t": 0.0,
+        "E": 0.01999900007499376,
+        "D": -0.004131873506876209
+      },
+      "final": {
+        "t": 0.4,
+        "E": 0.02143760410169427,
+        "D": -0.0029537236614808446
+      }
+    },
+    {
+      "case": "extra mirror",
+      "max_absolute_errors": {
+        "t": 0.0,
+        "E": 9.284669384053228e-16,
+        "D": 1.8403794948421317e-17
+      },
+      "initial": {
+        "t": 0.0,
+        "E": 2.067828886960051e-16,
+        "D": -4.0852385419100515e-19
+      },
+      "final": {
+        "t": 0.4,
+        "E": 4.256549867577402e-15,
+        "D": -3.170517269048849e-17
+      }
+    },
+    {
+      "case": "C no mirror",
+      "max_absolute_errors": {
+        "t": 0.0,
+        "E": 1.0408340855860843e-17,
+        "D": 4.0766001685454967e-17
+      },
+      "initial": {
+        "t": 0.0,
+        "E": 0.02875450153072184,
+        "D": 0.005934774287590703
+      },
+      "final": {
+        "t": 0.4,
+        "E": 0.03091304285391134,
+        "D": 0.004239869659091499
+      }
+    },
+    {
+      "case": "gap hug",
+      "max_absolute_errors": {
+        "t": 0.0,
+        "E": 1.1102230246251565e-15,
+        "D": 3.8163916471489756e-17
+      },
+      "initial": {
+        "t": 0.0,
+        "E": 1.4985386509596759,
+        "D": -0.031815781097457155
+      },
+      "final": {
+        "t": 0.4,
+        "E": 1.4286405561194158,
+        "D": -0.02157503534279197
+      }
+    }
+  ],
+  "scope": "Reproduction of supplied finite driven calculation only. No grid or timestep convergence measured. The two saved times do not describe an intervening trajectory."
+}
