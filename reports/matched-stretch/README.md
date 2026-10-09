@@ -1,5 +1,9 @@
 # Matched-stretch numerical controls
 
+**Menger–Koch–Romeo–Juliet comparison:** [Completed marker relationships and motion tests](relationship-fractal-study/README.md). 360 case trajectories; exploratory interaction law with explicit limits, not a demonstrated improvement to Navier–Stokes.
+
+**Completed +5 degree strain-axis tilt:** [Both tilt signs and boundary-join comparison through 0.40](completed-tilt-plus/README.md). All 41 new saved fields verified; peaks remain unresolved.
+
 **Completed -5 degree strain-axis tilt:** [Initial-field, trajectory and boundary-join comparison through 0.40](completed-tilt-minus/README.md). All 41 saved fields verified; peaks remain unresolved.
 
 **Completed 128-grid baseline and higher strain:** [64/128 grid curves and strain x1.1 through 0.40](completed-grid128-strain/README.md). All 82 saved fields verified; peak spatial-resolution checks still fail.
