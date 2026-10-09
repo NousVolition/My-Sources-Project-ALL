@@ -68,3 +68,7 @@ The wrapper copies the unchanged driver and library into `rerun/`, runs all six 
 The uploaded marble plot, marble animation and breathing illustration have no generating script in this package. Their movement is not verified by this fluid rerun.
 
 [Mirror-fluid overview](../README.md) · [All reports](../../../../../reports/README.md)
+
+## Follow the motion between the endpoints
+
+[Step-by-step fluid animations and measurements](timeline/README.md) now show all six runs through time. For the small lean, actual mirror difference falls 9.04% while flow strength falls 15.14%, so relative E rises. The imbalance also changes shape. All 516 saved fields were independently checked.
