@@ -1,6 +1,6 @@
 {
   "status": "running",
-  "snapshot_utc": "2026-10-09T11:38:49.159354+00:00",
+  "snapshot_utc": "2026-10-09T11:55:27.443559+00:00",
   "planned": 48,
   "completed": [
     {
@@ -140,11 +140,19 @@
       "status": "complete"
     },
     {
+      "id": "exodus-fd4-n80-base",
+      "status": "complete"
+    },
+    {
       "id": "exodus-fourier-n48-base",
       "status": "complete"
     },
     {
       "id": "exodus-fourier-n64-base",
+      "status": "complete"
+    },
+    {
+      "id": "exodus-fourier-n80-base",
       "status": "complete"
     }
   ],
@@ -180,15 +188,19 @@
     "compressive-fourier-n48-base",
     "compressive-fourier-n64-base",
     "compressive-fourier-n80-base",
-    "compressive-fourier-n80-half"
-  ],
-  "active": [
+    "compressive-fourier-n80-half",
+    "exodus-fd4-n48-base",
+    "exodus-fd4-n64-base",
     "exodus-fd4-n80-base",
+    "exodus-fourier-n48-base",
+    "exodus-fourier-n64-base",
     "exodus-fourier-n80-base"
   ],
-  "queued": [
-    "exodus-fourier-n80-half",
+  "active": [
     "exodus-fd4-n80-half",
+    "exodus-fourier-n80-half"
+  ],
+  "queued": [
     "exodus-fourier-n112-base",
     "exodus-fd4-n112-base",
     "exodus-fourier-n112-half",
@@ -204,5 +216,5 @@
     "protocol.py": "e776a5e0f3cca7e1a53aca39f0b4b7a6aeb96a3996a31c107a301ff01cf4db7c",
     "run_study.py": "f81bf25ea96658ca8fcea089579930367290ce62fd442b8f2972fcc25ce093f3"
   },
-  "scope": "Current local status snapshot; departure results await their verified publication batch. Process IDs and checkpoints remain local."
+  "scope": "Saved local status; the published table includes only verified completed records."
 }

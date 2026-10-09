@@ -1,12 +1,14 @@
 # Vortex comparison: current numerical results
 
-Snapshot: 2026-10-09T11:38:49.159354+00:00. **36/48 runs have completed locally; 32 verified completed records are published below.** All 16 aligned and all 16 compressive runs are complete and published. The departure case is progressing; its new results await their verified batch.
+Snapshot: 2026-10-09T11:55:27.443559+00:00. **38/48 runs completed locally; 38 verified completed records are published below.** All aligned and compressive runs plus the first six departure runs are published. The remaining departure controls continue.
 
-## All four 160-grid compressive controls
+## Newly completed departure runs
 
-[Completed controls, verification and resolution findings](completed-compressive160-final/README.md). Timestep differences are small for both methods; both still fail the spectral screen. The Fourier and FD4 global maxima differ in location and measured width.
+[Six verified runs at grids 48, 64 and 80](completed-departure-coarse/README.md), with field checks, comparisons and resolution warnings.
 
-![Completed controls](completed-compressive160-final/control-checks.png)
+![Departure controls](completed-departure-coarse/curves.png)
+
+[All four completed 160-grid compressive controls](completed-compressive160-final/README.md) remain available.
 
 | Run | Status | Time | Largest saved W | Last W | Last I |
 | --- | --- | --- | --- | --- | --- |
@@ -42,6 +44,12 @@ Snapshot: 2026-10-09T11:38:49.159354+00:00. **36/48 runs have completed locally;
 | compressive-fourier-n64-base | complete | 0.40 | 139.00289 | 139.00289 | 24.76587 |
 | compressive-fourier-n80-base | complete | 0.40 | 134.73756 | 134.73756 | 24.45987 |
 | compressive-fourier-n80-half | complete | 0.40 | 134.73793 | 134.73793 | 24.45991 |
+| exodus-fd4-n48-base | complete | 0.40 | 79.99999 | 79.14726 | 22.08779 |
+| exodus-fd4-n64-base | complete | 0.40 | 97.55390 | 97.55390 | 23.93819 |
+| exodus-fd4-n80-base | complete | 0.40 | 103.95238 | 103.95238 | 24.13931 |
+| exodus-fourier-n48-base | complete | 0.40 | 88.15757 | 88.15757 | 22.56190 |
+| exodus-fourier-n64-base | complete | 0.40 | 102.64848 | 102.64848 | 24.27390 |
+| exodus-fourier-n80-base | complete | 0.40 | 107.31294 | 107.31294 | 24.33402 |
 
 These are different starting fields from the imported matched-stretch study. Both solvers use SSP RK3 and the same filtering; FD4 independently discretizes transport and viscosity but shares the FFT pressure infrastructure. Method agreement has that limitation.
 
