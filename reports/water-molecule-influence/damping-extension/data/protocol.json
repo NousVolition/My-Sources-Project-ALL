@@ -1,0 +1,34 @@
+{
+  "gamma_ps_inverse": [
+    5,
+    50
+  ],
+  "replica": 0,
+  "molecules": 216,
+  "times_ps": [
+    0.005,
+    0.02,
+    0.1,
+    0.2
+  ],
+  "dt_ps": 0.001,
+  "delta_v_nm_ps": 0.01,
+  "constraint_tolerance": 1e-08,
+  "integrator": "Symmetric exact half drag / RATTLE velocity Verlet / exact half drag; on-step velocities.",
+  "equation": "m dv/dt = F - m gamma v, with rigid constraints; no random force",
+  "platform": "OpenCL",
+  "precision": "double",
+  "openmm": "8.6.1",
+  "source_sha256": "87799c472cd485f5795d3ef59b958a8fd0588d5138ceffc2931d4c7eec18d1fe",
+  "input": "../response-extension/data/response_replica_0.npz",
+  "initial_states": "Exact same saved positions and on-step velocities for every gamma and dt.",
+  "baseline": "Previously saved gamma=0 all-source response, checked again on selected sources.",
+  "controls_source_ids": [
+    116,
+    173,
+    174,
+    176
+  ],
+  "scope": "One conditional TIP3P state, external damping without thermal noise; not equilibrium water.",
+  "response": "Same paired COM derivative as previous study, replacing ballistic t with discrete free-drag displacement G_gamma,h(t)."
+}
