@@ -10,7 +10,7 @@ sys.path.insert(0, str(STUDY))
 from solver import Solver
 from protocol import source_hashes
 
-IDS = ('exodus-fourier-n160-base',)
+IDS = ('exodus-fourier-n160-base', 'exodus-fd4-n160-base')
 
 def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()

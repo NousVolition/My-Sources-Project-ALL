@@ -25,15 +25,17 @@ fig.suptitle('Departure case: 112 and 160 grids through 0.40',fontsize=15)
 fig.savefig(HERE/'curves.png',dpi=150);plt.close(fig)
 
 
-fig,axes=plt.subplots(1,2,figsize=(12,4.5),layout='constrained')
-for rid,r in sorted(data.items()):
-    rows=r['rows'];n=r['job']['n'];t=[z['t'] for z in rows]
-    axes[0].plot(t,[z['Wmax'] for z in rows],color=colors[n],label=f'Global, grid {n}')
-    axes[0].plot(t,[z['W_central_roi'] for z in rows],color=colors[n],ls='--',label=f'Central region, grid {n}')
-    axes[1].plot(t,[z['global_width']['minimum_chord_cells'] for z in rows],color=colors[n],label=f'Global peak, grid {n}')
-    axes[1].plot(t,[z['core_width']['minimum_chord_cells'] for z in rows],color=colors[n],ls='--',label=f'Central core, grid {n}')
-axes[1].axhline(6,color='gray',ls=':',label='Six-cell screen')
-for ax,title,y in zip(axes,['Global and central-region peak curves','Separately measured peak widths'],['Maximum vorticity','Minimum half-peak chord (cells)']):
-    ax.set(title=title,xlabel='Model time',ylabel=y);ax.legend(fontsize=8);ax.grid(alpha=.18)
-fig.suptitle('Departure case: a wider central core coexists with an unresolved global maximum')
+fig,axes=plt.subplots(2,2,figsize=(12,8),layout='constrained')
+for j,method in enumerate(['fourier','fd4']):
+    for rid,r in sorted(data.items()):
+        if r['job']['method']!=method:continue
+        rows=r['rows'];n=r['job']['n'];t=[z['t'] for z in rows]
+        axes[j,0].plot(t,[z['Wmax'] for z in rows],color=colors[n],label=f'Global, grid {n}')
+        axes[j,0].plot(t,[z['W_central_roi'] for z in rows],color=colors[n],ls='--',label=f'Central region, grid {n}')
+        axes[j,1].plot(t,[z['global_width']['minimum_chord_cells'] for z in rows],color=colors[n],label=f'Global peak, grid {n}')
+        axes[j,1].plot(t,[z['core_width']['minimum_chord_cells'] for z in rows],color=colors[n],ls='--',label=f'Central core, grid {n}')
+    axes[j,1].axhline(6,color='gray',ls=':',label='Six-cell screen')
+    for ax,title,y in zip(axes[j],[f'{method}: global and central peaks',f'{method}: separately measured widths'],['Maximum vorticity','Minimum half-peak chord (cells)']):
+        ax.set(title=title,xlabel='Model time',ylabel=y,xlim=(0,.4));ax.legend(fontsize=8);ax.grid(alpha=.18)
+fig.suptitle('Departure case: central cores are wider than the unresolved global peaks')
 fig.savefig(HERE/'central-global.png',dpi=150);plt.close(fig)
