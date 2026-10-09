@@ -1,5 +1,8 @@
 # What happens to the central tube?
 
+**Tracked relationships:** [192 fluid labels, pair motion, local linearization and Runge–Kutta paths](tracked-patterns/README.md). Completed analysis of saved fields with grid and timestep comparisons.
+
+
 **The initial surroundings do not keep their initial stretching sign. Both tested configurations first lose spin along the moving central points, then regain it. The later response is sensitive to spatial resolution.**
 
 This is an analysis of saved unforced runs. It adds no force, boundary rule, new initial field or time evolution. The original matched-stretch start and the separate periodic surroundings study are shown separately. New analysis is authorized for publication; no private source documents or their extracted contents are included.

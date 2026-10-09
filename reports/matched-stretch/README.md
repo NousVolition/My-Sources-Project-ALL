@@ -1,5 +1,7 @@
 # Matched-stretch numerical controls
 
+**Tracked relationships:** [192 fluid labels, pair motion, local linearization and Runge–Kutta paths](central-response/tracked-patterns/README.md). Completed analysis of saved fields with grid and timestep comparisons.
+
 **New central-tube analysis:** [Follow the moving points, stretching and whole-box peak](central-response/README.md). Four charts from 112 verified saved fields. The rising maximum changes which point it describes; late results still depend on the grid. Original matched-stretch and separate periodic surroundings runs are shown separately.
 
 **Completed join test:** [Remove the central tube and compare the early peak](join-isolation/README.md). Four short unforced controls through time 0.04, including timestep halving; the early peak persists without the tube.

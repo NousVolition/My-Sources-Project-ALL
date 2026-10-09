@@ -1,0 +1,102 @@
+{
+  "equations": {
+    "dx_dt": "y",
+    "dy_dt": "x-x^3"
+  },
+  "role": "Separate textbook reference, not the fluid equation",
+  "fluid_source_changed": false,
+  "runs": [
+    {
+      "start": [
+        -1.2,
+        0
+      ],
+      "initial_energy": -0.2016,
+      "max_absolute_energy_drift": 1.7220391779204647e-12,
+      "step_halving_max_state_difference": 3.0012604193983463e-09,
+      "x_range": [
+        -1.2,
+        -0.7483314866018951
+      ],
+      "velocity_reversal_return_error": 4.559514925680916e-12
+    },
+    {
+      "start": [
+        1.2,
+        0
+      ],
+      "initial_energy": -0.2016,
+      "max_absolute_energy_drift": 1.7220391779204647e-12,
+      "step_halving_max_state_difference": 3.0012604193983463e-09,
+      "x_range": [
+        0.7483314866018951,
+        1.2
+      ],
+      "velocity_reversal_return_error": 4.559514925680916e-12
+    },
+    {
+      "start": [
+        1,
+        0.6
+      ],
+      "initial_energy": -0.07,
+      "max_absolute_energy_drift": 8.116673999580826e-12,
+      "step_halving_max_state_difference": 4.65360944103584e-09,
+      "x_range": [
+        0.3891938777205864,
+        1.3596058536014064
+      ],
+      "velocity_reversal_return_error": 5.557231626939092e-11
+    },
+    {
+      "start": [
+        0,
+        0.5
+      ],
+      "initial_energy": 0.125,
+      "max_absolute_energy_drift": 3.2722824450104326e-11,
+      "step_halving_max_state_difference": 2.153310714684728e-08,
+      "x_range": [
+        -1.4915563279423065,
+        1.4915566176134114
+      ],
+      "velocity_reversal_return_error": 1.2987887729324485e-10
+    }
+  ],
+  "homoclinic_exact_path_max_error_through_6": 1.3633720652607838e-09,
+  "fixed_points": [
+    {
+      "point": [
+        0,
+        0
+      ],
+      "eigenvalues": [
+        -1,
+        1
+      ],
+      "type": "saddle"
+    },
+    {
+      "point": [
+        -1,
+        0
+      ],
+      "eigenvalues": [
+        "+i sqrt(2)",
+        "-i sqrt(2)"
+      ],
+      "type": "center by conserved energy"
+    },
+    {
+      "point": [
+        1,
+        0
+      ],
+      "eigenvalues": [
+        "+i sqrt(2)",
+        "-i sqrt(2)"
+      ],
+      "type": "center by conserved energy"
+    }
+  ]
+}
