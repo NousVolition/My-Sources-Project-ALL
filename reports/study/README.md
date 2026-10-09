@@ -1,8 +1,12 @@
 # Vortex comparison: current numerical results
 
-Snapshot: 2026-10-08T23:28:22.747514+00:00. **28 of 48 runs complete.** The aligned case is complete; compression is progressing, and departure runs remain queued at this snapshot.
+Snapshot: 2026-10-09T09:07:10.202212+00:00. **31 of 48 runs complete.** All 16 aligned runs and 15 compressive runs are complete. The compressive FD4 half-step run remains active; all 16 departure runs remain queued.
 
-![Recorded curves](../files/vortex-snapshot.png)
+## Newly completed 160-grid controls
+
+[Three completed runs, numerical verification and resolution findings](completed-compressive160/README.md). Both Fourier timesteps fail the spectral screen from 0.28 and global-width screen from 0.36; timestep agreement does not establish spatial convergence.
+
+![Completed controls](completed-compressive160/control-checks.png)
 
 | Run | Status | Time | Largest saved W | Last W | Last I |
 | --- | --- | --- | --- | --- | --- |
@@ -24,14 +28,15 @@ Snapshot: 2026-10-08T23:28:22.747514+00:00. **28 of 48 runs complete.** The alig
 | aligned-fourier-n80-half | complete | 0.40 | 128.00341 | 128.00341 | 31.26015 |
 | compressive-fd4-n112-base | complete | 0.40 | 111.79696 | 111.79696 | 23.67639 |
 | compressive-fd4-n112-half | complete | 0.40 | 111.79747 | 111.79747 | 23.67643 |
-| compressive-fd4-n160-base | running | 0.02 | 80.00000 | 68.54750 | 1.50086 |
+| compressive-fd4-n160-base | complete | 0.40 | 118.31270 | 118.31270 | 23.46922 |
 | compressive-fd4-n48-base | complete | 0.40 | 104.78018 | 104.78018 | 24.11023 |
 | compressive-fd4-n64-base | complete | 0.40 | 126.10391 | 126.10391 | 24.13016 |
 | compressive-fd4-n80-base | complete | 0.40 | 124.57954 | 124.57954 | 24.05100 |
 | compressive-fd4-n80-half | complete | 0.40 | 124.57928 | 124.57928 | 24.05102 |
 | compressive-fourier-n112-base | complete | 0.40 | 114.48773 | 114.48773 | 23.73558 |
 | compressive-fourier-n112-half | complete | 0.40 | 114.48874 | 114.48874 | 23.73561 |
-| compressive-fourier-n160-base | running | 0.04 | 80.00000 | 51.60053 | 2.70302 |
+| compressive-fourier-n160-base | complete | 0.40 | 130.91148 | 130.91148 | 23.40330 |
+| compressive-fourier-n160-half | complete | 0.40 | 130.91285 | 130.91285 | 23.40331 |
 | compressive-fourier-n48-base | complete | 0.40 | 119.61587 | 119.61587 | 25.84770 |
 | compressive-fourier-n64-base | complete | 0.40 | 139.00289 | 139.00289 | 24.76587 |
 | compressive-fourier-n80-base | complete | 0.40 | 134.73756 | 134.73756 | 24.45987 |
@@ -41,6 +46,6 @@ These are different starting fields from the imported matched-stretch study. Bot
 
 W uses the shared Fourier-curl diagnostic; native FD curl is also saved. I is stage-integrated maximum spin. The spin ratio in this study uses RMS vorticity. Energy, both enstrophies, widths in model units and cells, fixed-threshold volumes, strain and divergence are in each result.
 
-[Comparison tables and field errors](comparisons.json) · [Protocol](protocol.json) · [Initial checks](preflight.json) · [Snapshot verification](../numerical-progress-verification.json) · [Run files](runs/)
+[Comparison tables and field errors](comparisons.json) · [Protocol](protocol.json) · [Initial checks](preflight.json) · [Earlier snapshot verification](../numerical-progress-verification.json) · [New three-run verification](completed-compressive160/verification.json) · [Run files](runs/)
 
 The existing [interactive viewer](../files/adversarial-vortex-study.html) retains its earlier published display snapshot. This page supplies the newer numerical measurements. Resolution flags remain in the result files and must be considered alongside grid, time-step and method comparisons.
