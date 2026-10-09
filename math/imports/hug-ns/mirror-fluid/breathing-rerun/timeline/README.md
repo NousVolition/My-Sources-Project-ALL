@@ -74,4 +74,8 @@ python trace.py --out rerun
 python analyze_trace.py --data rerun
 ```
 
-[Original six-case reproduction](../README.md) · [All reports](../../../../../../reports/README.md)
+[Original six-case reproduction](../README.md) Â· [All reports](../../../../../../reports/README.md)
+
+## Fluid diagnostics for these same saved fields
+
+[All 516 fields remeasured](../../methods-controls/README.md#saved-breathing-fields): peak spin, accumulated spin, signed terms at the peak, spectra, divergence, physical threshold volumes, and energy/enstrophy accounting including the prescribed kicks. The grid has substantial enstrophy near its cutoff; the symmetry animations do not establish spatial resolution. [Measurement definitions](../../methods-controls/METHODS.md).
