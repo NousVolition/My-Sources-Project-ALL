@@ -62,3 +62,7 @@ New calculations go into `rerun/`. The saved `results/` and supplied `references
 ## Definitions and diagnostic controls
 
 [Corrected dashboard and completed controls](methods-controls/README.md) adds colocated signed budgets, actual retained-band spectra, source energy/circulation measurements, and a [common definitions page](methods-controls/METHODS.md). The original solver and supplied references are preserved. Symmetry checks and spatial-resolution checks are reported separately.
+
+## Model enlargement tests
+
+[Four reduced-model layers and their fluid comparison](model-layers/README.md): breathing ball, four coupled states, listening feedback, and a spatial scalar field. Forty-six reduced runs are verified; the separate driven fluid matrix is underway.

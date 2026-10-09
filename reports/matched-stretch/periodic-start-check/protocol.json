@@ -1,0 +1,23 @@
+{
+  "grids": [
+    64,
+    80,
+    112,
+    128,
+    256
+  ],
+  "L": 6.0,
+  "nu": 0.001,
+  "mode": "initialization only",
+  "original": "Unchanged supplied start, measured separately; no old checkpoints replaced.",
+  "candidate": "Periodic sine coordinates sin(k*x)/k and periodic squared distance 2*(1-cos(k*x))/k^2 replace raw strain coordinates and envelope; k=2*pi/L. Exact periodized-Gaussian tube coefficients.",
+  "reference_mean": [
+    0.2601639166870663,
+    0.2601639166870663,
+    -0.5203278333741326
+  ],
+  "mean_rule": "Same fixed mean on every candidate grid, taken from original 256 initialization.",
+  "energy_rule": "No energy normalization; record energy change explicitly.",
+  "amplitude_rule": "Raw center linear strain coefficients remain -40,-40,80; projection can change actual center strain, which is measured.",
+  "source_sha256": "22b169971aaf2efd56d47f685495a575e1622edd56c199b07a785fc97e952f46"
+}

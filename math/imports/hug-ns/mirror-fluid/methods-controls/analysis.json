@@ -1,7 +1,7 @@
 {
-  "completed": 6,
+  "completed": 22,
   "planned": 22,
-  "built_epoch": 1791509780.9961855,
+  "built_epoch": 1791512364.138981,
   "one_step_max_by_transform": {
     "mirror": 2.8396976425173965e-16,
     "shift1": 5.405925900644028e-16,
@@ -14,10 +14,45 @@
       "max_E_absolute_error": 7.389922007661198e-16,
       "max_D_sum_scaled": 1.4483736650703796e-16
     },
+    "n33-s1-shape0-rotate-base": {
+      "max_field_relative_error": 4.536482331009763e-15,
+      "max_E_absolute_error": 6.869504964868156e-16,
+      "max_D_sum_scaled": 2.078101345535762e-16
+    },
+    "n33-s1-shape0-shift1-base": {
+      "max_field_relative_error": 3.563324904547009e-15,
+      "max_E_absolute_error": 7.28583859910259e-17,
+      "max_D_sum_scaled": 1.3434190516594824e-16
+    },
+    "n33-s1-shape0-shifthalf-base": {
+      "max_field_relative_error": 4.455180037807998e-15,
+      "max_E_absolute_error": 4.40619762898109e-16,
+      "max_D_sum_scaled": 3.1486384023269126e-17
+    },
+    "n33-s1-shape1-none-base": {
+      "max_field_relative_error": 4.397903612040751e-15,
+      "max_E_absolute_error": 8.673617379884035e-17,
+      "max_D_sum_scaled": 4.198184536435882e-17
+    },
+    "n33-s1-shape2-none-base": {
+      "max_field_relative_error": 4.5423632942020965e-15,
+      "max_E_absolute_error": 4.163336342344337e-16,
+      "max_D_sum_scaled": 9.865733660624325e-17
+    },
     "n49-s1-shape0-none-base": {
       "max_field_relative_error": 5.992356965845812e-15,
       "max_E_absolute_error": 4.753142324176451e-16,
       "max_D_sum_scaled": 2.802697227256099e-16
+    },
+    "n65-s1-shape0-none-base": {
+      "max_field_relative_error": 1.4609319087140655e-14,
+      "max_E_absolute_error": 1.6202317265623378e-15,
+      "max_D_sum_scaled": 4.961782918167355e-16
+    },
+    "n65-s1-shape0-none-half": {
+      "max_field_relative_error": 2.925064591356721e-14,
+      "max_E_absolute_error": 3.858025010572419e-15,
+      "max_D_sum_scaled": 1.355667048352838e-15
     }
   },
   "curve_comparisons": {
@@ -47,6 +82,104 @@
       "D": 0.013244858749955936,
       "energy": 0.015609903214241733,
       "enstrophy": 0.0554965470556665
+    },
+    "n49-s0-shape0-none-base vs n65-s0-shape0-none-base": {
+      "through": 0.4,
+      "W": 0.03420144279145599,
+      "I": 0.03481848743234292,
+      "E": 5.22532272600292e-15,
+      "D": 3.0084792265876e-16,
+      "energy": 5.5673778007559525e-06,
+      "enstrophy": 4.501558414908531e-05
+    },
+    "n49-s1-shape0-none-base vs n65-s1-shape0-none-base": {
+      "through": 0.4,
+      "W": 0.032859491084740816,
+      "I": 0.03380694034955739,
+      "E": 0.0007208452670829829,
+      "D": 0.0001673612165307324,
+      "energy": 5.551734847363984e-06,
+      "enstrophy": 4.49755200344649e-05
+    },
+    "n49-s-1-shape0-none-base vs n65-s-1-shape0-none-base": {
+      "through": 0.4,
+      "W": 0.03285949108473663,
+      "I": 0.03380694034955351,
+      "E": 0.0007208452671392874,
+      "D": 0.00016736121656049508,
+      "energy": 5.551734847255064e-06,
+      "enstrophy": 4.4975520034301315e-05
+    },
+    "n65-s0-shape0-none-base vs n65-s0-shape0-none-half": {
+      "through": 0.4,
+      "W": 7.157202376135559e-07,
+      "I": 1.259821507972561e-06,
+      "E": 8.337012588019762e-15,
+      "D": 1.3759774852624561e-16,
+      "energy": 5.83810444088137e-07,
+      "enstrophy": 1.1989612172669377e-06
+    },
+    "n65-s1-shape0-none-base vs n65-s1-shape0-none-half": {
+      "through": 0.4,
+      "W": 5.708815399292791e-07,
+      "I": 1.2383596621751603e-06,
+      "E": 1.6614843381069538e-05,
+      "D": 3.6121664668002437e-06,
+      "energy": 5.625798974990525e-07,
+      "enstrophy": 1.1555421967201137e-06
+    },
+    "n65-s-1-shape0-none-base vs n65-s-1-shape0-none-half": {
+      "through": 0.4,
+      "W": 5.708815429241169e-07,
+      "I": 1.2383596608575822e-06,
+      "E": 1.6614843381623915e-05,
+      "D": 3.6121664695002116e-06,
+      "energy": 5.625798977561064e-07,
+      "enstrophy": 1.1555421967494454e-06
+    },
+    "n33-s1-shape0-none-base vs n33-s1-shape0-shift1-base": {
+      "through": 0.39999999999999997,
+      "W": 2.1152551933330557e-16,
+      "I": 2.1021324947957027e-16,
+      "E": 1.05823936729972e-14,
+      "D": 4.777968916564262e-15,
+      "energy": 1.3625913685032834e-15,
+      "enstrophy": 1.757841573032702e-15
+    },
+    "n33-s1-shape0-none-base vs n33-s1-shape0-shifthalf-base": {
+      "through": 0.39999999999999997,
+      "W": 0.08348427787507408,
+      "I": 0.08474918693964496,
+      "E": 2.73220233480539e-15,
+      "D": 1.9501784376143067e-15,
+      "energy": 3.6231057270261164e-16,
+      "enstrophy": 6.064337280337639e-16
+    },
+    "n33-s1-shape0-none-base vs n33-s1-shape0-rotate-base": {
+      "through": 0.39999999999999997,
+      "W": 2.918540789282721e-16,
+      "I": 1.7576350981634988e-16,
+      "E": 2.557981210658022e-15,
+      "D": 2.0209400649837113e-15,
+      "energy": 3.830157399503973e-16,
+      "enstrophy": 3.8459337475656555e-16
+    }
+  },
+  "transformed_fields": {
+    "shift1": {
+      "max_pulled_back_field_relative_error": 3.601540307152034e-15,
+      "max_pulled_back_W_relative_error": 6.661338147750939e-16,
+      "raw_sampled_W_curve_relative_difference": 2.1152551933330557e-16
+    },
+    "shifthalf": {
+      "max_pulled_back_field_relative_error": 2.5378704652130736e-15,
+      "max_pulled_back_W_relative_error": 1.2212453270876722e-15,
+      "raw_sampled_W_curve_relative_difference": 0.08348427787507408
+    },
+    "rotate": {
+      "max_pulled_back_field_relative_error": 6.985714764941184e-15,
+      "max_pulled_back_W_relative_error": 6.661338147750939e-16,
+      "raw_sampled_W_curve_relative_difference": 2.918540789282721e-16
     }
   },
   "source_energy_changes_percent": {
@@ -70,6 +203,76 @@
       "max_tail_enstrophy": 0.16638879772303136,
       "max_energy_balance_relative": 1.3743293640070513e-06,
       "max_divergence": 2.6298442317950346e-15
+    },
+    "n33-s-1-shape0-rotate-base": {
+      "n": 33,
+      "dt": 0.005263157894736842,
+      "steps": 76,
+      "end_time": 0.39999999999999997,
+      "initial_energy": 4.610003196967154,
+      "final_W": 11.87001943673406,
+      "final_E": 0.021613376921379535,
+      "final_D": -0.0028814467854569293,
+      "max_tail_energy": 0.07122787892934232,
+      "max_tail_enstrophy": 0.1663887977230314,
+      "max_energy_balance_relative": 1.3743293641997146e-06,
+      "max_divergence": 3.1131072314078752e-15
+    },
+    "n33-s-1-shape0-shift1-base": {
+      "n": 33,
+      "dt": 0.005263157894736842,
+      "steps": 76,
+      "end_time": 0.39999999999999997,
+      "initial_energy": 4.6100031969671535,
+      "final_W": 11.870019436734056,
+      "final_E": 0.02161337692137919,
+      "final_D": -0.002881446785456899,
+      "max_tail_energy": 0.07122787892934235,
+      "max_tail_enstrophy": 0.1663887977230314,
+      "max_energy_balance_relative": 1.3743293626102427e-06,
+      "max_divergence": 3.112105731871635e-15
+    },
+    "n33-s-1-shape0-shifthalf-base": {
+      "n": 33,
+      "dt": 0.005263157894736842,
+      "steps": 76,
+      "end_time": 0.39999999999999997,
+      "initial_energy": 4.610003196967154,
+      "final_W": 12.863871525628115,
+      "final_E": 0.02161337692137931,
+      "final_D": -0.0028814467854568955,
+      "max_tail_energy": 0.07122787892934235,
+      "max_tail_enstrophy": 0.16638879772303142,
+      "max_energy_balance_relative": 1.3743293628510715e-06,
+      "max_divergence": 3.929772228393047e-15
+    },
+    "n33-s-1-shape1-none-base": {
+      "n": 33,
+      "dt": 0.005263157894736842,
+      "steps": 76,
+      "end_time": 0.39999999999999997,
+      "initial_energy": 4.610003196967154,
+      "final_W": 11.783012543841897,
+      "final_E": 0.02281066284383742,
+      "final_D": -0.0031397844830051307,
+      "max_tail_energy": 0.07122744429142844,
+      "max_tail_enstrophy": 0.16638997906737402,
+      "max_energy_balance_relative": 1.3743530329340393e-06,
+      "max_divergence": 2.548841625571349e-15
+    },
+    "n33-s-1-shape2-none-base": {
+      "n": 33,
+      "dt": 0.005263157894736842,
+      "steps": 76,
+      "end_time": 0.39999999999999997,
+      "initial_energy": 4.6100031969671535,
+      "final_W": 11.756984477956243,
+      "final_E": 0.019644504822206203,
+      "final_D": -0.003175145130017775,
+      "max_tail_energy": 0.07122853492700097,
+      "max_tail_enstrophy": 0.16638782643080338,
+      "max_energy_balance_relative": 1.3759961797886858e-06,
+      "max_divergence": 2.719035884731212e-15
     },
     "n33-s0-shape0-none-base": {
       "n": 33,
@@ -98,6 +301,76 @@
       "max_tail_enstrophy": 0.1663887977230314,
       "max_energy_balance_relative": 1.3743293642960462e-06,
       "max_divergence": 2.3064824648030624e-15
+    },
+    "n33-s1-shape0-rotate-base": {
+      "n": 33,
+      "dt": 0.005263157894736842,
+      "steps": 76,
+      "end_time": 0.39999999999999997,
+      "initial_energy": 4.6100031969671535,
+      "final_W": 11.870019436734047,
+      "final_E": 0.02161337692137885,
+      "final_D": 0.002881446785456888,
+      "max_tail_energy": 0.07122787892934233,
+      "max_tail_enstrophy": 0.1663887977230314,
+      "max_energy_balance_relative": 1.374329363621725e-06,
+      "max_divergence": 2.8453893046897237e-15
+    },
+    "n33-s1-shape0-shift1-base": {
+      "n": 33,
+      "dt": 0.005263157894736842,
+      "steps": 76,
+      "end_time": 0.39999999999999997,
+      "initial_energy": 4.6100031969671535,
+      "final_W": 11.870019436734054,
+      "final_E": 0.021613376921379168,
+      "final_D": 0.0028814467854569254,
+      "max_tail_energy": 0.07122787892934235,
+      "max_tail_enstrophy": 0.1663887977230314,
+      "max_energy_balance_relative": 1.3743293618877553e-06,
+      "max_divergence": 3.11020305437656e-15
+    },
+    "n33-s1-shape0-shifthalf-base": {
+      "n": 33,
+      "dt": 0.005263157894736842,
+      "steps": 76,
+      "end_time": 0.39999999999999997,
+      "initial_energy": 4.6100031969671535,
+      "final_W": 12.8638715256281,
+      "final_E": 0.02161337692137887,
+      "final_D": 0.002881446785456902,
+      "max_tail_energy": 0.07122787892934235,
+      "max_tail_enstrophy": 0.1663887977230314,
+      "max_energy_balance_relative": 1.3743293637180567e-06,
+      "max_divergence": 4.170133169965774e-15
+    },
+    "n33-s1-shape1-none-base": {
+      "n": 33,
+      "dt": 0.005263157894736842,
+      "steps": 76,
+      "end_time": 0.39999999999999997,
+      "initial_energy": 4.6100031969671535,
+      "final_W": 11.783012543841878,
+      "final_E": 0.022810662843837332,
+      "final_D": 0.003139784483005122,
+      "max_tail_energy": 0.07122744429142844,
+      "max_tail_enstrophy": 0.166389979067374,
+      "max_energy_balance_relative": 1.374353033319366e-06,
+      "max_divergence": 2.6225320640977645e-15
+    },
+    "n33-s1-shape2-none-base": {
+      "n": 33,
+      "dt": 0.005263157894736842,
+      "steps": 76,
+      "end_time": 0.39999999999999997,
+      "initial_energy": 4.6100031969671535,
+      "final_W": 11.75698447795622,
+      "final_E": 0.019644504822205786,
+      "final_D": 0.0031751451300177547,
+      "max_tail_energy": 0.07122853492700096,
+      "max_tail_enstrophy": 0.16638782643080338,
+      "max_energy_balance_relative": 1.3759961801258466e-06,
+      "max_divergence": 2.750682940286589e-15
     },
     "n49-s-1-shape0-none-base": {
       "n": 49,
@@ -140,6 +413,90 @@
       "max_tail_enstrophy": 0.008399652593944425,
       "max_energy_balance_relative": 9.352872198101597e-07,
       "max_divergence": 4.646469701437794e-15
+    },
+    "n65-s-1-shape0-none-base": {
+      "n": 65,
+      "dt": 0.0024390243902439024,
+      "steps": 164,
+      "end_time": 0.4,
+      "initial_energy": 4.712860307017214,
+      "final_W": 16.108088158023868,
+      "final_E": 0.021593853456193145,
+      "final_D": -0.0029153398492068926,
+      "max_tail_energy": 1.177359786671795e-05,
+      "max_tail_enstrophy": 8.521260999163213e-05,
+      "max_energy_balance_relative": 5.185026810651165e-07,
+      "max_divergence": 7.8512180308985e-15
+    },
+    "n65-s-1-shape0-none-half": {
+      "n": 65,
+      "dt": 0.0012195121951219512,
+      "steps": 328,
+      "end_time": 0.4,
+      "initial_energy": 4.712860307017214,
+      "final_W": 16.108085154096468,
+      "final_E": 0.02159386903168672,
+      "final_D": -0.0029153393030275873,
+      "max_tail_energy": 1.177359786671795e-05,
+      "max_tail_enstrophy": 8.521260999163213e-05,
+      "max_energy_balance_relative": 1.2958145792214488e-07,
+      "max_divergence": 6.966239647482679e-15
+    },
+    "n65-s0-shape0-none-base": {
+      "n": 65,
+      "dt": 0.002484472049689441,
+      "steps": 161,
+      "end_time": 0.4,
+      "initial_energy": 4.712389068110402,
+      "final_W": 16.003396738401612,
+      "final_E": 1.4602305621495542e-14,
+      "final_D": 6.429331682335314e-17,
+      "max_tail_energy": 1.1774775068385477e-05,
+      "max_tail_enstrophy": 8.521679194899348e-05,
+      "max_energy_balance_relative": 5.386498589623812e-07,
+      "max_divergence": 7.665854790949118e-15
+    },
+    "n65-s0-shape0-none-half": {
+      "n": 65,
+      "dt": 0.0012422360248447205,
+      "steps": 322,
+      "end_time": 0.4,
+      "initial_energy": 4.712389068110402,
+      "final_W": 16.003389672616304,
+      "final_E": 2.857577703259966e-14,
+      "final_D": 1.0628166979535346e-16,
+      "max_tail_energy": 1.1774775068385477e-05,
+      "max_tail_enstrophy": 8.521679194899348e-05,
+      "max_energy_balance_relative": 1.346161638402415e-07,
+      "max_divergence": 7.883848971549055e-15
+    },
+    "n65-s1-shape0-none-base": {
+      "n": 65,
+      "dt": 0.0024390243902439024,
+      "steps": 164,
+      "end_time": 0.4,
+      "initial_energy": 4.712860307017214,
+      "final_W": 16.108088158023993,
+      "final_E": 0.021593853456194766,
+      "final_D": 0.002915339849206985,
+      "max_tail_energy": 1.1773597866717936e-05,
+      "max_tail_enstrophy": 8.521260999163204e-05,
+      "max_energy_balance_relative": 5.185026810180019e-07,
+      "max_divergence": 7.363183987048213e-15
+    },
+    "n65-s1-shape0-none-half": {
+      "n": 65,
+      "dt": 0.0012195121951219512,
+      "steps": 328,
+      "end_time": 0.4,
+      "initial_energy": 4.712860307017214,
+      "final_W": 16.108085154096745,
+      "final_E": 0.02159386903169058,
+      "final_D": 0.002915339303027853,
+      "max_tail_energy": 1.1773597866717936e-05,
+      "max_tail_enstrophy": 8.521260999163204e-05,
+      "max_energy_balance_relative": 1.2958145782791564e-07,
+      "max_divergence": 8.084477346802697e-15
     }
   }
 }

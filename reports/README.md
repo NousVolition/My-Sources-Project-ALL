@@ -74,3 +74,9 @@ The full restart arrays remain in the local calculation workspace. They are larg
 - [Norms, signs, reflection, numerical methods and evidence categories](../math/imports/hug-ns/mirror-fluid/methods-controls/METHODS.md).
 
 The counts above describe the saved October 8 snapshot. Later verified batches are linked under Newly completed comparisons; unfinished local runs are not presented as completed GitHub results.
+
+## New completed tests
+
+- [Separate periodic starting field: five initial grids](matched-stretch/periodic-start-check/README.md). The 256-grid width check passes; the large change in starting energy is reported.
+- [Four reduced-model layers: 46 completed runs and plots](../math/imports/hug-ns/mirror-fluid/model-layers/README.md). Seventeen driven fluid comparisons are underway.
+- [All 22 numerical controls completed](../math/imports/hug-ns/mirror-fluid/methods-controls/README.md), including grid, timestep, translation, rotation and initial-shape checks.
