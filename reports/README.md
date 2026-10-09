@@ -50,5 +50,7 @@ Earlier vortex snapshot: 2026-10-08T20:40:59.597392+00:00. The vortex matrix is 
 
 The full restart arrays remain in the local calculation workspace. They are large solver files; this folder includes the display data, measurement tables and source code needed to inspect the reports. Private next-step notes and temporary verification screenshots are not part of this report collection.
 
+## Newly completed comparisons
 
-
+- [Dynamic source weights and cubic term: 26 runs, four unseen starts](../math/imports/hug-ns/mirror-fluid/dynamic-q/README.md).
+- [Original 48/64/80 replay: fixed and moving cutoff measurements](support/fixed-cutoff-run/README.md).

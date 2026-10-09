@@ -62,17 +62,18 @@ The JSON column named `D` is a signed measurement, distinct from the surrounding
 | Zero-break control | E remains at numerical roundoff. |
 | Changes in surrounding sources | Five source configurations were evolved to time 0.5. |
 | q integrates a fluid measurement | The executed rule is dq/dt = -0.2q + 0.8D. q is recorded after each step and does not force the fluid. |
-| Separate source weights and cross term | [Endpoint source additions measured](source-attribution/README.md): C alone, D alone and combined at 50/50 and 70/30, with half-step checks. Dynamic weights and the proposed cross-pair term are not yet fitted. |
-| Cubic feedback and branch selection | The current fluid-record script has no cubic term. This part remains to be tested. |
-| Prediction on held-out runs | Separate source effects closely reproduce the two known combined endpoints retrospectively. Unseen-run validation of the full versus reduced q models remains to be performed. |
+| Separate source weights and cross term | [Dynamic test completed](dynamic-q/README.md): four explicit interaction features fitted from 10 training starts, with independent AB bias and independently shaped D. This is a six-template implementation; its weights are not unique causal contributions. |
+| Cubic feedback and branch selection | Cubic damping was fitted and compared with the linear model on four unseen starts. This does not establish branch selection: nonnegative linear and cubic damping cannot create two isolated stable branches under constant inputs. |
+| Prediction on held-out runs | Four complete starts withheld from fitting, with reflected, half-step and 49-grid controls. Both measured-input predictions and forecasts with inputs frozen at time 0.1 are reported. |
 
 The new source-addition test measures an interaction contrast relative to the fixed A–B background. It does not uniquely decompose the evolving fluid or establish competition between pairings. Its 33³ results pass the time-step comparison; spatial convergence is not established.
 
-The fitting comparison uses A–B alone, A–B plus C, A–B plus C and D, and the full model including cross-pair contributions. Compare predictions on runs withheld from fitting, then check the reflected versions with the same fitted rule.
+The completed fitting comparison includes AB alone, AB plus C, AB plus C and D, all source interactions, and all interactions plus cubic damping. The fluid coordinate q_fluid is measured independently; the historical passive q_record is retained as a separate control. [Definitions, prediction errors and numerical limits](dynamic-q/README.md).
 
 Cancellation in q does not require small E: different directional contributions can cancel while the full field remains asymmetric. Measure both. Branch locking requires feedback that supports it; positive linear and cubic damping with fixed inputs alone do not create multiple stable branches.
 
 These tests concern symmetry and directional response. Peak vorticity, divergence, and grid and timestep comparisons continue to measure the accuracy of the fluid computation.
 
 [Completed results and runnable code](README.md) · [Actual verification](verification.json)
+
 
