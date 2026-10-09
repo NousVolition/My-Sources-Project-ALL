@@ -134,6 +134,8 @@ def build_report(d,s):
 
 This is an analysis of saved unforced runs. It adds no force, boundary rule, new initial field or time evolution. The original matched-stretch start and the separate periodic surroundings study are shown separately. New analysis is authorized for publication; no private source documents or their extracted contents are included.
 
+[Explore the saved velocity directions](motion.html). The motion view contains 19 saved fields and 125 velocity arrows per field. Arrow locations are fixed samples; arrows are not particle tracks. Dots in the surroundings cases are saved material labels, not individual molecules. No impact or molecular collision was simulated. Data and JavaScript syntax checks passed; automated browser inspection was blocked by the app's local-file URL policy.
+
 ## 1. Original matched-stretch start
 
 ![Original timeline](original-timeline.png)
@@ -204,6 +206,7 @@ To rebuild charts from the published measurements, install NumPy and Matplotlib,
     (ROOT/'README.md').write_text(text,encoding='utf-8')
     body=''.join(f'<section><h2>{html.escape(title)}</h2><img src="{name}" alt="{html.escape(title)}"></section>' for title,name in [('Does the same point strengthen?','same-point.png'),('Original matched-stretch start','original-timeline.png'),('Moving central points and their response','central-timeline.png'),('Resolution and time-step checks','refinement.png')])
     page='''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>What happens to the central tube?</title><style>body{font:17px/1.6 system-ui;background:#f1f5f9;color:#172536;max-width:1200px;margin:auto;padding:32px}h1{font-size:36px;line-height:1.2}section{background:white;border:1px solid #dce4ed;border-radius:14px;padding:20px;margin:24px 0}img{width:100%;height:auto}p{max-width:900px}a{color:#176b83}.tag{color:#526274;font-size:14px}</style><p class="tag">SAVED DATA · ZERO EXTERNAL FORCE · TWO DISTINCT STARTS</p><h1>What happens to the central tube?</h1><p><strong>The central points lose spin, then regain it. Their stretching response changes sign.</strong> This occurs in the separate surroundings study. Its later response still depends on the grid.</p><p>In the original matched-stretch run, the whole-box maximum lies outside the fixed interior cylinder at every saved time. A fixed region does not follow the moving tube.</p>'''+body+'''<p>Thirty surroundings fields and 82 original fields checked. No new simulation. <a href="README.md">Full definitions and comparison tables</a> · <a href="summary.json">Summary data</a></p></html>'''
+    page=page.replace('<h1>What happens to the central tube?</h1>','<h1>What happens to the central tube?</h1><p><a href="motion.html">Explore saved velocity directions and moving labels</a></p>')
     (ROOT/'index.html').write_text(page,encoding='utf-8')
     print(json.dumps({'report':str(ROOT/'README.md'),'charts':4,'comparisons':len(s['comparisons'])}))
 
