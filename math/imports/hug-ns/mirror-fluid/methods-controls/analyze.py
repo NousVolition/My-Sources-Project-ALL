@@ -107,9 +107,11 @@ def main():
         s=runs[name]['rows'][-1]['spectra'];x=np.array(s['shell_index'])
         for ax,key in zip(axes,('energy','enstrophy')):
             y=np.array(s[key]);line=ax.semilogy(x[y>1e-18],y[y>1e-18],label=f'{n} cubed')[0]
-            ax.axvline(s['component_cutoff'],color=line.get_color(),alpha=.6,linestyle=':')
+            _,_,ops,_=initial(m,n)
+            actual_cutoff=float(np.max(np.abs(ops[0][ops[4]]))/(2*np.pi/m.L))
+            ax.axvline(actual_cutoff,color=line.get_color(),alpha=.6,linestyle=':')
             ax.set_title(key.capitalize()+' spectrum at t=0.4');ax.set_xlabel('Radial shell index');ax.grid(alpha=.2);ax.legend()
-    fig.suptitle('All velocity components | dotted lines: component cutoff\nCubical retained support extends to its diagonal corner')
+    fig.suptitle('All velocity components | dotted lines: actual retained component limit\nCubical retained support extends to its diagonal corner')
     fig.savefig(ROOT/'spectra.png',dpi=150);plt.close(fig)
     fig,axes=plt.subplots(1,3,figsize=(13,4.8),layout='constrained')
     for name in ('small lean','gap hug'):
