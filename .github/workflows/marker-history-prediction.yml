@@ -1,0 +1,32 @@
+name: Marker history prediction tests
+
+on:
+  push:
+    paths:
+      - 'reports/matched-stretch/history-prediction/**'
+      - 'reports/matched-stretch/numerics.py'
+      - '.github/workflows/marker-history-prediction.yml'
+  pull_request:
+    paths:
+      - 'reports/matched-stretch/history-prediction/**'
+      - 'reports/matched-stretch/numerics.py'
+      - '.github/workflows/marker-history-prediction.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  numerical-and-leakage-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install study dependencies
+        run: python -m pip install -r reports/matched-stretch/history-prediction/requirements.txt
+      - name: Analytic, identity and causal fitting checks
+        env:
+          OMP_NUM_THREADS: '1'
+          OPENBLAS_NUM_THREADS: '1'
+        run: python -m pytest reports/matched-stretch/history-prediction/test_history_prediction.py -q

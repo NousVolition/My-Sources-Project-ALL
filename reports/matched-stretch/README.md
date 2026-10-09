@@ -1,5 +1,15 @@
 # Matched-stretch numerical controls
 
+**Menger–Koch–Romeo–Juliet comparison:** [Completed marker relationships and motion tests](relationship-fractal-study/README.md). 360 case trajectories; exploratory interaction law with explicit limits, not a demonstrated improvement to Navier–Stokes.
+
+**Completed +5 degree strain-axis tilt:** [Both tilt signs and boundary-join comparison through 0.40](completed-tilt-plus/README.md). All 41 new saved fields verified; peaks remain unresolved.
+
+**Completed -5 degree strain-axis tilt:** [Initial-field, trajectory and boundary-join comparison through 0.40](completed-tilt-minus/README.md). All 41 saved fields verified; peaks remain unresolved.
+
+**Completed 128-grid baseline and higher strain:** [64/128 grid curves and strain x1.1 through 0.40](completed-grid128-strain/README.md). All 82 saved fields verified; peak spatial-resolution checks still fail.
+
+**Two more completed parameter runs:** [Tube spin x1.1 and background strain x0.9 through 0.40](completed-spin-strain/README.md). All 82 saved fields verified; peak spatial-resolution checks still fail.
+
 **Completed marker analyses:** [Individual paths and numerical controls](marker-stress/README.md), [changing fastest-separation labels](marker-stress/separation-roles.md), and [carpet, random-interval and Menger marker tests](marker-stress/fractal/README.md). Passive tracking reuses saved fields; the underlying fluid matrices remain in progress.
 
 **Completed parameter batch:** [Viscosity, radius and tube-spin comparisons through 0.40](completed-parameters/README.md). Five additional runs and 205 saved fields verified. Peak spatial resolution still fails.
