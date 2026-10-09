@@ -10,6 +10,8 @@ The **hug** is the starting idea: a form that surrounds, yields, and changes sha
 
 **[Fluid organization under stress: completed paired-disturbance pilot](reports/fluid-organization-pilot/README.md)** — code, full recordings and tests for the [Streams and Rocks study](https://github.com/NousVolition/Nous-Volition/tree/main/studies/fluid-organization). Marker-history prediction, water/air regimes, dilute fog/smoke controls, energy budgets and explicit numerical limits.
 
+**[Water, biological particles, and freezing: three-question computational study](reports/water-biology-study/README.md)** — miscible-water transport, separate suspended particles, density/thermal stratification, passive stress estimates and stochastic freezing controls. Includes analytic benchmarks, mass budgets, convergence checks, independent reproduction and explicit separation of synthetic results from published evidence.
+
 ## Start with the mathematics
 
 | Study | What it contains |
