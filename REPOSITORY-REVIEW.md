@@ -11,7 +11,7 @@ The review began from My-Sources-Project-ALL commit `068046b739d69dfd4288552e20b
 | Nous-Volition's CI only printed placeholder messages | Replaced with the existing 84 unit tests and checks of source syntax, JSON, local Markdown file links and all 196 entries in the three packaged study manifests |
 | Project status and math navigation described earlier imported tables as the latest work | Added dated current status and links to the two active study indexes; retained the earlier history and test totals in their original scope |
 | The report index called its updated matched-stretch count an October 8 snapshot | Corrected the description of the October 9 completion counts |
-| California-paper link did not match the actual stored filename | Corrected the link; original document bytes and filename preserved |
+| The local mirror decoded the California-paper filename incorrectly; Linux CI caught an initial incorrect link repair | Restored the original public link and canonical UTF-8 filename in the mirror; original document bytes preserved |
 | Broken character encoding in two Markdown guides and the motion viewer's embedded selector labels | Repaired the affected punctuation and superscript characters |
 | Local Nous-Volition mirror was older than public main | Refreshed the mirror from the hash-verified public files while preserving local extras |
 
