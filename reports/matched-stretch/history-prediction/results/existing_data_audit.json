@@ -1,0 +1,100 @@
+{
+  "independent_initial_conditions": 1,
+  "predictive_train_test_comparison_valid": false,
+  "reason": "All eight files share one physical initial-condition family. Companion markers/clones are not independent fluid runs. Grid variants also sample the raw nonperiodic start differently.",
+  "reused_particles": "First 250 primary markers; exclude 250 displaced companions and 5 exact clones",
+  "history_window": 0.04,
+  "gap": 0.02,
+  "horizon": 0.04,
+  "anchors": [
+    0.1,
+    0.16,
+    0.22
+  ],
+  "neighbors": 8,
+  "target": "Finite-neighborhood affine logarithmic stretch, not tangent FTLE; current start-neighbor set fixed through target window",
+  "historical_features": "Distance, angle, exchange and least-squares deformation evaluated using the new feature extractor. Alignment requiring unavailable gradient is omitted from summary.",
+  "records": {
+    "reference": {
+      "file": "C:\\Users\\ziman\\Documents\\Codex\\2026-10-08\\referenced-chatgpt-conversation-this-is-an-3\\work\\My-Sources-Project-ALL\\reports\\matched-stretch\\marker-stress\\reference.npz",
+      "sha256": "0333181bd95697305c5a44cd0843e42a9105abc200f8e545098805db8497c722",
+      "n_rows": 750,
+      "target_mean": 27.131460971877008,
+      "target_std": 14.214676110553153,
+      "mean_neighbor_endpoint_exchange": 0.169,
+      "mean_distance_log_change": 0.9018305783995244,
+      "target_RMSE_vs_reference": 0.0
+    },
+    "tracking_coarse": {
+      "file": "C:\\Users\\ziman\\Documents\\Codex\\2026-10-08\\referenced-chatgpt-conversation-this-is-an-3\\work\\My-Sources-Project-ALL\\reports\\matched-stretch\\marker-stress\\tracking_coarse.npz",
+      "sha256": "3e2ab01dd69b3e8588e3d2bf29161bcce578e71bc69624db633d84b922727e24",
+      "n_rows": 750,
+      "target_mean": 27.13150421644585,
+      "target_std": 14.214850638763425,
+      "mean_neighbor_endpoint_exchange": 0.169,
+      "mean_distance_log_change": 0.9018273803346071,
+      "target_RMSE_vs_reference": 0.00429997909108345
+    },
+    "tracking_medium": {
+      "file": "C:\\Users\\ziman\\Documents\\Codex\\2026-10-08\\referenced-chatgpt-conversation-this-is-an-3\\work\\My-Sources-Project-ALL\\reports\\matched-stretch\\marker-stress\\tracking_medium.npz",
+      "sha256": "cdde42f9eb33c84865f4b3550b193f2bdbd18ec3a637415077c44bbab542431e",
+      "n_rows": 750,
+      "target_mean": 27.13141997909848,
+      "target_std": 14.214710590638964,
+      "mean_neighbor_endpoint_exchange": 0.169,
+      "mean_distance_log_change": 0.9018214678828317,
+      "target_RMSE_vs_reference": 0.0011828483031428962
+    },
+    "fluid_half": {
+      "file": "C:\\Users\\ziman\\Documents\\Codex\\2026-10-08\\referenced-chatgpt-conversation-this-is-an-3\\work\\My-Sources-Project-ALL\\reports\\matched-stretch\\marker-stress\\fluid_half.npz",
+      "sha256": "e53d856f2db60586aefbd516b30fb5d7875a45ab6e42623d9e494a904eeb19ce",
+      "n_rows": 750,
+      "target_mean": 27.13354326535839,
+      "target_std": 14.216210675462825,
+      "mean_neighbor_endpoint_exchange": 0.169,
+      "mean_distance_log_change": 0.9015031318483416,
+      "target_RMSE_vs_reference": 0.009461701131567149
+    },
+    "grid128_medium": {
+      "file": "C:\\Users\\ziman\\Documents\\Codex\\2026-10-08\\referenced-chatgpt-conversation-this-is-an-3\\work\\My-Sources-Project-ALL\\reports\\matched-stretch\\marker-stress\\grid128_medium.npz",
+      "sha256": "2edcb3efa04f242e9403b8912d185847347f9e743fb635c81b7eaa0e36c51b80",
+      "n_rows": 750,
+      "target_mean": 36.82888303520326,
+      "target_std": 18.662255745720493,
+      "mean_neighbor_endpoint_exchange": 0.2683333333333333,
+      "mean_distance_log_change": -1.0634469627360346,
+      "target_RMSE_vs_reference": 20.001615370852527
+    },
+    "grid128": {
+      "file": "C:\\Users\\ziman\\Documents\\Codex\\2026-10-08\\referenced-chatgpt-conversation-this-is-an-3\\work\\My-Sources-Project-ALL\\reports\\matched-stretch\\marker-stress\\grid128.npz",
+      "sha256": "722a4f2418188fb974e6332b42bb4abdd38558aea108b2a8b764d56813be68bd",
+      "n_rows": 750,
+      "target_mean": 36.8298225577667,
+      "target_std": 18.663332267782398,
+      "mean_neighbor_endpoint_exchange": 0.2683333333333333,
+      "mean_distance_log_change": -1.0634847340255786,
+      "target_RMSE_vs_reference": 20.002470202736266
+    },
+    "grid128_refined": {
+      "file": "C:\\Users\\ziman\\Documents\\Codex\\2026-10-08\\referenced-chatgpt-conversation-this-is-an-3\\work\\My-Sources-Project-ALL\\reports\\matched-stretch\\marker-stress\\grid128_refined.npz",
+      "sha256": "60c0c1e4d5c57ab6e8131bb7c1d2e40ff625572adaf131eeb691245bebcdff23",
+      "n_rows": 750,
+      "target_mean": 36.82970816972211,
+      "target_std": 18.663144480946883,
+      "mean_neighbor_endpoint_exchange": 0.2683333333333333,
+      "mean_distance_log_change": -1.0634816175942985,
+      "target_RMSE_vs_reference": 20.002375194530646
+    },
+    "saved_time_coarse": {
+      "file": "C:\\Users\\ziman\\Documents\\Codex\\2026-10-08\\referenced-chatgpt-conversation-this-is-an-3\\work\\My-Sources-Project-ALL\\reports\\matched-stretch\\marker-stress\\saved_time_coarse.npz",
+      "sha256": "a597e010f3d6a366967afb517d0761f763704da51a2085620123ff9da55654b4",
+      "n_rows": 750,
+      "target_mean": 27.740053663901257,
+      "target_std": 14.460093386263981,
+      "mean_neighbor_endpoint_exchange": 0.16783333333333333,
+      "mean_distance_log_change": 0.8917488764814695,
+      "target_RMSE_vs_reference": 6.003329231786662
+    }
+  },
+  "source_verification_sha256": "02bd99097ee7702a29af9155b151dd927a64e519f11d5881f80d128bd1a1f0f4"
+}

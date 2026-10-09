@@ -1,0 +1,33 @@
+{
+  "seed_base": 20261008,
+  "replicas": 3,
+  "molecules": 216,
+  "box_side_nm": 1.8644464857499918,
+  "density_g_cm3": 0.9970000000000003,
+  "model": "OpenMM tip3p.xml, rigid, nonpolarizable",
+  "ensemble": "NVT",
+  "temperature_K": 300,
+  "time_step_fs": 2,
+  "friction_per_ps": 1,
+  "equilibration_ps": 20,
+  "production_ps": 50,
+  "sample_interval_ps": 0.1,
+  "force_score_interval_ps": 5,
+  "force_displacement_nm": 0.0001,
+  "cutoff_nm": 0.8,
+  "electrostatics": "PME",
+  "ewald_error_tolerance": 1e-05,
+  "platform": "OpenCL",
+  "properties": {
+    "Precision": "mixed"
+  },
+  "force_platform": "OpenCL",
+  "force_properties": {
+    "Precision": "double"
+  },
+  "openmm": "8.6.1",
+  "numpy": "2.5.3",
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "os": "Windows-11-10.0.26200-SP0",
+  "replica_independence": "Same initial oxygen sites; independently randomized orientations, thermostat and velocity seeds."
+}

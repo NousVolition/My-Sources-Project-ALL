@@ -80,3 +80,11 @@ The counts above describe the saved October 8 snapshot. Later verified batches a
 - [Separate periodic starting field: five initial grids](matched-stretch/periodic-start-check/README.md). The 256-grid width check passes; the large change in starting energy is reported.
 - [Four reduced-model layers: 46 completed runs and plots](../math/imports/hug-ns/mirror-fluid/model-layers/README.md). All 17 driven fluid comparisons are complete: [prediction scores and numerical controls](../math/imports/hug-ns/mirror-fluid/model-layers/FLUID.md). The tested scalar mappings fail the unseen-run prediction check.
 - [All 22 numerical controls completed](../math/imports/hug-ns/mirror-fluid/methods-controls/README.md), including grid, timestep, translation, rotation and initial-shape checks.
+
+## Identical water molecules: positional influence
+
+- [Reproducible toy-network and TIP3P water experiment](water-molecule-influence/README.md): methods, figures, complete saved trajectories, numerical controls, and limits on interpreting temporary response rankings as a hierarchy.
+
+## Marker-history prediction pilot
+
+- [Does past marker geometry predict future deformation?](matched-stretch/history-prediction/README.md) — 32 independent initial conditions, 64 simulations, whole-run holdouts, 13 passing local tests, complete numerical recordings and control plots. A small continuous-error gain; event results depend on the threshold, and the finer-grid comparison remains inconclusive.
