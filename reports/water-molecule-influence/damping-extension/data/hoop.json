@@ -1,0 +1,130 @@
+{
+  "rows": [
+    {
+      "q": 0.5,
+      "beta": 2.0,
+      "max_angle_error_vs_overdamped": 0.016970778052644075,
+      "final_phi": 0.0002116372186319777,
+      "overdamped_final_phi": 0.0004925006587599983
+    },
+    {
+      "q": 0.5,
+      "beta": 20.0,
+      "max_angle_error_vs_overdamped": 0.0002490774628585435,
+      "final_phi": 0.0004894112711970279,
+      "overdamped_final_phi": 0.0004925006587599983
+    },
+    {
+      "q": 1.0,
+      "beta": 2.0,
+      "max_angle_error_vs_overdamped": 0.0009013826374620615,
+      "final_phi": 0.16485780537944483,
+      "overdamped_final_phi": 0.1646167689069796
+    },
+    {
+      "q": 1.0,
+      "beta": 20.0,
+      "max_angle_error_vs_overdamped": 9.853426124167841e-06,
+      "final_phi": 0.16461907728932712,
+      "overdamped_final_phi": 0.1646167689069796
+    },
+    {
+      "q": 2.0,
+      "beta": 2.0,
+      "max_angle_error_vs_overdamped": 0.13226456566050082,
+      "final_phi": 1.0471975501956463,
+      "overdamped_final_phi": 1.0471974629014225
+    },
+    {
+      "q": 2.0,
+      "beta": 20.0,
+      "max_angle_error_vs_overdamped": 0.0015269705505970288,
+      "final_phi": 1.047197467206551,
+      "overdamped_final_phi": 1.0471974629014225
+    }
+  ],
+  "phase_rows": [
+    {
+      "beta": 2.0,
+      "phi0": -5.0,
+      "Omega0": 2.5,
+      "max_abs_Omega_minus_f_after_tau_0_1": 2.2773450562383437
+    },
+    {
+      "beta": 2.0,
+      "phi0": -3.0,
+      "Omega0": -2.5,
+      "max_abs_Omega_minus_f_after_tau_0_1": 1.4668573821340338
+    },
+    {
+      "beta": 2.0,
+      "phi0": -0.25,
+      "Omega0": 2.5,
+      "max_abs_Omega_minus_f_after_tau_0_1": 1.6796510588639744
+    },
+    {
+      "beta": 2.0,
+      "phi0": 0.25,
+      "Omega0": -2.5,
+      "max_abs_Omega_minus_f_after_tau_0_1": 1.6796510588639744
+    },
+    {
+      "beta": 2.0,
+      "phi0": 3.0,
+      "Omega0": 2.5,
+      "max_abs_Omega_minus_f_after_tau_0_1": 1.4668573821340338
+    },
+    {
+      "beta": 2.0,
+      "phi0": 5.0,
+      "Omega0": -2.5,
+      "max_abs_Omega_minus_f_after_tau_0_1": 2.2773450562383437
+    },
+    {
+      "beta": 20.0,
+      "phi0": -5.0,
+      "Omega0": 2.5,
+      "max_abs_Omega_minus_f_after_tau_0_1": 0.0017122024936724323
+    },
+    {
+      "beta": 20.0,
+      "phi0": -3.0,
+      "Omega0": -2.5,
+      "max_abs_Omega_minus_f_after_tau_0_1": 0.006496928866704943
+    },
+    {
+      "beta": 20.0,
+      "phi0": -0.25,
+      "Omega0": 2.5,
+      "max_abs_Omega_minus_f_after_tau_0_1": 0.0005533685852462389
+    },
+    {
+      "beta": 20.0,
+      "phi0": 0.25,
+      "Omega0": -2.5,
+      "max_abs_Omega_minus_f_after_tau_0_1": 0.0005533685852462389
+    },
+    {
+      "beta": 20.0,
+      "phi0": 3.0,
+      "Omega0": 2.5,
+      "max_abs_Omega_minus_f_after_tau_0_1": 0.006496928866704943
+    },
+    {
+      "beta": 20.0,
+      "phi0": 5.0,
+      "Omega0": -2.5,
+      "max_abs_Omega_minus_f_after_tau_0_1": 0.0017122024936724323
+    }
+  ],
+  "half_step_angle_difference_q2_beta20": 1.7272513630484099e-06,
+  "initial_phi": 0.2,
+  "initial_physical_velocity": 0,
+  "ds": 0.005,
+  "slow_time_end": 12,
+  "equilibria": "phi=0,pi always; phi=+/-acos(1/q) when q>1 (mod 2*pi).",
+  "stability": "For beta>0: bottom stable for q<1 and unstable for q>1; top unstable; off-center branches stable. At q=1 bottom is nonhyperbolic but nonlinearly stable.",
+  "scaling": "Using book force convention mr*phi_tt+b*phi_t=mg*f(phi): T=b/(mg), tau=t/T, beta=b/(m*sqrt(gr)), epsilon=1/beta^2=m^2*g*r/b^2.",
+  "phase_equations": "phi_tau=Omega; epsilon*Omega_tau=f(phi)-Omega. C: Omega=f(phi) is a nullcline, not exactly invariant for finite epsilon.",
+  "qualification": "Large beta at fixed q and after the initial velocity relaxation supports the overdamped reduction. Damping alone is not a proof that inertia can be dropped."
+}

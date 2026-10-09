@@ -1,0 +1,43 @@
+{
+  "spring_mass": 1,
+  "spring_k": 1,
+  "x0": 1,
+  "v0": 0,
+  "time_end": 12,
+  "rows": [
+    {
+      "gamma": 0.0,
+      "regime": "undamped",
+      "dt": 0.01,
+      "max_position_error": 4.600290148731867e-05,
+      "error_reduction_on_halving_dt": 4.000090625674993,
+      "zero_crossings": 4
+    },
+    {
+      "gamma": 0.5,
+      "regime": "underdamped",
+      "dt": 0.01,
+      "max_position_error": 1.2213862876406245e-05,
+      "error_reduction_on_halving_dt": 4.000123232636271,
+      "zero_crossings": 4
+    },
+    {
+      "gamma": 2.0,
+      "regime": "critical",
+      "dt": 0.01,
+      "max_position_error": 1.8932714259678463e-05,
+      "error_reduction_on_halving_dt": 4.000122875883005,
+      "zero_crossings": 0
+    },
+    {
+      "gamma": 5.0,
+      "regime": "overdamped",
+      "dt": 0.01,
+      "max_position_error": 2.2639263263068976e-05,
+      "error_reduction_on_halving_dt": 4.000202118868599,
+      "zero_crossings": 0
+    }
+  ],
+  "free_drag_max_position_error": 1.227540281811823e-06,
+  "scope": "Dimensionless analytic oscillator validation, not water molecular dynamics."
+}

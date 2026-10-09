@@ -6,6 +6,10 @@ A reproducible experiment asking whether identical molecules can acquire unequal
 
 ![Experimental results](results.png)
 
+## Damping and overdamped motion
+
+[The damping extension](damping-extension/README.md) adds adjustable drag, a literal damped leapfrog solver, analytic spring checks, and the rotating hoop's equilibrium and fast–slow tests. In 2,592 additional perturbed water trajectories from one matched state, drag rates of 5 and 50 ps⁻¹ reduce the mean 200-fs response to 45.0% and 3.38% of the undamped value. The water implementation uses constrained velocity Verlet with drag; friction-only probes cool and are not equilibrium liquid-water simulations.
+
 ## Finite-time impulse follow-up
 
 [The follow-up experiment](response-extension/README.md) runs 3,888 perturbed trajectories to test whether the snapshot force ranking predicts later motion. The original force leaders fall to ranks **104, 69 and 209 out of 216** by 200 femtoseconds in the three tested states. Includes complete saved response measurements, numerical controls, reproducible code and limitations.
