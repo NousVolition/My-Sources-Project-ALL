@@ -1,10 +1,10 @@
 # Vortex comparison: current numerical results
 
-Snapshot: 2026-10-09T14:20:20.355850+00:00. **43/48 runs completed locally; 43 verified completed records are published below.** All aligned and compressive runs, eight ordinary-step departure runs, both 80-grid half-step controls and the Fourier 112-grid half-step control are published. The remaining departure controls continue.
+Snapshot: 2026-10-09T14:50:15.711529+00:00. **44/48 runs completed locally; 44 verified completed records are published below.** All aligned and compressive runs, eight ordinary-step departure runs, both 80-grid and both 112-grid half-step controls are published. The remaining departure controls continue.
 
 ## Newly completed departure runs
 
-[Completed 112-grid Fourier half-step control](completed-departure-112-half/README.md), with independent field comparisons and timestep-difference charts.
+[Both completed 112-grid half-step controls](completed-departure-112-half/README.md), with independent field comparisons and timestep-difference charts.
 
 [Completed 112-grid ordinary-step results](completed-departure112-base/README.md), with saved-field checks and comparison against grid 80.
 
@@ -54,6 +54,7 @@ Snapshot: 2026-10-09T14:20:20.355850+00:00. **43/48 runs completed locally; 43 v
 | exodus-fd4-n64-base | complete | 0.40 | 97.55390 | 97.55390 | 23.93819 |
 | exodus-fd4-n80-base | complete | 0.40 | 103.95238 | 103.95238 | 24.13931 |
 | exodus-fd4-n112-base | complete | 0.40 | 123.50449 | 123.50449 | 24.27022 |
+| exodus-fd4-n112-half | complete | 0.40 | 123.50476 | 123.50476 | 24.27022 |
 | exodus-fd4-n80-half | complete | 0.40 | 103.95315 | 103.95315 | 24.13934 |
 | exodus-fourier-n48-base | complete | 0.40 | 88.15757 | 88.15757 | 22.56190 |
 | exodus-fourier-n64-base | complete | 0.40 | 102.64848 | 102.64848 | 24.27390 |

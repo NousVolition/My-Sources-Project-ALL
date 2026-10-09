@@ -1,11 +1,12 @@
 {
   "status": "passed",
-  "checked_utc": "2026-10-09T14:19:20.677222+00:00",
+  "checked_utc": "2026-10-09T14:49:22.411762+00:00",
   "new_simulations": 0,
   "completed_runs": [
-    "exodus-fourier-n112-half"
+    "exodus-fourier-n112-half",
+    "exodus-fd4-n112-half"
   ],
-  "saved_fields_checked": 5,
+  "saved_fields_checked": 10,
   "source_hashes": {
     "initial_design.py": "008d8ae42332377afcb068f0689d4f418c7e27e29cc08233a5fde2b554250c30",
     "solver.py": "5fecfe44050c47f374111a52e46e624a3fd4b6427575b3b5109086fe2789b821",
@@ -79,7 +80,76 @@
       "maximum_absolute_energy_budget_relative": 3.7429634685580104e-08,
       "first_spectral_warning": 0.26,
       "first_width_warning": 0.28
+    },
+    {
+      "id": "exodus-fd4-n112-half",
+      "result_sha256": "7fbee1941c60fd5d717b00a8db12ec45ac54b077b524a73abc92f012fff4f2bf",
+      "fields": [
+        {
+          "file": "field-t0.00.npz",
+          "sha256": "4da465d5d633858e48c559c2757eb1a269d2540ed441d28f80d2d0e6b8f478a6",
+          "relative_errors": {
+            "Wmax": 1.776356839738812e-16,
+            "energy": 2.4829458554078156e-16,
+            "spectral_enstrophy": 4.204711617768182e-16,
+            "native_enstrophy": 2.8031838325063634e-16
+          }
+        },
+        {
+          "file": "field-t0.10.npz",
+          "sha256": "efc9291ec9665e780258356a63604df6bc8618bcbc0e64ccc326a23d23aa6809",
+          "relative_errors": {
+            "Wmax": 3.40545642149002e-16,
+            "energy": 4.969211384378435e-16,
+            "spectral_enstrophy": 4.387811573983674e-16,
+            "native_enstrophy": 1.4626617951007015e-16
+          }
+        },
+        {
+          "file": "field-t0.20.npz",
+          "sha256": "aa7ab2ab227cfe3b15a1fc5cefd31d9db92e815bc6f820a602f64c3787cb3e0d",
+          "relative_errors": {
+            "Wmax": 3.062763213128605e-16,
+            "energy": 4.97311014235847e-16,
+            "spectral_enstrophy": 4.2812033901573774e-16,
+            "native_enstrophy": 4.291779037531918e-16
+          }
+        },
+        {
+          "file": "field-t0.30.npz",
+          "sha256": "27c2a2cd44b492caaea7579149f674f258b2a0a9d34aa2c7fa8a40bc4657314d",
+          "relative_errors": {
+            "Wmax": 0.0,
+            "energy": 3.7341599027079676e-16,
+            "spectral_enstrophy": 4.1127665117504156e-16,
+            "native_enstrophy": 2.819353375919948e-16
+          }
+        },
+        {
+          "file": "field-t0.40.npz",
+          "sha256": "2306201477b29f4ed3e3ad71ea32ebca062ecdfe3a1d6d7183bc123c32a6a39e",
+          "relative_errors": {
+            "Wmax": 4.602528419516201e-16,
+            "energy": 1.2470491375151672e-16,
+            "spectral_enstrophy": 3.309782985110944e-16,
+            "native_enstrophy": 3.5617815775087427e-16
+          }
+        }
+      ],
+      "endpoint_errors": {
+        "high_band_enstrophy_fraction": 0.0,
+        "direct_spectral_enstrophy_production": 0.0,
+        "W_central_roi": 0.0,
+        "origin_axial_strain": 0.0,
+        "central_marker_parallel_stretch_spin_weighted": 0.0
+      },
+      "maximum_stage_cfl": 0.13845218394841277,
+      "maximum_absolute_energy_budget_relative": 3.7705187377713064e-08,
+      "first_spectral_warning": 0.26,
+      "first_width_warning": 0.26
     }
   ],
-  "scope": "Physical W, energy and both enstrophies independently summed from saved arrays at 0, .1, .2, .3, .4. Endpoint widths, strain and spectra remeasured with frozen diagnostic code. Integrated I and budget rates retain recorded RK-stage accumulations; trajectories were not rerun. Numerical completion does not imply spatial convergence."
+  "scope": "Physical W, energy and both enstrophies independently summed from saved arrays at 0, .1, .2, .3, .4. Endpoint widths, strain and spectra remeasured with frozen diagnostic code. Integrated I and budget rates retain recorded RK-stage accumulations; trajectories were not rerun. Numerical completion does not imply spatial convergence.",
+  "new_saved_fields_checked": 5,
+  "previous_verified_fields_reused": 5
 }
