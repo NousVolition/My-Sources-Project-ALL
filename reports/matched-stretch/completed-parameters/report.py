@@ -1,0 +1,44 @@
+"""Rebuild charts and factual report from the completed numerical records."""
+from pathlib import Path
+import os,json
+import numpy as np
+ROOT=Path(__file__).resolve().parent
+os.environ.setdefault('MPLCONFIGDIR',str(ROOT/'plot-cache'))
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+def summary(r):
+    rows=r['series'];first,last=rows[0],rows[-1];peak=max(rows,key=lambda x:x['Wmax'])
+    return {'id':r['job']['id'],'job':r['job'],'sampled_peak_W':peak['Wmax'],'sampled_peak_time':peak['t'],'final_W':last['Wmax'],'final_I':last['I'],'initial_energy':first['energy'],'energy_change_percent':100*(last['energy']/first['energy']-1),'energy_budget_max_percent':100*max(abs(x['energy_budget_relative_residual']) for x in rows),'enstrophy_budget_max_percent':100*max(abs(x['enstrophy_budget_relative_residual']) for x in rows),'final_width_cells':last['width_at_global_peak']['minimum_chord_cells'],'max_width_cells':max(x['width_at_global_peak']['minimum_chord_cells'] for x in rows),'final_tail_enstrophy_percent':100*last['high_band_enstrophy_fraction'],'passed_resolution_rows':sum(bool(x['resolved_screen']) for x in rows),'final_spin_ratio':last['max_to_mean_spin'],'dt':r['dt']}
+def main():
+    data=json.loads((ROOT/'measurements.json').read_text());runs=data['runs'];rows=[summary(r) for r in runs.values()];byid={x['id']:x for x in rows}
+    viscosity=[runs['viscosity-n64-nu0.0'],runs['viscosity-n64-nu0.0005'],runs['baseline-n64-base'],runs['viscosity-n64-nu0.002'],runs['viscosity-n64-nu0.01']]
+    fig,axs=plt.subplots(2,3,figsize=(13,7.5),layout='constrained')
+    for r in viscosity:
+        nu=r['job']['nu'];t=[v['t'] for v in r['series']];label='0 (inviscid)' if nu==0 else str(nu);style='--' if nu==0 else '-'
+        values=[[v['Wmax'] for v in r['series']],[v['I'] for v in r['series']],[v['energy']/r['series'][0]['energy'] for v in r['series']],[v['width_at_global_peak']['minimum_chord_cells'] for v in r['series']],[100*v['high_band_enstrophy_fraction'] for v in r['series']],[100*v['energy_budget_relative_residual'] for v in r['series']]]
+        for ax,value in zip(axs.flat,values):ax.plot(t,value,style,label=label)
+    for ax,title,ylabel in zip(axs.flat,['Peak spin','Accumulated peak spin','Kinetic energy','Peak width','Enstrophy near cutoff','Energy budget discrepancy'],['W','I','Energy / initial energy','Grid cells','Upper-band enstrophy (%)','Initial-energy fraction (%)']):ax.set(title=title,xlabel='Model time',ylabel=ylabel);ax.grid(alpha=.2);ax.legend(fontsize=7)
+    axs[1,0].axhline(6,color='.3',ls=':',lw=1);fig.suptitle('Same initial field, five viscosities | 64 cubed | peak resolution fails')
+    fig.savefig(ROOT/'viscosity-comparison.png',dpi=150);plt.close(fig)
+    fig,axs=plt.subplots(2,3,figsize=(12,7),layout='constrained')
+    groups=[[('Radius 0.18','radius-n64-v0.18'),('Radius 0.20','baseline-n64-base'),('Radius 0.22','radius-n64-v0.22')],[('Tube spin x0.9','spin_factor-n64-v0.9'),('Tube spin x1.0','baseline-n64-base')]]
+    for axis,group in zip(axs,groups):
+        for label,rid in group:
+            r=runs[rid];t=[v['t'] for v in r['series']]
+            for ax,key in zip(axis,['Wmax','I','max_to_mean_spin']):ax.plot(t,[v[key] for v in r['series']],label=label)
+        for ax,title in zip(axis,['Peak spin W','Accumulated peak I','Maximum / mean spin']):ax.set(title=title,xlabel='Model time');ax.grid(alpha=.2);ax.legend(fontsize=8)
+    fig.suptitle('Radius and initial tube-spin changes | viscosity 0.001 | unresolved peaks')
+    fig.savefig(ROOT/'initial-shape-comparison.png',dpi=150);plt.close(fig)
+    result={'status':'completed_records_verified','new_runs':len(data['new_completed_runs']),'reused_runs':len(data['reused_completed_runs']),'saved_fields_verified':205,'summaries':rows,'scope':'64 cubed through 0.40 only; no new evolution or larger-grid completion claim'}
+    (ROOT/'summary.json').write_text(json.dumps(result,indent=2)+'\n')
+    label=lambda rid:rid.replace('-n64','').replace('baseline-base','Baseline')
+    text=['# Completed viscosity, radius and tube-spin comparisons','','**Five additional runs reached time 0.40 and passed the saved-data verification. All remain spatially unresolved at their sharpest spin peaks.**','','This batch adds viscosity 0.0005, the separate inviscid comparison, radii 0.18 and 0.22, and tube spin multiplied by 0.9. Three already published completed records supply the baseline and viscosities 0.002 and 0.01. The 128³ and 256³ matrix is still in progress.','','## What was held fixed','','Each run uses the original supplied matched-stretch construction, cube side 6, its preserved mean, the Heun integrator and zero external force. The viscosity comparisons have bit-identical starting fields. Radius changes keep the prescribed analytic tube peak fixed, while changing its shape and starting energy. The spin-factor run scales the tube contribution; it does not scale the entire background or the largest whole-box initial spin. No energy renormalization or periodic repair was introduced. Viscosity zero is an inviscid/Euler comparison, separate from the positive-viscosity Navier–Stokes cases.','','## Results','','| Run | Largest saved W | Time of saved peak | Final W | Final I | Final maximum/mean spin |','| --- | ---: | ---: | ---: | ---: | ---: |']
+    for rid in data['new_completed_runs']:r=byid[rid];text.append(f"| {label(rid)} | {r['sampled_peak_W']:.3f} | {r['sampled_peak_time']:.2f} | {r['final_W']:.3f} | {r['final_I']:.3f} | {r['final_spin_ratio']:.3f} |")
+    text+=['','W is maximum grid-point vorticity magnitude, I is its recorded time integral at every integration step, and the spin ratio is W divided by mean vorticity magnitude. Peak timing is sampled every 0.01. All quantities use model units.','','![Viscosity comparisons](viscosity-comparison.png)','','## Energy and numerical budgets','','| Viscosity | Energy change through 0.40 | Final I | Largest energy-budget residual |','| ---: | ---: | ---: | ---: |']
+    for run in viscosity:r=byid[run['job']['id']];text.append(f"| {run['job']['nu']} | {r['energy_change_percent']:+.6f}% | {r['final_I']:.3f} | {r['energy_budget_max_percent']:.6f}% |")
+    text+=['','The positive-viscosity cases lose kinetic energy. The inviscid comparison has a small positive energy drift from numerical integration; it is not an external energy source. Small budget residuals check consistency of the discrete calculation, not adequate spatial resolution. The accumulated peak grows less over this interval with higher viscosity in these records; individual peak curves still fluctuate.','','![Initial-shape comparisons](initial-shape-comparison.png)','','## Resolution checks','','| New run | Final half-peak width (cells) | Upper-band enstrophy at end | Saved outputs passing the combined screen |','| --- | ---: | ---: | ---: |']
+    for rid in data['new_completed_runs']:r=byid[rid];text.append(f"| {label(rid)} | {r['final_width_cells']:.3f} | {r['final_tail_enstrophy_percent']:.2f}% | {r['passed_resolution_rows']}/41 |")
+    text+=['','The six-cell width requirement fails, and a large fraction of enstrophy reaches the upper retained spectral band. The raw starting strain still has a mismatch where the periodic box joins. Whole-box maxima therefore cannot be treated as established central-tube concentration. These comparisons describe the supplied discrete construction. They do not establish physical peak convergence, periodic breathing or global regularity.','','## Verification','','All 205 saved fields from the five new runs were checked for finite values and hashed. Maximum spin, kinetic energy and enstrophy were independently recomputed using NumPy inverse transforms at every saved time. Initial fields were reconstructed from their prescribed parameters; viscosity starts match baseline exactly. Final divergence, spectral fraction and budget diagnostics were remeasured, and direct enstrophy production was compared with the solver RHS identity. Mean velocity was checked throughout. Integrated quantities retain their recorded step accumulations; the simulations were not repeated. The five new runs match current source hashes. Two reused older records predate the documented metadata-write retry; the numerical solver hash is identical throughout.','','Run `python report.py` beside `measurements.json` to rebuild the figures and this report. `verify.py` requires the original workspace and saved fields.','','[Verification details](verification.json) · [Summary](summary.json) · [Measurements](measurements.json) · [Original protocol](../protocol.json) · [Tracked relationships](../central-response/tracked-patterns/README.md) · [Main study](../README.md)','']
+    (ROOT/'README.md').write_text('\n'.join(text),encoding='utf-8');print(json.dumps({'new_runs':5,'summaries':rows},indent=2))
+if __name__=='__main__':main()
