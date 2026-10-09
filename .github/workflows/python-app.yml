@@ -32,3 +32,7 @@ jobs:
         run: |
           python language/conversation_map.py --output scratch/conversation-map
           diff language/exploration/map-data.json scratch/conversation-map/map-data.json
+      - name: Reproduce the decentralized coordination study
+        run: |
+          python models/decentralized_coordination/run_study.py --output scratch/coordination --no-plots
+          python models/decentralized_coordination/verify_results.py --actual scratch/coordination
