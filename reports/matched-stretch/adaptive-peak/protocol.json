@@ -1,0 +1,19 @@
+{
+  "authorization": "User requested the attached adaptive peak-spin campaign and selected: Keep the original start and diagnose it.",
+  "starting_field": "Exact supplied matched-stretch construction. Preserve its raw periodic-join mismatch and mean; no smoothing repair or energy rescaling.",
+  "equation": "Unforced periodic Navier-Stokes; original Heun, Fourier projection and filter.",
+  "phase": "Apply stopping rules to original initial fields and already saved trajectories before longer evolution.",
+  "initial_grids": [64, 80, 112, 128, 256],
+  "reuse_initial_grids": [64, 128, 256],
+  "new_initial_checks_only": [80, 112],
+  "stop_if": {"minimum_transverse_half_peak_chord_cells_below": 6, "enstrophy_high_band_fraction_above": 0.01, "energy_high_band_fraction_above": 0.001, "common_window_relative_W_curve_difference_above": 0.05},
+  "caution_width_cells_below": 8,
+  "high_band": "At least one retained component index >= 0.8 floor(N/3), as in the fixed study.",
+  "comparison": "Only common saved time interval. 112 has initialization only if the initial gate fails; no fabricated 112 trajectory.",
+  "mechanism": "Colocated signed vorticity stretching, transport and viscosity at each saved global maximum; strain eigenvector alignment with degeneracy flag.",
+  "profiles": "Minimum transverse half-peak chord in 12 directions using periodic trilinear interpolation. Normalize by measured half-width and peak magnitude; interpolation is not added resolution.",
+  "local_maxima": "Detect all maxima at the saved cadence. Unsaved within-step maxima cannot be recovered from the archived fields.",
+  "longer_time_rule": "No adaptive extension from a state failing any resolution gate. Existing separately authorized fixed matrices continue as unresolved diagnostics.",
+  "parameter_and_geometric_ensemble": "A longer normalized parameter campaign is held at this initial resolution gate. Existing viscosity, amplitude, angle and seeded perturbation controls are inventoried. Do not silently normalize or replace the original field.",
+  "classification": "Report resolved, transient, unresolved, or numerical-candidate only when corresponding tests support it. No singular-time fit is interpreted from an unresolved interval."
+}

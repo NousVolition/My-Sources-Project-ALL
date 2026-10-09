@@ -1,5 +1,7 @@
 # Matched-stretch numerical controls
 
+**New diagnostic:** [Adaptive peak-spin check and charts](adaptive-peak/README.md). The original start fails the six-cell width requirement on grids 64, 80, 112, 128 and 256. This completed audit reuses saved observations; the older matrix snapshot below is dated separately.
+
 Snapshot: 2026-10-08T23:28:22.747514+00:00. **5 of 48 runs complete.** Further runs are active or queued.
 
 The available 64³ runs amplify spin but fail the spatial-resolution screen. Small time-step differences alone do not resolve this issue. The 128³ and 256³ evolution comparisons are pending.

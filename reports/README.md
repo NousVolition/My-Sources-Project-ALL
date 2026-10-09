@@ -64,6 +64,10 @@ The full restart arrays remain in the local calculation workspace. They are larg
 - [Three completed 0.5% perturbation seeds](matched-stretch/completed-halfpercent/README.md).
 - [Reproduced one-lean ball and breathing-fluid series](../math/imports/hug-ns/mirror-fluid/breathing-rerun/one-lean/README.md).
 
+## Adaptive peak-spin check
+
+- [Original start: resolution gate and five charts](matched-stretch/adaptive-peak/README.md). The largest initial peak spans about two cells on all five checked grids. The requested minimum is six, so this adaptive extension stops at initialization.
+
 ## Measurements and definitions
 
 - [Corrected fluid dashboard, explicit definitions, 516 saved-field checks and completed controls](../math/imports/hug-ns/mirror-fluid/methods-controls/README.md).
