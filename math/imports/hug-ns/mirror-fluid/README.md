@@ -1,5 +1,7 @@
 # Mirror-fluid tests: reproduced results
 
+[Where each experiment first changes](first-change-audit/README.md): measured starting differences, first-step forcing and early response.
+
 [Hug-ns overview](../README.md) Â· [Charts and report](../../../../reports/files/fluid-tests-completed.html) Â· [Verification](verification.json) Â· [Model and test coverage](MODEL.md)
 
 **All four supplied tests were executed and their current reference results reproduced.** Grid: 33Â³. Domain side: 6. Viscosity: 0.01. The fluid solver uses Fourier derivatives, projection and two-stage Heun stepping with zero external force.

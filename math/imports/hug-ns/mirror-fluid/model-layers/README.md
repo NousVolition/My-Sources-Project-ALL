@@ -1,5 +1,7 @@
 # Enlarging the lean model in layers
 
+[Where each experiment first changes](../first-change-audit/README.md): measured starting differences, first-step forcing and early response.
+
 **Four reduced-model layers are complete: 46 runs. Seventeen separate driven fluid controls are underway.** The reduced models show their own measured behavior; a match to fluid behavior must be checked separately.
 
 ## 1. Motion and breathing
