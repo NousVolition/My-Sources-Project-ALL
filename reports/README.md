@@ -6,7 +6,7 @@ These reports are saved on the authorâ€™s computer and copied into this Git
 
 ## Numerical reports and earlier snapshots
 
-- **[Matched-stretch controls](matched-stretch/README.md): 27/48 completed and verified results published.** Latest: [seed202 and comparison with seed101](matched-stretch/completed-n128-seed202/README.md), with the [failed 128-grid timestep control](matched-stretch/completed-timestep128/README.md) retained.
+- **[Matched-stretch controls](matched-stretch/README.md): 28/48 completed and verified results published.** Latest: [all three 0.1% seeds at grid 128](matched-stretch/completed-n128-three-seeds/README.md), with the [failed 128-grid timestep control](matched-stretch/completed-timestep128/README.md) retained.
 - **[Three vortex surroundings](study/README.md): 46/48 completed locally; 46 verified results published.** Latest: [both 160-grid ordinary departure results](study/completed-departure160-base/README.md), with central/global peak and grid comparisons. Two half-step controls remain.
 - [Verification of this saved snapshot](numerical-progress-verification.json).
 
