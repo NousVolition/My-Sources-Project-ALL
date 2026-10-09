@@ -51,3 +51,6 @@ python run_all.py
 
 New calculations go into `rerun/`. The saved `results/` and supplied `references/` remain available for comparison.
 
+## Dynamic q model: completed tests
+
+[26 runs, fitted source weights, cubic comparison and unseen predictions](dynamic-q/README.md). Includes independent AB bias, independently shaped D, mirror pairs, half timesteps and 49-grid controls. The measured fluid coordinate and the imposed passive record are reported separately.

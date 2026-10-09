@@ -1,0 +1,351 @@
+{
+  "status": "specified before fitting or viewing held-out trajectories",
+  "end": 0.5,
+  "output_dt": 0.01,
+  "n_base": 33,
+  "n_control": 49,
+  "nu": 0.01,
+  "domain": 6,
+  "force": 0,
+  "method": "Unchanged supplied Heun and projection",
+  "cases": {
+    "zero": {
+      "bias": 0,
+      "c": 0,
+      "d": 0,
+      "shape": 0,
+      "split": "train"
+    },
+    "ab_plus": {
+      "bias": 0.01,
+      "c": 0,
+      "d": 0,
+      "shape": 0,
+      "split": "train"
+    },
+    "ab_minus": {
+      "bias": -0.01,
+      "c": 0,
+      "d": 0,
+      "shape": 0,
+      "split": "train"
+    },
+    "c_only": {
+      "bias": 0,
+      "c": 1,
+      "d": 0,
+      "shape": 0,
+      "split": "train"
+    },
+    "d_only": {
+      "bias": 0,
+      "c": 0,
+      "d": 1,
+      "shape": 0,
+      "split": "train"
+    },
+    "equal": {
+      "bias": 0,
+      "c": 0.5,
+      "d": 0.5,
+      "shape": 0,
+      "split": "train"
+    },
+    "mix_a": {
+      "bias": 0.005,
+      "c": 0.7,
+      "d": 0.3,
+      "shape": 0,
+      "split": "train"
+    },
+    "mix_b": {
+      "bias": -0.005,
+      "c": 0.3,
+      "d": 0.7,
+      "shape": 0,
+      "split": "train"
+    },
+    "mix_c": {
+      "bias": 0.01,
+      "c": 1,
+      "d": 0.5,
+      "shape": 0,
+      "split": "train"
+    },
+    "mix_d": {
+      "bias": -0.01,
+      "c": 0.5,
+      "d": 1,
+      "shape": 0,
+      "split": "train"
+    },
+    "unseen_a": {
+      "bias": 0.003,
+      "c": 0.8,
+      "d": 0.2,
+      "shape": 0,
+      "split": "test"
+    },
+    "unseen_b": {
+      "bias": -0.007,
+      "c": 0.2,
+      "d": 0.8,
+      "shape": 0,
+      "split": "test"
+    },
+    "unseen_shape_a": {
+      "bias": 0.006,
+      "c": 0.6,
+      "d": 0.4,
+      "shape": 1,
+      "split": "test"
+    },
+    "unseen_shape_b": {
+      "bias": -0.004,
+      "c": 0.4,
+      "d": 0.6,
+      "shape": 2,
+      "split": "test"
+    }
+  },
+  "jobs": [
+    {
+      "id": "zero-n33",
+      "case": "zero",
+      "n": 33,
+      "half": false,
+      "mirror": false
+    },
+    {
+      "id": "ab_plus-n33",
+      "case": "ab_plus",
+      "n": 33,
+      "half": false,
+      "mirror": false
+    },
+    {
+      "id": "ab_minus-n33",
+      "case": "ab_minus",
+      "n": 33,
+      "half": false,
+      "mirror": false
+    },
+    {
+      "id": "c_only-n33",
+      "case": "c_only",
+      "n": 33,
+      "half": false,
+      "mirror": false
+    },
+    {
+      "id": "d_only-n33",
+      "case": "d_only",
+      "n": 33,
+      "half": false,
+      "mirror": false
+    },
+    {
+      "id": "equal-n33",
+      "case": "equal",
+      "n": 33,
+      "half": false,
+      "mirror": false
+    },
+    {
+      "id": "mix_a-n33",
+      "case": "mix_a",
+      "n": 33,
+      "half": false,
+      "mirror": false
+    },
+    {
+      "id": "mix_b-n33",
+      "case": "mix_b",
+      "n": 33,
+      "half": false,
+      "mirror": false
+    },
+    {
+      "id": "mix_c-n33",
+      "case": "mix_c",
+      "n": 33,
+      "half": false,
+      "mirror": false
+    },
+    {
+      "id": "mix_d-n33",
+      "case": "mix_d",
+      "n": 33,
+      "half": false,
+      "mirror": false
+    },
+    {
+      "id": "unseen_a-n33",
+      "case": "unseen_a",
+      "n": 33,
+      "half": false,
+      "mirror": false
+    },
+    {
+      "id": "unseen_b-n33",
+      "case": "unseen_b",
+      "n": 33,
+      "half": false,
+      "mirror": false
+    },
+    {
+      "id": "unseen_shape_a-n33",
+      "case": "unseen_shape_a",
+      "n": 33,
+      "half": false,
+      "mirror": false
+    },
+    {
+      "id": "unseen_shape_b-n33",
+      "case": "unseen_shape_b",
+      "n": 33,
+      "half": false,
+      "mirror": false
+    },
+    {
+      "id": "unseen_a-mirror",
+      "case": "unseen_a",
+      "n": 33,
+      "half": false,
+      "mirror": true
+    },
+    {
+      "id": "unseen_b-mirror",
+      "case": "unseen_b",
+      "n": 33,
+      "half": false,
+      "mirror": true
+    },
+    {
+      "id": "unseen_shape_a-mirror",
+      "case": "unseen_shape_a",
+      "n": 33,
+      "half": false,
+      "mirror": true
+    },
+    {
+      "id": "unseen_shape_b-mirror",
+      "case": "unseen_shape_b",
+      "n": 33,
+      "half": false,
+      "mirror": true
+    },
+    {
+      "id": "unseen_a-half",
+      "case": "unseen_a",
+      "n": 33,
+      "half": true,
+      "mirror": false
+    },
+    {
+      "id": "unseen_b-half",
+      "case": "unseen_b",
+      "n": 33,
+      "half": true,
+      "mirror": false
+    },
+    {
+      "id": "unseen_shape_a-half",
+      "case": "unseen_shape_a",
+      "n": 33,
+      "half": true,
+      "mirror": false
+    },
+    {
+      "id": "unseen_shape_b-half",
+      "case": "unseen_shape_b",
+      "n": 33,
+      "half": true,
+      "mirror": false
+    },
+    {
+      "id": "unseen_a-n49",
+      "case": "unseen_a",
+      "n": 49,
+      "half": false,
+      "mirror": false
+    },
+    {
+      "id": "unseen_b-n49",
+      "case": "unseen_b",
+      "n": 49,
+      "half": false,
+      "mirror": false
+    },
+    {
+      "id": "unseen_shape_a-n49",
+      "case": "unseen_shape_a",
+      "n": 49,
+      "half": false,
+      "mirror": false
+    },
+    {
+      "id": "unseen_shape_b-n49",
+      "case": "unseen_shape_b",
+      "n": 49,
+      "half": false,
+      "mirror": false
+    }
+  ],
+  "source_hashes": {
+    "study.py": "4940882fe5106fbc14020633279235d3bdf81f496f6210d2f76d453a0ceeb6f3",
+    "source\\clay_hug.py": "422b7160f9e96badfc68fb76958c3cb512982905b73b37f8db92e5fd37379c01",
+    "source\\fluid_sources.py": "740578d25e015bf913a819137c3f051c1fcaedfad55d43c43f2dfb304068bacf"
+  },
+  "initial": "Supplied symmetric AB and C; independent signed AB template; D shifted, broadened and given a z component. D shape variants in held-out starts.",
+  "mirror": "Reflect the entire initial vector field, with component signs; do not only flip a parameter.",
+  "coordinates": {
+    "q_fluid": "<u,phi>/norm(AB0) = S/(2 norm(AB0)); independently measured signed coordinate; not historical q_record",
+    "q_record": "q_next=q+dt*(-0.2*q+0.8*S_next), q(0)=0. Imposed diagnostic control; not evidence for fluid feedback.",
+    "E": "norm(u-M[u])/norm(u); unsigned, not inferred from q"
+  },
+  "source_definition": {
+    "basis": [
+      "AB symmetric",
+      "independent AB antisymmetric bias",
+      "C symmetric",
+      "C antisymmetric (phi)",
+      "nominal independent D symmetric",
+      "nominal independent D antisymmetric"
+    ],
+    "coefficients": "Least-squares spatial projection onto these fixed six templates; same basis for all cases at a grid.",
+    "D_AB": "Signed projected nonlinear interactions within the two AB templates.",
+    "D_C": "C self interactions and both ordered AB-C interactions.",
+    "D_D": "D self interactions and both ordered AB-D interactions.",
+    "D_cross": "Both ordered C-D interactions. This is an operational interaction feature, not an established competition-between-pairings mechanism.",
+    "not_exact_closure": "Remaining spatial modes and full viscous projection are not supplied to the regressor; target full-fluid derivative is independently computed."
+  },
+  "fitting": {
+    "models": [
+      "decay_only",
+      "AB_only",
+      "AB_C",
+      "AB_C_D",
+      "full_linear",
+      "full_cubic"
+    ],
+    "rule": "dq/dt=-gamma*q+sum(w_i*D_i)-g*q^3; gamma>=0,g>=0; w_i unrestricted",
+    "ridge_candidates": [
+      0.0,
+      1e-06,
+      0.001,
+      0.1
+    ],
+    "selection": "leave-one-training-run-out derivative error; training column scaling only",
+    "unseen": "Four entire starts withheld; mirrors, timestep and grid controls excluded from fitting.",
+    "conditional_prediction": "Integrate from initial q, supplying measured source features from held-out run, never future q. This needs the measured input trajectory.",
+    "forecast": "At t=.1 retain observed q and source features, freeze inputs, predict to .5 without future observations; explicitly a persistence assumption.",
+    "cubic_support": "Report full vs linear unseen errors, stability of coefficients across training omissions and refinements. Do not equate a fitted positive g with spontaneous branch selection."
+  },
+  "limits": [
+    "Candidate six-template definitions implement a measurable version of the proposed source terms; not unique causal source attribution.",
+    "33 and49 are a grid sensitivity check, not a full spatial convergence ladder.",
+    "With gamma>=0,g>=0 and constant source input, the scalar drift is monotone; it cannot have two isolated stable branches.",
+    "No coefficient fit or selected prediction may alter the Navier-Stokes evolution."
+  ]
+}
