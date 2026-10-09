@@ -1,5 +1,7 @@
 # Matched-stretch numerical controls
 
+**Completed batches:** [0.1% perturbations](completed-seeds/README.md), [0.5% perturbations](completed-halfpercent/README.md), and [1% perturbations plus viscosity 0.002](completed-onepercent/README.md). These later batches supersede their entries in the dated snapshot below.
+
 **New diagnostic:** [Adaptive peak-spin check and charts](adaptive-peak/README.md). The original start fails the six-cell width requirement on grids 64, 80, 112, 128 and 256. This completed audit reuses saved observations; the older matrix snapshot below is dated separately.
 
 Snapshot: 2026-10-08T23:28:22.747514+00:00. **5 of 48 runs complete.** Further runs are active or queued.
