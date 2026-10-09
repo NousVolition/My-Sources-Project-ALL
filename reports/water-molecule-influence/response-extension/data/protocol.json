@@ -1,0 +1,32 @@
+{
+  "question": "Does snapshot force sensitivity predict finite-time influence after an equal velocity impulse?",
+  "molecules": 216,
+  "snapshots": "50 ps production snapshot from each of the original three runs",
+  "velocity_initialization": "New constrained Maxwell velocities at 300 K; seeds 20261011, 20261012, 20261013; remove overall center-of-mass velocity.",
+  "positions": "Original saved positions projected to 1e-8 constraint tolerance; correction recorded. Molecular centers of mass are measured without wrapping.",
+  "time_step_ps": 0.001,
+  "constraint_tolerance": 1e-08,
+  "times_ps": [
+    0.005,
+    0.02,
+    0.1,
+    0.2
+  ],
+  "delta_v_nm_per_ps": 0.01,
+  "dynamics": "Short deterministic NVE probes with RATTLE velocity Verlet and on-step velocities; thermostat absent and CMMotionRemover removed.",
+  "perturbation": "All atoms of source receive the same kick; all other molecules receive the opposite kick divided by N-1. Paired positive/negative kicks along each Cartesian axis.",
+  "response": "Central difference of target COM positions; subtract known compensating ballistic displacement; multiply by (N-1)/N; sum Frobenius norms over targets excluding source.",
+  "response_units": "ps (position / velocity); not an energy-transfer fraction",
+  "controls": "Half kick on 10 force-rank-spaced sources per snapshot; half timestep on weakest, median and strongest force-score sources; zero interactions on same 3; same-trajectory replay; full-state label permutation on same 3 in snapshot 0.",
+  "platform": "OpenCL",
+  "precision": "double",
+  "openmm": "8.6.1",
+  "numpy": "2.5.3",
+  "source_system_sha256": "29d7c4f194f8b9a00f380eb6447f68ba7529e7ea2349fcc6cd120ffd69d2cebb",
+  "seeds": [
+    20261011,
+    20261012,
+    20261013
+  ],
+  "caution": "Three conditional microstates, not a longer trajectory study, new force-field test, or test of oxygen positions independently of orientations."
+}

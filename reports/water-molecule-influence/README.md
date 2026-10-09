@@ -6,6 +6,10 @@ A reproducible experiment asking whether identical molecules can acquire unequal
 
 ![Experimental results](results.png)
 
+## Finite-time impulse follow-up
+
+[The follow-up experiment](response-extension/README.md) runs 3,888 perturbed trajectories to test whether the snapshot force ranking predicts later motion. The original force leaders fall to ranks **104, 69 and 209 out of 216** by 200 femtoseconds in the three tested states. Includes complete saved response measurements, numerical controls, reproducible code and limitations.
+
 ## What was actually run
 
 1. **Toy network:** 64 identical stationary point particles in a periodic cube, symmetric distance-dependent interactions, and an equal unit pulse applied to each particle in turn. The response is solved with a matrix exponential. This is not a water model.
@@ -74,7 +78,7 @@ The recorded environment was Python 3.12.14, NumPy 2.5.3, SciPy 1.18.1, Matplotl
 
 ## Next validation
 
-Repeat with longer trajectories, larger boxes, alternate water models, and independent-run uncertainty estimates. Test paired perturbed/unperturbed trajectories with controlled energy or momentum injection to determine whether instantaneous force rank predicts subsequent response. Separate translational and rotational effects, and test cutoff and timestep sensitivity.
+Repeat with longer trajectories, larger boxes, alternate water models, and independent-run uncertainty estimates. The [finite-time follow-up](response-extension/README.md) now tests paired, momentum-balanced impulses over 5–200 fs; repeat this validation over more independent states and thermal velocity draws. Separate translational and rotational effects, and test cutoff and timestep sensitivity.
 
 ## References
 
