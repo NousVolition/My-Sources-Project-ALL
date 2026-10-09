@@ -49,6 +49,7 @@ The human–AI conversations, mirrored categories, and pressure-and-memory illus
 - [Norm and Entropy: mirrored halves](math/notes/norm-entropy-mirror.md)
 - [Conversation study and source records](language/conversation-study/README.md)
 - [Conversation categories](language/exploration/README.md)
+- [Coordination with the freedom to refuse](models/decentralized_coordination/README.md): a separate nine-agent simulation and optional volunteer protocol exploring local organization, refusal, and identity versus network position. No human data or water-physics claims.
 
 ## Source, history and reproduction
 
