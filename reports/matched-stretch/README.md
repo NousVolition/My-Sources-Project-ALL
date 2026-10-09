@@ -1,5 +1,7 @@
 # Matched-stretch numerical controls
 
+**Completed join test:** [Remove the central tube and compare the early peak](join-isolation/README.md). Four short unforced controls through time 0.04, including timestep halving; the early peak persists without the tube.
+
 **Completed unforced check:** [Growth rates, the 16% statement, and linear versus squared models](unforced-growth-check/README.md). One saved start and its existing timestep control through 0.35; all 72 fields verified. Spatial resolution remains insufficient.
 
 **Completed batches:** [0.1% perturbations](completed-seeds/README.md), [0.5% perturbations](completed-halfpercent/README.md), and [1% perturbations plus viscosity 0.002](completed-onepercent/README.md). These later batches supersede their entries in the dated snapshot below.

@@ -1,0 +1,22 @@
+{
+  "purpose": "Test whether the initial join-associated spike persists and grows without the central tube; compare a smooth periodic background with the exact original sampled tube.",
+  "new_runs": 4,
+  "grid": 64,
+  "end_time": 0.04,
+  "nu": 0.001,
+  "L": 6,
+  "external_force": 0,
+  "method": "Unchanged Heun, spectral projection and inclusive 2/3 cutoff",
+  "steps_per_0_01": [
+    103,
+    206
+  ],
+  "reused": "Original baseline-n64-base and baseline-n64-half, times 0 through 0.04",
+  "variants": [
+    "Remove central tube; keep original background and mean",
+    "Periodic sine-coordinate background; keep exact original sampled tube and mean"
+  ],
+  "energy_rule": "No normalization; report initial energy and center-gradient changes. The periodic repair changes the background broadly, not just the seam.",
+  "scope": "Short numerical attribution diagnostic. Original width screen fails; this does not establish resolved physical concentration or attribution of the later peak near 0.3.",
+  "numerics_sha256": "22b169971aaf2efd56d47f685495a575e1622edd56c199b07a785fc97e952f46"
+}

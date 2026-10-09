@@ -1,0 +1,119 @@
+{
+  "status": "complete",
+  "new_runs": 4,
+  "reused_original_runs": 2,
+  "fields_verified": 30,
+  "end_time": 0.04,
+  "n": 64,
+  "nu": 0.001,
+  "force": 0,
+  "original_initial_W": 59.27995437091906,
+  "without_tube_initial_W": 59.27995437091719,
+  "original_final_W": 81.37006705109371,
+  "without_tube_final_W": 81.3383645393481,
+  "without_tube_growth_percent": 37.210572110785556,
+  "final_peak_change_on_tube_removal_percent": -0.038960901587681285,
+  "initial_tube_magnitude_at_original_max": 1.4744960530758686e-05,
+  "repair_initial_energy_change_percent": -88.9939826684252,
+  "repair_initial_W": 39.251168489156605,
+  "repair_final_W": 40.7075591066806,
+  "timestep_controls": {
+    "original": {
+      "W_relative_l2": 2.861788789554411e-06,
+      "max_relative_W": 4.254111180085188e-06,
+      "minimum_width_cells": 2.1392705778962218,
+      "maximum_high_band_enstrophy": 0.036223858772574155,
+      "maximum_abs_energy_budget_residual": 4.110545547688471e-10,
+      "maximum_divergence": 1.5954740312581186e-13
+    },
+    "without-tube": {
+      "W_relative_l2": 2.861752483548586e-06,
+      "max_relative_W": 4.253005345889034e-06,
+      "minimum_width_cells": 2.139283881439344,
+      "maximum_high_band_enstrophy": 0.03602399725491183,
+      "maximum_abs_energy_budget_residual": 4.109025941719264e-10,
+      "maximum_divergence": 1.5787304336329476e-13
+    },
+    "periodic-join": {
+      "W_relative_l2": 7.549987480578798e-08,
+      "max_relative_W": 1.249780467871906e-07,
+      "minimum_width_cells": 1.7743019256399044,
+      "maximum_high_band_enstrophy": 0.0028084366760090353,
+      "maximum_abs_energy_budget_residual": 2.260695280039003e-12,
+      "maximum_divergence": 5.3333837070668276e-14
+    }
+  },
+  "paired_fields": [
+    {
+      "t": 0.0,
+      "W_original": 59.27995437091906,
+      "W_without_tube": 59.27995437091719,
+      "without_tube_vorticity_at_original_max": [
+        -41.91725772410468,
+        41.917257724104644,
+        1.8822558258716484e-13
+      ],
+      "without_tube_magnitude_at_original_max": 59.27995437091719,
+      "velocity_relative_l2": 0.009269904350880273,
+      "vorticity_relative_l2": 0.049468500081013805,
+      "vorticity_cosine": 0.9987756842753708
+    },
+    {
+      "t": 0.01,
+      "W_original": 60.0630823303611,
+      "W_without_tube": 60.06260603987103,
+      "without_tube_vorticity_at_original_max": [
+        0.47514645688195783,
+        60.01825304761038,
+        -2.2583580890266126
+      ],
+      "without_tube_magnitude_at_original_max": 60.06260603987103,
+      "velocity_relative_l2": 0.009261567115454401,
+      "vorticity_relative_l2": 0.04917733218411773,
+      "vorticity_cosine": 0.9987900630260067
+    },
+    {
+      "t": 0.02,
+      "W_original": 70.07071722049325,
+      "W_without_tube": 70.06260054067012,
+      "without_tube_vorticity_at_original_max": [
+        0.8806697044024775,
+        -69.53585402684746,
+        8.529796020433592
+      ],
+      "without_tube_magnitude_at_original_max": 70.06260054067002,
+      "velocity_relative_l2": 0.009258016090526646,
+      "vorticity_relative_l2": 0.04942921344669982,
+      "vorticity_cosine": 0.9987776293545345
+    },
+    {
+      "t": 0.03,
+      "W_original": 76.59878547320733,
+      "W_without_tube": 76.58420290953815,
+      "without_tube_vorticity_at_original_max": [
+        0.632242892529208,
+        -75.28641409511914,
+        14.024844274087059
+      ],
+      "without_tube_magnitude_at_original_max": 76.58420290953808,
+      "velocity_relative_l2": 0.009272095192821043,
+      "vorticity_relative_l2": 0.05022522918745981,
+      "vorticity_cosine": 0.9987379171763131
+    },
+    {
+      "t": 0.04,
+      "W_original": 81.37006705109371,
+      "W_without_tube": 81.3383645393481,
+      "without_tube_vorticity_at_original_max": [
+        2.0530415293075404,
+        -79.54086577800405,
+        16.88091341427824
+      ],
+      "without_tube_magnitude_at_original_max": 81.33836453934808,
+      "velocity_relative_l2": 0.00932608508182026,
+      "vorticity_relative_l2": 0.051637442269263104,
+      "vorticity_cosine": 0.9986659008133955
+    }
+  ],
+  "limitation": "Short 64-grid attribution experiment. Repair changes the whole background energy and projected strain, so it does not isolate a seam-only effect. No attribution of the later t~0.3 peak, spatial convergence, or physical concentration claim."
+}
