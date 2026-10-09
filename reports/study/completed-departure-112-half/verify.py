@@ -1,4 +1,4 @@
-"""Audit the completed 112-grid Fourier departure half-step control from saved fields; perform no evolution."""
+"""Audit both completed 112-grid departure half-step controls from saved fields; perform no evolution."""
 from pathlib import Path
 from datetime import datetime, timezone
 import sys, json, hashlib, gc
@@ -10,7 +10,7 @@ sys.path.insert(0, str(STUDY))
 from solver import Solver
 from protocol import source_hashes
 
-IDS = ('exodus-fourier-n112-half',)
+IDS = ('exodus-fourier-n112-half','exodus-fd4-n112-half')
 
 def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
@@ -77,7 +77,7 @@ def main():
         gc.collect()
     assert hashes == source_hashes()
     result = {'status':'passed','checked_utc':datetime.now(timezone.utc).isoformat(),
-              'new_simulations':0,'completed_runs':list(IDS),'saved_fields_checked':5,
+              'new_simulations':0,'completed_runs':list(IDS),'saved_fields_checked':10,
               'source_hashes':hashes,'checks':checks,
               'scope':'Physical W, energy and both enstrophies independently summed from saved arrays at 0, .1, .2, .3, .4. Endpoint widths, strain and spectra remeasured with frozen diagnostic code. Integrated I and budget rates retain recorded RK-stage accumulations; trajectories were not rerun. Numerical completion does not imply spatial convergence.'}
     (HERE/'vortex-verification.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')

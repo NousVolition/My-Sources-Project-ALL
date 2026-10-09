@@ -24,7 +24,7 @@ for ax in (axes[0,0],axes[0,2],axes[1,0]):ax.legend(fontsize=8)
 fig.suptitle('Departure case: 112-grid timestep controls through 0.40',fontsize=15)
 fig.savefig(HERE/'curves.png',dpi=150);plt.close(fig)
 fig,ax=plt.subplots(figsize=(8,4),layout='constrained')
-for method,color in [('fourier','#247c91')]:
+for method,color in [('fourier','#247c91'),('fd4','#c76825')]:
  a=data[f'exodus-{method}-n112-base']['rows'];b=data[f'exodus-{method}-n112-half']['rows'];peak=max(r['Wmax'] for r in b)
  ax.plot([r['t'] for r in a],[100*abs(x['Wmax']-y['Wmax'])/peak for x,y in zip(a,b)],label=method,color=color)
 ax.set(title='Ordinary-step versus half-step W curves',xlabel='Model time',ylabel='Difference (% of half-step peak W)',xlim=(0,.4));ax.grid(alpha=.18);ax.legend()
