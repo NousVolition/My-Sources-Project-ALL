@@ -90,3 +90,7 @@ The completion counts at the top were updated October 9. Older snapshots and int
 - [Does past marker geometry predict future deformation?](matched-stretch/history-prediction/README.md) — 32 independent initial conditions, 64 simulations, whole-run holdouts, 13 passing local tests, complete numerical recordings and control plots. A small continuous-error gain; event results depend on the threshold, and the finer-grid comparison remains inconclusive.
 
 - [First completed 128-grid 0.1% perturbation seed](matched-stretch/completed-n128-seed101/README.md): 41 saved-field checks, baseline separation, budgets and resolution limits.
+
+## Fluid organization under stress
+
+- [Completed paired-disturbance pilot](fluid-organization-pilot/README.md): 93 fluid configurations, 7 particle configurations, 22 tests and complete recorded arrays; report linked from Streams and Rocks. History helps the overall-deformation target but shows no clear benefit for the disturbance-specific target.

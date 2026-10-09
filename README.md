@@ -8,6 +8,8 @@ The central question is whether smooth three-dimensional fluid motion must remai
 
 The **hug** is the starting idea: a form that surrounds, yields, and changes shape. Its mathematical implementations and their limits are recorded in the studies below. The current fluid calculations use periodic boundaries and no external force after initialization.
 
+**[Fluid organization under stress: completed paired-disturbance pilot](reports/fluid-organization-pilot/README.md)** — code, full recordings and tests for the [Streams and Rocks study](https://github.com/NousVolition/Nous-Volition/tree/main/studies/fluid-organization). Marker-history prediction, water/air regimes, dilute fog/smoke controls, energy budgets and explicit numerical limits.
+
 ## Start with the mathematics
 
 | Study | What it contains |
