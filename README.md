@@ -4,6 +4,8 @@
 
 The central question is whether smooth three-dimensional fluid motion must remain smooth, or whether it can develop a singularity in finite time. This project develops flow constructions, follows their evolution, and checks the mechanisms that amplify or disperse vorticity.
 
+**Separate molecular study:** [One heavy water molecule](reports/molecular/isotope-mass/README.md) records 544 explicit-water MD trajectories, isotope-placement and identity controls, short-time response tests, raw-data provenance and limitations. This confined classical-water experiment is distinct from the Navier–Stokes work; it establishes neither a persistent molecular leader nor new fluid physics.
+
 The **hug** is the starting idea: a form that surrounds, yields, and changes shape. Its mathematical implementations and their limits are recorded in the studies below. The current fluid calculations use periodic boundaries and no external force after initialization.
 
 ## Start with the mathematics

@@ -1,0 +1,79 @@
+{
+  "created_utc": "2026-10-09T05:30:44Z",
+  "repository": "NousVolition/My-Sources-Project-ALL",
+  "base_commit": "17c14e89940d4c96ec9df315b1a689430d8c5ddf",
+  "branch": "research/water-isotope-mass",
+  "publication": "local checkout and delivery only; not pushed",
+  "prior_context": [
+    {
+      "path": "C:\\Users\\ziman\\Documents\\Codex\\2026-10-08\\referenced-chatgpt-conversation-this-is-an\\outputs\\experiment.py",
+      "sha256": "32044c8f95cb1e8628a2394b6c5c4494449bd2626da5b50be5674ac468c9a360",
+      "bytes": 19839
+    },
+    {
+      "path": "C:\\Users\\ziman\\Documents\\Codex\\2026-10-08\\referenced-chatgpt-conversation-this-is-an\\outputs\\data\\md_protocol.json",
+      "sha256": "98e7485712c82094d5458595ae061fa1f32be0584eeb9edeec5f6ee94b5d1c21",
+      "bytes": 984
+    },
+    {
+      "path": "C:\\Users\\ziman\\Documents\\Codex\\2026-10-08\\referenced-chatgpt-conversation-this-is-an-4\\work\\My-Sources-Project-ALL\\reports\\matched-stretch\\marker-stress\\README.md",
+      "sha256": "5df989c724836ecb62a1cd901164d9af38b302309c7510070f268112ac496d85",
+      "bytes": 6742
+    },
+    {
+      "path": "C:\\Users\\ziman\\Documents\\Codex\\2026-10-08\\referenced-chatgpt-conversation-this-is-an-4\\work\\My-Sources-Project-ALL\\math\\imports\\hug-ns\\mirror-fluid\\model-layers\\README.md",
+      "sha256": "e87130397c9b8301c1ab23d41a0e4dab62682a69620513a5086faae880515018",
+      "bytes": 4482
+    }
+  ],
+  "forcefield": {
+    "path": "context/tip3p.xml",
+    "sha256": "1ba6e86fd6a8197e3a0420d4d2c851fbe2d26dd9e8a4452643ab4fc01dfabce4",
+    "openmm": "8.6.1"
+  },
+  "protocol_sha256": "1d85fbfeb0f4b29c6019a6e43ae33576610385f1ba40946c35ef1974d63b441c",
+  "run_environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "os": "Windows-11-10.0.26200-SP0",
+    "openmm": "8.6.1",
+    "numpy": "2.5.3",
+    "argv": [
+      "simulate.py",
+      "--out",
+      "data",
+      "--workers",
+      "4"
+    ],
+    "started_utc": "2026-10-09T05:12:58Z",
+    "source_sha256": "e88d76d27cc49c6c7409e18f07a48753f3e312f03013bd3dada76e0272110b0f"
+  },
+  "postrun_simulator_change": "Resume logic checks settings and regenerates missing raw NPZ files. The dynamics code is unchanged from the executed source hash in run_environment.",
+  "raw_file_count": 792,
+  "sources": [
+    {
+      "url": "https://docs.openmm.org/latest/userguide/application/02_running_sims.html",
+      "accessed_utc": "2026-10-09",
+      "role": "Water models, constraints, integration"
+    },
+    {
+      "url": "https://docs.openmm.org/latest/api-python/generated/openmm.openmm.LangevinMiddleIntegrator.html",
+      "accessed_utc": "2026-10-09",
+      "role": "Thermostat implementation"
+    },
+    {
+      "url": "https://www.nature.com/articles/379055a0",
+      "accessed_utc": "2026-10-09",
+      "role": "Hydrogen bond kinetic definitions; search abstract consulted"
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39607891/",
+      "accessed_utc": "2026-10-09",
+      "role": "Nuclear quantum and isotope physics limitation"
+    },
+    {
+      "url": "https://doi.org/10.1063/1.445869",
+      "accessed_utc": "2026-10-09",
+      "role": "Original TIP3P bibliographic reference"
+    }
+  ]
+}
