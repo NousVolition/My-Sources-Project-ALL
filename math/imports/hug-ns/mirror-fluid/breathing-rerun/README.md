@@ -72,3 +72,7 @@ The uploaded marble plot, marble animation and breathing illustration have no ge
 ## Follow the motion between the endpoints
 
 [Step-by-step fluid animations and measurements](timeline/README.md) now show all six runs through time. For the small lean, actual mirror difference falls 9.04% while flow strength falls 15.14%, so relative E rises. The imbalance also changes shape. All 516 saved fields were independently checked.
+
+## Supplied ball and fluid comparison
+
+[The four series in one_lean.py reproduce](one-lean/README.md). The two ball examples run through time 8; the two driven fluid examples run through 0.40 and agree with the traced cases above. Their different measurements are labelled in the results.
