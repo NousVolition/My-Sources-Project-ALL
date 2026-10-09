@@ -1,0 +1,58 @@
+<div id="tracked-fluid-pairs-v1">
+  <h3>How neighboring fluid parcels move</h3>
+  <div class="viz-controls">
+    <label class="form-label">Surroundings<select class="form-select" data-case><option value="aligned">Initially aligned</option><option value="compressive">Initially compressive</option></select></label>
+    <label class="form-label">Relationship<select class="form-select" data-kind><option value="outer">Neighbors on outer tubes</option><option value="central">Neighbors on central tube</option><option value="across">Between tubes</option></select></label>
+    <label class="form-label">Tracked pair<select class="form-select" data-pair></select></label>
+  </div>
+  <div class="viz-row"><button type="button" class="btn" data-play>Play saved frames</button><span data-time class="tabular-nums" aria-live="polite">Time 0.00</span></div>
+  <label class="form-label">Saved time<input type="range" class="form-range" min="0" max="4" step="1" value="0" data-frame></label>
+  <canvas data-scene role="img" aria-label="Three-dimensional positions of 192 tracked fluid parcels with two selected labels, their velocity arrows and past sampled positions."></canvas>
+  <div class="viz-row text-small"><span style="color:var(--viz-series-1)">● First label</span><span style="color:var(--viz-series-2)">◆ Second label</span><span>Arrows: velocity · dots: saved positions · drag to rotate</span></div>
+  <div class="table-responsive"><table class="table table-sm"><tbody data-readout></tbody></table></div>
+  <div class="text-small text-muted">160³ saved flow · 5 times · zero added force · late spin peaks remain unresolved</div>
+  <style>
+    #tracked-fluid-pairs-v1 canvas{width:100%;height:350px;display:block;touch-action:none}
+    #tracked-fluid-pairs-v1 select{max-width:100%}
+    @media(max-width:440px){#tracked-fluid-pairs-v1 canvas{height:280px}}
+  </style>
+  <script type="application/json" data-pairs>__PAIR_DATA__</script>
+  <script>
+  (()=>{
+    const root=document.getElementById('tracked-fluid-pairs-v1'),data=JSON.parse(root.querySelector('[data-pairs]').textContent);
+    const canvas=root.querySelector('[data-scene]'),ctx=canvas.getContext('2d'),choice=root.querySelector('[data-case]'),kind=root.querySelector('[data-kind]'),pair=root.querySelector('[data-pair]'),frame=root.querySelector('[data-frame]'),play=root.querySelector('[data-play]'),time=root.querySelector('[data-time]'),readout=root.querySelector('[data-readout]');
+    let index=0,az=.65,el=.42,drag=null,timer=null;const probe=document.createElement('span');probe.hidden=true;root.append(probe);
+    const color=name=>{probe.style.color='var('+name+')';return getComputedStyle(probe).color;};
+    const wrap=x=>(x+3-6*Math.floor((x+3)/6))-3;
+    function fillPairs(id){pair.replaceChildren();data.edges.forEach((e,k)=>{if(e.kind===kind.value){const o=document.createElement('option');o.value=k;o.textContent='Labels '+e.i+' / '+e.j;pair.append(o);}});if([...pair.options].some(o=>+o.value===id))pair.value=id;else if(kind.value==='outer'){const k=data.edges.findIndex(e=>e.i===80&&e.j===81);pair.value=k;}}
+    function remember(){window.openai?.setWidgetState?.({modelContent:{visual:'tracked-fluid-pairs-v1',case:choice.value,kind:kind.value,pair:Number(pair.value),frame:index,time:data.runs[choice.value][index].t},privateContent:{az,el}})?.catch(()=>{});}
+    function stop(){clearInterval(timer);timer=null;play.textContent='Play saved frames';}
+    function project(p,w,h){const x=p[0]*Math.cos(az)-p[1]*Math.sin(az),b=p[0]*Math.sin(az)+p[1]*Math.cos(az),y=p[2]*Math.cos(el)-b*Math.sin(el),scale=Math.min(w/9.8,h/8.8);return [w/2+x*scale,h/2-y*scale,b*Math.cos(el)+p[2]*Math.sin(el)];}
+    function draw(){
+      const rect=canvas.getBoundingClientRect(),w=rect.width,h=rect.height,dpr=window.devicePixelRatio||1;canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,w,h);
+      const f=data.runs[choice.value][index],e=data.edges[Number(pair.value)],ink=color('--foreground'),neutral=color('--border'),c1=color('--viz-series-1'),c2=color('--viz-series-2');
+      const line=(a,b,c,lw=1,alpha=1)=>{a=project(a,w,h);b=project(b,w,h);ctx.strokeStyle=c;ctx.lineWidth=lw;ctx.globalAlpha=alpha;ctx.beginPath();ctx.moveTo(a[0],a[1]);ctx.lineTo(b[0],b[1]);ctx.stroke();ctx.globalAlpha=1;return[a,b];};
+      for(let axis=0;axis<3;axis++)for(const a of[-3,3])for(const b of[-3,3]){const p=[0,0,0],q=[0,0,0];p[axis]=-3;q[axis]=3;p[(axis+1)%3]=q[(axis+1)%3]=a;p[(axis+2)%3]=q[(axis+2)%3]=b;line(p,q,neutral);}
+      for(const p of f.positions){const q=project(p,w,h);ctx.fillStyle=ink;ctx.globalAlpha=.3;ctx.beginPath();ctx.arc(q[0],q[1],2.1,0,Math.PI*2);ctx.fill();}ctx.globalAlpha=1;
+      // Periodic segment is drawn as wrapped short pieces, never across the whole box.
+      const start=f.positions[e.i],dr=f.positions[e.j].map((x,j)=>wrap(x-start[j]));let prev=start;
+      for(let k=1;k<=40;k++){const p=start.map((x,j)=>wrap(x+dr[j]*k/40));if(Math.hypot(...p.map((x,j)=>x-prev[j]))<.8)line(prev,p,ink,1.3,.65);prev=p;}
+      for(const [id,col,diamond] of[[e.i,c1,false],[e.j,c2,true]]){
+        for(let k=0;k<index;k++){const q=project(data.runs[choice.value][k].positions[id],w,h);ctx.fillStyle=col;ctx.globalAlpha=.35;ctx.beginPath();ctx.arc(q[0],q[1],3,0,Math.PI*2);ctx.fill();}ctx.globalAlpha=1;
+        const p=f.positions[id],v=f.velocity[id],q=project(p,w,h);ctx.fillStyle=col;ctx.beginPath();if(!diamond)ctx.arc(q[0],q[1],5,0,Math.PI*2);else{ctx.moveTo(q[0],q[1]-6);ctx.lineTo(q[0]+6,q[1]);ctx.lineTo(q[0],q[1]+6);ctx.lineTo(q[0]-6,q[1]);ctx.closePath();}ctx.fill();
+        const end=p.map((x,j)=>x+v[j]*data.arrow_scale),[a,b]=line(p,end,col,2),theta=Math.atan2(b[1]-a[1],b[0]-a[0]),len=Math.hypot(b[0]-a[0],b[1]-a[1]);if(len>2){const size=Math.min(6,len*.4);ctx.beginPath();ctx.moveTo(b[0],b[1]);ctx.lineTo(b[0]-size*Math.cos(theta-.5),b[1]-size*Math.sin(theta-.5));ctx.lineTo(b[0]-size*Math.cos(theta+.5),b[1]-size*Math.sin(theta+.5));ctx.closePath();ctx.fill();}
+      }
+      ctx.fillStyle=ink;ctx.font='12px '+getComputedStyle(root).fontFamily;ctx.textAlign='center';for(const [p,label]of[[[3.55,0,0],'x'],[[0,3.55,0],'y'],[[0,0,3.55],'z']]){const q=project(p,w,h);ctx.fillText(label,Math.max(12,Math.min(w-12,q[0])),Math.max(14,Math.min(h-8,q[1])));}
+      const k=Number(pair.value),m=f.metrics,radial=m.radial_speed[k],cos=m.direction_cosine[k];time.textContent='Time '+f.t.toFixed(2)+' · '+(index+1)+'/5';
+      const rows=[['Distance',m.distance[k].toFixed(5)+' domain units'],['Separation speed',radial.toFixed(5)+(Math.abs(radial)<1e-9?' · near zero':radial<0?' · approaching':' · separating')],['Direction agreement',cos===null?'Undefined: near-stationary label':cos.toFixed(3)+' (−1 opposite, +1 parallel)'],['Shared speed / velocity difference',m.shared_speed[k].toFixed(4)+' / '+m.relative_speed[k].toFixed(4)]];
+      readout.replaceChildren(...rows.map(([label,value])=>{const tr=document.createElement('tr'),th=document.createElement('th'),td=document.createElement('td');th.scope='row';th.textContent=label;td.className='tabular-nums';td.textContent=value;tr.append(th,td);return tr;}));
+      canvas.setAttribute('aria-label','Time '+f.t.toFixed(2)+', labels '+e.i+' and '+e.j+'. Distance '+m.distance[k].toFixed(5)+'. '+(radial<0?'Approaching.':'Separating.'));
+    }
+    function apply(state){if(!state||state.visual!=='tracked-fluid-pairs-v1')return;if(data.runs[state.case])choice.value=state.case;if(['central','outer','across'].includes(state.kind))kind.value=state.kind;fillPairs(state.pair);index=Math.max(0,Math.min(4,Number(state.frame)||0));frame.value=index;draw();}
+    choice.addEventListener('change',()=>{stop();draw();remember();});kind.addEventListener('change',()=>{stop();fillPairs();draw();remember();});pair.addEventListener('change',()=>{draw();remember();});frame.addEventListener('input',()=>{stop();index=Number(frame.value);draw();});frame.addEventListener('change',remember);
+    play.addEventListener('click',()=>{if(timer!==null){stop();return;}if(index===4){index=0;frame.value=0;draw();}play.textContent='Pause';timer=setInterval(()=>{index++;frame.value=index;draw();if(index===4){stop();remember();}},1100);});
+    canvas.addEventListener('pointerdown',ev=>{drag=[ev.clientX,ev.clientY];canvas.setPointerCapture(ev.pointerId);});canvas.addEventListener('pointermove',ev=>{if(!drag)return;az+=(ev.clientX-drag[0])*.01;el=Math.max(-1.4,Math.min(1.4,el+(ev.clientY-drag[1])*.01));drag=[ev.clientX,ev.clientY];draw();});canvas.addEventListener('pointerup',()=>{drag=null;remember();});canvas.addEventListener('pointercancel',()=>{drag=null;});
+    fillPairs();apply(window.openai?.widgetState?.modelContent||window.openai?.widgetState);window.addEventListener('openai:set_globals',ev=>apply(ev.detail?.globals?.widgetState?.modelContent||ev.detail?.globals?.widgetState));new ResizeObserver(draw).observe(canvas);new MutationObserver(draw).observe(document.documentElement,{attributes:true,attributeFilter:['class','style']});draw();
+  })();
+  </script>
+</div>

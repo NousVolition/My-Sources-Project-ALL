@@ -1,0 +1,142 @@
+{
+  "labels_per_run": 192,
+  "pairs_per_run": 377,
+  "runs": 8,
+  "fields": 40,
+  "new_fluid_runs": 0,
+  "endpoints": [
+    {
+      "case": "aligned",
+      "initial_central_pair_distance": 0.09375,
+      "final_central_pair_distance": 0.004758325124054386,
+      "final_outer_pair_distance": 0.18145234267101457,
+      "final_across_pair_distance": 2.3550250722836994,
+      "final_field_change": 0.8869393125830942,
+      "minimum_sampled_label_separation": 0.002763014370838146
+    },
+    {
+      "case": "compressive",
+      "initial_central_pair_distance": 0.09375,
+      "final_central_pair_distance": 0.013418612753158365,
+      "final_outer_pair_distance": 0.21657827308355643,
+      "final_across_pair_distance": 1.8473749676797315,
+      "final_field_change": 0.8188319321397509,
+      "minimum_sampled_label_separation": 0.0009383574155896746
+    }
+  ],
+  "refinement": [
+    {
+      "case": "aligned",
+      "comparison": "grid",
+      "through": 0.1,
+      "max_position_difference": 0.0001572129413354162,
+      "velocity_relative_l2": 0.00041854665331254035
+    },
+    {
+      "case": "aligned",
+      "comparison": "grid",
+      "through": 0.4,
+      "max_position_difference": 0.010642423117923542,
+      "velocity_relative_l2": 0.0070258325858991956
+    },
+    {
+      "case": "aligned",
+      "comparison": "time step",
+      "through": 0.1,
+      "max_position_difference": 6.347498551662056e-06,
+      "velocity_relative_l2": 4.478384298833662e-06
+    },
+    {
+      "case": "aligned",
+      "comparison": "time step",
+      "through": 0.4,
+      "max_position_difference": 1.834769000552683e-05,
+      "velocity_relative_l2": 1.0105981603406325e-05
+    },
+    {
+      "case": "aligned",
+      "comparison": "method",
+      "through": 0.1,
+      "max_position_difference": 4.450114179377351e-06,
+      "velocity_relative_l2": 1.205969864479216e-05
+    },
+    {
+      "case": "aligned",
+      "comparison": "method",
+      "through": 0.4,
+      "max_position_difference": 0.00685157725188762,
+      "velocity_relative_l2": 0.0030122988090903013
+    },
+    {
+      "case": "compressive",
+      "comparison": "grid",
+      "through": 0.1,
+      "max_position_difference": 0.00020604962984904773,
+      "velocity_relative_l2": 0.00036091685530945203
+    },
+    {
+      "case": "compressive",
+      "comparison": "grid",
+      "through": 0.4,
+      "max_position_difference": 0.00992770010226317,
+      "velocity_relative_l2": 0.006739850594658085
+    },
+    {
+      "case": "compressive",
+      "comparison": "time step",
+      "through": 0.1,
+      "max_position_difference": 6.194873383602584e-06,
+      "velocity_relative_l2": 6.850161631620809e-06
+    },
+    {
+      "case": "compressive",
+      "comparison": "time step",
+      "through": 0.4,
+      "max_position_difference": 6.194873383602584e-06,
+      "velocity_relative_l2": 6.629419653319235e-06
+    },
+    {
+      "case": "compressive",
+      "comparison": "method",
+      "through": 0.1,
+      "max_position_difference": 2.5236203793355116e-06,
+      "velocity_relative_l2": 4.131046906250732e-06
+    },
+    {
+      "case": "compressive",
+      "comparison": "method",
+      "through": 0.4,
+      "max_position_difference": 0.0022025807651955796,
+      "velocity_relative_l2": 0.0017501269766364228
+    }
+  ],
+  "rk4": {
+    "step_ladder": [
+      {
+        "dt": 0.0025,
+        "half_dt": 0.00125,
+        "max_position_difference": 0.02330574798109082
+      },
+      {
+        "dt": 0.00125,
+        "half_dt": 0.000625,
+        "max_position_difference": 0.01205762010790273
+      },
+      {
+        "dt": 0.000625,
+        "half_dt": 0.0003125,
+        "max_position_difference": 0.0006255989608479371
+      }
+    ],
+    "step_halving_max_position_difference": 0.0006255989608479371,
+    "saved_time_coarsening_max_position_difference": 0.3940208448880336,
+    "through_0_1_step_difference": 1.3554940702074384e-06,
+    "through_0_1_saved_time_difference": 0.004020980886922028,
+    "spatial_cell_size": 0.09375,
+    "rotation_exact_solution_errors": [
+      8.332506408961792e-07,
+      5.208204146703492e-08
+    ],
+    "rotation_error_reduction": 15.998809136995545
+  }
+}
