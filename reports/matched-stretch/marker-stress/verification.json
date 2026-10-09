@@ -1,0 +1,84 @@
+{
+  "status": "passed",
+  "scope": "Saved-track, diagnostic and endpoint sampling consistency, not physical convergence",
+  "saved_source_fields_hashed": 93,
+  "tracking_configurations": 8,
+  "main_labels": 250,
+  "position_perturbations": 250,
+  "identical_clones": 5,
+  "new_fluid_simulations": 0,
+  "unchanged_numerical_fluid_sources": {
+    "numerics.py": "22b169971aaf2efd56d47f685495a575e1622edd56c199b07a785fc97e952f46",
+    "run_suite.py": "270da92c7e69e123aa1aa79e449e894dc3acca4a06e41a54b9419b61efff0d07"
+  },
+  "analytic_checks": {
+    "rotation_error_ratio": 15.998809136995545,
+    "uniform_translation_and_periodic_coordinates": "passed"
+  },
+  "runs": [
+    {
+      "name": "tracking_coarse",
+      "snapshots": 31,
+      "trajectory_sha256": "3e2ab01dd69b3e8588e3d2bf29161bcce578e71bc69624db633d84b922727e24",
+      "endpoint_independent_interpolation_max_error": 7.105427357601002e-15,
+      "recomputed_group_metrics_max_error": 7.105427357601002e-15,
+      "identical_clones_agree": true
+    },
+    {
+      "name": "tracking_medium",
+      "snapshots": 31,
+      "trajectory_sha256": "cdde42f9eb33c84865f4b3550b193f2bdbd18ec3a637415077c44bbab542431e",
+      "endpoint_independent_interpolation_max_error": 7.105427357601002e-15,
+      "recomputed_group_metrics_max_error": 7.105427357601002e-15,
+      "identical_clones_agree": true
+    },
+    {
+      "name": "reference",
+      "snapshots": 31,
+      "trajectory_sha256": "0333181bd95697305c5a44cd0843e42a9105abc200f8e545098805db8497c722",
+      "endpoint_independent_interpolation_max_error": 7.105427357601002e-15,
+      "recomputed_group_metrics_max_error": 3.552713678800501e-15,
+      "identical_clones_agree": true
+    },
+    {
+      "name": "saved_time_coarse",
+      "snapshots": 16,
+      "trajectory_sha256": "a597e010f3d6a366967afb517d0761f763704da51a2085620123ff9da55654b4",
+      "endpoint_independent_interpolation_max_error": 7.105427357601002e-15,
+      "recomputed_group_metrics_max_error": 7.105427357601002e-15,
+      "identical_clones_agree": true
+    },
+    {
+      "name": "fluid_half",
+      "snapshots": 31,
+      "trajectory_sha256": "e53d856f2db60586aefbd516b30fb5d7875a45ab6e42623d9e494a904eeb19ce",
+      "endpoint_independent_interpolation_max_error": 7.105427357601002e-15,
+      "recomputed_group_metrics_max_error": 7.105427357601002e-15,
+      "identical_clones_agree": true
+    },
+    {
+      "name": "grid128_medium",
+      "snapshots": 31,
+      "trajectory_sha256": "2edcb3efa04f242e9403b8912d185847347f9e743fb635c81b7eaa0e36c51b80",
+      "endpoint_independent_interpolation_max_error": 7.105427357601002e-15,
+      "recomputed_group_metrics_max_error": 2.842170943040401e-14,
+      "identical_clones_agree": true
+    },
+    {
+      "name": "grid128",
+      "snapshots": 31,
+      "trajectory_sha256": "722a4f2418188fb974e6332b42bb4abdd38558aea108b2a8b764d56813be68bd",
+      "endpoint_independent_interpolation_max_error": 7.105427357601002e-15,
+      "recomputed_group_metrics_max_error": 5.684341886080802e-14,
+      "identical_clones_agree": true
+    },
+    {
+      "name": "grid128_refined",
+      "snapshots": 31,
+      "trajectory_sha256": "60c0c1e4d5c57ab6e8131bb7c1d2e40ff625572adaf131eeb691245bebcdff23",
+      "endpoint_independent_interpolation_max_error": 7.105427357601002e-15,
+      "recomputed_group_metrics_max_error": 2.842170943040401e-14,
+      "identical_clones_agree": true
+    }
+  ]
+}

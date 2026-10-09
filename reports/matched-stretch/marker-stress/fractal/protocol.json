@@ -1,0 +1,14 @@
+{
+  "user_request": "Both: advect markers seeded in the pictured random eight-of-nine pattern and box-count existing marker patterns. Cantor set is an analytic counting-method control.",
+  "fluid": "Existing original matched-stretch unforced Navier-Stokes fields, unchanged",
+  "new_fluid_simulations": 0,
+  "fractal_seed": 227,
+  "construction": "For each retained square, divide into nine, omit exactly one randomly selected child independently, retain eight. Use centers of retained cells at depths3 and4, respectively512 and4096 markers, in the same realization.",
+  "placement": "Central x-y square of side0.375, centered at origin, z=0. Missing marker cells do not remove water or create obstacles.",
+  "time_window": [0, 0.10],
+  "controls": "64-grid tracking dt0.00015625 and0.000078125; 128-grid dt0.000078125; 64-grid velocity snapshot interval0.02 instead of0.01 at dt0.000078125.",
+  "box_counts": "Count occupied axis-aligned 3D boxes and xy-projection squares at side0.375/3^k, k=0..6. Repeat grid-origin fractions0,0.25,0.5,0.75. Report local slopes and fits over k1..3 and k2..4, plus saturation and offset dependence. No slope is declared a measured limiting fractal dimension.",
+  "existing_patterns": "Use main marker stress tracks at times0,0.10,0.30, each125-label cloud, at64 and128 grids. Normalize coordinates by a fixed initial cloud-side0.375; do not refit spatial scale to each outcome.",
+  "reference_controls": "Exact construction-aligned counts for the random carpet, the middle-thirds Cantor set and filled line/square; include tiny-scale finite-sample saturation.",
+  "limits": ["Finite point sets have box dimension0 at arbitrarily small scales; reported slopes are finite-scale summaries.", "Sub-grid marker placement does not resolve sub-grid fluid physics.", "Initial fields and means differ across fluid grids; original peak-resolution failures remain.", "A bi-Lipschitz finite-time flow preserves an ideal set's box dimension; finite-scale shape and fitted slopes can change.", "xy projections can hide three-dimensional geometry.", "No molecular forces, external forces or new governing equation."]
+}
