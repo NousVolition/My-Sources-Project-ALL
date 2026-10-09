@@ -1,8 +1,10 @@
 # Vortex comparison: current numerical results
 
-Snapshot: 2026-10-09T13:06:19.327684+00:00. **42/48 runs completed locally; 42 verified completed records are published below.** The remaining departure controls continue.
+Snapshot: 2026-10-09T14:20:20.355850+00:00. **43/48 runs completed locally; 43 verified completed records are published below.** All aligned and compressive runs, eight ordinary-step departure runs, both 80-grid half-step controls and the Fourier 112-grid half-step control are published. The remaining departure controls continue.
 
 ## Newly completed departure runs
+
+[Completed 112-grid Fourier half-step control](completed-departure-112-half/README.md), with independent field comparisons and timestep-difference charts.
 
 [Completed 112-grid ordinary-step results](completed-departure112-base/README.md), with saved-field checks and comparison against grid 80.
 
@@ -57,6 +59,7 @@ Snapshot: 2026-10-09T13:06:19.327684+00:00. **42/48 runs completed locally; 42 v
 | exodus-fourier-n64-base | complete | 0.40 | 102.64848 | 102.64848 | 24.27390 |
 | exodus-fourier-n80-base | complete | 0.40 | 107.31294 | 107.31294 | 24.33402 |
 | exodus-fourier-n112-base | complete | 0.40 | 127.45301 | 127.45301 | 24.51191 |
+| exodus-fourier-n112-half | complete | 0.40 | 127.45405 | 127.45405 | 24.51192 |
 | exodus-fourier-n80-half | complete | 0.40 | 107.31353 | 107.31353 | 24.33409 |
 
 These are different starting fields from the imported matched-stretch study. Both solvers use SSP RK3 and the same filtering; FD4 independently discretizes transport and viscosity but shares the FFT pressure infrastructure. Method agreement has that limitation.
