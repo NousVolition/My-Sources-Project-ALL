@@ -1,0 +1,19 @@
+{
+  "purpose": "Test what local linearization can predict, and identify false numerical evidence of attraction or stability.",
+  "integration": "Classical vector RK4 with k_i containing h, as in the supplied page; independent matrix exponential and DOP853 checks.",
+  "linear_source": "All eight visible exercises 5.2.3 through 5.2.10, transcribed into the matrices in results.json.",
+  "cubic_source": "f=(-x+x^3,-2y), reconstructed from the supplied Jacobian and stated equilibria.",
+  "radial_source": "Explicit illustrative completion, not a claimed transcription of the cropped radial figure: x_dot=-y+a*x*(x^2+y^2), y_dot=x+a*y*(x^2+y^2).",
+  "radial_exact": "r_dot=a*r^3, theta_dot=1; r(t)=r0/sqrt(1-2*a*r0^2*t). All three Jacobians at the origin have eigenvalues +/-i.",
+  "competition_source": "Supplied model x_dot=x*(3-x-2*y), y_dot=y*(2-x-y), x,y>=0.",
+  "competition_grid": "47x47 inclusive grid on [0.05,3.5]^2; T=80; RK4 h=0.02 and 0.01. Endpoint tolerance 1e-5 to a stable equilibrium, otherwise unresolved.",
+  "separatrix": "Backward RK4 h=0.002 from saddle +/-delta*(sqrt(2),1)/sqrt(3), delta=1e-5 and 1e-6; stop at box boundary 4.05 or distance to origin below 1e-5.",
+  "tangent_predictor": "Predict sheep above y=1+(x-1)/sqrt(2), rabbits below. This is a deliberately local approximation tested against the global nonlinear basin.",
+  "units": "Illustrative dimensionless state/time. No biological rates fitted. No new water MD.",
+  "versions": {
+    "python": "3.12.14",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1"
+  },
+  "randomness": "None; every initial condition and tolerance specified."
+}

@@ -1,0 +1,225 @@
+{
+  "mechanical_model": "x_dot=v; v_dot=x-x^3-gamma*v",
+  "mechanical_energy": "H=v^2/2-x^2/2+x^4/4; dH/dt=-gamma*v^2",
+  "protocol": "Initial (x,v)=(0.5,0.2); evolve for 5, flip v, evolve forward for 5 with the same gamma, flip v again, compare with the initial state.",
+  "rows": [
+    {
+      "gamma": 0.0,
+      "method": "RK4",
+      "h": 0.05,
+      "round_trip_defect": 2.380287454069592e-07,
+      "forward_energy_change": -4.8989743484106896e-08,
+      "maximum_forward_energy_error": 8.021247623057892e-08
+    },
+    {
+      "gamma": 0.0,
+      "method": "RK4",
+      "h": 0.025,
+      "round_trip_defect": 7.447992982469949e-09,
+      "forward_energy_change": -1.4928300540173467e-09,
+      "maximum_forward_energy_error": 5.299477648379458e-09
+    },
+    {
+      "gamma": 0.0,
+      "method": "RK4",
+      "h": 0.0125,
+      "round_trip_defect": 2.32824745410207e-10,
+      "forward_energy_change": -4.415996734952188e-11,
+      "maximum_forward_energy_error": 3.4040516239119967e-10
+    },
+    {
+      "gamma": 0.0,
+      "method": "Verlet",
+      "h": 0.05,
+      "round_trip_defect": 9.424642647609475e-16,
+      "forward_energy_change": -2.7444235149998164e-06,
+      "maximum_forward_energy_error": 0.00017520295913307782
+    },
+    {
+      "gamma": 0.0,
+      "method": "Verlet",
+      "h": 0.025,
+      "round_trip_defect": 0.0,
+      "forward_energy_change": -6.867994637171915e-07,
+      "maximum_forward_energy_error": 4.379328252866743e-05
+    },
+    {
+      "gamma": 0.0,
+      "method": "Verlet",
+      "h": 0.0125,
+      "round_trip_defect": 1.942890293094024e-16,
+      "forward_energy_change": -1.7174302040234846e-07,
+      "maximum_forward_energy_error": 1.0948330152069086e-05
+    },
+    {
+      "gamma": 0.2,
+      "method": "RK4",
+      "h": 0.05,
+      "round_trip_defect": 0.3730283894608621,
+      "forward_energy_change": -0.09845908043974698,
+      "maximum_forward_energy_error": 0.09845908043974698
+    },
+    {
+      "gamma": 0.2,
+      "method": "RK4",
+      "h": 0.025,
+      "round_trip_defect": 0.37302852276682774,
+      "forward_energy_change": -0.09845912143438033,
+      "maximum_forward_energy_error": 0.09845912143438033
+    },
+    {
+      "gamma": 0.2,
+      "method": "RK4",
+      "h": 0.0125,
+      "round_trip_defect": 0.3730285323360455,
+      "forward_energy_change": -0.09845912446406689,
+      "maximum_forward_energy_error": 0.09845912446406689
+    },
+    {
+      "gamma": 0.2,
+      "method": "Verlet",
+      "h": 0.05,
+      "round_trip_defect": 0.373024370696736,
+      "forward_energy_change": -0.09845404701217457,
+      "maximum_forward_energy_error": 0.09845404701217457
+    },
+    {
+      "gamma": 0.2,
+      "method": "Verlet",
+      "h": 0.025,
+      "round_trip_defect": 0.37302748343903835,
+      "forward_energy_change": -0.09845784953194257,
+      "maximum_forward_energy_error": 0.09845784953194257
+    },
+    {
+      "gamma": 0.2,
+      "method": "Verlet",
+      "h": 0.0125,
+      "round_trip_defect": 0.37302827005986655,
+      "forward_energy_change": -0.09845880553662438,
+      "maximum_forward_energy_error": 0.09845880553662438
+    }
+  ],
+  "independent_energy_balance_residual": -6.120104423246175e-14,
+  "reversible_nonconservative": {
+    "equation": "x_dot=1-x^2, y_dot=-x*y",
+    "reversal": "R(x,y)=(-x,-y)",
+    "fixed_points": [
+      [
+        -1,
+        0
+      ],
+      [
+        1,
+        0
+      ]
+    ],
+    "types": [
+      "unstable node",
+      "stable node"
+    ],
+    "divergence": "-3*x",
+    "divergence_at_fixed_points": [
+      3,
+      -3
+    ],
+    "analytic_solution_max_error": 8.919384631234888e-12,
+    "round_trip_defect": 1.431413626250003e-12
+  },
+  "interpretation": "Time-reversal symmetry depends on the specified involution R. It does not imply area preservation. A symmetric integrator can reverse accurately without preserving exact energy. Damping breaks velocity-flip reversibility in the mechanical model.",
+  "supplied_exercises": [
+    {
+      "exercise": "6.6.1",
+      "reversal": "R(x,y)=(x,-y)",
+      "h": [
+        0.02,
+        0.01,
+        0.005
+      ],
+      "round_trip_defects": [
+        9.915016893796888e-10,
+        3.097864947185049e-11,
+        9.68701998446006e-13
+      ],
+      "RK4_DOP853_max_distance": 1.03323235781263e-11,
+      "fixed_points": [
+        {
+          "point": [
+            1,
+            1
+          ],
+          "eigenvalues": [
+            -2,
+            -2
+          ],
+          "type": "stable node"
+        },
+        {
+          "point": [
+            -1,
+            1
+          ],
+          "eigenvalues": [
+            2,
+            -2
+          ],
+          "type": "saddle"
+        },
+        {
+          "point": [
+            1,
+            -1
+          ],
+          "eigenvalues": [
+            2,
+            2
+          ],
+          "type": "unstable node"
+        },
+        {
+          "point": [
+            -1,
+            -1
+          ],
+          "eigenvalues": [
+            -2,
+            2
+          ],
+          "type": "saddle"
+        }
+      ],
+      "RK4_analytic_max_distance": 8.643521295581522e-12
+    },
+    {
+      "exercise": "6.6.2",
+      "reversal": "R(x,y)=(x,-y)",
+      "h": [
+        0.02,
+        0.01,
+        0.005
+      ],
+      "round_trip_defects": [
+        3.9446384299544237e-11,
+        1.2337280865493584e-12,
+        4.068119104613002e-14
+      ],
+      "RK4_DOP853_max_distance": 1.0113236714717306e-11,
+      "fixed_points": [
+        {
+          "point": [
+            0,
+            0
+          ],
+          "eigenvalues": [
+            1,
+            -1
+          ],
+          "type": "saddle"
+        }
+      ],
+      "invariant_lines": "y=(k+1/2)*pi, where x_dot=y and y_dot=0."
+    }
+  ],
+  "source": "Exercises 6.6.1 and 6.6.2 are transcribed from the supplied page. The mechanical and nonconservative auxiliary models are explicitly chosen benchmarks; other unidentified cropped systems are not reconstructed.",
+  "passed": true
+}
