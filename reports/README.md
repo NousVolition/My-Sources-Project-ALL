@@ -55,3 +55,4 @@ The full restart arrays remain in the local calculation workspace. They are larg
 - [Dynamic source weights and cubic term: 26 runs, four unseen starts](../math/imports/hug-ns/mirror-fluid/dynamic-q/README.md).
 - [Original 48/64/80 replay: fixed and moving cutoff measurements](support/fixed-cutoff-run/README.md).
 - [Three completed 0.1% perturbation seeds](matched-stretch/completed-seeds/README.md).
+- [Four additional 65-grid controls for the dynamic q model](../math/imports/hug-ns/mirror-fluid/dynamic-q/GRID65.md).

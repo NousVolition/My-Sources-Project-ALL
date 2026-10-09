@@ -64,7 +64,7 @@ The JSON column named `D` is a signed measurement, distinct from the surrounding
 | q integrates a fluid measurement | The executed rule is dq/dt = -0.2q + 0.8D. q is recorded after each step and does not force the fluid. |
 | Separate source weights and cross term | [Dynamic test completed](dynamic-q/README.md): four explicit interaction features fitted from 10 training starts, with independent AB bias and independently shaped D. This is a six-template implementation; its weights are not unique causal contributions. |
 | Cubic feedback and branch selection | Cubic damping was fitted and compared with the linear model on four unseen starts. This does not establish branch selection: nonnegative linear and cubic damping cannot create two isolated stable branches under constant inputs. |
-| Prediction on held-out runs | Four complete starts withheld from fitting, with reflected, half-step and 49-grid controls. Both measured-input predictions and forecasts with inputs frozen at time 0.1 are reported. |
+| Prediction on held-out runs | Four complete starts withheld from fitting, with reflected and half-step controls, plus 49- and 65-grid repeats. Both measured-input predictions and forecasts with inputs frozen at time 0.1 are reported. |
 
 The new source-addition test measures an interaction contrast relative to the fixed A–B background. It does not uniquely decompose the evolving fluid or establish competition between pairings. Its 33³ results pass the time-step comparison; spatial convergence is not established.
 
