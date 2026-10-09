@@ -1,0 +1,55 @@
+{
+  "cupy": "14.2.0",
+  "gpu": "NVIDIA GeForce RTX 3080",
+  "checks": [
+    {
+      "n": 16,
+      "family": "abc",
+      "rhs_relative_L2": 1.7497782720756454e-14,
+      "trajectory_relative_L2": 1.2459116634628807e-18,
+      "dissipation_difference": 0.0,
+      "pass_": true
+    },
+    {
+      "n": 16,
+      "family": "kida",
+      "rhs_relative_L2": 7.479191454601208e-16,
+      "trajectory_relative_L2": 2.4195935620960634e-17,
+      "dissipation_difference": 0.0,
+      "pass_": true
+    },
+    {
+      "n": 16,
+      "family": "taylor_green",
+      "rhs_relative_L2": 6.596181851349617e-16,
+      "trajectory_relative_L2": 7.955808503736069e-18,
+      "dissipation_difference": 8.673617379884035e-19,
+      "pass_": true
+    },
+    {
+      "n": 32,
+      "family": "abc",
+      "rhs_relative_L2": 1.7901121936112186e-14,
+      "trajectory_relative_L2": 1.296694543116051e-18,
+      "dissipation_difference": 3.469446951953614e-18,
+      "pass_": true
+    },
+    {
+      "n": 32,
+      "family": "kida",
+      "rhs_relative_L2": 9.93257798502304e-16,
+      "trajectory_relative_L2": 5.012384968570686e-17,
+      "dissipation_difference": 0.0,
+      "pass_": true
+    },
+    {
+      "n": 32,
+      "family": "taylor_green",
+      "rhs_relative_L2": 8.562363408811782e-16,
+      "trajectory_relative_L2": 1.3485625311050354e-17,
+      "dissipation_difference": 8.673617379884035e-19,
+      "pass_": true
+    }
+  ],
+  "passed": true
+}

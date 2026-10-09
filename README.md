@@ -12,6 +12,7 @@ The **hug** is the starting idea: a form that surrounds, yields, and changes sha
 
 | Study | What it contains |
 | --- | --- |
+| **[Navier–Stokes refinement stress suite](reports/navier-stokes-stress/README.md)** | 39 completed runs up to 256³, smooth vortex starts, perturbation controls, spatial and time-step checks, and full raw-data release. No continuum breakdown established. |
 | **[Completed mirror-fluid tests](math/imports/hug-ns/mirror-fluid/README.md)** | Four reproduced tests, peak-spin and symmetry charts, actual results and runnable scripts. |
 | **[Signed mirror calibration](math/imports/hug-ns/mirror-calibration/README.md)** | 20 completed runs with reflected starts, two grids and half-timestep controls. |
 | **[Vortex stress tests and 3D viewer](reports/README.md)** | One central vortex with aligned, reverse, and departing surroundings; saved shapes, measurements, grid comparisons and time-step controls. |
