@@ -1,8 +1,8 @@
 # Mirror-fluid tests: reproduced results
 
-[Hug-ns overview](../README.md) · [Charts and report](../../../../reports/files/fluid-tests-completed.html) · [Verification](verification.json) · [Model and test coverage](MODEL.md)
+[Hug-ns overview](../README.md) Â· [Charts and report](../../../../reports/files/fluid-tests-completed.html) Â· [Verification](verification.json) Â· [Model and test coverage](MODEL.md)
 
-**All four supplied tests were executed and their current reference results reproduced.** Grid: 33³. Domain side: 6. Viscosity: 0.01. The fluid solver uses Fourier derivatives, projection and two-stage Heun stepping with zero external force.
+**All four supplied tests were executed and their current reference results reproduced.** Grid: 33Â³. Domain side: 6. Viscosity: 0.01. The fluid solver uses Fourier derivatives, projection and two-stage Heun stepping with zero external force.
 
 ![Completed fluid tests](../../../../reports/files/fluid-tests-completed.png)
 
@@ -15,7 +15,7 @@
 
 ## Separate source contributions
 
-[Ten new source-control runs](source-attribution/README.md) measure C alone, D alone and their combined effect at the existing 50/50 and 70/30 settings. The 50/50 directions cancel. At 70/30, the difference from adding the separate effects is 0.00133% of the combined signed endpoint. Half-step checks agree; these are measurements at 33³.
+[Ten new source-control runs](source-attribution/README.md) measure C alone, D alone and their combined effect at the existing 50/50 and 70/30 settings. The 50/50 directions cancel. At 70/30, the difference from adding the separate effects is 0.00133% of the combined signed endpoint. Half-step checks agree; these are measurements at 33Â³.
 
 ![Separate source effects](source-attribution/source-effects.png)
 
@@ -58,3 +58,7 @@ New calculations go into `rerun/`. The saved `results/` and supplied `references
 ## Separate driven breathing test
 
 [Six supplied breathing cases reproduced](breathing-rerun/README.md), with a comparison chart and unchanged runnable code. This driver adds a prescribed velocity push every step. The push is not multiplied by dt, so changing the timestep also changes the driving. This experiment is labelled separately from the four zero-force tests above.
+
+## Definitions and diagnostic controls
+
+[Corrected dashboard and completed controls](methods-controls/README.md) adds colocated signed budgets, actual retained-band spectra, source energy/circulation measurements, and a [common definitions page](methods-controls/METHODS.md). The original solver and supplied references are preserved. Symmetry checks and spatial-resolution checks are reported separately.

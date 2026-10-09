@@ -1,0 +1,202 @@
+{
+  "L": 6,
+  "nu": 0.01,
+  "T": 0.4,
+  "jobs": [
+    {
+      "n": 33,
+      "sign": 0,
+      "half": false,
+      "shape": 0,
+      "transform": "none",
+      "id": "n33-s0-shape0-none-base"
+    },
+    {
+      "n": 33,
+      "sign": 1,
+      "half": false,
+      "shape": 0,
+      "transform": "none",
+      "id": "n33-s1-shape0-none-base"
+    },
+    {
+      "n": 33,
+      "sign": -1,
+      "half": false,
+      "shape": 0,
+      "transform": "none",
+      "id": "n33-s-1-shape0-none-base"
+    },
+    {
+      "n": 49,
+      "sign": 0,
+      "half": false,
+      "shape": 0,
+      "transform": "none",
+      "id": "n49-s0-shape0-none-base"
+    },
+    {
+      "n": 49,
+      "sign": 1,
+      "half": false,
+      "shape": 0,
+      "transform": "none",
+      "id": "n49-s1-shape0-none-base"
+    },
+    {
+      "n": 49,
+      "sign": -1,
+      "half": false,
+      "shape": 0,
+      "transform": "none",
+      "id": "n49-s-1-shape0-none-base"
+    },
+    {
+      "n": 65,
+      "sign": 0,
+      "half": false,
+      "shape": 0,
+      "transform": "none",
+      "id": "n65-s0-shape0-none-base"
+    },
+    {
+      "n": 65,
+      "sign": 1,
+      "half": false,
+      "shape": 0,
+      "transform": "none",
+      "id": "n65-s1-shape0-none-base"
+    },
+    {
+      "n": 65,
+      "sign": -1,
+      "half": false,
+      "shape": 0,
+      "transform": "none",
+      "id": "n65-s-1-shape0-none-base"
+    },
+    {
+      "n": 65,
+      "sign": 0,
+      "half": true,
+      "shape": 0,
+      "transform": "none",
+      "id": "n65-s0-shape0-none-half"
+    },
+    {
+      "n": 65,
+      "sign": 1,
+      "half": true,
+      "shape": 0,
+      "transform": "none",
+      "id": "n65-s1-shape0-none-half"
+    },
+    {
+      "n": 65,
+      "sign": -1,
+      "half": true,
+      "shape": 0,
+      "transform": "none",
+      "id": "n65-s-1-shape0-none-half"
+    },
+    {
+      "n": 33,
+      "sign": 1,
+      "half": false,
+      "shape": 1,
+      "transform": "none",
+      "id": "n33-s1-shape1-none-base"
+    },
+    {
+      "n": 33,
+      "sign": -1,
+      "half": false,
+      "shape": 1,
+      "transform": "none",
+      "id": "n33-s-1-shape1-none-base"
+    },
+    {
+      "n": 33,
+      "sign": 1,
+      "half": false,
+      "shape": 2,
+      "transform": "none",
+      "id": "n33-s1-shape2-none-base"
+    },
+    {
+      "n": 33,
+      "sign": -1,
+      "half": false,
+      "shape": 2,
+      "transform": "none",
+      "id": "n33-s-1-shape2-none-base"
+    },
+    {
+      "n": 33,
+      "sign": 1,
+      "half": false,
+      "shape": 0,
+      "transform": "shift1",
+      "id": "n33-s1-shape0-shift1-base"
+    },
+    {
+      "n": 33,
+      "sign": -1,
+      "half": false,
+      "shape": 0,
+      "transform": "shift1",
+      "id": "n33-s-1-shape0-shift1-base"
+    },
+    {
+      "n": 33,
+      "sign": 1,
+      "half": false,
+      "shape": 0,
+      "transform": "shifthalf",
+      "id": "n33-s1-shape0-shifthalf-base"
+    },
+    {
+      "n": 33,
+      "sign": -1,
+      "half": false,
+      "shape": 0,
+      "transform": "shifthalf",
+      "id": "n33-s-1-shape0-shifthalf-base"
+    },
+    {
+      "n": 33,
+      "sign": 1,
+      "half": false,
+      "shape": 0,
+      "transform": "rotate",
+      "id": "n33-s1-shape0-rotate-base"
+    },
+    {
+      "n": 33,
+      "sign": -1,
+      "half": false,
+      "shape": 0,
+      "transform": "rotate",
+      "id": "n33-s-1-shape0-rotate-base"
+    }
+  ],
+  "forcing": "none",
+  "method": "Unchanged supplied Heun with pressure projection",
+  "timestep": "ceil(.4 / (.04*dx/maxspeed(u0_reference))); dt=.4/steps; controls share reference plus dt. Zero state retains own dt. Half means twice as many steps.",
+  "output": "Every step W, energy, enstrophy and I; full diagnostics and full field at roughly .02 and both endpoints.",
+  "same_energy": "All shape variants have odd unit-L2 phi; use same 0.01*norm(base) amplitude. Base and odd template are orthogonal.",
+  "translations": "1 and 0.5 grid cells along x; Fourier shift all vector components. Diagnostics use conjugated mirror and shifted template, equivalently pull back the whole field.",
+  "rotation": "Proper 90 degree z rotation, rotating positions AND components. Pull back before E,D.",
+  "one_step": "At every grid, both dt and half dt; even and plus starts; mirror, cell shift, half-cell shift and 90 degree rotation.",
+  "symmetry_tolerance": 1e-10,
+  "mirror_pair_tolerance": 1e-10,
+  "symmetry_scale": "Relative L2 field residual. Conservative roundoff audit ceiling, not a continuum error bound.",
+  "resolution_flags": {
+    "tail_energy_fraction": 0.001,
+    "tail_enstrophy_fraction": 0.01
+  },
+  "curve_tolerance": 0.01,
+  "curve_metric": "relative L2 in time against finer curve on common output interval",
+  "persistent_state": "Not tested by this finite .4 batch. A future plateau candidate requires an unforced interval [T/2,T] of length >=1, nonzero |D| >100 times numerical symmetry floor, <=1% variation, matching signed outcome under 3 grids and half dt. Even a pass is a finite-window plateau, not an attractor proof.",
+  "stop": "No additional jobs or longer intervals are created automatically."
+}
