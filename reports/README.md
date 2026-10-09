@@ -6,7 +6,7 @@ These reports are saved on the authorâ€™s computer and copied into this Git
 
 ## Numerical reports and earlier snapshots
 
-- **[Matched-stretch controls](matched-stretch/README.md): 5/48 runs in this earlier snapshot.** Charts, time-step comparisons, widths and budgets; spatial resolution remains inadequate in the current 64Â³ runs.
+- **[Matched-stretch controls](matched-stretch/README.md): 26/48 completed and verified results published.** Latest: [128-grid timestep comparison](matched-stretch/completed-timestep128/README.md), including the failed timestep and spatial-resolution screens.
 - **[Three vortex surroundings](study/README.md): 44/48 completed locally; 44 verified results published.** Latest: [both 112-grid departure half-step controls](study/completed-departure-112-half/README.md). Finer departure controls continue.
 - [Verification of this saved snapshot](numerical-progress-verification.json).
 

@@ -1,5 +1,7 @@
 # Matched-stretch numerical controls
 
+**Completed 128-grid timestep control:** [Ordinary and half steps through 0.40](completed-timestep128/README.md). **26/48 verified completed results published.** The W-curve timestep screen fails from t=0.31; spatial resolution remains inadequate.
+
 **First completed 128-grid perturbation seed:** [seed 101 at 0.1%, through 0.40](completed-n128-seed101/README.md). All 41 fields and separation from the saved baseline checked. Resolution warnings and finite-window rate limits remain explicit.
 
 **Menger–Koch–Romeo–Juliet comparison:** [Completed marker relationships and motion tests](relationship-fractal-study/README.md). 360 case trajectories; exploratory interaction law with explicit limits, not a demonstrated improvement to Navier–Stokes.
