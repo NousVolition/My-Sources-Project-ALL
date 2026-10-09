@@ -1,0 +1,425 @@
+{
+  "status": "passed",
+  "checked_utc": "2026-10-09T11:50:45.528025+00:00",
+  "new_simulations": 0,
+  "completed_runs": [
+    "exodus-fourier-n48-base",
+    "exodus-fd4-n48-base",
+    "exodus-fourier-n64-base",
+    "exodus-fd4-n64-base",
+    "exodus-fourier-n80-base",
+    "exodus-fd4-n80-base"
+  ],
+  "saved_fields_checked": 30,
+  "source_hashes": {
+    "initial_design.py": "008d8ae42332377afcb068f0689d4f418c7e27e29cc08233a5fde2b554250c30",
+    "solver.py": "5fecfe44050c47f374111a52e46e624a3fd4b6427575b3b5109086fe2789b821",
+    "protocol.py": "e776a5e0f3cca7e1a53aca39f0b4b7a6aeb96a3996a31c107a301ff01cf4db7c",
+    "run_study.py": "f81bf25ea96658ca8fcea089579930367290ce62fd442b8f2972fcc25ce093f3"
+  },
+  "checks": [
+    {
+      "id": "exodus-fourier-n48-base",
+      "result_sha256": "4f486f849bcf9e4353d870bbb04e8f974760a9a470d0d3735c0f3722bebfe3f7",
+      "fields": [
+        {
+          "file": "field-t0.00.npz",
+          "sha256": "5e8d79c43087a817a8d0081d35e7f5eb1e0d08a864b59c8511eadaa0de4d6eff",
+          "relative_errors": {
+            "Wmax": 1.7763568394015458e-16,
+            "energy": 3.724418783098294e-16,
+            "spectral_enstrophy": 4.204711617642401e-16,
+            "native_enstrophy": 4.204711617642401e-16
+          }
+        },
+        {
+          "file": "field-t0.10.npz",
+          "sha256": "a4db5a2ebf0372dda9b50636b069967074bc0d30f90019ee61fa8da64d233ed3",
+          "relative_errors": {
+            "Wmax": 1.704446219650201e-16,
+            "energy": 3.726909014815745e-16,
+            "spectral_enstrophy": 1.4625895534746421e-16,
+            "native_enstrophy": 1.4625895534746421e-16
+          }
+        },
+        {
+          "file": "field-t0.20.npz",
+          "sha256": "30f5ed027a86c20cd0a02ccaf10cace95322b535b8a5f0435117fe7e6b674466",
+          "relative_errors": {
+            "Wmax": 4.499350719544217e-16,
+            "energy": 1.2432776392020409e-16,
+            "spectral_enstrophy": 4.2901302439431944e-16,
+            "native_enstrophy": 4.2901302439431944e-16
+          }
+        },
+        {
+          "file": "field-t0.30.npz",
+          "sha256": "bb75722d250af0d9c179702b4a7c478c8bc908d7a2b786438cb014ea75f32d5c",
+          "relative_errors": {
+            "Wmax": 2.1981831624286098e-16,
+            "energy": 2.4893968394084583e-16,
+            "spectral_enstrophy": 0.0,
+            "native_enstrophy": 0.0
+          }
+        },
+        {
+          "file": "field-t0.40.npz",
+          "sha256": "1aa81d14c83899644af95f3f8f95259a23ddf8923ee84c67a358c9c7547bb718",
+          "relative_errors": {
+            "Wmax": 0.0,
+            "energy": 3.74056177056497e-16,
+            "spectral_enstrophy": 1.8875636479938527e-16,
+            "native_enstrophy": 1.8875636479938527e-16
+          }
+        }
+      ],
+      "endpoint_errors": {
+        "high_band_enstrophy_fraction": 0.0,
+        "direct_spectral_enstrophy_production": 0.0,
+        "W_central_roi": 0.0,
+        "origin_axial_strain": 0.0,
+        "central_marker_parallel_stretch_spin_weighted": 0.0
+      },
+      "maximum_stage_cfl": 0.2759309670861752,
+      "maximum_absolute_energy_budget_relative": 2.0761723830676945e-06,
+      "first_spectral_warning": 0.18,
+      "first_width_warning": 0.18
+    },
+    {
+      "id": "exodus-fd4-n48-base",
+      "result_sha256": "9f53c46d9301c8aab63946704e4ee1478ce5175db8b28d6ae5bb193dd7c962f6",
+      "fields": [
+        {
+          "file": "field-t0.00.npz",
+          "sha256": "093cf7255fb29e10ee8d4911fe0bf40bd58934dd93daf3b6227f8bb92172ca0f",
+          "relative_errors": {
+            "Wmax": 0.0,
+            "energy": 2.48294586298604e-16,
+            "spectral_enstrophy": 2.8031411489346114e-16,
+            "native_enstrophy": 4.206581695572174e-16
+          }
+        },
+        {
+          "file": "field-t0.10.npz",
+          "sha256": "37de4ef0c9b8b3c157e37576a64d1b89c2a5b5a87129b2add886bf24c239d73b",
+          "relative_errors": {
+            "Wmax": 3.411641486656075e-16,
+            "energy": 4.969211508230512e-16,
+            "spectral_enstrophy": 4.3892058456390496e-16,
+            "native_enstrophy": 4.3936826875388987e-16
+          }
+        },
+        {
+          "file": "field-t0.20.npz",
+          "sha256": "9ea0e5bdb8eb828bd2aea27abc69bd70fc6189c5bdfd400fea476ec5fffbaf46",
+          "relative_errors": {
+            "Wmax": 0.0,
+            "energy": 1.2432740771063194e-16,
+            "spectral_enstrophy": 2.1567720006467325e-16,
+            "native_enstrophy": 2.1950997475676223e-16
+          }
+        },
+        {
+          "file": "field-t0.30.npz",
+          "sha256": "0181fd7cb51d6005afbcbf264ce0715797a7c7ee6963e7f88fda217cfc214cbe",
+          "relative_errors": {
+            "Wmax": 0.0,
+            "energy": 1.2446675040485456e-16,
+            "spectral_enstrophy": 2.911173334223038e-16,
+            "native_enstrophy": 0.0
+          }
+        },
+        {
+          "file": "field-t0.40.npz",
+          "sha256": "8bebd46f52d1b1a11240735de58d390c6a4b2b74eabf0387c36c5a3330a2d1b9",
+          "relative_errors": {
+            "Wmax": 1.7954953755265995e-16,
+            "energy": 2.49348096215567e-16,
+            "spectral_enstrophy": 3.8783337117610007e-16,
+            "native_enstrophy": 2.1647543779080926e-16
+          }
+        }
+      ],
+      "endpoint_errors": {
+        "high_band_enstrophy_fraction": 0.0,
+        "direct_spectral_enstrophy_production": 0.0,
+        "W_central_roi": 0.0,
+        "origin_axial_strain": 0.0,
+        "central_marker_parallel_stretch_spin_weighted": 0.0
+      },
+      "maximum_stage_cfl": 0.2759180953132504,
+      "maximum_absolute_energy_budget_relative": 1.904683572144012e-06,
+      "first_spectral_warning": 0.2,
+      "first_width_warning": 0.18
+    },
+    {
+      "id": "exodus-fourier-n64-base",
+      "result_sha256": "cc0cd535ec79d00e2d4618add414451a2f6c428ea3b207557e89ef67387adc77",
+      "fields": [
+        {
+          "file": "field-t0.00.npz",
+          "sha256": "01bf0ed3fba0885ab0b20fce903170e47ac6bb62afb833e0f7703805309d7a93",
+          "relative_errors": {
+            "Wmax": 0.0,
+            "energy": 0.0,
+            "spectral_enstrophy": 1.4015705392141332e-16,
+            "native_enstrophy": 1.4015705392141332e-16
+          }
+        },
+        {
+          "file": "field-t0.10.npz",
+          "sha256": "a1ce7c42205dec1e507530f1d4919351c477be80079ec6fcb22b7be01e4607c9",
+          "relative_errors": {
+            "Wmax": 0.0,
+            "energy": 4.969211659610987e-16,
+            "spectral_enstrophy": 2.925172700872629e-16,
+            "native_enstrophy": 2.925172700872629e-16
+          }
+        },
+        {
+          "file": "field-t0.20.npz",
+          "sha256": "431dfb8d992190fec24119796a592be035d9a8363afafe950834fd8b108191b5",
+          "relative_errors": {
+            "Wmax": 0.0,
+            "energy": 0.0,
+            "spectral_enstrophy": 2.1407148514174302e-16,
+            "native_enstrophy": 2.1407148514174302e-16
+          }
+        },
+        {
+          "file": "field-t0.30.npz",
+          "sha256": "1573364caf8583b7221f0c4ef3a26579f405129ff4a4b473acc02745f187aa96",
+          "relative_errors": {
+            "Wmax": 0.0,
+            "energy": 2.489431645721699e-16,
+            "spectral_enstrophy": 1.395062778383302e-16,
+            "native_enstrophy": 1.395062778383302e-16
+          }
+        },
+        {
+          "file": "field-t0.40.npz",
+          "sha256": "8dd2ede5f794c7899c062f153fa038e95fcf5f4e06f99a301b13abfcbffa4c1d",
+          "relative_errors": {
+            "Wmax": 0.0,
+            "energy": 2.4939434203658066e-16,
+            "spectral_enstrophy": 3.5363696705064867e-16,
+            "native_enstrophy": 3.5363696705064867e-16
+          }
+        }
+      ],
+      "endpoint_errors": {
+        "high_band_enstrophy_fraction": 0.0,
+        "direct_spectral_enstrophy_production": 0.0,
+        "W_central_roi": 0.0,
+        "origin_axial_strain": 0.0,
+        "central_marker_parallel_stretch_spin_weighted": 0.0
+      },
+      "maximum_stage_cfl": 0.2767027483404005,
+      "maximum_absolute_energy_budget_relative": 1.1681382374620692e-06,
+      "first_spectral_warning": 0.22,
+      "first_width_warning": 0.22
+    },
+    {
+      "id": "exodus-fd4-n64-base",
+      "result_sha256": "e127d43e9cc0929015288421143333ec4153bde5c682191e7fc0b546d480f7df",
+      "fields": [
+        {
+          "file": "field-t0.00.npz",
+          "sha256": "5f2e4486f38f8d649ee4b7b129535150b8b5fb598d76ed0f50a3f437b2657968",
+          "relative_errors": {
+            "Wmax": 0.0,
+            "energy": 0.0,
+            "spectral_enstrophy": 0.0,
+            "native_enstrophy": 1.401769515362841e-16
+          }
+        },
+        {
+          "file": "field-t0.10.npz",
+          "sha256": "ae2920d35807fb009fb400a8075bb4af3fb91bd3802e911ace08dd41013edc13",
+          "relative_errors": {
+            "Wmax": 0.0,
+            "energy": 0.0,
+            "spectral_enstrophy": 1.462747797110312e-16,
+            "native_enstrophy": 0.0
+          }
+        },
+        {
+          "file": "field-t0.20.npz",
+          "sha256": "0eda5c5a276e8ce31ff7b495f9efb84406485a818468b98d2aabb90001d62815",
+          "relative_errors": {
+            "Wmax": 0.0,
+            "energy": 4.97310454528216e-16,
+            "spectral_enstrophy": 0.0,
+            "native_enstrophy": 0.0
+          }
+        },
+        {
+          "file": "field-t0.30.npz",
+          "sha256": "94d33d9399b77dcc8a21a0699d6aecc32a85eb2ed6b90ee166474740a4802d3f",
+          "relative_errors": {
+            "Wmax": 0.0,
+            "energy": 0.0,
+            "spectral_enstrophy": 1.4151947487748327e-16,
+            "native_enstrophy": 2.9838080206643172e-16
+          }
+        },
+        {
+          "file": "field-t0.40.npz",
+          "sha256": "68c1be4f62647e5f7047762ef74edabe82ae03381062da630385585d2a657f33",
+          "relative_errors": {
+            "Wmax": 0.0,
+            "energy": 0.0,
+            "spectral_enstrophy": 1.8145473108014511e-16,
+            "native_enstrophy": 2.0080354719964516e-16
+          }
+        }
+      ],
+      "endpoint_errors": {
+        "high_band_enstrophy_fraction": 0.0,
+        "direct_spectral_enstrophy_production": 0.0,
+        "W_central_roi": 0.0,
+        "origin_axial_strain": 0.0,
+        "central_marker_parallel_stretch_spin_weighted": 0.0
+      },
+      "maximum_stage_cfl": 0.27669860871408625,
+      "maximum_absolute_energy_budget_relative": 1.1032839881257018e-06,
+      "first_spectral_warning": 0.22,
+      "first_width_warning": 0.22
+    },
+    {
+      "id": "exodus-fourier-n80-base",
+      "result_sha256": "b8f7e82f58403b6e08e4978e575b7a5cc3c1da87417c3a5f9cf0f4ab6b2228fe",
+      "fields": [
+        {
+          "file": "field-t0.00.npz",
+          "sha256": "3efd82ad2f00b26f9cc942c04168753970a68bf7d7a285895b5f92076ca94326",
+          "relative_errors": {
+            "Wmax": 7.105427357600989e-16,
+            "energy": 2.4829458553988625e-16,
+            "spectral_enstrophy": 1.4015705392141332e-16,
+            "native_enstrophy": 1.4015705392141332e-16
+          }
+        },
+        {
+          "file": "field-t0.10.npz",
+          "sha256": "c2626c1ac183da22be3578286ec0078da3410b0d1c6f6f5a876816640b97e22a",
+          "relative_errors": {
+            "Wmax": 1.7042868088366412e-16,
+            "energy": 3.7269086485194445e-16,
+            "spectral_enstrophy": 4.387758123462899e-16,
+            "native_enstrophy": 4.387758123462899e-16
+          }
+        },
+        {
+          "file": "field-t0.20.npz",
+          "sha256": "a361c47f9760b5297b8f91f08c04f36b702e30c678aa0d6d5642199c6e0ebf13",
+          "relative_errors": {
+            "Wmax": 3.0597367614402674e-16,
+            "energy": 2.486555787345695e-16,
+            "spectral_enstrophy": 4.279231184182674e-16,
+            "native_enstrophy": 4.279231184182674e-16
+          }
+        },
+        {
+          "file": "field-t0.30.npz",
+          "sha256": "aa5f6b313608b4f5068067621b0c2b380b57a7f80e0ff06c38ef9283978518d2",
+          "relative_errors": {
+            "Wmax": 1.9198589857501444e-16,
+            "energy": 1.2447228129023954e-16,
+            "spectral_enstrophy": 4.135658148095306e-16,
+            "native_enstrophy": 4.135658148095306e-16
+          }
+        },
+        {
+          "file": "field-t0.40.npz",
+          "sha256": "affb2ad4602ce356cc1fb95dbc6a39cbc1c2e12cb797dca93ca314f913733c19",
+          "relative_errors": {
+            "Wmax": 2.648488608626563e-16,
+            "energy": 2.494063954344855e-16,
+            "spectral_enstrophy": 5.121226289303692e-16,
+            "native_enstrophy": 5.121226289303692e-16
+          }
+        }
+      ],
+      "endpoint_errors": {
+        "high_band_enstrophy_fraction": 0.0,
+        "direct_spectral_enstrophy_production": 0.0,
+        "W_central_roi": 0.0,
+        "origin_axial_strain": 0.0,
+        "central_marker_parallel_stretch_spin_weighted": 0.0
+      },
+      "maximum_stage_cfl": 0.2766647061598438,
+      "maximum_absolute_energy_budget_relative": 6.898301792299232e-07,
+      "first_spectral_warning": 0.22,
+      "first_width_warning": 0.24
+    },
+    {
+      "id": "exodus-fd4-n80-base",
+      "result_sha256": "6e68b185934ae8463d6cceae86b851e06e989b142b6c2ded118f5e3c23dbc0ba",
+      "fields": [
+        {
+          "file": "field-t0.00.npz",
+          "sha256": "6e212a94e818a97ab0781066b85c7c141e3d3bd3efd27bc6ef3439918cb77194",
+          "relative_errors": {
+            "Wmax": 5.329070532894719e-16,
+            "energy": 3.72441878329489e-16,
+            "spectral_enstrophy": 4.2047116194802766e-16,
+            "native_enstrophy": 4.204957114814827e-16
+          }
+        },
+        {
+          "file": "field-t0.10.npz",
+          "sha256": "65754fe27089802d253a1083c537f185b2976435eff48b2e589a56af884f33a4",
+          "relative_errors": {
+            "Wmax": 1.7045324091452906e-16,
+            "energy": 3.726908595269926e-16,
+            "spectral_enstrophy": 4.3879617317481085e-16,
+            "native_enstrophy": 0.0
+          }
+        },
+        {
+          "file": "field-t0.20.npz",
+          "sha256": "ed925f6350281953c2ec1eeaefb8f7f9e53b8e6fd7320dd6ab5ceb7c0d74b83b",
+          "relative_errors": {
+            "Wmax": 4.596376845423206e-16,
+            "energy": 2.486553952264228e-16,
+            "spectral_enstrophy": 6.430866117210513e-16,
+            "native_enstrophy": 4.312209457478279e-16
+          }
+        },
+        {
+          "file": "field-t0.30.npz",
+          "sha256": "a9d60f647ab80753b6b8ccb0a666b4a994a04b759bfc0165d38a2076620e1098",
+          "relative_errors": {
+            "Wmax": 1.9224173460037532e-16,
+            "energy": 1.2447067784696423e-16,
+            "spectral_enstrophy": 1.3930816765442206e-16,
+            "native_enstrophy": 2.904609806304735e-16
+          }
+        },
+        {
+          "file": "field-t0.40.npz",
+          "sha256": "37f0d82ce66e33494e39be8b78987aca0967beb7c6207f5699ac4eea0a7e563f",
+          "relative_errors": {
+            "Wmax": 0.0,
+            "energy": 1.2469518023022907e-16,
+            "spectral_enstrophy": 1.7417615670673292e-16,
+            "native_enstrophy": 3.803690814284681e-16
+          }
+        }
+      ],
+      "endpoint_errors": {
+        "high_band_enstrophy_fraction": 0.0,
+        "direct_spectral_enstrophy_production": 0.0,
+        "W_central_roi": 0.0,
+        "origin_axial_strain": 0.0,
+        "central_marker_parallel_stretch_spin_weighted": 0.0
+      },
+      "maximum_stage_cfl": 0.27666310717523424,
+      "maximum_absolute_energy_budget_relative": 6.671158355390594e-07,
+      "first_spectral_warning": 0.24,
+      "first_width_warning": 0.24
+    }
+  ],
+  "scope": "Physical W, energy and both enstrophies independently summed from saved arrays at 0, .1, .2, .3, .4. Endpoint widths, strain and spectra remeasured with frozen diagnostic code. Integrated I and budget rates retain recorded RK-stage accumulations; trajectories were not rerun. Numerical completion does not imply spatial convergence."
+}

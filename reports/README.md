@@ -7,7 +7,7 @@ These reports are saved on the authorâ€™s computer and copied into this Git
 ## Numerical reports and earlier snapshots
 
 - **[Matched-stretch controls](matched-stretch/README.md): 5/48 runs in this earlier snapshot.** Charts, time-step comparisons, widths and budgets; spatial resolution remains inadequate in the current 64Â³ runs.
-- **[Three vortex surroundings](study/README.md): 36/48 completed locally; 32 verified results published.** All aligned and compressive runs are published, including [four 160-grid controls](study/completed-compressive160-final/README.md). Departure runs are progressing; the older interactive display remains dated separately below.
+- **[Three vortex surroundings](study/README.md): 38/48 completed locally; 38 verified results published.** All aligned and compressive runs, plus [six departure runs](study/completed-departure-coarse/README.md). Remaining departure controls continue.
 - [Verification of this saved snapshot](numerical-progress-verification.json).
 
 ## Completed mirror tests â€” October 8
@@ -88,3 +88,5 @@ The matched-stretch count above describes the saved October 8 snapshot; the vort
 ## Marker-history prediction pilot
 
 - [Does past marker geometry predict future deformation?](matched-stretch/history-prediction/README.md) — 32 independent initial conditions, 64 simulations, whole-run holdouts, 13 passing local tests, complete numerical recordings and control plots. A small continuous-error gain; event results depend on the threshold, and the finer-grid comparison remains inconclusive.
+
+- [First completed 128-grid 0.1% perturbation seed](matched-stretch/completed-n128-seed101/README.md): 41 saved-field checks, baseline separation, budgets and resolution limits.
