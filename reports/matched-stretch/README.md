@@ -1,5 +1,7 @@
 # Matched-stretch numerical controls
 
+**Completed marker analyses:** [Individual paths and numerical controls](marker-stress/README.md), [changing fastest-separation labels](marker-stress/separation-roles.md), and [carpet, random-interval and Menger marker tests](marker-stress/fractal/README.md). Passive tracking reuses saved fields; the underlying fluid matrices remain in progress.
+
 **Completed parameter batch:** [Viscosity, radius and tube-spin comparisons through 0.40](completed-parameters/README.md). Five additional runs and 205 saved fields verified. Peak spatial resolution still fails.
 
 **Tracked relationships:** [192 fluid labels, pair motion, local linearization and Runge–Kutta paths](central-response/tracked-patterns/README.md). Completed analysis of saved fields with grid and timestep comparisons.

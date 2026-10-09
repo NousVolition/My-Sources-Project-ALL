@@ -1,0 +1,39 @@
+{
+  "scope": "User-authorized stress test of passive fluid markers in the existing unforced Navier-Stokes flow, not a molecular interaction model.",
+  "end_time": 0.3,
+  "external_force": 0,
+  "new_fluid_simulations": 0,
+  "field_runs": [
+    "baseline-n64-base",
+    "baseline-n64-half",
+    "baseline-n128-base"
+  ],
+  "markers": "Two 5x5x5 clouds: central neighborhood centered at (0,0,0), and periodic-join neighborhood centered at the 64-grid initial global spin maximum. Lattice spacing is 6/64; offsets are -2,-1,0,1,2 spacings. The same physical initial positions are used across grids.",
+  "perturbed_markers": "One companion for each of the 250 markers, displaced by exactly 1% of the initial lattice spacing along a seeded random direction, seed 104. These perturb marker positions only, not fluid velocity.",
+  "identical_clones": "Five exact initial-position copies check that changing a label does not change motion.",
+  "edges": "600 fixed links between adjacent lattice sites: 300 per cloud. No pair forces.",
+  "tracking": "RK4; periodic trilinear spatial interpolation; linear temporal interpolation between saved velocities. Unwrapped coordinates integrated, shortest periodic displacement used for comparisons.",
+  "controls": "64-grid tracking steps 0.000625, 0.0003125, 0.00015625; repeat finest step with velocity snapshots coarsened from 0.01 to 0.02; use fluid half-step 64-grid fields at finest tracking step; use 128-grid fields at tracking steps 0.0003125 and 0.00015625.",
+  "diagnostics": [
+    "Individual speeds and velocities relative to each cloud mean",
+    "Fixed-neighbor spacing and approach/separation",
+    "Turning of pair separation",
+    "Position-perturbation amplification",
+    "Nearest-neighbor turnover",
+    "Absolute and mean-drift-adjusted grid sensitivity"
+  ],
+  "exploratory_path_screen": "Maximum marker discrepancy <=5% of the initial lattice spacing (0.0046875) for each comparison; report early through0.10 and full through0.30 separately. This is a descriptive screen, not a physical accuracy bound.",
+  "limits": [
+    "Markers are fluid parcels, not H2O molecules. No molecular fluctuation is added.",
+    "The original raw start has a periodic-join mismatch and unresolved vorticity peaks.",
+    "Grids have different sampled initial fields, energies and means; grid sensitivity includes those differences.",
+    "Temporal coarsening is a sensitivity test, not a bound on saved-time interpolation error.",
+    "A finite-time marker perturbation ratio is not an asymptotic Lyapunov exponent.",
+    "Crowding of labels does not imply compression of incompressible fluid; labels do not fill equal conserved volumes.",
+    "No start, viscosity, force, fluid method, matrix, or fluid time interval is changed."
+  ],
+  "additional_tracking_control": {
+    "dt": 7.8125e-05,
+    "reason": "The 128-grid 0.0003125-to0.00015625 tracking comparison exceeded the declared path-discrepancy screen. Add exactly one half step to distinguish tracking error from the much larger grid sensitivity."
+  }
+}
