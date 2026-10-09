@@ -1,0 +1,90 @@
+{
+  "driver_sha256": "af87b8d45b7b3760fb1929bd5d36522dabc4df12cc78206c0b7f692b5fba1a56",
+  "solver_sha256": "422b7160f9e96badfc68fb76958c3cb512982905b73b37f8db92e5fd37379c01",
+  "n": 33,
+  "viscosity": 0.01,
+  "end_time": 0.4,
+  "supplied_rule": "u <- u + 0.15*sin(2*pi*t/0.4)*breath_u, then advance(u,dt)",
+  "force_classification": "Prescribed per-step velocity kicks; driven evolution.",
+  "timestep_issue": "Kick is not multiplied by dt. Reducing dt changes the applied driving, not only integration accuracy.",
+  "no_geometry_measurement": "gap is a scalar kick coefficient. No distance between fluid boundaries or moving material surface is measured.",
+  "breath_l2": 0.02778976296721183,
+  "breath_divergence": 6.389778096466816e-16,
+  "breath_mirror_error": 1.3578267736655982e-15,
+  "cases": [
+    {
+      "case": "even",
+      "steps": 74,
+      "dt": 0.005405405405405406,
+      "initial_E": 2.1121637388526847e-16,
+      "initial_D": -5.2959911136281915e-20,
+      "initial_energy": 4.60954224274288,
+      "peak_prescribed_velocity_increment_l2": 0.004168464445081775,
+      "effective_force_amplitude_l2": 0.7711659223401283,
+      "positive_kick_coeff_sum": 3.53111678380275,
+      "positive_kick_coeff_sum_half_step": 7.0654180925275005
+    },
+    {
+      "case": "small lean",
+      "steps": 76,
+      "dt": 0.005263157894736842,
+      "initial_E": 0.019999000074993754,
+      "initial_D": 0.004131873506876209,
+      "initial_energy": 4.6100031969671535,
+      "peak_prescribed_velocity_increment_l2": 0.004168464445081775,
+      "effective_force_amplitude_l2": 0.7920082445655372,
+      "positive_kick_coeff_sum": 3.626665629740815,
+      "positive_kick_coeff_sum_half_step": 7.2564319569226825
+    },
+    {
+      "case": "minus lean",
+      "steps": 76,
+      "dt": 0.005263157894736842,
+      "initial_E": 0.01999900007499376,
+      "initial_D": -0.004131873506876209,
+      "initial_energy": 4.6100031969671535,
+      "peak_prescribed_velocity_increment_l2": 0.004168464445081775,
+      "effective_force_amplitude_l2": 0.7920082445655372,
+      "positive_kick_coeff_sum": 3.626665629740815,
+      "positive_kick_coeff_sum_half_step": 7.2564319569226825
+    },
+    {
+      "case": "extra mirror",
+      "steps": 75,
+      "dt": 0.005333333333333334,
+      "initial_E": 2.067828886960051e-16,
+      "initial_D": -4.0852385419100515e-19,
+      "initial_energy": 4.599712647868702,
+      "peak_prescribed_velocity_increment_l2": 0.004168464445081775,
+      "effective_force_amplitude_l2": 0.7815870834528327,
+      "positive_kick_coeff_sum": 3.5804626054796653,
+      "positive_kick_coeff_sum_half_step": 7.1609252109593315
+    },
+    {
+      "case": "C no mirror",
+      "steps": 75,
+      "dt": 0.005333333333333334,
+      "initial_E": 0.02875450153072184,
+      "initial_D": 0.005934774287590703,
+      "initial_energy": 4.6006636296065055,
+      "peak_prescribed_velocity_increment_l2": 0.004168464445081775,
+      "effective_force_amplitude_l2": 0.7815870834528327,
+      "positive_kick_coeff_sum": 3.5804626054796653,
+      "positive_kick_coeff_sum_half_step": 7.1609252109593315
+    },
+    {
+      "case": "gap hug",
+      "steps": 134,
+      "dt": 0.0029850746268656717,
+      "initial_E": 1.4985386509596759,
+      "initial_D": -0.031815781097457155,
+      "initial_energy": 1.0705068014726926,
+      "peak_prescribed_velocity_increment_l2": 0.004168464445081775,
+      "effective_force_amplitude_l2": 1.3964355891023945,
+      "positive_kick_coeff_sum": 6.396856433272148,
+      "positive_kick_coeff_sum_half_step": 12.795471301186552
+    }
+  ],
+  "auxiliary_assets": "No source for breathing.gif, marble-on-breath.gif, marble-graph.png, or marble-on-breath.json is supplied. The driver does not compute a marble trajectory.",
+  "initial_field_limitation": "Retains the supplied x>0 cutoff, sign(x) profile, and spectral filtering; no smooth limiting-start claim is established here."
+}

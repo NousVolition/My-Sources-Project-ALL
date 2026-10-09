@@ -54,3 +54,7 @@ New calculations go into `rerun/`. The saved `results/` and supplied `references
 ## Dynamic q model: completed tests
 
 [26 runs, fitted source weights, cubic comparison and unseen predictions](dynamic-q/README.md). Includes independent AB bias, independently shaped D, mirror pairs, half timesteps and 49-grid controls. The measured fluid coordinate and the imposed passive record are reported separately.
+
+## Separate driven breathing test
+
+[Six supplied breathing cases reproduced](breathing-rerun/README.md), with a comparison chart and unchanged runnable code. This driver adds a prescribed velocity push every step. The push is not multiplied by dt, so changing the timestep also changes the driving. This experiment is labelled separately from the four zero-force tests above.
