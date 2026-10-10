@@ -2,10 +2,10 @@
 
 [← Project home](README.md)
 
-## Current numerical status — October 9, 2026
+## Current numerical status — October 10, 2026 (UTC)
 
 - **[Matched-stretch controls](reports/matched-stretch/README.md): 28/48 completed and verified results published through model time 0.40.** Twenty jobs remain, including the 256-grid controls and remaining 128-grid cases. All three 128-grid 0.1% seeds are complete. The [128-grid timestep screen fails](reports/matched-stretch/completed-timestep128/README.md); the raw strain has nonsmooth periodic joins, initial maxima lie outside the central tube, and peak spatial resolution remains inadequate.
-- **[Separate vortex controls](reports/study/README.md): 47/48 completed and verified results published through 0.40.** The [Fourier 160 half-step result](reports/study/completed-departure160-fourier-half/README.md) shows close timestep agreement while spatial-resolution failures remain. Only the FD4 160 half-step departure control remains. This study has different starting data and its own numerical method.
+- **[Separate vortex controls](reports/study/README.md): 48/48 completed and verified results published through 0.40.** The [final matrix report](reports/study/final-matrix/README.md) includes all timestep controls and charts. Small timestep differences coexist with 5.19–24.21% finest-grid global-W curve differences; spatial convergence is not established. This study has different starting data and its own numerical method.
 - **[Separate smooth-start stress suite](reports/navier-stokes-stress/README.md): 39/39 completed runs published in a parallel study.** Its protocol, raw-data release and numerical limitations are linked in that report. It uses different starting fields from the two matrices above.
 - **[Cross-repository review and connections](REPOSITORY-REVIEW.md):** current checks, related measurements, and the remaining work.
 - **[Separate hug-ns solver repair](math/imports/hug-ns/corrected_v1/README.md):** the gate corner, cutoff alias and time-step scheduler are repaired in `corrected_v1`, with independent regression checks and four short N=16 runs to t=0.01. Its new gate changes the initial field. Historical source/results and the active study solvers are preserved; long-run convergence remains unverified.

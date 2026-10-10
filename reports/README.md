@@ -7,7 +7,7 @@ These reports are saved on the author’s computer and copied into this GitHub f
 ## Numerical reports and earlier snapshots
 
 - **[Matched-stretch controls](matched-stretch/README.md): 28/48 completed and verified results published.** Latest: [all three 0.1% seeds at grid 128](matched-stretch/completed-n128-three-seeds/README.md), with the [failed 128-grid timestep control](matched-stretch/completed-timestep128/README.md) retained.
-- **[Three vortex surroundings](study/README.md): 47/48 completed locally; 47 verified results published.** Latest: [Fourier 160 half-step departure control](study/completed-departure160-fourier-half/README.md), with close timestep agreement and unresolved spatial peaks. The FD4 160 half-step control remains.
+- **[Three vortex surroundings](study/README.md): 48/48 completed and verified results published through 0.40.** [Final matrix report](study/final-matrix/README.md), with all controls, final charts, checkpoint hashes and retained spatial-resolution failures.
 - [Verification of this saved snapshot](numerical-progress-verification.json).
 
 ## Completed mirror tests — October 8
@@ -20,7 +20,7 @@ These reports are saved on the author’s computer and copied into this GitHub f
 
 ![Reproduced fluid tests](files/fluid-tests-completed.png)
 
-Earlier vortex snapshot: 2026-10-08T20:40:59.597392+00:00. The vortex matrix is still running; this copy contains saved results available at publication. Later local results need another publication.
+Earlier interactive-viewer snapshot: 2026-10-08T20:40:59.597392+00:00. That display retains its historical data. The [final matrix report](study/final-matrix/README.md) contains all 48 completed records and current numerical conclusions.
 
 ![Vortex viewer](files/adversarial-vortex-study-visual-preview.png)
 

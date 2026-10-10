@@ -1,0 +1,155 @@
+{
+  "status": "passed",
+  "checked_utc": "2026-10-10T02:12:56.042020+00:00",
+  "new_simulations": 0,
+  "completed_runs": [
+    "exodus-fd4-n160-base",
+    "exodus-fd4-n160-half"
+  ],
+  "saved_fields_checked": 10,
+  "source_hashes": {
+    "initial_design.py": "008d8ae42332377afcb068f0689d4f418c7e27e29cc08233a5fde2b554250c30",
+    "solver.py": "5fecfe44050c47f374111a52e46e624a3fd4b6427575b3b5109086fe2789b821",
+    "protocol.py": "e776a5e0f3cca7e1a53aca39f0b4b7a6aeb96a3996a31c107a301ff01cf4db7c",
+    "run_study.py": "f81bf25ea96658ca8fcea089579930367290ce62fd442b8f2972fcc25ce093f3"
+  },
+  "checks": [
+    {
+      "id": "exodus-fd4-n160-base",
+      "result_sha256": "b6b0bd788914e35748b3bdc1388274e58d524a5b6b5f92f638d220b7a8e12f79",
+      "fields": [
+        {
+          "file": "field-t0.00.npz",
+          "sha256": "69ef83afe25e6f0b51a1830124871d56fcd56dda74b574ad13805c296edc36d9",
+          "relative_errors": {
+            "Wmax": 0.0,
+            "energy": 2.4829458553993807e-16,
+            "spectral_enstrophy": 1.4015705392165634e-16,
+            "native_enstrophy": 1.4015756814752182e-16
+          }
+        },
+        {
+          "file": "field-t0.10.npz",
+          "sha256": "f38c6925bdf3d4aa33c93351d48ec6a7e85864b23233032b58b6c4f079165c33",
+          "relative_errors": {
+            "Wmax": 0.0,
+            "energy": 1.2423028523081515e-16,
+            "spectral_enstrophy": 2.925180423574965e-16,
+            "native_enstrophy": 1.4626043195419025e-16
+          }
+        },
+        {
+          "file": "field-t0.20.npz",
+          "sha256": "db383c78ae4ae398d7d47b801fbb53759a09a4265f578be6f6c1243c96dd95dd",
+          "relative_errors": {
+            "Wmax": 0.0,
+            "energy": 2.486555560598275e-16,
+            "spectral_enstrophy": 2.1393912080531207e-16,
+            "native_enstrophy": 0.0
+          }
+        },
+        {
+          "file": "field-t0.30.npz",
+          "sha256": "cabb3610dc8782b0d04ca29b8164db2c821e0102b4f3c4dafcf80edf18525d47",
+          "relative_errors": {
+            "Wmax": 4.2784020521694555e-16,
+            "energy": 2.489453904416732e-16,
+            "spectral_enstrophy": 2.7202685416132783e-16,
+            "native_enstrophy": 1.3810811893256996e-16
+          }
+        },
+        {
+          "file": "field-t0.40.npz",
+          "sha256": "e2c3295fb207263e11ff386c2b06a0f0b696cbcd0cdcbc29c4cfd964857c4495",
+          "relative_errors": {
+            "Wmax": 1.7818083492811164e-16,
+            "energy": 1.247114535876205e-16,
+            "spectral_enstrophy": 0.0,
+            "native_enstrophy": 1.687555397476399e-16
+          }
+        }
+      ],
+      "endpoint_errors": {
+        "high_band_enstrophy_fraction": 0.0,
+        "direct_spectral_enstrophy_production": 0.0,
+        "W_central_roi": 0.0,
+        "origin_axial_strain": 0.0,
+        "central_marker_parallel_stretch_spin_weighted": 0.0
+      },
+      "maximum_stage_cfl": 0.27682127647169397,
+      "maximum_absolute_energy_budget_relative": 1.178079975813043e-07,
+      "first_spectral_warning": 0.3,
+      "first_width_warning": 0.32
+    },
+    {
+      "id": "exodus-fd4-n160-half",
+      "result_sha256": "9127c46c9126e379beeab8032a1f8fdb635542ebcdf5a3e3351e2881f9856890",
+      "fields": [
+        {
+          "file": "field-t0.00.npz",
+          "sha256": "e1d739b6399847aa5a0512af90eb84c25c62f27a48a3384623e1860d24de2d27",
+          "relative_errors": {
+            "Wmax": 0.0,
+            "energy": 2.4829458553993807e-16,
+            "spectral_enstrophy": 1.4015705392165634e-16,
+            "native_enstrophy": 1.4015756814752182e-16
+          }
+        },
+        {
+          "file": "field-t0.10.npz",
+          "sha256": "18ceb8ab7bf224b13f0fa3d20420e42e907a6fa339b701400c34e0fcbfdc8ee1",
+          "relative_errors": {
+            "Wmax": 3.4051761972091037e-16,
+            "energy": 6.211514243195755e-16,
+            "spectral_enstrophy": 2.925180374509661e-16,
+            "native_enstrophy": 4.387812885033774e-16
+          }
+        },
+        {
+          "file": "field-t0.20.npz",
+          "sha256": "36433d6ca21c73c294bde9fdeadab9b38ffd07677bd9160dcfe572edaef3546c",
+          "relative_errors": {
+            "Wmax": 1.531479611592409e-16,
+            "energy": 0.0,
+            "spectral_enstrophy": 2.139390793240846e-16,
+            "native_enstrophy": 2.1412855972979375e-16
+          }
+        },
+        {
+          "file": "field-t0.30.npz",
+          "sha256": "643574b47629266c29da74429012373223972f9f63de354005bda5e073ef688d",
+          "relative_errors": {
+            "Wmax": 0.0,
+            "energy": 3.7341807625141986e-16,
+            "spectral_enstrophy": 2.7202609441663245e-16,
+            "native_enstrophy": 2.762156170172317e-16
+          }
+        },
+        {
+          "file": "field-t0.40.npz",
+          "sha256": "1150deb71749f2c8c9a009857515e9e49ded09a2aff134fcf405fefbfc98be5f",
+          "relative_errors": {
+            "Wmax": 0.0,
+            "energy": 1.2471144261716108e-16,
+            "spectral_enstrophy": 3.197066373894811e-16,
+            "native_enstrophy": 5.062614369610297e-16
+          }
+        }
+      ],
+      "endpoint_errors": {
+        "high_band_enstrophy_fraction": 0.0,
+        "direct_spectral_enstrophy_production": 0.0,
+        "W_central_roi": 0.0,
+        "origin_axial_strain": 0.0,
+        "central_marker_parallel_stretch_spin_weighted": 0.0
+      },
+      "maximum_stage_cfl": 0.13841063823584698,
+      "maximum_absolute_energy_budget_relative": 1.473308901897541e-08,
+      "first_spectral_warning": 0.3,
+      "first_width_warning": 0.32
+    }
+  ],
+  "scope": "Physical W, energy and both enstrophies independently summed from saved arrays at 0, .1, .2, .3, .4. Endpoint widths, strain and spectra remeasured with frozen diagnostic code. Integrated I and budget rates retain recorded RK-stage accumulations; trajectories were not rerun. Numerical completion does not imply spatial convergence.",
+  "new_saved_fields_checked": 5,
+  "previous_saved_fields_hash_verified": 5
+}
