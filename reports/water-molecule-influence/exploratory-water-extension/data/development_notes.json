@@ -1,0 +1,9 @@
+{
+  "items": [
+    "A protein-model equilibrium exactly on a search-grid point was initially missed; exact zeros and sign-change roots are now both retained. This affected the reference root finder, not water trajectories.",
+    "An initial deterministic audit attempted a 0.0025 ps field update with 0.001 ps MD steps and rounded the count. An integer-step guard and a 0.0005 ps audit step corrected it. Production cases already used integer step ratios.",
+    "The first serial water worker was interrupted for scheduling and resumed with disjoint replica workers. Completed archives were kept and their configuration hashes checked; incomplete integration was rerun.",
+    "The nine-state parameters were not retuned to force strong chunks after the weak-group result. Unrestricted and constrained reduced-model outcomes are both reported.",
+    "A SciPy roundoff warning occurred at a stationary reference trajectory; the returned solutions and invariants were checked. No production molecular integration failure was recorded."
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "equations": "theta'=1, r'=(1-r^2)r; equivalent Cartesian polynomial system",
+  "initial_radii": [0.0, 0.2, 0.8, 1.0, 1.5, 2.0],
+  "initial_angle": 0.3,
+  "duration": 20.0,
+  "phase_drift_duration": 100.0,
+  "phase_drift_initial_radius": 1.0,
+  "methods": ["euler", "heun", "rk4"],
+  "steps": [0.1, 0.05, 0.025, 0.0125],
+  "accuracy_budgets": {"maximum_sampled_radial_error": 0.001, "maximum_sampled_phase_error_degrees": 1.0},
+  "boundedness_guard_radius": 3.0,
+  "fine_rk4_state_error_budget": 0.000002,
+  "interpretation": "Deterministic exact-solution benchmark. Radius and phase accuracy are separate from finite sampled boundedness. This dissipative state-space oscillator is not a mass-conserving physical water model. No empirical data, mesh, random seeds or new biological force.",
+  "screenshot_corrections": "r0=0 stays at the origin, where polar angle is undefined; r0=1 is an invariant rotating circle. For r>1 the separated integral needs log(abs(1-r^2)), although the final initial-value formula is valid forward for all r0>0."
+}

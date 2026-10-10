@@ -3,16 +3,26 @@ import argparse, hashlib, json
 from pathlib import Path
 import numpy as np
 from coupled_model import CoupledFlow
-from analyze_coupled import embedded, norm, delta
+from analyze_coupled import embedded, norm, delta, saved_cfl_check
 
 ROOT=Path(__file__).resolve().parent
 def read(p):return json.loads(p.read_text(encoding='utf-8'))
+
+def verify_saved_cfl(rows,analysis,protocol):
+    maximum,passed=saved_cfl_check(rows,protocol['gates']['max_advective_cfl'])
+    if not passed or analysis['gates'].get('cfl') is not True:
+        raise ValueError('Saved CFL check failed or is missing from analysis')
+    recorded=analysis.get('max_saved_advective_cfl')
+    if recorded is None or not np.isfinite(recorded) or abs(recorded-maximum)>1e-14:
+        raise ValueError('Saved CFL maximum differs from the analysis record')
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--actual',type=Path);args=ap.parse_args()
     manifest=read(ROOT/'manifest.json')
     for name,expected in manifest.items():
         assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==expected,name
     result=read(ROOT/'data/results.json');analysis=read(ROOT/'data/analysis.json');fields=np.load(ROOT/'data/final-fields.npz')
+    protocol=read(ROOT/'protocol.json')
+    verify_saved_cfl(result,analysis,protocol)
     expected={r['case'] for r in result}
     assert len(result)==30 and len(expected)==30 and set(fields.files)==expected
     assert analysis['passed'] and all(analysis['gates'].values())
@@ -27,6 +37,7 @@ def main():
         assert abs(response-r['rows'][-1]['disturbance_velocity_L2_relative_to_initial_impulse'])<1e-11
     if args.actual:
         actual=read(args.actual/'results.json');af=np.load(args.actual/'final-fields.npz');aa=read(args.actual/'analysis.json')
+        verify_saved_cfl(actual,aa,protocol)
         assert len(actual)==30 and {r['case'] for r in actual}==expected and set(af.files)==expected
         assert aa['passed'] and all(aa['gates'].values())
         byid={r['case']:r for r in actual}

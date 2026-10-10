@@ -1,0 +1,27 @@
+{
+  "scope": "Deterministic prescribed-flow mathematical benchmark; not empirical particle motion or a Navier-Stokes simulation",
+  "duration": 8.0,
+  "mode": 17,
+  "mean": 60.0,
+  "diagnostic_interval": 0.005,
+  "speed_profiles": ["slow-fast-slow", "fast-slow-fast"],
+  "speed_minimum": 0.2,
+  "speed_maximum": 4.0,
+  "grids": [32, 64, 128],
+  "adaptive_method": "DOP853",
+  "relative_tolerances": [0.000001, 0.000000001],
+  "absolute_tolerance_factor": 0.001,
+  "maximum_step": 0.1,
+  "manual_rk4_grid": 64,
+  "manual_steps": [0.001, 0.008],
+  "manual_switch_times": [2.0, 6.0],
+  "manual_orders": ["large-small-large", "small-large-small"],
+  "accuracy_budgets": {
+    "maximum_sampled_profile_error": 0.00001,
+    "maximum_sampled_amplitude_error": 0.00001,
+    "maximum_sampled_accumulated_phase_error_degrees": 0.01
+  },
+  "conservation_budget": 0.0000000001,
+  "boundedness_guard": 2.0,
+  "interpretation": "Passing boundedness and mass checks is separate from accuracy. Manual schedules are demonstrations, not an optimization. No spatial adaptation is implemented. No random inputs: seeds and statistical confidence intervals are inapplicable."
+}

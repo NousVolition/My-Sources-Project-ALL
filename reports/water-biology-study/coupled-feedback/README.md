@@ -77,11 +77,13 @@ The supplied laser, overdamped bead, saddle-node and cusp pages motivate keeping
 
 ## Reproduce and verify
 
+The saved CFL maximum is **0.0385633882**, below the frozen **0.5** limit. Both analysis and package verification check this criterion. The verifier recalculates it from every saved baseline/disturbed diagnostic, requires the gate and maximum in the analysis record, and rejects omitted, stale, negative or nonfinite values. Twelve verification regression cases supplement the six original model tests. This is a check at the saved observation times.
+
 With Python 3.12, run from this directory:
 
 ```text
 python -m pip install -r requirements.txt
-python -m pytest test_coupled.py -q
+python -m pytest test_coupled.py test_validation.py -q
 python verify_coupled.py
 python run_coupled.py --out reproduction
 python analyze_coupled.py --out reproduction

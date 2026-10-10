@@ -26,6 +26,8 @@ The original grid-comparison series reaches **model time 0.4** on **256³ and 38
 
 ## Earlier supplied hug-ns code and tables
 
+**Follow-up repair:** [hug-ns corrected_v1](imports/hug-ns/corrected_v1/README.md) fixes the three known numerical defects in a distinct version, with its own source hashes and bounded checks. The chosen smooth gate changes the starting field; it does not update the historical tables or the active study sources.
+
 [Open the experiment overview](imports/hug-ns/README.md) for the supplied code, sixteen original result tables and measurement definitions. The latest supplied N=64 table reaches time 0.12; the earlier no-stop table reaches 0.35. The [code review](imports/hug-ns/REVIEW.md) lists the corrected pressure diagnostic, 32 focused passes and three known failures. The [results review](imports/hug-ns/RESULTS-REVIEW.md) explains exactly which values were checked. This imported solver uses different starting data from the earlier ring study.
 
 ## Background and earlier experiments
@@ -40,7 +42,16 @@ The original grid-comparison series reaches **model time 0.4** on **256³ and 38
 
 ![Original and corrected ring profiles](figures/smooth-initial-profile.png)
 
-The right panel zooms into the center and shows `value / center value - 1` for each curve. The figure uses equal parameter numbers, which give different ring widths; the cube experiments separately match the local peak widths.
+**How to read this figure:** Here, “smooth” means the curve has no sharp corner.
+
+- **Left panel:** A cut across one ring produces two peaks, one for each side. Brown is the original profile; teal is the corrected profile.
+- **Right panel:** The view zooms into the center. Brown has a sharp **V-shaped join**. Teal has a rounded bottom with **zero slope at the center**.
+
+The right panel shows `value / center value - 1` for each curve. Each curve is measured relative to **its own center value**, so zero means “no increase from the center.” It does not mean that the original profile value is zero.
+
+The teal ring is also **narrower**. This illustration uses equal parameter numbers, which change both smoothness and width. The cube experiments separately match the local peak widths.
+
+This figure compares **starting shapes**. It does not show how the fluid evolves over time.
 
 The editable derivation is [smooth-initial-field.tex](notes/smooth-initial-field.tex). The [original report](https://github.com/NousVolition/Nous-Volition/blob/main/stokes_stream_report.pdf) remains in the companion repository.
 
