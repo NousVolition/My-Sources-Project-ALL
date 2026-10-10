@@ -6,6 +6,12 @@ A reproducible experiment asking whether identical molecules can acquire unequal
 
 ![Experimental results](results.png)
 
+## Broad controlled exploration
+
+[The completed experiment battery](exploratory-water-extension/README.md) adds 26 field, history, thermal, spatial and feedback protocols across three saved configurations with matched noninteracting controls: 156 main trajectories and 12 numerical-refinement trajectories, totaling 6.348 ns of recorded molecular/control dynamics. Twelve mathematical reference families test additional mechanisms motivated by the supplied examples. Nine figure sets, per-run configurations, saved trajectories and positive and negative outcomes are retained.
+
+All three configurations show stronger alignment with a steady field when intermolecular interactions are present. Under slow rotation at 0.5 V/nm, the coherent water response is also larger, but lags the field by about 63 degrees; faster rotation substantially reduces its coherent amplitude. Alignment feedback produces strong collective orientation, while turning feedback does not. The history and teacher-off sequence tests do not establish persistent memory; the fitted activity models fail to outperform persistence. These are finite simulations of a rigid fixed-charge model, and forcing-related heating is measured explicitly.
+
 ## Collective patterns in driven water
 
 [Uniform-field water experiment](driven-water-extension/README.md) applies a 10 ps electric-field pulse followed by 10 ps of recovery to 216 identical TIP3P molecules, starting from three saved water states. Mean dipole alignment rises from 0.074 at zero field to 0.670 at +0.5 V/nm, compared with 0.310 for noninteracting rigid dipoles under the same field. Neighbor orientation correlations exceed a spatial shuffle reference at the driven endpoint in all three water runs.
