@@ -1,0 +1,60 @@
+RUN methods
+PASS logistic: euler convergence
+PASS logistic: heun convergence
+PASS logistic: rk4 convergence
+PASS RC: euler convergence
+PASS RC: heun convergence
+PASS RC: rk4 convergence
+PASS Coarse Euler logistic instability is detected
+PASS Euler linear stability h=0.5
+PASS Euler linear stability h=1.5
+PASS Euler linear stability h=2.2
+RUN scalar_examples
+PASS Phase line: stable
+PASS Phase line: unstable
+PASS Phase line: half_stable
+PASS Phase line: neutral
+PASS Inverse portrait: candidate x'=x(x-1)
+RUN nonuniqueness
+PASS Nonunique exact branches satisfy the ODE
+PASS Zero-initialized solver stays on zero branch
+RUN overdamped
+PASS Damped oscillator m=1.0
+PASS Damped oscillator m=0.1
+PASS Damped oscillator m=0.01
+PASS Damped oscillator m=0.001
+PASS Overdamped approximation improves as inertia falls
+RUN saddle_and_reaction
+PASS Saddle-node roots and local approximation
+PASS Autocatalysis under stated assumption: closed
+PASS Autocatalysis under stated assumption: fixed_A
+RUN lorenz_checks
+PASS Lorenz local Hopf threshold
+PASS Lorenz equilibrium stability changes across Hopf
+PASS Lorenz reflection symmetry
+PASS Lorenz short-time trajectory convergence
+PASS Phase volume follows exact divergence identity
+RUN lorenz_ensemble
+PASS Lorenz Lyapunov run seed=101, h=0.005
+PASS Lorenz Lyapunov run seed=202, h=0.005
+PASS Lorenz Lyapunov run seed=303, h=0.005
+PASS Lorenz Lyapunov run seed=404, h=0.005
+PASS Lorenz Lyapunov run seed=101, h=0.0025
+PASS Lorenz Lyapunov run seed=202, h=0.0025
+PASS Lorenz Lyapunov run seed=303, h=0.0025
+PASS Lorenz Lyapunov run seed=404, h=0.0025
+PASS Lorenz largest growth rate survives step refinement
+RUN waterwheel
+PASS Waterwheel budget and positivity n=16, h=0.002
+PASS Waterwheel budget and positivity n=16, h=0.001
+PASS Waterwheel budget and positivity n=16, h=0.0005
+PASS Waterwheel budget and positivity n=32, h=0.002
+PASS Waterwheel budget and positivity n=32, h=0.001
+PASS Waterwheel budget and positivity n=32, h=0.0005
+PASS Waterwheel budget and positivity n=64, h=0.002
+PASS Waterwheel budget and positivity n=64, h=0.001
+PASS Waterwheel budget and positivity n=64, h=0.0005
+PASS Waterwheel first-mode mapping converges to Lorenz beta=1
+PASS Unforced higher waterwheel mode decays at leakage rate
+PASS Waterwheel resolved Fourier grids agree
+{"passed": 51, "total": 51}

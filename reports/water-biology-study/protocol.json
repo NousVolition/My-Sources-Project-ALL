@@ -1,0 +1,102 @@
+{
+  "status": "SIMULATIONS AND ANALYTIC CALCULATIONS; no new empirical samples",
+  "solute": {
+    "n": 64,
+    "dt": 0.01,
+    "duration": 8.0,
+    "D": 0.001,
+    "seeds": [
+      100,
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107
+    ],
+    "domain": "unit 2D torus",
+    "initial": ".5+.45*cos(2*pi*x)",
+    "flow": "alternating sine shears, switch every 0.5, 16 seeded phases",
+    "mapping": {
+      "L_m": 0.001,
+      "U_m_s": 0.001,
+      "time_unit_s": 1.0,
+      "D_m2_s": 1e-09
+    }
+  },
+  "particles": {
+    "count": 8192,
+    "seeds": [
+      100,
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107
+    ],
+    "radius_m": 5e-07,
+    "temperature_K": 293.15,
+    "mu_Pa_s": 0.001,
+    "excess_density_kg_m3": 50,
+    "histogram_bins_per_axis": 16,
+    "motility_assumed_m_s": 2e-05,
+    "rotational_diffusivity_assumed_s_inverse": 1
+  },
+  "stratification": {
+    "n": 32,
+    "dt": 0.01,
+    "duration": 4.0,
+    "nu": 0.01,
+    "D": 0.001,
+    "density_kappa": 0.001,
+    "thermal_kappa": 0.14,
+    "N2": [
+      -4,
+      0,
+      4
+    ],
+    "seeds": [
+      200,
+      201,
+      202,
+      203
+    ],
+    "unstable_density_override": {
+      "n": 64,
+      "dt": 0.005
+    },
+    "units": "nondimensional sensitivity study; not same water mapping as Q1"
+  },
+  "freezing": {
+    "batches": 12,
+    "droplets_per_batch": 96,
+    "seeds": [
+      500,
+      501,
+      502,
+      503,
+      504,
+      505,
+      506,
+      507,
+      508,
+      509,
+      510,
+      511
+    ],
+    "volume_reference_uL": 1.0,
+    "cooling_reference_K_min": 1.0,
+    "axis": "K below unspecified reference temperature; no absolute Celsius prediction",
+    "lognormal_batch_log_sd": 0.25,
+    "lognormal_droplet_log_sd": 0.35,
+    "background_slope_assumed": 1.5,
+    "background_anchor_assumed": 8.0,
+    "mineral_slope_assumed": 2.0,
+    "mineral_anchor_assumed": 6.0,
+    "bio_slope_literature_informed": 8.7,
+    "bio_anchor_assumed": 3.0
+  }
+}

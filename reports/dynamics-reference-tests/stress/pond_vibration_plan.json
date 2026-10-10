@@ -1,0 +1,22 @@
+{
+  "status": "ILLUSTRATIVE SYNTHETIC INPUTS; NOT CALIBRATED TO A FOOTSTEP OR ROCK",
+  "model": "One analytical spatial mode of the linear shallow-water equations with vertically moving bed and linear drag",
+  "length_m": 2.0,
+  "depth_m": 0.1,
+  "density_kg_m3": 1000.0,
+  "gravity_m_s2": 9.81,
+  "linear_drag_s_inverse": 0.15,
+  "duration_s": 20.0,
+  "bed_pulse_start_s": 1.037,
+  "assumed_bed_mode_amplitudes_m": [0.00001, 0.0001],
+  "pulse_durations_s": [0.2, 2.0],
+  "rk4_steps_s": [0.1, 0.05, 0.025, 0.0125, 0.00625],
+  "reference_quadrature_nodes": 64,
+  "reference_diagnostic_step_s": 0.001,
+  "fine_relative_surface_error_budget": 0.001,
+  "fine_relative_energy_residual_budget": 0.005,
+  "pulse": "b(x,t)=B(t) cos(pi*x/L), B(t)=amplitude*sin(pi*(t-start)/width)^6 inside the pulse, zero outside",
+  "scope": "Both strength and duration varied independently; zero-motion control; independent convolution reference; no soil propagation or actual event source model. SI dimensions describe an assumed basin, not a surveyed pond.",
+  "missing_for_actual_matching": ["pond geometry and depth", "bed/bank motion versus time near the pond", "source position and distance", "soil and shoreline coupling", "damping and measurement uncertainty"],
+  "omitted": ["localized higher spatial modes", "horizontal bank displacement", "vertical nonhydrostatic motion", "surface tension", "acoustic waves", "wind and ambient waves", "nonlinear breaking and wetting/drying", "soil elasticity", "microbiology"]
+}

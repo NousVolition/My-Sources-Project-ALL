@@ -1,0 +1,304 @@
+[
+  {
+    "name": "Extended short-time independent solver comparison",
+    "passed": true,
+    "kind": "accuracy",
+    "maximum_state_error": 1.914177714232491e-07,
+    "tolerance": 1e-05
+  },
+  {
+    "name": "Aliasing detected on underresolved grid n=16",
+    "passed": true,
+    "kind": "intentional negative control",
+    "error": 3.7954951479301684,
+    "mass_error": 3.979039320256561e-13
+  },
+  {
+    "name": "Aliasing detected on underresolved grid n=32",
+    "passed": true,
+    "kind": "intentional negative control",
+    "error": 0.4340823076197182,
+    "mass_error": 1.7053025658242404e-13
+  },
+  {
+    "name": "Resolved transport accuracy n=64",
+    "passed": true,
+    "kind": "accuracy",
+    "error": 1.1075229622292682e-10,
+    "observed_time_order": 4.0005205424820245,
+    "mass_error": 2.2737367544323206e-13
+  },
+  {
+    "name": "Resolved transport accuracy n=128",
+    "passed": true,
+    "kind": "accuracy",
+    "error": 1.1087308848800603e-10,
+    "observed_time_order": 3.9990404422387273,
+    "mass_error": 2.2737367544323206e-13
+  },
+  {
+    "name": "High-frequency RK4 amplification h=0.002",
+    "passed": true,
+    "kind": "intentional numerical stress",
+    "observed_amplitude": 0.5575352960592941,
+    "exact_amplitude": 1.0,
+    "per_step_factor": 0.9988322234496646
+  },
+  {
+    "name": "High-frequency RK4 amplification h=0.004",
+    "passed": true,
+    "kind": "intentional numerical stress",
+    "observed_amplitude": 2.23661912884709e-07,
+    "exact_amplitude": 1.0,
+    "per_step_factor": 0.9405856921721478
+  },
+  {
+    "name": "High-frequency RK4 amplification h=0.008",
+    "passed": true,
+    "kind": "intentional numerical stress",
+    "observed_amplitude": 1.4674549074897443e+23,
+    "exact_amplitude": 1.0,
+    "per_step_factor": 1.5322601896277062
+  },
+  {
+    "name": "Parameter scan remains finite h=0.005",
+    "passed": true,
+    "kind": "finite-window guard",
+    "maximum_absolute_state": 90.70385931873544,
+    "trajectories": 60
+  },
+  {
+    "name": "Parameter scan remains finite h=0.0025",
+    "passed": true,
+    "kind": "finite-window guard",
+    "maximum_absolute_state": 90.70388954596844,
+    "trajectories": 60
+  },
+  {
+    "name": "Long-run invariants seed=101, h=0.005",
+    "passed": true,
+    "kind": "long-run guard",
+    "largest_rate": 0.9145592253088001,
+    "trace_error": 6.252534062056725e-06,
+    "max_abs_state": 45.04683480554428
+  },
+  {
+    "name": "Long-run invariants seed=202, h=0.005",
+    "passed": true,
+    "kind": "long-run guard",
+    "largest_rate": 0.9094949025423841,
+    "trace_error": 6.21492147878655e-06,
+    "max_abs_state": 46.60808695323633
+  },
+  {
+    "name": "Long-run invariants seed=303, h=0.005",
+    "passed": true,
+    "kind": "long-run guard",
+    "largest_rate": 0.9048480337418359,
+    "trace_error": 6.197144339026295e-06,
+    "max_abs_state": 46.766972092899245
+  },
+  {
+    "name": "Long-run invariants seed=404, h=0.005",
+    "passed": true,
+    "kind": "long-run guard",
+    "largest_rate": 0.9018556292623301,
+    "trace_error": 6.181896232249073e-06,
+    "max_abs_state": 45.51056505018689
+  },
+  {
+    "name": "Long-run invariants seed=505, h=0.005",
+    "passed": true,
+    "kind": "long-run guard",
+    "largest_rate": 0.8969461925313161,
+    "trace_error": 6.158006170764452e-06,
+    "max_abs_state": 46.70525871211836
+  },
+  {
+    "name": "Long-run invariants seed=606, h=0.005",
+    "passed": true,
+    "kind": "long-run guard",
+    "largest_rate": 0.9037561252794774,
+    "trace_error": 6.183829176720224e-06,
+    "max_abs_state": 45.93999537095265
+  },
+  {
+    "name": "Long-run invariants seed=707, h=0.005",
+    "passed": true,
+    "kind": "long-run guard",
+    "largest_rate": 0.9061960529450029,
+    "trace_error": 6.205590770136382e-06,
+    "max_abs_state": 47.2402619351554
+  },
+  {
+    "name": "Long-run invariants seed=808, h=0.005",
+    "passed": true,
+    "kind": "long-run guard",
+    "largest_rate": 0.9078167056723612,
+    "trace_error": 6.215170696322048e-06,
+    "max_abs_state": 45.42666029133421
+  },
+  {
+    "name": "Long-run invariants seed=101, h=0.0025",
+    "passed": true,
+    "kind": "long-run guard",
+    "largest_rate": 0.9031160674950643,
+    "trace_error": 3.8218096243269883e-07,
+    "max_abs_state": 46.46595560061205
+  },
+  {
+    "name": "Long-run invariants seed=202, h=0.0025",
+    "passed": true,
+    "kind": "long-run guard",
+    "largest_rate": 0.9084574221581483,
+    "trace_error": 3.838643198861291e-07,
+    "max_abs_state": 45.89374179224029
+  },
+  {
+    "name": "Long-run invariants seed=303, h=0.0025",
+    "passed": true,
+    "kind": "long-run guard",
+    "largest_rate": 0.909224313844739,
+    "trace_error": 3.8393115886492524e-07,
+    "max_abs_state": 45.90274836504839
+  },
+  {
+    "name": "Long-run invariants seed=404, h=0.0025",
+    "passed": true,
+    "kind": "long-run guard",
+    "largest_rate": 0.9029175754292892,
+    "trace_error": 3.8183345729692064e-07,
+    "max_abs_state": 45.566561995338525
+  },
+  {
+    "name": "Long-run invariants seed=505, h=0.0025",
+    "passed": true,
+    "kind": "long-run guard",
+    "largest_rate": 0.9002071370844958,
+    "trace_error": 3.8042468020194065e-07,
+    "max_abs_state": 46.06872883964092
+  },
+  {
+    "name": "Long-run invariants seed=606, h=0.0025",
+    "passed": true,
+    "kind": "long-run guard",
+    "largest_rate": 0.8981733771117895,
+    "trace_error": 3.8020485604306486e-07,
+    "max_abs_state": 47.015661372058766
+  },
+  {
+    "name": "Long-run invariants seed=707, h=0.0025",
+    "passed": true,
+    "kind": "long-run guard",
+    "largest_rate": 0.9089694646525116,
+    "trace_error": 3.8359862664094635e-07,
+    "max_abs_state": 45.391152283557176
+  },
+  {
+    "name": "Long-run invariants seed=808, h=0.0025",
+    "passed": true,
+    "kind": "long-run guard",
+    "largest_rate": 0.9116407410095028,
+    "trace_error": 3.8511567623800147e-07,
+    "max_abs_state": 45.736947955126894
+  },
+  {
+    "name": "Long-run invariants seed=101, h=0.00125",
+    "passed": true,
+    "kind": "long-run guard",
+    "largest_rate": 0.9036796885714297,
+    "trace_error": 2.3743766064399097e-08,
+    "max_abs_state": 46.00062838930299
+  },
+  {
+    "name": "Long-run invariants seed=202, h=0.00125",
+    "passed": true,
+    "kind": "long-run guard",
+    "largest_rate": 0.9116753564023227,
+    "trace_error": 2.391050735184308e-08,
+    "max_abs_state": 45.71732479771223
+  },
+  {
+    "name": "Long-run invariants seed=303, h=0.00125",
+    "passed": true,
+    "kind": "long-run guard",
+    "largest_rate": 0.9089018659010327,
+    "trace_error": 2.3917250402405443e-08,
+    "max_abs_state": 46.13453956797104
+  },
+  {
+    "name": "Long-run invariants seed=404, h=0.00125",
+    "passed": true,
+    "kind": "long-run guard",
+    "largest_rate": 0.9093924720001001,
+    "trace_error": 2.3861030484795265e-08,
+    "max_abs_state": 45.99038322717639
+  },
+  {
+    "name": "Long-run invariants seed=505, h=0.00125",
+    "passed": true,
+    "kind": "long-run guard",
+    "largest_rate": 0.9082761715627742,
+    "trace_error": 2.3845338148476003e-08,
+    "max_abs_state": 45.181396722736075
+  },
+  {
+    "name": "Long-run invariants seed=606, h=0.00125",
+    "passed": true,
+    "kind": "long-run guard",
+    "largest_rate": 0.9021922394196281,
+    "trace_error": 2.366518003782403e-08,
+    "max_abs_state": 45.6349246692509
+  },
+  {
+    "name": "Long-run invariants seed=707, h=0.00125",
+    "passed": true,
+    "kind": "long-run guard",
+    "largest_rate": 0.9045483535080715,
+    "trace_error": 2.3724837205918448e-08,
+    "max_abs_state": 46.658432766200036
+  },
+  {
+    "name": "Long-run invariants seed=808, h=0.00125",
+    "passed": true,
+    "kind": "long-run guard",
+    "largest_rate": 0.9002465604577709,
+    "trace_error": 2.3675385207866384e-08,
+    "max_abs_state": 46.49063184112071
+  },
+  {
+    "name": "Rate stable across finest steps",
+    "passed": true,
+    "kind": "predeclared robustness criterion",
+    "difference": 0.0007758261296995084,
+    "tolerance": 0.02
+  },
+  {
+    "name": "Mean z stable across finest steps",
+    "passed": true,
+    "kind": "predeclared robustness criterion",
+    "difference": 0.0060627100281003266,
+    "tolerance": 0.15
+  },
+  {
+    "name": "Lobe occupancy stable across finest steps",
+    "passed": true,
+    "kind": "predeclared robustness criterion",
+    "difference": 0.014450000000000074,
+    "tolerance": 0.04
+  },
+  {
+    "name": "Rate stable from 500 to 1000 units",
+    "passed": true,
+    "kind": "predeclared robustness criterion",
+    "difference": 0.0027015844662883204,
+    "tolerance": 0.015
+  },
+  {
+    "name": "Mean z stable from 500 to 1000 units",
+    "passed": true,
+    "kind": "predeclared robustness criterion",
+    "difference": 0.011834632738803919,
+    "tolerance": 0.15
+  }
+]

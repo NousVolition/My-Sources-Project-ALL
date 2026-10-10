@@ -1,0 +1,350 @@
+[
+  {
+    "name": "logistic: euler convergence",
+    "passed": true,
+    "observed_order": 1.0008380994452504,
+    "expected_order": 1,
+    "finest_max_error": 0.0031950944117160596
+  },
+  {
+    "name": "logistic: heun convergence",
+    "passed": true,
+    "observed_order": 1.9845272884948826,
+    "expected_order": 2,
+    "finest_max_error": 2.7369832948709316e-05
+  },
+  {
+    "name": "logistic: rk4 convergence",
+    "passed": true,
+    "observed_order": 3.9849505002894725,
+    "expected_order": 4,
+    "finest_max_error": 4.813001108772141e-10
+  },
+  {
+    "name": "RC: euler convergence",
+    "passed": true,
+    "observed_order": 1.0206429976519886,
+    "expected_order": 1,
+    "finest_max_error": 0.012435855419663522
+  },
+  {
+    "name": "RC: heun convergence",
+    "passed": true,
+    "observed_order": 2.036549096440821,
+    "expected_order": 2,
+    "finest_max_error": 0.00013971659868960984
+  },
+  {
+    "name": "RC: rk4 convergence",
+    "passed": true,
+    "observed_order": 4.040122394794355,
+    "expected_order": 4,
+    "finest_max_error": 7.78283437696814e-09
+  },
+  {
+    "name": "Coarse Euler logistic instability is detected",
+    "passed": true,
+    "crossings_last_30_steps": 25,
+    "equilibrium_multiplier": -1.7999999999999998
+  },
+  {
+    "name": "Euler linear stability h=0.5",
+    "passed": true,
+    "final": 9.5367431640625e-07,
+    "growth_factor": 0.5
+  },
+  {
+    "name": "Euler linear stability h=1.5",
+    "passed": true,
+    "final": 9.5367431640625e-07,
+    "growth_factor": -0.5
+  },
+  {
+    "name": "Euler linear stability h=2.2",
+    "passed": true,
+    "final": 38.33759992447485,
+    "growth_factor": -1.2000000000000002
+  },
+  {
+    "name": "Phase line: stable",
+    "passed": true,
+    "max_absolute_error": 9.992007221626409e-16
+  },
+  {
+    "name": "Phase line: unstable",
+    "passed": true,
+    "max_absolute_error": 9.134915046615788e-13
+  },
+  {
+    "name": "Phase line: half_stable",
+    "passed": true,
+    "max_absolute_error": 1.0436096431476471e-14
+  },
+  {
+    "name": "Phase line: neutral",
+    "passed": true,
+    "max_absolute_error": 0.0
+  },
+  {
+    "name": "Inverse portrait: candidate x'=x(x-1)",
+    "passed": true,
+    "max_absolute_error": 1.993702980485068e-10,
+    "note": "One consistent equation; the sketch does not uniquely identify f."
+  },
+  {
+    "name": "Nonunique exact branches satisfy the ODE",
+    "passed": true,
+    "max_residual": 2.220446049250313e-16,
+    "common_initial_value": 0,
+    "distinct_branches": 7
+  },
+  {
+    "name": "Zero-initialized solver stays on zero branch",
+    "passed": true,
+    "implication": "Finding one solution does not establish uniqueness."
+  },
+  {
+    "name": "Damped oscillator m=1.0",
+    "passed": true,
+    "exact_state_error": 1.6481593867467836e-11,
+    "energy_budget_error": 8.575251619902247e-12,
+    "reduced_model_max_error": 0.3150002625610168,
+    "zero_crossings": 3
+  },
+  {
+    "name": "Damped oscillator m=0.1",
+    "passed": true,
+    "exact_state_error": 2.507971608167736e-11,
+    "energy_budget_error": 1.1187051285332927e-11,
+    "reduced_model_max_error": 0.07092918826326489,
+    "zero_crossings": 0
+  },
+  {
+    "name": "Damped oscillator m=0.01",
+    "passed": true,
+    "exact_state_error": 1.926347970027109e-11,
+    "energy_budget_error": 1.3502532425491154e-11,
+    "reduced_model_max_error": 0.00931329742798559,
+    "zero_crossings": 0
+  },
+  {
+    "name": "Damped oscillator m=0.001",
+    "passed": true,
+    "exact_state_error": 5.989986284760107e-12,
+    "energy_budget_error": 1.255617831930067e-11,
+    "reduced_model_max_error": 0.0009830536743966611,
+    "zero_crossings": 0
+  },
+  {
+    "name": "Overdamped approximation improves as inertia falls",
+    "passed": true
+  },
+  {
+    "name": "Saddle-node roots and local approximation",
+    "passed": true,
+    "max_root_residual": 3.3306690738754696e-16,
+    "relative_normal_form_error_at_mu_1e_6": 0.0002357022577236166
+  },
+  {
+    "name": "Autocatalysis under stated assumption: closed",
+    "passed": true,
+    "exact_error": 1.0997758259634338e-11,
+    "conserved_A_plus_X_error": 8.881784197001252e-16,
+    "positive_equilibrium": 0.6666666666666666
+  },
+  {
+    "name": "Autocatalysis under stated assumption: fixed_A",
+    "passed": true,
+    "exact_error": 2.047617631006915e-11,
+    "conserved_A_plus_X_error": null,
+    "positive_equilibrium": 1.6
+  },
+  {
+    "name": "Lorenz local Hopf threshold",
+    "passed": true,
+    "rho_H": 24.736842105263154,
+    "largest_real_eigenvalue": -4.440892098500626e-16
+  },
+  {
+    "name": "Lorenz equilibrium stability changes across Hopf",
+    "passed": true,
+    "largest_real_before": -3.022294983967555e-05,
+    "largest_real_after": 3.0222015543035496e-05
+  },
+  {
+    "name": "Lorenz reflection symmetry",
+    "passed": true,
+    "max_residual": 0.0
+  },
+  {
+    "name": "Lorenz short-time trajectory convergence",
+    "passed": true,
+    "observed_order": 4.004834068735315,
+    "finest_max_error": 1.914177714232491e-07
+  },
+  {
+    "name": "Phase volume follows exact divergence identity",
+    "passed": true,
+    "max_log_volume_error": 6.566658328210906e-11,
+    "exact_contraction_rate": -13.666666666666666
+  },
+  {
+    "name": "Lorenz Lyapunov run seed=101, h=0.005",
+    "passed": true,
+    "spectrum": [
+      0.9175202101923811,
+      -0.012212794422946906,
+      -14.571967809112282
+    ],
+    "sum_error": 6.273323817751475e-06
+  },
+  {
+    "name": "Lorenz Lyapunov run seed=202, h=0.005",
+    "passed": true,
+    "spectrum": [
+      0.9185742068759061,
+      -0.00422473939204901,
+      -14.58100989085826
+    ],
+    "sum_error": 6.243292263619082e-06
+  },
+  {
+    "name": "Lorenz Lyapunov run seed=303, h=0.005",
+    "passed": true,
+    "spectrum": [
+      0.9234293038403618,
+      -0.005001157369635506,
+      -14.585088504281288
+    ],
+    "sum_error": 6.308856104197957e-06
+  },
+  {
+    "name": "Lorenz Lyapunov run seed=404, h=0.005",
+    "passed": true,
+    "spectrum": [
+      0.9026140917906954,
+      0.0034626628866726104,
+      -14.572737177056855
+    ],
+    "sum_error": 6.244287179768548e-06
+  },
+  {
+    "name": "Lorenz Lyapunov run seed=101, h=0.0025",
+    "passed": true,
+    "spectrum": [
+      0.8889666525843244,
+      -0.004182135007233199,
+      -14.551450807416943
+    ],
+    "sum_error": 3.7682681330863943e-07
+  },
+  {
+    "name": "Lorenz Lyapunov run seed=202, h=0.0025",
+    "passed": true,
+    "spectrum": [
+      0.8925667279483354,
+      -0.0036267398870350187,
+      -14.555606275489925
+    ],
+    "sum_error": 3.7923804185879817e-07
+  },
+  {
+    "name": "Lorenz Lyapunov run seed=303, h=0.0025",
+    "passed": true,
+    "spectrum": [
+      0.9363776579371388,
+      -0.028523138234266672,
+      -14.574520796902904
+    ],
+    "sum_error": 3.894666331660801e-07
+  },
+  {
+    "name": "Lorenz Lyapunov run seed=404, h=0.0025",
+    "passed": true,
+    "spectrum": [
+      0.8770822346649635,
+      -0.006450239609537615,
+      -14.537298287089435
+    ],
+    "sum_error": 3.7463265734061224e-07
+  },
+  {
+    "name": "Lorenz largest growth rate survives step refinement",
+    "passed": true,
+    "difference": 0.016786134891145554
+  },
+  {
+    "name": "Waterwheel budget and positivity n=16, h=0.002",
+    "passed": true,
+    "mass_budget_error": 4.718003765447065e-12,
+    "minimum_mass_density": 16.0
+  },
+  {
+    "name": "Waterwheel budget and positivity n=16, h=0.001",
+    "passed": true,
+    "mass_budget_error": 3.979039320256561e-13,
+    "minimum_mass_density": 16.0
+  },
+  {
+    "name": "Waterwheel budget and positivity n=16, h=0.0005",
+    "passed": true,
+    "mass_budget_error": 2.2737367544323206e-13,
+    "minimum_mass_density": 16.0
+  },
+  {
+    "name": "Waterwheel budget and positivity n=32, h=0.002",
+    "passed": true,
+    "mass_budget_error": 4.604316927725449e-12,
+    "minimum_mass_density": 16.0
+  },
+  {
+    "name": "Waterwheel budget and positivity n=32, h=0.001",
+    "passed": true,
+    "mass_budget_error": 3.979039320256561e-13,
+    "minimum_mass_density": 16.0
+  },
+  {
+    "name": "Waterwheel budget and positivity n=32, h=0.0005",
+    "passed": true,
+    "mass_budget_error": 2.2737367544323206e-13,
+    "minimum_mass_density": 16.0
+  },
+  {
+    "name": "Waterwheel budget and positivity n=64, h=0.002",
+    "passed": true,
+    "mass_budget_error": 4.718003765447065e-12,
+    "minimum_mass_density": 16.0
+  },
+  {
+    "name": "Waterwheel budget and positivity n=64, h=0.001",
+    "passed": true,
+    "mass_budget_error": 3.410605131648481e-13,
+    "minimum_mass_density": 16.0
+  },
+  {
+    "name": "Waterwheel budget and positivity n=64, h=0.0005",
+    "passed": true,
+    "mass_budget_error": 2.2737367544323206e-13,
+    "minimum_mass_density": 16.0
+  },
+  {
+    "name": "Waterwheel first-mode mapping converges to Lorenz beta=1",
+    "passed": true,
+    "observed_order": 4.001710401947218,
+    "finest_projection_error": 4.432469504915011e-09
+  },
+  {
+    "name": "Unforced higher waterwheel mode decays at leakage rate",
+    "passed": true,
+    "errors": [
+      8.524267292031595e-08,
+      2.6413323084284457e-08,
+      2.3481996347385348e-09
+    ]
+  },
+  {
+    "name": "Waterwheel resolved Fourier grids agree",
+    "passed": true,
+    "max_grid_difference": 2.984279490192421e-13
+  }
+]
