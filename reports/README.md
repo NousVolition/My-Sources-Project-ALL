@@ -1,6 +1,8 @@
 # Reports by topic
 
-[Project home](../README.md) Â· [Current status](../STATUS.md) Â· [Mathematics and code](../math/README.md)
+[Current repository review and priorities](../REPOSITORY-CURRENT-REVIEW.md).
+
+[Project home](../README.md) · [Current status](../STATUS.md) · [Mathematics and code](../math/README.md)
 
 Start with a study's **README** for its question, results, charts and limitations. Open its data and verification files when you want the supporting detail.
 
@@ -10,12 +12,12 @@ Published status: October 10, 2026 (UTC). Each study has its own starting field 
 
 | Study | Published results | Start reading |
 | --- | --- | --- |
-| Matched-stretch controls | **29/48 complete**, through 0.40; 19 remain | [Current study page](matched-stretch/README.md) Â· [Latest 128-grid 0.5% seed](matched-stretch/completed-n128-halfpercent-seed101/README.md) |
-| Three vortex surroundings | **48/48 complete**, through 0.40 | [Final matrix and charts](study/final-matrix/README.md) Â· [Study page](study/README.md) |
+| Matched-stretch controls | **29/48 complete**, through 0.40; 19 remain | [Current study page](matched-stretch/README.md) · [Latest 128-grid 0.5% seed](matched-stretch/completed-n128-halfpercent-seed101/README.md) |
+| Three vortex surroundings | **48/48 complete**, through 0.40 | [Final matrix and charts](study/final-matrix/README.md) · [Study page](study/README.md) |
 | Separate smooth-start stress suite | **39/39 complete** | [Results and numerical limits](navier-stokes-stress/README.md) |
 | Earlier hugged ring | Saved evolution, grid and timestep comparisons | [Construction and results](../math/notes/hug-boundary.md) |
 
-**Numerical limits:** the matched-stretch field has nonsmooth periodic joins and initial maxima outside the central tube; its spatial and timestep screens remain inadequate. The completed vortex matrix also lacks established spatial convergence. These computations do not resolve the Navierâ€“Stokes existence and smoothness problem.
+**Numerical limits:** the matched-stretch field has nonsmooth periodic joins and initial maxima outside the central tube; its spatial and timestep screens remain inadequate. The completed vortex matrix also lacks established spatial convergence. These computations do not resolve the Navier–Stokes existence and smoothness problem.
 
 <details>
 <summary>Earlier fluid controls and starting-field comparisons</summary>
@@ -63,7 +65,7 @@ These studies use separate molecular or toy models. Their own reports state the 
 
 ## Mirror-fluid and reduced models
 
-[Four reproduced fluid tests](../math/imports/hug-ns/mirror-fluid/README.md) Â· [Signed calibration](../math/imports/hug-ns/mirror-calibration/README.md) Â· [Definitions and controls](../math/imports/hug-ns/mirror-fluid/methods-controls/README.md)
+[Four reproduced fluid tests](../math/imports/hug-ns/mirror-fluid/README.md) · [Signed calibration](../math/imports/hug-ns/mirror-calibration/README.md) · [Definitions and controls](../math/imports/hug-ns/mirror-fluid/methods-controls/README.md)
 
 The supplied q is a passive signed record, E is unsigned, and mirror averaging is an explicit intervention. The later fitted q and cubic-feedback experiments are separate model tests; their coefficients are not established physical constants.
 
@@ -105,7 +107,7 @@ The supplied q is a passive signed record, E is unsigned, and mirror averaging i
 
 ## Visuals and conversation studies
 
-[Conversation study and source records](../language/conversation-study/README.md) Â· [Conversation report guide](../language/README.md)
+[Conversation study and source records](../language/conversation-study/README.md) · [Conversation report guide](../language/README.md)
 
 **Interactive controls:** [download the project](https://github.com/NousVolition/My-Sources-Project-ALL/archive/refs/heads/main.zip), extract it, and open `reports/index.html`. GitHub's file viewer displays HTML source. Older viewers retain the snapshot date shown in their report.
 
