@@ -92,3 +92,7 @@ The [three-grid follow-up](resolution-followup/README.md) adds 12 verified simul
 ## Mirror and handedness follow-up — 2026-10-10
 
 The [mirror follow-up](mirror-followup/README.md) verifies that all 23 existing history descriptors are insensitive to consistent spatial reflection. Three new past-turning descriptors, including signed handedness relative to present geometry, give no clear incremental prediction benefit on the reused eight test runs. Refitted invertible sign controls reproduce predictions exactly, including for reversed histories. This is an exploratory check of the representation, not evidence that arrangement or chronology is physically irrelevant. All 20 analytic and regression checks pass; no new fluid simulations were run.
+
+## Physical velocity reversal — 2026-10-10
+
+The [paired physical intervention](velocity-reversal/README.md) adds nine verified state reconstructions and eighteen short branches. At the same initial marker positions, opposite velocities change a mean 18% of the finer-grid high-deformation classifications and share about 30% of the high-event set. Normal continuations reproduce existing trajectories exactly. Aggregate differences agree between grids 38 and 56, while local numerical convergence remains unestablished. This changes the physical velocity and gradient, rather than merely reordering recorded history. All 24 local tests pass.
