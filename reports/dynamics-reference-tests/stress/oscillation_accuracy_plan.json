@@ -1,0 +1,14 @@
+{
+  "purpose": "Require amplitude and accumulated phase accuracy separately from numerical stability and norm conservation.",
+  "equation": "y_prime = -i * omega * y; y(0)=1",
+  "omega": 376.0,
+  "durations": [1.0, 10.0, 100.0],
+  "steps": [0.008, 0.004, 0.002, 0.001, 0.0005, 0.00025, 0.000125, 0.0000625, 0.00003125, 0.000015625, 0.0000078125, 0.00000390625],
+  "methods": ["rk4", "implicit_midpoint", "gauss_legendre4", "exact_rotation"],
+  "maximum_relative_amplitude_error": 0.001,
+  "maximum_absolute_phase_error_degrees": 1.0,
+  "minimum_samples_per_exact_period": 8,
+  "direct_audit_duration": 10.0,
+  "direct_audit_step": 0.00025,
+  "limits": "Illustrative pilot tolerances, not calibrated physical requirements. The long-duration sweep uses exact discrete amplification factors; direct stepping independently checks representative cases. Exact rotation is an oracle for this constant-frequency linear mode only."
+}

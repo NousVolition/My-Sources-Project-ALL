@@ -28,6 +28,16 @@ Published status: October 10, 2026 (UTC). Each study has its own starting field 
 
 </details>
 
+## Water, biological particles and dynamics tests
+
+| Study | Completed work and limits |
+| --- | --- |
+| [Water/biology three-question study](water-biology-study/README.md) | Solute and particulate transport, buoyancy, controlled material properties and stochastic freezing; code, figures, full raw outputs and uncertainty. Model predictions and published evidence are distinguished. |
+| [Dynamics reference benchmarks](dynamics-reference-tests/README.md) | Exact solutions, Euler/Heun/RK4 convergence, fixed points, Lorenz dynamics and waterwheel conservation. |
+| [Expanded dynamics and pond-vibration tests](dynamics-reference-tests/stress/README.md) | Long-run Lorenz statistics, aliasing, amplitude/phase errors, adaptive and alternating steps, limit cycles and a moving-bed pond pilot. Ground inputs are synthetic; no real footstep, rock or concert strength has been calibrated. |
+
+For the illustrated offline views, download the repository and open [water/biology](water-biology-study/report.html), [baseline dynamics](dynamics-reference-tests/report.html), or [expanded stress results](dynamics-reference-tests/stress/report.html). GitHub itself displays HTML source. [Checksummed publication inventory](water-dynamics-publication.json).
+
 ## Organization, transport and response
 
 | Question | Report |

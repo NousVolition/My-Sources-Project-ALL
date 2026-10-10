@@ -1,0 +1,183 @@
+{
+  "elapsed_seconds": 1.3564635000075214,
+  "combinations": 144,
+  "accepted_combinations": 84,
+  "choices": [
+    {
+      "method": "rk4",
+      "duration": 1.0,
+      "largest_tested_accepted_step": 0.0005,
+      "required_steps": 2000,
+      "amplitude_error": 0.0006103222517982743,
+      "phase_error_degrees": 0.2214402365570173
+    },
+    {
+      "method": "rk4",
+      "duration": 10.0,
+      "largest_tested_accepted_step": 0.00025,
+      "required_steps": 40000,
+      "amplitude_error": 0.00019140052035517178,
+      "phase_error_degrees": 0.13972327563973372
+    },
+    {
+      "method": "rk4",
+      "duration": 100.0,
+      "largest_tested_accepted_step": 0.000125,
+      "required_steps": 800000,
+      "amplitude_error": 5.986620194170836e-05,
+      "phase_error_degrees": 0.08753423697942893
+    },
+    {
+      "method": "implicit_midpoint",
+      "duration": 1.0,
+      "largest_tested_accepted_step": 6.25e-05,
+      "required_steps": 16000,
+      "amplitude_error": 0.0,
+      "phase_error_degrees": 0.9913544993655065
+    },
+    {
+      "method": "implicit_midpoint",
+      "duration": 10.0,
+      "largest_tested_accepted_step": 1.5625e-05,
+      "required_steps": 640000,
+      "amplitude_error": 0.0,
+      "phase_error_degrees": 0.6196446790141041
+    },
+    {
+      "method": "implicit_midpoint",
+      "duration": 100.0,
+      "largest_tested_accepted_step": 3.90625e-06,
+      "required_steps": 25600000,
+      "amplitude_error": 0.0,
+      "phase_error_degrees": 0.3872798042725926
+    },
+    {
+      "method": "gauss_legendre4",
+      "duration": 1.0,
+      "largest_tested_accepted_step": 0.001,
+      "required_steps": 1000,
+      "amplitude_error": 0.0,
+      "phase_error_degrees": 0.5930066001539179
+    },
+    {
+      "method": "gauss_legendre4",
+      "duration": 10.0,
+      "largest_tested_accepted_step": 0.0005,
+      "required_steps": 20000,
+      "amplitude_error": 0.0,
+      "phase_error_degrees": 0.37298790386026487
+    },
+    {
+      "method": "gauss_legendre4",
+      "duration": 100.0,
+      "largest_tested_accepted_step": 0.00025,
+      "required_steps": 400000,
+      "amplitude_error": 0.0,
+      "phase_error_degrees": 0.23348603889205555
+    },
+    {
+      "method": "exact_rotation",
+      "duration": 1.0,
+      "largest_tested_accepted_step": 0.002,
+      "required_steps": 500,
+      "amplitude_error": 0.0,
+      "phase_error_degrees": 0.0
+    },
+    {
+      "method": "exact_rotation",
+      "duration": 10.0,
+      "largest_tested_accepted_step": 0.002,
+      "required_steps": 5000,
+      "amplitude_error": 0.0,
+      "phase_error_degrees": 0.0
+    },
+    {
+      "method": "exact_rotation",
+      "duration": 100.0,
+      "largest_tested_accepted_step": 0.002,
+      "required_steps": 50000,
+      "amplitude_error": 0.0,
+      "phase_error_degrees": 0.0
+    }
+  ],
+  "direct_audits": [
+    {
+      "method": "rk4",
+      "direct_steps": 40000,
+      "amplitude_error": 0.00019140052036159538,
+      "phase_error_degrees": 0.1397231977089178,
+      "formula_amplitude_error": 0.00019140052035517178,
+      "formula_phase_error_degrees": 0.13972327563973372,
+      "formula_agreement_passed": true
+    },
+    {
+      "method": "implicit_midpoint",
+      "direct_steps": 40000,
+      "amplitude_error": 3.785194380157009e-12,
+      "phase_error_degrees": 158.41994248483832,
+      "formula_amplitude_error": 0.0,
+      "formula_phase_error_degrees": 158.4199422607644,
+      "formula_agreement_passed": true
+    },
+    {
+      "method": "gauss_legendre4",
+      "direct_steps": 40000,
+      "amplitude_error": 4.218847493575595e-15,
+      "phase_error_degrees": 0.02334845058618493,
+      "formula_amplitude_error": 0.0,
+      "formula_phase_error_degrees": 0.023348603894416575,
+      "formula_agreement_passed": true
+    },
+    {
+      "method": "exact_rotation",
+      "direct_steps": 40000,
+      "amplitude_error": 1.48991929904696e-13,
+      "phase_error_degrees": 9.924389094764164e-08,
+      "formula_amplitude_error": 0.0,
+      "formula_phase_error_degrees": 0.0,
+      "formula_agreement_passed": true
+    }
+  ],
+  "all_direct_audits_passed": true,
+  "plan": {
+    "purpose": "Require amplitude and accumulated phase accuracy separately from numerical stability and norm conservation.",
+    "equation": "y_prime = -i * omega * y; y(0)=1",
+    "omega": 376.0,
+    "durations": [
+      1.0,
+      10.0,
+      100.0
+    ],
+    "steps": [
+      0.008,
+      0.004,
+      0.002,
+      0.001,
+      0.0005,
+      0.00025,
+      0.000125,
+      6.25e-05,
+      3.125e-05,
+      1.5625e-05,
+      7.8125e-06,
+      3.90625e-06
+    ],
+    "methods": [
+      "rk4",
+      "implicit_midpoint",
+      "gauss_legendre4",
+      "exact_rotation"
+    ],
+    "maximum_relative_amplitude_error": 0.001,
+    "maximum_absolute_phase_error_degrees": 1.0,
+    "minimum_samples_per_exact_period": 8,
+    "direct_audit_duration": 10.0,
+    "direct_audit_step": 0.00025,
+    "limits": "Illustrative pilot tolerances, not calibrated physical requirements. The long-duration sweep uses exact discrete amplification factors; direct stepping independently checks representative cases. Exact rotation is an oracle for this constant-frequency linear mode only."
+  },
+  "source_sha256": {
+    "oscillation_accuracy.py": "b1cedb916bd7666d18a94dab10cbfd74f455d89a67724bda447050f432a3ba56",
+    "oscillation_accuracy_plan.json": "1f6f548d5a0903553610d39c57800237fa94cec85ff59bba4fae3bc323336433"
+  },
+  "implication": "Add amplitude and accumulated-phase gates. A conservative method still needs a phase check. No automatic solver replacement in the Lorenz or coupled-waterwheel runs is justified by this isolated linear-mode example."
+}

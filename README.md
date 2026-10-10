@@ -49,6 +49,14 @@ The objective is a mathematical result about smoothness or breakdown for the Nav
 - [Hug-ns code review](math/imports/hug-ns/REVIEW.md)
 - [Report inventory and publication snapshot](reports/manifest.json)
 
+## Water, particles and numerical validation
+
+**[Water, biological particles and freezing](reports/water-biology-study/README.md)** — the complete three-question computational study: miscible water, separate solute and particle transport, density/temperature stratification, controlled material-property comparisons, and probabilistic ice nucleation. Includes runnable code, controls, raw outputs, uncertainty, sources and verification. No new biological measurements or cultures.
+
+**[Dynamics reference tests](reports/dynamics-reference-tests/README.md)** and **[expanded stress tests](reports/dynamics-reference-tests/stress/README.md)** — exact-solution benchmarks, Lorenz dynamics, waterwheel conservation, spatial aliasing, oscillation amplitude and timing, alternating/adaptive steps, limit cycles, and a synthetic pond response to ground motion. The pond inputs are assumed, not calibrated footsteps or concert measurements. These studies do not establish a new fluid law or a solution of the Clay problem.
+
+Download the repository and open `reports/dynamics-reference-tests/stress/report.html` or `reports/water-biology-study/report.html` for the illustrated offline reports. All study files are stored individually, including raw arrays; duplicate ZIP bundles and temporary environments are omitted. [Publication inventory](reports/water-dynamics-publication.json).
+
 ## Material response and molecular studies
 
 **[Quantum water and observable fluid behavior](reports/quantum-water-pilot/README.md)** — H₂O/D₂O vibrational predictions, 24 molecular runs and 131 fluid simulations/check runs, with raw data and stress tests. The finer 100 mm/s whole-flow comparisons pass the 1% grid screen; quantum prediction of bulk transport remains unvalidated.

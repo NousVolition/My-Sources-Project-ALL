@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="10" time="1.584" timestamp="2026-10-09T20:14:31.627439-07:00" hostname="DESKTOP-LVG5E36"><testcase classname="outputs.dynamics-reference-tests.stress.test_stress" name="test_batched_equations_equal_individual_models" time="0.001" /><testcase classname="outputs.dynamics-reference-tests.stress.test_stress" name="test_batch_trajectory_against_independent_adaptive_solver[0.9]" time="0.066" /><testcase classname="outputs.dynamics-reference-tests.stress.test_stress" name="test_batch_trajectory_against_independent_adaptive_solver[10.0]" time="0.071" /><testcase classname="outputs.dynamics-reference-tests.stress.test_stress" name="test_batch_trajectory_against_independent_adaptive_solver[24.746842105263156]" time="0.078" /><testcase classname="outputs.dynamics-reference-tests.stress.test_stress" name="test_batch_trajectory_against_independent_adaptive_solver[50.0]" time="0.120" /><testcase classname="outputs.dynamics-reference-tests.stress.test_stress" name="test_transport_benchmark_pde_with_independent_finite_differences" time="0.001"><failure message="AssertionError: &#10;Not equal to tolerance rtol=0, atol=1e-07&#10;&#10;Mismatched elements: 4 / 32 (12.5%)&#10;Mismatch at indices:&#10; [0]: 30.931786417198733 (ACTUAL), 30.931786533065377 (DESIRED)&#10; [3]: 3.09441456849413 (ACTUAL), 3.094414463273255 (DESIRED)&#10; [5]: -9.632295116901446 (ACTUAL), -9.632295221052434 (DESIRED)&#10; [9]: -31.716478781618203 (ACTUAL), -31.716478905798894 (DESIRED)&#10;Max absolute difference among violations: 1.24180691e-07&#10;Max relative difference among violations: 3.40034848e-08&#10; ACTUAL: array([ 30.931786,   8.49606 ,  -8.227117,   3.094415,  12.043357,&#10;        -9.632295,  12.146519,  11.658258, -14.064844, -31.716479,&#10;         2.449274,  -6.273651,   5.912172,   5.477938, -19.686837,...&#10; DESIRED: array([ 30.931787,   8.49606 ,  -8.227117,   3.094414,  12.043357,&#10;        -9.632295,  12.146519,  11.658258, -14.064844, -31.716479,&#10;         2.449274,  -6.273651,   5.912172,   5.477938, -19.686837,...">def test_transport_benchmark_pde_with_independent_finite_differences():
+        # Avoid reusing the FFT derivative or the benchmark's closed-form time derivative.
+        theta=np.random.default_rng(44).uniform(0,2*np.pi,32)
+        h=1e-5
+        t=.37
+        temporal=(transport_exact(theta,t+h)-transport_exact(theta,t-h))/(2*h)
+        angular=(transport_exact(theta-2*h,t)-8*transport_exact(theta-h,t)
+                 +8*transport_exact(theta+h,t)-transport_exact(theta+2*h,t))/(12*h)
+        settings=PLAN["transport"]
+        source=np.full(len(theta),settings["forcing_mean"])
+        for k,amplitude in settings["forcing_cosine_amplitudes"].items():
+            source+=amplitude*np.cos(int(k)*theta)
+        rhs=source-settings["leak"]*transport_exact(theta,t)-settings["omega"]*angular
+&gt;       np.testing.assert_allclose(temporal,rhs,rtol=0,atol=1e-7)
+E       AssertionError: 
+E       Not equal to tolerance rtol=0, atol=1e-07
+E       
+E       Mismatched elements: 4 / 32 (12.5%)
+E       Mismatch at indices:
+E        [0]: 30.931786417198733 (ACTUAL), 30.931786533065377 (DESIRED)
+E        [3]: 3.09441456849413 (ACTUAL), 3.094414463273255 (DESIRED)
+E        [5]: -9.632295116901446 (ACTUAL), -9.632295221052434 (DESIRED)
+E        [9]: -31.716478781618203 (ACTUAL), -31.716478905798894 (DESIRED)
+E       Max absolute difference among violations: 1.24180691e-07
+E       Max relative difference among violations: 3.40034848e-08
+E        ACTUAL: array([ 30.931786,   8.49606 ,  -8.227117,   3.094415,  12.043357,
+E               -9.632295,  12.146519,  11.658258, -14.064844, -31.716479,
+E                2.449274,  -6.273651,   5.912172,   5.477938, -19.686837,...
+E        DESIRED: array([ 30.931787,   8.49606 ,  -8.227117,   3.094414,  12.043357,
+E               -9.632295,  12.146519,  11.658258, -14.064844, -31.716479,
+E                2.449274,  -6.273651,   5.912172,   5.477938, -19.686837,...
+
+outputs\dynamics-reference-tests\stress\test_stress.py:43: AssertionError</failure></testcase><testcase classname="outputs.dynamics-reference-tests.stress.test_stress" name="test_transport_initial_condition_and_positive_source" time="0.001" /><testcase classname="outputs.dynamics-reference-tests.stress.test_stress" name="test_intended_alias_is_present[16-1]" time="0.001" /><testcase classname="outputs.dynamics-reference-tests.stress.test_stress" name="test_intended_alias_is_present[32-15]" time="0.000" /><testcase classname="outputs.dynamics-reference-tests.stress.test_stress" name="test_long_plan_has_exact_integer_step_and_block_alignment" time="0.000" /></testsuite></testsuites>
