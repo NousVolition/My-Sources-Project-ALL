@@ -1,5 +1,7 @@
 # Reports by topic
 
+[Current repository review and priorities](../REPOSITORY-CURRENT-REVIEW.md).
+
 [Project home](../README.md) · [Current status](../STATUS.md) · [Mathematics and code](../math/README.md)
 
 Start with a study's **README** for its question, results, charts and limitations. Open its data and verification files when you want the supporting detail.
@@ -10,7 +12,7 @@ Published status: October 10, 2026 (UTC). Each study has its own starting field 
 
 | Study | Published results | Start reading |
 | --- | --- | --- |
-| Matched-stretch controls | **29/48 complete**, through 0.40; 19 remain | [Current study page](matched-stretch/README.md) · [Latest 128-grid 0.5% seed](matched-stretch/completed-n128-halfpercent-seed101/README.md) |
+| Matched-stretch controls | **30/48 complete**, through 0.40; 18 remain | [Current study page](matched-stretch/README.md) · [Latest 128-grid 0.5% seed](matched-stretch/completed-n128-halfpercent-seed202/README.md) |
 | Three vortex surroundings | **48/48 complete**, through 0.40 | [Final matrix and charts](study/final-matrix/README.md) · [Study page](study/README.md) |
 | Separate smooth-start stress suite | **39/39 complete** | [Results and numerical limits](navier-stokes-stress/README.md) |
 | Earlier hugged ring | Saved evolution, grid and timestep comparisons | [Construction and results](../math/notes/hug-boundary.md) |
@@ -27,6 +29,10 @@ Published status: October 10, 2026 (UTC). Each study has its own starting field 
 - [First completed 128-grid 0.1% seed](matched-stretch/completed-n128-seed101/README.md): saved-field checks, baseline separation and resolution limits.
 
 </details>
+
+## Heating-driven transition: decay to growth
+
+[Completed convection benchmark](dynamics-reference-tests/stress/convection-transition/README.md): 79 full-inertia Boussinesq runs, 12 separate modal comparisons, 20 final checks and 15 independent tests. At 5% below the ideal critical heating, the disturbance falls to 0.104 times its initial size; at 5% above, it grows to 9.08 times over the same interval. Grid/time refinement, energy budgets, rejected numerical controls and all raw records are included. This is a thermally driven bounded layer, distinct from the existing unforced fluid model. [Illustrated offline report](dynamics-reference-tests/stress/convection-transition/report.html) · [Publication inventory](convection-transition-publication.json).
 
 ## Water, biological particles and dynamics tests
 
@@ -66,7 +72,7 @@ The supplied q is a passive signed record, E is unsigned, and mirror averaging i
 <details>
 <summary>Mirror-fluid reports, source controls and earlier completed comparisons</summary>
 
-### Completed mirror tests — October 8
+### Completed mirror tests â€” October 8
 
 - **[Separate C and D contributions](../math/imports/hug-ns/mirror-fluid/source-attribution/README.md):** ten new fluid controls and [chart](../math/imports/hug-ns/mirror-fluid/source-attribution/source-effects.png).
 
@@ -139,7 +145,7 @@ Earlier interactive-viewer snapshot: 2026-10-08T20:40:59.597392+00:00. That disp
 | `result.json`, `measurements.json`, `comparisons.json` | Inspect saved measurements and comparison values |
 | `verify.py`, `plot.py`, `compare.py` | Inspect or reproduce the checks and charts |
 | `verification.json`, manifests and hash lists | Check the stated verification scope and file identity |
-| `completed-…` folders | Read a dated batch; use the study's main README for subsequent completions |
+| `completed-â€¦` folders | Read a dated batch; use the study's main README for subsequent completions |
 
 - [Original report inventory and source hashes](manifest.json) and [verification of that saved snapshot](numerical-progress-verification.json) describe their dated publication scope.
 - [Vortex protocol](study/protocol.json), [saved comparisons](study/comparisons.json), and [run measurements](study/runs) provide the supporting records.

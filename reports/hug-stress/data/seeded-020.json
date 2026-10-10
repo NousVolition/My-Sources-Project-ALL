@@ -1,0 +1,64 @@
+{
+  "name": "seeded-020",
+  "group": "seeded",
+  "parameters": {
+    "r": 7.857125903533294,
+    "damping": 245.66510020365286,
+    "pressure": 0.38518059550825695,
+    "memory_coupling": 18.00252960201305,
+    "shear": 0.35,
+    "pulse_duration": 0.36036732667882854
+  },
+  "q0": 8.903530484297816e-07,
+  "v0": -1.4226938968182559e-06,
+  "end": 24.0,
+  "reference": {
+    "method": "DOP853",
+    "rtol": 2e-10,
+    "atol": 2e-12,
+    "nfev": 14386,
+    "accepted_steps": 950
+  },
+  "reference_energy": {
+    "absolute": 3.3309180573320334e-18,
+    "scaled": 3.3309180573320334e-18
+  },
+  "reference_peak_abs_q": 1.9675367960836977e-06,
+  "reference_peak_imprint": 0.07248223656232095,
+  "final_q": 1.9675367960836977e-06,
+  "extent": {
+    "maximum": 1.0040912209605177,
+    "outside_cube": false,
+    "first_observed_outside": null,
+    "opening_time": null
+  },
+  "fixed": [
+    {
+      "dt": 0.02,
+      "failure": {
+        "kind": "guard_exceeded",
+        "time": 0.22,
+        "largest_attempt": 2.109764364191969e+24
+      },
+      "scaled_reference_error": null,
+      "numerical_pass": false,
+      "energy_budget": {
+        "absolute": 1319466862763.651,
+        "scaled": 1.0058048445089833
+      }
+    },
+    {
+      "dt": 0.01,
+      "failure": null,
+      "scaled_reference_error": 3.463408798698442e-06,
+      "numerical_pass": true,
+      "energy_budget": {
+        "absolute": 1.1240438500274565e-11,
+        "scaled": 1.1240438500274565e-11
+      }
+    }
+  ],
+  "refinement": null,
+  "false_convergence": false,
+  "memory_bounds_pass": true
+}

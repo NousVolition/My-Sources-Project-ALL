@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="14" time="0.794" timestamp="2026-10-09T22:36:51.389518-07:00" hostname="DESKTOP-LVG5E36"><testcase classname="outputs.dynamics-reference-tests.stress.convection-transition.test_convection" name="test_critical_point_from_neutral_curve_minimization" time="0.001" /><testcase classname="outputs.dynamics-reference-tests.stress.convection-transition.test_convection" name="test_full_pde_linear_mode_matches_separate_matrix[0.8-0.7]" time="0.002" /><testcase classname="outputs.dynamics-reference-tests.stress.convection-transition.test_convection" name="test_full_pde_linear_mode_matches_separate_matrix[0.8-7.0]" time="0.002" /><testcase classname="outputs.dynamics-reference-tests.stress.convection-transition.test_convection" name="test_full_pde_linear_mode_matches_separate_matrix[1.0-0.7]" time="0.001" /><testcase classname="outputs.dynamics-reference-tests.stress.convection-transition.test_convection" name="test_full_pde_linear_mode_matches_separate_matrix[1.0-7.0]" time="0.002"><failure message="AssertionError: &#10;Not equal to tolerance rtol=2e-13, atol=1e-15&#10;&#10;Mismatched elements: 1 / 2 (50%)&#10;Mismatch at index:&#10; [0]: (-5.329070518200751e-15+0j) (ACTUAL), (-4.440892098500626e-15-3.552713678800501e-15j) (DESIRED)&#10;Max absolute difference among violations: 3.66205344e-15&#10;Max relative difference among violations: 0.64392092&#10; ACTUAL: array([-5.329071e-15+0.j,  2.775558e-17+0.j])&#10; DESIRED: array([-4.440892e-15-3.552714e-15j,  2.775558e-17+0.000000e+00j])">pr = 7.0, ratio = 1.0
+
+    @pytest.mark.parametrize('pr',[.7,7.])
+    @pytest.mark.parametrize('ratio',[.8,1.,1.2])
+    def test_full_pde_linear_mode_matches_separate_matrix(pr,ratio):
+        layer=Layer(24,ratio*RAC,pr=pr,nonlinear=False)
+        h=layer.initial(amplitude=1e-4,mixed=False)
+        r,_=layer.rhs(h,diffusion=True)
+        expected=modal_matrix(ratio*RAC,pr)@h[[1,2],1,1]
+&gt;       np.testing.assert_allclose(r[[1,2],1,1],expected,rtol=2e-13,atol=1e-15)
+E       AssertionError: 
+E       Not equal to tolerance rtol=2e-13, atol=1e-15
+E       
+E       Mismatched elements: 1 / 2 (50%)
+E       Mismatch at index:
+E        [0]: (-5.329070518200751e-15+0j) (ACTUAL), (-4.440892098500626e-15-3.552713678800501e-15j) (DESIRED)
+E       Max absolute difference among violations: 3.66205344e-15
+E       Max relative difference among violations: 0.64392092
+E        ACTUAL: array([-5.329071e-15+0.j,  2.775558e-17+0.j])
+E        DESIRED: array([-4.440892e-15-3.552714e-15j,  2.775558e-17+0.000000e+00j])
+
+outputs\dynamics-reference-tests\stress\convection-transition\test_convection.py:27: AssertionError</failure></testcase><testcase classname="outputs.dynamics-reference-tests.stress.convection-transition.test_convection" name="test_full_pde_linear_mode_matches_separate_matrix[1.2-0.7]" time="0.001" /><testcase classname="outputs.dynamics-reference-tests.stress.convection-transition.test_convection" name="test_full_pde_linear_mode_matches_separate_matrix[1.2-7.0]" time="0.001" /><testcase classname="outputs.dynamics-reference-tests.stress.convection-transition.test_convection" name="test_nonlinear_energy_and_temperature_budget_identity" time="0.001" /><testcase classname="outputs.dynamics-reference-tests.stress.convection-transition.test_convection" name="test_wall_conditions_and_incompressibility_survive_nonlinear_steps" time="0.039" /><testcase classname="outputs.dynamics-reference-tests.stress.convection-transition.test_convection" name="test_matrix_exponential_against_independent_adaptive_integration[-4.0]" time="0.013" /><testcase classname="outputs.dynamics-reference-tests.stress.convection-transition.test_convection" name="test_matrix_exponential_against_independent_adaptive_integration[0.95]" time="0.005" /><testcase classname="outputs.dynamics-reference-tests.stress.convection-transition.test_convection" name="test_matrix_exponential_against_independent_adaptive_integration[1.05]" time="0.005" /><testcase classname="outputs.dynamics-reference-tests.stress.convection-transition.test_convection" name="test_linear_pde_trajectory_against_exact_mode_solution" time="0.032" /><testcase classname="outputs.dynamics-reference-tests.stress.convection-transition.test_convection" name="test_zero_disturbance_and_buoyancy_ablation" time="0.052" /></testsuite></testsuites>

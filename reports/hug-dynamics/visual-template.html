@@ -1,0 +1,94 @@
+<div id="hug-dynamics-lab">
+  <h2>The hug</h2>
+  <div class="text-small text-muted">Pressure, memory and motion · tested reduced model</div>
+  <div class="viz-controls">
+    <label class="form-label" for="hug-case">Experiment
+      <select class="form-select" id="hug-case"></select>
+    </label>
+    <button class="btn btn-primary" id="hug-play" type="button">Play motion</button>
+  </div>
+  <label class="form-check"><input id="hug-gate" class="form-check-input" type="checkbox" checked><span class="form-check-label">Show starting gate</span></label>
+  <svg class="hug-stage" role="img" aria-labelledby="hug-title hug-description">
+    <title id="hug-title">Pressure and memory change the hug's shape</title>
+    <desc id="hug-description">Two arms use the repository's geometry. Added lean comes from a tested damped cubic equation. The shaded square shows the existing starting gate in a cross section of the periodic cube. It is a reference guide, not an active wall. No particles or permeability are drawn.</desc>
+  </svg>
+  <label class="form-label" for="hug-time">Model time <output id="hug-clock" class="tabular-nums">0.0</output>
+    <input class="form-range" id="hug-time" type="range" min="0" max="240" value="0" step="1">
+  </label>
+  <div class="viz-row text-small tabular-nums" id="hug-values"></div>
+  <div class="text-small" id="hug-status" aria-live="polite"></div>
+</div>
+<style>
+#hug-dynamics-lab { color:var(--foreground); }
+#hug-dynamics-lab .hug-stage { display:block; width:100%; overflow:visible; }
+#hug-dynamics-lab .hug-stage text { fill:var(--muted-foreground); font-size:12px; }
+#hug-dynamics-lab .hug-stage .arm { fill:none; stroke:var(--viz-series-1); stroke-width:3; }
+#hug-dynamics-lab .hug-stage .start { fill:none; stroke:var(--muted-foreground); stroke-width:1; stroke-dasharray:4 5; }
+#hug-dynamics-lab .hug-stage .structure { fill:none; stroke:var(--border); stroke-width:1; }
+#hug-dynamics-lab #hug-status { margin-top:8px; }
+</style>
+<script type="application/json" id="hug-recorded-data">__HUG_DATA__</script>
+<script>
+(()=>{
+  const root=document.getElementById('hug-dynamics-lab');
+  const data=JSON.parse(document.getElementById('hug-recorded-data').textContent);
+  const select=root.querySelector('#hug-case'), play=root.querySelector('#hug-play');
+  const slider=root.querySelector('#hug-time'), gate=root.querySelector('#hug-gate');
+  const svg=root.querySelector('.hug-stage'), status=root.querySelector('#hug-status');
+  const ns='http://www.w3.org/2000/svg';
+  let active=data[0],index=0,running=false,start=0,startIndex=0,raf=0;
+  for(const item of data){const option=document.createElement('option');option.value=item.key;option.textContent=item.label;select.append(option);}
+  function element(tag,attrs,parent=svg){const n=document.createElementNS(ns,tag);for(const [k,v] of Object.entries(attrs))n.setAttribute(k,v);parent.append(n);return n;}
+  function arms(sample,p){
+    const [t,q,v,m,pressure,sx,bend]=sample, sy=1/sx,left=[],right=[];
+    for(let i=0;i<65;i++){
+      const a=-Math.PI/2+Math.PI*i/64,c=(i===0||i===64)?0:Math.cos(a);
+      const x=sx*(1-bend+bend*c),y=Math.sin(a)*sy,shift=p.shear*q*y;
+      left.push([-x+shift,y]);right.push([x+shift,y]);
+    }
+    return {left,right};
+  }
+  function flat(x){if(x<=0)return 0;if(x>=1)return 1;const a=Math.exp(-1/x),b=Math.exp(-1/(1-x));return a/(a+b);}
+  function draw(){
+    svg.querySelectorAll('g').forEach(x=>x.remove());
+    const width=root.clientWidth,height=Math.min(430,Math.max(310,width*.66));
+    svg.setAttribute('viewBox',`0 0 ${width} ${height}`);svg.style.height=`${height}px`;
+    const size=Math.min(width-48,height-62),scale=size/6,cx=width/2,cy=height/2-4;
+    const px=x=>cx+x*scale,py=y=>cy-y*scale;
+    const g=element('g',{}),field=element('g',{},g);
+    if(gate.checked){
+      for(let i=0;i<40;i++)for(let j=0;j<40;j++){
+        const x=-3+(i+.5)*.15,y=-3+(j+.5)*.15;
+        const w=flat((3-Math.abs(x)-.45)/.45)*flat((3-Math.abs(y)-.45)/.45);
+        if(w>0)element('rect',{x:px(x-.075),y:py(y+.075),width:.15*scale+.1,height:.15*scale+.1,fill:'var(--muted-foreground)',opacity:.1*w},field);
+      }
+      element('rect',{x:px(-3),y:py(3),width:size,height:size,class:'structure'},g);
+      const label=element('text',{x:cx,y:py(3)-12,'text-anchor':'middle'},g);label.textContent='Fixed starting gate · cube cross section';
+    }
+    element('line',{x1:px(-3),x2:px(3),y1:py(0),y2:py(0),class:'structure'},g);
+    element('line',{x1:px(0),x2:px(0),y1:py(-3),y2:py(3),class:'structure'},g);
+    const path=points=>points.map((p,i)=>(i?'L':'M')+px(p[0]).toFixed(3)+','+py(p[1]).toFixed(3)).join(' ');
+    const initial=arms(active.samples[0],active.parameters),current=arms(active.samples[index],active.parameters);
+    for(const key of ['left','right']){element('path',{d:path(initial[key]),class:'start'},g);element('path',{d:path(current[key]),class:'arm'},g);}
+    const bottom=element('text',{x:cx,y:height-7,'text-anchor':'middle'},g);bottom.textContent='Solid: current shape · dotted: starting shape';
+    const [t,q,v,m,p,sx,bend]=active.samples[index];
+    root.querySelector('#hug-clock').textContent=t.toFixed(1);
+    root.querySelector('#hug-values').textContent=`Pressure / limit ${p.toFixed(2)} · imprint ${m.toFixed(3)} · lean ${q.toFixed(3)}`;
+    slider.value=index;
+    const label=bend<1?'Pressure limit crossed · opening stays released':active.key==='balanced'?'Exactly balanced · no direction selected':'Closed hug · motion follows the selected model';
+    if(status.textContent!==label)status.textContent=label;
+  }
+  function save(){window.openai?.setWidgetState?.({modelContent:{experiment:active.label,time:active.samples[index][0],startingGateVisible:gate.checked,scope:'Recorded reduced hug dynamics; no fluid coupling'},privateContent:{key:active.key,index,gate:gate.checked}})?.catch(()=>{});}
+  function stop(){running=false;cancelAnimationFrame(raf);play.textContent='Play motion';}
+  function applyState(state){const saved=state?.privateContent;if(!saved)return;const next=data.find(x=>x.key===saved.key);if(next)active=next;select.value=active.key;index=Math.max(0,Math.min(240,Math.round(saved.index||0)));gate.checked=saved.gate!==false;stop();draw();}
+  function frame(now){if(!running)return;index=Math.max(0,Math.min(240,startIndex+Math.floor(Math.max(0,now-start)/40)));draw();if(index===240){stop();save();return;}raf=requestAnimationFrame(frame);}
+  select.addEventListener('change',()=>{stop();active=data.find(x=>x.key===select.value);index=0;draw();save();});
+  slider.addEventListener('input',()=>{stop();index=Number(slider.value);draw();});slider.addEventListener('change',save);
+  gate.addEventListener('change',()=>{draw();save();});
+  play.addEventListener('click',()=>{if(running){stop();save();return;}if(index===240)index=0;if(matchMedia('(prefers-reduced-motion: reduce)').matches){index=240;draw();save();return;}running=true;startIndex=index;start=performance.now();play.textContent='Pause motion';raf=requestAnimationFrame(frame);});
+  new ResizeObserver(draw).observe(root);
+  window.addEventListener('openai:set_globals',e=>{if(e.detail?.globals?.widgetState)applyState(e.detail.globals.widgetState);});
+  root.hugSnapshot=()=>({key:active.key,index,sample:active.samples[index],arms:arms(active.samples[index],active.parameters),gate:gate.checked,running});
+  applyState(window.openai?.widgetState);draw();
+})();
+</script>
