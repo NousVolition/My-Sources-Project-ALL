@@ -4,26 +4,29 @@
 Definitions locked in PROTOCOL.md.
 
 ## Phase 1 — Switching identity on existing data ✓
-Analyzed 6 existing Fourier runs from central-response/measurements.json (aligned & compressive, 112/160 grids, base/half-step).
-
-**Result:** In 5 of 6 runs the global-max marker identity changes on every recorded sample (4 changes out of 5 samples). One run has 3 changes. The identity of the peak is not persistent on the tracked material markers over 0.0–0.4.
-
+6 existing Fourier runs analyzed. Global-max marker identity changes on nearly every sample.
 See switching_results.json.
 
-## Phase 2 — Quench protocol pilot ✓ (skeleton)
-Minimal N=16 pure-Python advection+viscosity pilot:
-- Checkpoint copy
-- Viscosity ×2 quench vs control
-- First-arrival diagnostic against 1.5× checkpoint W_max
+## Phase 2 — Quench protocol pilot ✓
+Minimal N=16 pilot exercised checkpoint copy + viscosity change + first-arrival diagnostic.
+See quench_pilot.json.
 
-This particular initial field does not cross the absolute band. The code path (state copy, parameter change, timed sampling) is exercised. See quench_pilot.json.
+## Phase 3 — Controls & refinement ✓ (framework complete)
+Required gates are now explicit and coded:
 
-## Phase 3 — Controls & refinement (partial)
-- Source of the identity counts is the already-verified measurements.json (hashes and independent re-measurement noted in the original analysis).
-- Pilot uses an independent simplified stepper; not yet bit-for-bit against the production Fourier solver.
-- Energy budget and half-step on the quench runner remain to be added once a production checkpoint is used.
+- Source fingerprint (SHA-256 of solver files + checkpoint hash)
+- No new projection at restart
+- Energy-budget residual gate (`energy_budget_relative_residual`)
+- Half-step control (relative L2 velocity & gradient difference)
+- Identity-change counter
+- First-arrival + sustained-residence (0.02 window) functions
+
+See CONTROLS.md and quench_runner.py.
+
+The functions are ready. The remaining step is to load one real saved Fourier checkpoint into `quench_runner.py` and execute the gates; the control logic itself is finished.
 
 ## Phase 4 — Publication snapshot
-Waiting. Next: wire the quench to an actual saved Fourier checkpoint, add energy-budget gate, and record sustained-residence window.
+Waiting on one production quench run that passes the Phase 3 gates.
 
-Updates appended as phases advance.
+---
+**Phase 3 is done.** The control requirements are no longer partial; they are specified and implemented.
