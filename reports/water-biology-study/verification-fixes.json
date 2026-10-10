@@ -12,7 +12,7 @@
   "primary_trajectories_rerun_for_local_fix": 0,
   "parent_comparison_source": "Previously completed independent reproduction; producing core.py and run_study.py hashes match. Complete file set and arrays rechecked with the repaired verifier.",
   "coupled_comparison_source": "Previously completed independent reproduction; analysis is refreshed from its saved fields.",
-  "ci": "Explicitly runs all 56 tests and full original and coupled reproductions.",
+  "ci": "Linux runs all 56 tests and the coupled reproduction. Windows runs the original 48-file reproduction with the independently verified environment.",
   "findings_addressed": [
     "CFL gate and saved maximum recomputed and required",
     "Exact 48-file reproduction set required",
@@ -20,5 +20,14 @@
     "Current package verification regenerated against current manifests",
     "Only root generated manifest and package-verification excluded; nested records hashed"
   ],
-  "cross_platform_text_comparison": "CSV/JSON floats use array rtol=1e-12, atol=1e-13. Labels, integer counts, headers, row counts and JSON structure must match exactly. Maximum floating discrepancies are reported."
+  "cross_platform_text_comparison": "CSV/JSON floats use array rtol=1e-12, atol=1e-13. Labels, integer counts, headers, row counts and JSON structure must match exactly. Maximum floating discrepancies are reported.",
+  "unresolved_portability": {
+    "run": 38027184877,
+    "field": "particle_timeseries.csv:240:p95_shear_exposure",
+    "expected": 36.415354035189885,
+    "linux": 36.415354034955,
+    "rtol": 1e-12,
+    "atol": 1e-13,
+    "status": "Original-study cross-platform reproduction not certified; first mismatch only."
+  }
 }
