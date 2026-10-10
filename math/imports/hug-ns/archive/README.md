@@ -13,3 +13,5 @@ The previous page addresses remain as current summaries with links to every orig
 ## Preserved at their recorded paths
 
 Raw [result tables](../results/), original source, [provenance](../provenance.json), [code verification](../review-results.json), [result verification](../received-results-check.json), and the [received PDF](../hug-runs.pdf) stay in their original locations. Tests and published references use those paths. They are supporting evidence rather than the current reading entry point.
+
+[Exact earlier overview bytes](earlier-import/README.original.txt) retain the original provenance checksum. The provenance test follows that archived copy; the current landing page is an editable navigation guide.
