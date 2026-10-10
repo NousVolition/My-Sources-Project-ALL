@@ -62,6 +62,7 @@ def main():
     err=max(c['rms_error'] for c in refinements if c['from'][0]>=48)
     gates={'all_30_pairs':len(rows)==30,'null':null<1e-11,'uniform':uniform<1e-11,
            'mass':max_mass<1e-11,'divergence':max_div<1e-10,'fraction_bounds':min_phi>=-1e-9 and max_phi<=.03500001,
+           'cfl':max(t[label]['cfl'] for r in rows for t in r['rows'] for label in ['baseline','disturbed'])<p['gates']['max_advective_cfl'],
            'energy_budget':max_budget<1e-5,'initial_fields':max(c['initial_error'] for c in refinements)<1e-12,
            'effect_above_error':ref>10*err,'contrast_refinement':abs(coarse/ref-1)<.01}
     summary={'pairs':len(rows),'trajectories':2*len(rows),'saved_model_time':1.,'gates':gates,'passed':all(gates.values()),
