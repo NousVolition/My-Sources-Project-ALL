@@ -1,0 +1,39 @@
+{
+  "model": "reduced pressure-memory and lean extension",
+  "end": 24,
+  "steps": [
+    0.02,
+    0.01
+  ],
+  "r": [
+    -1,
+    0,
+    1
+  ],
+  "damping": [
+    0.2,
+    1,
+    4
+  ],
+  "pressure": [
+    0,
+    0.8,
+    1.2
+  ],
+  "starting_lean": [
+    -0.04,
+    0,
+    0.04
+  ],
+  "thresholds": {
+    "sweep_step_difference": 0.0002,
+    "energy_budget": 2e-05,
+    "preset_reference": 2e-05
+  },
+  "limitations": [
+    "No fluid coupling, permeability or calibrated material law",
+    "No physical seconds, pressure or temperature calibration",
+    "Gate display is an initial support guide, not an active wall",
+    "Numerical agreement is not experimental validation"
+  ]
+}
