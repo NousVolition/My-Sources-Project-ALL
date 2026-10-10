@@ -24,6 +24,21 @@ def test_all_documented_reproductions_match(package):
     assert v.compare_reproduction(actual,manifest)==48
 
 
+def test_text_line_endings_are_portable(package):
+    root,actual,manifest=package
+    (root/'data/row-0.json').write_bytes(b'{\r\n  "value": 1.0\r\n}\r\n')
+    (actual/'data/row-0.json').write_bytes(b'{\n  "value": 1.0\n}\n')
+    assert v.compare_reproduction(actual,manifest)==48
+
+
+def test_text_numeric_change_still_fails(package):
+    root,actual,manifest=package
+    (root/'data/row-0.json').write_bytes(b'{\r\n  "value": 1.0\r\n}\r\n')
+    (actual/'data/row-0.json').write_bytes(b'{\n  "value": 1.1\n}\n')
+    with pytest.raises(ValueError,match='file contents differ'):
+        v.compare_reproduction(actual,manifest)
+
+
 @pytest.mark.parametrize('change',['missing','unexpected','empty','missing_directory'])
 def test_reject_incomplete_or_unexpected_reproduction(package,change):
     _,actual,manifest=package

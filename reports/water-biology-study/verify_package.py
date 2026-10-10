@@ -38,7 +38,9 @@ def compare_reproduction(actual_root, manifest):
                     if a[key].shape!=b[key].shape:
                         raise ValueError(f'{name}:{key}: array shapes differ')
                     np.testing.assert_allclose(a[key],b[key],rtol=1e-12,atol=1e-13,equal_nan=False,err_msg=f'{name}:{key}')
-        elif original.read_bytes()!=other.read_bytes():
+        # Windows writes CRLF and Linux writes LF for the same text record.
+        # Normalize only line endings; every number and other character must match.
+        elif original.read_bytes().replace(b'\r\n',b'\n')!=other.read_bytes().replace(b'\r\n',b'\n'):
             raise ValueError(f'{name}: file contents differ')
     return len(expected)
 
