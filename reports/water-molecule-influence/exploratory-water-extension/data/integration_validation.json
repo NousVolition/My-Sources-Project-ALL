@@ -1,0 +1,84 @@
+{
+  "horizon_ps": 0.2,
+  "thermostat": false,
+  "integrator": "constrained velocity Verlet/RATTLE",
+  "runs": [
+    {
+      "dt_ps": 0.001,
+      "field_update_ps": 0.01,
+      "initial_total_energy": -7130.888549990917,
+      "final_total_energy": -7051.799210265881,
+      "external_work_kJ_mol": 79.29171617068958,
+      "work_energy_residual_kJ_mol": -0.20237644565303015,
+      "relative_work_energy_residual": 2.838025643428236e-05
+    },
+    {
+      "dt_ps": 0.0005,
+      "field_update_ps": 0.01,
+      "initial_total_energy": -7130.888549990917,
+      "final_total_energy": -7051.811672891685,
+      "external_work_kJ_mol": 79.29227158325727,
+      "work_energy_residual_kJ_mol": -0.21539448402461403,
+      "relative_work_energy_residual": 3.0205840760880827e-05
+    },
+    {
+      "dt_ps": 0.00025,
+      "field_update_ps": 0.01,
+      "initial_total_energy": -7130.888549990917,
+      "final_total_energy": -7051.820072834404,
+      "external_work_kJ_mol": 79.29243367673843,
+      "work_energy_residual_kJ_mol": -0.2239565202245899,
+      "relative_work_energy_residual": 3.140653772030628e-05
+    },
+    {
+      "dt_ps": 0.0005,
+      "field_update_ps": 0.005,
+      "initial_total_energy": -7130.888549990917,
+      "final_total_energy": -7050.649211261906,
+      "external_work_kJ_mol": 80.44500465103971,
+      "work_energy_residual_kJ_mol": -0.20566592202845868,
+      "relative_work_energy_residual": 2.8841556081916415e-05
+    },
+    {
+      "dt_ps": 0.0005,
+      "field_update_ps": 0.0025,
+      "initial_total_energy": -7130.888549990917,
+      "final_total_energy": -7050.077415058646,
+      "external_work_kJ_mol": 81.01668828691385,
+      "work_energy_residual_kJ_mol": -0.20555335464217706,
+      "relative_work_energy_residual": 2.882577019696078e-05
+    }
+  ],
+  "comparisons": [
+    {
+      "change": "half_MD_step",
+      "reference_run_index": 0,
+      "position_RMS_nm": 0.00013777858377197926,
+      "velocity_RMS_nm_ps": 0.00976452786667666
+    },
+    {
+      "change": "quarter_MD_step",
+      "reference_run_index": 0,
+      "position_RMS_nm": 0.00017208234246015398,
+      "velocity_RMS_nm_ps": 0.012204652425039257
+    },
+    {
+      "change": "half_field_update",
+      "reference_run_index": 1,
+      "position_RMS_nm": 2.3695854863258038e-05,
+      "velocity_RMS_nm_ps": 0.0013675230962907463
+    },
+    {
+      "change": "quarter_field_update",
+      "reference_run_index": 1,
+      "position_RMS_nm": 2.959178381444599e-05,
+      "velocity_RMS_nm_ps": 0.0017092140401541798
+    }
+  ],
+  "MD_step_error_reduction_ratio": 5.015953897028195,
+  "field_update_error_reduction_ratio": 5.018290964650236,
+  "phase_slip_fixture_correct": true,
+  "phase_gap_fixture_correct": true,
+  "passed": true,
+  "scope": "Short deterministic convergence and external-work balance. Stochastic long trajectories require ensemble comparisons, not pointwise identity."
+}
