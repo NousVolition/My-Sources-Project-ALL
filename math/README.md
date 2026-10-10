@@ -8,6 +8,8 @@ The active [matched-stretch controls](../reports/matched-stretch/README.md) and 
 
 ## Hug dynamics extension
 
+**New: [Lorenz-driven hug and harder stress tests](../reports/hug-stress/README.md).** The Lorenz system now drives pressure, imprint and lean through an explicit one-way connection. Five playable modes and 84 new driven configurations accompany 224 earlier stress configurations, including missed-pulse, stiff-solver and square-guide limits. Raw results, failed trials, independent checks and code are included. [Open the Lorenz playback](../reports/hug-stress/lorenz-report.html).
+
 [Play and inspect the hug dynamics study](../reports/hug-dynamics/README.md): the existing pressure, imprint and opening model with added damping, lean and buckling; 81 configurations at two time steps and 272 passing scientific checks. Includes runnable code, complete trajectories, seven charts, and checks based on the supplied pendulum, stability, uniqueness and numerical-method pages. This reduced model has not yet been coupled to an evolving fluid boundary.
 
 ## Earlier smooth-ring study
