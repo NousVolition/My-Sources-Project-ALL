@@ -1,0 +1,60 @@
+{
+  "name": "matrix-011",
+  "group": "matrix",
+  "parameters": {
+    "r": -4.0,
+    "damping": 0.0,
+    "pressure": 100.0,
+    "memory_coupling": 8.0,
+    "shear": 0.35,
+    "pulse_duration": 4.0
+  },
+  "q0": 0.04,
+  "v0": 0.0,
+  "end": 24.0,
+  "reference": {
+    "method": "DOP853",
+    "rtol": 2e-10,
+    "atol": 2e-12,
+    "nfev": 29653,
+    "accepted_steps": 1771
+  },
+  "reference_energy": {
+    "absolute": 8.587356660427758e-05,
+    "scaled": 4.291472978572582e-10
+  },
+  "reference_peak_abs_q": 29.843950077476784,
+  "reference_peak_imprint": 79.91965364767687,
+  "final_q": 1.9394527067545053,
+  "extent": {
+    "maximum": 7.236677971236647,
+    "outside_cube": true,
+    "first_observed_outside": 1.171875,
+    "opening_time": 0.1275371217170397
+  },
+  "fixed": [
+    {
+      "dt": 0.02,
+      "failure": null,
+      "scaled_reference_error": 1.4732740660418062,
+      "numerical_pass": false,
+      "energy_budget": {
+        "absolute": 5096.871885961699,
+        "scaled": 0.0258357897078597
+      }
+    },
+    {
+      "dt": 0.01,
+      "failure": null,
+      "scaled_reference_error": 0.706401291197728,
+      "numerical_pass": false,
+      "energy_budget": {
+        "absolute": 205.11830768700656,
+        "scaled": 0.0010255593115205363
+      }
+    }
+  ],
+  "refinement": 1.4578010736261866,
+  "false_convergence": false,
+  "memory_bounds_pass": true
+}

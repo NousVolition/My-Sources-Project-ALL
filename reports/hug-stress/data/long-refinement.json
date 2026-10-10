@@ -1,0 +1,82 @@
+[
+  {
+    "name": "long-conservative",
+    "threshold": 2e-06,
+    "scaled_discrepancy": 2.5596916908587584e-07,
+    "passed": true,
+    "solvers": {
+      "DOP853": {
+        "method": "DOP853",
+        "rtol": 2e-12,
+        "atol": 2e-14,
+        "nfev": 355351,
+        "accepted_steps": 21009
+      },
+      "Radau": {
+        "method": "Radau",
+        "rtol": 2e-12,
+        "atol": 2e-14,
+        "nfev": 5777386,
+        "accepted_steps": 824085
+      }
+    },
+    "original_reference_change": 3.35830797745157e-05,
+    "energy": {
+      "DOP853": {
+        "absolute": 7.015625413941962e-09,
+        "scaled": 6.681548013259097e-10
+      },
+      "Radau": {
+        "absolute": 1.949729266925715e-11,
+        "scaled": 1.8568850161175586e-12
+      }
+    },
+    "rk4_errors": {
+      "coarse": 0.01591611356197844,
+      "fine": 0.0005157271840983397
+    },
+    "exact_errors": {
+      "DOP853": 2.5618265687380116e-07,
+      "Radau": 2.1361209423444993e-10
+    },
+    "original_exact_error": 3.383926242339968e-05,
+    "exact_initial_error": 8.881784197001252e-16
+  },
+  {
+    "name": "long-weak-damping",
+    "threshold": 2e-06,
+    "scaled_discrepancy": 3.455045291950176e-07,
+    "passed": true,
+    "solvers": {
+      "DOP853": {
+        "method": "DOP853",
+        "rtol": 2e-12,
+        "atol": 2e-14,
+        "nfev": 140068,
+        "accepted_steps": 8272
+      },
+      "Radau": {
+        "method": "Radau",
+        "rtol": 2e-12,
+        "atol": 2e-14,
+        "nfev": 2311692,
+        "accepted_steps": 324890
+      }
+    },
+    "original_reference_change": 2.9792994952974883e-05,
+    "energy": {
+      "DOP853": {
+        "absolute": 2.4445417912133394e-11,
+        "scaled": 2.4445417912133394e-11
+      },
+      "Radau": {
+        "absolute": 7.000650059652003e-13,
+        "scaled": 7.000650059652003e-13
+      }
+    },
+    "rk4_errors": {
+      "coarse": 0.0021452376167982144,
+      "fine": 6.492557097496736e-05
+    }
+  }
+]

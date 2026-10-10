@@ -1,0 +1,74 @@
+<div id="lorenz-hug-lab">
+  <h2>Lorenz-driven hug</h2>
+  <div class="viz-controls">
+    <label class="form-label" for="lh-mode">Drive and response<select class="form-select" id="lh-mode"></select></label>
+    <button class="btn btn-primary" id="lh-play" type="button">Play motion</button>
+  </div>
+  <div class="lh-panels">
+    <div><h3>Lorenz input</h3><svg id="lh-lorenz" role="img" aria-label="Recorded Lorenz trajectory projected onto X and Z, with the current point marked"></svg></div>
+    <div><h3>Hug response</h3><svg id="lh-shape" role="img" aria-label="Hug arms responding to Lorenz-driven pressure; the square is a reference guide"></svg></div>
+  </div>
+  <label class="form-label" for="lh-time">Model time <output id="lh-clock" class="tabular-nums">0.0</output><input class="form-range" type="range" id="lh-time" min="0" max="400" step="1" value="0"></label>
+  <div class="text-small tabular-nums" id="lh-values"></div>
+  <div class="text-small" id="lh-status" aria-live="polite"></div>
+</div>
+<style>
+#lorenz-hug-lab{color:var(--foreground)}
+#lorenz-hug-lab .lh-panels{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+#lorenz-hug-lab .lh-panels>div{min-width:0}
+#lorenz-hug-lab svg{display:block;width:100%}
+#lorenz-hug-lab svg text{fill:var(--foreground);font-size:12px}
+#lorenz-hug-lab .lh-structure{stroke:var(--border);stroke-width:1;fill:none}
+#lorenz-hug-lab .lh-arm{stroke:var(--viz-series-1);stroke-width:3;fill:none}
+#lorenz-hug-lab .lh-trace{stroke:var(--viz-series-2);stroke-width:1.2;fill:none}
+#lorenz-hug-lab .lh-guide{stroke:var(--muted-foreground);stroke-width:1;stroke-dasharray:4 4;fill:none}
+@media(max-width:500px){#lorenz-hug-lab .lh-panels{grid-template-columns:minmax(0,1fr)}}
+</style>
+<script type="application/json" id="lh-records">__LORENZ_DATA__</script>
+<script>
+(()=>{
+ const root=document.getElementById('lorenz-hug-lab'),data=JSON.parse(document.getElementById('lh-records').textContent);
+ const mode=root.querySelector('#lh-mode'),play=root.querySelector('#lh-play'),slider=root.querySelector('#lh-time');
+ const phase=root.querySelector('#lh-lorenz'),shape=root.querySelector('#lh-shape'),status=root.querySelector('#lh-status');
+ const ns='http://www.w3.org/2000/svg';let active=data.find(x=>x.key==='chaotic'),index=0,running=false,start=0,startIndex=0,raf=0;
+ for(const record of data){const option=document.createElement('option');option.value=record.key;option.textContent=record.label;mode.append(option);}mode.value=active.key;
+ function element(parent,name,attrs,text){const e=document.createElementNS(ns,name);for(const [k,v] of Object.entries(attrs))e.setAttribute(k,v);if(text)e.textContent=text;parent.append(e);return e;}
+ function smooth(x){x=Math.min(1,Math.max(0,x));return x*x*x*(10+x*(-15+6*x));}
+ function geometry(sample){
+  const [t,X,Y,Z,q,v,m,p]=sample,sx=1+m*(.04+.02*Math.sin(2*Math.PI*t/3)),sy=1/sx;
+  const bend=active.opening===null?1:1-smooth((t-active.opening)/.8),left=[],right=[];
+  for(let i=0;i<65;i++){const a=-Math.PI/2+Math.PI*i/64,c=(i===0||i===64)?0:Math.cos(a),x=sx*(1-bend+bend*c),y=sy*Math.sin(a),shift=active.hug.shear*q*y;left.push([-x+shift,y]);right.push([x+shift,y]);}
+  return {left,right,bend};
+ }
+ function bounds(values){let lo=Math.min(...values),hi=Math.max(...values);const pad=Math.max((hi-lo)*.08,.5);return [lo-pad,hi+pad];}
+ function draw(){
+  const sample=active.samples[index],arms=geometry(sample);
+  for(const svg of [phase,shape]){svg.replaceChildren();const w=svg.parentElement.clientWidth;svg.setAttribute('viewBox',`0 0 ${w} 270`);svg.style.height='270px';}
+  let w=phase.parentElement.clientWidth;const [xmin,xmax]=bounds(active.trace.map(s=>s[0])),[zmin,zmax]=bounds(active.trace.map(s=>s[1]));
+  const xx=x=>50+(w-66)*(x-xmin)/(xmax-xmin),zz=z=>228-210*(z-zmin)/(zmax-zmin);
+  element(phase,'rect',{x:50,y:18,width:w-66,height:210,class:'lh-structure'});
+  const trace=active.trace.slice(0,index*10+1).map((s,i)=>(i?'L':'M')+xx(s[0])+','+zz(s[1])).join(' ');
+  element(phase,'path',{d:trace,class:'lh-trace'});element(phase,'circle',{cx:xx(sample[1]),cy:zz(sample[3]),r:4,fill:'var(--viz-series-2)'});
+  element(phase,'text',{x:(w+50)/2,y:255,'text-anchor':'middle'},'X (model units)');
+  element(phase,'text',{transform:'translate(14 123) rotate(-90)','text-anchor':'middle'},'Z (model units)');
+  element(phase,'text',{x:50,y:244,'text-anchor':'start'},xmin.toFixed(1));element(phase,'text',{x:w-16,y:244,'text-anchor':'end'},xmax.toFixed(1));
+  element(phase,'text',{x:44,y:27,'text-anchor':'end'},zmax.toFixed(1));element(phase,'text',{x:44,y:226,'text-anchor':'end'},zmin.toFixed(1));
+  w=shape.parentElement.clientWidth;const size=Math.min(w-30,218),scale=size/6,cx=w/2,cy=124,px=x=>cx+x*scale,py=y=>cy-y*scale;
+  element(shape,'rect',{x:px(-3),y:py(3),width:size,height:size,class:'lh-structure'});
+  element(shape,'text',{x:cx,y:255,'text-anchor':'middle'},'Square guide ±3 · model units');
+  for(const pts of [arms.left,arms.right])element(shape,'path',{d:pts.map((p,i)=>(i?'L':'M')+px(p[0])+','+py(p[1])).join(' '),class:'lh-arm'});
+  root.querySelector('#lh-clock').textContent=sample[0].toFixed(1);slider.value=index;
+  root.querySelector('#lh-values').textContent=`Pressure ${sample[7].toFixed(3)} · imprint ${sample[6].toFixed(3)} · lean ${sample[4].toFixed(3)}`;
+  const label=arms.bend<1?'Opening remains latched · one-way Lorenz drive':'Closed hug · one-way Lorenz drive';if(status.textContent!==label)status.textContent=label;
+ }
+ function save(){window.openai?.setWidgetState?.({modelContent:{experiment:active.label,time:active.samples[index][0],scope:'Proposed one-way Lorenz pressure drive, not calibrated fluid physics'},privateContent:{key:active.key,index}})?.catch(()=>{});}
+ function stop(){running=false;cancelAnimationFrame(raf);play.textContent='Play motion';}
+ function apply(state){const s=state?.privateContent;if(!s)return;const item=data.find(d=>d.key===s.key);if(item)active=item;mode.value=active.key;index=Math.max(0,Math.min(400,Math.round(s.index||0)));stop();draw();}
+ function frame(now){if(!running)return;index=Math.min(400,startIndex+Math.floor((now-start)/40));draw();if(index===400){stop();save();return;}raf=requestAnimationFrame(frame);}
+ mode.addEventListener('change',()=>{stop();active=data.find(d=>d.key===mode.value);index=0;draw();save();});
+ slider.addEventListener('input',()=>{stop();index=Number(slider.value);draw();});slider.addEventListener('change',save);
+ play.addEventListener('click',()=>{if(running){stop();save();return;}if(index===400)index=0;if(matchMedia('(prefers-reduced-motion: reduce)').matches){index=400;draw();save();return;}running=true;startIndex=index;start=performance.now();play.textContent='Pause motion';raf=requestAnimationFrame(frame);});
+ new ResizeObserver(draw).observe(root);window.addEventListener('openai:set_globals',e=>{if(e.detail?.globals?.widgetState)apply(e.detail.globals.widgetState);});
+ root.lorenzSnapshot=()=>({key:active.key,index,sample:active.samples[index],arms:geometry(active.samples[index]),running});apply(window.openai?.widgetState);draw();
+})();
+</script>
