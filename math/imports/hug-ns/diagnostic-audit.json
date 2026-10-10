@@ -1,0 +1,130 @@
+{
+  "scope": "Historical table arithmetic and current repair provenance; zero new fluid trajectories",
+  "source_sha256": {
+    "bound-check.json": "c3a461fc9d106c0fad426006e1b402b48253d96b74b3eb37ad1762cf086dbaaa",
+    "ratio-rose.json": "163259b81078f10c2754e85c8053c6fb382915d789fb50685b507378262d809c",
+    "pressure-at-peak.json": "2516c67824390aa7cd5bccdae83feb243be38537ad5ea1f1c44138eaef7f331f"
+  },
+  "repaired_source_hashes_match_saved_verification": true,
+  "pressure": {
+    "top_level_keys": [
+      "n48",
+      "n64"
+    ],
+    "historical_split_reconstructed": false,
+    "needed": "Original velocity fields at the stated times, viscosity, domain/grid, producing solver/filter and exact time-step record; or the complete original replay package. A sign flip alone is insufficient."
+  },
+  "integral": {
+    "saved_row_trapezoid": 88.67727603418292,
+    "reported": 86.12855895414485,
+    "difference": 2.548717080038074,
+    "difference_percent_of_reported": 2.959200886427249,
+    "maximum_time_rounding_effect_if_nearest_4_decimals_and_fixed_W": 0.006859412958694359,
+    "rounding_alone_explains_difference": false,
+    "intervals": [
+      {
+        "t0": 0.0,
+        "t1": 0.1964,
+        "W0": 71.68763586631763,
+        "W1": 65.50062330756954,
+        "trapezoid": 13.471887050875718
+      },
+      {
+        "t0": 0.1964,
+        "t1": 0.3928,
+        "W0": 65.50062330756954,
+        "W1": 60.78100534788916,
+        "trapezoid": 12.400855933966044
+      },
+      {
+        "t0": 0.3928,
+        "t1": 0.5892,
+        "W0": 60.78100534788916,
+        "W1": 49.491063059816966,
+        "trapezoid": 10.82871711763674
+      },
+      {
+        "t0": 0.5892,
+        "t1": 0.7856,
+        "W0": 49.491063059816966,
+        "W1": 51.1570443984166,
+        "trapezoid": 9.883644152398537
+      },
+      {
+        "t0": 0.7856,
+        "t1": 0.982,
+        "W0": 51.1570443984166,
+        "W1": 38.101766043449025,
+        "trapezoid": 8.765215185391204
+      },
+      {
+        "t0": 0.982,
+        "t1": 1.1784,
+        "W0": 38.101766043449025,
+        "W1": 34.963188372013974,
+        "trapezoid": 7.1749785235984636
+      },
+      {
+        "t0": 1.1784,
+        "t1": 1.3747,
+        "W0": 34.963188372013974,
+        "W1": 34.629265622321576,
+        "trapezoid": 6.8304993595440395
+      },
+      {
+        "t0": 1.3747,
+        "t1": 1.5711,
+        "W0": 34.629265622321576,
+        "W1": 31.548622910033743,
+        "trapezoid": 6.4986686538772895
+      },
+      {
+        "t0": 1.5711,
+        "t1": 1.7675,
+        "W0": 31.548622910033743,
+        "W1": 29.973946963548915,
+        "trapezoid": 6.0415163615858205
+      },
+      {
+        "t0": 1.7675,
+        "t1": 1.9639,
+        "W0": 29.973946963548915,
+        "W1": 28.46384773404693,
+        "trapezoid": 5.738591439303909
+      },
+      {
+        "t0": 1.9639,
+        "t1": 2.0,
+        "W0": 28.46384773404693,
+        "W1": 29.30359027177893,
+        "trapezoid": 1.0427022560051573
+      }
+    ],
+    "historical_internal_step_integral_reconstructed": false,
+    "needed": "Quadrature formula plus every unrounded time and maximum-vorticity value used in that quadrature. The saved-row trapezoid is a different calculation and does not replace the original value."
+  },
+  "ratio": {
+    "maximum_saved_ratio_row": {
+      "t": 0.1977,
+      "biggest": 241.45869042214395,
+      "average": 7.498485084964524,
+      "ratio": 32.200996292744684,
+      "peak": 10.673372495027085
+    },
+    "maximum_saved_vorticity_row": {
+      "t": 0.3163,
+      "biggest": 250.8118778481618,
+      "average": 7.828666619090992,
+      "ratio": 32.03762403632462,
+      "peak": 9.938144163188099
+    },
+    "arithmetic_max_absolute_residual": 0.0,
+    "at_ratio_maximum_change_from_initial_percent": {
+      "biggest": -0.10490886026356394,
+      "average": -5.003888151790181,
+      "ratio": 5.157031373404508
+    },
+    "trajectory_reconstructed": false,
+    "needed": "Grid, domain, viscosity, complete initial field or construction and parameters, force, solver/filter revision, exact step schedule, and average/norm definition."
+  }
+}
