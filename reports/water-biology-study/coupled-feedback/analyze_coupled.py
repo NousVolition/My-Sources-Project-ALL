@@ -14,6 +14,16 @@ def embedded(h,n=64):
 def norm(h):return np.sqrt(np.sum(abs(h)**2,axis=(-3,-2,-1)))
 def delta(h):return h[:,1,:2]-h[:,0,:2]
 
+def saved_cfl_check(rows,limit):
+    """Screen every saved arm and reject nonfinite or negative CFL values."""
+    if not np.isfinite(limit) or limit<=0:
+        raise ValueError('The protocol CFL limit must be finite and positive')
+    values=np.asarray([t[label]['cfl'] for r in rows for t in r['rows']
+                       for label in ['baseline','disturbed']],dtype=float)
+    maximum=float(values.max()) if values.size else float('nan')
+    return maximum,bool(values.size and np.isfinite(values).all() and
+                        (values>=0).all() and maximum<limit)
+
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--out',type=Path,default=ROOT/'output');args=ap.parse_args();out=args.out
     rows=json.loads((out/'results.json').read_text(encoding='utf-8'));p=json.loads((ROOT/'protocol.json').read_text(encoding='utf-8'))
@@ -60,15 +70,16 @@ def main():
     uniform=float(norm(embedded(delta(get(48,.004,100,'uniform',True)))-embedded(delta(get(48,.004,100,'uniform',False)))).max()/scale)
     ref=contrast(64,.002,100,True)['rms'];coarse=contrast(48,.004,100,True)['rms']
     err=max(c['rms_error'] for c in refinements if c['from'][0]>=48)
+    max_cfl,cfl_passed=saved_cfl_check(rows,p['gates']['max_advective_cfl'])
     gates={'all_30_pairs':len(rows)==30,'null':null<1e-11,'uniform':uniform<1e-11,
            'mass':max_mass<1e-11,'divergence':max_div<1e-10,'fraction_bounds':min_phi>=-1e-9 and max_phi<=.03500001,
-           'cfl':max(t[label]['cfl'] for r in rows for t in r['rows'] for label in ['baseline','disturbed'])<p['gates']['max_advective_cfl'],
+           'cfl':cfl_passed,
            'energy_budget':max_budget<1e-5,'initial_fields':max(c['initial_error'] for c in refinements)<1e-12,
            'effect_above_error':ref>10*err,'contrast_refinement':abs(coarse/ref-1)<.01}
     summary={'pairs':len(rows),'trajectories':2*len(rows),'saved_model_time':1.,'gates':gates,'passed':all(gates.values()),
              'contrasts':contrasts,'refinements':refinements,'effect_to_error_ratio':ref/err,
              'relative_contrast_refinement_change':abs(coarse/ref-1),'feedback_off_null':null,'uniform_null':uniform,
-             'max_relative_energy_budget':max_budget,'max_mass_error':max_mass,'max_divergence':max_div,
+             'max_saved_advective_cfl':max_cfl,'max_relative_energy_budget':max_budget,'max_mass_error':max_mass,'max_divergence':max_div,
              'fraction_range':[min_phi,max_phi],'endpoint_audits':checks}
     write(out/'analysis.json',summary)
     import matplotlib
@@ -99,3 +110,4 @@ def main():
     if not summary['passed']:raise SystemExit('A protocol gate failed; preserve outputs')
 
 if __name__=='__main__':main()
+

@@ -1,16 +1,72 @@
-# Reports and visuals
+# Reports by topic
 
-These reports are saved on the author’s computer and copied into this GitHub folder.
+[Project home](../README.md) · [Current status](../STATUS.md) · [Mathematics and code](../math/README.md)
 
-**To use the interactive controls:** [download the project](https://github.com/NousVolition/My-Sources-Project-ALL/archive/refs/heads/main.zip), extract it, and open `reports/index.html`. GitHub’s file viewer displays HTML source rather than running its controls.
+Start with a study's **README** for its question, results, charts and limitations. Open its data and verification files when you want the supporting detail.
 
-## Numerical reports and earlier snapshots
+## Fluid calculations
 
-- **[Matched-stretch controls](matched-stretch/README.md): 28/48 completed and verified results published.** Latest: [all three 0.1% seeds at grid 128](matched-stretch/completed-n128-three-seeds/README.md), with the [failed 128-grid timestep control](matched-stretch/completed-timestep128/README.md) retained.
-- **[Three vortex surroundings](study/README.md): 46/48 completed locally; 46 verified results published.** Latest: [both 160-grid ordinary departure results](study/completed-departure160-base/README.md), with central/global peak and grid comparisons. Two half-step controls remain.
-- [Verification of this saved snapshot](numerical-progress-verification.json).
+Published status: October 10, 2026 (UTC). Each study has its own starting field and protocol.
 
-## Completed mirror tests — October 8
+| Study | Published results | Start reading |
+| --- | --- | --- |
+| Matched-stretch controls | **29/48 complete**, through 0.40; 19 remain | [Current study page](matched-stretch/README.md) · [Latest 128-grid 0.5% seed](matched-stretch/completed-n128-halfpercent-seed101/README.md) |
+| Three vortex surroundings | **48/48 complete**, through 0.40 | [Final matrix and charts](study/final-matrix/README.md) · [Study page](study/README.md) |
+| Separate smooth-start stress suite | **39/39 complete** | [Results and numerical limits](navier-stokes-stress/README.md) |
+| Earlier hugged ring | Saved evolution, grid and timestep comparisons | [Construction and results](../math/notes/hug-boundary.md) |
+
+**Numerical limits:** the matched-stretch field has nonsmooth periodic joins and initial maxima outside the central tube; its spatial and timestep screens remain inadequate. The completed vortex matrix also lacks established spatial convergence. These computations do not resolve the Navier–Stokes existence and smoothness problem.
+
+<details>
+<summary>Earlier fluid controls and starting-field comparisons</summary>
+
+- [Original 48/64/80 replay: fixed and moving cutoff measurements](support/fixed-cutoff-run/README.md).
+- [Three completed 0.1% perturbation seeds](matched-stretch/completed-seeds/README.md).
+- [Three completed 0.5% perturbation seeds](matched-stretch/completed-halfpercent/README.md).
+- [Separate periodic starting field: five initial grids](matched-stretch/periodic-start-check/README.md). The 256-grid width check passes; the large change in starting energy is reported.
+- [First completed 128-grid 0.1% seed](matched-stretch/completed-n128-seed101/README.md): saved-field checks, baseline separation and resolution limits.
+
+</details>
+
+## Water, biological particles and dynamics tests
+
+| Study | Completed work and limits |
+| --- | --- |
+| [Water/biology three-question study](water-biology-study/README.md) | Solute and particulate transport, buoyancy, controlled material properties and stochastic freezing; code, figures, full raw outputs and uncertainty. Model predictions and published evidence are distinguished. |
+| [Dynamics reference benchmarks](dynamics-reference-tests/README.md) | Exact solutions, Euler/Heun/RK4 convergence, fixed points, Lorenz dynamics and waterwheel conservation. |
+| [Expanded dynamics and pond-vibration tests](dynamics-reference-tests/stress/README.md) | Long-run Lorenz statistics, aliasing, amplitude/phase errors, adaptive and alternating steps, limit cycles and a moving-bed pond pilot. Ground inputs are synthetic; no real footstep, rock or concert strength has been calibrated. |
+
+For the illustrated offline views, download the repository and open [water/biology](water-biology-study/report.html), [baseline dynamics](dynamics-reference-tests/report.html), or [expanded stress results](dynamics-reference-tests/stress/report.html). GitHub itself displays HTML source. [Checksummed publication inventory](water-dynamics-publication.json).
+
+## Organization, transport and response
+
+| Question | Report |
+| --- | --- |
+| How does a disturbance change organized fluid? | [Fluid organization pilot](fluid-organization-pilot/README.md): paired disturbances, history targets and numerical controls |
+| Does past marker geometry predict later deformation? | [Marker-history prediction](matched-stretch/history-prediction/README.md): whole-run holdouts; finer-grid comparison remains inconclusive |
+| Which moving labels separate fastest? | [Marker stress and changing roles](matched-stretch/marker-stress/README.md) |
+| How do peaks compare with a changing reference? | [Peak and reference viewer](visuals/peak-and-reference.html) |
+
+## Molecular water
+
+These studies use separate molecular or toy models. Their own reports state the applicable methods and limitations.
+
+| Study | Report |
+| --- | --- |
+| Quantum water and observable fluid behavior | [Vibrational predictions, molecular controls and measured-property fluid tests](quantum-water-pilot/README.md): completed raw-data package; bulk quantum transport remains unvalidated |
+| One heavy water molecule | [Isotope placement, identity controls and raw-data provenance](molecular/isotope-mass/README.md) |
+| Identical water molecules | [Positional influence and follow-up experiments](water-molecule-influence/README.md) |
+
+## Mirror-fluid and reduced models
+
+[Four reproduced fluid tests](../math/imports/hug-ns/mirror-fluid/README.md) · [Signed calibration](../math/imports/hug-ns/mirror-calibration/README.md) · [Definitions and controls](../math/imports/hug-ns/mirror-fluid/methods-controls/README.md)
+
+The supplied q is a passive signed record, E is unsigned, and mirror averaging is an explicit intervention. The later fitted q and cubic-feedback experiments are separate model tests; their coefficients are not established physical constants.
+
+<details>
+<summary>Mirror-fluid reports, source controls and earlier completed comparisons</summary>
+
+### Completed mirror tests — October 8
 
 - **[Separate C and D contributions](../math/imports/hug-ns/mirror-fluid/source-attribution/README.md):** ten new fluid controls and [chart](../math/imports/hug-ns/mirror-fluid/source-attribution/source-effects.png).
 
@@ -20,7 +76,39 @@ These reports are saved on the author’s computer and copied into this GitHub f
 
 ![Reproduced fluid tests](files/fluid-tests-completed.png)
 
-Earlier vortex snapshot: 2026-10-08T20:40:59.597392+00:00. The vortex matrix is still running; this copy contains saved results available at publication. Later local results need another publication.
+### Completed comparisons
+
+- [Dynamic source weights and cubic term: 26 runs, four unseen starts](../math/imports/hug-ns/mirror-fluid/dynamic-q/README.md).
+- [Four additional 65-grid controls for the dynamic q model](../math/imports/hug-ns/mirror-fluid/dynamic-q/GRID65.md).
+
+- [Breathing rerun: six reproduced cases with prescribed per-step driving](../math/imports/hug-ns/mirror-fluid/breathing-rerun/README.md).
+
+- [Breathing run followed through every step: actual-fluid animations and the changing E/D measurements](../math/imports/hug-ns/mirror-fluid/breathing-rerun/timeline/README.md).
+
+- [Reproduced one-lean ball and breathing-fluid series](../math/imports/hug-ns/mirror-fluid/breathing-rerun/one-lean/README.md).
+
+### Measurements and definitions
+
+- [Corrected fluid dashboard, explicit definitions, 516 saved-field checks and completed controls](../math/imports/hug-ns/mirror-fluid/methods-controls/README.md).
+- [Norms, signs, reflection, numerical methods and evidence categories](../math/imports/hug-ns/mirror-fluid/methods-controls/METHODS.md).
+
+### Additional controls
+
+- [Four reduced-model layers: 46 completed runs and plots](../math/imports/hug-ns/mirror-fluid/model-layers/README.md). All 17 driven fluid comparisons are complete: [prediction scores and numerical controls](../math/imports/hug-ns/mirror-fluid/model-layers/FLUID.md). The tested scalar mappings fail the unseen-run prediction check.
+- [All 22 numerical controls completed](../math/imports/hug-ns/mirror-fluid/methods-controls/README.md), including grid, timestep, translation, rotation and initial-shape checks.
+
+</details>
+
+## Visuals and conversation studies
+
+[Conversation study and source records](../language/conversation-study/README.md) · [Conversation report guide](../language/README.md)
+
+**Interactive controls:** [download the project](https://github.com/NousVolition/My-Sources-Project-ALL/archive/refs/heads/main.zip), extract it, and open `reports/index.html`. GitHub's file viewer displays HTML source. Older viewers retain the snapshot date shown in their report.
+
+<details>
+<summary>Browse the interactive viewers and earlier illustrations</summary>
+
+Earlier interactive-viewer snapshot: 2026-10-08T20:40:59.597392+00:00. That display retains its historical data. The [final matrix report](study/final-matrix/README.md) contains all 48 completed records and current numerical conclusions.
 
 ![Vortex viewer](files/adversarial-vortex-study-visual-preview.png)
 
@@ -41,56 +129,25 @@ Earlier vortex snapshot: 2026-10-08T20:40:59.597392+00:00. The vortex matrix is 
 
 - [Earlier test using a different starting flow](files/hidden-flow-results.html)
 
-## Supporting files
+</details>
 
-- [File inventory and source hashes](manifest.json)
-- [Vortex protocol](study/protocol.json), [saved comparisons](study/comparisons.json), and [run measurements](study/runs)
-- [Earlier math notes and code](../math/README.md)
-- [Conversation sources](../language/conversation-study/README.md)
+## Data, verification and history
 
-The full restart arrays remain in the local calculation workspace. They are large solver files; this folder includes the display data, measurement tables and source code needed to inspect the reports. Private next-step notes and temporary verification screenshots are not part of this report collection.
+| File or folder | How to use it |
+| --- | --- |
+| `README.md` | Read the formatted explanation, figures and limitations |
+| `result.json`, `measurements.json`, `comparisons.json` | Inspect saved measurements and comparison values |
+| `verify.py`, `plot.py`, `compare.py` | Inspect or reproduce the checks and charts |
+| `verification.json`, manifests and hash lists | Check the stated verification scope and file identity |
+| `completed-…` folders | Read a dated batch; use the study's main README for subsequent completions |
 
-## Newly completed comparisons
+- [Original report inventory and source hashes](manifest.json) and [verification of that saved snapshot](numerical-progress-verification.json) describe their dated publication scope.
+- [Vortex protocol](study/protocol.json), [saved comparisons](study/comparisons.json), and [run measurements](study/runs) provide the supporting records.
+- [Adaptive peak-spin audit](matched-stretch/adaptive-peak/README.md) records the failed initial six-cell width screen.
+- [Project history](../STATUS.md) and [review of both repositories](../REPOSITORY-REVIEW.md) retain earlier findings and dates.
+- [Earlier math notes and code](../math/README.md).
 
-- [Dynamic source weights and cubic term: 26 runs, four unseen starts](../math/imports/hug-ns/mirror-fluid/dynamic-q/README.md).
-- [Original 48/64/80 replay: fixed and moving cutoff measurements](support/fixed-cutoff-run/README.md).
-- [Three completed 0.1% perturbation seeds](matched-stretch/completed-seeds/README.md).
-- [Four additional 65-grid controls for the dynamic q model](../math/imports/hug-ns/mirror-fluid/dynamic-q/GRID65.md).
+Full restart arrays for the two 48-run fluid matrices remain in the local calculation workspace; the published JSON files are measurement records. Other studies state their own raw-data release arrangements.
 
-- [Breathing rerun: six reproduced cases with prescribed per-step driving](../math/imports/hug-ns/mirror-fluid/breathing-rerun/README.md).
+**Seeing orange/red lines and minus signs?** You are viewing a commit or pull request diff. Those lines show the previous version. Return to the **Code** tab and open the README to read the current report.
 
-- [Breathing run followed through every step: actual-fluid animations and the changing E/D measurements](../math/imports/hug-ns/mirror-fluid/breathing-rerun/timeline/README.md).
-
-- [Three completed 0.5% perturbation seeds](matched-stretch/completed-halfpercent/README.md).
-- [Reproduced one-lean ball and breathing-fluid series](../math/imports/hug-ns/mirror-fluid/breathing-rerun/one-lean/README.md).
-
-## Adaptive peak-spin check
-
-- [Original start: resolution gate and five charts](matched-stretch/adaptive-peak/README.md). The largest initial peak spans about two cells on all five checked grids. The requested minimum is six, so this adaptive extension stops at initialization.
-
-## Measurements and definitions
-
-- [Corrected fluid dashboard, explicit definitions, 516 saved-field checks and completed controls](../math/imports/hug-ns/mirror-fluid/methods-controls/README.md).
-- [Norms, signs, reflection, numerical methods and evidence categories](../math/imports/hug-ns/mirror-fluid/methods-controls/METHODS.md).
-
-The completion counts at the top were updated October 9. Older snapshots and intake reviews retain their original dates and contents. The study indexes link later verified batches; unfinished local runs are not presented as completed GitHub results.
-
-## New completed tests
-
-- [Separate periodic starting field: five initial grids](matched-stretch/periodic-start-check/README.md). The 256-grid width check passes; the large change in starting energy is reported.
-- [Four reduced-model layers: 46 completed runs and plots](../math/imports/hug-ns/mirror-fluid/model-layers/README.md). All 17 driven fluid comparisons are complete: [prediction scores and numerical controls](../math/imports/hug-ns/mirror-fluid/model-layers/FLUID.md). The tested scalar mappings fail the unseen-run prediction check.
-- [All 22 numerical controls completed](../math/imports/hug-ns/mirror-fluid/methods-controls/README.md), including grid, timestep, translation, rotation and initial-shape checks.
-
-## Identical water molecules: positional influence
-
-- [Reproducible toy-network and TIP3P water experiment](water-molecule-influence/README.md): methods, figures, complete saved trajectories, numerical controls, and limits on interpreting temporary response rankings as a hierarchy.
-
-## Marker-history prediction pilot
-
-- [Does past marker geometry predict future deformation?](matched-stretch/history-prediction/README.md) — 32 independent initial conditions, 64 simulations, whole-run holdouts, 13 passing local tests, complete numerical recordings and control plots. A small continuous-error gain; event results depend on the threshold, and the finer-grid comparison remains inconclusive.
-
-- [First completed 128-grid 0.1% perturbation seed](matched-stretch/completed-n128-seed101/README.md): 41 saved-field checks, baseline separation, budgets and resolution limits.
-
-## Fluid organization under stress
-
-- [Completed paired-disturbance pilot](fluid-organization-pilot/README.md): 93 fluid configurations, 7 particle configurations, 22 tests and complete recorded arrays; report linked from Streams and Rocks. History helps the overall-deformation target but shows no clear benefit for the disturbance-specific target.

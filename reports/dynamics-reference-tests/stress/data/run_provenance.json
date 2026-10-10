@@ -1,0 +1,119 @@
+{
+  "fingerprint": "7e16680371a60f8f6fb9daf4b62db4ea05826be7d6cb341f1454510379cf7de4",
+  "source_sha256": {
+    "stress\\run_stress.py": "92f16a0b6a693f31765e572391b7ad417a47b45394f71cc4d1a20f3ddb1ccc7a",
+    "stress\\stress_plan.json": "11279f306207a679f20d2eab3e0df13c03a670400c08bfdae245d6ff61a8524b",
+    "core.py": "7e6311db64778f760be4a8aa192a29b69a0ebd60b95d328ab2fa994e886faeb4"
+  },
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "plan": {
+    "purpose": "Expand the local dynamics study with longer runs, independent starts, refinement and deliberately inadequate numerical controls.",
+    "scope": "Mathematical model tests, not laboratory evidence or full Navier-Stokes validation.",
+    "long_run": {
+      "seeds": [
+        101,
+        202,
+        303,
+        404,
+        505,
+        606,
+        707,
+        808
+      ],
+      "steps": [
+        0.005,
+        0.0025,
+        0.00125
+      ],
+      "transient": 50.0,
+      "duration": 1000.0,
+      "qr_interval": 0.1,
+      "block": 50.0,
+      "prefix_durations": [
+        100.0,
+        250.0,
+        500.0,
+        1000.0
+      ],
+      "sigma": 10.0,
+      "beta": 2.6666666666666665,
+      "rho": 28.0,
+      "per_run_minimum_largest_rate": 0.7,
+      "per_run_maximum_trace_error": 2e-05,
+      "per_run_maximum_absolute_state": 100.0,
+      "finest_two_step_mean_rate_difference_tolerance": 0.02,
+      "finest_two_step_mean_z_difference_tolerance": 0.15,
+      "finest_two_step_positive_x_fraction_difference_tolerance": 0.04,
+      "finest_step_500_to_1000_mean_rate_difference_tolerance": 0.015,
+      "finest_step_500_to_1000_mean_z_difference_tolerance": 0.15,
+      "confidence_interval": "Approximate 95% Student t interval across eight independent initial conditions. Steps and prefixes are paired; temporal blocks are not treated as independent replicates."
+    },
+    "parameter_scan": {
+      "rhos": [
+        0.9,
+        1.01,
+        10.0,
+        23.8,
+        24.0,
+        24.2,
+        24.726842105263152,
+        24.746842105263156,
+        28.0,
+        50.0
+      ],
+      "starts_per_rho": 6,
+      "steps": [
+        0.005,
+        0.0025
+      ],
+      "duration": 200.0,
+      "sample_interval": 0.5,
+      "terminal_window": 20.0,
+      "equilibrium_distance_tolerance": 0.001,
+      "note": "Finite-window near-equilibrium classification only. A sample that has not settled is not automatically chaotic; no global bifurcation threshold is inferred."
+    },
+    "transport": {
+      "grids": [
+        16,
+        32,
+        64,
+        128
+      ],
+      "steps": [
+        0.002,
+        0.001,
+        0.0005,
+        0.00025
+      ],
+      "duration": 1.0,
+      "omega": 2.0,
+      "leak": 1.0,
+      "forcing_mean": 60.0,
+      "forcing_cosine_amplitudes": {
+        "1": 28.0,
+        "9": 12.0,
+        "17": 6.0
+      },
+      "initial_uniform_density": 60.0,
+      "fine_resolved_profile_maximum_error": 1e-07,
+      "resolved_time_order_range": [
+        3.5,
+        4.5
+      ],
+      "underresolved_error_minimum": 0.01,
+      "note": "Prescribed rotation isolates transport and forcing from nonlinear wheel feedback. Mode 17 aliases on grids 16 and 32; these are intentional negative controls."
+    },
+    "independent_reference": {
+      "method": "DOP853",
+      "duration": 5.0,
+      "step": 0.00125,
+      "rtol": 2e-13,
+      "atol": 2e-14,
+      "maximum_state_error": 1e-05
+    },
+    "decision_rule": "Thresholds are pilot engineering tolerances chosen before the run. Report every failure without widening thresholds. Passing supports robustness for these observables and settings only. Longer or finer work is warranted if declared duration/step comparisons fail; resolving global bifurcations remains separate work."
+  }
+}

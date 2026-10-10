@@ -1,0 +1,17 @@
+{
+  "user_pairs": "12 12 12 22 11 22 11 22 32 23",
+  "interpretation": "Each digit is a multiplier of a common base time interval. Repeat all 20 digits as one cycle. These are not literal model-time intervals of 1, 2 and 3.",
+  "duration": 8.0,
+  "cycle_counts": [80, 160, 320, 640, 1280],
+  "schedules": ["user", "reverse", "uniform"],
+  "speed_profiles": ["slow-fast-slow", "fast-slow-fast"],
+  "primary_grid": 64,
+  "finest_level_control_grids": [32, 128],
+  "method": "RK4",
+  "base_interval": "duration / (35 * cycle_count)",
+  "uniform_interval": "duration / (20 * cycle_count)",
+  "comparison": "Within each level and speed profile, identical duration, method, spatial grid, step count and RHS evaluation count. Reverse means reverse the entire 20-step cycle.",
+  "accuracy_and_conservation_budgets": "Reuse adaptive_transport_plan.json unchanged. Measure errors at every accepted step, plus endpoint error at the common final time.",
+  "raw_outputs": "All accepted times and diagnostic arrays; full spatial state at each cycle boundary. No interpolation of state snapshots.",
+  "scope": "Deterministic prescribed advection benchmark. No sequence optimization, spatial adaptation, experimental data or stochastic sampling. Repeat two selected finest-grid cases for reproducibility."
+}

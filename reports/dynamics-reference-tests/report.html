@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dynamics tests — numerical results</title>
+<style>
+:root{--ink:#172c3c;--muted:#4c6578;--line:#d7e1e8;--accent:#176777;--paper:#f3f6f8}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 system-ui,Segoe UI,sans-serif}
+main{max-width:1180px;margin:auto;padding:38px 28px 70px}header{padding:10px 0 30px;border-bottom:2px solid var(--accent)}
+h1{font-size:clamp(30px,4vw,47px);line-height:1.12;letter-spacing:-.025em;margin:10px 0 16px}h2{font-size:24px;line-height:1.25;margin:0 0 16px}
+h3{font-size:18px;margin:25px 0 8px}p{margin:10px 0 16px}a{color:#075f85;text-underline-offset:3px}.eyebrow{color:var(--accent);font-weight:700;letter-spacing:.09em;text-transform:uppercase;font-size:12px}
+.lead{font-size:20px;max-width:880px}.status{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 5px}.status span{padding:6px 13px;border:1px solid #b7d5ca;background:#e8f4ee;border-radius:5px;font-weight:650}
+section{margin:30px 0;background:white;padding:27px;border:1px solid var(--line);border-radius:8px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:25px}
+.card{border-top:3px solid var(--accent);padding:15px;background:white}.value{font-size:28px;line-height:1.2;font-weight:700;margin:5px 0}.small,figcaption{font-size:14px;color:var(--muted)}
+table{border-collapse:collapse;width:100%;font-size:14px}th,td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top}th{background:#edf3f6}
+.scroll{overflow-x:auto}figure{margin:0}img{display:block;width:100%;height:auto}figcaption{padding-top:12px}li{margin:6px 0}code,pre{font-family:Consolas,monospace}pre{background:#eef3f6;padding:18px;overflow-x:auto;line-height:1.45;font-size:13px}
+.pass{color:#12683c;font-weight:700}.fail{color:#b52020;font-weight:700}summary{cursor:pointer;font-weight:700}footer{font-size:13px;color:var(--muted)}
+@media(max-width:700px){main{padding:22px 14px}section{padding:18px}.grid{grid-template-columns:1fr}}
+@media print{body{background:white}main{max-width:none;padding:0}section{break-inside:avoid;border:0;padding:10px 0}.grid{grid-template-columns:repeat(3,1fr)}details{display:none}}
+</style></head><body><main>
+<header><div class="eyebrow">Computational study · 9 October 2026 · Local results</div>
+<h1>Stability, numerical accuracy<br>and the Lorenz waterwheel</h1>
+<p class="lead">The supplied examples pass analytic and independent numerical checks. They also show why solver artifacts, nonuniqueness and chaotic sensitivity must be distinguished.</p>
+<div class="status"><span>51/51 model checks passed</span><span>13/13 independent tests passed</span><span>40 numerical files reproduced</span></div>
+<p class="small">All results below are mathematical computations. No laboratory or biological tests were performed. Full assumptions and equations: <a href="README.md">research README</a>.</p></header><section><h2>Expanded stress results are available</h2>
+<p>The next pass took <strong>8.50 minutes</strong>: 24 long Lorenz runs, 120 parameter-scan trajectories, tougher spatial resolution checks and separate amplitude/phase accuracy rules.</p>
+<p><strong>39/39 declared stress checks passed.</strong> The oscillation study additionally evaluates 144 method/step/duration combinations and explicitly rejects stable-but-inaccurate settings.</p>
+<p><a href="stress/report.html">Open the expanded illustrated report</a> · <a href="stress/README.md">Stress methods and reproduction</a></p></section>
+<div class="grid"><div class="card"><div class="eyebrow">Method accuracy</div><div class="value">1.00 · 1.98 · 3.98</div><div>Observed logistic convergence orders for Euler, Heun and RK4.</div></div>
+<div class="card"><div class="eyebrow">Lorenz sensitivity</div><div class="value">0.899</div><div>Mean largest growth rate per model time unit at the finer step.</div></div>
+<div class="card"><div class="eyebrow">Waterwheel conservation</div><div class="value">2.27e-13</div><div>Maximum absolute mass-budget error in the finest run.</div></div></div>
+<section><h2>What the tests establish</h2><div class="scroll"><table><thead><tr><th>Test</th><th>Measured result</th><th>Meaning</th></tr></thead><tbody>
+<tr><td>Logistic, h=0.025</td><td>Euler error 3.20e−3; Heun 2.74e−5; RK4 4.81e−10</td><td>Expected error orders recovered against an exact solution over t=0…4.</td></tr>
+<tr><td>Coarse Euler, h=2.8</td><td>25 equilibrium crossings in the final 30 samples</td><td>The method introduced oscillation absent from the positive continuous logistic solution.</td></tr>
+<tr><td>Overdamped limit</td><td>Error falls 0.07093 → 0.009313 → 0.0009831</td><td>Reducing mass 0.1 → 0.01 → 0.001 improves the approximation at fixed drag and spring constant.</td></tr>
+<tr><td>Cube-root equation</td><td>7 branches; maximum residual 2.22e-16</td><td>Different exact solutions have the same initial value. A zero solver result does not imply uniqueness.</td></tr>
+<tr><td>Lorenz Hopf threshold</td><td>24.7368421053</td><td>A local eigenvalue crossing was verified; global bifurcations were not computed.</td></tr>
+<tr><td>Lorenz volume contraction</td><td>Rate −13.66667; log-volume error 6.57e-11</td><td>Contraction of state-space volume coexists with a positive largest growth rate.</td></tr>
+<tr><td>Waterwheel → Lorenz</td><td>β=1; projection error 4.43e-09</td><td>The idealized first-mode reduction differs from the classic β=8/3 Lorenz example.</td></tr>
+</tbody></table></div></section>
+<section><h2>Check the method before interpreting the motion</h2><figure><img src="figures/01_numerical_methods.png" alt="Check the method before interpreting the motion" loading="lazy"><figcaption>Euler, improved Euler and RK4 recover their expected convergence orders. The positive logistic ODE approaches its equilibrium smoothly. Euler steps that are too large create oscillation and loss of equilibrium stability. <a href="figures/01_numerical_methods.svg">Vector figure</a></figcaption></figure></section>
+<section><h2>Four kinds of equilibrium behavior</h2><figure><img src="figures/02_scalar_stability.png" alt="Four kinds of equilibrium behavior" loading="lazy"><figcaption>Representative fields −x³, x³, x² and 0 give attraction, repulsion, attraction from one side, and a line of equilibria. The derivative at zero vanishes in the first three, so the sign of the field supplies information that linearization misses. Four initial values were tested for each field. <a href="figures/02_scalar_stability.svg">Vector figure</a></figcaption></figure></section>
+<section><h2>One initial value can have many solutions here</h2><figure><img src="figures/03_nonuniqueness.png" alt="One initial value can have many solutions here" loading="lazy"><figcaption>Six exact departing or waiting solutions and the stationary solution all start at zero for x′=real_cuberoot(x). A solver starting at exactly zero returned zero. That result cannot establish uniqueness. The perturbed examples use a fixed step and do not uniformly resolve the limit as the initial value approaches zero. <a href="figures/03_nonuniqueness.svg">Vector figure</a></figcaption></figure></section>
+<section><h2>Neglecting inertia becomes a better approximation</h2><figure><img src="figures/04_overdamped_limit.png" alt="Neglecting inertia becomes a better approximation" loading="lazy"><figcaption>The full damped oscillator agrees with a matrix-exponential benchmark and its energy budget closes. Reducing mass at fixed drag and spring constant brings its displacement closer to exp(−t). The original velocity is zero, so an initial adjustment layer remains. <a href="figures/04_overdamped_limit.svg">Vector figure</a></figcaption></figure></section>
+<section><h2>Equilibria depend on parameters and assumptions</h2><figure><img src="figures/05_bifurcation_and_reaction.png" alt="Equilibria depend on parameters and assumptions" loading="lazy"><figcaption>The saddle-node example has two equilibria above r=1, with opposite stability. The cropped reaction example is tested under two explicit assumptions: a closed supply of A+X, and A maintained by an external reservoir. These are illustrative mass-action equations, not measured bacterial kinetics. <a href="figures/05_bifurcation_and_reaction.svg">Vector figure</a></figcaption></figure></section>
+<section><h2>Shrinking state volume and growing separation coexist</h2><figure><img src="figures/06_lorenz_volume_and_separation.png" alt="Shrinking state volume and growing separation coexist" loading="lazy"><figcaption>The integrated tangent matrix obeys log(V/V₀)=−(σ+1+β)t. A separate pair of initially close trajectories eventually separates. This volume is a volume of possible system states, not the physical volume of a parcel of water. <a href="figures/06_lorenz_volume_and_separation.svg">Vector figure</a></figcaption></figure></section>
+<section><h2>Sensitivity survives repeated starts and step refinement</h2><figure><img src="figures/07_lorenz_ensemble.png" alt="Sensitivity survives repeated starts and step refinement" loading="lazy"><figcaption>Four independent starting states were each run at two time steps. All eight largest finite-time Lyapunov rates were positive. The plotted orbit uses a densely sampled 30-unit segment; sparse QR samples were not joined to draw the orbit. <a href="figures/07_lorenz_ensemble.svg">Vector figure</a></figcaption></figure></section>
+<section><h2>The waterwheel closes its mass budget</h2><figure><img src="figures/08_waterwheel_budget.png" alt="The waterwheel closes its mass budget" loading="lazy"><figcaption>Numerical total mass follows the exact inflow-minus-leakage law. The first harmonic and rotation agree with Lorenz β=1; an unforced third harmonic decays without feeding the torque. This smooth validation case is not a simulation of a particular apparatus. <a href="figures/08_waterwheel_budget.svg">Vector figure</a></figcaption></figure></section>
+<section><h2>Uncertainty, controls and limits</h2>
+<p>Four independently seeded initial states were each tested with Lorenz steps 0.005 and 0.0025. After 30 time units of transient, the growth spectrum was measured for 180 time units. At the finer step the approximate 95% interval across starts is <strong>[0.85747, 0.94003]</strong>. It is a finite-run summary, not physical measurement uncertainty or a bound on every source of bias. The two time steps use paired starts.</p>
+<p>Exact benchmarks, a separate high-order solver, matrix exponentials and conservation identities test numerical accuracy. Waterwheel ablations remove torque, inflow asymmetry or the extra harmonic. Three grids and three steps are compared. Only low Fourier modes are populated, so the grid comparison demonstrates that this smooth case is resolved.</p>
+<p>Unstable periodic orbits, subcritical Hopf criticality, the homoclinic threshold, global attractor coexistence and basin boundaries were not independently computed. These would require additional continuation and basin tests. Fixed-point exercise answers that follow from sign arguments are documented separately in the README and are not counted as numerical tests.</p>
+<p><strong>For the fluid research:</strong> phase-space contraction is not physical compression of water. The wheel is an open system with inflow and leakage. These results do not establish a new Navier–Stokes law, prove uniqueness for the full fluid equations, or measure mixing, biological stress response or freezing. The original <a href="../water-biology-study/report.html">three-question water/biology study</a> remains a separate package.</p></section>
+<section><h2>Reproduce and inspect</h2><p>The package includes raw CSV and NPZ outputs, all equations and solvers, SVG/PNG figures, dependency versions and test records. A full repeated run returned identical numerical contents for <strong>40 files</strong> on this environment. Exact chaotic trajectories need not be identical on different hardware or library builds.</p>
+<pre>python -m pip install -r requirements-lock.txt
+python run_tests.py
+python -m pytest test_independent.py -q --junitxml=data/independent-tests.xml
+python verify_reproduction.py
+python make_report.py
+python verify_package.py</pre>
+<p class="small">Use a virtual environment; Windows and macOS/Linux instructions are in the <a href="README.md">README</a>. Recorded versions: Python 3.12.14, NumPy 2.5.3, SciPy 1.18.1, Matplotlib 3.11.2.</p>
+<p><a href="data/summary.json">Numerical summary</a> · <a href="data/checks.json">All check measurements</a> · <a href="data/reproduction.json">Reproduction record</a> · <a href="data/lorenz_ensemble.csv">Seed-level growth rates</a> · <a href="data/waterwheel_convergence.csv">Grid/time comparisons</a></p>
+<details><summary>View all 51 model checks</summary><table><thead><tr><th>Check</th><th>Result</th></tr></thead><tbody><tr><td>logistic: euler convergence</td><td class="pass">PASS</td></tr>
+<tr><td>logistic: heun convergence</td><td class="pass">PASS</td></tr>
+<tr><td>logistic: rk4 convergence</td><td class="pass">PASS</td></tr>
+<tr><td>RC: euler convergence</td><td class="pass">PASS</td></tr>
+<tr><td>RC: heun convergence</td><td class="pass">PASS</td></tr>
+<tr><td>RC: rk4 convergence</td><td class="pass">PASS</td></tr>
+<tr><td>Coarse Euler logistic instability is detected</td><td class="pass">PASS</td></tr>
+<tr><td>Euler linear stability h=0.5</td><td class="pass">PASS</td></tr>
+<tr><td>Euler linear stability h=1.5</td><td class="pass">PASS</td></tr>
+<tr><td>Euler linear stability h=2.2</td><td class="pass">PASS</td></tr>
+<tr><td>Phase line: stable</td><td class="pass">PASS</td></tr>
+<tr><td>Phase line: unstable</td><td class="pass">PASS</td></tr>
+<tr><td>Phase line: half_stable</td><td class="pass">PASS</td></tr>
+<tr><td>Phase line: neutral</td><td class="pass">PASS</td></tr>
+<tr><td>Inverse portrait: candidate x&#x27;=x(x-1)</td><td class="pass">PASS</td></tr>
+<tr><td>Nonunique exact branches satisfy the ODE</td><td class="pass">PASS</td></tr>
+<tr><td>Zero-initialized solver stays on zero branch</td><td class="pass">PASS</td></tr>
+<tr><td>Damped oscillator m=1.0</td><td class="pass">PASS</td></tr>
+<tr><td>Damped oscillator m=0.1</td><td class="pass">PASS</td></tr>
+<tr><td>Damped oscillator m=0.01</td><td class="pass">PASS</td></tr>
+<tr><td>Damped oscillator m=0.001</td><td class="pass">PASS</td></tr>
+<tr><td>Overdamped approximation improves as inertia falls</td><td class="pass">PASS</td></tr>
+<tr><td>Saddle-node roots and local approximation</td><td class="pass">PASS</td></tr>
+<tr><td>Autocatalysis under stated assumption: closed</td><td class="pass">PASS</td></tr>
+<tr><td>Autocatalysis under stated assumption: fixed_A</td><td class="pass">PASS</td></tr>
+<tr><td>Lorenz local Hopf threshold</td><td class="pass">PASS</td></tr>
+<tr><td>Lorenz equilibrium stability changes across Hopf</td><td class="pass">PASS</td></tr>
+<tr><td>Lorenz reflection symmetry</td><td class="pass">PASS</td></tr>
+<tr><td>Lorenz short-time trajectory convergence</td><td class="pass">PASS</td></tr>
+<tr><td>Phase volume follows exact divergence identity</td><td class="pass">PASS</td></tr>
+<tr><td>Lorenz Lyapunov run seed=101, h=0.005</td><td class="pass">PASS</td></tr>
+<tr><td>Lorenz Lyapunov run seed=202, h=0.005</td><td class="pass">PASS</td></tr>
+<tr><td>Lorenz Lyapunov run seed=303, h=0.005</td><td class="pass">PASS</td></tr>
+<tr><td>Lorenz Lyapunov run seed=404, h=0.005</td><td class="pass">PASS</td></tr>
+<tr><td>Lorenz Lyapunov run seed=101, h=0.0025</td><td class="pass">PASS</td></tr>
+<tr><td>Lorenz Lyapunov run seed=202, h=0.0025</td><td class="pass">PASS</td></tr>
+<tr><td>Lorenz Lyapunov run seed=303, h=0.0025</td><td class="pass">PASS</td></tr>
+<tr><td>Lorenz Lyapunov run seed=404, h=0.0025</td><td class="pass">PASS</td></tr>
+<tr><td>Lorenz largest growth rate survives step refinement</td><td class="pass">PASS</td></tr>
+<tr><td>Waterwheel budget and positivity n=16, h=0.002</td><td class="pass">PASS</td></tr>
+<tr><td>Waterwheel budget and positivity n=16, h=0.001</td><td class="pass">PASS</td></tr>
+<tr><td>Waterwheel budget and positivity n=16, h=0.0005</td><td class="pass">PASS</td></tr>
+<tr><td>Waterwheel budget and positivity n=32, h=0.002</td><td class="pass">PASS</td></tr>
+<tr><td>Waterwheel budget and positivity n=32, h=0.001</td><td class="pass">PASS</td></tr>
+<tr><td>Waterwheel budget and positivity n=32, h=0.0005</td><td class="pass">PASS</td></tr>
+<tr><td>Waterwheel budget and positivity n=64, h=0.002</td><td class="pass">PASS</td></tr>
+<tr><td>Waterwheel budget and positivity n=64, h=0.001</td><td class="pass">PASS</td></tr>
+<tr><td>Waterwheel budget and positivity n=64, h=0.0005</td><td class="pass">PASS</td></tr>
+<tr><td>Waterwheel first-mode mapping converges to Lorenz beta=1</td><td class="pass">PASS</td></tr>
+<tr><td>Unforced higher waterwheel mode decays at leakage rate</td><td class="pass">PASS</td></tr>
+<tr><td>Waterwheel resolved Fourier grids agree</td><td class="pass">PASS</td></tr></tbody></table></details></section>
+<section><h2>Source material and evidence</h2><p>The supplied textbook screenshots specify the examples. Partial crops are explicitly marked where assumptions were needed. The original page images are not republished.</p>
+<p><a href="https://doi.org/10.1175/1520-0469(1963)020%3C0130:DNF%3E2.0.CO;2">Lorenz (1963), Deterministic Nonperiodic Flow</a> supplies the primary context for the classic model. <a href="https://arxiv.org/abs/1202.5508">Illing and colleagues (2012), Experiments with a Malkus-Lorenz water wheel</a> is external experimental evidence concerning a physical apparatus. No measurements from those papers are presented here as new data or reproduced experimental observations.</p></section>
+<footer>Generated entirely from this local study package. No external scripts, fonts or analytics. Mathematical model results; all simulation parameters and limitations are documented.</footer>
+</main></body></html>
