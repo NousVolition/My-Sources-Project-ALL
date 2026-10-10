@@ -1,31 +1,25 @@
 # Vortex comparison: final numerical results
 
-**48/48 authorized runs are complete, verified and published through model time 0.40.** No hard numerical failures were recorded. The final FD4 160 half-step departure control completes the matrix.
+[Project home](../../README.md) · [All reports](../README.md) · [Current status](../../STATUS.md)
+
+**48/48 authorized runs are complete, verified and published through model time 0.40.** No hard numerical failures were recorded.
 
 ## Final report
 
-[Complete matrix, comparisons, charts and verification](final-matrix/README.md). Finest-grid time-step differences are small, but all six ordinary-step 112-to-160 global-W comparisons exceed 5%; spatial convergence is not established.
+**[Read the complete matrix, comparisons, charts and verification](final-matrix/README.md).**
+
+Finest-grid time-step differences are small, but all six ordinary-step 112-to-160 global-W comparisons exceed 5%; spatial convergence is not established.
 
 ![Completed matrix curves](final-matrix/matrix-curves.png)
 
-## Newly completed departure runs
+This study uses smooth periodic starting fields and SSP RK3, separate from the matched-stretch study. W is the shared Fourier-curl diagnostic; native FD enstrophy and divergence are reported separately. Both methods share FFT pressure infrastructure and filtering. Resolution warnings and budget checks must be read alongside every comparison.
 
-[Completed Fourier 160 half-step control](completed-departure160-fourier-half/README.md), with independently verified same-grid timestep comparisons and retained spatial-resolution warnings.
+[All comparisons](comparisons.json) · [Protocol](protocol.json) · [Initial checks](preflight.json) · [Final queue state](task-state.json) · [Complete audit](final-matrix/matrix-verification.json)
 
-[Both completed 160-grid ordinary-step results](completed-departure160-base/README.md), with comparison against grid 112 and separate central/global peak checks.
+The [interactive viewer](../files/adversarial-vortex-study.html) retains its explicitly earlier display snapshot. The final report above supplies all 48 completed measurement records and final charts. Historical intake reviews and earlier batch reports retain the status at their own publication dates.
 
-[Both completed 112-grid half-step controls](completed-departure-112-half/README.md), with independent field comparisons and timestep-difference charts.
-
-[Completed 112-grid ordinary-step results](completed-departure112-base/README.md), with saved-field checks and comparison against grid 80.
-
-[Both 80-grid half-step controls](completed-departure-half80/README.md), with independent field comparisons and timestep-difference charts.
-
-[Six verified runs at grids 48, 64 and 80](completed-departure-coarse/README.md), with field checks, comparisons and resolution warnings.
-
-![Departure controls](completed-departure-coarse/curves.png)
-
-[All four completed 160-grid compressive controls](completed-compressive160-final/README.md) remain available.
-
+<details>
+<summary>All 48 completed runs: measurement table</summary>
 
 ## All completed runs
 
@@ -80,8 +74,28 @@
 | exodus-fourier-n80-base | complete | 0.40 | 107.31294 | 107.31294 | 24.33402 |
 | exodus-fourier-n80-half | complete | 0.40 | 107.31353 | 107.31353 | 24.33409 |
 
-This study uses smooth periodic starting fields and SSP RK3, separate from the matched-stretch study. W is the shared Fourier-curl diagnostic; native FD enstrophy and divergence are reported separately. Both methods share FFT pressure infrastructure and filtering. Resolution warnings and budget checks must be read alongside every comparison.
+</details>
 
-[All comparisons](comparisons.json) · [Protocol](protocol.json) · [Initial checks](preflight.json) · [Final queue state](task-state.json) · [Complete audit](final-matrix/matrix-verification.json)
+<details>
+<summary>Earlier batch reports and their original comparisons</summary>
 
-The [interactive viewer](../files/adversarial-vortex-study.html) retains its explicitly earlier display snapshot. The final report above supplies all 48 completed measurement records and final charts. Historical intake reviews and earlier batch reports retain the status at their own publication dates.
+## Earlier batch reports
+
+[Completed Fourier 160 half-step control](completed-departure160-fourier-half/README.md), with independently verified same-grid timestep comparisons and retained spatial-resolution warnings.
+
+[Both completed 160-grid ordinary-step results](completed-departure160-base/README.md), with comparison against grid 112 and separate central/global peak checks.
+
+[Both completed 112-grid half-step controls](completed-departure-112-half/README.md), with independent field comparisons and timestep-difference charts.
+
+[Completed 112-grid ordinary-step results](completed-departure112-base/README.md), with saved-field checks and comparison against grid 80.
+
+[Both 80-grid half-step controls](completed-departure-half80/README.md), with independent field comparisons and timestep-difference charts.
+
+[Six verified runs at grids 48, 64 and 80](completed-departure-coarse/README.md), with field checks, comparisons and resolution warnings.
+
+![Departure controls](completed-departure-coarse/curves.png)
+
+[All four completed 160-grid compressive controls](completed-compressive160-final/README.md) remain available.
+
+</details>
+

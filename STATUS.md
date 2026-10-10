@@ -1,4 +1,4 @@
-# Done & next
+# Current status and project history
 
 [← Project home](README.md)
 
@@ -11,6 +11,9 @@
 - **[Separate hug-ns solver repair](math/imports/hug-ns/corrected_v1/README.md):** the gate corner, cutoff alias and time-step scheduler are repaired in `corrected_v1`, with independent regression checks and four short N=16 runs to t=0.01. Its new gate changes the initial field. Historical source/results and the active study solvers are preserved; long-run convergence remains unverified.
 
 These are dated publication counts. The linked study indexes carry subsequent completions. Earlier test totals and supplied-table endpoints below describe their original verification scope.
+
+<details>
+<summary>Earlier imports, completed work and dated development history</summary>
 
 ## Earlier supplied hug-ns import
 
@@ -110,3 +113,6 @@ The conversation reconstruction is preserved as a reconstruction; it is not subs
 The [consolidation record](archive/CONSOLIDATION.md) identifies which Copilot branches were reused, which duplicate implementations were retired, and which sessions produced no file changes. It is the place to check before restarting an old task.
 
 **Original grid-comparison series complete through 0.40; separate Euler/Heun controls complete through 0.41.** Further evolution is not scheduled.
+
+</details>
+
