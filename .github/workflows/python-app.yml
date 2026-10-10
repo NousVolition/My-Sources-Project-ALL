@@ -62,8 +62,8 @@ jobs:
         uses: actions/setup-python@v3
         with:
           python-version: "3.12.10"
-      - name: Install the verified numerical-library versions
-        run: python -m pip install -r reports/water-biology-study/requirements.txt -r reports/water-biology-study/coupled-feedback/requirements.txt scipy==1.18.1
+      - name: Install the original study's recorded dependencies
+        run: python -m pip install -r reports/water-biology-study/requirements-lock.txt
       - name: Verify and reproduce all 48 original data files
         run: |
           python reports/water-biology-study/verify_package.py

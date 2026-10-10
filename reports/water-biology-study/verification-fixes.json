@@ -10,9 +10,9 @@
   "other_hash_verified_data_tables": 5,
   "numerical_model_sources_changed": false,
   "primary_trajectories_rerun_for_local_fix": 0,
-  "parent_comparison_source": "Previously completed independent reproduction; producing core.py and run_study.py hashes match. Complete file set and arrays rechecked with the repaired verifier.",
+  "parent_comparison_source": "Previously completed independent reproduction under recorded Python 3.12.14 / NumPy 2.5.3 / SciPy 1.18.1 / Matplotlib 3.11.2. Producing core.py and run_study.py hashes match. Saved file set and arrays were rechecked with the repaired verifier under local NumPy 2.3.5; this recheck was not a new numerical rerun.",
   "coupled_comparison_source": "Previously completed independent reproduction; analysis is refreshed from its saved fields.",
-  "ci": "Linux runs all 56 tests and the coupled reproduction. Windows runs the original 48-file reproduction with Python 3.12.10, NumPy 2.3.5 and SciPy 1.18.1. Local verification used Python 3.12.14 with the same numerical-library versions; that Python patch release is unavailable in GitHub setup-python for Windows.",
+  "ci": "Linux runs all 56 tests and the coupled reproduction with coupled requirements. Windows runs the original 48-file reproduction with Python 3.12.10 and original requirements-lock.txt: NumPy 2.5.3 / SciPy 1.18.1 / Matplotlib 3.11.2. Original independent local reproduction used Python 3.12.14 with those library versions; GitHub setup-python does not supply that Python patch release for Windows.",
   "findings_addressed": [
     "CFL gate and saved maximum recomputed and required",
     "Exact 48-file reproduction set required",
@@ -28,6 +28,7 @@
     "linux": 36.415354034955,
     "rtol": 1e-12,
     "atol": 1e-13,
-    "status": "Original-study cross-platform reproduction not certified; first mismatch only."
+    "status": "Original-study cross-platform reproduction not certified; first mismatch only.",
+    "environment_caveat": "The Linux attempt also changed NumPy 2.5.3 to 2.3.5 through the coupled requirements. Operating-system and dependency effects were not isolated."
   }
 }
