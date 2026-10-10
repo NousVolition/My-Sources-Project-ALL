@@ -55,12 +55,14 @@ jobs:
       run:
         shell: bash
     steps:
+      - name: Preserve recorded file bytes
+        run: git config --global core.autocrlf false
       - uses: actions/checkout@v4
-      - name: Set up the recorded Python version
+      - name: Set up the available Windows Python 3.12 build
         uses: actions/setup-python@v3
         with:
-          python-version: "3.12.14"
-      - name: Install the independently verified environment
+          python-version: "3.12.10"
+      - name: Install the verified numerical-library versions
         run: python -m pip install -r reports/water-biology-study/requirements.txt -r reports/water-biology-study/coupled-feedback/requirements.txt scipy==1.18.1
       - name: Verify and reproduce all 48 original data files
         run: |

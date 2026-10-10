@@ -12,7 +12,7 @@
   "primary_trajectories_rerun_for_local_fix": 0,
   "parent_comparison_source": "Previously completed independent reproduction; producing core.py and run_study.py hashes match. Complete file set and arrays rechecked with the repaired verifier.",
   "coupled_comparison_source": "Previously completed independent reproduction; analysis is refreshed from its saved fields.",
-  "ci": "Linux runs all 56 tests and the coupled reproduction. Windows runs the original 48-file reproduction with the independently verified environment.",
+  "ci": "Linux runs all 56 tests and the coupled reproduction. Windows runs the original 48-file reproduction with Python 3.12.10, NumPy 2.3.5 and SciPy 1.18.1. Local verification used Python 3.12.14 with the same numerical-library versions; that Python patch release is unavailable in GitHub setup-python for Windows.",
   "findings_addressed": [
     "CFL gate and saved maximum recomputed and required",
     "Exact 48-file reproduction set required",
