@@ -4,6 +4,8 @@ This is an extension of the neighboring baseline package. Open `report.html` for
 
 ## Completed scope
 
+The separate [heated-fluid transition study](convection-transition/README.md) now tests whether changing maintained heating switches a small disturbance from decay to growth. It includes full-inertia Boussinesq calculations, numerical refinement, rejected controls and an independent comparison with the inertia-free limit. [Illustrated results](convection-transition/report.html). This is a different, thermally driven boundary-value problem from the original unforced fluid and fitted dynamic-q studies.
+
 The complete configuration consists of 24 long Lorenz runs (eight independently seeded starts × three paired step sizes), 120 finite parameter-scan trajectories (ten rho values × six starts × two steps), 16 prescribed-rotation transport cases (four grids × four steps), three Fourier-mode time-stability controls and an independent adaptive-solver trajectory comparison. A follow-up accuracy study adds 144 discrete-map method/step/duration combinations and four directly stepped audits. There are 22 independent implementation/benchmark tests in the combined extension. Actual completion, failures and elapsed time are recorded in `data/summary.json`, `data/checks.json`, `data/oscillation-summary.json` and the test XML; this configuration description alone is not an execution record.
 
 The first independent numerical derivative check failed marginally; its original XML is retained. The diagnostic interval was refined with the tolerance unchanged. The refined test verifies the expected reduction in derivative error. This was a reference-check resolution issue, not a change to the transport equation or a relaxed acceptance criterion.

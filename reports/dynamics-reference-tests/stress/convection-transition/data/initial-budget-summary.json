@@ -1,0 +1,105 @@
+{
+  "question": "Can changing the maintained thermal gradient switch small fluid disturbances from decay to growth?",
+  "evidence": "Synthetic two-dimensional Boussinesq simulations; no new empirical measurements.",
+  "critical_rayleigh": 657.5113644795163,
+  "critical_horizontal_wavenumber": 2.221441469079183,
+  "pde_runs": 46,
+  "modal_comparisons": 12,
+  "primary_groups": [
+    {
+      "ratio": 0.8,
+      "rayleigh": 526.009091583613,
+      "analytic_rate": -1.5629427905138957,
+      "mean_rate": -1.562973175039192,
+      "seed_95_t_interval": [
+        -1.5629731750391938,
+        -1.5629731750391902
+      ],
+      "amplification_mean": 8.01132169525353e-05
+    },
+    {
+      "ratio": 0.95,
+      "rayleigh": 624.6357962555404,
+      "analytic_rate": -0.37485594732812544,
+      "mean_rate": -0.37490218021739496,
+      "seed_95_t_interval": [
+        -0.37490218021739546,
+        -0.37490218021739447
+      ],
+      "amplification_mean": 0.10412593610189469
+    },
+    {
+      "ratio": 1.0,
+      "rayleigh": 657.5113644795163,
+      "analytic_rate": 0.0,
+      "mean_rate": -5.239503872033227e-05,
+      "seed_95_t_interval": [
+        -5.239503872191185e-05,
+        -5.239503871875269e-05
+      ],
+      "amplification_mean": 0.9996856791553831
+    },
+    {
+      "ratio": 1.05,
+      "rayleigh": 690.3869327034921,
+      "analytic_rate": 0.36559595498508557,
+      "mean_rate": 0.36553694234113676,
+      "seed_95_t_interval": [
+        0.36553694234113615,
+        0.36553694234113737
+      ],
+      "amplification_mean": 9.074729596938024
+    },
+    {
+      "ratio": 1.2,
+      "rayleigh": 789.0136373754195,
+      "analytic_rate": 1.4130082907526837,
+      "mean_rate": 1.4129266037742205,
+      "seed_95_t_interval": [
+        1.412926603774219,
+        1.412926603774222
+      ],
+      "amplification_mean": 5035.048473370841
+    }
+  ],
+  "nonlinear_field_grid_differences": [
+    1.983366366657494e-09,
+    9.492341961909266e-13
+  ],
+  "max_temporal_rate_change": 7.622497991111032e-05,
+  "max_spatial_rate_change": 1.1102230246251565e-15,
+  "coarse_control": {
+    "n": 24,
+    "dt": 0.2,
+    "ratio": 1.05,
+    "seed": 410,
+    "amplitude": 1e-08,
+    "duration": 6.0,
+    "buoyancy": true,
+    "nonlinear": true,
+    "fitted_rate": -0.6909848655230584,
+    "analytic_linear_rate": 0.36559595498508557,
+    "mode_amplification": 0.016024487150275154,
+    "rate_error": 1.056580820508144,
+    "relative_divergence": 7.262834028683604e-16,
+    "relative_wall": 7.387508460313923e-16,
+    "relative_kinetic_budget": 5.365962744734157,
+    "relative_thermal_budget": 5.103001113165764,
+    "label": "coarse_negative_control"
+  },
+  "checks_passed": 17,
+  "checks_total": 19,
+  "full_repeat_scope": "One selected grid32, ratio1.05, dt0.01 full run; not the whole matrix.",
+  "repeat_identical": true,
+  "elapsed_seconds": 34.845877500018105,
+  "environment": {
+    "python": "3.12.14",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1"
+  },
+  "source_sha256": {
+    "plan.json": "4aa1ff6a1798840fcf69fa9bf192a7f1be3604e70442efd409222f240d32b039",
+    "convection.py": "8e5f54aa6f26ce92e1227fe6c2bdcafbb0b1a41f6b29000eef7af48ae0853856",
+    "run_study.py": "c624a82c859cdf9e6f8c87185191b18759f528ca54f9e65dc231f9be134b2ab1"
+  }
+}

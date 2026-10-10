@@ -150,6 +150,7 @@ def main():
 <p class="lead">The expanded run took <strong>{run_minutes:.2f} minutes of computation</strong>. It tested 24 long Lorenz trajectories, 120 parameter-scan trajectories and 16 transport grid/time combinations. The computations expose failure modes that a short, smooth benchmark can miss.</p>
 <div class="badges"><span>{result['checks_passed']}/{result['checks_total']} declared checks</span><span>{len(tests)-failures}/{len(tests)} independent tests</span><span>1 finest-step long run reproduced</span></div>{failed}
 <p class="small">Model-time units are dimensionless and are not seconds of a real apparatus. <a href="../report.html">Original baseline report</a> · <a href="README.md">Methods, plan and limits</a></p></header>
+<section><h2>New: can a physical change turn decay into growth?</h2><p>The completed <a href="convection-transition/report.html">heated-fluid transition study</a> compares a thermally driven Boussinesq layer below and above its classical onset threshold. It includes full inertia, separate spatial/time refinement, energy budgets, negative controls, raw records and an independent inertia-removal comparison. <a href="convection-transition/README.md">Read the methods, results and limitations</a>.</p></section>
 {pond_section()}
 {limit_cycle_section()}
 {sequence_section()}
