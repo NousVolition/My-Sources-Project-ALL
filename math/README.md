@@ -42,7 +42,16 @@ The original grid-comparison series reaches **model time 0.4** on **256³ and 38
 
 ![Original and corrected ring profiles](figures/smooth-initial-profile.png)
 
-The right panel zooms into the center and shows `value / center value - 1` for each curve. The figure uses equal parameter numbers, which give different ring widths; the cube experiments separately match the local peak widths.
+**How to read this figure:** Here, “smooth” means the curve has no sharp corner.
+
+- **Left panel:** A cut across one ring produces two peaks, one for each side. Brown is the original profile; teal is the corrected profile.
+- **Right panel:** The view zooms into the center. Brown has a sharp **V-shaped join**. Teal has a rounded bottom with **zero slope at the center**.
+
+The right panel shows `value / center value - 1` for each curve. Each curve is measured relative to **its own center value**, so zero means “no increase from the center.” It does not mean that the original profile value is zero.
+
+The teal ring is also **narrower**. This illustration uses equal parameter numbers, which change both smoothness and width. The cube experiments separately match the local peak widths.
+
+This figure compares **starting shapes**. It does not show how the fluid evolves over time.
 
 The editable derivation is [smooth-initial-field.tex](notes/smooth-initial-field.tex). The [original report](https://github.com/NousVolition/Nous-Volition/blob/main/stokes_stream_report.pdf) remains in the companion repository.
 
