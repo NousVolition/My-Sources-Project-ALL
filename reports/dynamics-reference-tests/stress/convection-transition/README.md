@@ -56,6 +56,61 @@ For stable stratification Ra=−4 Ra_c and Pr=1, the full eigenvalues are −14.
 
 The existing unforced Navier–Stokes study, the fitted dynamic-q equation and the pond-vibration model remain distinct. Their equations and results have not been changed. This calculation does not establish that the existing fluid runs undergo the same transition, that a positive cubic-feedback law is supported by their data, or that microbes select a branch. In a horizontally translation-invariant layer the roll phase is a continuum; opposite signed roll amplitudes can be translations of the same pattern. We therefore do not claim exactly two isolated physical states or prove a global pitchfork basin from these runs. Long-time saturation, hysteresis, nonlinear branch continuation, real no-slip/free-surface boundaries and physical calibration remain untested.
 
+## What comes next: test the original flow, then the pond
+
+**PLANNED — NOT RUN — no new fluid or pond runs accompany this plan.**
+
+The heating study establishes a decay-to-growth transition in its specified heated layer. The next question is whether a disturbance can grow in the project's original flow, and which source of energy could support growth in a pond. Neither outcome is assumed in advance.
+
+| Next test | Primary outcome | Go/no-go decision |
+| --- | --- | --- |
+| 1. Qualify the original starting field | Initial-field and trajectory convergence, divergence, total kinetic-energy loss and its viscous budget. | Candidate grids N=24,48,96 and two successive step halvings are a starting screen, not a promise of resolution. Require full-field discrepancies below 1% on the comparison interval and energy-budget residual below 0.1% of initial energy plus accumulated absolute work/loss. If the start or gradients remain unresolved, refine before extending duration. The existing repaired N=16, t=0.01 checks do not clear this gate. |
+| 2. Run paired unforced flows | Primary outcome G(t)=RMS(delta-u(t))/RMS(delta-u(0)); fit log G separately on predeclared intervals 0–1, 1–2 and 2–4 initial turnover times. Save full-field differences, perturbation energy, strain-to-perturbation energy transfer and viscous loss. Scalar q and visible shape are secondary diagnostics. | Accept a finite-time growth/decay classification only after the field, budget, grid, step and amplitude checks pass. Report each seed, the ensemble mean and its 95% t interval separately from numerical error. Require a claimed sign to exceed both the numerical uncertainty margin and the ensemble interval; mixed seeds or a window crossing zero are inconclusive. A viscosity-dependent sign change on these intervals would show finite-time sensitivity of this specified decaying flow, not a global bifurcation or permanent growth. |
+| 3. Test what happens after ground motion stops | Separate energy put in during motion from energy remaining afterward. Track total wave energy, surface amplitude and phase, particle displacement, and energy lost to drag. A rising local surface height alone is not evidence of instability: kinetic and surface-potential energy exchange during an ordinary oscillation. | In the current resting, passive, positive-drag pond model, total wave energy must not increase after bed motion ceases, beyond verified numerical error. This is the expected negative control. Continued forcing can amplify waves by supplying energy. Never insert negative damping just to obtain a desired growth curve. A positive post-pulse energy trend must first be treated as a model or numerical discrepancy, not as new pond physics. |
+| 4. Add a physical energy source only when specified | A converged perturbation growth rate, its identified energy source and dependence on a single controlled physical condition. For a later transport study, compare passive dye with inert bacterial-sized particles before adding individually justified settling, motility or attachment terms. | Synthetic inputs support conditional model predictions only. A footstep-to-pond or organism-response claim needs measured forcing and independent validation. Growth of fluid motion alone does not establish a biological effect, microbial choice, or the behavior of trillions of organisms. |
+
+### 1. Qualify the original starting field
+
+Use the separately repaired hug-ns-corrected-v1 solver and one documented smooth starting field. First check a finite-Fourier-mode analytic decay control; then qualify the repaired hug starting field. Construct the same continuous field on each grid before projection and compare retained common modes, energy, gradients and spectral tails. Do not compare different grid-dependent starts as if they were the same experiment.
+
+### 2. Run paired unforced flows
+
+For each viscosity, evolve a reference U and an otherwise identical U+delta-u. Proposed positive viscosities are 0.005, 0.01 and 0.02 in the repaired hug model's units; hold geometry and initial U fixed. Record Re=U_ref L/nu with the same measured initial RMS speed U_ref and fixed L=6. Use eight fixed independent perturbation seeds (510–517), divergence-free and zero-mean, with the same physical low-wavenumber spectrum on every grid. Start at RMS size 1e-5 U_ref; halve it for any candidate sign-change comparison.
+
+### 3. Test what happens after ground motion stops
+
+Start with the existing synthetic pond model and its positive drag. Compare a zero-input control, one finite bed-motion pulse, repeated pulses, and a matched repeated-pulse case stopped at a declared time. Keep pulse strength, basin and drag matched. Retain an independent analytic or matrix-exponential reference and halve the time step twice. In a later spatial model, also refine grid and retained modes.
+
+### 4. Add a physical energy source only when specified
+
+If the question concerns an actual pond, measure or explicitly assume its depth and shape, bed/bank vibration, damping, existing current and temperature profile. A background current can transfer stored energy; maintained current or heating supplies continuing energy. Model these as separate, documented conditions with suitable bed and free-surface boundaries. Compare disturbed and undisturbed trajectories within each condition.
+
+### Where the energy could come from
+
+Unforced does not mean motionless or unable to amplify a disturbance temporarily. In periodic incompressible Navier–Stokes with the same positive viscosity in each pair, let delta-u be the difference from reference flow U and E_delta=integral(|delta-u|^2)/2. Then E_delta' = -integral(delta-u_i delta-u_j partial_j U_i) - nu integral(|grad delta-u|^2). The first term can transfer energy from the existing flow into the difference even while each trajectory's total kinetic energy decreases. This identity assumes periodic boundaries and matched forcing (zero here); extra boundary or forcing terms are needed in a real pond.
+
+### What the present pond equations predict
+
+For the existing single-mode pond, surface height is A cos(kx), velocity is U sin(kx), and bed displacement is B cos(kx). Its wave energy per unit transverse width is E=rho L(g A^2+H U^2)/4. The model gives E'=rho L g A B'/2-rho L H d U^2/2. Once B'=0 and d>0, E' is nonpositive. The present equations therefore predict post-pulse energy decay; another run would validate that prediction numerically, not discover a new instability.
+
+### Controls and acceptance criteria
+
+- Original-flow negative controls: zero disturbance stays zero; a perturbation about resting fluid matches analytic viscous decay in an invariant shear mode. Preserve seed pairing across viscosities and perturbation sizes.
+- Original-flow numerical margin: target successive-refinement changes in fitted amplitude rate below 0.01 per initial turnover time. For sign classification use at least the larger of 0.01 per turnover time and three times the largest selected grid/step rate change. If this margin overlaps zero, refine or report unresolved; do not choose a favorable fitting window afterward.
+- Audit perturbation energy separately from total energy. Normalize its integrated residual by initial perturbation energy plus accumulated absolute transfer and dissipation; proposed limit 0.1%. Keep divergence and initial-field/gradient resolution as separate checks. Budget agreement alone cannot certify profile accuracy.
+- Pond controls: zero forcing; drag removed only as a declared conservative control (post-pulse energy then stays constant); positive-drag pulse-off decay; the same pulse schedule with different relative timing. The existing surface-accuracy limit of 0.1% and energy-budget limit of 0.5% remain separate. Refinement must additionally resolve any claimed post-pulse trend.
+- Repeat one accepted fine run from a fresh process and preserve all raw outputs, parameters, seeds, versions, failures and source hashes. A reproducible deterministic run is not an independent physical sample. No future pass count or effect size is recorded before execution.
+
+### How long to run
+
+Start the unforced screen with four initial turnover times, L/U_ref, and evaluate the declared windows. Extend only after resolution passes and only if an unresolved timescale or late-window drift motivates it. For the existing underdamped synthetic pond (drag 0.15 per second), five amplitude-envelope e-folding times equal about 66.7 seconds after forcing stops; this also exceeds ten periods of its lowest mode. That is a planning duration, not a completed run or a real-pond timescale. Recalculate the duration for other drag, depth or modes. Benchmark wall-clock cost on one accepted case before budgeting an ensemble; no completion-time guarantee is implied.
+
+### Decision after these tests
+
+First complete the original-field qualification and the passive pond energy control. Proceed to an unforced paired comparison only when its numerical gates pass. Add a driven pond extension only with an explicit, independently justified energy source. Decay, temporary growth, mixed results and unresolved comparisons are all reportable outcomes.
+
+[Machine-readable next-study plan](next-study-plan.json) · [Repaired original solver and its unresolved initial-field checks](https://github.com/NousVolition/My-Sources-Project-ALL/blob/4a6f46b9f082ec41b94400796906effa44508c9d/math/imports/hug-ns/corrected_v1/README.md) · [Existing synthetic pond model](../pond_vibration.py) · [Existing pond assumptions and omitted processes](../pond_vibration_plan.json)
+
 ## Reproduce and inspect
 
 Use the pinned dependencies in the parent dynamics package. Run from this directory:
