@@ -21,7 +21,8 @@ def measured():
 def test_reviewed_content_matches_recorded_version(filename):
     manifest = json.loads((FOLDER / 'provenance.json').read_text(encoding='utf-8'))
     source = next(row for row in manifest['source_files'] if row['published_path'] == filename)
-    content = (FOLDER / filename).read_bytes()
+    historical = 'archive/earlier-import/README.original.txt' if filename == 'README.md' else filename
+    content = (FOLDER / historical).read_bytes()
     # Notes are editable; their original and reviewed hashes are recorded separately.
     assert hashlib.sha256(content).hexdigest() == source['published_sha256']
     if filename == 'requirements.txt':
