@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Quench & switching diagnostics</title>
+<style>
+body { font-family: system-ui, sans-serif; max-width: 900px; margin: 2em auto; line-height: 1.5; }
+img { max-width: 100%; height: auto; }
+table { border-collapse: collapse; width: 100%; }
+th, td { border: 1px solid #ccc; padding: 0.4em 0.6em; text-align: left; }
+</style>
+</head>
+<body>
+<h1>Quench and switching-identity diagnostics</h1>
+<p>Real-data analysis from central-response saved fields.</p>
+<h2>Peak vorticity</h2>
+<img src="wmax_real.png" alt="Peak vorticity curves">
+<table>
+<tr><th>Case</th><th>W₀</th><th>Final W</th><th>First arrival</th><th>Sustained</th></tr>
+<tr><td>aligned</td><td>80</td><td>135.35</td><td>0.36</td><td>0.36</td></tr>
+<tr><td>compressive</td><td>80</td><td>111.80</td><td>null</td><td>null</td></tr>
+</table>
+<h2>Switching identity</h2>
+<img src="switching_identity.png" alt="Marker identity over time">
+<p>Marker holding the global peak changes on nearly every sample.</p>
+</body>
+</html>
