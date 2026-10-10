@@ -39,6 +39,33 @@ def test_text_numeric_change_still_fails(package):
         v.compare_reproduction(actual,manifest)
 
 
+@pytest.mark.parametrize('kind',['json','csv'])
+def test_text_float_roundoff_uses_array_tolerance(tmp_path,kind):
+    a=tmp_path/f'a.{kind}';b=tmp_path/f'b.{kind}'
+    if kind=='json':left='{"x": 1.0, "count": 2}';right='{"count": 2, "x": 1.00000000000001}'
+    else:left='case,x,count\r\nA,1.0,2\r\n';right='case,x,count\nA,1.00000000000001,2\n'
+    a.write_bytes(left.encode());b.write_bytes(right.encode())
+    stats={'numeric_values_checked':0,'numeric_values_different':0,'max_absolute_difference':0.,'max_fraction_of_tolerance':0.}
+    v.compare_text(a,b,stats)
+    assert stats['numeric_values_different']==1 and 0<stats['max_fraction_of_tolerance']<1
+
+
+@pytest.mark.parametrize('change',['value','label','header','row','integer','nonfinite'])
+def test_csv_rejects_material_or_structural_changes(tmp_path,change):
+    a=tmp_path/'a.csv';b=tmp_path/'b.csv';left='case,x,count\nA,1.0,10000000000000\n'
+    right={'value':left.replace('1.0','1.001'),'label':left.replace('A,','B,'),
+           'header':left.replace('case,','name,'),'row':left+'A,1.0,10000000000000\n',
+           'integer':left.replace('10000000000000','10000000000001'),'nonfinite':left.replace('1.0','nan')}[change]
+    a.write_text(left);b.write_text(right)
+    stats={'numeric_values_checked':0,'numeric_values_different':0,'max_absolute_difference':0.,'max_fraction_of_tolerance':0.}
+    with pytest.raises(ValueError):v.compare_text(a,b,stats)
+
+
+@pytest.mark.parametrize('actual',[{'count':10000000000001},{'count':10000000000000.0},{'other':10000000000000}])
+def test_json_count_and_structure_are_exact(actual):
+    with pytest.raises(ValueError):v.compare_json({'count':10000000000000},actual,'record',{})
+
+
 @pytest.mark.parametrize('change',['missing','unexpected','empty','missing_directory'])
 def test_reject_incomplete_or_unexpected_reproduction(package,change):
     _,actual,manifest=package
