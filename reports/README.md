@@ -6,7 +6,7 @@ These reports are saved on the author’s computer and copied into this GitHub f
 
 ## Numerical reports and earlier snapshots
 
-- **[Matched-stretch controls](matched-stretch/README.md): 28/48 completed and verified results published.** Latest: [all three 0.1% seeds at grid 128](matched-stretch/completed-n128-three-seeds/README.md), with the [failed 128-grid timestep control](matched-stretch/completed-timestep128/README.md) retained.
+- **[Matched-stretch controls](matched-stretch/README.md): 29/48 completed and verified results published.** Latest: [first 128-grid 0.5% seed](matched-stretch/completed-n128-halfpercent-seed101/README.md), with retained spatial-resolution and timestep warnings.
 - **[Three vortex surroundings](study/README.md): 48/48 completed and verified results published through 0.40.** [Final matrix report](study/final-matrix/README.md), with all controls, final charts, checkpoint hashes and retained spatial-resolution failures.
 - [Verification of this saved snapshot](numerical-progress-verification.json).
 
