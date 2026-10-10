@@ -1,0 +1,60 @@
+{
+  "question": "Can an external condition change collective alignment, local structure, and influence among identical model-water molecules?",
+  "model": "Existing OpenMM rigid nonpolarizable TIP3P; 216 identical waters; PME; unchanged charges and pair interactions.",
+  "box_side_nm": 1.8644464857499918,
+  "density_g_cm3": 0.997,
+  "temperature_K": 300,
+  "friction_ps_inverse": 1.0,
+  "dt_ps": 0.001,
+  "sample_interval_ps": 0.1,
+  "field_on_ps": 10.0,
+  "field_off_ps": 10.0,
+  "field_V_nm": [
+    0.0,
+    0.1,
+    0.5,
+    -0.5
+  ],
+  "replicas": [
+    0,
+    1,
+    2
+  ],
+  "platform": "OpenCL",
+  "precision": "double",
+  "openmm": "8.6.1",
+  "numpy": "2.5.3",
+  "field_energy": "-96.48533212331002*E*qH*(minimum_image_OH1_z+minimum_image_OH2_z) kJ/mol",
+  "field_note": "Applied uniformly to existing partial charges. Each neutral molecule has zero net direct field force, but experiences orientation torque.",
+  "statistics": "Use each replica window mean as one observation; frames and molecules are correlated. On window 6-10 ps; recovery window 16-20 ps.",
+  "control": "Remove all intermolecular forces, keep each rigid molecule, the field and thermal bath; these overlapping noninteracting rotors are not liquid water.",
+  "noninteracting_fields_V_nm": [
+    0.0,
+    0.5
+  ],
+  "main_seeds": "20261020+100*replica+condition_index; noninteracting adds 50.",
+  "impulse_sources": [
+    0,
+    43,
+    86,
+    129,
+    172,
+    215
+  ],
+  "impulse_times_ps": [
+    0.005,
+    0.02,
+    0.1,
+    0.2
+  ],
+  "impulse_delta_v_nm_ps": 0.01,
+  "impulse_note": "At each 10 ps main endpoint with E>=0, use a fresh constrained Maxwell velocity draw at 300 K (seed 20261220+replica), subtract COM velocity, then deterministic field-on RATTLE probes without thermostat. Only the six prespecified sources are sampled; no global finite-time leader claim.",
+  "force_scores": "Full translational force Jacobian at E=0 and E=0.5 endpoints, epsilon=1e-4 nm; score=sum of off-diagonal 3x3 Frobenius block norms. Snapshot score, not a permanent or directional leader.",
+  "source_files": {
+    "response_replica_0.npz": "87799c472cd485f5795d3ef59b958a8fd0588d5138ceffc2931d4c7eec18d1fe",
+    "response_replica_1.npz": "dc15f2da1cedfde83c5fa81a74030d81cf35dc2eb034560f7388921364afeb4a",
+    "response_replica_2.npz": "e0cf79368e4f407a7d626a698514d0043b7fa8203bd45a519bd0d59a3c1736e7"
+  },
+  "source_system_sha256": "efafbcdc711ae1898b3d6a002931590a6c6452f173f096b5f59f25227cd54aa8",
+  "scope": "Short conditional model experiment, not proof of real-water switching, memory, or agency. Strong fields stress a rigid fixed-charge model; electronic polarization, bond breaking, interfaces and reactions are absent."
+}
