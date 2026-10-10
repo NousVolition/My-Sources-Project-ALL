@@ -88,3 +88,7 @@ Publication checksums for the uploaded files are recorded in [publication-manife
 ## Spatial refinement follow-up — 2026-10-10
 
 The [three-grid follow-up](resolution-followup/README.md) adds 12 verified simulations while keeping the original predictors frozen. At 56³ the mean RMSE benefit is about 0.7%, with a paired interval including no improvement; strong-event average precision is slightly lower for the history model. Target differences shrink with refinement, but the numerical stability thresholds still fail. Spatial convergence remains unestablished. The report also explains why reversing a history does not prove that chronology is irrelevant.
+
+## Mirror and handedness follow-up — 2026-10-10
+
+The [mirror follow-up](mirror-followup/README.md) verifies that all 23 existing history descriptors are insensitive to consistent spatial reflection. Three new past-turning descriptors, including signed handedness relative to present geometry, give no clear incremental prediction benefit on the reused eight test runs. Refitted invertible sign controls reproduce predictions exactly, including for reversed histories. This is an exploratory check of the representation, not evidence that arrangement or chronology is physically irrelevant. All 20 analytic and regression checks pass; no new fluid simulations were run.
