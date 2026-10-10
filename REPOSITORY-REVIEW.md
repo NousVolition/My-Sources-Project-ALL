@@ -1,5 +1,7 @@
 # Review of both repositories
 
+[Current October 10 follow-up and priorities](REPOSITORY-CURRENT-REVIEW.md). The dated review below retains its original test totals and completion counts as historical evidence.
+
 Review date: October 9, 2026. [Project home](README.md) · [Current status](STATUS.md) · [Streams and Rocks](https://github.com/NousVolition/Nous-Volition)
 
 ## What was checked and repaired
@@ -45,6 +47,9 @@ This connects to label-permutation controls in SIMS: a transformation that the r
 
 The [dynamic-q model](math/imports/hug-ns/mirror-fluid/dynamic-q/README.md#branch-selection) also supplies a precise link to the [bifurcation examples](https://github.com/NousVolition/Nous-Volition/blob/main/studies/dynamics-fractals-sims/README.md#batch-2-tipping-points-and-multiple-stable-states). For constant inputs and nonnegative gamma and g, the fitted drift `-gamma*q - g*q^3 + input` is nonincreasing and cannot have two isolated stable branches. The illustrated pitchfork `x' = r*x - x^3` can have two stable branches when r is positive. The different sign of the linear term changes the mechanism; a cubic term alone does not make the two models equivalent.
 
+A subsequent [heated-fluid transition benchmark](reports/dynamics-reference-tests/stress/convection-transition/README.md) now supplies a separate physical example: increasing the maintained thermal gradient changes a small disturbance from decay to growth in an ideal bounded Boussinesq layer. The full-inertia calculations recover the classical convection threshold with grid/time and budget checks; a separate inertia-free comparison can retain the onset while losing oscillations or getting timing wrong. The recorded wall-enforcement failure and coarse-step failures are retained and excluded from physical conclusions. This establishes the mechanism in that specified thermally driven model; it neither changes the dynamic-q fit nor demonstrates the same transition in the original unforced Navier–Stokes runs.
+
+
 ### 4. First arrival is different from persistence
 
 The resisting-position experiment records first consensus separately from endpoint unanimity. Recovery experiments separate threshold attainment from sustained recovery; oscillator examples distinguish a center, a decaying transient and an attracting cycle. In the fluid [central-tube analysis](reports/matched-stretch/central-response/README.md), the identity of the maximum changes and stretching changes sign. A rise followed by a fall does not yet establish repeated breathing or a stable cycle. The mathematical examples help specify the measurement needed; they do not supply missing fluid evidence.
@@ -55,7 +60,7 @@ The [dynamic-q tests](math/imports/hug-ns/mirror-fluid/dynamic-q/README.md) impr
 
 Together these results identify the missing step: a proposed connection must specify its measured variable, inputs available at prediction time, independent held-out runs, numerical accuracy and a baseline it improves upon. Fitted coefficients from these experiments are not established physical constants.
 
-## Remaining work, in order
+## Remaining work at the original review snapshot
 
 1. **Finish and report the authorized controls.** At this review's publication snapshot, matched-stretch has 28/48 verified completed results and the separate vortex matrix has 46/48. Follow their [matched-stretch](reports/matched-stretch/README.md) and [vortex](reports/study/README.md) indexes for subsequent batches. Keep the prescribed horizon of 0.40 and the existing starting fields, methods and per-run parameters.
 2. **Resolve the numerical interpretation before claiming physical concentration or instability.** The [128-grid timestep control](reports/matched-stretch/completed-timestep128/README.md) fails its curve screen from t=0.31. The original raw strain is nonsmooth across periodic joins and initial maxima lie outside the central tube. The [160-grid departure comparison](reports/study/completed-departure160-base/README.md) still shows material global-peak grid dependence despite much closer central-region measurements. Small energy-budget residuals or seed-to-seed agreement do not establish spatial convergence. Report finite-time perturbation rates as such.

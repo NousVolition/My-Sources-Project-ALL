@@ -1,0 +1,165 @@
+{
+  "name": "s1027_n38_dt0.005",
+  "seed": 1027,
+  "n": 38,
+  "dt": 0.005,
+  "sources": {
+    "history-prediction/mirror-direction/run_matrix.py": "a0a27be014ffd0d2f066cd2826634ab663c049db1233ccd03ad4e5454ea92362",
+    "history-prediction/mirror-direction/protocol.json": "218ca8429840bfc919de7afa76f8b79e7e53c7ceeaa01dfb1a4d6b9c133bfdde",
+    "history-prediction/velocity-reversal/run_pairs.py": "216ee205537866dc98440d3a424766f7de786e2666e0dc3ea4709cbc943d7857",
+    "history-prediction/simulate.py": "9c8e9a8f52a2beb1b0708e8ef6936ce9c12128fbc111381d7cb4becab5223632",
+    "history-prediction/features.py": "c895f2d4f5d2ab3c4cf13b0e63bc7e5e9dc287bf2be1d4083d6fe142cde11f0d",
+    "numerics.py": "16d11a080c1559d428b33f803c1f83cfabbc3336e0bab9256989b9a2cef40d53"
+  },
+  "sha256": "f4a24b563959e8cb143ec9ee37906a23d70a6f49aee5137a1791af0b1542f6ab",
+  "reused_archive_sha256": "8f9ef713b6b5f8cd09040e5204cb3a4af73273ac58db4b2ce33c546171090b03",
+  "reused_checkpoint_sha256": "53c5dad9de86dca58dd1eb700f8a44c85a99f09c309d4027f228c907b21d52ba",
+  "checks": {
+    "mirror_distance_error": 0.0,
+    "mirror_angle_gram_error": 0.0,
+    "normal_original_position_error": 0,
+    "normal_original_tangent_error": 0,
+    "reversed_original_position_error": 0,
+    "reversed_original_tangent_error": 0
+  },
+  "diagnostics": {
+    "normal": {
+      "max_cfl": 0.06784164409727009,
+      "rows": [
+        {
+          "elapsed": 0.0,
+          "energy": 102.98424547477926,
+          "energy_budget_error": 0.0,
+          "spectral_divergence_max": 8.342844928404788e-17,
+          "probe_tangent_volume_error_max": 0.0
+        },
+        {
+          "elapsed": 0.025,
+          "energy": 102.57127823702795,
+          "energy_budget_error": 2.603653122850606e-09,
+          "spectral_divergence_max": 8.314501586287541e-17,
+          "probe_tangent_volume_error_max": 0.007083579517786154
+        },
+        {
+          "elapsed": 0.05,
+          "energy": 102.15807933368964,
+          "energy_budget_error": 5.173588959324288e-09,
+          "spectral_divergence_max": 1.4597958513449852e-16,
+          "probe_tangent_volume_error_max": 0.014813311315790889
+        },
+        {
+          "elapsed": 0.075,
+          "energy": 101.7444909679762,
+          "energy_budget_error": 7.711963222897901e-09,
+          "spectral_divergence_max": 2.529899898179865e-16,
+          "probe_tangent_volume_error_max": 0.023266638873421286
+        },
+        {
+          "elapsed": 0.1,
+          "energy": 101.330369552079,
+          "energy_budget_error": 1.0220786176363305e-08,
+          "spectral_divergence_max": 1.5169834420550291e-16,
+          "probe_tangent_volume_error_max": 0.025978172508481556
+        },
+        {
+          "elapsed": 0.125,
+          "energy": 100.91558545001358,
+          "energy_budget_error": 1.2701933512599402e-08,
+          "spectral_divergence_max": 1.2414397736201704e-16,
+          "probe_tangent_volume_error_max": 0.02688559009592406
+        },
+        {
+          "elapsed": 0.15,
+          "energy": 100.50002272663455,
+          "energy_budget_error": 1.5157151092607717e-08,
+          "spectral_divergence_max": 1.538310422752759e-16,
+          "probe_tangent_volume_error_max": 0.03283514666963405
+        },
+        {
+          "elapsed": 0.17500000000000002,
+          "energy": 100.0835788964611,
+          "energy_budget_error": 1.7588063216322178e-08,
+          "spectral_divergence_max": 1.2064689637172088e-16,
+          "probe_tangent_volume_error_max": 0.034133062969165184
+        },
+        {
+          "elapsed": 0.2,
+          "energy": 99.6661646657946,
+          "energy_budget_error": 1.999617572308473e-08,
+          "spectral_divergence_max": 1.3479794508998992e-16,
+          "probe_tangent_volume_error_max": 0.043529289687614936
+        }
+      ]
+    },
+    "reversed": {
+      "max_cfl": 0.06809436514943148,
+      "rows": [
+        {
+          "elapsed": 0.0,
+          "energy": 102.98424547477926,
+          "energy_budget_error": 0.0,
+          "spectral_divergence_max": 8.342844928404788e-17,
+          "probe_tangent_volume_error_max": 0.0
+        },
+        {
+          "elapsed": 0.025,
+          "energy": 102.57430566471398,
+          "energy_budget_error": 3.085075261572327e-09,
+          "spectral_divergence_max": 1.2042073032524576e-16,
+          "probe_tangent_volume_error_max": 0.008104757252336725
+        },
+        {
+          "elapsed": 0.05,
+          "energy": 102.16998345674169,
+          "energy_budget_error": 6.058564897331776e-09,
+          "spectral_divergence_max": 5.309011301231494e-17,
+          "probe_tangent_volume_error_max": 0.014707021129696907
+        },
+        {
+          "elapsed": 0.075,
+          "energy": 101.77082219828465,
+          "energy_budget_error": 8.929758992486067e-09,
+          "spectral_divergence_max": 5.497693681369215e-17,
+          "probe_tangent_volume_error_max": 0.017857907760535863
+        },
+        {
+          "elapsed": 0.1,
+          "energy": 101.37639003441792,
+          "energy_budget_error": 1.1706912892706332e-08,
+          "spectral_divergence_max": 1.0509631972395264e-16,
+          "probe_tangent_volume_error_max": 0.02151646735114543
+        },
+        {
+          "elapsed": 0.125,
+          "energy": 100.98627791397507,
+          "energy_budget_error": 1.439740630671508e-08,
+          "spectral_divergence_max": 4.609462744002237e-17,
+          "probe_tangent_volume_error_max": 0.026213496691485427
+        },
+        {
+          "elapsed": 0.15,
+          "energy": 100.60009786151902,
+          "energy_budget_error": 1.7007871464488894e-08,
+          "spectral_divergence_max": 1.0118411858967287e-16,
+          "probe_tangent_volume_error_max": 0.030527452413546596
+        },
+        {
+          "elapsed": 0.17500000000000002,
+          "energy": 100.21748147294463,
+          "energy_budget_error": 1.9544299396948477e-08,
+          "spectral_divergence_max": 5.999364123809197e-17,
+          "probe_tangent_volume_error_max": 0.035152966567944643
+        },
+        {
+          "elapsed": 0.2,
+          "energy": 99.83807860099466,
+          "energy_budget_error": 2.2012127055442452e-08,
+          "spectral_divergence_max": 9.344850449689904e-17,
+          "probe_tangent_volume_error_max": 0.03980986364215777
+        }
+      ]
+    }
+  },
+  "seconds": 5.838375999999698,
+  "complete": true
+}

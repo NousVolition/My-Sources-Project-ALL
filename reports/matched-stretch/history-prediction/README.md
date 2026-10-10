@@ -84,3 +84,19 @@ Source repository: [NousVolition/My-Sources-Project-ALL](https://github.com/Nous
 This is evidence of a small predictive association in an incomplete-observation problem, with unresolved spatial accuracy. It does not identify a particular causal arrangement, marker leadership, an exact event onset time, or a future Eulerian event location. A complete deterministic present fluid state determines subsequent evolution while a unique solution exists; geometry history may proxy omitted spatial information or reduce model approximation error. Nothing here establishes a Navier–Stokes regularity result or breakthrough.
 
 Publication checksums for the uploaded files are recorded in [publication-manifest.json](publication-manifest.json). The original source_manifest.json retains the earlier local-delivery snapshot; publication edits add navigation and data links without changing the numerical analysis.
+
+## Spatial refinement follow-up — 2026-10-10
+
+The [three-grid follow-up](resolution-followup/README.md) adds 12 verified simulations while keeping the original predictors frozen. At 56³ the mean RMSE benefit is about 0.7%, with a paired interval including no improvement; strong-event average precision is slightly lower for the history model. Target differences shrink with refinement, but the numerical stability thresholds still fail. Spatial convergence remains unestablished. The report also explains why reversing a history does not prove that chronology is irrelevant.
+
+## Mirror and handedness follow-up — 2026-10-10
+
+The [mirror follow-up](mirror-followup/README.md) verifies that all 23 existing history descriptors are insensitive to consistent spatial reflection. Three new past-turning descriptors, including signed handedness relative to present geometry, give no clear incremental prediction benefit on the reused eight test runs. Refitted invertible sign controls reproduce predictions exactly, including for reversed histories. This is an exploratory check of the representation, not evidence that arrangement or chronology is physically irrelevant. All 20 analytic and regression checks pass; no new fluid simulations were run.
+
+## Physical velocity reversal — 2026-10-10
+
+The [paired physical intervention](velocity-reversal/README.md) adds nine verified state reconstructions and eighteen short branches. At the same initial marker positions, opposite velocities change a mean 18% of the finer-grid high-deformation classifications and share about 30% of the high-event set. Normal continuations reproduce existing trajectories exactly. Aggregate differences agree between grids 38 and 56, while local numerical convergence remains unestablished. This changes the physical velocity and gradient, rather than merely reordering recorded history. All 24 local tests pass.
+
+## Arrangement mirrored in both motion directions — 2026-10-10
+
+The [four-cell mirror/direction experiment](mirror-direction/README.md) reuses nine verified full-state checkpoints and adds eighteen short joint branches plus two complete-state mirror controls. Reversing motion changes high-event labels in both clouds (18.0% original; 19.2% globally mirrored at grid 56). Mirroring finite neighborhoods around fixed centers changes their measured response with a direction-dependent interaction, while central pointwise targets remain exactly unchanged. Complete-state reflection preserves corresponding deformation within roundoff. The markers remain passive; spatial convergence remains unestablished. All 29 local tests pass.

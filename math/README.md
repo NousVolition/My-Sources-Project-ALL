@@ -6,6 +6,12 @@
 
 The active [matched-stretch controls](../reports/matched-stretch/README.md) and [separate vortex controls](../reports/study/README.md) have their own starting fields, protocols and completion indexes. Read the [current status](../STATUS.md) and [cross-repository review](../REPOSITORY-REVIEW.md) before comparing their results with the earlier ring below.
 
+## Hug dynamics extension
+
+**New: [Lorenz-driven hug and harder stress tests](../reports/hug-stress/README.md).** The Lorenz system now drives pressure, imprint and lean through an explicit one-way connection. Five playable modes and 84 new driven configurations accompany 224 earlier stress configurations, including missed-pulse, stiff-solver and square-guide limits. Raw results, failed trials, independent checks and code are included. [Open the Lorenz playback](../reports/hug-stress/lorenz-report.html).
+
+[Play and inspect the hug dynamics study](../reports/hug-dynamics/README.md): the existing pressure, imprint and opening model with added damping, lean and buckling; 81 configurations at two time steps and 272 passing scientific checks. Includes runnable code, complete trajectories, seven charts, and checks based on the supplied pendulum, stability, uniqueness and numerical-method pages. This reduced model has not yet been coupled to an evolving fluid boundary.
+
 ## Earlier smooth-ring study
 
 **The question:** how does a smooth, ring-shaped flow evolve, and how much do the numerical results change when we use a finer grid or smaller time steps?

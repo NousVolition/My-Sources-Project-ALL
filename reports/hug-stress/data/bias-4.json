@@ -1,0 +1,60 @@
+{
+  "name": "bias-4",
+  "group": "bias",
+  "parameters": {
+    "r": 1,
+    "damping": 1,
+    "pressure": 0,
+    "memory_coupling": 0.8,
+    "shear": 0.35,
+    "pulse_duration": 4.0
+  },
+  "q0": 1e-08,
+  "v0": 0.0,
+  "end": 200.0,
+  "reference": {
+    "method": "DOP853",
+    "rtol": 2e-10,
+    "atol": 2e-12,
+    "nfev": 15946,
+    "accepted_steps": 1062
+  },
+  "reference_energy": {
+    "absolute": 9.320710869786808e-12,
+    "scaled": 9.320710869786808e-12
+  },
+  "reference_peak_abs_q": 1.0997018186364713,
+  "reference_peak_imprint": 0.0,
+  "final_q": 1.0,
+  "extent": {
+    "maximum": 1.0715151193586885,
+    "outside_cube": false,
+    "first_observed_outside": null,
+    "opening_time": null
+  },
+  "fixed": [
+    {
+      "dt": 0.02,
+      "failure": null,
+      "scaled_reference_error": 2.4937776427202962e-09,
+      "numerical_pass": true,
+      "energy_budget": {
+        "absolute": 7.158856285549575e-10,
+        "scaled": 7.158856285549575e-10
+      }
+    },
+    {
+      "dt": 0.01,
+      "failure": null,
+      "scaled_reference_error": 1.587356218690772e-10,
+      "numerical_pass": true,
+      "energy_budget": {
+        "absolute": 4.508976525485764e-11,
+        "scaled": 4.508976525485764e-11
+      }
+    }
+  ],
+  "refinement": 2.338101878773813e-09,
+  "false_convergence": false,
+  "memory_bounds_pass": true
+}
