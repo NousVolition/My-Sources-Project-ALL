@@ -27,13 +27,14 @@ The original gate corner belongs to the archived gated start. The matched-stretc
 - Kept the older matched-stretch preview explicitly historical rather than presenting its image as a current result.
 - Added navigation to the newer HUG feedback and prediction checks, with their interpretation limits.
 - Repaired confirmed punctuation-encoding damage in two navigation guides. The original dated repository review and its historical numbers remain available.
+- Added read-only CI checks for both published HUG packages: complete manifest coverage and exact hashes, preserved historical stress evidence, and saved reciprocal-feedback controls. Seventeen negative/positive regression cases check missing files, changed bytes, duplicate or omitted cases, stale summary maxima, nonfinite values, failed bounds, and opening-event limits. These gates check the saved record; they do not rerun the completed ensembles or establish physical accuracy.
 
 ## Work still to resolve
 
 1. Finish and publish the remaining existing matched-stretch controls through 0.40. Preserve checkpoints, failures, starting field, mean, method, viscosity and zero force. Do not change active numerical source or duplicate simulations.
 2. Give physical interpretations only within demonstrated spatial/time accuracy. The nonsmooth raw strain and initial maxima outside the central tube remain material limitations. Finite-time perturbation rates are not asymptotic Lyapunov exponents.
 3. Specify a common-initial-field refinement design before any separately authorized long-run corrected_v1 study. Repair regression tests alone are insufficient.
-4. Extend automated package verification to newer report families where the root test-discovery paths do not include them. A green repository workflow does not mean every saved experiment was tested by that workflow.
+4. Extend this package-verification pattern to other report families where needed. The two HUG packages now have explicit workflow checks. PR #3 already adds explicit tests and reproduction for its original and coupled water studies; those changes remain in the draft branch. A green repository workflow does not mean every other saved experiment was tested by that workflow.
 5. Plan bulk-data delivery per study before moving existing files. Preserve stable reading links, exact source versions, immutable hash inventories and a usable reproduction route. Removing files in a new commit does not remove their bytes from Git history. Any history rewrite or bulk storage migration requires a separate reviewed plan.
 
 The supplied q remains a passive signed record; fitted-q and cubic-feedback models are separate completed tests. E is unsigned, q is signed, and mirror averaging is an explicit intervention. The mathematical model remains under examination.
