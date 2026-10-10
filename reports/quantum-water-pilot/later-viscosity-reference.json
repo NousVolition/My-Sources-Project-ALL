@@ -1,0 +1,14 @@
+{
+  "source": "Ragueneau, Caupin and Issenmann (2022), arXiv:2112.09024v3, supplemental tables I and II",
+  "url": "https://arxiv.org/pdf/2112.09024",
+  "selection_before_computation": "All non-calibration liquid-state points above 277 K from ordinary-water run 6 and the two highest-deuterium-purity runs 6 and 7. Exclude 293.15 K because it is their calibration anchor. Do not extend IAPWS D2O below its liquid validity range.",
+  "comparison": "Later Brownian-motion-derived viscosity observations. Their absolute scale is calibrated at 293.15 K using older reference viscosities, so independence concerns temperature dependence, not the absolute calibration. Heavy samples are 96.66 mol-percent D2O, not pure D2O. Use the paper's approximate linear mixture-viscosity rule; no refit.",
+  "uncertainty_screen": "1.5% intrinsic relative viscosity uncertainty; add an assumed 0.15 K temperature sensitivity and, for heavy samples, the paper's absolute mole-fraction uncertainty 0.04 in quadrature. These approximate diagnostic bars are not a complete covariance-aware confidence model. Replicate readings share calibration.",
+  "observations": [
+    {"run":"H6","T_K":288.10,"x_D2O":0.0,"readings_mPas":[1.14,1.13,1.13]},
+    {"run":"H6","T_K":283.31,"x_D2O":0.0,"readings_mPas":[1.31,1.29,1.33]},
+    {"run":"H6","T_K":278.52,"x_D2O":0.0,"readings_mPas":[1.51,1.50,1.51]},
+    {"run":"D6","T_K":278.64,"x_D2O":0.9666,"readings_mPas":[1.94,1.93,1.92]},
+    {"run":"D7","T_K":278.64,"x_D2O":0.9666,"readings_mPas":[1.93,1.94,1.96]}
+  ]
+}

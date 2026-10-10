@@ -43,6 +43,7 @@ These studies use separate molecular or toy models. Their own reports state the 
 
 | Study | Report |
 | --- | --- |
+| Quantum water and observable fluid behavior | [Vibrational predictions, molecular controls and measured-property fluid tests](quantum-water-pilot/README.md): completed raw-data package; bulk quantum transport remains unvalidated |
 | One heavy water molecule | [Isotope placement, identity controls and raw-data provenance](molecular/isotope-mass/README.md) |
 | Identical water molecules | [Positional influence and follow-up experiments](water-molecule-influence/README.md) |
 
