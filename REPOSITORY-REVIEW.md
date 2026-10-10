@@ -1,6 +1,8 @@
 # Review of both repositories
 
-Review date: October 9, 2026. [Project home](README.md) Â· [Current status](STATUS.md) Â· [Streams and Rocks](https://github.com/NousVolition/Nous-Volition)
+[Current October 10 follow-up and priorities](REPOSITORY-CURRENT-REVIEW.md). The dated review below retains its original test totals and completion counts as historical evidence.
+
+Review date: October 9, 2026. [Project home](README.md) · [Current status](STATUS.md) · [Streams and Rocks](https://github.com/NousVolition/Nous-Volition)
 
 ## What was checked and repaired
 
@@ -58,7 +60,7 @@ The [dynamic-q tests](math/imports/hug-ns/mirror-fluid/dynamic-q/README.md) impr
 
 Together these results identify the missing step: a proposed connection must specify its measured variable, inputs available at prediction time, independent held-out runs, numerical accuracy and a baseline it improves upon. Fitted coefficients from these experiments are not established physical constants.
 
-## Remaining work, in order
+## Remaining work at the original review snapshot
 
 1. **Finish and report the authorized controls.** At this review's publication snapshot, matched-stretch has 28/48 verified completed results and the separate vortex matrix has 46/48. Follow their [matched-stretch](reports/matched-stretch/README.md) and [vortex](reports/study/README.md) indexes for subsequent batches. Keep the prescribed horizon of 0.40 and the existing starting fields, methods and per-run parameters.
 2. **Resolve the numerical interpretation before claiming physical concentration or instability.** The [128-grid timestep control](reports/matched-stretch/completed-timestep128/README.md) fails its curve screen from t=0.31. The original raw strain is nonsmooth across periodic joins and initial maxima lie outside the central tube. The [160-grid departure comparison](reports/study/completed-departure160-base/README.md) still shows material global-peak grid dependence despite much closer central-region measurements. Small energy-budget residuals or seed-to-seed agreement do not establish spatial convergence. Report finite-time perturbation rates as such.
