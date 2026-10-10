@@ -1,0 +1,5 @@
+# Rejected preliminary implementation
+
+These raw files are diagnostic evidence of a failed implementation, **not fluid results**. The first sweep was interrupted before completion after nonfinite values and incorrect growth rates appeared. The original velocity projection enforced incompressibility but relied on analytical reflection symmetry to preserve plate conditions. Floating-point noise excited forbidden vertical motions uniform in z; those motions can grow while still being divergence-free. Some arrays contain NaNs or infinities and must not be used for physical inference.
+
+The corrected solver explicitly enforces even horizontal velocity and odd vertical velocity/temperature under z reflection at every stage. A new regression test injects forbidden wall modes and verifies their removal and continued wall compliance. Finite-state guards reject nonfinite trajectories immediately. The full declared matrix is rerun with the corrected code. Parent-level raw data and summaries refer only to the corrected runs; these archived files and original solver are retained for provenance.

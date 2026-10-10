@@ -1,0 +1,1016 @@
+{
+  "scope": "Convection transition follow-up and refreshed dynamics package",
+  "base_commit": "991704f2c4d708d2ab3fd29532ce176426ef78c9",
+  "numerical_evidence": "79 corrected PDE runs, 12 modal comparisons, 20 final checks, 15 independent tests. Rejected boundary and coarse budget attempts retained separately.",
+  "prior_publication_snapshot": "730ae0daa2aa93cefb8abb6b02d0de7b30b18a7a; the prior water-dynamics-publication.json remains a historical snapshot.",
+  "files": [
+    {
+      "path": "reports/dynamics-reference-tests/manifest.json",
+      "bytes": 85226,
+      "sha256": "78bd1530d128a641c1e761423a9de94ecda995b1367f3b24f7327b2082463dc8",
+      "git_blob_sha": "7970373da4abba64789ce996622dc0d809baae73"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/package-verification.json",
+      "bytes": 345,
+      "sha256": "9f6eea24975685811534a44c69449b05fc2ad6f8251df18eb7e17a608b8e8565",
+      "git_blob_sha": "76ab7f1b9cf3074f6390f318aeba9654a9e1f22a"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/README.md",
+      "bytes": 30622,
+      "sha256": "f34f7b3aecce117b0136a887c6c9af245fdc4386e0bb68eb871a35c655186c5a",
+      "git_blob_sha": "95e846fdf15fbf7535e353fc535db005b249d030"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/README.md",
+      "bytes": 12234,
+      "sha256": "37d9cf80dccfe2b5f67a59144025da659cb6f3fec03ec5c4083b156725bbd1e6",
+      "git_blob_sha": "5f5c709eb97b776d990bc9bcac1a411225543858"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/convection.py",
+      "bytes": 7340,
+      "sha256": "fba73b7d2cde9bff1eb2e0c24bd97950767702a1228f364968425fa295b28e73",
+      "git_blob_sha": "4d0d829e63a125ca38262c7369f8dcde69c9bf86"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/buoyancy_off.npz",
+      "bytes": 37072,
+      "sha256": "cd50d9a1313f68b449d9c4c1a18255984a01bb0fd3882fdecec540563c112476",
+      "git_blob_sha": "a330ea8fbefacfa673aa0f73fcccd544d4074114"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/cases.csv",
+      "bytes": 18978,
+      "sha256": "b34aa06fa54fa557b997710e404ae87f0eca66e4e53ef22cfed776ea884223d8",
+      "git_blob_sha": "bbe1b70b18d9450f9cf94fa0fd6e6262532da7ed"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/checks.json",
+      "bytes": 3381,
+      "sha256": "923d907644a6105aa1a5bae8ba30e1e8bd5259c007e2926aa9a0ba9f581f627a",
+      "git_blob_sha": "ea0ae2d1434d94a58e62d1e6925247bf94512b93"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/coarse_negative_control.npz",
+      "bytes": 23757,
+      "sha256": "703e4dcc33217588984b9ead0d92a696cd9d541f57676bc4111ac7e05f274734",
+      "git_blob_sha": "803099660fda92d63d0778e2374572f0a69f387f"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/delivery-audit.json",
+      "bytes": 258,
+      "sha256": "5b8289d12039cf692ac636406f63fde4fea8cf09ff8d01d4516643f03073fab6",
+      "git_blob_sha": "b716ef1a3f88b0a7e7fa9796dc08aaf7bc03442a"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/fixed_absolute_temperature_r0.95.npz",
+      "bytes": 47291,
+      "sha256": "03ad26ca6a064aaf253019532bdd8a7f66f755af59ce231fd4b5580bd87ea6f5",
+      "git_blob_sha": "55170574c4f112aa176f844a0c954892f94fb759"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/fixed_absolute_temperature_r1.05.npz",
+      "bytes": 47860,
+      "sha256": "1afc4a46b80c903d185b6a10c5252794f3e1af17a93e05e0b25bd30cc1f57bc0",
+      "git_blob_sha": "c3dcdf98b678240d6e541aa999af42efee717ff9"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/grid16_r0.8.npz",
+      "bytes": 31166,
+      "sha256": "0fe11f741c3a5edcfcbf8f109a78c22c9b9e969c8cbad6942a6dfa912108050a",
+      "git_blob_sha": "0a51b004f7d966279cf3c5ab1f29dc205f96bc85"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/grid16_r0.95.npz",
+      "bytes": 33148,
+      "sha256": "dae987c8935ab5188840f59cb90d799b687b7234d16660176c90887b78952a93",
+      "git_blob_sha": "6e4365e16e5900d6f7ee87584d383105803f83f2"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/grid16_r1.05.npz",
+      "bytes": 33543,
+      "sha256": "ec9e264d27d59cb3739c1bd8ed1e8fc7c15484be0baf3ed8348f86e5e067ab69",
+      "git_blob_sha": "063c0b70e396e4e0e54f8896e2b9e9af6e8ebf72"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/grid16_r1.2.npz",
+      "bytes": 34629,
+      "sha256": "2443c9dcf5763a14678fe73a6011a140b35047527a5f412ed7309f4feacd9bc9",
+      "git_blob_sha": "9d5899790a85356419338092e93ba2f277ce8d9e"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/grid16_r1.npz",
+      "bytes": 31704,
+      "sha256": "791b2ad5b1ee52ac1431ae836d8e3681e829ecdb8915ebdab2636d6277dc59d3",
+      "git_blob_sha": "01116ea057fe7538abe323b5f3812d0b1a8384f8"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/grid32_r0.8.npz",
+      "bytes": 53797,
+      "sha256": "548d9233eb25d279cdeaaaace11d5cbf93efa7addbed0fff7b6f709e5a31e980",
+      "git_blob_sha": "a2a0023379fff21864baad9977cc20165219ea68"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/grid32_r0.95.npz",
+      "bytes": 56137,
+      "sha256": "4268dbc2adfea0fac52a21ec4378031701950fe6d986619a810d96b1854eed3a",
+      "git_blob_sha": "5d76fedc9a11431d019a73c31b9ac582664581d8"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/grid32_r1.05.npz",
+      "bytes": 56578,
+      "sha256": "53dcfc1effa67d8f6adeb575c2c4698e4ea761e019a46b2d8f1747fb513e856d",
+      "git_blob_sha": "6f302b351f3b731a5ae4f892253a506a99f98fd2"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/grid32_r1.2.npz",
+      "bytes": 58514,
+      "sha256": "9260b2053e689da914f24e6f734dbe0f0e6edfc60ebce58be3f0ce1e57dac13c",
+      "git_blob_sha": "178af9f89454ab6c7ef9d03a30f58342754cc56d"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/grid32_r1.npz",
+      "bytes": 54683,
+      "sha256": "a48fa82cac68036a0e7b02c005dba777b87bb3f098a2e73fe8d1a558d7036392",
+      "git_blob_sha": "7ed7f38ae38e7ca6633c1dd155b1bca91e3168d8"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/halfamplitude_r0.95.npz",
+      "bytes": 47469,
+      "sha256": "9666d85c3c9c5cdae863336ee3d55a254225088cbf79633ad8df9d5f941e69eb",
+      "git_blob_sha": "2b2750768a9d2d0d0cb7e560d48a4773d241a913"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/halfamplitude_r1.05.npz",
+      "bytes": 47934,
+      "sha256": "29aacdcf729f64965d2d5cc788a4dff7cd7438101f64f2739b9e292f5806120c",
+      "git_blob_sha": "bbd7cda4a5f69993bc6c6dc5166eedd8aee391e7"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/halfstep_r0.8.npz",
+      "bytes": 45320,
+      "sha256": "0bfd27ad05f4d18ee463a610a78d2b0eb2aca9009ed9288bae093736713081f1",
+      "git_blob_sha": "02d6e0f42de39fe995032afe15448991320ca943"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/halfstep_r0.95.npz",
+      "bytes": 47232,
+      "sha256": "31fead9e478d362bb1a36e189da17904fefba91069fb0e0ff8c0e996893a8214",
+      "git_blob_sha": "87da25d7334a0cede0f1e722483b4756b9b71027"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/halfstep_r1.05.npz",
+      "bytes": 48017,
+      "sha256": "b5d35a2fec2766e019845d26c1981736095622eba02de8736ed430b2b1c4fe85",
+      "git_blob_sha": "ff98a45f16452cd8ecb3c5b3f678dc1a45384d57"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/halfstep_r1.2.npz",
+      "bytes": 49295,
+      "sha256": "640b4777560cf5b1a2f6b27adcbc4be510bd87fe53d59d81b798ed13643be4f5",
+      "git_blob_sha": "728adf740bce517c19aaa0f6f16a51a816b3be28"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/halfstep_r1.npz",
+      "bytes": 44977,
+      "sha256": "d0485f03de69f7da72e11aedefba232f08886558378272191b5ef704c20a16b4",
+      "git_blob_sha": "69bcf8c6b9aaa482997d9c5202705ccb31a61011"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/independent-tests.xml",
+      "bytes": 2989,
+      "sha256": "ae96d8c43b2d2ecfa35815abb5da42712d0a8a17f32f748de95da1a3e6fda200",
+      "git_blob_sha": "094173e9289fef404c80d5b859217b2977f31ab6"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/inertia.json",
+      "bytes": 3533,
+      "sha256": "5a2c71bd097a3f9f05e43e87737f8e40c82436a1dfca83bfbfbebee201e4eccf",
+      "git_blob_sha": "d6281d0eb8968d67e82a8f2ebfbb84a531c81eaf"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/inertia_r-4_pr1.npz",
+      "bytes": 28146,
+      "sha256": "98fac6d7bb55b7d3bfe33520e8e62f65e5154b6f1c8beed51285cb5e898986c1",
+      "git_blob_sha": "cbc24c627b960971c41e9e48f0af98bc62ec63f6"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/inertia_r-4_pr10.npz",
+      "bytes": 28394,
+      "sha256": "8bfbc3feaa5e936fa415a88a4efa565f8757f60824d8953af3950e8a1f7fc3b3",
+      "git_blob_sha": "3a6cda54ca7ca338a302109a4668494c667d90d2"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/inertia_r-4_pr100.npz",
+      "bytes": 28378,
+      "sha256": "66ec8bc9af59896750df3464a331d7dbfdd4f0bd4c1118d911d2351e5f88a48e",
+      "git_blob_sha": "478496402492c89ccc4c9d7c5fc79d36c8832c7c"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/inertia_r-4_pr1000.npz",
+      "bytes": 28378,
+      "sha256": "bb776e710810df6abe9ec385fa4df58a0cff01c76a843c5b1d5e61477c1b99a9",
+      "git_blob_sha": "d41c9b663dc071953e947cd3e9df727617945efa"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/inertia_r0.95_pr1.npz",
+      "bytes": 27283,
+      "sha256": "bfa7dce9dc07cd39eca943657c24bc7bdb9be93c5c92e65d18b73b6d1feb9050",
+      "git_blob_sha": "2b6b485f2c5809207115df0686b17f3bd2081c2c"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/inertia_r0.95_pr10.npz",
+      "bytes": 27274,
+      "sha256": "4091d52df5f4514ff9bf84b5a559832c63371bd0e8c48baf50e786c6cbb451e6",
+      "git_blob_sha": "9978261977ec42962945f88387011e8a33c1f301"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/inertia_r0.95_pr100.npz",
+      "bytes": 27283,
+      "sha256": "e96a01fad3e80d3a30a2046cd3d4e5a0cdc5023c1ce5bce749e00c950fe344e2",
+      "git_blob_sha": "4e1151adba2959b7e23e4e9e5737af27787131f4"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/inertia_r0.95_pr1000.npz",
+      "bytes": 27272,
+      "sha256": "9a86faf875afa9b12f725be3b76b8bf86a020e2bf6377bb33ba08c097cff8078",
+      "git_blob_sha": "e51f2826cf46ce7612deaad723be2c35e197ac04"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/inertia_r1.05_pr1.npz",
+      "bytes": 27103,
+      "sha256": "63b0ef1b1679c12f23525964fa3bc3800aade2a9d2d94a74dd44d84d6f6bd8ec",
+      "git_blob_sha": "3d7cb26026087ebdec17787b2e99c72977a97fc4"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/inertia_r1.05_pr10.npz",
+      "bytes": 27094,
+      "sha256": "4d42303a44072406182e7f273d873dac504d89aebb9fae5a1f23c5ce85dec336",
+      "git_blob_sha": "da71ee62073fa8fc9af4bc4de77590b17b610ea8"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/inertia_r1.05_pr100.npz",
+      "bytes": 27073,
+      "sha256": "c6360f5f0dcac5450b4b40f022595723b3dfe1db26ebb0e1980aa6727cb56e38",
+      "git_blob_sha": "feea972953254d2260ee9cc67b84beef1fff3ff7"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/inertia_r1.05_pr1000.npz",
+      "bytes": 27080,
+      "sha256": "761087ea674e529c6b6b704783846554dd8ac1ed0573d214003079af4be32832",
+      "git_blob_sha": "65b5493903b0585afd372bf44536f3a41c303adc"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/initial-budget-checks.json",
+      "bytes": 3189,
+      "sha256": "c58506733d733a6cb1b1f3c6872b03476675856dc66d915de5205ca101256883",
+      "git_blob_sha": "aa8a11e46704a9b5cbeb7de37b9ce4ffa872e4bb"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/initial-budget-summary.json",
+      "bytes": 3350,
+      "sha256": "4625aaee6e6eaeb71f4eed245671ee770e162c1aa60e2c6b29a5e5fd2463e46d",
+      "git_blob_sha": "93ed6f0d270c4627e9124ff2d9cff670239a0dcf"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/initial-plan.json",
+      "bytes": 2074,
+      "sha256": "4aa1ff6a1798840fcf69fa9bf192a7f1be3604e70442efd409222f240d32b039",
+      "git_blob_sha": "99a378f5441248fad1712f448ca26371ca0131c2"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/initial-test-roundoff-failure.xml",
+      "bytes": 4465,
+      "sha256": "55cd63b5edcdcccdb83bfffa0e3723376c96befaf30290d73bfb58c6a3de1c3f",
+      "git_blob_sha": "38272abb50c927cbb33e8434c439cf590300f833"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/nonlinear_grid16.npz",
+      "bytes": 15962,
+      "sha256": "d87d541dc1a17a83a12882395e745e11e262ad744b31fce1d04e3d8d08627c02",
+      "git_blob_sha": "6b0864f87a0343b2496ea34c964c2a75da426033"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/nonlinear_grid24.npz",
+      "bytes": 32248,
+      "sha256": "7eb61024e04c8b2897a3d6077501d38040dfdc4c013190c55392dafcde3d0a78",
+      "git_blob_sha": "ae5017a3f69b90a47ba9f936c47bee3b94e33380"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/nonlinear_grid32.npz",
+      "bytes": 49310,
+      "sha256": "8ad5427ddd80d7181fa792fbfa22b242e3fd5e7253cd7271c3be6c9c83db4e2d",
+      "git_blob_sha": "4388cda2865d2ee31584e4e47e60e7a1d9933d14"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/primary_r0.8_s410.npz",
+      "bytes": 45686,
+      "sha256": "b0afbeb2a8ef50adc3aa26187863ea8f1f7a3019207ceef67797d8db56d3667c",
+      "git_blob_sha": "9955f71217e35603fbef5a350a0c186a1644aa25"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/primary_r0.8_s411.npz",
+      "bytes": 45366,
+      "sha256": "5eb40ab579206cd3be34fe323958827b1e0ac7ef3d60a1340d01322c0e294f8e",
+      "git_blob_sha": "9ce48d863591fd950476292bdad774f556d9e535"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/primary_r0.8_s412.npz",
+      "bytes": 45473,
+      "sha256": "c0ededf269cc624e37cd9eb46e04eaaaa8735a6c9e4b86865cba47cc71d7d517",
+      "git_blob_sha": "51e471f626674c245b544412c96f10182d8b1326"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/primary_r0.8_s413.npz",
+      "bytes": 45599,
+      "sha256": "1a5940b084de8d2708efb380f9b38624f80102e54582995719abd610600fed80",
+      "git_blob_sha": "e3854f6d88bfa968576cd0b96d1ccd825079ce4f"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/primary_r0.95_s410.npz",
+      "bytes": 47418,
+      "sha256": "e1fb2a1a5669790154cad070b864744bf4b2a926081db0633b9e64d0a39e61ce",
+      "git_blob_sha": "66b2d2b5ef95af37873bd0512c103e8266595892"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/primary_r0.95_s411.npz",
+      "bytes": 47430,
+      "sha256": "243b364becd6681a61033ef3cdd58a268fbb82a62f399cbe15f6b17eaf812820",
+      "git_blob_sha": "61eb1e0f7bffcb1329cd7b23111533fe53eb2eb4"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/primary_r0.95_s412.npz",
+      "bytes": 47468,
+      "sha256": "111468edecc8b3785883430b7d63fd0fe7ecd7a7e56cab4960e9fdc9ce9aead8",
+      "git_blob_sha": "08c18c86381e91d5bd80688bbc27c52521bd434b"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/primary_r0.95_s413.npz",
+      "bytes": 47525,
+      "sha256": "714cb499b79be46d80d02f5319a28c73da4ef9678ff61320444c7a0000d870be",
+      "git_blob_sha": "5342e8875ef81531d8f94404d95c7e77c517de41"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/primary_r1.05_s410.npz",
+      "bytes": 48095,
+      "sha256": "ea67856932126da65b7139a2ac90a52160935d163e9048a91acc03081cfebe59",
+      "git_blob_sha": "5f24d222b78d64864f9e5535dad6caf266d40605"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/primary_r1.05_s411.npz",
+      "bytes": 47894,
+      "sha256": "022101f1a6240c7a4f53f9e49486a49f3c0268e40dbaa7f9d676b30f3683dc59",
+      "git_blob_sha": "dec452213a010c68c09d7ea2463d82eef136c2c4"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/primary_r1.05_s412.npz",
+      "bytes": 48112,
+      "sha256": "1a6526018135c3ebc748fa0c1928ab25719f6191310cf53674ce73635bf4cc9e",
+      "git_blob_sha": "7bd0a5aee547c31a465a35b941ff34a2cd972563"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/primary_r1.05_s413.npz",
+      "bytes": 47952,
+      "sha256": "29f0fce29b06fc2e8bc934abe6d00a86fabdfa71efbb2576d962900fac905819",
+      "git_blob_sha": "5bad62efc2cf222fc589d6f3fd63d484b99440cd"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/primary_r1.2_s410.npz",
+      "bytes": 49525,
+      "sha256": "42261c4dd6f28bd40734e0645b30b9988145437877238073ce0f01168a50c0fe",
+      "git_blob_sha": "c2b8fbfd981db9d97619551b8fa3e9aa9dce7197"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/primary_r1.2_s411.npz",
+      "bytes": 49481,
+      "sha256": "1a05fa707a0ea68b1450bb2916c16b4d8467774f98d008e6c87210f5d34b9788",
+      "git_blob_sha": "74642e127428a65ccbe0243874737f6a10dab1a9"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/primary_r1.2_s412.npz",
+      "bytes": 49599,
+      "sha256": "02ff96abad2b6e60b8d562c96288abc6358e2e821b61e40522baeb35a62be4f8",
+      "git_blob_sha": "ef191bd705740ae4b7a0f1fb1d9d95ae63865c77"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/primary_r1.2_s413.npz",
+      "bytes": 49482,
+      "sha256": "5d67d3ab2b9d0c39b0820d024de6dfb053590261baa93add9a1d2c25def92b25",
+      "git_blob_sha": "29d39de05916c640d8f7a04a1d8922acd00e1728"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/primary_r1_s410.npz",
+      "bytes": 46288,
+      "sha256": "1f709d33bdd032a8a18168b7d82063e292574c28febd175879450d7f55c22526",
+      "git_blob_sha": "605876f8132198ded690e8efe701542cc2830ebf"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/primary_r1_s411.npz",
+      "bytes": 46013,
+      "sha256": "604a7c06444253ff50cee16983e1f1ccf9a507df34690b79366c33d22cccbe14",
+      "git_blob_sha": "1b3eb608aec959bfd9fc806966cbec6d7e9ab59e"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/primary_r1_s412.npz",
+      "bytes": 46227,
+      "sha256": "2f819aef120349ba75b4af63438fee8f2cdba32951d46f1d74af33b5adf98d22",
+      "git_blob_sha": "2e0e30efe274b11499f06c74a192bfabe511096d"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/primary_r1_s413.npz",
+      "bytes": 46211,
+      "sha256": "d5db736af1d85a8073b122694e1a680be95862a3020e72af2f73163b1f39e905",
+      "git_blob_sha": "4dba138d7446feeda0ff6cb911c3e6d312242cd5"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/quarterstep_r0.95.npz",
+      "bytes": 46864,
+      "sha256": "b78d675b8b4c0026eb18944daa981e70e4648de5a91b3cb76f4280f9aa946637",
+      "git_blob_sha": "105c09f86820bee8af86fb651b487407d4b845dd"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/quarterstep_r1.05.npz",
+      "bytes": 47546,
+      "sha256": "01b173283f3ab6629ba0b6c01dbcc2e0483b213fa5f7bd088359c722d40dc471",
+      "git_blob_sha": "ac602b6dd874b1cc612dd25b99a4c4b421fb3f86"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/record_columns.json",
+      "bytes": 310,
+      "sha256": "6c519accbeb0e838a8f8307c3671c7e6f4160533762f19d379f6e31c861b918d",
+      "git_blob_sha": "981171b9227dbdef80e95f98707115e8b85a4799"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/refined_grid16_r0.8.npz",
+      "bytes": 31186,
+      "sha256": "0c0ec9c6418d360e7fe3bc4ebbc97f5c70001de2671d7c79172ab1a30dba68c9",
+      "git_blob_sha": "d49969570fa64c5294c4e336170100c23ad7e8e8"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/refined_grid16_r0.95.npz",
+      "bytes": 32966,
+      "sha256": "29c5ebb734404652fc9fe37a84a49d0223fef1e827161b1d872f748480de85f4",
+      "git_blob_sha": "b3368d80090c37cff1d119a28fc020261c708623"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/refined_grid16_r1.05.npz",
+      "bytes": 33397,
+      "sha256": "609fc6bed70c13db6d2491a1f845d84a5f83c8792da9c3a7b1c16529b6f968ad",
+      "git_blob_sha": "15926662f133c01e203d587432a9283767772e9a"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/refined_grid16_r1.2.npz",
+      "bytes": 34378,
+      "sha256": "19fd101202280c383c0411e8acc5f66fd61c007cab52f8cedc953a50365cb162",
+      "git_blob_sha": "af05ce2d5481baff7f69834b66062d7b3b62bd07"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/refined_grid16_r1.npz",
+      "bytes": 30523,
+      "sha256": "e510cd09cdb969b73fa5cc8b84602dc6a51eea8eb8d5a3051539f300b8d545df",
+      "git_blob_sha": "e8eee5df9163eb600845391afba85f68282988fb"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/refined_grid32_r0.8.npz",
+      "bytes": 53772,
+      "sha256": "a1412c0b75e30eaf374ebe42c130f0930013da11850cb2b39129997ff4859852",
+      "git_blob_sha": "fc77fdd75747db9a5dba7056ed27897f95d10578"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/refined_grid32_r0.95.npz",
+      "bytes": 55804,
+      "sha256": "4157cd2e5946a3fc6b4181a353e04684763fbd631ffc64bcf5b7e16ccb0c3c9b",
+      "git_blob_sha": "a3eb105cf9643e171c7e9ef39994cbadf5bff1fa"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/refined_grid32_r1.05.npz",
+      "bytes": 56532,
+      "sha256": "d0957cd087f33c868ed06da9b0d2cada04f30362f1488f73503fd708b18cf99f",
+      "git_blob_sha": "205fae953f3eabcb224e34a02f5225d2ac91f84a"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/refined_grid32_r1.2.npz",
+      "bytes": 58278,
+      "sha256": "2b3dc85756e8ea6c8cd3836d25e9944034e22c7a537de7d2aa13c1167a7961a5",
+      "git_blob_sha": "dedbae5b636c67c48bb87c572edcd0722123ce08"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/refined_grid32_r1.npz",
+      "bytes": 53422,
+      "sha256": "6b2448c1bf893b63bde289bfcb202cdc27b39eed206f25badd97a70e25c30c29",
+      "git_blob_sha": "5e55dda9730c7950a23fe9b08600ea829f9f4806"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/refined_primary_r0.8_s410.npz",
+      "bytes": 45320,
+      "sha256": "0bfd27ad05f4d18ee463a610a78d2b0eb2aca9009ed9288bae093736713081f1",
+      "git_blob_sha": "02d6e0f42de39fe995032afe15448991320ca943"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/refined_primary_r0.8_s411.npz",
+      "bytes": 45254,
+      "sha256": "e47428d8628f2eea214c4a94885048be333b3d6880bd2ac8cb59c36beab4c54f",
+      "git_blob_sha": "13d6e3cf913fc03f1ac0b35b34d873c6d3087e3a"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/refined_primary_r0.8_s412.npz",
+      "bytes": 45453,
+      "sha256": "21f106f07e1cfcc55d20a8fe6117288c13c0d0ad710a9506a09aa5f87fdec84f",
+      "git_blob_sha": "e14dc884d97f71895366eb2049df9f9190cbf535"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/refined_primary_r0.8_s413.npz",
+      "bytes": 45204,
+      "sha256": "af54a40dbdf265f0c08a3958439911f3d42241f970092c8f30df4dd1e13261d3",
+      "git_blob_sha": "067ed350cb9cdfc5c3d137cb4c944ba35ce2f63a"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/refined_primary_r0.95_s410.npz",
+      "bytes": 47232,
+      "sha256": "31fead9e478d362bb1a36e189da17904fefba91069fb0e0ff8c0e996893a8214",
+      "git_blob_sha": "87da25d7334a0cede0f1e722483b4756b9b71027"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/refined_primary_r0.95_s411.npz",
+      "bytes": 47175,
+      "sha256": "1030f3274263d5924d97266cc482f00abcba12a1a2b237bbbfe098d74a08c285",
+      "git_blob_sha": "0d3c41d45c773b090a679a12cc08008aa1b034b3"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/refined_primary_r0.95_s412.npz",
+      "bytes": 47268,
+      "sha256": "693e00184352a65dde70883a1fa2fb4eda87776a2c1deafd4bf024073a08963e",
+      "git_blob_sha": "9953bb7a25c992ee004b3ef3d67b02543b8d54f3"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/refined_primary_r0.95_s413.npz",
+      "bytes": 47172,
+      "sha256": "d12a0d7f1da8b4f7a52df9b19a63f02f8f22fe59f4ea0005d3b3bfa26aec721c",
+      "git_blob_sha": "49986d580c620a6d3acc39d82945c806ba0e1f84"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/refined_primary_r1.05_s410.npz",
+      "bytes": 48017,
+      "sha256": "b5d35a2fec2766e019845d26c1981736095622eba02de8736ed430b2b1c4fe85",
+      "git_blob_sha": "ff98a45f16452cd8ecb3c5b3f678dc1a45384d57"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/refined_primary_r1.05_s411.npz",
+      "bytes": 47940,
+      "sha256": "00b0bfbe790bc03b0233dccdcb8224da55339179193ec8094d9580a79eb696b1",
+      "git_blob_sha": "572c7552d7ce134d8b98bcc546c5757276478317"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/refined_primary_r1.05_s412.npz",
+      "bytes": 48044,
+      "sha256": "dc4da528829aff6051298d1e60acdff6ce8cd203b7e2db5a6ab0f742c5ca8f2e",
+      "git_blob_sha": "dfaacf106d42566d4fd43c63fcbfdc82da2c8e88"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/refined_primary_r1.05_s413.npz",
+      "bytes": 47956,
+      "sha256": "a80f08b19857f4d5065ed1367988f92fb400aad92faeb9da499338917ed0f990",
+      "git_blob_sha": "6cb485ccb350d42f1bac119e72f7c88c4532492a"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/refined_primary_r1.2_s410.npz",
+      "bytes": 49295,
+      "sha256": "640b4777560cf5b1a2f6b27adcbc4be510bd87fe53d59d81b798ed13643be4f5",
+      "git_blob_sha": "728adf740bce517c19aaa0f6f16a51a816b3be28"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/refined_primary_r1.2_s411.npz",
+      "bytes": 49497,
+      "sha256": "6150c7e0cf2ebfbe74a2090474d654fb76cd4105e23df088371b0a7ef3ea69ac",
+      "git_blob_sha": "4d3b789db9f829dcaf26e45303a970c00aa0c436"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/refined_primary_r1.2_s412.npz",
+      "bytes": 49579,
+      "sha256": "f097c829bde38712279e06963fd56e0f4b314522b450c4df5a7361527c5ffa00",
+      "git_blob_sha": "b5858b2934a22c459d0104f605ae7122df1643cf"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/refined_primary_r1.2_s413.npz",
+      "bytes": 49341,
+      "sha256": "ca7a883828a9ae858f50ef637963a3e32a549a131ef199da6ada06d434ec4a2d",
+      "git_blob_sha": "81eaa0a114a51acfa65050057b9af76e318011e4"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/refined_primary_r1_s410.npz",
+      "bytes": 44977,
+      "sha256": "d0485f03de69f7da72e11aedefba232f08886558378272191b5ef704c20a16b4",
+      "git_blob_sha": "69bcf8c6b9aaa482997d9c5202705ccb31a61011"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/refined_primary_r1_s411.npz",
+      "bytes": 44952,
+      "sha256": "f79fe12cf5ae63e92c0b045cbfd5733b063790fdf56727cd43e8aabf7277d288",
+      "git_blob_sha": "ca1850c69b00cde6bc0b346d934042a7c5f5a912"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/refined_primary_r1_s412.npz",
+      "bytes": 45025,
+      "sha256": "e28f4a57f8be7b7d84588deb89ab1bbc7612e10cd7bfe1ecab243dbad0c0f16c",
+      "git_blob_sha": "8622e2b8e34ef54226b4566f9a4eb0639084afe2"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/refined_primary_r1_s413.npz",
+      "bytes": 44749,
+      "sha256": "d88af2d24228a148ea7be4af118b52691949f0e52a6c4634d2941a6f24dfa1da",
+      "git_blob_sha": "280f249cff13fbc1bc3ccebd61114f0f01ea43fe"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/rejected-boundary-run/README.md",
+      "bytes": 1098,
+      "sha256": "006876dfe57a73652267f14655dbcd07f641f63c0b83886c216c214402dd1241",
+      "git_blob_sha": "a4d3add509ac1f6002a359479d1959011fea8fd2"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/rejected-boundary-run/convection-before-wall-fix.py.txt",
+      "bytes": 6675,
+      "sha256": "472811f9ff783ae1d1bbac97cbcdc295a609cbd7ea6bfcc306d0891c9e2af547",
+      "git_blob_sha": "1255a4aa0003916fa16ace2641103679fdea552d"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/rejected-boundary-run/grid16_r0.8.npz",
+      "bytes": 24958,
+      "sha256": "786acb475de8f9f2a0e1b60301ad8baf1614d671468ec2d513a72d63ce43a428",
+      "git_blob_sha": "c725c8dd82246c662e161038c9f26cf4d9ffae5d"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/rejected-boundary-run/grid16_r0.95.npz",
+      "bytes": 26073,
+      "sha256": "8b4d120376498c267af551789b0cf37895ee133cd8d1f70ad8d89885fec5e70d",
+      "git_blob_sha": "89ee04b7b2cee63b4db6aa74011a4a4fe057b9fe"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/rejected-boundary-run/grid16_r1.05.npz",
+      "bytes": 19579,
+      "sha256": "9efba33fd6c6bfcd34ab9acedd1bf543123f8ff904dae2126770579762d8f861",
+      "git_blob_sha": "e7bfecb6705303e5a8266e8928c7a4849fe83268"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/rejected-boundary-run/grid16_r1.2.npz",
+      "bytes": 18674,
+      "sha256": "8818ca2d68b8085d04c32f3afca5e2cd735f82ee789ce26b350e9df938105c68",
+      "git_blob_sha": "9eeedceccf0d13a1c6fae4900496764ee761f482"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/rejected-boundary-run/grid16_r1.npz",
+      "bytes": 19445,
+      "sha256": "c8fd8088f007ba161174f4e07f256df2c7f38a35608cc8335c003ce25b6c6444",
+      "git_blob_sha": "d8809ab57fca6d4ffa5f47144ae5768ddc619926"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/rejected-boundary-run/grid32_r0.8.npz",
+      "bytes": 47517,
+      "sha256": "69dfb90a253365ee49ab1156fe1510030b5f335af0b1b60cf7fdf76d92de93bc",
+      "git_blob_sha": "854294cd6e37145c8c34711fa32248e1a9721177"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/rejected-boundary-run/grid32_r0.95.npz",
+      "bytes": 50970,
+      "sha256": "2d0ca66140904340a5cd0c5b1ea711656b495228ada177846ec9852553597af6",
+      "git_blob_sha": "bcf5ddbdc65a25fd970522ab1815cab8f64184c6"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/rejected-boundary-run/grid32_r1.05.npz",
+      "bytes": 32863,
+      "sha256": "43df73d484f46c1c395b107751e57baf2f97b38c1bb10ab60529a59356950870",
+      "git_blob_sha": "656f601379f7db87f50e2d92adbe4cd68cdbab2b"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/rejected-boundary-run/grid32_r1.2.npz",
+      "bytes": 31893,
+      "sha256": "8cc871d7d7d93e3503aa5bc08ba515b727d3329101d7b66f448dfe8165890381",
+      "git_blob_sha": "7a99dd73d3fef1c5b0603f9dab15645fde72c3c4"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/rejected-boundary-run/grid32_r1.npz",
+      "bytes": 32733,
+      "sha256": "650ebb7a650065f2431b04d68cf812fb2768b0a0ee24ae7f130f227245f79325",
+      "git_blob_sha": "32c6e68d496b77047255ae53d27c33cae7ee6d9e"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/rejected-boundary-run/halfamplitude_r0.95.npz",
+      "bytes": 35879,
+      "sha256": "814dea10892cad3fc19b55beef746a0ce560c768a4767dc24e992ee0d50b1931",
+      "git_blob_sha": "acc87573dd733fdc9c15bc88c159ed632d6fd015"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/rejected-boundary-run/halfamplitude_r1.05.npz",
+      "bytes": 25365,
+      "sha256": "fd764c46f9f36723f3abd0d61cf51a6b91b238eba86ceeb3d58c014db0d976bc",
+      "git_blob_sha": "f5203dc2e99229bc3ffcbdc3a0bf0811f1e0afc8"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/rejected-boundary-run/halfstep_r0.8.npz",
+      "bytes": 34527,
+      "sha256": "5c15f40509ab1195e92c101d4c1a6d9a8f15d5acc1a208d860462043c316ae3c",
+      "git_blob_sha": "efdd4ab231fe108aba6b46541d3cd22100a0039d"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/rejected-boundary-run/halfstep_r0.95.npz",
+      "bytes": 25714,
+      "sha256": "c29ce4e7e9a7a935a88fc445386ecc84e5fee04e93495429793714d983db6ad1",
+      "git_blob_sha": "64dfb563d24fcbaa3222f041df45bba6d5cc1282"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/rejected-boundary-run/halfstep_r1.05.npz",
+      "bytes": 24981,
+      "sha256": "b91f8c1e0cd831559b14cacd33fde9fda3d35a8d8eef49f76f0fe3b66e79eebe",
+      "git_blob_sha": "931cf0639ee89a0100df9a82a3c4b4b35eb6cc17"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/rejected-boundary-run/halfstep_r1.2.npz",
+      "bytes": 23998,
+      "sha256": "7de8a743101be247032b7af28af6b43afd60a60af6ccfbed66f9b91867cbf6de",
+      "git_blob_sha": "b4c3fd7f2f2a053a2bd73952902da12131f3e576"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/rejected-boundary-run/halfstep_r1.npz",
+      "bytes": 24615,
+      "sha256": "56ba104cfca60cda55cf1e76acaee9f440d8793104af964b526260f11d5c3a73",
+      "git_blob_sha": "8a192bdc032c2b2faa7535135699da2140b40620"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/rejected-boundary-run/plan.json",
+      "bytes": 2074,
+      "sha256": "4aa1ff6a1798840fcf69fa9bf192a7f1be3604e70442efd409222f240d32b039",
+      "git_blob_sha": "99a378f5441248fad1712f448ca26371ca0131c2"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/rejected-boundary-run/primary_r0.8_s410.npz",
+      "bytes": 34763,
+      "sha256": "25898e61b21c0c6dfe3289692975b4e968546950b008c6f3eda79ff76f8d6a24",
+      "git_blob_sha": "c2442a9d85503d277918dae1e1c3f17a800331f6"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/rejected-boundary-run/primary_r0.8_s411.npz",
+      "bytes": 35010,
+      "sha256": "a3601d0ea73faedbe8886d79eb2e84ea767d35a6b727758ec312074a666fdd5c",
+      "git_blob_sha": "41560aebe9189139500b6f0b0cb786cbd468856e"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/rejected-boundary-run/primary_r0.8_s412.npz",
+      "bytes": 35008,
+      "sha256": "432dd8a057f03ae1edd9a767546645d5f9025676dc197b5799cde0f533f3b4e9",
+      "git_blob_sha": "8183eef476779f42c551bb9cdb1c65b2c08b20bc"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/rejected-boundary-run/primary_r0.8_s413.npz",
+      "bytes": 35102,
+      "sha256": "9f63c97c462a6376626b6ace9c4ec17f303e7a744f341e76fc38f77992f10725",
+      "git_blob_sha": "06214e9f638b0404b2097c4b8a33c30471c9dfe9"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/rejected-boundary-run/primary_r0.95_s410.npz",
+      "bytes": 39125,
+      "sha256": "2ecbf836af651f47657a31690aa6a2dd234e1304de42d7eb4b9c7f202ea1d82a",
+      "git_blob_sha": "ac138c938a77a92945cf06beaa0e7b876bdb08d1"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/rejected-boundary-run/primary_r0.95_s411.npz",
+      "bytes": 36825,
+      "sha256": "e5dca0b303249776fcc06746b4cafa5dd402bb19559faf3b38924af6e2d6a575",
+      "git_blob_sha": "c9f05c66d342a361f72a4303423fa2808c2932a9"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/rejected-boundary-run/primary_r0.95_s412.npz",
+      "bytes": 36671,
+      "sha256": "6c1a2747c9d25958425f755458be8ccee86ff2da34c24cbae5ac141b36aa8a88",
+      "git_blob_sha": "ff289280690fc6c8cf227280288a01dd8b611bfa"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/rejected-boundary-run/primary_r0.95_s413.npz",
+      "bytes": 35895,
+      "sha256": "6add41cc7a6ab5edb0ed5f6f8e7935ff62bcce407e9b7d9f331cbce0634a039f",
+      "git_blob_sha": "eca55c95dd7ea2e769721254c4efc7b96536b999"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/rejected-boundary-run/primary_r1.05_s410.npz",
+      "bytes": 25198,
+      "sha256": "6021ccfad5c4df7ba4f459e221f4a5f7d889d64a7e04cc3cb1ac976520fbecd5",
+      "git_blob_sha": "f083a3c4608bb5fbd7cf2271f6a7b8809680704d"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/rejected-boundary-run/primary_r1.05_s411.npz",
+      "bytes": 25203,
+      "sha256": "49c331df7dd20a6adb03a12c0e9e96936ef84bc5da41c03a2f0c970b5b741342",
+      "git_blob_sha": "d1b83d668d6f7e3156eab7185bdb9c7caeb4b6a0"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/rejected-boundary-run/primary_r1.05_s412.npz",
+      "bytes": 25216,
+      "sha256": "912bf35795cb1d11640ca0137884257ecb143b8d6fb1522667924172fc9e2c69",
+      "git_blob_sha": "1b5b6c01cdfd5dfa01d38f6d1abca441e50deed0"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/rejected-boundary-run/primary_r1.05_s413.npz",
+      "bytes": 25418,
+      "sha256": "afa8fd5cffee791ddc057c9480db47b158065f7f869981177bb2fa57a0e5bb60",
+      "git_blob_sha": "d84c0ffd85c52aed4c1d47a4448e0566002b6c5b"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/rejected-boundary-run/primary_r1.2_s410.npz",
+      "bytes": 24212,
+      "sha256": "002a3ac15faa693f65aae8086b94ed24af1808dc5ad634d7a48d85f8d4640ee6",
+      "git_blob_sha": "42e3b6b16ee32de3d6770c750ee25bf48bf225bc"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/rejected-boundary-run/primary_r1.2_s411.npz",
+      "bytes": 24292,
+      "sha256": "6de59a088ac4090e67ddcaeddbb8b7febd6dfa31205f09b979f255d423f9391e",
+      "git_blob_sha": "9bbae1649b0ee85ac5a9b333c02b5d22004ec320"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/rejected-boundary-run/primary_r1.2_s412.npz",
+      "bytes": 24295,
+      "sha256": "1da67b70827d3a47b4a6c6273429914e38ea57f181d31741e6945c4ff82db72f",
+      "git_blob_sha": "f8943883f8673df0fcbd6deffc6a05582a693fff"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/rejected-boundary-run/primary_r1.2_s413.npz",
+      "bytes": 24409,
+      "sha256": "b0424f90b9cff1eb3c8d1e49a3ac61963bfb7f32b4a262d709493cddcbf8e466",
+      "git_blob_sha": "ea1dacc94211ef306ab3352888d09ce2642a6bc6"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/rejected-boundary-run/primary_r1_s410.npz",
+      "bytes": 25069,
+      "sha256": "bc4ff741ea30fcd8d7aa2266ebd54e089fb7c284c85722fc64de9dfda797eeee",
+      "git_blob_sha": "692da57bffbc6d1fd761d4e1b8d57333b1831d21"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/rejected-boundary-run/primary_r1_s411.npz",
+      "bytes": 25248,
+      "sha256": "0d0b8f6fea4b89cecd2bba1ad20b38ca3413bf25b111f273a8e0ffda9458bcc0",
+      "git_blob_sha": "823da1885fe6807bb6a5720ce34556f060e0c119"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/rejected-boundary-run/primary_r1_s412.npz",
+      "bytes": 25171,
+      "sha256": "ed64b5d771c7d0cf57438760f8b72f378d0fdbd044b05b2c6251c1e68aeb920c",
+      "git_blob_sha": "e19849a0d7a8990bfa064ba2c98d05fa3afb1ce9"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/rejected-boundary-run/primary_r1_s413.npz",
+      "bytes": 25220,
+      "sha256": "253a3437d31ffaaf79eaf44ced9b5aae98931588a7136f025b0e16e2548bb5b3",
+      "git_blob_sha": "471eeb1884aba79b58b0215c37c9cb2e7b9172a6"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/rejected-boundary-run/quarterstep_r0.95.npz",
+      "bytes": 25401,
+      "sha256": "87565b9f5ce64ed64d1c4a6d5e18261b0a0cfe913c38207ff58db842dc46b5cd",
+      "git_blob_sha": "4ca0062b67df4c0a8cda1db9eb0885a8ddb488ef"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/rejected-boundary-run/quarterstep_r1.05.npz",
+      "bytes": 24652,
+      "sha256": "c35ad97b87ed16f6451ded51ffb7aaa32e58e3d64605d8acd0d2f0af5a046c90",
+      "git_blob_sha": "651052bf212f58b639eaa9c1e87152f509edf2ba"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/repeat_refined_grid32.npz",
+      "bytes": 56532,
+      "sha256": "d0957cd087f33c868ed06da9b0d2cada04f30362f1488f73503fd708b18cf99f",
+      "git_blob_sha": "205fae953f3eabcb224e34a02f5225d2ac91f84a"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/repeat_selected_grid32.npz",
+      "bytes": 56578,
+      "sha256": "53dcfc1effa67d8f6adeb575c2c4698e4ea761e019a46b2d8f1747fb513e856d",
+      "git_blob_sha": "6f302b351f3b731a5ae4f892253a506a99f98fd2"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/summary.json",
+      "bytes": 3539,
+      "sha256": "985e9f8404605c320e733d10f8b18b571a92f88f6c069f0e2eb434043969c51c",
+      "git_blob_sha": "6e33faaaf75155cd58cd7b4cf7c1efab191174c8"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/data/zero_disturbance.npz",
+      "bytes": 1866,
+      "sha256": "0fe06501e10b164052e9ddbf3714c74cc73b14931c8dfb34c24cd25d2a40a6cd",
+      "git_blob_sha": "b744cd4004cb004dd4ee5e858de4c8f3702cbbdb"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/figures/inertia.png",
+      "bytes": 110009,
+      "sha256": "cee5dbc16cf167226d336f12844df7e71d78f54138c7245bf515734430fd6d0d",
+      "git_blob_sha": "a04a531857a863995ec73d512731e372e2cac5c5"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/figures/inertia.svg",
+      "bytes": 74881,
+      "sha256": "88e319e215149a4bc937c73e34d9b60048ced4fa15a1ae477df30b2e08731b89",
+      "git_blob_sha": "63478ec43c693da8a0cfbe0949543af399cb6b82"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/figures/transition.png",
+      "bytes": 147617,
+      "sha256": "c8f55fd4ecd90b3ca86a104d8be039d121e85e766b3bf9609a641c81341201e3",
+      "git_blob_sha": "0cd40780617253f3eca6111e4c5739d4ba35bf49"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/figures/transition.svg",
+      "bytes": 93022,
+      "sha256": "398aa9e97b54f3dc3786407109732bca979582c73d4d08ea5fb9375ef4b65e7e",
+      "git_blob_sha": "d3f2d2f172ac4444de89f58ecec61bd44261629a"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/make_report.py",
+      "bytes": 21363,
+      "sha256": "7cf1ede5b7635075fa406499993aae76a435ef16772e48d1cb243853948be8b3",
+      "git_blob_sha": "3ca164b0fde380d7efc7eab945c88bb73e5570eb"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/plan.json",
+      "bytes": 2582,
+      "sha256": "7a2e60e3b4a121bfdc3f4ea46d4497b9fd0687d0197dc47adcbb806e2ab28d64",
+      "git_blob_sha": "076c9009382eb883f68fcf42414868a73abd04de"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/report.html",
+      "bytes": 4440,
+      "sha256": "6c61612da8e7cbf88ecfee10997d58d4084a75397f3030e81df331fdb5f69b5e",
+      "git_blob_sha": "40c2c394c796b3faeb044207449f97e4d776a005"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/run_study.py",
+      "bytes": 10775,
+      "sha256": "5686ead4d2a926f993263c2b48a4dc80ffe1b43fd79b66b6206f4f298f84158b",
+      "git_blob_sha": "1d33dede2744fd067d22522813715c384d7ac333"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/test_convection.py",
+      "bytes": 3880,
+      "sha256": "7741a623d49d773eba2c3f3074e295aa6a5802c359f9f0d54ab76a95569af6d4",
+      "git_blob_sha": "631e8708084c116129e7fbaeb6439750bffc8f06"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/convection-transition/verify.py",
+      "bytes": 2240,
+      "sha256": "95d7525463aadcae6e3724b818fbe1f12faf15db38397ba8ea0913f21d30c421",
+      "git_blob_sha": "66b0ae0148c17778c3db842ba9cb67d0ae276311"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/figures/01_duration_and_step.svg",
+      "bytes": 63817,
+      "sha256": "0c191abddc12ab222d35ec2b4302f8ce7ae018458d78525d1b15efb7e9961d97",
+      "git_blob_sha": "702fae1f3023bcb25f382f98e9479ad6f464d3ce"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/figures/02_resolution_vs_conservation.svg",
+      "bytes": 64052,
+      "sha256": "73c60c89f70f2b7ef69c2ca8bc6612b6822fe3e81b2cba053dabfc7cd200612a",
+      "git_blob_sha": "156eb3c51a4b1675bd7eaf34c9feb253eb7853ed"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/figures/03_parameter_scan.svg",
+      "bytes": 118559,
+      "sha256": "614a9ed85f0eaf744cd31ccb4c39bb43fd2d16e22c94a1d7d84ab84cf72ba02d",
+      "git_blob_sha": "820507dc3dbce048ab436fad14b5fbd68fb59f28"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/figures/04_critical_timescale.svg",
+      "bytes": 44177,
+      "sha256": "1f07e54cd665905cb14830b6adf988b0c3183971c79e1bc86577d5adab2b04a7",
+      "git_blob_sha": "ce1dcea11750b8b07e6b1282f3dedce2adfc6cfa"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/figures/05_stability_is_not_accuracy.svg",
+      "bytes": 40099,
+      "sha256": "17946fd537a3621dc1791d1767bc7b1aee8d607301308fb0edb0e7b1b8bc1c1d",
+      "git_blob_sha": "2561841acb89041ed56aa3322995330ea8546e49"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/make_stress_report.py",
+      "bytes": 20663,
+      "sha256": "2c44177be25079b2d50b8263b70576c7676f9a256df13bfa6774416b8b9b989e",
+      "git_blob_sha": "4d564945d7c7bb722b7d3d1664447c911d10ab2a"
+    },
+    {
+      "path": "reports/dynamics-reference-tests/stress/report.html",
+      "bytes": 35020,
+      "sha256": "684e3b64597fb49816854ecd53eaf61eb06357e0f357c75f54c3c60e0fa31681",
+      "git_blob_sha": "40c46a3bd6294472c32e472b116a33c7f981df60"
+    },
+    {
+      "path": "reports/README.md",
+      "bytes": 12477,
+      "sha256": "bf089f9f069f97d10034c6b27eea9e8c0f38de16a52d765a2ec144ec31382ec2",
+      "git_blob_sha": "448e2ad103fdb497446c52bfa245268931305cd7"
+    },
+    {
+      "path": "REPOSITORY-REVIEW.md",
+      "bytes": 13114,
+      "sha256": "96ec0dd9dc819944986fed8f582d802774ea4703daeeb475421c26c63059df7c",
+      "git_blob_sha": "54a4b62279cb132f7121dc897cd97904a4cd2070"
+    }
+  ]
+}

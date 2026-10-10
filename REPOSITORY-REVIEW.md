@@ -1,6 +1,6 @@
 # Review of both repositories
 
-Review date: October 9, 2026. [Project home](README.md) · [Current status](STATUS.md) · [Streams and Rocks](https://github.com/NousVolition/Nous-Volition)
+Review date: October 9, 2026. [Project home](README.md) Â· [Current status](STATUS.md) Â· [Streams and Rocks](https://github.com/NousVolition/Nous-Volition)
 
 ## What was checked and repaired
 
@@ -44,6 +44,9 @@ The [C/D source controls](math/imports/hug-ns/mirror-fluid/source-attribution/RE
 This connects to label-permutation controls in SIMS: a transformation that the rules ignore should preserve the outcome, while a changed rule or input is a separate intervention. Mirror averaging actively replaces a field. An assigned opposing seat actively changes its update rule. Neither intervention, by itself, establishes spontaneous symmetry breaking.
 
 The [dynamic-q model](math/imports/hug-ns/mirror-fluid/dynamic-q/README.md#branch-selection) also supplies a precise link to the [bifurcation examples](https://github.com/NousVolition/Nous-Volition/blob/main/studies/dynamics-fractals-sims/README.md#batch-2-tipping-points-and-multiple-stable-states). For constant inputs and nonnegative gamma and g, the fitted drift `-gamma*q - g*q^3 + input` is nonincreasing and cannot have two isolated stable branches. The illustrated pitchfork `x' = r*x - x^3` can have two stable branches when r is positive. The different sign of the linear term changes the mechanism; a cubic term alone does not make the two models equivalent.
+
+A subsequent [heated-fluid transition benchmark](reports/dynamics-reference-tests/stress/convection-transition/README.md) now supplies a separate physical example: increasing the maintained thermal gradient changes a small disturbance from decay to growth in an ideal bounded Boussinesq layer. The full-inertia calculations recover the classical convection threshold with grid/time and budget checks; a separate inertia-free comparison can retain the onset while losing oscillations or getting timing wrong. The recorded wall-enforcement failure and coarse-step failures are retained and excluded from physical conclusions. This establishes the mechanism in that specified thermally driven model; it neither changes the dynamic-q fit nor demonstrates the same transition in the original unforced Navier–Stokes runs.
+
 
 ### 4. First arrival is different from persistence
 
