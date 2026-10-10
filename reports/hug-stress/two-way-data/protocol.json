@@ -1,0 +1,30 @@
+{
+  "rule": "eta = g * bend(t)^2 * imprint/(1+imprint); add -eta*X and -eta*Y",
+  "forward_rule": "Existing bounded Z-to-pressure mapping; pressure drives imprint and lean",
+  "sources": {
+    "two_way_hug.py": "e28ef2199b067893310a8e3a39f7b69bca946a14c444b91322f4e811596ba7ff",
+    "run_two_way.py": "df01fd2e7b50f30c98e5497161c7dfcb3babd331d9713a5c879e3e170c396e6b",
+    "lorenz_hug.py": "ffa276d7d6aa7b75edc7456a97d315ce49dbbf9709201f7ca3b1c6eb0d639e54",
+    "stress_solver.py": "a81054dc7ce867899ef6b40f66876b1404ee4e191c9230a9ee2ce725f45ee10f"
+  },
+  "python": "3.12.14",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "method": "DOP853",
+  "rtol": 1e-10,
+  "max_step": 0.02,
+  "refined_rtol": 1e-11,
+  "refined_max_step": 0.01,
+  "control_target": 1e-05,
+  "end": 80,
+  "burn": 20,
+  "record_spacing": 0.02,
+  "feedback_strengths": [
+    0,
+    0.5,
+    2,
+    8
+  ],
+  "scope": "Proposed dissipative feedback; not a physical calibration or conservative energy exchange",
+  "constant_pressure_hug_independence_error": 4.163336342344337e-16
+}
