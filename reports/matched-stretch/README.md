@@ -1,8 +1,33 @@
 # Matched-stretch numerical controls
 
-**29/48 completed and verified results published.** Latest: [first 128-grid 0.5% seed through 0.40](completed-n128-halfpercent-seed101/README.md). Nineteen jobs remain. Spatial and timestep resolution remain inadequate; the supplied raw strain has nonsmooth periodic joins and off-central initial maxima.
+[Project home](../../README.md) · [All reports](../README.md) · [Current status](../../STATUS.md)
 
-**All three 0.1% seeds at grid 128 complete:** [Three-seed comparison through 0.40](completed-n128-three-seeds/README.md). Endpoint separations are close across all three seeds; spatial and timestep limitations remain explicit.
+## Current published results
+
+**29/48 completed and verified results published through model time 0.40. Nineteen jobs remain.** Publication status: October 10, 2026 (UTC).
+
+| Read first | What it shows |
+| --- | --- |
+| [First 128-grid 0.5% seed](completed-n128-halfpercent-seed101/README.md) | Latest verified completion, saved-field checks, charts and separation from its baseline |
+| [All three 128-grid 0.1% seeds](completed-n128-three-seeds/README.md) | Three-seed comparison through 0.40 |
+| [128-grid timestep control](completed-timestep128/README.md) | Ordinary and half steps; the W-curve screen fails from t=0.31 |
+| [Initial peak and resolution audit](adaptive-peak/README.md) | The original start fails the six-cell width screen on all five checked grids |
+
+Spatial and timestep resolution remain inadequate. The supplied raw strain is nonsmooth across periodic joins, and its initial maximum lies outside the central tube. Similar seed outcomes or small budget residuals do not establish spatial convergence. Perturbation rates describe finite time windows; they are not asymptotic Lyapunov exponents.
+
+The supplied field, Heun method, cube side 6, original mean and zero external force are retained. Baseline viscosity is 0.001; variations are stated per run. This matrix and the [completed vortex matrix](../study/README.md) have different starting fields.
+
+## Explore the saved flow
+
+| Question | Analysis |
+| --- | --- |
+| Does the peak stay with the central tube? | [Central response and changing maximum](central-response/README.md) |
+| How do individual points move and separate? | [Tracked patterns](central-response/tracked-patterns/README.md) · [Marker stress](marker-stress/README.md) |
+| Does marker history improve predictions? | [History-prediction pilot](history-prediction/README.md) |
+| What happens at the periodic join? | [Join isolation](join-isolation/README.md) · [Separate periodic starting field](periodic-start-check/README.md) |
+
+<details>
+<summary>Completed batches and supporting analyses</summary>
 
 ## Earlier completed batches
 
@@ -37,6 +62,13 @@
 **Completed batches:** [0.1% perturbations](completed-seeds/README.md), [0.5% perturbations](completed-halfpercent/README.md), and [1% perturbations plus viscosity 0.002](completed-onepercent/README.md). These later batches supersede their entries in the dated snapshot below.
 
 **New diagnostic:** [Adaptive peak-spin check and charts](adaptive-peak/README.md). The original start fails the six-cell width requirement on grids 64, 80, 112, 128 and 256. This completed audit reuses saved observations; the older matrix snapshot below is dated separately.
+
+</details>
+
+<details>
+<summary>Historical snapshot — October 8, 2026 (5/48 complete at that time)</summary>
+
+This retained snapshot records the original publication. Its running labels and pending comparisons apply to that date. Use **Current published results** above for the current reading path.
 
 Snapshot: 2026-10-08T23:28:22.747514+00:00. **5 of 48 runs complete.** Further runs are active or queued.
 
@@ -79,3 +111,6 @@ Finite-amplitude perturbation rates and recurrence diagnostics are in the analys
 [Protocol](protocol.json) · [Initial audit](initial-audit.json) · [Implementation checks](implementation-check.json) · [Snapshot verification](../numerical-progress-verification.json) · [Run measurements](runs/)
 
 Source is preserved in numerics.py and run_suite.py. To reproduce the matrix, copy those files, protocol.json, requirements.txt and reproduce.py into a fresh directory, install the requirements, and run `python reproduce.py`. Generated arrays and restart files remain local; the published JSON files are measurement records, not restart checkpoints.
+
+</details>
+
