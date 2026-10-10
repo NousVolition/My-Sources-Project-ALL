@@ -14,7 +14,43 @@ DATA=ROOT/'data'
 FIG=ROOT/'figures'
 
 
-def main():
+def next_steps_content():
+    """Render planned work separately from the completed numerical evidence."""
+    plan=json.loads((ROOT/'next-study-plan.json').read_text(encoding='utf-8'))
+    assert plan['completed_new_simulations']==0
+    esc=lambda value: html.escape(value,quote=True)
+    md=f"## {plan['title']}\n\n**{plan['status']} — no new fluid or pond runs accompany this plan.**\n\n{plan['summary']}\n\n"
+    page=f'<section id="next-steps"><h2>{esc(plan["title"])}</h2><p class="tag">{esc(plan["status"])}</p><p>No new fluid or pond runs accompany this plan.</p><p>{esc(plan["summary"])}</p>'
+    md+='| Next test | Primary outcome | Go/no-go decision |\n| --- | --- | --- |\n'
+    page+='<div style="overflow-x:auto"><table><tr><th>Next test</th><th>Primary outcome</th><th>Go/no-go decision</th></tr>'
+    for row in plan['stages']:
+        md+=f"| {row['stage']} | {row['measure']} | {row['gate']} |\n"
+        page+=f'<tr><td>{esc(row["stage"])}</td><td>{esc(row["measure"])}</td><td>{esc(row["gate"])}</td></tr>'
+    md+='\n'
+    page+='</table></div>'
+    for row in plan['stages']:
+        md+=f"### {row['stage']}\n\n{row['change']}\n\n"
+        page+=f'<h3>{esc(row["stage"])}</h3><p>{esc(row["change"])}</p>'
+    for title,key in [('Where the energy could come from','energy_explanation'),('What the present pond equations predict','pond_identity')]:
+        md+=f"### {title}\n\n{plan[key]}\n\n"
+        page+=f'<h3>{title}</h3><p>{esc(plan[key])}</p>'
+    md+='### Controls and acceptance criteria\n\n'
+    page+='<h3>Controls and acceptance criteria</h3><ul>'
+    for control in plan['controls']:
+        md+=f'- {control}\n'
+        page+=f'<li>{esc(control)}</li>'
+    page+='</ul>'
+    md+='\n'
+    for title,key in [('How long to run','duration'),('Decision after these tests','decision')]:
+        md+=f"### {title}\n\n{plan[key]}\n\n"
+        page+=f'<h3>{title}</h3><p>{esc(plan[key])}</p>'
+    refs=[dict(label='Machine-readable next-study plan',url='next-study-plan.json')]+plan['references']
+    md+=' · '.join(f'[{r["label"]}]({r["url"]})' for r in refs)+'\n\n'
+    page+='<p>'+' · '.join(f'<a href="{esc(r["url"])}">{esc(r["label"])}</a>' for r in refs)+'</p></section>'
+    return md,page
+
+
+def main(reuse_figures=False):
     FIG.mkdir(exist_ok=True)
     s=json.loads((DATA/'summary.json').read_text())
     checks=json.loads((DATA/'checks.json').read_text())
@@ -24,8 +60,15 @@ def main():
     by={r['label']:r for r in cases}
     tests=list(ET.parse(DATA/'independent-tests.xml').getroot().iter('testcase'))
     failures=sum(t.find('failure') is not None or t.find('error') is not None for t in tests)
+    groups=s['primary_groups']
+    next_md,next_html=next_steps_content()
     plt.rcParams.update({'font.size':10,'axes.spines.top':False,'axes.spines.right':False})
     def save(fig,name):
+        if reuse_figures:
+            for extension in ['png','svg']:
+                assert (FIG/(name+'.'+extension)).is_file(), 'Missing figure to reuse'
+            plt.close(fig)
+            return
         for extension in ['png','svg']:
             fig.savefig(FIG/(name+'.'+extension),dpi=160,bbox_inches='tight')
         plt.close(fig)
@@ -143,6 +186,7 @@ Then regenerate the parent package manifest with its `make_report.py` and run it
 
 Every PDE NPZ contains the complete recorded diagnostic time series plus initial, midpoint and final fields (u,w,theta) on the reflected grid. It does **not** contain every internal integration stage. Modal NPZ files contain their time grid, full-state matrix-exponential solution and reduced solution. Sources and the plan are fingerprinted in the summary. Parent manifests cover all delivered files, including clearly rejected historical evidence.
 '''
+    md=md.replace('## Reproduce and inspect',next_md+'## Reproduce and inspect',1)
     (ROOT/'README.md').write_text(md,encoding='utf-8')
     table=''.join(f'<tr><td>{g["ratio"]:.2f}</td><td>{g["mean_rate"]:+.6f}</td><td>{g["amplification_mean"]:.5g}×</td></tr>' for g in groups)
     page=f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>When fluid disturbances grow</title><style>body{{margin:0;background:#f2f6f7;color:#173342;font:17px/1.6 system-ui}}main{{max-width:1100px;margin:auto;padding:32px 22px}}section{{background:white;padding:25px;margin:22px 0;border:1px solid #d1dfe5;border-radius:10px}}h1{{font-size:38px;line-height:1.2}}h2{{line-height:1.25}}img{{width:100%;height:auto}}a{{color:#076c80}}table{{border-collapse:collapse;width:100%}}td,th{{padding:10px;text-align:left;border-bottom:1px solid #d8e2e6}}.tag{{color:#1c6873;font-weight:bold}}.warn{{border-left:5px solid #bf6925}}small{{color:#526d79}}</style></head><body><main>
@@ -151,8 +195,13 @@ Every PDE NPZ contains the complete recorded diagnostic time series plus initial
 <section><h2>Validation changed which runs we accepted</h2><p>{s['pde_runs']} PDE runs and 12 separate modal comparisons completed. Final checks: <strong>{s['checks_passed']}/{s['checks_total']}</strong>; independent tests: <strong>{len(tests)-failures}/{len(tests)}</strong>. Grids, time steps, seed amplitude, absolute thermal perturbation, zero disturbance and buoyancy removal were tested.</p><p>The initial step missed the energy-budget limit despite getting the growth sign right. Halving it brought the maximum refined residual to {100*budget:.5g}%. The coarser failures remain recorded. Four seeded starts agree closely because they approach the same linear mode; their tiny statistical intervals do not quantify real-world uncertainty.</p><p>An earlier wall-enforcement error produced false growth. Those runs were rejected, the boundary projection was corrected, and a regression test was added before rerunning the full matrix. <a href="data/rejected-boundary-run/README.md">Failure record</a>.</p></section>
 <section><h2>Oscillation is a separate question</h2><img src="figures/inertia.png" alt="A stable mode oscillates with inertia and decays monotonically without it; reduction error falls as Prandtl number increases"><p>A stably stratified fluid mode can oscillate while decaying. Removing inertia erased those oscillations in the Pr=1 comparison. The approximation improved at large Prandtl number. Agreement about stability alone did not guarantee agreement about motion.</p></section>
 <section class="warn"><h2>What this establishes—and what remains open</h2><p>Maintained heating can supply energy that amplifies a small fluid disturbance. This is a concrete example supporting the mechanism you asked about. It does not establish equivalent feedback in the existing dynamic-q fit or show that footsteps trigger this instability in a pond. No microbial response, global branch selection, long-time turbulent state or Navier–Stokes smoothness result was tested.</p><p>Read <a href="README.md">the complete study</a> for equations, controls, uncertainty, source links and raw-data definitions. <a href="https://basilisk.fr/sandbox/easystab/LectureNotes_RayleighTaylor.md">Classical convection theory</a> · <a href="https://doi.org/10.1002/cpa.3047">Inertia-free limiting theory</a>.</p></section></main></body></html>'''
+    page=page.replace('<h1>Can heating', '<p><a href="#next-steps">New: next tests for the original flow and pond</a></p><h1>Can heating',1)
+    page=page.replace('</main></body></html>',next_html+'</main></body></html>',1)
     (ROOT/'report.html').write_text(page,encoding='utf-8')
     print(json.dumps(dict(report=str(ROOT/'report.html'),independent_tests=len(tests),failed_tests=failures,refined_budget_max=budget)))
 
 if __name__=='__main__':
-    main()
+    import argparse
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--reuse-figures',action='store_true',help='Preserve existing figure bytes for a report-only update.')
+    main(reuse_figures=parser.parse_args().reuse_figures)
