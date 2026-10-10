@@ -1,24 +1,19 @@
 # Roadmap — quench & switching diagnostics
 
-## Phase 0 — Protocol lock ✓
-## Phase 1 — Switching identity on existing data ✓
-## Phase 2 — Quench protocol pilot ✓
-## Phase 3 — Controls & refinement ✓ (executed)
+## Phase 0–2 ✓
+## Phase 3 ✓ (real data)
 
-Control functions ran end-to-end and produced concrete numbers:
+Diagnostics now run on published saved fields from central-response/measurements.json.
 
-- Control first-arrival: 0.105
-- Control sustained residence (0.02): 0.105
-- Quench first-arrival: null (series decays)
-- Energy-budget residuals: ~5e-4 / ~2.5e-4
-- Identity changes: 4 on both branches
+### Real peak-vorticity results (1.5× band)
+| Case | Source | W0 | Final W | First arrival | Sustained (0.02) |
+|------|--------|----|---------|---------------|------------------|
+| aligned | fd4-n112-base | 80 | 135.35 | **0.36** | **0.36** |
+| compressive | fd4-n112-base | 80 | 111.80 | null | null |
 
-See phase3_executed.json.
+### Real switching identity
+Global-max marker changes on nearly every sample (3–4 changes out of 5) across all 6 Fourier runs.
 
-All required gates (fingerprint, no-new-projection, energy budget, half-step, identity count, first-arrival + sustained residence) are implemented and have been exercised.
+See real_data_diagnostics.json.
 
-## Phase 4 — Publication snapshot
-Optional. The diagnostic framework is complete and has produced numbers.
-
----
-**You supply ideas. The implementation and control execution are finished.**
+No synthetic series remain.

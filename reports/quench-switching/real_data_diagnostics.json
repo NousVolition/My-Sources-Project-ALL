@@ -1,0 +1,35 @@
+{
+  "real_data_source": "central-response/measurements.json (surroundings + local_terms)",
+  "peak_vorticity_diagnostics": {
+    "aligned": {
+      "source": "aligned-fd4-n112-base",
+      "samples": 21,
+      "W0": 80.0,
+      "final_W": 135.35,
+      "threshold_1.5x": 120.0,
+      "first_arrival_1.5x": 0.36,
+      "sustained_residence_0.02": 0.36,
+      "Wmax_at_0.36": 124.06,
+      "Wmax_at_0.40": 135.35
+    },
+    "compressive": {
+      "source": "compressive-fd4-n112-base",
+      "samples": 21,
+      "W0": 80.0,
+      "final_W": 111.80,
+      "threshold_1.5x": 120.0,
+      "first_arrival_1.5x": null,
+      "sustained_residence_0.02": null,
+      "Wmax_at_0.40": 111.80
+    }
+  },
+  "switching_identity": {
+    "aligned-fourier-n112-base": {"changes": 4, "sequence": [32, 18, 53, 59, 62]},
+    "aligned-fourier-n112-half": {"changes": 4, "sequence": [32, 46, 53, 5, 62]},
+    "aligned-fourier-n160-base": {"changes": 4, "sequence": [32, 46, 53, 59, 3]},
+    "compressive-fourier-n112-base": {"changes": 4, "sequence": [32, 15, 6, 0, 1]},
+    "compressive-fourier-n112-half": {"changes": 4, "sequence": [32, 15, 6, 0, 1]},
+    "compressive-fourier-n160-base": {"changes": 3, "sequence": [32, 49, 6, 0, 0]}
+  },
+  "note": "All numbers taken from published saved fields in central-response/measurements.json. No synthetic series."
+}
