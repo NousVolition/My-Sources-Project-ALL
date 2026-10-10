@@ -1,6 +1,8 @@
 # Matched-stretch numerical controls
 
-**All three 0.1% seeds at grid 128 complete:** [Three-seed comparison through 0.40](completed-n128-three-seeds/README.md). **28/48 verified completed results published.** Endpoint separations are close across all three seeds; spatial and timestep limitations remain explicit.
+**29/48 completed and verified results published.** Latest: [first 128-grid 0.5% seed through 0.40](completed-n128-halfpercent-seed101/README.md). Nineteen jobs remain. Spatial and timestep resolution remain inadequate; the supplied raw strain has nonsmooth periodic joins and off-central initial maxima.
+
+**All three 0.1% seeds at grid 128 complete:** [Three-seed comparison through 0.40](completed-n128-three-seeds/README.md). Endpoint separations are close across all three seeds; spatial and timestep limitations remain explicit.
 
 ## Earlier completed batches
 
