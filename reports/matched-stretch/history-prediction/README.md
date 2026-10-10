@@ -96,3 +96,7 @@ The [mirror follow-up](mirror-followup/README.md) verifies that all 23 existing 
 ## Physical velocity reversal — 2026-10-10
 
 The [paired physical intervention](velocity-reversal/README.md) adds nine verified state reconstructions and eighteen short branches. At the same initial marker positions, opposite velocities change a mean 18% of the finer-grid high-deformation classifications and share about 30% of the high-event set. Normal continuations reproduce existing trajectories exactly. Aggregate differences agree between grids 38 and 56, while local numerical convergence remains unestablished. This changes the physical velocity and gradient, rather than merely reordering recorded history. All 24 local tests pass.
+
+## Arrangement mirrored in both motion directions — 2026-10-10
+
+The [four-cell mirror/direction experiment](mirror-direction/README.md) reuses nine verified full-state checkpoints and adds eighteen short joint branches plus two complete-state mirror controls. Reversing motion changes high-event labels in both clouds (18.0% original; 19.2% globally mirrored at grid 56). Mirroring finite neighborhoods around fixed centers changes their measured response with a direction-dependent interaction, while central pointwise targets remain exactly unchanged. Complete-state reflection preserves corresponding deformation within roundoff. The markers remain passive; spatial convergence remains unestablished. All 29 local tests pass.
