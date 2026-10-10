@@ -51,6 +51,8 @@ The objective is a mathematical result about smoothness or breakdown for the Nav
 
 ## Material response and molecular studies
 
+**[Quantum water and observable fluid behavior](reports/quantum-water-pilot/README.md)** — H₂O/D₂O vibrational predictions, 24 molecular runs and 131 fluid simulations/check runs, with raw data and stress tests. The finer 100 mm/s whole-flow comparisons pass the 1% grid screen; quantum prediction of bulk transport remains unvalidated.
+
 **[Fluid organization under stress: completed paired-disturbance pilot](reports/fluid-organization-pilot/README.md)** — code, full recordings and tests for the [Streams and Rocks study](https://github.com/NousVolition/Nous-Volition/tree/main/studies/fluid-organization). Marker-history prediction, water/air regimes, dilute fog/smoke controls, energy budgets and explicit numerical limits.
 
 **Separate molecular study:** [One heavy water molecule](reports/molecular/isotope-mass/README.md) records 544 explicit-water MD trajectories, isotope-placement and identity controls, short-time response tests, raw-data provenance and limitations. This confined classical-water experiment is distinct from the Navier–Stokes work; it establishes neither a persistent molecular leader nor new fluid physics.
