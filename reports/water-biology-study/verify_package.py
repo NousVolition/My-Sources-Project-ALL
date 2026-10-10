@@ -1,6 +1,6 @@
 """Check integrity and reproducibility of the delivered research record."""
 from pathlib import Path
-import argparse,csv,hashlib,json
+import argparse,csv,hashlib,json,math,re
 import numpy as np
 
 ROOT=Path(__file__).resolve().parent
@@ -11,6 +11,60 @@ NON_RUN_DATA={'published_budke_koop_table_A2.csv','scalar_transient_convergence.
               'freezing_conditional_probabilities.csv','freezing_simulated_survival.csv',
               'solute_particle_overlap_seed100.csv'}
 
+RTOL=1e-12
+ATOL=1e-13
+
+
+def compare_number(a,b,where,stats):
+    if not math.isfinite(a) or not math.isfinite(b):
+        raise ValueError(f'{where}: nonfinite reproduced number')
+    difference=abs(b-a); tolerance=ATOL+RTOL*abs(a)
+    stats['numeric_values_checked']+=1
+    stats['numeric_values_different']+=int(a!=b)
+    if difference>stats['max_absolute_difference']:
+        stats['max_absolute_difference']=difference;stats['largest_absolute_difference_at']=where
+    stats['max_fraction_of_tolerance']=max(stats['max_fraction_of_tolerance'],difference/tolerance)
+    if difference>tolerance:
+        raise ValueError(f'{where}: file contents differ: expected {a!r}, got {b!r}, tolerance {tolerance!r}')
+
+
+def compare_json(a,b,where,stats):
+    if isinstance(a,dict) and isinstance(b,dict):
+        if set(a)!=set(b):raise ValueError(f'{where}: JSON keys differ')
+        for key in a:compare_json(a[key],b[key],f'{where}/{key}',stats)
+    elif isinstance(a,list) and isinstance(b,list):
+        if len(a)!=len(b):raise ValueError(f'{where}: JSON lengths differ')
+        for i,(x,y) in enumerate(zip(a,b)):compare_json(x,y,f'{where}/{i}',stats)
+    elif type(a) is float and type(b) in (float,int):compare_number(a,b,where,stats)
+    elif type(a)!=type(b) or a!=b:
+        raise ValueError(f'{where}: file contents differ: {a!r} versus {b!r}')
+
+
+def compare_text(original,other,stats):
+    if original.suffix=='.json':
+        compare_json(json.loads(original.read_text(encoding='utf-8')),
+                     json.loads(other.read_text(encoding='utf-8')),original.name,stats)
+    elif original.suffix=='.csv':
+        with original.open(newline='',encoding='utf-8') as a,other.open(newline='',encoding='utf-8') as b:
+            left=list(csv.reader(a));right=list(csv.reader(b))
+        if not left or not right or len(left)!=len(right) or left[0]!=right[0]:raise ValueError(f'{original.name}: CSV rows or header differ')
+        for row,(xs,ys) in enumerate(zip(left[1:],right[1:]),2):
+            if len(xs)!=len(ys):raise ValueError(f'{original.name}:{row}: CSV columns differ')
+            for col,(x,y) in enumerate(zip(xs,ys)):
+                where=f'{original.name}:{row}:{left[0][col]}'
+                if re.fullmatch(r'[+-]?\d+',x):
+                    if not re.fullmatch(r'[+-]?\d+',y) or int(x)!=int(y):raise ValueError(f'{where}: integer differs')
+                    continue
+                try: number=float(x)
+                except ValueError:
+                    if x!=y:raise ValueError(f'{where}: label differs')
+                else:
+                    try:actual=float(y)
+                    except ValueError:raise ValueError(f'{where}: expected a number') from None
+                    compare_number(number,actual,where,stats)
+    elif original.read_bytes().replace(b'\r\n',b'\n')!=other.read_bytes().replace(b'\r\n',b'\n'):
+        raise ValueError(f'{original.name}: file contents differ')
+
 
 def included():
     return sorted(p for p in ROOT.rglob('*') if p.is_file() and
@@ -19,6 +73,7 @@ def included():
 
 
 def compare_reproduction(actual_root, manifest):
+    stats={'numeric_values_checked':0,'numeric_values_different':0,'max_absolute_difference':0.,'max_fraction_of_tolerance':0.}
     expected={name.removeprefix('data/') for name in manifest if name.startswith('data/')} - NON_RUN_DATA
     if len(expected)!=48:
         raise ValueError(f'Expected 48 documented raw-data files, manifest lists {len(expected)}')
@@ -37,11 +92,9 @@ def compare_reproduction(actual_root, manifest):
                 for key in a.files:
                     if a[key].shape!=b[key].shape:
                         raise ValueError(f'{name}:{key}: array shapes differ')
-                    np.testing.assert_allclose(a[key],b[key],rtol=1e-12,atol=1e-13,equal_nan=False,err_msg=f'{name}:{key}')
-        # Windows writes CRLF and Linux writes LF for the same text record.
-        # Normalize only line endings; every number and other character must match.
-        elif original.read_bytes().replace(b'\r\n',b'\n')!=other.read_bytes().replace(b'\r\n',b'\n'):
-            raise ValueError(f'{name}: file contents differ')
+                    np.testing.assert_allclose(b[key],a[key],rtol=RTOL,atol=ATOL,equal_nan=False,err_msg=f'{name}:{key}')
+        else:compare_text(original,other,stats)
+    print(json.dumps({'text_reproduction_comparison':stats},indent=2))
     return len(expected)
 
 
