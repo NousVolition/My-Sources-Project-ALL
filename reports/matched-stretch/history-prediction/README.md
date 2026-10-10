@@ -84,3 +84,7 @@ Source repository: [NousVolition/My-Sources-Project-ALL](https://github.com/Nous
 This is evidence of a small predictive association in an incomplete-observation problem, with unresolved spatial accuracy. It does not identify a particular causal arrangement, marker leadership, an exact event onset time, or a future Eulerian event location. A complete deterministic present fluid state determines subsequent evolution while a unique solution exists; geometry history may proxy omitted spatial information or reduce model approximation error. Nothing here establishes a Navier–Stokes regularity result or breakthrough.
 
 Publication checksums for the uploaded files are recorded in [publication-manifest.json](publication-manifest.json). The original source_manifest.json retains the earlier local-delivery snapshot; publication edits add navigation and data links without changing the numerical analysis.
+
+## Spatial refinement follow-up — 2026-10-10
+
+The [three-grid follow-up](resolution-followup/README.md) adds 12 verified simulations while keeping the original predictors frozen. At 56³ the mean RMSE benefit is about 0.7%, with a paired interval including no improvement; strong-event average precision is slightly lower for the history model. Target differences shrink with refinement, but the numerical stability thresholds still fail. Spatial convergence remains unestablished. The report also explains why reversing a history does not prove that chronology is irrelevant.

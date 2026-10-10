@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "created_utc": "2026-10-10",
+  "purpose": "Test numerical stability of the already fitted marker-history prediction result, following the user's request to establish spatial convergence.",
+  "status": "Frozen before new refinement simulations; exploratory follow-up after seeing the original pilot.",
+  "reuse_grids": [26, 38],
+  "new_grid": 56,
+  "seeds": [1024, 1025, 1026, 1027, 1028, 1029, 1030, 1031],
+  "half_step_seeds": [1024, 1025],
+  "half_step_grids": [38, 56],
+  "new_simulations": 12,
+  "base": {"nu": 0.02, "dt": 0.005, "save_dt": 0.025, "end": 1.2, "markers": 512},
+  "half_step_dt": 0.0025,
+  "pilot": "Run seed 1024 at grid 56 first; verify source/configuration hashes, finite arrays, CFL, incompressibility and energy budget before continuing.",
+  "invariants": "Unchanged parent Navier-Stokes solver, smooth Fourier initial-condition realization, marker initial positions, Heun method, domain side 6, zero force, viscosity, prediction anchors, lookback, horizon, delay, training-derived event threshold, feature code and trained model coefficients. Original sharp strain/tube matrix is read-only and not expanded.",
+  "learning": "No fitting, selection, re-quantiling, or model tuning on refinement runs. Seeds are the same eight held-out groups, not eight additional independent groups.",
+  "comparisons": ["same-label Lagrangian target RMSE", "trajectory displacement", "event-set Jaccard and flip fraction at the original training-derived threshold", "paired per-run A/B RMSE and average precision with bootstrap intervals", "prediction drift", "tangent-volume errors", "grid-difference contraction", "time-step differences on the first two prechosen test seeds"],
+  "screens": {"finest_pair_target_relative_RMSE_max": 0.01, "finest_pair_event_Jaccard_min": 0.95, "all_seed_grid_difference_contracts": true, "time_error_less_than_tenth_grid_error_on_checked_seeds": true},
+  "screens_interpretation": "Operational numerical-stability screens for this follow-up, not a theorem or universal tolerance. A predictive claim additionally needs the A/B effect to survive refinement and numerical changes small enough to resolve that effect. A shrinking difference alone does not establish an asymptotic range or warrant Richardson extrapolation.",
+  "limits": "These are smooth-flow pilot refinements, not validation of the original nonsmooth strain/tube start. Frozen coarse-trained predictors assess transfer/stability, not optimum fine-grid-trained predictive power. The target is deformation along a material trajectory over a delayed window; it is not exact Eulerian event onset/location.",
+  "method_reference": "https://www.grc.nasa.gov/www/wind/valid/tutorial/spatconv.html"
+}
