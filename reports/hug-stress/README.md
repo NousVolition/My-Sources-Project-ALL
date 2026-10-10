@@ -1,5 +1,11 @@
 # The hug under stress
 
+**Two-way tests added:** [compare the hug and Lorenz drive in both directions](two-way-report.html). A proposed imprint-dependent return resistance changes the Lorenz drive, which changes the pressure received by the hug. The completed work includes 84 integrations, matched controls, three initial states, independent numerical methods, refinement and opening-threshold tests. Strong return resistance substantially reduces finite-time fluctuations and imprint; weak effects remain sensitive to numerical phase drift. See the report for definitions and limits.
+
+**The user's intended meaning:** “breathable” describes a clay-like form that yields and molds easily around what presses into it. It does not specify a valve or opening-and-closing cycle. The inherited permanent-opening threshold is part of the current reduced code, not a defining property of the hug. The new return-resistance law is an explicit test proposal; general molding and contact are not implemented.
+
+The playback timing bug (`sample is not iterable`) is repaired. Playback now uses one animation clock and validates saved sample indexes. The previous one-way data remain unchanged.
+
 **Lorenz dynamics are now added:** [play the Lorenz-driven hug](lorenz-report.html). A new bounded pressure connection drives the existing imprint, lean and opening equations. Five playable modes, 84 additional configurations, independent solver checks and four positive finite-time Lyapunov estimates for the Lorenz drive are included. This is an explicit one-way modeling choice; it does not yet implement fluid permeability or an active square wall.
 
 The earlier mild checks passed, but a harder 224-configuration study exposes limits in the original fixed-step solver and in what the reduced model represents.
