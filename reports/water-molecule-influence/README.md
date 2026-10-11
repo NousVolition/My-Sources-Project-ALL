@@ -114,3 +114,7 @@ Repeat with longer trajectories, larger boxes, alternate water models, and indep
 - [OpenMM Langevin integrator and random-seed behavior](https://docs.openmm.org/latest/api-python/generated/openmm.openmm.LangevinMiddleIntegrator.html)
 - [Ozkanlar, Zhou & Clark (2014): hydrogen-bond network definitions](https://pubmed.ncbi.nlm.nih.gov/25481129/)
 - [Vega et al. (2009): comparison of water models](https://arxiv.org/abs/0901.1803)
+
+## Gas return selection using full velocity
+
+[Completed past-only forecast test](gas-return-selection-extension/README.md): full-velocity matching lowers the 0.02 ps error by 11.9–22.8% in all six evaluation comparisons, but a straight-line velocity forecast wins in three. Longer-horizon failures, exact source trajectories, frozen settings and reproducible checks are included.

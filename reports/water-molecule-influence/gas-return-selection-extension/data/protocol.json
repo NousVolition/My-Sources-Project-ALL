@@ -1,0 +1,29 @@
+{
+  "question": "Can position plus full velocity select a more useful older passage than position alone or position plus direction?",
+  "design_recorded_before_new_results": true,
+  "new_simulations": 0,
+  "source": "Existing nine damping trajectories and three finer recordings of start 2.",
+  "training": "Use start 1, all three damping levels, to select one shared weight per method by the mean of the three 0.02 ps shifted-analogue forecast mean squared errors. Training anchors 10.00..19.89 ps, step 0.01 ps.",
+  "test": "Freeze weights, then evaluate starts 2 and 3 separately at all three damping levels. These trajectories were examined in previous exploratory analyses, so this is a split for this new rule, not untouched confirmatory evidence.",
+  "current_velocity": "Backward difference [p(t)-p(t-dt)]/dt, where dt is recording interval. No future samples enter selection or forecast generation.",
+  "candidates": "One closest projected point per older recorded segment whose endpoints lie 0.10..1.00 ps before the anchor. Keep candidates within distance 0.02. All methods use the same eligible anchors, those with at least one candidate. Ties choose the most recent segment.",
+  "older_velocity": "Backward difference of piecewise-linearly interpolated position over the same interval as current velocity.",
+  "position_score": "Squared separation.",
+  "direction_score": "Squared separation + length_weight^2 * squared difference between unit velocity vectors. A zero-speed pair receives unit-vector mismatch squared of 4; the count is reported.",
+  "velocity_score": "Squared separation + time_weight^2 * squared velocity-vector difference.",
+  "direction_length_grid": [0, 0.002, 0.005, 0.01, 0.02, 0.05],
+  "velocity_time_grid_ps": [0, 0.002, 0.005, 0.01, 0.02, 0.05],
+  "forecast": "p_current + p_older(t_older+h) - p_older(t_older). The selected old time is fixed for all horizons. Since h<=0.10 ps and the old point is at least 0.10 ps ago, the entire older continuation is already observed at the anchor.",
+  "baselines": "Hold current position; or current position + h * backward-difference velocity.",
+  "horizons_ps": [0.02, 0.05, 0.1],
+  "primary_outcome": "Two-dimensional squared forecast error, summed across x/y and averaged across eligible anchors. Report each test run separately and relative change from position-only selection.",
+  "secondary_outcome": "Absolute paired-path distance<=0.02 and backward-velocity angle<=45 degrees at each horizon, without shifting the older path. This measures actual plotted proximity, unlike shifted forecast error.",
+  "finer_check": "Apply frozen coarse-training weights to fine start-2 paths at exactly the same anchor times. Report both common eligible anchors and native eligibility. No retuning.",
+  "limitations": [
+    "Prior inspection of these starts prevents an untouched-test claim.",
+    "Overlapping anchors are dependent; counts do not represent independent return events and no significance claims are made.",
+    "A projected collective state is not the full molecular state.",
+    "Different damping runs also have different temperatures and stochastic forcing.",
+    "No new state restart, intervention, molecular simulation or integration-step convergence test is performed."
+  ]
+}

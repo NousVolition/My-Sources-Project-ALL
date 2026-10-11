@@ -168,4 +168,6 @@ Full restart arrays for the two 48-run fluid matrices remain in the local calcul
 
 **Seeing orange/red lines and minus signs?** You are viewing a commit or pull request diff. Those lines show the previous version. Return to the **Code** tab and open the README to read the current report.
 
+## Gas return selection: speed, direction and forecast limits
 
+[Completed return-selection experiment](water-molecule-influence/gas-return-selection-extension/README.md): nine gas damping trajectories, three finer recording checks, past-only predictions, separate-start tuning and evaluation, and simple baselines. Short-horizon improvements and longer-horizon failures are both retained.

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Choosing a return using its full velocity</title>
+<style>
+body{font:17px/1.6 system-ui,sans-serif;max-width:1100px;margin:auto;padding:24px;color:#21333b;background:#f7f8f5}h1,h2{line-height:1.2}figure{margin:24px 0}img{width:100%;height:auto}figcaption,small{font-size:14px}a{color:#126779}table{border-collapse:collapse;width:100%;font-size:14px}td,th{padding:8px;border-bottom:1px solid #cdd6d9;text-align:right}td:first-child,th:first-child{text-align:left}.table{overflow:auto}code{font-size:14px}@media(max-width:600px){body{padding:14px}}
+</style>
+<h1>Can the full velocity arrow choose a better return?</h1>
+<p><strong>Yes, for the short forecast tested here.</strong> Selecting an older passage using position and full velocity reduces the 0.02 ps forecast error by <strong>11.9–22.8%</strong> relative to selecting by position alone, in all six comparisons on starts 2 and 3. It also improves on position plus direction by 1.9–7.8% in those six comparisons.</p>
+<p><strong>It does not win every test.</strong> Simply continuing the current velocity arrow beats the selected-passage forecast in three of those six short-horizon comparisons. At 0.10 ps, full-velocity selection improves on position-only selection in three cases and worsens it in three. Holding position beats the full-velocity forecast in both weaker runs at that longer horizon.</p>
+<figure><img src="figures/return_selection.png" alt="Left: short-horizon prediction errors relative to position-only selection for six test comparisons. Full velocity beats both other passage selectors throughout, but straight extrapolation wins in three cases. Right: short-horizon gains of 12 to 23 percent mostly disappear at longer horizons."><figcaption>Each comparison uses exactly the same eligible anchor times for all methods. Error is the mean squared two-dimensional displacement error. The right panel compares full-velocity selection with position-only selection; negative values mean it performs worse.</figcaption></figure>
+<h2>The harder test</h2>
+<p>The previous test followed the spatially nearest old passage. This one lets each rule choose among nearby older passages, then freezes its choice. All candidates lie within distance 0.02 of the current point and between 0.10 and 1.00 ps in the past. Each older recorded segment contributes its closest projected point.</p>
+<ol>
+<li><strong>Position only:</strong> choose the spatially closest passage.</li>
+<li><strong>Position + direction:</strong> also favor a similar velocity direction, ignoring speed.</li>
+<li><strong>Position + full velocity:</strong> favor similar direction and speed together.</li>
+</ol>
+<p>To turn the chosen passage into a forecast, translate its starting point onto the current point, then reuse its subsequent displacement. The forecast uses an older continuation that is already fully recorded at the current time. No future data are needed to make it. Two simple baselines hold the current position or continue the current velocity in a straight line.</p>
+<p><strong>A necessary change:</strong> velocity now comes from the current and previous frames only. The centered arrows in the earlier descriptive viewer used one frame ahead as well; that is suitable for inspecting recorded motion, but would give a predictive rule information from the future. A test that deliberately changes all future positions confirms that the new selections and forecasts remain unchanged.</p>
+<h2>Choose settings on start 1; test them on starts 2 and 3</h2>
+<p>The rule definitions, weight grids, target horizon and split were saved before this analysis ran. Start 1 across all three damping levels chose one shared weight for each selector. Those weights were then frozen for the other starts and all horizons. Starts 2 and 3 have appeared in earlier exploratory work: this is a separate-start check of the new rule, <strong>not untouched confirmation</strong>.</p>
+<p>Each run supplies 990 possible anchors from 10.00 to 19.89 ps. An anchor is eligible only if at least one nearby older passage exists. Every method and baseline uses that same eligible set within a run. This prevents one method from improving its error merely by refusing harder cases.</p>
+<h2>0.02 ps forecast errors</h2>
+<p>Lower is better. Error sums squared x and y errors, then averages across eligible anchors; units are squared mean-direction coordinates. It measures this collective projection, not molecular positions in space.</p>
+<div class="table"><table><thead><tr><th>Start</th><th>Damping (1/ps)</th><th>Eligible anchors</th><th>Position only</th><th>+ Direction</th><th>+ Full velocity</th><th>Hold position</th><th>Continue velocity</th></tr></thead><tbody>__PRIMARY__</tbody></table></div>
+<h2>How far does the improvement last?</h2>
+<p>The table gives the reduction in mean squared error from full-velocity selection relative to position-only selection. Positive values are improvements. Settings were chosen for 0.02 ps, so the longer horizons directly test how far that short-horizon rule transfers.</p>
+<div class="table"><table><thead><tr><th>Start</th><th>Damping (1/ps)</th><th>+0.02 ps</th><th>+0.05 ps</th><th>+0.10 ps</th></tr></thead><tbody>__LONGER__</tbody></table></div>
+<h2>Does the pair actually remain near?</h2>
+<p>The forecast shifts the old starting point onto the new one. This separate check keeps the paths in their original positions. At +0.02 ps, count pairs within distance 0.02 and with velocity directions within 45°. These are endpoint matches; they do not establish uninterrupted agreement.</p>
+<div class="table"><table><thead><tr><th>Start</th><th>Damping (1/ps)</th><th>Position only</th><th>+ Direction</th><th>+ Full velocity</th></tr></thead><tbody>__PAIRED__</tbody></table></div>
+<p>Full-velocity selection improves this matching fraction over position-only selection in all six comparisons, but only about 8–13% pass at this horizon. Lower average forecast error and persistent overlap are different tests.</p>
+<h2>Finer recording changes the numbers</h2>
+<p>For start 2, the frozen weights were also applied to the 0.001 ps recordings. Every tenth fine position equals the coarse position exactly. The comparison below uses only anchors eligible at both resolutions, so changes cannot be explained by evaluating different times. Finer recording changes both available candidates and the backward velocity estimate.</p>
+<div class="table"><table><thead><tr><th>Damping</th><th>Recording</th><th>Common anchors</th><th>Position-only MSE</th><th>Full-velocity MSE</th><th>Continue-velocity MSE</th><th>Full-velocity gain</th></tr></thead><tbody>__FINE__</tbody></table></div>
+<p>The full-velocity selector still beats position-only selection at 0.02 ps in all three finer checks. Continuing the current velocity improves too, and wins for original and stronger damping at the finer resolution. Numerical agreement is not yet established; this is a recording-resolution check, not a changed integration timestep.</p>
+<h2>How to use the result</h2>
+<p>Use full velocity to find more promising short-term analogues when a path revisits its neighborhood. Keep the forecast horizon explicit, and compare the result with holding position and continuing the current arrow. Here, neither a visually connected path nor a good initial velocity match supplies a reliable long-lived replay.</p>
+<h2>Exact selection rules and training</h2>
+<p>Let <em>d</em> be candidate distance, <em>v</em> the backward velocity, and <em>u</em> its unit direction. Position minimizes <code>d²</code>; direction minimizes <code>d² + L² ‖u_current − u_old‖²</code>; full velocity minimizes <code>d² + T² ‖v_current − v_old‖²</code>. Weights come from 0, 0.002, 0.005, 0.01, 0.02 and 0.05. Selection uses position and past velocity only, never candidate forecast success.</p>
+<p>Training minimizes the equally weighted mean of the three start-1 errors at +0.02 ps. It selects <strong>L = 0.05</strong> mean-direction units and <strong>T = 0.02 ps</strong>. The direction weight is at the tested grid boundary; no globally optimal tuning is claimed. Ties choose the smaller weight, and equal candidate scores choose the more recent segment. No selected pair has an undefined zero-speed direction.</p>
+<details><summary>Training scores for every tested weight</summary><div class="table"><table><thead><tr><th>Method</th><th>Weight</th><th>Mean training MSE</th></tr></thead><tbody>__TRAINING__</tbody></table></div></details>
+<h2>Evidence and limits</h2>
+<p>Checks cover a known constant-velocity forecast, the straight-line baseline, fractional-time backward derivatives, future-data mutation, equal method denominators, fixed older times, source hashes and preservation of prior results. Full predictions and per-anchor errors are saved. No new molecular dynamics was run.</p>
+<p>Anchors overlap in time and are not independent events; no statistical significance claim is made. Only three starting configurations are available. The two-dimensional collective coordinate omits most molecular information. Damping also changes heat removal and stochastic forcing, so these comparisons do not isolate inertia or show a causal memory mechanism.</p>
+<p><a href="data/results.json">All measurements</a> · <a href="data/protocol.json">Protocol</a> · <a href="data/locked_training.json">Frozen settings and training grid</a> · <a href="data/delivery_validation.json">Validation</a> · <a href="manifest_sha256.json">File checksums</a> · <a href="README.md#previous-check">Previous fixed-pair test</a></p>
+</html>
