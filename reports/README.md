@@ -70,6 +70,8 @@ These studies use separate molecular or toy models. Their own reports state the 
 
 ## Moldable hug and reciprocal drive
 
+[Repaired contact and harder reciprocal stress tests](clay-contact-stress/README.md): whole-edge object barriers, square-wall protection and material self-contact; matched one-way/two-way Lorenz runs, sustained comparisons, independent integration and retained earlier failures. [Recorded molding and illustrated offline report](clay-contact-stress/report.html).
+
 [Computed molding and stress results](clay-hug/README.md): a filled 2-D yielding mesh around circular, tilted elliptical and concave objects; reciprocal work coupling to Lorenz, unloading, time/mesh/contact checks and preserved numerical failures. [Interactive offline report](clay-hug/report.html). The material is dimensionless and not calibrated physical clay.
 
 ## Mirror-fluid and reduced models
