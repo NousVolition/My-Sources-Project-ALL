@@ -1,0 +1,72 @@
+<div id="moldable-hug">
+  <h2>A hug that molds around an object</h2>
+  <div class="viz-controls">
+    <label class="form-label" for="mh-case">Recorded test<select class="form-select" id="mh-case"></select></label>
+    <button class="btn btn-primary" id="mh-play" type="button">Play molding</button>
+  </div>
+  <div class="mh-panels">
+    <div><h3>One-way drive</h3><svg id="mh-one" role="img" aria-label="Filled material mesh deforming against a rigid object under one-way Lorenz forcing"></svg></div>
+    <div><h3>Two-way interaction</h3><svg id="mh-two" role="img" aria-label="Filled material mesh reacting back on the Lorenz drive"></svg></div>
+  </div>
+  <label class="form-label" for="mh-time">Model time <output id="mh-clock" class="tabular-nums"></output><input class="form-range" id="mh-time" type="range" min="0" max="60" step="1" value="0"></label>
+  <div class="table-responsive"><table class="table table-sm tabular-nums"><thead><tr><th>Current value</th><th>One-way</th><th>Two-way</th></tr></thead><tbody id="mh-values"></tbody></table></div>
+  <svg id="mh-lorenz" role="img" aria-label="Recorded one-way and two-way Lorenz X-Z trajectories up to the selected time"></svg>
+  <div class="viz-row text-small"><span><span aria-hidden="true" style="color:var(--viz-series-2)">┄</span> One-way Lorenz</span><span><span aria-hidden="true" style="color:var(--viz-series-1)">━</span> Two-way Lorenz</span></div>
+  <div id="mh-status" class="text-small" aria-live="polite"></div>
+</div>
+<style>
+#moldable-hug{color:var(--foreground)}
+#moldable-hug .mh-panels{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+#moldable-hug .mh-panels>div{min-width:0}
+#moldable-hug svg{display:block;width:100%}
+#moldable-hug svg text{fill:var(--foreground);font-size:12px}
+@media(max-width:500px){#moldable-hug .mh-panels{grid-template-columns:minmax(0,1fr)}}
+</style>
+<script type="application/json" id="mh-data">__MOLDING_DATA__</script>
+<script>
+(()=>{
+ const root=document.getElementById('moldable-hug'),data=JSON.parse(document.getElementById('mh-data').textContent);
+ const select=root.querySelector('#mh-case'),play=root.querySelector('#mh-play'),slider=root.querySelector('#mh-time'),status=root.querySelector('#mh-status');
+ const svgs=[root.querySelector('#mh-one'),root.querySelector('#mh-two')],phase=root.querySelector('#mh-lorenz');
+ let active=data.cases.find(c=>c.key==='ellipse'),index=active.initialIndex||0,running=false,start=null,startIndex=0,raf=0;
+ const pair=()=>[data.records[active.one],data.records[active.two]],last=()=>pair()[0].frames.length-1;
+ const valid=value=>Number.isFinite(value)?Math.min(last(),Math.max(0,Math.round(value))):0;
+ for(const c of data.cases){const o=document.createElement('option');o.value=c.key;o.textContent=c.label;select.append(o);}select.value=active.key;
+ function el(svg,name,attrs,text){const e=document.createElementNS('http://www.w3.org/2000/svg',name);for(const [k,v] of Object.entries(attrs))e.setAttribute(k,v);if(text)e.textContent=text;svg.append(e);return e;}
+ function path(points,x,y){return points.map((p,i)=>(i?'L':'M')+x(p[0])+','+y(p[1])).join(' ');}
+ function draw(){
+  index=valid(index);slider.max=last();slider.value=index;const records=pair(),frames=records.map(r=>r.frames[index]);
+  root.querySelector('#mh-clock').textContent=frames[0].time.toFixed(2);
+  svgs.forEach((svg,k)=>{
+   const w=svg.parentElement.clientWidth;if(w<100)return;svg.replaceChildren();svg.setAttribute('viewBox',`0 0 ${w} 290`);svg.style.height='290px';
+   const size=Math.min(w-24,244),cx=w/2,cy=136,scale=size/4.8,xx=x=>cx+x*scale,yy=y=>cy-y*scale;
+   el(svg,'rect',{x:xx(-2.2),y:yy(2.2),width:4.4*scale,height:4.4*scale,fill:'none',stroke:'var(--border)'});
+   el(svg,'path',{d:path(records[k].outline,xx,yy)+' Z',fill:'var(--muted)',stroke:'var(--muted-foreground)','stroke-width':1});
+   el(svg,'path',{d:path(data.initial.slice(0,data.angles),xx,yy)+' Z',fill:'none',stroke:'var(--border)','stroke-dasharray':'3 3'});
+   for(const tri of data.triangles)el(svg,'path',{d:path(tri.map(i=>frames[k].positions[i]),xx,yy)+' Z',fill:k?'var(--viz-series-1)':'var(--viz-series-2)','fill-opacity':.18,stroke:k?'var(--viz-series-1)':'var(--viz-series-2)','stroke-width':.65});
+   el(svg,'text',{x:cx,y:278,'text-anchor':'middle'},'Cross-section · model units');
+  });
+  const rows=[['Imprint',f=>f.imprint.toFixed(3)],['Surface near object',f=>(100*f.contact).toFixed(0)+'%'],['Radial overlap',f=>f.overlap.toFixed(3)],['Drive X',f=>f.lorenz[0].toFixed(2)],['Net drive work',f=>f.port.toFixed(3)]];
+  const tbody=root.querySelector('#mh-values');tbody.replaceChildren();for(const [name,format] of rows){const tr=document.createElement('tr'),th=document.createElement('th');th.scope='row';th.textContent=name;tr.append(th);for(const f of frames){const td=document.createElement('td');td.textContent=format(f);tr.append(td);}tbody.append(tr);}
+  const w=phase.parentElement.clientWidth;if(w<100)return;phase.replaceChildren();phase.setAttribute('viewBox',`0 0 ${w} 220`);phase.style.height='220px';
+  const all=records.flatMap(r=>r.trace),xs=all.map(s=>s[1]),zs=all.map(s=>s[2]);let xmin=Math.min(...xs),xmax=Math.max(...xs),zmin=Math.min(...zs),zmax=Math.max(...zs);
+  const xp=Math.max(.5,.07*(xmax-xmin)),zp=Math.max(.5,.07*(zmax-zmin));xmin-=xp;xmax+=xp;zmin-=zp;zmax+=zp;
+  const xx=x=>64+(w-82)*(x-xmin)/(xmax-xmin),yy=z=>178-158*(z-zmin)/(zmax-zmin);
+  el(phase,'rect',{x:64,y:20,width:w-82,height:158,fill:'none',stroke:'var(--border)','data-chart-frame':''});
+  records.forEach((r,k)=>{const trace=r.trace.filter(s=>s[0]<=frames[k].time+1e-8);el(phase,'path',{d:path(trace.map(s=>s.slice(1)),xx,yy),fill:'none',stroke:k?'var(--viz-series-1)':'var(--viz-series-2)','stroke-width':1.2,'stroke-dasharray':k?'none':'4 3'});el(phase,'circle',{cx:xx(frames[k].lorenz[0]),cy:yy(frames[k].lorenz[2]),r:3.5,fill:k?'var(--viz-series-1)':'var(--viz-series-2)'});});
+  el(phase,'text',{x:(w+46)/2,y:214,'text-anchor':'middle',class:'axis-title','data-axis':'x'},'Lorenz X (model units)');
+  el(phase,'text',{transform:'translate(14 99) rotate(-90)','text-anchor':'middle',class:'axis-title','data-axis':'y'},'Lorenz Z (model units)');
+  el(phase,'text',{x:64,y:195},xmin.toFixed(1));el(phase,'text',{x:w-18,y:195,'text-anchor':'end'},xmax.toFixed(1));el(phase,'text',{x:58,y:27,'text-anchor':'end'},zmax.toFixed(1));el(phase,'text',{x:58,y:178,'text-anchor':'end'},zmin.toFixed(1));
+  const label=active.key==='alpha2'?'Strong drive exceeds the chosen 0.02 overlap target':'Filled yielding mesh · rigid object · frictionless penalty contact';if(status.textContent!==label)status.textContent=label;
+ }
+ function stop(){running=false;cancelAnimationFrame(raf);play.textContent='Play molding';}
+ function save(){window.openai?.setWidgetState?.({modelContent:{test:active.label,time:pair()[0].frames[index].time,scope:'Computed 2-D abstract material with yielding, fading rest shape and reciprocal work coupling'},privateContent:{schema:'moldable-hug-v1',key:active.key,index}})?.catch(()=>{});}
+ function apply(state){const s=state?.privateContent;if(s?.schema!=='moldable-hug-v1')return;const c=data.cases.find(c=>c.key===s.key);if(!c)return;stop();active=c;select.value=c.key;index=valid(s.index);draw();}
+ function frame(now){if(!running)return;if(Number.isFinite(now)){if(start===null)start=now;index=valid(Math.max(index,startIndex+Math.floor(Math.max(0,now-start)/150)));draw();}if(index===last()){stop();save();return;}raf=requestAnimationFrame(frame);}
+ select.addEventListener('change',()=>{const c=data.cases.find(c=>c.key===select.value);if(!c){select.value=active.key;return;}stop();active=c;index=c.initialIndex||0;draw();save();});
+ slider.addEventListener('input',()=>{stop();index=valid(Number(slider.value));draw();});slider.addEventListener('change',save);
+ play.addEventListener('click',()=>{if(running){stop();save();return;}if(index===last())index=0;if(matchMedia('(prefers-reduced-motion: reduce)').matches){index=last();draw();save();return;}running=true;start=null;startIndex=index;play.textContent='Pause molding';draw();raf=requestAnimationFrame(frame);});
+ new ResizeObserver(draw).observe(root);window.addEventListener('openai:set_globals',e=>{if(e.detail?.globals?.widgetState)apply(e.detail.globals.widgetState);});
+ root.moldingSnapshot=()=>({key:active.key,index,running,frames:pair().map(r=>r.frames[index])});apply(window.openai?.widgetState);draw();
+})();
+</script>

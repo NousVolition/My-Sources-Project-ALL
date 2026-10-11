@@ -1,0 +1,56 @@
+{
+  "parameters": {
+    "angles": 24,
+    "layers": 3,
+    "modulus": 2.0,
+    "bulk": 5.0,
+    "viscosity": 1.5,
+    "hardening": 0.1,
+    "yield_strain": 0.015,
+    "yield_time": 0.1,
+    "memory_time": 1.0,
+    "contact": 100.0,
+    "wall": 100.0,
+    "preload": 0.35,
+    "alpha": 0.5,
+    "feedback": true,
+    "plastic": true,
+    "rho": 28.0,
+    "lorenz_capacity": 0.01,
+    "object_shape": "ellipse",
+    "object_angle": 0.35,
+    "object_x": 0.0,
+    "object_y": 0.0,
+    "wall_half": 2.2
+  },
+  "paired_cases": 18,
+  "seeds": [
+    [
+      1,
+      1,
+      1
+    ],
+    [
+      -8,
+      8,
+      27
+    ]
+  ],
+  "record_step": 0.04,
+  "paired_end": 16,
+  "statistics_burn": 4,
+  "dt": 0.001,
+  "sources": {
+    "clay_hug.py": "228915e7318102ddd4205dc785131193b0ce1580a0a1087bc89457fdd4ba64d9",
+    "run_stress.py": "8463364c61a25aa90c8cad3ba1055f90ac995c23fe9aaf97b0b8615036c2f161",
+    "validate_model.py": "4a30f865accfd6a5360a82003ac41935469549b7fd7c6206f1438d40741499c7"
+  },
+  "scope": "Dimensionless 2-D cohesive viscoplastic mesh and prescribed rigid objects. Not calibrated real clay, 3-D material, water or Navier-Stokes flow.",
+  "port": "Force = -(alpha/10)*X*grad(A); reciprocal Xdot += (alpha/10)*Adot / lorenz_capacity; A=sum(reference nodal area*radius)",
+  "targets": {
+    "short_state_scaled_error": 0.0001,
+    "energy_budget": 0.001,
+    "radial_overlap": 0.02,
+    "minimum_area_ratio": 0.1
+  }
+}

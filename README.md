@@ -59,6 +59,9 @@ Download the repository and open `reports/dynamics-reference-tests/stress/report
 
 ## Material response and molecular studies
 
+**[Moldable hug with reciprocal Lorenz drive](reports/clay-hug/README.md)** — a filled 2-D yielding material that reshapes around rigid objects and retains a fading imprint. Includes matched one-way/two-way drive tests, work balances, numerical stress limits, refinement, raw trajectories and an interactive offline report. This is an abstract material prototype, not calibrated physical clay.
+
+
 **[Quantum water and observable fluid behavior](reports/quantum-water-pilot/README.md)** — H₂O/D₂O vibrational predictions, 24 molecular runs and 131 fluid simulations/check runs, with raw data and stress tests. The finer 100 mm/s whole-flow comparisons pass the 1% grid screen; quantum prediction of bulk transport remains unvalidated.
 
 **[Fluid organization under stress: completed paired-disturbance pilot](reports/fluid-organization-pilot/README.md)** — code, full recordings and tests for the [Streams and Rocks study](https://github.com/NousVolition/Nous-Volition/tree/main/studies/fluid-organization). Marker-history prediction, water/air regimes, dilute fog/smoke controls, energy budgets and explicit numerical limits.
@@ -90,4 +93,5 @@ The human–AI conversations, mirrored categories, and pressure-and-memory illus
 - [Original stream-function repository](https://github.com/NousVolition/Nous-Volition)
 
 The report collection is a dated copy of saved local work. Ongoing calculations can produce newer results locally before the next publication; the snapshot date is recorded in its [index](reports/README.md).
+
 
