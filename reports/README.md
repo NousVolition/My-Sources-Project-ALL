@@ -17,7 +17,7 @@ Published status: October 10, 2026 (UTC). Each study has its own starting field 
 
 | Study | Published results | Start reading |
 | --- | --- | --- |
-| Matched-stretch controls | **33/48 complete**, through 0.40; 15 remain | [Current study page](matched-stretch/README.md) ; [Latest 128-grid 1% seed](matched-stretch/completed-n128-onepercent-seed202/README.md) |
+| Matched-stretch controls | **34/48 complete**, through 0.40; 14 remain | [Current study page](matched-stretch/README.md) ; [Latest 128-grid 1% seed](matched-stretch/completed-n128-onepercent-seed303/README.md) |
 | Three vortex surroundings | **48/48 complete**, through 0.40 | [Final matrix and charts](study/final-matrix/README.md) · [Study page](study/README.md) |
 | Separate smooth-start stress suite | **39/39 complete** | [Results and numerical limits](navier-stokes-stress/README.md) |
 | Earlier hugged ring | Saved evolution, grid and timestep comparisons | [Construction and results](../math/notes/hug-boundary.md) |
