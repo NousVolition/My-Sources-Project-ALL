@@ -1,0 +1,894 @@
+{
+  "grids": [
+    56,
+    80,
+    112,
+    160
+  ],
+  "screens": 204,
+  "passed": 200,
+  "failures": [
+    {
+      "kind": "relative_target_RMSE",
+      "identifier": "s1024/global/mirror_normal",
+      "value": 0.011707769307921948,
+      "limit": 0.01,
+      "comparison": "<=",
+      "pass": false
+    },
+    {
+      "kind": "relative_target_RMSE",
+      "identifier": "s1025/global/original_normal",
+      "value": 0.011529499554406884,
+      "limit": 0.01,
+      "comparison": "<=",
+      "pass": false
+    },
+    {
+      "kind": "relative_target_RMSE",
+      "identifier": "s1025/global/mirror_normal",
+      "value": 0.010987550505394851,
+      "limit": 0.01,
+      "comparison": "<=",
+      "pass": false
+    },
+    {
+      "kind": "relative_target_RMSE",
+      "identifier": "s1025/global/mirror_reversed",
+      "value": 0.01057005390532816,
+      "limit": 0.01,
+      "comparison": "<=",
+      "pass": false
+    }
+  ],
+  "summary": {
+    "56": {
+      "effects": {
+        "cloud": {
+          "arrangement_average": {
+            "mean": 0.18274495861238235,
+            "descriptive_ci95": [
+              0.15351690512115534,
+              0.21197301210360936
+            ],
+            "independent_runs": 4
+          },
+          "direction_average": {
+            "mean": 0.2547261207318733,
+            "descriptive_ci95": [
+              0.22543441397062294,
+              0.29905887583025886
+            ],
+            "independent_runs": 4
+          },
+          "interaction_difference_in_differences": {
+            "mean": 0.37514391974504974,
+            "descriptive_ci95": [
+              0.2840900260124871,
+              0.4692096486753864
+            ],
+            "independent_runs": 4
+          }
+        },
+        "pair": {
+          "arrangement_average": {
+            "mean": 0.03153014275686521,
+            "descriptive_ci95": [
+              0.025151069083801467,
+              0.037909216429928956
+            ],
+            "independent_runs": 4
+          },
+          "direction_average": {
+            "mean": 0.21532121487216999,
+            "descriptive_ci95": [
+              0.19267017988550802,
+              0.23797224985883197
+            ],
+            "independent_runs": 4
+          },
+          "interaction_difference_in_differences": {
+            "mean": 0.37389836763776535,
+            "descriptive_ci95": [
+              0.3242763596869485,
+              0.42473571088879236
+            ],
+            "independent_runs": 4
+          }
+        },
+        "global_direction": {
+          "original": {
+            "mean": 0.21994756828263373,
+            "descriptive_ci95": [
+              0.2007842480921137,
+              0.23756763074470055
+            ],
+            "independent_runs": 4
+          },
+          "mirror": {
+            "mean": 0.22610082068584939,
+            "descriptive_ci95": [
+              0.20739410401432187,
+              0.2448075373573769
+            ],
+            "independent_runs": 4
+          }
+        }
+      },
+      "global_comparisons": {
+        "direction_original": {
+          "same_label_RMSE": {
+            "mean": 0.21994756828263373,
+            "descriptive_ci95": [
+              0.2007842480921137,
+              0.23756763074470055
+            ],
+            "independent_runs": 4
+          },
+          "event_disagreement_fraction": {
+            "mean": 0.1796875,
+            "descriptive_ci95": [
+              0.134765625,
+              0.224609375
+            ],
+            "independent_runs": 4
+          },
+          "event_Jaccard": {
+            "mean": 0.3049670018499977,
+            "descriptive_ci95": [
+              0.1971947194719472,
+              0.4127392842280483
+            ],
+            "independent_runs": 4
+          },
+          "correlation": {
+            "mean": 0.6839049179248159,
+            "descriptive_ci95": [
+              0.6394515446452645,
+              0.7152340124948685
+            ],
+            "independent_runs": 4
+          }
+        },
+        "direction_mirror": {
+          "same_label_RMSE": {
+            "mean": 0.22610082068584939,
+            "descriptive_ci95": [
+              0.20739410401432187,
+              0.2448075373573769
+            ],
+            "independent_runs": 4
+          },
+          "event_disagreement_fraction": {
+            "mean": 0.1923828125,
+            "descriptive_ci95": [
+              0.140625,
+              0.244140625
+            ],
+            "independent_runs": 4
+          },
+          "event_Jaccard": {
+            "mean": 0.33206026780602843,
+            "descriptive_ci95": [
+              0.2035509325681492,
+              0.4319097502014504
+            ],
+            "independent_runs": 4
+          },
+          "correlation": {
+            "mean": 0.7021193924488243,
+            "descriptive_ci95": [
+              0.6259709119080505,
+              0.7500673310793917
+            ],
+            "independent_runs": 4
+          }
+        },
+        "mirror_normal": {
+          "same_label_RMSE": {
+            "mean": 0.30564062575630646,
+            "descriptive_ci95": [
+              0.2489460237000662,
+              0.3623352278125468
+            ],
+            "independent_runs": 4
+          },
+          "event_disagreement_fraction": {
+            "mean": 0.22900390625,
+            "descriptive_ci95": [
+              0.09765625,
+              0.3603515625
+            ],
+            "independent_runs": 4
+          },
+          "event_Jaccard": {
+            "mean": 0.1791687511883101,
+            "descriptive_ci95": [
+              0.1460017547157987,
+              0.2266949152542373
+            ],
+            "independent_runs": 4
+          },
+          "correlation": {
+            "mean": 0.17478042693454124,
+            "descriptive_ci95": [
+              0.05862578447744276,
+              0.3072321260859235
+            ],
+            "independent_runs": 4
+          }
+        },
+        "mirror_reversed": {
+          "same_label_RMSE": {
+            "mean": 0.38079838886832834,
+            "descriptive_ci95": [
+              0.301471653133176,
+              0.4594474536371346
+            ],
+            "independent_runs": 4
+          },
+          "event_disagreement_fraction": {
+            "mean": 0.30615234375,
+            "descriptive_ci95": [
+              0.193359375,
+              0.4189453125
+            ],
+            "independent_runs": 4
+          },
+          "event_Jaccard": {
+            "mean": 0.21780252061753722,
+            "descriptive_ci95": [
+              0.19495067399653587,
+              0.23406574394463667
+            ],
+            "independent_runs": 4
+          },
+          "correlation": {
+            "mean": 0.20984412759547372,
+            "descriptive_ci95": [
+              0.08341818834969617,
+              0.358840286233879
+            ],
+            "independent_runs": 4
+          }
+        }
+      }
+    },
+    "80": {
+      "effects": {
+        "cloud": {
+          "arrangement_average": {
+            "mean": 0.18343673895207518,
+            "descriptive_ci95": [
+              0.15401708192793373,
+              0.21285639597621664
+            ],
+            "independent_runs": 4
+          },
+          "direction_average": {
+            "mean": 0.25562197246110147,
+            "descriptive_ci95": [
+              0.22617716053025444,
+              0.30031729427925447
+            ],
+            "independent_runs": 4
+          },
+          "interaction_difference_in_differences": {
+            "mean": 0.37643428995963724,
+            "descriptive_ci95": [
+              0.28500070759206525,
+              0.47074889389161034
+            ],
+            "independent_runs": 4
+          }
+        },
+        "pair": {
+          "arrangement_average": {
+            "mean": 0.03174898521176153,
+            "descriptive_ci95": [
+              0.02528868154772218,
+              0.03820928887580087
+            ],
+            "independent_runs": 4
+          },
+          "direction_average": {
+            "mean": 0.21606364436575323,
+            "descriptive_ci95": [
+              0.19329999787924493,
+              0.23882729085226156
+            ],
+            "independent_runs": 4
+          },
+          "interaction_difference_in_differences": {
+            "mean": 0.37489442333475753,
+            "descriptive_ci95": [
+              0.3250646620259273,
+              0.4258360881183503
+            ],
+            "independent_runs": 4
+          }
+        },
+        "global_direction": {
+          "original": {
+            "mean": 0.21941401215468437,
+            "descriptive_ci95": [
+              0.1997496960210244,
+              0.237654044802455
+            ],
+            "independent_runs": 4
+          },
+          "mirror": {
+            "mean": 0.2261847814038277,
+            "descriptive_ci95": [
+              0.20761533485117528,
+              0.2447542279564801
+            ],
+            "independent_runs": 4
+          }
+        }
+      },
+      "global_comparisons": {
+        "direction_original": {
+          "same_label_RMSE": {
+            "mean": 0.21941401215468437,
+            "descriptive_ci95": [
+              0.1997496960210244,
+              0.237654044802455
+            ],
+            "independent_runs": 4
+          },
+          "event_disagreement_fraction": {
+            "mean": 0.18505859375,
+            "descriptive_ci95": [
+              0.13671875,
+              0.2333984375
+            ],
+            "independent_runs": 4
+          },
+          "event_Jaccard": {
+            "mean": 0.2994422869118014,
+            "descriptive_ci95": [
+              0.19881188118811882,
+              0.40007269263548406
+            ],
+            "independent_runs": 4
+          },
+          "correlation": {
+            "mean": 0.6885286309595241,
+            "descriptive_ci95": [
+              0.646083923418479,
+              0.7195442729070217
+            ],
+            "independent_runs": 4
+          }
+        },
+        "direction_mirror": {
+          "same_label_RMSE": {
+            "mean": 0.2261847814038277,
+            "descriptive_ci95": [
+              0.20761533485117528,
+              0.2447542279564801
+            ],
+            "independent_runs": 4
+          },
+          "event_disagreement_fraction": {
+            "mean": 0.19384765625,
+            "descriptive_ci95": [
+              0.1435546875,
+              0.244140625
+            ],
+            "independent_runs": 4
+          },
+          "event_Jaccard": {
+            "mean": 0.3318474318474318,
+            "descriptive_ci95": [
+              0.19618725868725867,
+              0.43977272727272726
+            ],
+            "independent_runs": 4
+          },
+          "correlation": {
+            "mean": 0.7058337808237305,
+            "descriptive_ci95": [
+              0.6314549442783945,
+              0.7535016346755541
+            ],
+            "independent_runs": 4
+          }
+        },
+        "mirror_normal": {
+          "same_label_RMSE": {
+            "mean": 0.3071919802837463,
+            "descriptive_ci95": [
+              0.25043744828259895,
+              0.3639465122848936
+            ],
+            "independent_runs": 4
+          },
+          "event_disagreement_fraction": {
+            "mean": 0.2333984375,
+            "descriptive_ci95": [
+              0.099609375,
+              0.3671875
+            ],
+            "independent_runs": 4
+          },
+          "event_Jaccard": {
+            "mean": 0.17671374272600607,
+            "descriptive_ci95": [
+              0.13017887878042783,
+              0.23854166666666665
+            ],
+            "independent_runs": 4
+          },
+          "correlation": {
+            "mean": 0.17282149542338238,
+            "descriptive_ci95": [
+              0.055250691323274065,
+              0.3036319244003998
+            ],
+            "independent_runs": 4
+          }
+        },
+        "mirror_reversed": {
+          "same_label_RMSE": {
+            "mean": 0.3827835316734024,
+            "descriptive_ci95": [
+              0.3040727891983449,
+              0.4609576352045981
+            ],
+            "independent_runs": 4
+          },
+          "event_disagreement_fraction": {
+            "mean": 0.3046875,
+            "descriptive_ci95": [
+              0.1923828125,
+              0.4169921875
+            ],
+            "independent_runs": 4
+          },
+          "event_Jaccard": {
+            "mean": 0.2256972341259622,
+            "descriptive_ci95": [
+              0.2033594259621657,
+              0.24275895925380464
+            ],
+            "independent_runs": 4
+          },
+          "correlation": {
+            "mean": 0.20827789234476643,
+            "descriptive_ci95": [
+              0.08196970802139908,
+              0.3535156778899048
+            ],
+            "independent_runs": 4
+          }
+        }
+      }
+    },
+    "112": {
+      "effects": {
+        "cloud": {
+          "arrangement_average": {
+            "mean": 0.18376838436123305,
+            "descriptive_ci95": [
+              0.15424177883798335,
+              0.2132949898844827
+            ],
+            "independent_runs": 4
+          },
+          "direction_average": {
+            "mean": 0.2560413225813887,
+            "descriptive_ci95": [
+              0.22652866362570231,
+              0.30088017308365467
+            ],
+            "independent_runs": 4
+          },
+          "interaction_difference_in_differences": {
+            "mean": 0.377059231762635,
+            "descriptive_ci95": [
+              0.28548196723491637,
+              0.4714085782467726
+            ],
+            "independent_runs": 4
+          }
+        },
+        "pair": {
+          "arrangement_average": {
+            "mean": 0.03184975570191352,
+            "descriptive_ci95": [
+              0.025355387469423004,
+              0.038344123934404034
+            ],
+            "independent_runs": 4
+          },
+          "direction_average": {
+            "mean": 0.2164108888415951,
+            "descriptive_ci95": [
+              0.19358675603355793,
+              0.23923502164963228
+            ],
+            "independent_runs": 4
+          },
+          "interaction_difference_in_differences": {
+            "mean": 0.37539064525615856,
+            "descriptive_ci95": [
+              0.32544667520518655,
+              0.42640299103156176
+            ],
+            "independent_runs": 4
+          }
+        },
+        "global_direction": {
+          "original": {
+            "mean": 0.21960409460345567,
+            "descriptive_ci95": [
+              0.19924356058987702,
+              0.23799658145156025
+            ],
+            "independent_runs": 4
+          },
+          "mirror": {
+            "mean": 0.22612889788370188,
+            "descriptive_ci95": [
+              0.20719408896012187,
+              0.2450637068072819
+            ],
+            "independent_runs": 4
+          }
+        }
+      },
+      "global_comparisons": {
+        "direction_original": {
+          "same_label_RMSE": {
+            "mean": 0.21960409460345567,
+            "descriptive_ci95": [
+              0.19924356058987702,
+              0.23799658145156025
+            ],
+            "independent_runs": 4
+          },
+          "event_disagreement_fraction": {
+            "mean": 0.18359375,
+            "descriptive_ci95": [
+              0.134765625,
+              0.232421875
+            ],
+            "independent_runs": 4
+          },
+          "event_Jaccard": {
+            "mean": 0.3081835754398595,
+            "descriptive_ci95": [
+              0.21405143007084754,
+              0.40231572080887146
+            ],
+            "independent_runs": 4
+          },
+          "correlation": {
+            "mean": 0.688775377264659,
+            "descriptive_ci95": [
+              0.6469192864126636,
+              0.7203481929303963
+            ],
+            "independent_runs": 4
+          }
+        },
+        "direction_mirror": {
+          "same_label_RMSE": {
+            "mean": 0.22612889788370188,
+            "descriptive_ci95": [
+              0.20719408896012187,
+              0.2450637068072819
+            ],
+            "independent_runs": 4
+          },
+          "event_disagreement_fraction": {
+            "mean": 0.19189453125,
+            "descriptive_ci95": [
+              0.1435546875,
+              0.240234375
+            ],
+            "independent_runs": 4
+          },
+          "event_Jaccard": {
+            "mean": 0.3392525620664634,
+            "descriptive_ci95": [
+              0.2102818705957719,
+              0.4449143905421933
+            ],
+            "independent_runs": 4
+          },
+          "correlation": {
+            "mean": 0.7058406014910763,
+            "descriptive_ci95": [
+              0.6312476041921848,
+              0.7526245077740017
+            ],
+            "independent_runs": 4
+          }
+        },
+        "mirror_normal": {
+          "same_label_RMSE": {
+            "mean": 0.3075638053613618,
+            "descriptive_ci95": [
+              0.2503668493345122,
+              0.36476076138821134
+            ],
+            "independent_runs": 4
+          },
+          "event_disagreement_fraction": {
+            "mean": 0.23486328125,
+            "descriptive_ci95": [
+              0.1005859375,
+              0.369140625
+            ],
+            "independent_runs": 4
+          },
+          "event_Jaccard": {
+            "mean": 0.1781250652796056,
+            "descriptive_ci95": [
+              0.13684433164128595,
+              0.23806584362139915
+            ],
+            "independent_runs": 4
+          },
+          "correlation": {
+            "mean": 0.17231563918933443,
+            "descriptive_ci95": [
+              0.054551616258190674,
+              0.3030964175341088
+            ],
+            "independent_runs": 4
+          }
+        },
+        "mirror_reversed": {
+          "same_label_RMSE": {
+            "mean": 0.3826833113296985,
+            "descriptive_ci95": [
+              0.3030941454999371,
+              0.4613431830482383
+            ],
+            "independent_runs": 4
+          },
+          "event_disagreement_fraction": {
+            "mean": 0.3056640625,
+            "descriptive_ci95": [
+              0.197265625,
+              0.4140625
+            ],
+            "independent_runs": 4
+          },
+          "event_Jaccard": {
+            "mean": 0.2249666103779735,
+            "descriptive_ci95": [
+              0.2030846670108415,
+              0.24684855374510545
+            ],
+            "independent_runs": 4
+          },
+          "correlation": {
+            "mean": 0.20974421823015882,
+            "descriptive_ci95": [
+              0.0828380914402409,
+              0.3565451875036914
+            ],
+            "independent_runs": 4
+          }
+        }
+      }
+    },
+    "160": {
+      "effects": {
+        "cloud": {
+          "arrangement_average": {
+            "mean": 0.18394855025019652,
+            "descriptive_ci95": [
+              0.15437111909960216,
+              0.21352598140079085
+            ],
+            "independent_runs": 4
+          },
+          "direction_average": {
+            "mean": 0.2562659104073905,
+            "descriptive_ci95": [
+              0.2267125781875985,
+              0.30120148855614765
+            ],
+            "independent_runs": 4
+          },
+          "interaction_difference_in_differences": {
+            "mean": 0.3773997376544961,
+            "descriptive_ci95": [
+              0.2857330553224997,
+              0.4717860607251029
+            ],
+            "independent_runs": 4
+          }
+        },
+        "pair": {
+          "arrangement_average": {
+            "mean": 0.0319029178881491,
+            "descriptive_ci95": [
+              0.02539099720944965,
+              0.03841483856684856
+            ],
+            "independent_runs": 4
+          },
+          "direction_average": {
+            "mean": 0.21659543226167466,
+            "descriptive_ci95": [
+              0.19374243140412817,
+              0.23944843311922115
+            ],
+            "independent_runs": 4
+          },
+          "interaction_difference_in_differences": {
+            "mean": 0.37564613458972934,
+            "descriptive_ci95": [
+              0.3256490258884025,
+              0.42666833012446254
+            ],
+            "independent_runs": 4
+          }
+        },
+        "global_direction": {
+          "original": {
+            "mean": 0.21980154022763834,
+            "descriptive_ci95": [
+              0.19964387636685915,
+              0.2384199453569051
+            ],
+            "independent_runs": 4
+          },
+          "mirror": {
+            "mean": 0.22597759617374705,
+            "descriptive_ci95": [
+              0.20688916468594937,
+              0.2450660276615447
+            ],
+            "independent_runs": 4
+          }
+        }
+      },
+      "global_comparisons": {
+        "direction_original": {
+          "same_label_RMSE": {
+            "mean": 0.21980154022763834,
+            "descriptive_ci95": [
+              0.19964387636685915,
+              0.2384199453569051
+            ],
+            "independent_runs": 4
+          },
+          "event_disagreement_fraction": {
+            "mean": 0.185546875,
+            "descriptive_ci95": [
+              0.1376953125,
+              0.2333984375
+            ],
+            "independent_runs": 4
+          },
+          "event_Jaccard": {
+            "mean": 0.30228369312822334,
+            "descriptive_ci95": [
+              0.2032274656037032,
+              0.4013399206527435
+            ],
+            "independent_runs": 4
+          },
+          "correlation": {
+            "mean": 0.6892700517290893,
+            "descriptive_ci95": [
+              0.6477848143410212,
+              0.7206271846578912
+            ],
+            "independent_runs": 4
+          }
+        },
+        "direction_mirror": {
+          "same_label_RMSE": {
+            "mean": 0.22597759617374705,
+            "descriptive_ci95": [
+              0.20688916468594937,
+              0.2450660276615447
+            ],
+            "independent_runs": 4
+          },
+          "event_disagreement_fraction": {
+            "mean": 0.19384765625,
+            "descriptive_ci95": [
+              0.1455078125,
+              0.2421875
+            ],
+            "independent_runs": 4
+          },
+          "event_Jaccard": {
+            "mean": 0.3354899353077385,
+            "descriptive_ci95": [
+              0.20849420849420847,
+              0.4402592637886756
+            ],
+            "independent_runs": 4
+          },
+          "correlation": {
+            "mean": 0.706987703481536,
+            "descriptive_ci95": [
+              0.633189624203427,
+              0.7536552418994178
+            ],
+            "independent_runs": 4
+          }
+        },
+        "mirror_normal": {
+          "same_label_RMSE": {
+            "mean": 0.30774548814960423,
+            "descriptive_ci95": [
+              0.2507930217461356,
+              0.36469795455307286
+            ],
+            "independent_runs": 4
+          },
+          "event_disagreement_fraction": {
+            "mean": 0.234375,
+            "descriptive_ci95": [
+              0.099609375,
+              0.369140625
+            ],
+            "independent_runs": 4
+          },
+          "event_Jaccard": {
+            "mean": 0.17907620271527244,
+            "descriptive_ci95": [
+              0.1370174575854438,
+              0.23371801753444266
+            ],
+            "independent_runs": 4
+          },
+          "correlation": {
+            "mean": 0.1726111455418523,
+            "descriptive_ci95": [
+              0.054998656830718154,
+              0.30317513446487726
+            ],
+            "independent_runs": 4
+          }
+        },
+        "mirror_reversed": {
+          "same_label_RMSE": {
+            "mean": 0.3831247801078824,
+            "descriptive_ci95": [
+              0.30404440243439457,
+              0.46188764647384367
+            ],
+            "independent_runs": 4
+          },
+          "event_disagreement_fraction": {
+            "mean": 0.30517578125,
+            "descriptive_ci95": [
+              0.193359375,
+              0.4169921875
+            ],
+            "independent_runs": 4
+          },
+          "event_Jaccard": {
+            "mean": 0.22827475036379147,
+            "descriptive_ci95": [
+              0.21226353555120675,
+              0.24428596517637613
+            ],
+            "independent_runs": 4
+          },
+          "correlation": {
+            "mean": 0.20918238350040264,
+            "descriptive_ci95": [
+              0.08254732643396268,
+              0.35483359394163033
+            ],
+            "independent_runs": 4
+          }
+        }
+      }
+    }
+  }
+}
