@@ -4,11 +4,12 @@
 
 ## Current published results
 
-**30/48 completed and verified results published through model time 0.40. Eighteen jobs remain.** Publication status: October 10, 2026 (UTC).
+**31/48 completed and verified results published through model time 0.40. Seventeen jobs remain.** Publication status: October 11, 2026 (UTC).
 
 | Read first | What it shows |
 | --- | --- |
-| [Second 128-grid 0.5% seed](completed-n128-halfpercent-seed202/README.md) | Latest verified completion: seed 202, saved-field checks, charts and separation from its baseline |
+| [Third 128-grid 0.5% seed](completed-n128-halfpercent-seed303/README.md) | Latest verified completion: seed 303, saved-field checks, charts and separation from its baseline |
+| [Second 128-grid 0.5% seed](completed-n128-halfpercent-seed202/README.md) | Earlier seed 202 completion and its saved-field checks |
 | [First 128-grid 0.5% seed](completed-n128-halfpercent-seed101/README.md) | Earlier seed 101 completion and its saved-field checks |
 | [All three 128-grid 0.1% seeds](completed-n128-three-seeds/README.md) | Three-seed comparison through 0.40 |
 | [128-grid timestep control](completed-timestep128/README.md) | Ordinary and half steps; the W-curve screen fails from t=0.31 |
