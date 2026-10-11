@@ -43,3 +43,34 @@ jobs:
         run: |
           python models/decentralized_coordination/run_study.py --output scratch/coordination --no-plots
           python models/decentralized_coordination/verify_results.py --actual scratch/coordination
+      - name: Test water transport and reproduce coupled response
+        run: |
+          python -m pip install -r reports/water-biology-study/requirements.txt -r reports/water-biology-study/coupled-feedback/requirements.txt
+          python -m pytest reports/water-biology-study/test_study.py reports/water-biology-study/test_verification.py reports/water-biology-study/coupled-feedback/test_coupled.py reports/water-biology-study/coupled-feedback/test_validation.py -q
+          python reports/water-biology-study/verify_package.py
+          python reports/water-biology-study/coupled-feedback/verify_coupled.py
+          python reports/water-biology-study/coupled-feedback/run_coupled.py --out scratch/coupled-feedback
+          python reports/water-biology-study/coupled-feedback/analyze_coupled.py --out scratch/coupled-feedback
+          python reports/water-biology-study/coupled-feedback/verify_coupled.py --actual scratch/coupled-feedback
+
+  original-water-reproduction:
+    name: Original water study — Windows reference platform
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Preserve recorded file bytes
+        run: git config --global core.autocrlf false
+      - uses: actions/checkout@v4
+      - name: Set up the available Windows Python 3.12 build
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.12.10"
+      - name: Install the original study's recorded dependencies
+        run: python -m pip install -r reports/water-biology-study/requirements-lock.txt
+      - name: Verify and reproduce all 48 original data files
+        run: |
+          python reports/water-biology-study/verify_package.py
+          python reports/water-biology-study/run_study.py --out scratch/water-biology-study
+          python reports/water-biology-study/verify_package.py --compare scratch/water-biology-study
