@@ -1,0 +1,476 @@
+{
+  "name": "s1029_n112_nu0.02_dt0.0025",
+  "independent_group": 1029,
+  "seed": 1029,
+  "config": {
+    "nu": 0.02,
+    "dt": 0.0025,
+    "save_dt": 0.025,
+    "end": 1.2,
+    "markers": 512,
+    "n": 112
+  },
+  "sources": {
+    "simulate.py": "9c8e9a8f52a2beb1b0708e8ef6936ce9c12128fbc111381d7cb4becab5223632",
+    "numerics.py": "16d11a080c1559d428b33f803c1f83cfabbc3336e0bab9256989b9a2cef40d53",
+    "protocol.json": "137840b0f687696c58e6195e3267feda48be742d8eb4045ea303257de3479e6e"
+  },
+  "study_sources": {
+    "history-prediction/full-history-refinement/run_history.py": "ff80734be538794ef76995819b9857a94eb06fb881c8c8c61816f8d4c4d37126",
+    "history-prediction/full-history-refinement/protocol.json": "b2f7c597259af857cd94b3732eb829b1cc17931bd12e15fb9680cf2739dfa5d3",
+    "history-prediction/simulate.py": "9c8e9a8f52a2beb1b0708e8ef6936ce9c12128fbc111381d7cb4becab5223632",
+    "numerics.py": "16d11a080c1559d428b33f803c1f83cfabbc3336e0bab9256989b9a2cef40d53",
+    "history-prediction/protocol.json": "137840b0f687696c58e6195e3267feda48be742d8eb4045ea303257de3479e6e",
+    "history-prediction/features.py": "c895f2d4f5d2ab3c4cf13b0e63bc7e5e9dc287bf2be1d4083d6fe142cde11f0d",
+    "history-prediction/export_models.py": "4c7195e66e60590bd44023c7c675ff408320a0126577e9be030bd1796a96d13b",
+    "history-prediction/evaluate.py": "997dc19d83ecfb3479ddf087b51229dba42970fa5389e0d04452688974b78c99",
+    "history-prediction/results/primary_models.json": "f1f46b948c10c7505e23e4c589af3ab8670611e0dd88f7a668eaf8587d7cc211"
+  },
+  "sha256": "00070411d069cc161321947d0e0b3b12c6aec44eab4b95c9898f439a36a162dd",
+  "seconds": 1004.1622640999994,
+  "max_cfl": 0.10337457272362686,
+  "diagnostics": [
+    {
+      "t": 0.0,
+      "energy": 107.99999999999997,
+      "energy_budget_residual": 0.0,
+      "divergence_max": 3.6266392382092544e-16,
+      "high_band_energy_fraction": 5.881714857560361e-32,
+      "max_tangent_condition": 1.0,
+      "max_det_error": 0.0
+    },
+    {
+      "t": 0.025,
+      "energy": 107.77628016679787,
+      "energy_budget_residual": 3.7657941965369495e-10,
+      "divergence_max": 4.037618349322223e-17,
+      "high_band_energy_fraction": 1.5871618562208633e-32,
+      "max_tangent_condition": 1.0696416182331279,
+      "max_det_error": 0.0010899567926230258
+    },
+    {
+      "t": 0.05,
+      "energy": 107.55364688128765,
+      "energy_budget_residual": 7.473046111968794e-10,
+      "divergence_max": 4.1174544486919586e-17,
+      "high_band_energy_fraction": 4.620442398162083e-33,
+      "max_tangent_condition": 1.144299658893068,
+      "max_det_error": 0.0016098616373951824
+    },
+    {
+      "t": 0.075,
+      "energy": 107.33201164593727,
+      "energy_budget_residual": 1.1125221906267744e-09,
+      "divergence_max": 3.2820479603505095e-17,
+      "high_band_energy_fraction": 1.4014220782617034e-33,
+      "max_tangent_condition": 1.2241959479612405,
+      "max_det_error": 0.0025171638772684135
+    },
+    {
+      "t": 0.1,
+      "energy": 107.11128951291994,
+      "energy_budget_residual": 1.4725565283607377e-09,
+      "divergence_max": 5.363309177997488e-17,
+      "high_band_energy_fraction": 4.3857381192076105e-34,
+      "max_tangent_condition": 1.3096272748950424,
+      "max_det_error": 0.0031029056963620683
+    },
+    {
+      "t": 0.125,
+      "energy": 106.89139896031904,
+      "energy_budget_residual": 1.8277092062035653e-09,
+      "divergence_max": 4.4087260027344106e-17,
+      "high_band_energy_fraction": 1.4256180219291734e-34,
+      "max_tangent_condition": 1.401107135613775,
+      "max_det_error": 0.0036193594999089918
+    },
+    {
+      "t": 0.15,
+      "energy": 106.67226178469653,
+      "energy_budget_residual": 2.1782603930474593e-09,
+      "divergence_max": 6.130028748149844e-17,
+      "high_band_energy_fraction": 4.927086889689522e-35,
+      "max_tangent_condition": 1.4988483158636727,
+      "max_det_error": 0.0036829651187322288
+    },
+    {
+      "t": 0.17500000000000002,
+      "energy": 106.45380300846139,
+      "energy_budget_residual": 2.524469869772354e-09,
+      "divergence_max": 6.028444878271598e-17,
+      "high_band_energy_fraction": 3.1241018086807806e-35,
+      "max_tangent_condition": 1.6034729993249524,
+      "max_det_error": 0.003920589780292971
+    },
+    {
+      "t": 0.2,
+      "energy": 106.23595080053401,
+      "energy_budget_residual": 2.8665796588297123e-09,
+      "divergence_max": 4.24698466941184e-17,
+      "high_band_energy_fraction": 2.950225183492189e-34,
+      "max_tangent_condition": 1.7152795885796488,
+      "max_det_error": 0.0038934635035133836
+    },
+    {
+      "t": 0.225,
+      "energy": 106.01863640884955,
+      "energy_budget_residual": 3.204812421615029e-09,
+      "divergence_max": 6.518186762219964e-17,
+      "high_band_energy_fraction": 5.135870740442436e-33,
+      "max_tangent_condition": 1.8346136511470252,
+      "max_det_error": 0.004348721984925086
+    },
+    {
+      "t": 0.25,
+      "energy": 105.80179410328545,
+      "energy_budget_residual": 3.5393746698907264e-09,
+      "divergence_max": 5.669553065911612e-17,
+      "high_band_energy_fraction": 8.023094859540167e-32,
+      "max_tangent_condition": 1.9618878930647083,
+      "max_det_error": 0.004953833074763714
+    },
+    {
+      "t": 0.275,
+      "energy": 105.58536112763325,
+      "energy_budget_residual": 3.870456161331399e-09,
+      "divergence_max": 4.050423002597865e-17,
+      "high_band_energy_fraction": 1.1229451616022985e-30,
+      "max_tangent_condition": 2.0974503484671505,
+      "max_det_error": 0.005118755891623916
+    },
+    {
+      "t": 0.3,
+      "energy": 105.3692776592716,
+      "energy_budget_residual": 4.198231679992589e-09,
+      "divergence_max": 6.36358032786749e-17,
+      "high_band_energy_fraction": 1.4042418851807306e-29,
+      "max_tangent_condition": 2.2415354165394903,
+      "max_det_error": 0.005012163894435817
+    },
+    {
+      "t": 0.325,
+      "energy": 105.15348677523296,
+      "energy_budget_residual": 4.522861776459467e-09,
+      "divergence_max": 7.46864864183047e-17,
+      "high_band_energy_fraction": 1.5600536473302265e-28,
+      "max_tangent_condition": 2.3944077302449682,
+      "max_det_error": 0.00562767772431183
+    },
+    {
+      "t": 0.35000000000000003,
+      "energy": 104.93793442339619,
+      "energy_budget_residual": 4.844492769902806e-09,
+      "divergence_max": 6.788411162162324e-17,
+      "high_band_energy_fraction": 1.5322728469949007e-27,
+      "max_tangent_condition": 2.5567749980880263,
+      "max_det_error": 0.006014509076131658
+    },
+    {
+      "t": 0.375,
+      "energy": 104.72256939758142,
+      "energy_budget_residual": 5.1632582242644045e-09,
+      "divergence_max": 5.5155517248402686e-17,
+      "high_band_energy_fraction": 1.3221727090625568e-26,
+      "max_tangent_condition": 2.7288721031258274,
+      "max_det_error": 0.006313463254211005
+    },
+    {
+      "t": 0.4,
+      "energy": 104.50734331537305,
+      "energy_budget_residual": 5.479279347114992e-09,
+      "divergence_max": 5.901229529814684e-17,
+      "high_band_energy_fraction": 9.954070308009187e-26,
+      "max_tangent_condition": 2.9108755620445224,
+      "max_det_error": 0.007315772028462897
+    },
+    {
+      "t": 0.425,
+      "energy": 104.29221059755332,
+      "energy_budget_residual": 5.792665310385323e-09,
+      "divergence_max": 6.771017280518097e-17,
+      "high_band_energy_fraction": 6.511565538026665e-25,
+      "max_tangent_condition": 3.102857080136273,
+      "max_det_error": 0.007391615720290012
+    },
+    {
+      "t": 0.45,
+      "energy": 104.07712844809349,
+      "energy_budget_residual": 6.103513900052245e-09,
+      "divergence_max": 8.54969538580895e-17,
+      "high_band_energy_fraction": 3.7055972290660985e-24,
+      "max_tangent_condition": 3.3056308572129707,
+      "max_det_error": 0.008058374037722027
+    },
+    {
+      "t": 0.47500000000000003,
+      "energy": 103.86205683372087,
+      "energy_budget_residual": 6.411913502204329e-09,
+      "divergence_max": 9.024834777630249e-17,
+      "high_band_energy_fraction": 1.8473664212569473e-23,
+      "max_tangent_condition": 3.519506584510088,
+      "max_det_error": 0.008667500411516649
+    },
+    {
+      "t": 0.5,
+      "energy": 103.64695846215928,
+      "energy_budget_residual": 6.7179409771703755e-09,
+      "divergence_max": 8.869042243785278e-17,
+      "high_band_energy_fraction": 8.163060413036226e-23,
+      "max_tangent_condition": 3.74466286363869,
+      "max_det_error": 0.009017254835928634
+    },
+    {
+      "t": 0.525,
+      "energy": 103.43179875822847,
+      "energy_budget_residual": 7.02166324261521e-09,
+      "divergence_max": 6.918880471391123e-17,
+      "high_band_energy_fraction": 3.2437102753663446e-22,
+      "max_tangent_condition": 3.9810165722923867,
+      "max_det_error": 0.009280650526511058
+    },
+    {
+      "t": 0.55,
+      "energy": 103.21654583708082,
+      "energy_budget_residual": 7.323139247269504e-09,
+      "divergence_max": 1.0408770377317681e-16,
+      "high_band_energy_fraction": 1.1764826321889232e-21,
+      "max_tangent_condition": 4.229012813563629,
+      "max_det_error": 0.009844972746249958
+    },
+    {
+      "t": 0.5750000000000001,
+      "energy": 103.0011704739524,
+      "energy_budget_residual": 7.62241789851346e-09,
+      "divergence_max": 7.315842234150069e-17,
+      "high_band_energy_fraction": 3.94588021928466e-21,
+      "max_tangent_condition": 4.489166197550451,
+      "max_det_error": 0.01034294555090165
+    },
+    {
+      "t": 0.6,
+      "energy": 102.7856460699107,
+      "energy_budget_residual": 7.919539690703916e-09,
+      "divergence_max": 8.460877668590991e-17,
+      "high_band_energy_fraction": 1.2356296540685394e-20,
+      "max_tangent_condition": 4.761445568857895,
+      "max_det_error": 0.010809506409153125
+    },
+    {
+      "t": 0.625,
+      "energy": 102.56994861318569,
+      "energy_budget_residual": 8.214537132815809e-09,
+      "divergence_max": 9.788430947851258e-17,
+      "high_band_energy_fraction": 3.633572157639856e-20,
+      "max_tangent_condition": 5.045634015131686,
+      "max_det_error": 0.011325129163990422
+    },
+    {
+      "t": 0.65,
+      "energy": 102.35405663577838,
+      "energy_budget_residual": 8.50743561194897e-09,
+      "divergence_max": 6.585101643002324e-17,
+      "high_band_energy_fraction": 1.0061682455048265e-19,
+      "max_tangent_condition": 5.341813246870039,
+      "max_det_error": 0.011796024360666513
+    },
+    {
+      "t": 0.675,
+      "energy": 102.13795116514511,
+      "energy_budget_residual": 8.798251970597871e-09,
+      "divergence_max": 7.852766121405145e-17,
+      "high_band_energy_fraction": 2.626263209286663e-19,
+      "max_tangent_condition": 5.650863864144061,
+      "max_det_error": 0.012308959160060473
+    },
+    {
+      "t": 0.7000000000000001,
+      "energy": 101.92161567085739,
+      "energy_budget_residual": 9.086997039604914e-09,
+      "divergence_max": 7.000288162858981e-17,
+      "high_band_energy_fraction": 6.464739053529159e-19,
+      "max_tangent_condition": 5.972754822141819,
+      "max_det_error": 0.012763646871912337
+    },
+    {
+      "t": 0.725,
+      "energy": 101.7050360062294,
+      "energy_budget_residual": 9.373674717086495e-09,
+      "divergence_max": 9.831167119435197e-17,
+      "high_band_energy_fraction": 1.5018458440538958e-18,
+      "max_tangent_condition": 6.307402884057258,
+      "max_det_error": 0.013254000063576798
+    },
+    {
+      "t": 0.75,
+      "energy": 101.48820034499138,
+      "energy_budget_residual": 9.65828274147719e-09,
+      "divergence_max": 1.2138892347429768e-16,
+      "high_band_energy_fraction": 3.2969406718261256e-18,
+      "max_tangent_condition": 6.654144161437999,
+      "max_det_error": 0.013672422667313056
+    },
+    {
+      "t": 0.775,
+      "energy": 101.27109911315974,
+      "energy_budget_residual": 9.940812749096884e-09,
+      "divergence_max": 9.669576592136966e-17,
+      "high_band_energy_fraction": 6.851680705165851e-18,
+      "max_tangent_condition": 7.013947498945233,
+      "max_det_error": 0.014120715538748163
+    },
+    {
+      "t": 0.8,
+      "energy": 101.05372491631579,
+      "energy_budget_residual": 1.0221251869582365e-08,
+      "divergence_max": 9.091841006207874e-17,
+      "high_band_energy_fraction": 1.351017395633346e-17,
+      "max_tangent_condition": 7.386528482634418,
+      "max_det_error": 0.01456651871914616
+    },
+    {
+      "t": 0.8250000000000001,
+      "energy": 100.83607246255045,
+      "energy_budget_residual": 1.0499581122231847e-08,
+      "divergence_max": 8.720499384854421e-17,
+      "high_band_energy_fraction": 2.5339976165243158e-17,
+      "max_tangent_condition": 7.771500284161769,
+      "max_det_error": 0.014953736201655632
+    },
+    {
+      "t": 0.85,
+      "energy": 100.61813848136478,
+      "energy_budget_residual": 1.0775778072316361e-08,
+      "divergence_max": 8.729301065510849e-17,
+      "high_band_energy_fraction": 4.5332141096240974e-17,
+      "max_tangent_condition": 8.167821864617808,
+      "max_det_error": 0.015330585892779025
+    },
+    {
+      "t": 0.875,
+      "energy": 100.39992163883134,
+      "energy_budget_residual": 1.1049815375454001e-08,
+      "divergence_max": 1.188304228467332e-16,
+      "high_band_energy_fraction": 7.756402663980832e-17,
+      "max_tangent_condition": 8.576900705662817,
+      "max_det_error": 0.01563817258116318
+    },
+    {
+      "t": 0.9,
+      "energy": 100.18142244932575,
+      "energy_budget_residual": 1.1321662981608238e-08,
+      "divergence_max": 8.536764215819604e-17,
+      "high_band_energy_fraction": 1.2728075159642426e-16,
+      "max_tangent_condition": 8.99905082188758,
+      "max_det_error": 0.01602323426354757
+    },
+    {
+      "t": 0.925,
+      "energy": 99.96264318412699,
+      "energy_budget_residual": 1.1591286514984676e-08,
+      "divergence_max": 9.595104897176928e-17,
+      "high_band_energy_fraction": 2.0085491128514218e-16,
+      "max_tangent_condition": 9.434150267057401,
+      "max_det_error": 0.016233284012407534
+    },
+    {
+      "t": 0.9500000000000001,
+      "energy": 99.74358777716792,
+      "energy_budget_residual": 1.185864904216403e-08,
+      "divergence_max": 8.1941887492349e-17,
+      "high_band_energy_fraction": 3.055996097916567e-16,
+      "max_tangent_condition": 9.955066587100124,
+      "max_det_error": 0.016622954061088935
+    },
+    {
+      "t": 0.975,
+      "energy": 99.52426172819105,
+      "energy_budget_residual": 1.212371189448955e-08,
+      "divergence_max": 1.2072444200939831e-16,
+      "high_band_energy_fraction": 4.494359719755259e-16,
+      "max_tangent_condition": 10.623792379753938,
+      "max_det_error": 0.01671835608818495
+    },
+    {
+      "t": 1.0,
+      "energy": 99.3046720035375,
+      "energy_budget_residual": 1.2386433788112462e-08,
+      "divergence_max": 1.0446822287675913e-16,
+      "high_band_energy_fraction": 6.404483001761068e-16,
+      "max_tangent_condition": 11.340248737849768,
+      "max_det_error": 0.01711125279156933
+    },
+    {
+      "t": 1.025,
+      "energy": 99.0848269347714,
+      "energy_budget_residual": 1.2646771514797428e-08,
+      "divergence_max": 9.431390917669095e-17,
+      "high_band_energy_fraction": 8.863901014624446e-16,
+      "max_tangent_condition": 12.10798800082144,
+      "max_det_error": 0.017085026147219295
+    },
+    {
+      "t": 1.05,
+      "energy": 98.8647361153211,
+      "energy_budget_residual": 1.2904681504458632e-08,
+      "divergence_max": 1.000593520060173e-16,
+      "high_band_energy_fraction": 1.194223988462641e-15,
+      "max_tangent_condition": 12.923443500995724,
+      "max_det_error": 0.017685931671206023
+    },
+    {
+      "t": 1.075,
+      "energy": 98.6444102953079,
+      "energy_budget_residual": 1.3160118229728196e-08,
+      "divergence_max": 1.1089029885627635e-16,
+      "high_band_energy_fraction": 1.5697831133169e-15,
+      "max_tangent_condition": 13.79229408522809,
+      "max_det_error": 0.018028948289158575
+    },
+    {
+      "t": 1.1,
+      "energy": 98.4238612747368,
+      "energy_budget_residual": 1.3413035850731009e-08,
+      "divergence_max": 8.399110478246545e-17,
+      "high_band_energy_fraction": 2.017632927047683e-15,
+      "max_tangent_condition": 14.722266359170519,
+      "max_det_error": 0.0186050830268496
+    },
+    {
+      "t": 1.125,
+      "energy": 98.20310179524166,
+      "energy_budget_residual": 1.3663389136158663e-08,
+      "divergence_max": 1.1492050310632817e-16,
+      "high_band_energy_fraction": 2.5411966396108716e-15,
+      "max_tangent_condition": 15.717751438723244,
+      "max_det_error": 0.018724942653259302
+    },
+    {
+      "t": 1.1500000000000001,
+      "energy": 97.98214543061583,
+      "energy_budget_residual": 1.391113160467386e-08,
+      "divergence_max": 9.752523280095799e-17,
+      "high_band_energy_fraction": 3.1431935486912433e-15,
+      "max_tangent_condition": 16.7775889601967,
+      "max_det_error": 0.018365786437080978
+    },
+    {
+      "t": 1.175,
+      "energy": 97.76100647641566,
+      "energy_budget_residual": 1.4156217992072693e-08,
+      "divergence_max": 9.864220649457372e-17,
+      "high_band_energy_fraction": 3.826432205841767e-15,
+      "max_tangent_condition": 17.907689757944542,
+      "max_det_error": 0.017777517399557463
+    },
+    {
+      "t": 1.2,
+      "energy": 97.53969983899928,
+      "energy_budget_residual": 1.4398603116389996e-08,
+      "divergence_max": 1.5338800522191234e-16,
+      "high_band_energy_fraction": 4.59500761278e-15,
+      "max_tangent_condition": 19.115980694455004,
+      "max_det_error": 0.017728235201172504
+    }
+  ],
+  "Re_Urms_L_over_nu": 300.0
+}

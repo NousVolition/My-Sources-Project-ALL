@@ -1,0 +1,90 @@
+{
+  "version": 1,
+  "frozen_before_pilot": true,
+  "date": "2026-10-10",
+  "question": "Numerical stability of full-history observations, future deformation targets and A/B prediction difference with existing frozen predictors.",
+  "test_seeds": [
+    1024,
+    1025,
+    1026,
+    1027,
+    1028,
+    1029,
+    1030,
+    1031
+  ],
+  "initial_grids": [
+    56,
+    80,
+    112
+  ],
+  "conditional_extension_grids": [
+    160,
+    224
+  ],
+  "base": {
+    "nu": 0.02,
+    "dt": 0.0025,
+    "save_dt": 0.025,
+    "end": 1.2,
+    "markers": 512
+  },
+  "half_step_dt": 0.00125,
+  "half_step_seeds": [
+    1024,
+    1025
+  ],
+  "half_step_grids": [
+    112,
+    160,
+    224
+  ],
+  "pilot": {
+    "seed": 1024,
+    "grid": 80
+  },
+  "max_new_simulations": 44,
+  "reuse": "All56 dt.005 original full histories; two56 dt.0025 original half-step histories; original26/38 for descriptive scores only. New56 dt.0025 remaining six runs. No previous simulation repeated.",
+  "invariants": "Unchanged Navier-Stokes initial(seed), Flow, periodic domain side6, viscosity.02, RMS normalization1, zero mean and force, joint Heun update, trilinear sample/exact Jacobian,512 original initial marker positions, saved times, primary anchors/lookback/horizon/gap. Integrate full0..1.2 from initial field, not a saved t=.3 branch.",
+  "primary": {
+    "anchors": [
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7
+    ],
+    "lookback": 0.2,
+    "horizon": 0.2,
+    "gap": 0.025,
+    "neighbors": 8,
+    "event_cutoff": 1.0106081570657628
+  },
+  "models": {
+    "refit": false,
+    "file": "../results/primary_models.json",
+    "sha256": "f1f46b948c10c7505e23e4c589af3ab8670611e0dd88f7a668eaf8587d7cc211",
+    "A": "31 present features including full local gradient and current geometry",
+    "B": "Exactly A plus23 causal historical features; frozen original training scaler,coefficients,regularization,decision thresholds"
+  },
+  "screens": {
+    "finest_pair_target_relative_RMSE_max": 0.01,
+    "finest_pair_event_Jaccard_min": 0.95,
+    "successive_target_RMS_contracts": true,
+    "finest_pair_prediction_relative_RMSE_max": 0.01,
+    "paired_RMSE_difference_macro_drift_max": 0.00009,
+    "paired_RMSE_difference_per_run_drift_max": 0.00018,
+    "paired_AP_difference_macro_drift_max": 0.002,
+    "paired_AP_difference_per_run_drift_max": 0.01,
+    "half_step_target_fraction_of_spatial_max": 0.1,
+    "half_step_paired_RMSE_difference_abs_max": 0.00001,
+    "half_step_paired_AP_difference_abs_max": 0.001
+  },
+  "effect_tolerance_basis": "Macro RMSE difference drift bound9e-5 is approximately one quarter of the prior observed56 absolute A/B difference0.000364. This bounds observed grid sensitivity, not actual continuum error or proof. Per-run limit twice macro; AP macro drift .002 and per-run .01 prechosen numerical screens, not statistical superiority criteria.",
+  "extension_rule": "After complete56/80/112 and two112 half-step controls, evaluate every frozen primary screen. If any fail, add all eight160 and two160half-step; evaluate again. If any fail, add all eight224 and two224half-step. Stop at224 even if failures remain. Never relax screens or choose seeds based on results.",
+  "features": "Report train-scale standardized changes for present and historical descriptors, neighbor changes, prediction/probability drift and interpolation divergence. Their diagnostics are descriptive; criterion includes each predictor's output and paired performance differences.",
+  "statistics": "Paired whole-run2000 bootstrap of all8 reused test groups; intervals descriptive exploratory. Grids/time steps/anchors/markers not independent sample expansions. No new training or fresh test population in this phase.",
+  "controls": "Parent analytic causality/identity/leakage tests retained. New numerical recorder must match parent simulation bit-for-bit on a small complete run. Frozen-model permuted, irrelevant and reversed historical inputs are descriptive sensitivity checks, not refitted equal-complexity causal tests.",
+  "limits": "Operational finite-resolution stability does not prove continuum accuracy or a predictive benefit. A/B interval including zero remains inconclusive; an event benefit requires event metrics. No physical marker force/internal memory/leadership/NS breakthrough. Original nonsmooth strain/tube model unchanged and separate.",
+  "workers": 3
+}

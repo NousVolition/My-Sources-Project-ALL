@@ -1,0 +1,4 @@
+{
+  "issue": "The optional stage auditor initially reused suffix as the output-type loop variable, so its final receipt path was incorrect. All archive/predictor assertions had passed before the receipt write failed.",
+  "fix": "Renamed the loop variable output_suffix; reran the whole stage112 audit successfully. No numerical data, numerical sources, models or screens changed."
+}

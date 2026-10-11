@@ -1,0 +1,36 @@
+{
+  "objective": "Complete the authorized full-history refinement using frozen predictors, verify stage results, publish completed final evidence to NousVolition/My-Sources-Project-ALL.",
+  "scope": "Full0..1.2 trajectories of all eight original test seeds; no refitting or fresh test population in this bounded numerical phase.",
+  "python": "C:/Users/ziman/Documents/Codex/2026-10-05/ca/work/study-env/Scripts/python.exe",
+  "study": "C:/Users/ziman/Documents/Codex/2026-10-08/referenced-chatgpt-conversation-this-is-an-3/work/My-Sources-Project-ALL/reports/matched-stretch/history-prediction/full-history-refinement",
+  "controller_session": 83809,
+  "controller_lock": "controller.json",
+  "controller_log": "controller.log",
+  "protocol": "protocol.json",
+  "numeric_runner": "run_history.py",
+  "numerical_source_sha256": "ff80734be538794ef76995819b9857a94eb06fb881c8c8c61816f8d4c4d37126",
+  "protocol_sha256": "b2f7c597259af857cd94b3732eb829b1cc17931bd12e15fb9680cf2739dfa5d3",
+  "tests_passed": 34,
+  "verified_inputs": 63,
+  "initial_grids": [
+    56,
+    80,
+    112
+  ],
+  "conditional_extensions": [
+    160,
+    224
+  ],
+  "max_new_simulations": 44,
+  "workers": 3,
+  "current_phase": "Initial56/80/112 stage complete with both half-step controls;36/80 screens pass. Automatic160 extension is running (eight main runs plus two half-step controls). No numerical failures.",
+  "provisional_scores": "outputs/full-history-112-preview.json in task root: .5254% RMSE reduction;paired interval includes zero;event AP slightly worse.80→112 target changes1.185–1.969%, below neither the1% screen nor every event-overlap screen.",
+  "restart_rule": "Do not duplicate controller or simulations. Verify source hashes, per-job claims and advancing recovery/logs. Checkpoints preserved on failure; never silently restart or alter active numerical/model/feature sources.",
+  "analysis_rules": "Controller performs stage analysis, snapshots, frozen extension decisions and final report. Read controller-failure.json/stage-failures.json if present; unrelated simulations finish before stage failure reported. Pipeline portability repair retained in pipeline-verification.json; numeric sources unchanged.",
+  "completion_rule": "When completion.json exists, verify sources/results/report/raw archives, inspect final plot, preserve every stage failure and snapshots, publish with latest remote main as base preserving unrelated work, verify all GitHub checks and published hashes. Fresh independent confirmation remains separate from this numerical phase.",
+  "publication_cache": "publication-object-cache.json records46 verified detached archive blobs; no report or branch update yet.",
+  "previous_study": "spatial-convergence complete published38177c0cd63bbef8dbbfa806714149bd197af7be; do not restart it. Original48 matched/vortex matrices and other chats untouched.",
+  "final_review_tasks": [
+    "Run verify_completion.py; inspect final plot; update .github/workflows/marker-history-prediction.yml to include test_full_history.py; correct stage-snapshot README links to stage-specific copied images/results/arrays/CSV/execution before publication. Preserve final README/hash unchanged unless documented editorial fix."
+  ]
+}
