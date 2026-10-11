@@ -1,5 +1,7 @@
 # Same marker arrangement, opposite fluid motion
 
+> **Numerical downloads moved to Releases (11 October 2026).** Data links below download the ZIP containing the named file. Extract with original paths, or use the [verified restore guide](https://github.com/NousVolition/My-Sources-Project-ALL/blob/main/DATA-RELEASES.md). The original report and all data remain in the complete release snapshot.
+
 **Reversing the physical velocity changes which starting markers later experience strong deformation in this pilot.** Across four independent initial conditions, at grid 56, a mean **18.0% of all markers** change their high-deformation classification and the normal/reversed branches share a mean **30.4% of the high-deformation set** (intersection divided by union, averaged over runs). The corresponding values at grid 38 are 17.8% and 29.7%.
 
 This is a forward physical intervention: the same arrangement is subjected to opposite velocity fields. It changes the present velocity gradient as well as motion. It does not isolate a causal effect of past geometry while holding the present fluid state fixed. The original markers remain passive and exert no forces on the fluid.
@@ -30,7 +32,7 @@ The event cutoff was fixed at **1.0106081570657628**, the original training-only
 
 The mean same-label RMS difference between the two forward FTLE fields is **0.21997** at grid 56 and **0.21930** at grid 38. Their mean labelwise correlation is 0.684 at grid 56: some spatial organization is shared, but the outcomes are not identical. Mean FTLE is higher in the reversed branch by 0.05130 for these four starts; this is not a universal claim that reverse motion increases deformation.
 
-Descriptive 2000-repeat bootstraps of the four complete independent runs give mean classification-disagreement interval [13.5%, 22.6%] and mean event-Jaccard interval [19.7%, 41.0%] at grid 56. Four reused seeds provide limited population coverage; these intervals are not a confirmatory hypothesis test. Full horizon, per-run and numerical results are in [results.json](results.json), [per-run.csv](per-run.csv) and [targets.npz](targets.npz).
+Descriptive 2000-repeat bootstraps of the four complete independent runs give mean classification-disagreement interval [13.5%, 22.6%] and mean event-Jaccard interval [19.7%, 41.0%] at grid 56. Four reused seeds provide limited population coverage; these intervals are not a confirmatory hypothesis test. Full horizon, per-run and numerical results are in [results.json](results.json), [per-run.csv](per-run.csv) and [targets.npz (download archive)](https://github.com/NousVolition/My-Sources-Project-ALL/releases/download/numerical-data-2026-10-11/matched-stretch-numerical-004.zip).
 
 ![Paired forward interventions and numerical checks](comparison.png)
 

@@ -2,6 +2,10 @@
 
 Reviewed October 11, 2026 (UTC). [Project home](README.md) · [Reports](reports/README.md) · [Status](STATUS.md#current-numerical-status) · [Historical review](REPOSITORY-REVIEW.md) · [Streams and Rocks](https://github.com/NousVolition/Nous-Volition)
 
+## Storage follow-up
+
+The subsequent [verified release migration](DATA-RELEASES.md) moves the numerical arrays and archive parts off main while preserving original bytes and complete offline snapshots. The inventory figures and disposition discussion below describe the earlier pinned audit trees. Use the release guide for current download and restore instructions.
+
 ## What changed in this review
 
 - Corrected the current review's obsolete description of PR #3 as a draft. It was merged on October 11; its material-to-fluid feedback study is published and the merge checks passed.

@@ -1,5 +1,7 @@
 # Initial stage through grid 160: spatial refinement
 
+> **Numerical downloads moved to Releases (11 October 2026).** Data links below download the ZIP containing the named file. Extract with original paths, or use the [verified restore guide](https://github.com/NousVolition/My-Sources-Project-ALL/blob/main/DATA-RELEASES.md). The original report and all data remain in the complete release snapshot.
+
 **The strict spatial-convergence claim remains unestablished: some predeclared numerical-stability screens fail.**
 
 This study tests the same four reused initial conditions at finer grids, with a common saved fluid state and identical marker positions. Arrangement/direction effects and convergence of individual deformation outcomes are evaluated separately. A surviving aggregate effect does not certify local event locations.
@@ -99,7 +101,7 @@ The Eulerian comparison uses normalized endpoint Fourier coefficients on the sha
 
 [scheduling-audit.json](scheduling-audit.json) and per-job claims/logs document disjoint parallel scheduling. The first short-lived-shell launch never initialized numerical work; it created no claims, data or checkpoints. The persistent launcher was verified before retrying. Completed caches are verified by exact source/data hashes. Partial checkpoints are preserved and refused by the sequential controller before any integration; if it arrives before a helper completes, it waits through a documented guarded restart. Numerical sources were not modified while active. Recovery checkpoints are local restart evidence, not published bulk data.
 
-The [results](results-160.json), [all-horizon target arrays](targets-160.npz), [grid comparison table](grid-comparisons-160.csv), individual [recorded trajectories and shared-band spectra](recorded-data) and [plot](convergence-160.png) support the numerical tables. In grid/time comparison records, inherited helper keys named normal/reversed denote the first/second supplied array (coarser/finer grid or main/half step), rather than a change in motion direction. The complete parent and new transfer test suite passed **32 tests**, recorded in [tests.xml](tests.xml). Original long matrices and previously completed studies were not restarted.
+The [results](results-160.json), [all-horizon target arrays (download archive)](https://github.com/NousVolition/My-Sources-Project-ALL/releases/download/numerical-data-2026-10-11/matched-stretch-numerical-004.zip), [grid comparison table](grid-comparisons-160.csv), individual [recorded trajectories and shared-band spectra](recorded-data) and [plot](convergence-160.png) support the numerical tables. In grid/time comparison records, inherited helper keys named normal/reversed denote the first/second supplied array (coarser/finer grid or main/half step), rather than a change in motion direction. The complete parent and new transfer test suite passed **32 tests**, recorded in [tests.xml](tests.xml). Original long matrices and previously completed studies were not restarted.
 
 ```text
 python reports/matched-stretch/history-prediction/spatial-convergence/analyze.py

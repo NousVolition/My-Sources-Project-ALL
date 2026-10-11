@@ -1,5 +1,7 @@
 # Mirrored arrangements in both directions of fluid motion
 
+> **Numerical downloads moved to Releases (11 October 2026).** Data links below download the ZIP containing the named file. Extract with original paths, or use the [verified restore guide](https://github.com/NousVolition/My-Sources-Project-ALL/blob/main/DATA-RELEASES.md). The original report and all data remain in the complete release snapshot.
+
 **The finite cluster response depends on its geometry relative to the motion. The passive arrangement does not change the fluid's pointwise deformation field.** Reversing the physical velocity changes high-deformation outcomes in both the original and globally mirrored clouds. Mirroring local neighbors around fixed centers changes a finite-neighborhood deformation measure, with an effect that depends on velocity direction. These are different outcomes and cannot establish that either arrangement or direction alone controls deformation.
 
 ## Predeclared experiment
@@ -79,7 +81,7 @@ The upper panels show initial x-y projections colored by future pointwise events
 
 ## Provenance and reproduction
 
-[recorded-data](recorded-data) contains nine new NPZ trajectory archives and nine metadata files. Metadata records raw SHA-256 hashes for each new archive, its reused trajectory archive, full-state checkpoint and executed sources. [execution.json](execution.json) and [pilot.json](pilot.json) record completion. [results.json](results.json), [per-run.csv](per-run.csv) and [targets.npz](targets.npz) include per-run, all-horizon, grid and half-step comparisons. Publication file checksums are in [publication-manifest.json](publication-manifest.json).
+[recorded-data](recorded-data) contains nine new NPZ trajectory archives and nine metadata files. Metadata records raw SHA-256 hashes for each new archive, its reused trajectory archive, full-state checkpoint and executed sources. [execution.json](execution.json) and [pilot.json](pilot.json) record completion. [results.json](results.json), [per-run.csv](per-run.csv) and [targets.npz (download archive)](https://github.com/NousVolition/My-Sources-Project-ALL/releases/download/numerical-data-2026-10-11/matched-stretch-numerical-002.zip) include per-run, all-horizon, grid and half-step comparisons. Publication file checksums are in [publication-manifest.json](publication-manifest.json).
 
 The 27 reused trajectory/metadata/checkpoint files were verified against GitHub blob hashes before the new runs. Full source-hash checks also passed. The executed runner SHA-256 is a0a27be014ffd0d2f066cd2826634ab663c049db1233ccd03ad4e5454ea92362; the analysis SHA-256 is 3cd6a1492b2fc7cd8d464c3303d00fcdcea9228150e4e80654ff60ef184bdb6c. The unchanged parent numerical source has executed CRLF-byte hash 16d11a080c1559d428b33f803c1f83cfabbc3336e0bab9256989b9a2cef40d53. Analysis permits only LF/CRLF-equivalent source checks; actual edits fail validation. Simulation cache reuse requires exact executed-source bytes.
 

@@ -1,5 +1,7 @@
 # Mirrored and reversed marker histories
 
+> **Numerical downloads moved to Releases (11 October 2026).** Data links below download the ZIP containing the named file. Extract with original paths, or use the [verified restore guide](https://github.com/NousVolition/My-Sources-Project-ALL/blob/main/DATA-RELEASES.md). The original report and all data remain in the complete release snapshot.
+
 The original 23 history summaries cannot distinguish a consistently reflected arrangement from its mirror. Adding three signed/unsigned turning measurements produced a tiny, uncertain reduction in prediction error and no clear strong-event benefit. Refitting after invertible sign changes produced exactly the same predictions, including for reversed histories. This does **not** show that arrangement, chronology, or handedness is physically irrelevant.
 
 ## What was tested
@@ -51,7 +53,7 @@ Adding the three past descriptors to the model containing c reduces mean RMSE by
 
 ![Per-run prediction scores](comparison.png)
 
-Full per-run RMSE, MAE, R², average precision, Brier score, log loss, calibration bins, precision/recall, validation choices and paired intervals are in [results.json](results.json). [predictions.npz](predictions.npz) preserves every held-out prediction and target.
+Full per-run RMSE, MAE, R², average precision, Brier score, log loss, calibration bins, precision/recall, validation choices and paired intervals are in [results.json](results.json). [predictions.npz (download archive)](https://github.com/NousVolition/My-Sources-Project-ALL/releases/download/numerical-data-2026-10-11/matched-stretch-numerical-002.zip) preserves every held-out prediction and target.
 
 ### Why a mirror can be learned away
 

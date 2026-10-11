@@ -1,5 +1,7 @@
 # Full-history refinement with frozen predictors
 
+> **Numerical downloads moved to Releases (11 October 2026).** Data links below download the ZIP containing the named file. Extract with original paths, or use the [verified restore guide](https://github.com/NousVolition/My-Sources-Project-ALL/blob/main/DATA-RELEASES.md). The original report and all data remain in the complete release snapshot.
+
 **Archived completed stage: 160 grid.** All36 trajectories (34 new plus two reused references) were checked. The frozen screens pass54/88;32 predictor-output checks, one target check and one per-run event-AP contrast check fail. Both160 half-step controls pass. The controller has consequently started the predeclared final224 stage; the bounded matrix is not complete. The [separate fresh independent confirmation](../fresh-independent/PREREGISTRATION.md) is authorized and preregistered, but has not started.
 
 **Full-history numerical stability remains unestablished at the frozen tolerances.**
@@ -128,7 +130,7 @@ These controls keep present inputs fixed and change only historical descriptors:
 
 [input-verification.json](input-verification.json) records 63 source/model/archive/metadata files matched to GitHub before the pilot. [launch-verification.json](launch-verification.json) records frozen local source hashes. Per-run metadata records executed sources, initial-condition seed, configuration, array checksum and numerical diagnostics. The recorder’s complete outputs match the original parent simulation bit-for-bit in an independent small-run test; a separate analytic transfer test verifies the same initial polynomial across non-nested grids. All 34 parent and new analytic/regression tests passed, recorded in [tests.xml](tests.xml).
 
-The [execution record](execution-160.json), [results](results-160.json), [per-run comparisons](per-run-comparisons-160.csv), [saved predictors’ outputs and feature arrays](predictions-and-features-160.npz), [raw histories](recorded-data), stage decisions and logs preserve completed and failed screens. [publication-manifest.json](publication-manifest-160.json) lists published checksums. Recovery checkpoints are local continuation evidence, excluded from bulk publication. Numerical sources and fitted models were not edited while active.
+The [execution record](execution-160.json), [results](results-160.json), [per-run comparisons](per-run-comparisons-160.csv), [saved predictors’ outputs and feature arrays (download archive)](https://github.com/NousVolition/My-Sources-Project-ALL/releases/download/numerical-data-2026-10-11/matched-stretch-numerical-001.zip), [raw histories](recorded-data), stage decisions and logs preserve completed and failed screens. [publication-manifest.json](publication-manifest-160.json) lists published checksums. Recovery checkpoints are local continuation evidence, excluded from bulk publication. Numerical sources and fitted models were not edited while active.
 
 From the repository root, with the parent requirements installed:
 

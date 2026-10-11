@@ -1,5 +1,7 @@
 # Reports by topic
 
+**Large numerical data:** [verified release downloads and restore instructions](../DATA-RELEASES.md). Reports and figures remain available here.
+
 ## Completed fresh-flow memory tests
 
 - **[Structure erasure and delayed probes](fluid-memory-erasure/README.md):** 135 completed fluid configurations, fresh held-out flows, structure-erasure controls, delayed probes, frozen predictions, numerical verification and limits. [Exact raw recordings](https://github.com/NousVolition/My-Sources-Project-ALL/releases/tag/fluid-memory-erasure-2026-10-10).

@@ -1,5 +1,7 @@
 # Reproducible switching, hysteresis, and phase-locking tests
 
+> **Numerical downloads moved to Releases (11 October 2026).** Data links below download the ZIP containing the named file. Extract with original paths, or use the [verified restore guide](https://github.com/NousVolition/My-Sources-Project-ALL/blob/main/DATA-RELEASES.md). The original report and all data remain in the complete release snapshot.
+
 Tests the supplied biochemical positive-feedback equation and the later oscillator, pendulum and firefly examples. **These are illustrative ODE models, distinct from the earlier water molecular dynamics.**
 
 | Model | State measured | What was tested |
@@ -75,7 +77,7 @@ Both simulation scripts accept `--out PATH` to save a new run separately. Figure
 
 DOP853 integrations use rtol=10⁻¹⁰ and atol=10⁻¹² for switching; pulse discontinuities are integrated as separate segments. Radau with tighter tolerances agrees with the two near-threshold pulse traces to within 2.34e-09 in x. Independent fixed-step RK4 endpoint errors decrease on halving the step and remain below 3×10⁻¹⁰ in these tests. ODE rotation periods agree with analytic values to relative error at most 4.42e-14; complete phase-slip intervals agree to 2.46e-11. These are observed numerical errors for the recorded parameter choices, not general solver guarantees. The pendulum uses Radau for its stiff velocity dynamics. All saved arrays were checked for finite values; loop areas and final pulse states were reconstructed from them.
 
-[Full self-contained report](report.html) · [Switch protocol](data/protocol.json) · [Switch measurements](data/results.json) · [Phase protocol](data/phase_protocol.json) · [Phase measurements](data/phase_results.json) · [Saved switching trajectories](data/trajectories.npz) · [Saved phase trajectories](data/phase_trajectories.npz) · [Checksums](manifest_sha256.json)
+[Full self-contained report](report.html) · [Switch protocol](data/protocol.json) · [Switch measurements](data/results.json) · [Phase protocol](data/phase_protocol.json) · [Phase measurements](data/phase_results.json) · [Saved switching trajectories (download archive)](https://github.com/NousVolition/My-Sources-Project-ALL/releases/download/numerical-data-2026-10-11/water-molecule-influence-numerical-001.zip) · [Saved phase trajectories (download archive)](https://github.com/NousVolition/My-Sources-Project-ALL/releases/download/numerical-data-2026-10-11/water-molecule-influence-numerical-001.zip) · [Checksums](manifest_sha256.json)
 
 ## Limitations and next validation
 

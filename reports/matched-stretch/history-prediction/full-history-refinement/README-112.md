@@ -1,5 +1,7 @@
 # Full-history refinement with frozen predictors
 
+> **Numerical downloads moved to Releases (11 October 2026).** Data links below download the ZIP containing the named file. Extract with original paths, or use the [verified restore guide](https://github.com/NousVolition/My-Sources-Project-ALL/blob/main/DATA-RELEASES.md). The original report and all data remain in the complete release snapshot.
+
 **Full-history numerical stability remains unestablished at the frozen tolerances.**
 
 The paired stretch-error interval includes zero; a predictive advantage remains unresolved. These previously examined eight runs are exploratory numerical validation, not fresh statistical confirmation.
@@ -132,7 +134,7 @@ These controls keep present inputs fixed and change only historical descriptors:
 
 [input-verification.json](input-verification.json) records 63 source/model/archive/metadata files matched to GitHub before the pilot. [launch-verification.json](launch-verification.json) records frozen local source hashes. Per-run metadata records executed sources, initial-condition seed, configuration, array checksum and numerical diagnostics. The recorder’s complete outputs match the original parent simulation bit-for-bit in an independent small-run test; a separate analytic transfer test verifies the same initial polynomial across non-nested grids. All 34 parent and new analytic/regression tests passed, recorded in [tests.xml](tests.xml).
 
-The [execution record](execution-112.json), [results](results-112.json), [per-run comparisons](per-run-comparisons-112.csv), [saved predictors’ outputs and feature arrays](predictions-and-features-112.npz), [raw histories](recorded-data), stage decisions and logs preserve completed and failed screens. [publication-manifest.json](publication-manifest-112.json) lists published checksums. Recovery checkpoints are local continuation evidence, excluded from bulk publication. Numerical sources and fitted models were not edited while active.
+The [execution record](execution-112.json), [results](results-112.json), [per-run comparisons](per-run-comparisons-112.csv), [saved predictors’ outputs and feature arrays (download archive)](https://github.com/NousVolition/My-Sources-Project-ALL/releases/download/numerical-data-2026-10-11/matched-stretch-numerical-001.zip), [raw histories](recorded-data), stage decisions and logs preserve completed and failed screens. [publication-manifest.json](publication-manifest-112.json) lists published checksums. Recovery checkpoints are local continuation evidence, excluded from bulk publication. Numerical sources and fitted models were not edited while active.
 
 From the repository root, with the parent requirements installed:
 

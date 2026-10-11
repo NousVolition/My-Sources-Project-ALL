@@ -1,5 +1,7 @@
 # Menger cheese, Koch snowflakes and Romeo–Juliet relationships
 
+> **Numerical downloads moved to Releases (11 October 2026).** Data links below download the ZIP containing the named file. Extract with original paths, or use the [verified restore guide](https://github.com/NousVolition/My-Sources-Project-ALL/blob/main/DATA-RELEASES.md). The original report and all data remain in the complete release snapshot.
+
 **Completed exploratory comparison: 90 cases under four numerical configurations, giving 360 case trajectories through model time 0.10. All 90 tracking-step screens pass. This does not demonstrate an improvement to Navier–Stokes or validate a molecular model of water.**
 
 [Main study](../README.md) · [Full HTML report](report.html) · [Protocol](protocol.json) · [Verification](verification.json)
@@ -81,9 +83,9 @@ Passive markers can measure how an existing flow rearranges structured neighborh
 
 ## Data and reproduction
 
-[Complete measurements](analysis.json) · [Run records and source hashes](results.json) · [Summary](summary.json) · [Initial geometry and graph](construction.npz)
+[Complete measurements](analysis.json) · [Run records and source hashes](results.json) · [Summary](summary.json) · [Initial geometry and graph (download archive)](https://github.com/NousVolition/My-Sources-Project-ALL/releases/download/numerical-data-2026-10-11/matched-stretch-numerical-004.zip)
 
-[Base trajectories](base64.npz) · [Smaller-step trajectories](step64.npz) · [128-grid trajectories](grid128.npz) · [Coarser-snapshot trajectories](snapshot_coarse.npz)
+[Base trajectories (download archive)](https://github.com/NousVolition/My-Sources-Project-ALL/releases/download/numerical-data-2026-10-11/matched-stretch-numerical-004.zip) · [Smaller-step trajectories (download archive)](https://github.com/NousVolition/My-Sources-Project-ALL/releases/download/numerical-data-2026-10-11/matched-stretch-numerical-005.zip) · [128-grid trajectories (download archive)](https://github.com/NousVolition/My-Sources-Project-ALL/releases/download/numerical-data-2026-10-11/matched-stretch-numerical-004.zip) · [Coarser-snapshot trajectories (download archive)](https://github.com/NousVolition/My-Sources-Project-ALL/releases/download/numerical-data-2026-10-11/matched-stretch-numerical-004.zip)
 
 Each trajectory archive contains time, positions with shape `(saved_times, 90, 192, 3)`, and states with shape `(saved_times, 90, 192)`. Cases are ordered in `results.json`. Positions are unwrapped; periodic distance calculations use a side-6 box.
 

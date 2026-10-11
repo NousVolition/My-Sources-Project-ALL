@@ -6,11 +6,15 @@ on:
       - 'reports/matched-stretch/history-prediction/**'
       - 'reports/matched-stretch/numerics.py'
       - '.github/workflows/marker-history-prediction.yml'
+      - 'tools/restore_numerical_data.py'
+      - 'data-release/**'
   pull_request:
     paths:
       - 'reports/matched-stretch/history-prediction/**'
       - 'reports/matched-stretch/numerics.py'
       - '.github/workflows/marker-history-prediction.yml'
+      - 'tools/restore_numerical_data.py'
+      - 'data-release/**'
 
 permissions:
   contents: read
@@ -23,6 +27,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Restore and verify marker history data
+        run: python tools/restore_numerical_data.py --study reports/matched-stretch
       - name: Install study dependencies
         run: python -m pip install -r reports/matched-stretch/history-prediction/requirements.txt
       - name: Analytic, identity and causal fitting checks

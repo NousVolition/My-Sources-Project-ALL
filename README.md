@@ -1,5 +1,7 @@
 # Navier–Stokes research: hug-ns
 
+**Large numerical data:** [verified release downloads and restore instructions](DATA-RELEASES.md). Reports and figures remain available here.
+
 **Working toward a solution to the Clay Navier–Stokes existence and smoothness problem.**
 
 The central question is whether smooth three-dimensional fluid motion must remain smooth, or whether it can develop a singularity in finite time. This project develops flow constructions, follows their evolution, and checks the mechanisms that amplify or disperse vorticity.
