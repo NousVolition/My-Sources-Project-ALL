@@ -13,6 +13,18 @@ from pathlib import Path
 from urllib.parse import unquote, urlsplit
 
 
+# The stopped obstacle-only stage never generated its planned report or figures.
+# Its archived working notes retain their original relative links and bytes;
+# the stage README documents that scope. Only these exact frozen links qualify.
+HISTORICAL_LINK_RECORDS = {
+    'reports/clay-contact-stress/obstacle-only/MODEL-NOTES.md': (
+        '47f8aa4c9448e185c04862200a97bf845d821259e8e9450205b0d7c82a9ecf10',
+        {'report.html', '../clay-hug/README.md',
+         'figures/contact.png', 'figures/reciprocal.png'},
+    ),
+}
+
+
 def check(root):
     if (root / '.git').exists():
         names = subprocess.check_output(
@@ -29,7 +41,8 @@ def check(root):
             dirs.add(parent)
             parent = posixpath.dirname(parent)
     errors = []
-    counts = dict(python=0, json=0, markdown=0, local_links=0, manifest_files=0)
+    counts = dict(python=0, json=0, markdown=0, local_links=0,
+                  preserved_historical_links=0, manifest_files=0)
     for name in sorted(files):
         suffix = Path(name).suffix.lower()
         if suffix not in ('.py', '.json', '.md'):
@@ -44,6 +57,11 @@ def check(root):
                 counts['json'] += 1
             else:
                 counts['markdown'] += 1
+                historical = HISTORICAL_LINK_RECORDS.get(name)
+                frozen_links = set()
+                if historical and hashlib.sha256(
+                        (root / name).read_bytes()).hexdigest() == historical[0]:
+                    frozen_links = historical[1]
                 text = re.sub(r'(?ms)^```.*?^```[^\n]*', '', text)
                 for match in re.finditer(r'\]\(\s*(<[^>]+>|[^\s)]+)\s*\)', text):
                     link = match.group(1).strip('<>')
@@ -54,7 +72,10 @@ def check(root):
                         posixpath.dirname(name), unquote(url.path)))
                     counts['local_links'] += 1
                     if target not in files and target not in dirs:
-                        errors.append(f'{name}: missing link target {link}')
+                        if link in frozen_links:
+                            counts['preserved_historical_links'] += 1
+                        else:
+                            errors.append(f'{name}: missing link target {link}')
         except (OSError, UnicodeError, ValueError, SyntaxError) as exc:
             errors.append(f'{name}: {exc}')
     # These manifests cover their published study packages. Other repositories
