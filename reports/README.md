@@ -63,6 +63,10 @@ These studies use separate molecular or toy models. Their own reports state the 
 | One heavy water molecule | [Isotope placement, identity controls and raw-data provenance](molecular/isotope-mass/README.md) |
 | Identical water molecules | [Positional influence and follow-up experiments](water-molecule-influence/README.md) |
 
+## Moldable hug and reciprocal drive
+
+[Computed molding and stress results](clay-hug/README.md): a filled 2-D yielding mesh around circular, tilted elliptical and concave objects; reciprocal work coupling to Lorenz, unloading, time/mesh/contact checks and preserved numerical failures. [Interactive offline report](clay-hug/report.html). The material is dimensionless and not calibrated physical clay.
+
 ## Mirror-fluid and reduced models
 
 [Four reproduced fluid tests](../math/imports/hug-ns/mirror-fluid/README.md) · [Signed calibration](../math/imports/hug-ns/mirror-calibration/README.md) · [Definitions and controls](../math/imports/hug-ns/mirror-fluid/methods-controls/README.md)
@@ -156,4 +160,5 @@ Earlier interactive-viewer snapshot: 2026-10-08T20:40:59.597392+00:00. That disp
 Full restart arrays for the two 48-run fluid matrices remain in the local calculation workspace; the published JSON files are measurement records. Other studies state their own raw-data release arrangements.
 
 **Seeing orange/red lines and minus signs?** You are viewing a commit or pull request diff. Those lines show the previous version. Return to the **Code** tab and open the README to read the current report.
+
 
