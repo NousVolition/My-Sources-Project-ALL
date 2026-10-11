@@ -1,0 +1,12 @@
+{
+  "date":"2026-10-11",
+  "written_before_production_effects":true,
+  "purpose":"Separate response of the prepared fluid from ongoing state-dependent forcing feedback.",
+  "seeds":[82000,82001],
+  "regimes":["forced_nu004","forced_nu002"],
+  "layout":"coincident",
+  "restart":"Exact saved full initial branch states, pulses and observation coordinates of the forced experiment; turn off only the continuing forcing for horizon 0.4.",
+  "grids":"Both effective production grids; first seed additionally half-step at finer grid.",
+  "same_pulse_control":"Additionally repeat the same-pulse equal-work/equal-strength intervention with sustaining force off on the same seeds/grids and half-step subset. Identical prepared states and impulses are preserved; both unprobed and probed branches are rerun with forcing off.",
+  "inference":"Paired two-flow exploratory control. Do not treat as independent confirmation or infer absence of feedback from a nonsignificant difference."
+}

@@ -1,0 +1,50 @@
+{
+  "all_passed": true,
+  "complete": false,
+  "pairs": [
+    {
+      "seed": 80000,
+      "regime": "forced_nu002",
+      "grids": [
+        80,
+        96
+      ],
+      "comparison": {
+        "response_ftle_rmse": 0.0003258464081371932,
+        "response_field_relative": 0.0040153313898722955
+      },
+      "screens": [
+        {
+          "divergence_rms": true,
+          "gradient_trace": true,
+          "energy_budget_relative": true,
+          "tail_enstrophy": true,
+          "tangent_volume_error": true,
+          "cfl": true,
+          "work": true,
+          "rms": true,
+          "kmax_eta": true
+        },
+        {
+          "divergence_rms": true,
+          "gradient_trace": true,
+          "energy_budget_relative": true,
+          "tail_enstrophy": true,
+          "tangent_volume_error": true,
+          "cfl": true,
+          "work": true,
+          "rms": true,
+          "kmax_eta": true
+        }
+      ],
+      "passed": true
+    }
+  ],
+  "effect_sizes_inspected": false,
+  "sources": {
+    "corrected_pilot.py": "bdbc557b74ef1f5d7cd7202cf5709b0a6b2732d70eab0e3207290ae860b74562",
+    "corrected_solver.py": "8b2d325f9cb45aa65cade1e135124e095eee15062064ed987b4809c81a74b1e6",
+    "corrected_observation.py": "073eee1634a8abf3cfdb024d78867de8465583b6031019ded07df27e5da74c2f",
+    "final_experiment.py": "0dda7bef4abef6f73c26330fbd781ce4c7e3b6b43fb16a415ba231a0b805d88b"
+  }
+}

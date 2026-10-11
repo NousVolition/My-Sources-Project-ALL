@@ -1,0 +1,11 @@
+{
+  "date":"2026-10-11",
+  "written_before_production_response_effects":true,
+  "purpose":"Hold the entire velocity impulse, its RMS strength and its kinetic-energy increment identical across every compared history and erasure arm.",
+  "construction":"Span 27 localized divergence-free fields: three Gaussian vector-potential curl orientations at nine nearby centers. Whiten the spectral Gram matrix, retaining eigenvalues greater than 1e-10 of the largest. Choose the closest projection of the original preferred curl onto the nullspace of inner products with all 14 unprobed arm/history starting fields. Normalize the resulting single pulse to RMS 0.02. It must add 0.0002 energy to each field, within declared tolerances. The span and thresholds are fixed before effects are examined.",
+  "offsets":[[0,0,0],[0.45,0,0],[-0.45,0,0],[0,0.45,0],[0,-0.45,0],[0,0,0.45],[0,0,-0.45],[0.32,0.32,0.32],[-0.32,-0.32,-0.32]],
+  "width":0.65,"cutoff":4,"strength":0.02,"energy_increment":0.0002,
+  "scope":"All eight fresh smooth seeds on all three layouts and both production grids; four forced seeds per viscosity in coincident layout on both grids; first two smooth seeds and first forced seed per viscosity have finer-grid half-step controls.",
+  "constraint_rank_threshold":"min(1e-9 times largest singular value, 1e-10); discarded directions have a work-error bound below the 1e-11 gate at strength 0.02. This purely numerical conditioning choice is made before production effects, and every actual work residual is checked.",
+  "interpretation":"Additional prespecified follow-up before production. One pulse is shared within each complete comparison; it may differ across flows, locations and grids because the construction uses their initial states. No future outputs are used. A phase-scramble contrast alone still does not establish a unique memory carrier."
+}

@@ -1,0 +1,10 @@
+{
+ "date":"2026-10-11",
+ "before_production_effects":true,
+ "reason":"The original direct spectral sampler dominated high-resolution runtime. Replace only observation evaluation with a direct CUDA Fourier sum and analytic gradient. Float64/complex128 and all retained modes remain unchanged; no interpolation or cutoff reduction.",
+ "reference_source":"experiment.py/reference_solver.py are preserved unchanged with initial pilot outputs",
+ "production_source":"accelerated_experiment.py/fast_observation.py",
+ "evidence":"Four grids pass sampling and coupled-step comparisons; velocity/gradient differences near roundoff and field step exactly identical. results/fast-observation-validation.json",
+ "interruption":"Original pilot job was interrupted during its n=96 response after completing four smooth configurations, one forced n=64 configuration and one frozen forced spinup. No completed outputs deleted. The full pilot design will be repeated with the accelerated observation evaluator; the saved spinup can be reused as an explicitly hashed input.",
+ "selection":"No memory contrast sizes were inspected from pilot outputs. Numerical differences only. No tolerances or physical regime parameters relaxed."
+}

@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-11",
+  "production_effects_inspected": false,
+  "failed_attempts_preserved": true,
+  "correction": "Round FFT frequencies to exact integers before all spectral operations; use the exact strict cutoff 3*max(abs(k))<n. The reset reference has exactly parallel integer vectors on some modes; tiny floating-wave errors incorrectly bypassed its alternate-vector fallback and were amplified by normalization.",
+  "original_sources": {
+    "reference_solver.py": "1488064502fa20e78265e3af729c89b3fba2fd2ec60034931c9f1dbb89bf4cca",
+    "production_experiment.py": "8f903f36e7e0cb1d9950b6ee7d4bfdb0dad81bf6090e5329885ecc3abcf2b90a"
+  },
+  "corrected_sources": {
+    "corrected_solver.py": "8b2d325f9cb45aa65cade1e135124e095eee15062064ed987b4809c81a74b1e6",
+    "corrected_observation.py": "073eee1634a8abf3cfdb024d78867de8465583b6031019ded07df27e5da74c2f",
+    "final_experiment.py": "0dda7bef4abef6f73c26330fbd781ce4c7e3b6b43fb16a415ba231a0b805d88b"
+  },
+  "spinup": "Repeat with corrected solver; do not reuse original spinup as an interchangeable result.",
+  "validation": "Grid-independent reset regression at n=64/80/96 and repeated numerical pilot matrix. No thresholds relaxed.",
+  "implementation_startup": {
+    "integer_inverse_buffer": "float64",
+    "regression_tests_passed": 2
+  }
+}

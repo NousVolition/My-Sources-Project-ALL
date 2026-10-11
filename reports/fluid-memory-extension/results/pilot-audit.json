@@ -1,0 +1,490 @@
+{
+  "pairs": [
+    {
+      "seed": 80000,
+      "regime": "smooth",
+      "response_ftle_rmse": 4.186263179583487e-05,
+      "response_field_relative": 0.0003730539681800012,
+      "grid_pass": true
+    },
+    {
+      "seed": 80001,
+      "regime": "smooth",
+      "response_ftle_rmse": 4.414900828845606e-05,
+      "response_field_relative": 0.00023277370668393343,
+      "grid_pass": true
+    },
+    {
+      "seed": 80000,
+      "regime": "forced_nu004",
+      "response_ftle_rmse": 2.220900285154614e-05,
+      "response_field_relative": 0.0006812910491170222,
+      "grid_pass": true
+    },
+    {
+      "seed": 80001,
+      "regime": "forced_nu004",
+      "response_ftle_rmse": 8.009852766126182e-05,
+      "response_field_relative": 0.0026383903844906086,
+      "grid_pass": true
+    },
+    {
+      "seed": 80000,
+      "regime": "forced_nu002",
+      "response_ftle_rmse": 0.0009653400835520426,
+      "response_field_relative": 0.01143016073188167,
+      "grid_pass": true
+    },
+    {
+      "seed": 80001,
+      "regime": "forced_nu002",
+      "response_ftle_rmse": 0.003895014516716627,
+      "response_field_relative": 0.02003746268383516,
+      "grid_pass": false
+    }
+  ],
+  "runs": [
+    {
+      "config": {
+        "seed": 80000,
+        "regime": "smooth",
+        "layout": "coincident",
+        "n": 32,
+        "dt": 0.01,
+        "backend": "gpu",
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "screens": {
+        "divergence_rms": true,
+        "gradient_trace": true,
+        "energy_budget_relative": true,
+        "tail_enstrophy": true,
+        "tangent_volume_error": true,
+        "cfl": true,
+        "work": true,
+        "rms": true
+      },
+      "maxima": {
+        "energy": 0.18,
+        "energy_budget_relative": 4.25382703598635e-09,
+        "divergence_rms": 7.331137316000325e-17,
+        "tail_enstrophy": 1.4883293249282546e-05,
+        "tangent_volume_error": 1.9023940867057831e-07,
+        "gradient_trace": 4.440892098500626e-16,
+        "max_cfl": 0.18891834693520254
+      },
+      "Re_lambda": 2.931664555612414,
+      "kmax_eta": 3.4446090562304583
+    },
+    {
+      "config": {
+        "seed": 80000,
+        "regime": "smooth",
+        "layout": "coincident",
+        "n": 48,
+        "dt": 0.01,
+        "backend": "gpu",
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "screens": {
+        "divergence_rms": true,
+        "gradient_trace": true,
+        "energy_budget_relative": true,
+        "tail_enstrophy": true,
+        "tangent_volume_error": true,
+        "cfl": true,
+        "work": true,
+        "rms": true
+      },
+      "maxima": {
+        "energy": 0.18,
+        "energy_budget_relative": 4.253913964907202e-09,
+        "divergence_rms": 5.313621479661463e-17,
+        "tail_enstrophy": 4.883590155737908e-08,
+        "tangent_volume_error": 1.9058695510665302e-07,
+        "gradient_trace": 8.604228440844963e-16,
+        "max_cfl": 0.28583242906877204
+      },
+      "Re_lambda": 2.931664544461993,
+      "kmax_eta": 5.166913581687068
+    },
+    {
+      "config": {
+        "seed": 80001,
+        "regime": "smooth",
+        "layout": "coincident",
+        "n": 32,
+        "dt": 0.01,
+        "backend": "gpu",
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "screens": {
+        "divergence_rms": true,
+        "gradient_trace": true,
+        "energy_budget_relative": true,
+        "tail_enstrophy": true,
+        "tangent_volume_error": true,
+        "cfl": true,
+        "work": true,
+        "rms": true
+      },
+      "maxima": {
+        "energy": 0.18000000000000002,
+        "energy_budget_relative": 3.736168666113037e-09,
+        "divergence_rms": 6.458556386930561e-17,
+        "tail_enstrophy": 9.93512249191391e-06,
+        "tangent_volume_error": 9.823447078005643e-08,
+        "gradient_trace": 6.661338147750939e-16,
+        "max_cfl": 0.16907347401898984
+      },
+      "Re_lambda": 3.171860889055971,
+      "kmax_eta": 3.517152655184113
+    },
+    {
+      "config": {
+        "seed": 80001,
+        "regime": "smooth",
+        "layout": "coincident",
+        "n": 48,
+        "dt": 0.01,
+        "backend": "gpu",
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "screens": {
+        "divergence_rms": true,
+        "gradient_trace": true,
+        "energy_budget_relative": true,
+        "tail_enstrophy": true,
+        "tangent_volume_error": true,
+        "cfl": true,
+        "work": true,
+        "rms": true
+      },
+      "maxima": {
+        "energy": 0.18,
+        "energy_budget_relative": 3.736198541906235e-09,
+        "divergence_rms": 8.15566017115404e-17,
+        "tail_enstrophy": 2.0246537789317565e-08,
+        "tangent_volume_error": 9.814585189005243e-08,
+        "gradient_trace": 7.771561172376096e-16,
+        "max_cfl": 0.25361692685993414
+      },
+      "Re_lambda": 3.1718609163770273,
+      "kmax_eta": 5.275729007865395
+    },
+    {
+      "config": {
+        "seed": 80000,
+        "regime": "forced_nu004",
+        "layout": "coincident",
+        "n": 64,
+        "dt": 0.002,
+        "backend": "gpu",
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "screens": {
+        "divergence_rms": true,
+        "gradient_trace": true,
+        "energy_budget_relative": true,
+        "tail_enstrophy": true,
+        "tangent_volume_error": true,
+        "cfl": true,
+        "work": true,
+        "rms": true,
+        "kmax_eta": true
+      },
+      "maxima": {
+        "energy": 0.6754122810252816,
+        "energy_budget_relative": 4.918768812285672e-12,
+        "divergence_rms": 9.832177066988657e-17,
+        "tail_enstrophy": 2.9841231864074897e-06,
+        "tangent_volume_error": 3.8389313949949155e-10,
+        "gradient_trace": 2.4424906541753444e-15,
+        "max_cfl": 0.11543074427380595
+      },
+      "Re_lambda": 18.623971872005253,
+      "kmax_eta": 2.7539112193348694
+    },
+    {
+      "config": {
+        "seed": 80000,
+        "regime": "forced_nu004",
+        "layout": "coincident",
+        "n": 96,
+        "dt": 0.002,
+        "backend": "gpu",
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "screens": {
+        "divergence_rms": true,
+        "gradient_trace": true,
+        "energy_budget_relative": true,
+        "tail_enstrophy": true,
+        "tangent_volume_error": true,
+        "cfl": true,
+        "work": true,
+        "rms": true,
+        "kmax_eta": true
+      },
+      "maxima": {
+        "energy": 0.6754122810755083,
+        "energy_budget_relative": 4.91846593302678e-12,
+        "divergence_rms": 1.0078062800557722e-16,
+        "tail_enstrophy": 7.118900653653611e-09,
+        "tangent_volume_error": 3.839084605772314e-10,
+        "gradient_trace": 4.6629367034256575e-15,
+        "max_cfl": 0.1737042662501328
+      },
+      "Re_lambda": 18.623971894998057,
+      "kmax_eta": 4.065297516364188
+    },
+    {
+      "config": {
+        "seed": 80001,
+        "regime": "forced_nu004",
+        "layout": "coincident",
+        "n": 64,
+        "dt": 0.002,
+        "backend": "gpu",
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "screens": {
+        "divergence_rms": true,
+        "gradient_trace": true,
+        "energy_budget_relative": true,
+        "tail_enstrophy": true,
+        "tangent_volume_error": true,
+        "cfl": true,
+        "work": true,
+        "rms": true,
+        "kmax_eta": true
+      },
+      "maxima": {
+        "energy": 0.5769756143224593,
+        "energy_budget_relative": 4.646317055468925e-12,
+        "divergence_rms": 9.06631211416094e-17,
+        "tail_enstrophy": 9.448809652715164e-06,
+        "tangent_volume_error": 2.211442140520603e-10,
+        "gradient_trace": 2.4980018054066022e-15,
+        "max_cfl": 0.09184287551363805
+      },
+      "Re_lambda": 16.363924973042987,
+      "kmax_eta": 2.791503213168932
+    },
+    {
+      "config": {
+        "seed": 80001,
+        "regime": "forced_nu004",
+        "layout": "coincident",
+        "n": 96,
+        "dt": 0.002,
+        "backend": "gpu",
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "screens": {
+        "divergence_rms": true,
+        "gradient_trace": true,
+        "energy_budget_relative": true,
+        "tail_enstrophy": true,
+        "tangent_volume_error": true,
+        "cfl": true,
+        "work": true,
+        "rms": true,
+        "kmax_eta": true
+      },
+      "maxima": {
+        "energy": 0.5769756144511792,
+        "energy_budget_relative": 4.6469249463871184e-12,
+        "divergence_rms": 9.302610316696485e-17,
+        "tail_enstrophy": 7.240445047668654e-08,
+        "tangent_volume_error": 2.2077584205248968e-10,
+        "gradient_trace": 4.440892098500626e-15,
+        "max_cfl": 0.1381269920971587
+      },
+      "Re_lambda": 16.36392501446838,
+      "kmax_eta": 4.120790462293834
+    },
+    {
+      "config": {
+        "seed": 80000,
+        "regime": "forced_nu002",
+        "layout": "coincident",
+        "n": 64,
+        "dt": 0.002,
+        "backend": "gpu",
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "screens": {
+        "divergence_rms": true,
+        "gradient_trace": true,
+        "energy_budget_relative": true,
+        "tail_enstrophy": true,
+        "tangent_volume_error": true,
+        "cfl": true,
+        "work": true,
+        "rms": true,
+        "kmax_eta": true
+      },
+      "maxima": {
+        "energy": 0.8104134512419235,
+        "energy_budget_relative": 2.8535812190255898e-11,
+        "divergence_rms": 1.4783244656227937e-16,
+        "tail_enstrophy": 0.0009705624217452243,
+        "tangent_volume_error": 2.450180058843898e-10,
+        "gradient_trace": 2.886579864025407e-15,
+        "max_cfl": 0.12078452228483513
+      },
+      "Re_lambda": 31.993094330569548,
+      "kmax_eta": 1.6458996188564035
+    },
+    {
+      "config": {
+        "seed": 80000,
+        "regime": "forced_nu002",
+        "layout": "coincident",
+        "n": 96,
+        "dt": 0.002,
+        "backend": "gpu",
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "screens": {
+        "divergence_rms": true,
+        "gradient_trace": true,
+        "energy_budget_relative": true,
+        "tail_enstrophy": true,
+        "tangent_volume_error": true,
+        "cfl": true,
+        "work": true,
+        "rms": true,
+        "kmax_eta": true
+      },
+      "maxima": {
+        "energy": 0.8104138148246521,
+        "energy_budget_relative": 2.8717946982682434e-11,
+        "divergence_rms": 1.4748978251654145e-16,
+        "tail_enstrophy": 3.314789950225892e-05,
+        "tangent_volume_error": 2.4557955669024523e-10,
+        "gradient_trace": 5.440092820663267e-15,
+        "max_cfl": 0.18149553783628952
+      },
+      "Re_lambda": 31.993181314112345,
+      "kmax_eta": 2.429664338954401
+    },
+    {
+      "config": {
+        "seed": 80001,
+        "regime": "forced_nu002",
+        "layout": "coincident",
+        "n": 64,
+        "dt": 0.002,
+        "backend": "gpu",
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "screens": {
+        "divergence_rms": true,
+        "gradient_trace": true,
+        "energy_budget_relative": true,
+        "tail_enstrophy": true,
+        "tangent_volume_error": true,
+        "cfl": true,
+        "work": true,
+        "rms": true,
+        "kmax_eta": true
+      },
+      "maxima": {
+        "energy": 0.658054480859134,
+        "energy_budget_relative": 2.823493712874566e-11,
+        "divergence_rms": 1.5149053853987225e-16,
+        "tail_enstrophy": 0.0008227913918989673,
+        "tangent_volume_error": 3.6662806124354574e-10,
+        "gradient_trace": 3.164135620181696e-15,
+        "max_cfl": 0.09648411993046552
+      },
+      "Re_lambda": 25.693918968708612,
+      "kmax_eta": 1.6490785229258202
+    },
+    {
+      "config": {
+        "seed": 80001,
+        "regime": "forced_nu002",
+        "layout": "coincident",
+        "n": 96,
+        "dt": 0.002,
+        "backend": "gpu",
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "screens": {
+        "divergence_rms": true,
+        "gradient_trace": true,
+        "energy_budget_relative": true,
+        "tail_enstrophy": true,
+        "tangent_volume_error": true,
+        "cfl": true,
+        "work": true,
+        "rms": true,
+        "kmax_eta": true
+      },
+      "maxima": {
+        "energy": 0.6580545349964732,
+        "energy_budget_relative": 2.847146193819656e-11,
+        "divergence_rms": 1.5922927856084573e-16,
+        "tail_enstrophy": 2.3986641328587652e-05,
+        "tangent_volume_error": 3.8194014617687344e-10,
+        "gradient_trace": 4.829470157119431e-15,
+        "max_cfl": 0.1450131482429771
+      },
+      "Re_lambda": 25.69400505650339,
+      "kmax_eta": 2.434357490437115
+    }
+  ],
+  "all_passed": false,
+  "effect_sizes_inspected": false
+}

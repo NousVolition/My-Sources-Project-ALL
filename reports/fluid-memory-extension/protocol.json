@@ -1,0 +1,153 @@
+{
+  "version": 1,
+  "date": "2026-10-11",
+  "parent_commit": "d049780e9291e090a9d85d1459fe0901b406dacc",
+  "status": "Written before pilot or response outcomes; locally frozen, not externally registered",
+  "smooth_seeds": [
+    81000,
+    81001,
+    81002,
+    81003,
+    81004,
+    81005,
+    81006,
+    81007
+  ],
+  "forced_seeds": [
+    82000,
+    82001,
+    82002,
+    82003
+  ],
+  "pilot_seeds": [
+    80000,
+    80001
+  ],
+  "layouts": {
+    "coincident": {
+      "writer_shift": [
+        0,
+        0,
+        0
+      ],
+      "probe_shift": [
+        0,
+        0,
+        0
+      ]
+    },
+    "writer_moved": {
+      "writer_shift": [
+        0.85,
+        -0.55,
+        0.35
+      ],
+      "probe_shift": [
+        0,
+        0,
+        0
+      ]
+    },
+    "probe_moved": {
+      "writer_shift": [
+        0,
+        0,
+        0
+      ],
+      "probe_shift": [
+        1.1,
+        0.5,
+        -0.7
+      ]
+    }
+  },
+  "regimes": {
+    "smooth": {
+      "nu": 0.12,
+      "initial_rms": 0.6,
+      "injection": 0,
+      "spinup": 0,
+      "grids": [
+        32,
+        48
+      ],
+      "dt": 0.01
+    },
+    "forced_nu004": {
+      "nu": 0.04,
+      "initial_rms": 0.8,
+      "injection": 0.2,
+      "spinup": 8,
+      "grids": [
+        64,
+        96
+      ],
+      "dt": 0.002
+    },
+    "forced_nu002": {
+      "nu": 0.02,
+      "initial_rms": 0.8,
+      "injection": 0.2,
+      "spinup": 8,
+      "grids": [
+        64,
+        96
+      ],
+      "dt": 0.002
+    }
+  },
+  "prepare_end": 0.4,
+  "write_stop": 0.2,
+  "writer_rms": 1.0,
+  "horizon": 0.4,
+  "save_dt": 0.1,
+  "centers": 10,
+  "probe_rms": 0.02,
+  "scrambles": 4,
+  "bootstrap_replicates": 4000,
+  "bootstrap_seed": 35119,
+  "probe_methods": [
+    "fixed_rms",
+    "equal_work_fixed_shape",
+    "equal_work_equal_rms"
+  ],
+  "equal_work": {
+    "target_energy_increment": 0.0002,
+    "fixed_shape": "Positive amplitude solves a*c+a*a/2=W for unit-RMS localized shape q and c=<u,q>. Amplitude is state dependent; report its complete distribution.",
+    "equal_rms": "Use three localized curls of the same periodized Gaussian vector-potential envelope. Project preferred direction onto the kernel of <u,q>; preserve RMS 0.02 and impose zero linear work. Direction changes by state; report all coefficients, angles and residuals. Deterministic least-aligned-axis fallback if the projection is nearly zero.",
+    "limitations": "Same shape, strength and work cannot all generally be matched across different states. Each equal-work method answers a different controlled question. Do not attribute their difference solely to memory."
+  },
+  "arms": [
+    "retained",
+    "scramble0",
+    "scramble1",
+    "scramble2",
+    "scramble3",
+    "matched_translation",
+    "reset"
+  ],
+  "forcing": "In forced regimes, low modes 0<|k|infinity<=2 receive state-dependent negative damping with exact energy input 0.2 at every RK stage. Initial spinup is common to the two preparations, at n=96. Restart both comparison grids from the same saved spinup polynomial, restricting missing modes. Fixed forcing law continues through preparations and responses; its state-dependent response is part of the forced experiment.",
+  "turbulence_label": "Report energy spectra, nonlinear transfers, dissipation, Kolmogorov resolution, Taylor Reynolds number and energy drift. These finite-time forced lower-viscosity regimes do not establish stationary fully developed turbulence or a universal inertial range. If numerical gates fail, withhold validated physical interpretations of that regime.",
+  "primary": "At horizon 0.4, per fresh smooth flow in coincident layout with equal-work/equal-RMS probe, RMS across ten centers of difference between preparation histories' probe-minus-unprobed FTLE; retained minus mean of four scrambles. Bootstrap whole independent flow seeds.",
+  "secondary": "Same contrasts in other methods/layouts/regimes; matched-translation minus scramble specificity; method and layout differences paired within flow; unadjusted exploratory intervals. Forced regimes have four independent flows and remain exploratory.",
+  "refinement": "Every production flow/layout/regime on both declared grids; first two seeds of every regime/layout additionally at half step on finer grid. Pilot numerical outcomes may trigger a separately saved refinement amendment before production effects are examined; never relax thresholds.",
+  "independent_solver": "Separately written CPU full-complex Fourier coefficients, padded conservative flux divergence, independent projection and spectral observation, SciPy adaptive DOP853. No reference evolution/evaluation code imported. Compare all branches at n=32, horizon 0.4, for first two smooth coincident seeds; full n=64 retained/scramble0 states with fixed-RMS and equal-work/equal-RMS probes at horizon 0.1 for first forced seed of each viscosity. Repeat at tighter tolerance. This is a second implementation by the same author, not external independent replication; forced comparisons cover a shorter horizon.",
+  "gates": {
+    "divergence_rms": 1e-10,
+    "gradient_trace": 1e-10,
+    "energy_budget_relative": 1e-05,
+    "cfl": 0.35,
+    "tail_enstrophy": 0.01,
+    "tangent_volume_error": 1e-05,
+    "kmax_eta": 1.5,
+    "response_ftle_grid_rmse": 0.001,
+    "response_field_grid_relative": 0.02,
+    "response_ftle_step_rmse": 2e-05,
+    "independent_response_ftle_rmse": 2e-05,
+    "independent_response_field_relative": 0.001,
+    "work_error": 1e-11,
+    "rms_error": 1e-12
+  },
+  "identity_controls": "Two smooth seeds jointly translate initial flow, writer, probe and observation positions; responses must agree within 1e-10. Marker permutation, identical full-state reset, conjugacy, modal powers and energy increments verified. Spatial layouts are paired conditions, not independent samples.",
+  "scope": "Actual incompressible Navier-Stokes; passive observation points, no molecules, leadership, learning, isotope substitution or extra memory term. All results are follow-ups to a known result and are not independent confirmation of the original selection."
+}
