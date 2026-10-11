@@ -59,6 +59,8 @@ Download the repository and open `reports/dynamics-reference-tests/stress/report
 
 ## Material response and molecular studies
 
+**[Hug cell protection and harder reciprocal tests](reports/clay-cell-stress/README.md)** — resistance to cell flattening and poor shape, stronger matched Lorenz forcing in both directions, forming/release controls and retained numerical accuracy limits. Includes reproducible code, raw states and [computed playback](reports/clay-cell-stress/report.html).
+
 **[Repaired hug contact and harder reciprocal tests](reports/clay-contact-stress/README.md)** — stronger object, wall and self-contact protection; matched Lorenz influence in both directions, sustained runs, independent solver checks and preserved earlier failures. Includes raw recordings and an interactive offline report. This remains a dimensionless 2-D material prototype.
 
 **[Moldable hug with reciprocal Lorenz drive](reports/clay-hug/README.md)** — a filled 2-D yielding material that reshapes around rigid objects and retains a fading imprint. Includes matched one-way/two-way drive tests, work balances, numerical stress limits, refinement, raw trajectories and an interactive offline report. This is an abstract material prototype, not calibrated physical clay.

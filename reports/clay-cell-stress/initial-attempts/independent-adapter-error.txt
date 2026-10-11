@@ -1,0 +1,5 @@
+The first independent-solver adapter returned None from a Jacobian callback.
+SciPy requires a matrix from that callback and rejected the constructor before
+any independent numerical state was produced. The corrected adapter passes
+jac=None to the constructor, invoking SciPy's own finite-difference routine.
+The completed zero-port controls used unchanged equations and solver settings.
