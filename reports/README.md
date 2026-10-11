@@ -11,9 +11,11 @@
 
 Start with a study's **README** for its question, results, charts and limitations. Open its data and verification files when you want the supporting detail.
 
+The [equal-work and independent-solver follow-up](fluid-memory-extension/README.md) is a separate **in-progress snapshot** with failed pilots and partial corrected qualification; no completed production result is claimed there.
+
 ## Fluid calculations
 
-Published status: October 10, 2026 (UTC). Each study has its own starting field and protocol.
+Published status checked October 11, 2026 (UTC). Each study has its own starting field and protocol.
 
 | Study | Published results | Start reading |
 | --- | --- | --- |
@@ -53,8 +55,9 @@ For the illustrated offline views, download the repository and open [water/biolo
 
 | Question | Report |
 | --- | --- |
+| Can transported material change the fluid itself? | [Coupled material feedback](water-biology-study/coupled-feedback/README.md): 30 completed pairs; assumed concentration-dependent viscosity; physical calibration and a frozen-viscosity control remain unresolved |
 | How does a disturbance change organized fluid? | [Fluid organization pilot](fluid-organization-pilot/README.md): paired disturbances, history targets and numerical controls |
-| Does past marker geometry predict later deformation? | [Marker-history prediction](matched-stretch/history-prediction/README.md): whole-run holdouts; finer-grid comparison remains inconclusive |
+| Does past marker geometry predict later deformation? | [Marker-history prediction](matched-stretch/history-prediction/README.md): whole-run holdouts; [full-history refinement](matched-stretch/history-prediction/full-history-refinement/FINAL-REVIEW.md) retains 32 predictor-drift screen failures at grid 224 |
 | Which moving labels separate fastest? | [Marker stress and changing roles](matched-stretch/marker-stress/README.md) |
 | How do peaks compare with a changing reference? | [Peak and reference viewer](visuals/peak-and-reference.html) |
 
@@ -83,7 +86,7 @@ The supplied q is a passive signed record, E is unsigned, and mirror averaging i
 <details>
 <summary>Mirror-fluid reports, source controls and earlier completed comparisons</summary>
 
-### Completed mirror tests â€” October 8
+### Completed mirror tests — October 8
 
 - **[Separate C and D contributions](../math/imports/hug-ns/mirror-fluid/source-attribution/README.md):** ten new fluid controls and [chart](../math/imports/hug-ns/mirror-fluid/source-attribution/source-effects.png).
 
@@ -156,7 +159,7 @@ Earlier interactive-viewer snapshot: 2026-10-08T20:40:59.597392+00:00. That disp
 | `result.json`, `measurements.json`, `comparisons.json` | Inspect saved measurements and comparison values |
 | `verify.py`, `plot.py`, `compare.py` | Inspect or reproduce the checks and charts |
 | `verification.json`, manifests and hash lists | Check the stated verification scope and file identity |
-| `completed-â€¦` folders | Read a dated batch; use the study's main README for subsequent completions |
+| `completed-…` folders | Read a dated batch; use the study's main README for subsequent completions |
 
 - [Original report inventory and source hashes](manifest.json) and [verification of that saved snapshot](numerical-progress-verification.json) describe their dated publication scope.
 - [Vortex protocol](study/protocol.json), [saved comparisons](study/comparisons.json), and [run measurements](study/runs) provide the supporting records.

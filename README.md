@@ -4,16 +4,16 @@
 
 The central question is whether smooth three-dimensional fluid motion must remain smooth, or whether it can develop a singularity in finite time. This project develops flow constructions, follows their evolution, and checks the mechanisms that amplify or disperse vorticity.
 
-The **hug** is the starting idea: a form that surrounds, yields, and changes shape. Its mathematical implementations and their limits are recorded in the studies below. The current fluid calculations use periodic boundaries and no external force after initialization.
+The **hug** is the starting idea: a form that surrounds, yields, and changes shape. Its mathematical implementations and their limits are recorded in the studies below. The core unforced flow constructions use periodic boundaries and no external force after initialization. Separate forced-flow, bounded-layer, material-response and molecular studies identify their own equations and inputs below.
 
 ## Start here
 
 | I want to… | Open |
 | --- | --- |
 | Read the results and charts | [Reports by topic](reports/README.md) |
-| Check what is complete and what remains | [Current status](STATUS.md#current-numerical-status--october-10-2026-utc) |
+| Check what is complete and what remains | [Current status](STATUS.md#current-numerical-status) |
 | Understand the equations or reproduce a calculation | [Mathematics and code](math/README.md) |
-| Trace connections between studies | [Review of both repositories](REPOSITORY-REVIEW.md) |
+| Trace connections between studies | [Review of both repositories](REPOSITORY-CURRENT-REVIEW.md) |
 
 **Reading on GitHub:** open a `README.md` in the **Code** tab for its formatted report. A commit or pull request’s **Files changed** tab shows editing history: orange/red lines with `−` are the old version, and green lines with `+` are the replacement.
 
@@ -51,7 +51,7 @@ The objective is a mathematical result about smoothness or breakdown for the Nav
 
 ## Water, particles and numerical validation
 
-**[Water, biological particles and freezing](reports/water-biology-study/README.md)** — the complete three-question computational study: miscible water, separate solute and particle transport, density/temperature stratification, controlled material-property comparisons, and probabilistic ice nucleation. Includes runnable code, controls, raw outputs, uncertainty, sources and verification. No new biological measurements or cultures.
+**[Water, biological particles and freezing](reports/water-biology-study/README.md)** — the complete three-question computational study: miscible water, separate solute and particle transport, density/temperature stratification, controlled material-property comparisons, and probabilistic ice nucleation. Includes runnable code, controls, raw outputs, uncertainty, sources and verification. No new biological measurements or cultures. The merged [coupled material test](reports/water-biology-study/coupled-feedback/README.md) separately tests material transport feeding back through viscosity into the fluid response, under an explicitly assumed material law.
 
 **[Dynamics reference tests](reports/dynamics-reference-tests/README.md)** and **[expanded stress tests](reports/dynamics-reference-tests/stress/README.md)** — exact-solution benchmarks, Lorenz dynamics, waterwheel conservation, spatial aliasing, oscillation amplitude and timing, alternating/adaptive steps, limit cycles, and a synthetic pond response to ground motion. The pond inputs are assumed, not calibrated footsteps or concert measurements. These studies do not establish a new fluid law or a solution of the Clay problem.
 
@@ -84,7 +84,7 @@ The human–AI conversations, mirrored categories, and pressure-and-memory illus
 
 ## Connections and remaining work
 
-[Review of both repositories](REPOSITORY-REVIEW.md): related symmetry, identity/position, persistence and prediction tests; current numerical limitations; and the next unresolved decisions. [Streams and Rocks](https://github.com/NousVolition/Nous-Volition) contains the SIMS, recovery, oscillator and finite-fractal studies.
+[Review of both repositories](REPOSITORY-CURRENT-REVIEW.md): related symmetry, identity/position, persistence and prediction tests; current numerical limitations; and the next unresolved decisions. [Streams and Rocks](https://github.com/NousVolition/Nous-Volition) contains the SIMS, recovery, oscillator and finite-fractal studies.
 
 ## Source, history and reproduction
 

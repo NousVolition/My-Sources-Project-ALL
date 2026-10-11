@@ -1,0 +1,3963 @@
+{
+  "reviewed_utc": "2026-10-11",
+  "scope": "Two complete recursive Git trees at pinned commits; current file bytes, not compressed transfers or Git history. No simulation reruns.",
+  "method": "Group every nonempty blob from both trees by Git blob SHA; excess bytes are (number of paths - 1) times blob size. Git already deduplicates identical objects within each repository. Differently packaged numerical duplicates are outside this test.",
+  "repositories": [
+    {
+      "repository": "My-Sources-Project-ALL",
+      "head": "90ce7583ddd28eb1ed08b939345443ffe82b7348",
+      "files": 6330,
+      "bytes": 2023891044,
+      "unique_blob_bytes": 2011742966,
+      "largest_folders": [
+        [
+          "reports/matched-stretch",
+          1044667795
+        ],
+        [
+          "reports/water-molecule-influence",
+          202255962
+        ],
+        [
+          "reports/fluid-organization-pilot",
+          199400512
+        ],
+        [
+          "reports/quantum-water-pilot",
+          124083533
+        ],
+        [
+          "reports/hug-stress",
+          87240849
+        ],
+        [
+          "reports/dynamics-reference-tests",
+          75075769
+        ],
+        [
+          "reports/files",
+          74194085
+        ],
+        [
+          "reports/clay-contact-stress",
+          53544969
+        ],
+        [
+          "reports/clay-hug",
+          39363046
+        ],
+        [
+          "reports/water-biology-study",
+          27065777
+        ],
+        [
+          "math/imports",
+          27035707
+        ],
+        [
+          "models/decentralized_coordination",
+          17026375
+        ],
+        [
+          "reports/hug-dynamics",
+          12117007
+        ],
+        [
+          "reports/study",
+          12060955
+        ],
+        [
+          "reports/molecular",
+          10538710
+        ]
+      ],
+      "extensions_by_bytes": [
+        [
+          ".npz",
+          1495964372
+        ],
+        [
+          ".part",
+          190130265
+        ],
+        [
+          ".json",
+          80511311
+        ],
+        [
+          ".js",
+          67929517
+        ],
+        [
+          ".png",
+          56766914
+        ],
+        [
+          ".html",
+          31190888
+        ],
+        [
+          ".csv",
+          24676678
+        ],
+        [
+          ".part00",
+          20000000
+        ],
+        [
+          ".part01",
+          20000000
+        ],
+        [
+          ".svg",
+          18008683
+        ],
+        [
+          ".part02",
+          6417815
+        ],
+        [
+          ".py",
+          4003656
+        ]
+      ]
+    },
+    {
+      "repository": "Nous-Volition",
+      "head": "1811f9273e572d0fc3685a4dcd9288393eda3ca0",
+      "files": 531,
+      "bytes": 138548852,
+      "unique_blob_bytes": 138548793,
+      "largest_folders": [
+        [
+          "studies/social-organization",
+          59899759
+        ],
+        [
+          "studies/sims-recovery-entrainment",
+          34478038
+        ],
+        [
+          "studies/dynamics-fractals-sims",
+          27134704
+        ],
+        [
+          "studies/fluid-organization",
+          16830981
+        ],
+        [
+          "stokes_stream_report.pdf",
+          161383
+        ],
+        [
+          "studies/one-resisting-position",
+          28333
+        ],
+        [
+          "README.md",
+          10889
+        ],
+        [
+          "tools/check_repository.py",
+          3666
+        ],
+        [
+          ".github/workflows",
+          1099
+        ]
+      ],
+      "extensions_by_bytes": [
+        [
+          ".part",
+          44268003
+        ],
+        [
+          ".json",
+          27066561
+        ],
+        [
+          ".png",
+          19225440
+        ],
+        [
+          ".npz",
+          17053904
+        ],
+        [
+          ".csv",
+          11906008
+        ],
+        [
+          ".html",
+          11400210
+        ],
+        [
+          ".svg",
+          6456390
+        ],
+        [
+          ".py",
+          784488
+        ],
+        [
+          ".md",
+          188602
+        ],
+        [
+          ".pdf",
+          161383
+        ],
+        [
+          ".cjs",
+          11340
+        ],
+        [
+          ".xml",
+          9057
+        ]
+      ]
+    }
+  ],
+  "identical_groups": 349,
+  "additional_copies": 584,
+  "additional_file_bytes": 18991043,
+  "duplicate_groups": [
+    {
+      "sha": "60e2d288edddc676e017ed6ecd910c3012460a3f",
+      "bytes_each": 1281420,
+      "copies": 2,
+      "redundant_bytes": 1281420,
+      "paths": [
+        "My-Sources-Project-ALL/reports/matched-stretch/history-prediction/velocity-reversal/recorded-data/s1027_n56_dt0.005_branch-state.npz",
+        "My-Sources-Project-ALL/reports/matched-stretch/history-prediction/velocity-reversal/recovery/s1027_n56_dt0.005_branch-state.npz"
+      ]
+    },
+    {
+      "sha": "0db28ddefaaad1e59caa475527537158ebc605e2",
+      "bytes_each": 496518,
+      "copies": 3,
+      "redundant_bytes": 993036,
+      "paths": [
+        "My-Sources-Project-ALL/reports/clay-hug/data/contact-100.npz",
+        "My-Sources-Project-ALL/reports/clay-hug/data/forming-clay.npz",
+        "My-Sources-Project-ALL/reports/clay-hug/data/mesh-24.npz"
+      ]
+    },
+    {
+      "sha": "1f528fe2ed629930f83cbdfb322a79a88ebbc5f6",
+      "bytes_each": 749208,
+      "copies": 2,
+      "redundant_bytes": 749208,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-sweep/results/primary_voltages.csv",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-sweep/results/primary_voltages.csv"
+      ]
+    },
+    {
+      "sha": "ad23ae6bc579049e0fc39903c23bbf60038e9f89",
+      "bytes_each": 59025,
+      "copies": 13,
+      "redundant_bytes": 708300,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/molecular-data/n64-H2O-P1-T280.0-s1-dt0.0005/system.xml",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/molecular-data/n64-H2O-P1-T300.0-s1-dt0.0005/system.xml",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/molecular-data/n64-H2O-P1-T300.0-s2-dt0.0005/system.xml",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/molecular-data/n64-H2O-P1-T300.0-s3-dt0.0005/system.xml",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/molecular-data/n64-H2O-P1-T320.0-s1-dt0.0005/system.xml",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/molecular-data/n64-H2O-P16-T300.0-s1-dt0.0005/system.xml",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/molecular-data/n64-H2O-P32-T280.0-s1-dt0.0005/system.xml",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/molecular-data/n64-H2O-P32-T300.0-s1-dt0.00025/system.xml",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/molecular-data/n64-H2O-P32-T300.0-s1-dt0.0005/system.xml",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/molecular-data/n64-H2O-P32-T300.0-s2-dt0.0005/system.xml",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/molecular-data/n64-H2O-P32-T300.0-s3-dt0.0005/system.xml",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/molecular-data/n64-H2O-P32-T320.0-s1-dt0.0005/system.xml",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/molecular-data/n64-H2O-P64-T300.0-s1-dt0.0005/system.xml"
+      ]
+    },
+    {
+      "sha": "dba4c914691edaadbc0428ec1b2edb0bccb72d79",
+      "bytes_each": 697942,
+      "copies": 2,
+      "redundant_bytes": 697942,
+      "paths": [
+        "My-Sources-Project-ALL/reports/clay-contact-stress/obstacle-only/data/initial-attempts/repair-seed0-two.npz",
+        "My-Sources-Project-ALL/reports/clay-contact-stress/obstacle-only/data/low-barrier-attempts/repair-seed0-two.npz"
+      ]
+    },
+    {
+      "sha": "6fd97c071ea79a1b156abccccbec667210554130",
+      "bytes_each": 59025,
+      "copies": 10,
+      "redundant_bytes": 531225,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/molecular-data/n64-D2O-P1-T280.0-s1-dt0.0005/system.xml",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/molecular-data/n64-D2O-P1-T300.0-s1-dt0.0005/system.xml",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/molecular-data/n64-D2O-P1-T300.0-s2-dt0.0005/system.xml",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/molecular-data/n64-D2O-P1-T300.0-s3-dt0.0005/system.xml",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/molecular-data/n64-D2O-P1-T320.0-s1-dt0.0005/system.xml",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/molecular-data/n64-D2O-P32-T280.0-s1-dt0.0005/system.xml",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/molecular-data/n64-D2O-P32-T300.0-s1-dt0.0005/system.xml",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/molecular-data/n64-D2O-P32-T300.0-s2-dt0.0005/system.xml",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/molecular-data/n64-D2O-P32-T300.0-s3-dt0.0005/system.xml",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/molecular-data/n64-D2O-P32-T320.0-s1-dt0.0005/system.xml"
+      ]
+    },
+    {
+      "sha": "1d3cee1ab98925e84aca4276c4af9d863345e743",
+      "bytes_each": 531077,
+      "copies": 2,
+      "redundant_bytes": 531077,
+      "paths": [
+        "My-Sources-Project-ALL/reports/water-biology-study/data/stratification_density_0.npz",
+        "My-Sources-Project-ALL/reports/water-biology-study/data/stratification_thermal_0.npz"
+      ]
+    },
+    {
+      "sha": "2c8be25565ec78ecef8bd8ce21e029f59e61a9d2",
+      "bytes_each": 463868,
+      "copies": 2,
+      "redundant_bytes": 463868,
+      "paths": [
+        "My-Sources-Project-ALL/math/results/hug-resolution.json",
+        "My-Sources-Project-ALL/reports/files/hug-resolution.json"
+      ]
+    },
+    {
+      "sha": "21383c076103f03d0cc0029e995262144eec742e",
+      "bytes_each": 400888,
+      "copies": 2,
+      "redundant_bytes": 400888,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-sweep/results/window_voltages.csv",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-sweep/results/window_voltages.csv"
+      ]
+    },
+    {
+      "sha": "54c98c5280ad6cd65ff73e2a68581b6a081471fa",
+      "bytes_each": 400479,
+      "copies": 2,
+      "redundant_bytes": 400479,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-sweep/results/reference_windows.csv",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-sweep/results/reference_windows.csv"
+      ]
+    },
+    {
+      "sha": "801347a5de21ff31f5929aa2359da9253dc5bbb7",
+      "bytes_each": 166409,
+      "copies": 3,
+      "redundant_bytes": 332818,
+      "paths": [
+        "My-Sources-Project-ALL/reports/clay-contact-stress/data/barrier-strength10000.npz",
+        "My-Sources-Project-ALL/reports/clay-contact-stress/obstacle-only/data/barrier-strength10000.npz",
+        "My-Sources-Project-ALL/reports/clay-contact-stress/obstacle-only/data/barrier-width0.04.npz"
+      ]
+    },
+    {
+      "sha": "3c3ae41d18027e753f32df78d694d2951d148e41",
+      "bytes_each": 296227,
+      "copies": 2,
+      "redundant_bytes": 296227,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-sweep/results/reference_voltages.csv",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-sweep/results/reference_voltages.csv"
+      ]
+    },
+    {
+      "sha": "aced1cec779bcc1aa619cc4d8572d97136d81974",
+      "bytes_each": 36455,
+      "copies": 9,
+      "redundant_bytes": 291640,
+      "paths": [
+        "My-Sources-Project-ALL/reports/hug-dynamics/data/sweep-007.npz",
+        "My-Sources-Project-ALL/reports/hug-dynamics/data/sweep-016.npz",
+        "My-Sources-Project-ALL/reports/hug-dynamics/data/sweep-025.npz",
+        "My-Sources-Project-ALL/reports/hug-dynamics/data/sweep-034.npz",
+        "My-Sources-Project-ALL/reports/hug-dynamics/data/sweep-043.npz",
+        "My-Sources-Project-ALL/reports/hug-dynamics/data/sweep-052.npz",
+        "My-Sources-Project-ALL/reports/hug-dynamics/data/sweep-061.npz",
+        "My-Sources-Project-ALL/reports/hug-dynamics/data/sweep-070.npz",
+        "My-Sources-Project-ALL/reports/hug-dynamics/data/sweep-079.npz"
+      ]
+    },
+    {
+      "sha": "e40bd6566208a12df0f6d9473f37cdddc6863145",
+      "bytes_each": 36441,
+      "copies": 9,
+      "redundant_bytes": 291528,
+      "paths": [
+        "My-Sources-Project-ALL/reports/hug-dynamics/data/sweep-004.npz",
+        "My-Sources-Project-ALL/reports/hug-dynamics/data/sweep-013.npz",
+        "My-Sources-Project-ALL/reports/hug-dynamics/data/sweep-022.npz",
+        "My-Sources-Project-ALL/reports/hug-dynamics/data/sweep-031.npz",
+        "My-Sources-Project-ALL/reports/hug-dynamics/data/sweep-040.npz",
+        "My-Sources-Project-ALL/reports/hug-dynamics/data/sweep-049.npz",
+        "My-Sources-Project-ALL/reports/hug-dynamics/data/sweep-058.npz",
+        "My-Sources-Project-ALL/reports/hug-dynamics/data/sweep-067.npz",
+        "My-Sources-Project-ALL/reports/hug-dynamics/data/sweep-076.npz"
+      ]
+    },
+    {
+      "sha": "4ddbf1d6bfcefbad9af5d761961818df11700f9d",
+      "bytes_each": 280552,
+      "copies": 2,
+      "redundant_bytes": 280552,
+      "paths": [
+        "My-Sources-Project-ALL/reports/matched-stretch/history-prediction/full-history-refinement/results-224.json",
+        "My-Sources-Project-ALL/reports/matched-stretch/history-prediction/full-history-refinement/results.json"
+      ]
+    },
+    {
+      "sha": "94f082e48d82e0701be9dbe2e63010ae9c0b70ef",
+      "bytes_each": 258341,
+      "copies": 2,
+      "redundant_bytes": 258341,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-sweep/results/reference_disjoint_blocks.csv",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-sweep/results/reference_disjoint_blocks.csv"
+      ]
+    },
+    {
+      "sha": "3f255b2b197ea5fcb188fd7a496e494a5602ded8",
+      "bytes_each": 254445,
+      "copies": 2,
+      "redundant_bytes": 254445,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-sweep/results/disjoint_blocks.csv",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-sweep/results/disjoint_blocks.csv"
+      ]
+    },
+    {
+      "sha": "e33f6f27bf4e7c82d49bdd021a0720bf06901f6c",
+      "bytes_each": 253352,
+      "copies": 2,
+      "redundant_bytes": 253352,
+      "paths": [
+        "My-Sources-Project-ALL/reports/matched-stretch/history-prediction/full-history-refinement/convergence-224.png",
+        "My-Sources-Project-ALL/reports/matched-stretch/history-prediction/full-history-refinement/convergence.png"
+      ]
+    },
+    {
+      "sha": "d899dec01b6895a3a352bd237efa28bd1e56f5da",
+      "bytes_each": 231657,
+      "copies": 2,
+      "redundant_bytes": 231657,
+      "paths": [
+        "My-Sources-Project-ALL/math/results/hidden-flow.json",
+        "My-Sources-Project-ALL/reports/files/hidden-flow-results.json"
+      ]
+    },
+    {
+      "sha": "c62a9e183a9aa4a06b962999256e0860af3f626d",
+      "bytes_each": 226335,
+      "copies": 2,
+      "redundant_bytes": 226335,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/recovery-network/figures/network_cycle.png",
+        "Nous-Volition/studies/fluid-organization/extensions/recovery-network/figures/network_cycle.png"
+      ]
+    },
+    {
+      "sha": "1f25db875d7992026af99b49b0869dc912c0a68a",
+      "bytes_each": 214236,
+      "copies": 2,
+      "redundant_bytes": 214236,
+      "paths": [
+        "My-Sources-Project-ALL/math/figures/hug-ring-boundary.png",
+        "My-Sources-Project-ALL/reports/files/hug-ring-boundary.png"
+      ]
+    },
+    {
+      "sha": "d0fa775d6b3487c0311879cd03d65eca5f46e5df",
+      "bytes_each": 184682,
+      "copies": 2,
+      "redundant_bytes": 184682,
+      "paths": [
+        "My-Sources-Project-ALL/math/figures/hug-resolution.png",
+        "My-Sources-Project-ALL/reports/files/hug-resolution.png"
+      ]
+    },
+    {
+      "sha": "f3d1b37228561c29f1ef82a20f95978edf3ea2bb",
+      "bytes_each": 178899,
+      "copies": 2,
+      "redundant_bytes": 178899,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-sweep/figures/critical_window.png",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-sweep/figures/critical_window.png"
+      ]
+    },
+    {
+      "sha": "884b2868616d7d9fd48986f2966d99d84ee687a0",
+      "bytes_each": 176890,
+      "copies": 2,
+      "redundant_bytes": 176890,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-followups/figures/whole_cycles.png",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-followups/figures/whole_cycles.png"
+      ]
+    },
+    {
+      "sha": "ff799ef6242f2ce720a9ea8ce90d32ded03a06af",
+      "bytes_each": 171003,
+      "copies": 2,
+      "redundant_bytes": 171003,
+      "paths": [
+        "My-Sources-Project-ALL/reports/clay-contact-stress/data/barrier-width0.08.npz",
+        "My-Sources-Project-ALL/reports/clay-contact-stress/obstacle-only/data/barrier-width0.08.npz"
+      ]
+    },
+    {
+      "sha": "96250d18f0d4e765606a5c9e51967546a37960cf",
+      "bytes_each": 167452,
+      "copies": 2,
+      "redundant_bytes": 167452,
+      "paths": [
+        "My-Sources-Project-ALL/reports/clay-contact-stress/data/barrier-strength100000.npz",
+        "My-Sources-Project-ALL/reports/clay-contact-stress/obstacle-only/data/barrier-strength100000.npz"
+      ]
+    },
+    {
+      "sha": "60f4c98553a5d033e668157ac8830d8a0c9d2daf",
+      "bytes_each": 167010,
+      "copies": 2,
+      "redundant_bytes": 167010,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/recovery-network/figures/recovery.png",
+        "Nous-Volition/studies/fluid-organization/extensions/recovery-network/figures/recovery.png"
+      ]
+    },
+    {
+      "sha": "436b1c856f45488857a27a21c6a4c4252f8dc941",
+      "bytes_each": 166610,
+      "copies": 2,
+      "redundant_bytes": 166610,
+      "paths": [
+        "My-Sources-Project-ALL/reports/clay-contact-stress/data/barrier-strength1000.npz",
+        "My-Sources-Project-ALL/reports/clay-contact-stress/obstacle-only/data/barrier-strength1000.npz"
+      ]
+    },
+    {
+      "sha": "467ea43a9e597417e6659036aca846b761e72813",
+      "bytes_each": 163931,
+      "copies": 2,
+      "redundant_bytes": 163931,
+      "paths": [
+        "My-Sources-Project-ALL/math/figures/hug-refinement.png",
+        "My-Sources-Project-ALL/reports/files/hug-refinement.png"
+      ]
+    },
+    {
+      "sha": "0c2e551c7116a9feeac65a2a286004eaaedc2a29",
+      "bytes_each": 163897,
+      "copies": 2,
+      "redundant_bytes": 163897,
+      "paths": [
+        "My-Sources-Project-ALL/reports/clay-contact-stress/data/barrier-width0.02.npz",
+        "My-Sources-Project-ALL/reports/clay-contact-stress/obstacle-only/data/barrier-width0.02.npz"
+      ]
+    },
+    {
+      "sha": "af683ea60234b94d990e714ae3dbaa16906e5e32",
+      "bytes_each": 160972,
+      "copies": 2,
+      "redundant_bytes": 160972,
+      "paths": [
+        "My-Sources-Project-ALL/math/figures/hug-longer-time.png",
+        "My-Sources-Project-ALL/reports/files/hug-longer-time.png"
+      ]
+    },
+    {
+      "sha": "85763e65c7a530e5aa1ed907c6da4d9523d6f950",
+      "bytes_each": 157100,
+      "copies": 2,
+      "redundant_bytes": 157100,
+      "paths": [
+        "My-Sources-Project-ALL/math/figures/hug-grid-384.png",
+        "My-Sources-Project-ALL/reports/files/hug-grid-384.png"
+      ]
+    },
+    {
+      "sha": "1f9aa4c9c2b72cd8bb438530b90021a886bd5740",
+      "bytes_each": 156398,
+      "copies": 2,
+      "redundant_bytes": 156398,
+      "paths": [
+        "My-Sources-Project-ALL/math/figures/hidden-flow-evolution.png",
+        "My-Sources-Project-ALL/reports/files/hidden-flow-evolution.png"
+      ]
+    },
+    {
+      "sha": "140e467e5ed97dbb74286bed73069e83ae85e89a",
+      "bytes_each": 155621,
+      "copies": 2,
+      "redundant_bytes": 155621,
+      "paths": [
+        "My-Sources-Project-ALL/math/figures/hug-continued-0.24.png",
+        "My-Sources-Project-ALL/reports/files/hug-continued-0.24.png"
+      ]
+    },
+    {
+      "sha": "c86e785186014fab8a2df18154f1f6e638b31171",
+      "bytes_each": 152410,
+      "copies": 2,
+      "redundant_bytes": 152410,
+      "paths": [
+        "My-Sources-Project-ALL/math/figures/hug-continued-0.4.png",
+        "My-Sources-Project-ALL/reports/files/hug-continued-0.4.png"
+      ]
+    },
+    {
+      "sha": "5b1c41a0e507151e538f159d7796bafe14410cd4",
+      "bytes_each": 150271,
+      "copies": 2,
+      "redundant_bytes": 150271,
+      "paths": [
+        "My-Sources-Project-ALL/math/figures/hug-continued-0.32.png",
+        "My-Sources-Project-ALL/reports/files/hug-continued-0.32.png"
+      ]
+    },
+    {
+      "sha": "bc540d9abcac5ae0529ece0837ba130fff9e0352",
+      "bytes_each": 150010,
+      "copies": 2,
+      "redundant_bytes": 150010,
+      "paths": [
+        "My-Sources-Project-ALL/math/figures/hug-step-energy.png",
+        "My-Sources-Project-ALL/reports/files/hug-step-energy.png"
+      ]
+    },
+    {
+      "sha": "01115b5a02b21c8705cc594c1dd4cb97bb491d2b",
+      "bytes_each": 146184,
+      "copies": 2,
+      "redundant_bytes": 146184,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-sweep/figures/voltage_sweeps.png",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-sweep/figures/voltage_sweeps.png"
+      ]
+    },
+    {
+      "sha": "74ba783fd3496a17fdbcf4cbc0100802674f9a9b",
+      "bytes_each": 137718,
+      "copies": 2,
+      "redundant_bytes": 137718,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-followups/figures/ramps.png",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-followups/figures/ramps.png"
+      ]
+    },
+    {
+      "sha": "767f86f9a2d99d251432b7f528e770c51fa7537b",
+      "bytes_each": 133183,
+      "copies": 2,
+      "redundant_bytes": 133183,
+      "paths": [
+        "My-Sources-Project-ALL/math/figures/hug-energy-balance.png",
+        "My-Sources-Project-ALL/reports/files/hug-energy-balance.png"
+      ]
+    },
+    {
+      "sha": "453c061e29f66fe7819d6a4a924b92014ca2aa08",
+      "bytes_each": 133015,
+      "copies": 2,
+      "redundant_bytes": 133015,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/references/heteroclinic_network_reference.png",
+        "Nous-Volition/studies/fluid-organization/references/heteroclinic_network_reference.png"
+      ]
+    },
+    {
+      "sha": "1f8489b651227b5b780d42b315493f72896f840e",
+      "bytes_each": 131874,
+      "copies": 2,
+      "redundant_bytes": 131874,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/recovery-network/figures/recurrence_and_validation.png",
+        "Nous-Volition/studies/fluid-organization/extensions/recovery-network/figures/recurrence_and_validation.png"
+      ]
+    },
+    {
+      "sha": "4930275202b8b492c847ea5e00a29bf9fc20fc5d",
+      "bytes_each": 131453,
+      "copies": 2,
+      "redundant_bytes": 131453,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-sweep/figures/separate_checks.png",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-sweep/figures/separate_checks.png"
+      ]
+    },
+    {
+      "sha": "a66fab117be18437c760a3cbb1028ee11af6dd65",
+      "bytes_each": 129544,
+      "copies": 2,
+      "redundant_bytes": 129544,
+      "paths": [
+        "My-Sources-Project-ALL/math/figures/hug-method-interval.png",
+        "My-Sources-Project-ALL/reports/files/hug-method-interval.png"
+      ]
+    },
+    {
+      "sha": "dea604ea1954d495c57b500e5167db5220df119c",
+      "bytes_each": 128041,
+      "copies": 2,
+      "redundant_bytes": 128041,
+      "paths": [
+        "My-Sources-Project-ALL/math/figures/hug-time-384.png",
+        "My-Sources-Project-ALL/reports/files/hug-time-384.png"
+      ]
+    },
+    {
+      "sha": "5aeccb2d0b4ecaca92d9d7a571de691c5d2870c5",
+      "bytes_each": 125789,
+      "copies": 2,
+      "redundant_bytes": 125789,
+      "paths": [
+        "My-Sources-Project-ALL/reports/matched-stretch/history-prediction/full-history-refinement/convergence-224.svg",
+        "My-Sources-Project-ALL/reports/matched-stretch/history-prediction/full-history-refinement/convergence.svg"
+      ]
+    },
+    {
+      "sha": "92919d6f2ecd84ecfa4987ad78acc4349e7ea16e",
+      "bytes_each": 115252,
+      "copies": 2,
+      "redundant_bytes": 115252,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-followups/figures/fluid_confirmation.png",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-followups/figures/fluid_confirmation.png"
+      ]
+    },
+    {
+      "sha": "a483b2dd3ccb181dd8cd6c71d3be4bc7e9a399b2",
+      "bytes_each": 114959,
+      "copies": 2,
+      "redundant_bytes": 114959,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-followups/figures/noise_mismatch.png",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-followups/figures/noise_mismatch.png"
+      ]
+    },
+    {
+      "sha": "e16e39224610ed67cf55450bdd36240adeb2f7f2",
+      "bytes_each": 114424,
+      "copies": 2,
+      "redundant_bytes": 114424,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/recovery-network/figures/network_learning.png",
+        "Nous-Volition/studies/fluid-organization/extensions/recovery-network/figures/network_learning.png"
+      ]
+    },
+    {
+      "sha": "25269302e42b6e78411a24b2d09ea62110f998f3",
+      "bytes_each": 110731,
+      "copies": 2,
+      "redundant_bytes": 110731,
+      "paths": [
+        "My-Sources-Project-ALL/math/figures/hug-shape.png",
+        "My-Sources-Project-ALL/reports/files/hug-shape.png"
+      ]
+    },
+    {
+      "sha": "f117afa3f763d72df0948b1fc36800824aa61039",
+      "bytes_each": 110273,
+      "copies": 2,
+      "redundant_bytes": 110273,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/references/sequential_learning_reference.png",
+        "Nous-Volition/studies/fluid-organization/references/sequential_learning_reference.png"
+      ]
+    },
+    {
+      "sha": "90e23ea7dc3cc0ceb40c4afcc6f23e715b3d71a6",
+      "bytes_each": 107541,
+      "copies": 2,
+      "redundant_bytes": 107541,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-sweep/figures/precision_control.png",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-sweep/figures/precision_control.png"
+      ]
+    },
+    {
+      "sha": "94a36036989ea6dbfa9b1dd29a8de12526074fc6",
+      "bytes_each": 106255,
+      "copies": 2,
+      "redundant_bytes": 106255,
+      "paths": [
+        "My-Sources-Project-ALL/math/figures/smooth-initial-profile.png",
+        "My-Sources-Project-ALL/reports/files/smooth-initial-profile.png"
+      ]
+    },
+    {
+      "sha": "033d2e274e592ced427fe82cece282f67657e868",
+      "bytes_each": 104053,
+      "copies": 2,
+      "redundant_bytes": 104053,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-followups/figures/capacitance.png",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-followups/figures/capacitance.png"
+      ]
+    },
+    {
+      "sha": "86aecbad970896a23c5d172cbb0da55788dacc69",
+      "bytes_each": 101816,
+      "copies": 2,
+      "redundant_bytes": 101816,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-sweep/figures/separate_checks.svg",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-sweep/figures/separate_checks.svg"
+      ]
+    },
+    {
+      "sha": "90fab7cd452b15dce9dcac72e675ccb32ec89078",
+      "bytes_each": 97394,
+      "copies": 2,
+      "redundant_bytes": 97394,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-sweep/figures/critical_window.svg",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-sweep/figures/critical_window.svg"
+      ]
+    },
+    {
+      "sha": "1938a78a0cc43b14528430a0842371a6a1be80d5",
+      "bytes_each": 97145,
+      "copies": 2,
+      "redundant_bytes": 97145,
+      "paths": [
+        "My-Sources-Project-ALL/math/figures/hug-time-method.png",
+        "My-Sources-Project-ALL/reports/files/hug-time-method.png"
+      ]
+    },
+    {
+      "sha": "dc82f000f4235f507f21e0c42f165ff94976a7cd",
+      "bytes_each": 95497,
+      "copies": 2,
+      "redundant_bytes": 95497,
+      "paths": [
+        "My-Sources-Project-ALL/reports/matched-stretch/history-prediction/full-history-refinement/publication-manifest-224.json",
+        "My-Sources-Project-ALL/reports/matched-stretch/history-prediction/full-history-refinement/publication-manifest.json"
+      ]
+    },
+    {
+      "sha": "4e6bfbf53a8fc17219fc2cf0fd003e2a23413e3e",
+      "bytes_each": 94641,
+      "copies": 2,
+      "redundant_bytes": 94641,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/references/heteroclinic_definition_reference.png",
+        "Nous-Volition/studies/fluid-organization/references/heteroclinic_definition_reference.png"
+      ]
+    },
+    {
+      "sha": "af4b3d403e2503cd5d429acfcb01305c05dd0c9b",
+      "bytes_each": 93429,
+      "copies": 2,
+      "redundant_bytes": 93429,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/recovery-network/figures/history_and_coupling.png",
+        "Nous-Volition/studies/fluid-organization/extensions/recovery-network/figures/history_and_coupling.png"
+      ]
+    },
+    {
+      "sha": "3b400dc88a6c6f72863508a26f255f4972b861e8",
+      "bytes_each": 90572,
+      "copies": 2,
+      "redundant_bytes": 90572,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-followups/figures/whole_cycles.svg",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-followups/figures/whole_cycles.svg"
+      ]
+    },
+    {
+      "sha": "62777ab47b5209b1c3fca22534878fa75864f4c1",
+      "bytes_each": 85940,
+      "copies": 2,
+      "redundant_bytes": 85940,
+      "paths": [
+        "My-Sources-Project-ALL/math/figures/hug-method-grid.png",
+        "My-Sources-Project-ALL/reports/files/hug-method-grid.png"
+      ]
+    },
+    {
+      "sha": "80c0bb8cac6857cf792578165928ba94fba15290",
+      "bytes_each": 85369,
+      "copies": 2,
+      "redundant_bytes": 85369,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-sweep/figures/voltage_sweeps.svg",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-sweep/figures/voltage_sweeps.svg"
+      ]
+    },
+    {
+      "sha": "2520789b68688ece10e3eb136b229525cded6f03",
+      "bytes_each": 85329,
+      "copies": 2,
+      "redundant_bytes": 85329,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-followups/figures/fluid_confirmation.svg",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-followups/figures/fluid_confirmation.svg"
+      ]
+    },
+    {
+      "sha": "853f1fd999be48816f0cb2e648eef68570b1b14a",
+      "bytes_each": 84806,
+      "copies": 2,
+      "redundant_bytes": 84806,
+      "paths": [
+        "My-Sources-Project-ALL/math/figures/hug-method-refinement.png",
+        "My-Sources-Project-ALL/reports/files/hug-method-refinement.png"
+      ]
+    },
+    {
+      "sha": "30d9575f4c58727b1d10e93388185d4fbed6edbd",
+      "bytes_each": 81497,
+      "copies": 2,
+      "redundant_bytes": 81497,
+      "paths": [
+        "My-Sources-Project-ALL/reports/clay-contact-stress/data/zero-port-one.npz",
+        "My-Sources-Project-ALL/reports/clay-contact-stress/data/zero-port-two.npz"
+      ]
+    },
+    {
+      "sha": "724c2abb465e10acd84869eeef6f6f3725a796fb",
+      "bytes_each": 78418,
+      "copies": 2,
+      "redundant_bytes": 78418,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-followups/figures/held_out_prediction.png",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-followups/figures/held_out_prediction.png"
+      ]
+    },
+    {
+      "sha": "0f71a8bc7b90b5f4fab0c7e0828cf9bbc6582812",
+      "bytes_each": 78144,
+      "copies": 2,
+      "redundant_bytes": 78144,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-followups/figures/noise_mismatch.svg",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-followups/figures/noise_mismatch.svg"
+      ]
+    },
+    {
+      "sha": "afce1cc185d341b77c093b79bb13f979b815e556",
+      "bytes_each": 77018,
+      "copies": 2,
+      "redundant_bytes": 77018,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-sweep/figures/precision_control.svg",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-sweep/figures/precision_control.svg"
+      ]
+    },
+    {
+      "sha": "9273bfdbbcd6f03ac8fd137e6b74c0c7a2e7b780",
+      "bytes_each": 75998,
+      "copies": 2,
+      "redundant_bytes": 75998,
+      "paths": [
+        "My-Sources-Project-ALL/math/results/hug-method-grid.json",
+        "My-Sources-Project-ALL/reports/files/hug-method-grid.json"
+      ]
+    },
+    {
+      "sha": "f0c7542ccbab88b3844ef8fdf75b84976c0c6736",
+      "bytes_each": 75345,
+      "copies": 2,
+      "redundant_bytes": 75345,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/references/quench_relaxation_reference.png",
+        "Nous-Volition/studies/fluid-organization/references/quench_relaxation_reference.png"
+      ]
+    },
+    {
+      "sha": "01046a74896494749e3f1c51521df8458ca5407a",
+      "bytes_each": 74577,
+      "copies": 2,
+      "redundant_bytes": 74577,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-followups/figures/ramps.svg",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-followups/figures/ramps.svg"
+      ]
+    },
+    {
+      "sha": "4013fe8b6f2b062bfbbe494ff169c1c577ddd245",
+      "bytes_each": 73814,
+      "copies": 2,
+      "redundant_bytes": 73814,
+      "paths": [
+        "My-Sources-Project-ALL/math/results/hug-method-interval.json",
+        "My-Sources-Project-ALL/reports/files/hug-method-interval.json"
+      ]
+    },
+    {
+      "sha": "7de436575ba5a83fd190332183a7f0ed7930441b",
+      "bytes_each": 9189,
+      "copies": 9,
+      "redundant_bytes": 73512,
+      "paths": [
+        "My-Sources-Project-ALL/reports/hug-dynamics/data/sweep-001.npz",
+        "My-Sources-Project-ALL/reports/hug-dynamics/data/sweep-010.npz",
+        "My-Sources-Project-ALL/reports/hug-dynamics/data/sweep-019.npz",
+        "My-Sources-Project-ALL/reports/hug-dynamics/data/sweep-028.npz",
+        "My-Sources-Project-ALL/reports/hug-dynamics/data/sweep-037.npz",
+        "My-Sources-Project-ALL/reports/hug-dynamics/data/sweep-046.npz",
+        "My-Sources-Project-ALL/reports/hug-dynamics/data/sweep-055.npz",
+        "My-Sources-Project-ALL/reports/hug-dynamics/data/sweep-064.npz",
+        "My-Sources-Project-ALL/reports/hug-dynamics/data/sweep-073.npz"
+      ]
+    },
+    {
+      "sha": "c7ab030a315264a9dffbac1d884aa8b4100353b7",
+      "bytes_each": 72931,
+      "copies": 2,
+      "redundant_bytes": 72931,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/recovery-network/figures/recovery_prediction.png",
+        "Nous-Volition/studies/fluid-organization/extensions/recovery-network/figures/recovery_prediction.png"
+      ]
+    },
+    {
+      "sha": "1341841e0756d4304f7e6e385e09a51412fcd93b",
+      "bytes_each": 72136,
+      "copies": 2,
+      "redundant_bytes": 72136,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-sweep/figures/history_windows.png",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-sweep/figures/history_windows.png"
+      ]
+    },
+    {
+      "sha": "2d6539964483bfc9e51e7560b3503c69207c586b",
+      "bytes_each": 70924,
+      "copies": 2,
+      "redundant_bytes": 70924,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-followups/figures/capacitance.svg",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-followups/figures/capacitance.svg"
+      ]
+    },
+    {
+      "sha": "43b8f0acb83a88f72a5e84b0c71b2b72d7d6e42a",
+      "bytes_each": 6953,
+      "copies": 11,
+      "redundant_bytes": 69530,
+      "paths": [
+        "My-Sources-Project-ALL/math/imports/hug-ns/mirror-calibration/clay_hug.py",
+        "My-Sources-Project-ALL/math/imports/hug-ns/mirror-fluid/breathing-rerun/clay_hug.py",
+        "My-Sources-Project-ALL/math/imports/hug-ns/mirror-fluid/breathing-rerun/one-lean/clay_hug.py",
+        "My-Sources-Project-ALL/math/imports/hug-ns/mirror-fluid/dynamic-q/source/clay_hug.py",
+        "My-Sources-Project-ALL/math/imports/hug-ns/mirror-fluid/first-change-audit/source/clay_hug.py",
+        "My-Sources-Project-ALL/math/imports/hug-ns/mirror-fluid/methods-controls/source/clay_hug.py",
+        "My-Sources-Project-ALL/math/imports/hug-ns/mirror-fluid/methods-controls/uploaded/clay_hug.py",
+        "My-Sources-Project-ALL/math/imports/hug-ns/mirror-fluid/model-layers/source/clay_hug.py",
+        "My-Sources-Project-ALL/math/imports/hug-ns/mirror-fluid/source-attribution/source/clay_hug.py",
+        "My-Sources-Project-ALL/math/imports/hug-ns/mirror-fluid/source/clay_hug.py",
+        "My-Sources-Project-ALL/reports/support/fixed-cutoff-run/source/clay_hug.py"
+      ]
+    },
+    {
+      "sha": "c29d6124ebcfe6da692da4dedf140d4c448c00db",
+      "bytes_each": 68710,
+      "copies": 2,
+      "redundant_bytes": 68710,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-sweep/results/primary_means.csv",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-sweep/results/primary_means.csv"
+      ]
+    },
+    {
+      "sha": "9fe64739cf3d3db883648b941956f17e5150c2a2",
+      "bytes_each": 67018,
+      "copies": 2,
+      "redundant_bytes": 67018,
+      "paths": [
+        "My-Sources-Project-ALL/math/results/hug-continued-0.4.json",
+        "My-Sources-Project-ALL/reports/files/hug-continued-0.4.json"
+      ]
+    },
+    {
+      "sha": "bc18ef4e7566fef05fc16d5c84f77e6d96219f28",
+      "bytes_each": 65477,
+      "copies": 2,
+      "redundant_bytes": 65477,
+      "paths": [
+        "My-Sources-Project-ALL/math/results/hug-step-energy.json",
+        "My-Sources-Project-ALL/reports/files/hug-step-energy.json"
+      ]
+    },
+    {
+      "sha": "2229024deba298c68e17f7bda97cd3065c7ec29f",
+      "bytes_each": 63994,
+      "copies": 2,
+      "redundant_bytes": 63994,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-followups/manifest.json",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-followups/manifest.json"
+      ]
+    },
+    {
+      "sha": "7de91aa85b58cccbefb2668377aef58fbaf13028",
+      "bytes_each": 62531,
+      "copies": 2,
+      "redundant_bytes": 62531,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/recovery-network/figures/recovery.svg",
+        "Nous-Volition/studies/fluid-organization/extensions/recovery-network/figures/recovery.svg"
+      ]
+    },
+    {
+      "sha": "9a4179dd46b2193be30980e8552e93e6bb6d90b6",
+      "bytes_each": 59171,
+      "copies": 2,
+      "redundant_bytes": 59171,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-sweep/figures/history_windows.svg",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-sweep/figures/history_windows.svg"
+      ]
+    },
+    {
+      "sha": "241c7d7c681c13f26a33cd33ff0c004b0a2dca4e",
+      "bytes_each": 58979,
+      "copies": 2,
+      "redundant_bytes": 58979,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-followups/results/verification.json",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-followups/results/verification.json"
+      ]
+    },
+    {
+      "sha": "6f302b351f3b731a5ae4f892253a506a99f98fd2",
+      "bytes_each": 56578,
+      "copies": 2,
+      "redundant_bytes": 56578,
+      "paths": [
+        "My-Sources-Project-ALL/reports/dynamics-reference-tests/stress/convection-transition/data/grid32_r1.05.npz",
+        "My-Sources-Project-ALL/reports/dynamics-reference-tests/stress/convection-transition/data/repeat_selected_grid32.npz"
+      ]
+    },
+    {
+      "sha": "205fae953f3eabcb224e34a02f5225d2ac91f84a",
+      "bytes_each": 56532,
+      "copies": 2,
+      "redundant_bytes": 56532,
+      "paths": [
+        "My-Sources-Project-ALL/reports/dynamics-reference-tests/stress/convection-transition/data/refined_grid32_r1.05.npz",
+        "My-Sources-Project-ALL/reports/dynamics-reference-tests/stress/convection-transition/data/repeat_refined_grid32.npz"
+      ]
+    },
+    {
+      "sha": "63edfe913be042b60fd092b0ec7295d6bde3f8bd",
+      "bytes_each": 55728,
+      "copies": 2,
+      "redundant_bytes": 55728,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-followups/figures/held_out_prediction.svg",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-followups/figures/held_out_prediction.svg"
+      ]
+    },
+    {
+      "sha": "a68cf55f3c128137f8b7f0a1a979033044f71da7",
+      "bytes_each": 54219,
+      "copies": 2,
+      "redundant_bytes": 54219,
+      "paths": [
+        "My-Sources-Project-ALL/math/results/hug-continued-0.32.json",
+        "My-Sources-Project-ALL/reports/files/hug-continued-0.32.json"
+      ]
+    },
+    {
+      "sha": "d45eee7773ee17b7c504269747f949e08abdce53",
+      "bytes_each": 51028,
+      "copies": 2,
+      "redundant_bytes": 51028,
+      "paths": [
+        "My-Sources-Project-ALL/math/results/hug-energy-balance.json",
+        "My-Sources-Project-ALL/reports/files/hug-energy-balance.json"
+      ]
+    },
+    {
+      "sha": "728adf740bce517c19aaa0f6f16a51a816b3be28",
+      "bytes_each": 49295,
+      "copies": 2,
+      "redundant_bytes": 49295,
+      "paths": [
+        "My-Sources-Project-ALL/reports/dynamics-reference-tests/stress/convection-transition/data/halfstep_r1.2.npz",
+        "My-Sources-Project-ALL/reports/dynamics-reference-tests/stress/convection-transition/data/refined_primary_r1.2_s410.npz"
+      ]
+    },
+    {
+      "sha": "ff98a45f16452cd8ecb3c5b3f678dc1a45384d57",
+      "bytes_each": 48017,
+      "copies": 2,
+      "redundant_bytes": 48017,
+      "paths": [
+        "My-Sources-Project-ALL/reports/dynamics-reference-tests/stress/convection-transition/data/halfstep_r1.05.npz",
+        "My-Sources-Project-ALL/reports/dynamics-reference-tests/stress/convection-transition/data/refined_primary_r1.05_s410.npz"
+      ]
+    },
+    {
+      "sha": "87da25d7334a0cede0f1e722483b4756b9b71027",
+      "bytes_each": 47232,
+      "copies": 2,
+      "redundant_bytes": 47232,
+      "paths": [
+        "My-Sources-Project-ALL/reports/dynamics-reference-tests/stress/convection-transition/data/halfstep_r0.95.npz",
+        "My-Sources-Project-ALL/reports/dynamics-reference-tests/stress/convection-transition/data/refined_primary_r0.95_s410.npz"
+      ]
+    },
+    {
+      "sha": "4e7be540f4601e976cf701a35c814e898829fbc5",
+      "bytes_each": 9410,
+      "copies": 6,
+      "redundant_bytes": 47050,
+      "paths": [
+        "My-Sources-Project-ALL/math/imports/hug-ns/mirror-fluid/first-change-audit/source/numerics.py",
+        "My-Sources-Project-ALL/reports/matched-stretch/adaptive-peak/source/numerics.py",
+        "My-Sources-Project-ALL/reports/matched-stretch/join-isolation/source/numerics.py",
+        "My-Sources-Project-ALL/reports/matched-stretch/numerics.py",
+        "My-Sources-Project-ALL/reports/matched-stretch/periodic-start-check/source/numerics.py",
+        "My-Sources-Project-ALL/reports/matched-stretch/unforced-growth-check/source/numerics.py"
+      ]
+    },
+    {
+      "sha": "02d6e0f42de39fe995032afe15448991320ca943",
+      "bytes_each": 45320,
+      "copies": 2,
+      "redundant_bytes": 45320,
+      "paths": [
+        "My-Sources-Project-ALL/reports/dynamics-reference-tests/stress/convection-transition/data/halfstep_r0.8.npz",
+        "My-Sources-Project-ALL/reports/dynamics-reference-tests/stress/convection-transition/data/refined_primary_r0.8_s410.npz"
+      ]
+    },
+    {
+      "sha": "69bcf8c6b9aaa482997d9c5202705ccb31a61011",
+      "bytes_each": 44977,
+      "copies": 2,
+      "redundant_bytes": 44977,
+      "paths": [
+        "My-Sources-Project-ALL/reports/dynamics-reference-tests/stress/convection-transition/data/halfstep_r1.npz",
+        "My-Sources-Project-ALL/reports/dynamics-reference-tests/stress/convection-transition/data/refined_primary_r1_s410.npz"
+      ]
+    },
+    {
+      "sha": "ceb99fbdab55d802b3d80273094519a502c9b17f",
+      "bytes_each": 44876,
+      "copies": 2,
+      "redundant_bytes": 44876,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/recovery-network/figures/network_cycle.svg",
+        "Nous-Volition/studies/fluid-organization/extensions/recovery-network/figures/network_cycle.svg"
+      ]
+    },
+    {
+      "sha": "24649ee57228c8252ed8994784289711284bb881",
+      "bytes_each": 43659,
+      "copies": 2,
+      "redundant_bytes": 43659,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/recovery-network/results/network_events.csv",
+        "Nous-Volition/studies/fluid-organization/extensions/recovery-network/results/network_events.csv"
+      ]
+    },
+    {
+      "sha": "c0fc01c9d890789e30fae29f4a53e70ea573f03f",
+      "bytes_each": 41400,
+      "copies": 2,
+      "redundant_bytes": 41400,
+      "paths": [
+        "My-Sources-Project-ALL/math/results/hug-continued-0.24.json",
+        "My-Sources-Project-ALL/reports/files/hug-continued-0.24.json"
+      ]
+    },
+    {
+      "sha": "883f753dab2942e778878b529a6eaa0d72c77133",
+      "bytes_each": 40001,
+      "copies": 2,
+      "redundant_bytes": 40001,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/results/all_runs.csv",
+        "Nous-Volition/studies/fluid-organization/results/all_runs.csv"
+      ]
+    },
+    {
+      "sha": "086e4dad5d53e21e3445ea027f4058122f02667a",
+      "bytes_each": 39586,
+      "copies": 2,
+      "redundant_bytes": 39586,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/recovery-network/manifest.json",
+        "Nous-Volition/studies/fluid-organization/extensions/recovery-network/manifest.json"
+      ]
+    },
+    {
+      "sha": "7f34a01f1f0629aeff9335dcdb942cc2c740e38c",
+      "bytes_each": 38099,
+      "copies": 2,
+      "redundant_bytes": 38099,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/recovery-network/figures/network_learning.svg",
+        "Nous-Volition/studies/fluid-organization/extensions/recovery-network/figures/network_learning.svg"
+      ]
+    },
+    {
+      "sha": "ea6eddb0980cc9d48bb0d6fe1c7fd04e36461288",
+      "bytes_each": 37098,
+      "copies": 2,
+      "redundant_bytes": 37098,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/recovery-network/figures/recurrence_and_validation.svg",
+        "Nous-Volition/studies/fluid-organization/extensions/recovery-network/figures/recurrence_and_validation.svg"
+      ]
+    },
+    {
+      "sha": "abd00e9fb1d066b1f25c965c1533bf75838a07d1",
+      "bytes_each": 31509,
+      "copies": 2,
+      "redundant_bytes": 31509,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/recovery-network/figures/history_and_coupling.svg",
+        "Nous-Volition/studies/fluid-organization/extensions/recovery-network/figures/history_and_coupling.svg"
+      ]
+    },
+    {
+      "sha": "610407d186ae661e507b315d43a938abe9032bec",
+      "bytes_each": 25560,
+      "copies": 2,
+      "redundant_bytes": 25560,
+      "paths": [
+        "My-Sources-Project-ALL/math/results/hug-method-refinement.json",
+        "My-Sources-Project-ALL/reports/files/hug-method-refinement.json"
+      ]
+    },
+    {
+      "sha": "3bb84e6a5bb5ca025041bafd78b2024cf18c6073",
+      "bytes_each": 24228,
+      "copies": 2,
+      "redundant_bytes": 24228,
+      "paths": [
+        "My-Sources-Project-ALL/reports/matched-stretch/history-prediction/full-history-refinement/execution-224.json",
+        "My-Sources-Project-ALL/reports/matched-stretch/history-prediction/full-history-refinement/execution.json"
+      ]
+    },
+    {
+      "sha": "8512cb42b2f5129600ea33c75f803276fe7d2a54",
+      "bytes_each": 24157,
+      "copies": 2,
+      "redundant_bytes": 24157,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-sweep/results/reference_means.csv",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-sweep/results/reference_means.csv"
+      ]
+    },
+    {
+      "sha": "96c2baf79f6bec04ee99fc90b3c5f38349ac8147",
+      "bytes_each": 12021,
+      "copies": 3,
+      "redundant_bytes": 24042,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/core.py",
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-followups/fluid/core.py",
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/recovery-network/core.py"
+      ]
+    },
+    {
+      "sha": "1ea4bed1a76d8b243d01fc406694ba4d301a09e9",
+      "bytes_each": 23736,
+      "copies": 2,
+      "redundant_bytes": 23736,
+      "paths": [
+        "My-Sources-Project-ALL/math/results/hug-shape-0.4.json",
+        "My-Sources-Project-ALL/reports/files/hug-shape-0.4.json"
+      ]
+    },
+    {
+      "sha": "2d3686bf7084d841787621736929a4885a03112f",
+      "bytes_each": 23592,
+      "copies": 2,
+      "redundant_bytes": 23592,
+      "paths": [
+        "My-Sources-Project-ALL/math/results/box-experiment-results.csv",
+        "My-Sources-Project-ALL/reports/files/box-experiment-results.csv"
+      ]
+    },
+    {
+      "sha": "d34359c396144252a7635089b15cae1cbd404783",
+      "bytes_each": 23141,
+      "copies": 2,
+      "redundant_bytes": 23141,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/results/verification.json",
+        "Nous-Volition/studies/fluid-organization/results/verification.json"
+      ]
+    },
+    {
+      "sha": "a2333ae6de5c1fc384f278c859c6d3b5a3f977eb",
+      "bytes_each": 22817,
+      "copies": 2,
+      "redundant_bytes": 22817,
+      "paths": [
+        "My-Sources-Project-ALL/math/results/hug-refinement.json",
+        "My-Sources-Project-ALL/reports/files/hug-refinement.json"
+      ]
+    },
+    {
+      "sha": "aaef64a4df02de84362c91e9dd03eec3bf0da906",
+      "bytes_each": 22469,
+      "copies": 2,
+      "redundant_bytes": 22469,
+      "paths": [
+        "My-Sources-Project-ALL/math/results/hug-time-384.json",
+        "My-Sources-Project-ALL/reports/files/hug-time-384.json"
+      ]
+    },
+    {
+      "sha": "fede8a4b36d642f422638dbf8b3f8c5f16add1f5",
+      "bytes_each": 20990,
+      "copies": 2,
+      "redundant_bytes": 20990,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-followups/report.html",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-followups/report.html"
+      ]
+    },
+    {
+      "sha": "a41cf551fde4fc9fffeac1ffd041ff64e1c711d2",
+      "bytes_each": 10408,
+      "copies": 3,
+      "redundant_bytes": 20816,
+      "paths": [
+        "My-Sources-Project-ALL/reports/clay-contact-stress/clay_hug.py",
+        "My-Sources-Project-ALL/reports/clay-contact-stress/obstacle-only/clay_hug.py",
+        "My-Sources-Project-ALL/reports/clay-hug/clay_hug.py"
+      ]
+    },
+    {
+      "sha": "6651c3db9a8f7de539cea665679b191009a27c01",
+      "bytes_each": 20567,
+      "copies": 2,
+      "redundant_bytes": 20567,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/recovery-network/figures/recovery_prediction.svg",
+        "Nous-Volition/studies/fluid-organization/extensions/recovery-network/figures/recovery_prediction.svg"
+      ]
+    },
+    {
+      "sha": "ad4577be8a5c5049ea585b7e38fccc02425409d8",
+      "bytes_each": 20085,
+      "copies": 2,
+      "redundant_bytes": 20085,
+      "paths": [
+        "My-Sources-Project-ALL/math/results/hug-continued-0.4.csv",
+        "My-Sources-Project-ALL/reports/files/hug-continued-0.4.csv"
+      ]
+    },
+    {
+      "sha": "3f62a11e4c5303b69ada6e41b497232c2a9f9e06",
+      "bytes_each": 19865,
+      "copies": 2,
+      "redundant_bytes": 19865,
+      "paths": [
+        "My-Sources-Project-ALL/math/results/hug-longer-time.json",
+        "My-Sources-Project-ALL/reports/files/hug-longer-time.json"
+      ]
+    },
+    {
+      "sha": "095ce3048318601fe2e926c796aa2a7cae364bf4",
+      "bytes_each": 19713,
+      "copies": 2,
+      "redundant_bytes": 19713,
+      "paths": [
+        "My-Sources-Project-ALL/math/results/hug-shape-0.32.json",
+        "My-Sources-Project-ALL/reports/files/hug-shape-0.32.json"
+      ]
+    },
+    {
+      "sha": "df328f90349ebf21b91a683a61a60288ce8b1dca",
+      "bytes_each": 19542,
+      "copies": 2,
+      "redundant_bytes": 19542,
+      "paths": [
+        "My-Sources-Project-ALL/reports/matched-stretch/history-prediction/full-history-refinement/feature-drift-224.json",
+        "My-Sources-Project-ALL/reports/matched-stretch/history-prediction/full-history-refinement/feature-drift.json"
+      ]
+    },
+    {
+      "sha": "4b5bd4c09de85fe7609f600ddc9b283fd28fbe7c",
+      "bytes_each": 19346,
+      "copies": 2,
+      "redundant_bytes": 19346,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-sweep/report.html",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-sweep/report.html"
+      ]
+    },
+    {
+      "sha": "36d75f1b2a58ac0269c5a14d986d1037c5dab6d0",
+      "bytes_each": 19307,
+      "copies": 2,
+      "redundant_bytes": 19307,
+      "paths": [
+        "My-Sources-Project-ALL/math/results/hug-time-method.json",
+        "My-Sources-Project-ALL/reports/files/hug-time-method.json"
+      ]
+    },
+    {
+      "sha": "7a825bd35e027d29797d0f9c29ca23c2dbe64637",
+      "bytes_each": 19230,
+      "copies": 2,
+      "redundant_bytes": 19230,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/results/particle_results.csv",
+        "Nous-Volition/studies/fluid-organization/results/particle_results.csv"
+      ]
+    },
+    {
+      "sha": "3717e1c776fb30a341332006f0f1264dfc8db2b3",
+      "bytes_each": 9411,
+      "copies": 3,
+      "redundant_bytes": 18822,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-followups/fluid/vendor/numerics.py",
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/recovery-network/vendor/numerics.py",
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/vendor/numerics.py"
+      ]
+    },
+    {
+      "sha": "1f932abb4b3cde80173710a5668b677b172ff1ee",
+      "bytes_each": 1560,
+      "copies": 13,
+      "redundant_bytes": 18720,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-parser-failure/gfn2-H2O-start0-step0.005/xtbopt.log",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start0-step0.00125/xtbopt.log",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start0-step0.0025/xtbopt.log",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start0-step0.005/xtbopt.log",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start0-step0.00125/xtbopt.log",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start0-step0.0025/xtbopt.log",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start0-step0.005/xtbopt.log",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start0-step0.00125/xtbopt.log",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start0-step0.0025/xtbopt.log",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start0-step0.005/xtbopt.log",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start0-step0.00125/xtbopt.log",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start0-step0.0025/xtbopt.log",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start0-step0.005/xtbopt.log"
+      ]
+    },
+    {
+      "sha": "e195dde28582ae54032bbdaa34b6d9760ea40b6f",
+      "bytes_each": 18636,
+      "copies": 2,
+      "redundant_bytes": 18636,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/recovery-network/report.html",
+        "Nous-Volition/studies/fluid-organization/extensions/recovery-network/report.html"
+      ]
+    },
+    {
+      "sha": "6bbfe37825b4d8c8dcfd3877904863f1804d5bed",
+      "bytes_each": 18198,
+      "copies": 2,
+      "redundant_bytes": 18198,
+      "paths": [
+        "My-Sources-Project-ALL/math/results/hug-grid-384.json",
+        "My-Sources-Project-ALL/reports/files/hug-grid-384.json"
+      ]
+    },
+    {
+      "sha": "ecfb14f8823a06a13cd9b0861fcd5deab1093823",
+      "bytes_each": 17630,
+      "copies": 2,
+      "redundant_bytes": 17630,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-followups/results/capacitance.json",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-followups/results/capacitance.json"
+      ]
+    },
+    {
+      "sha": "770f28f009bedd348ae9e7ae77a8f10266c64cc3",
+      "bytes_each": 17324,
+      "copies": 2,
+      "redundant_bytes": 17324,
+      "paths": [
+        "My-Sources-Project-ALL/math/results/hug-step-energy.csv",
+        "My-Sources-Project-ALL/reports/files/hug-step-energy.csv"
+      ]
+    },
+    {
+      "sha": "1c086f85103362ca10bb97a26034f9457cca1532",
+      "bytes_each": 17085,
+      "copies": 2,
+      "redundant_bytes": 17085,
+      "paths": [
+        "My-Sources-Project-ALL/math/notes/smooth-initial-field.tex",
+        "My-Sources-Project-ALL/reports/files/smooth-initial-field.tex"
+      ]
+    },
+    {
+      "sha": "1bbe8785a3cc478a2298925265e7ca05bc2ecf04",
+      "bytes_each": 8200,
+      "copies": 3,
+      "redundant_bytes": 16400,
+      "paths": [
+        "My-Sources-Project-ALL/reports/clay-contact-stress/baseline_metrics.py",
+        "My-Sources-Project-ALL/reports/clay-contact-stress/obstacle-only/baseline_metrics.py",
+        "My-Sources-Project-ALL/reports/clay-hug/run_stress.py"
+      ]
+    },
+    {
+      "sha": "6132009e5e19f10ae635a37b8f2bcd1aaf2fad1b",
+      "bytes_each": 15872,
+      "copies": 2,
+      "redundant_bytes": 15872,
+      "paths": [
+        "My-Sources-Project-ALL/math/results/hug-continued-0.32.csv",
+        "My-Sources-Project-ALL/reports/files/hug-continued-0.32.csv"
+      ]
+    },
+    {
+      "sha": "3b4ee0696be2281805068d75f1ec191274c1db15",
+      "bytes_each": 15311,
+      "copies": 2,
+      "redundant_bytes": 15311,
+      "paths": [
+        "My-Sources-Project-ALL/math/results/hug-shape.json",
+        "My-Sources-Project-ALL/reports/files/hug-shape.json"
+      ]
+    },
+    {
+      "sha": "182241e851cb7660ef16473240ab998ed6d26bfd",
+      "bytes_each": 15052,
+      "copies": 2,
+      "redundant_bytes": 15052,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-followups/results/fluid_confirmation.csv",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-followups/results/fluid_confirmation.csv"
+      ]
+    },
+    {
+      "sha": "9b4e36ad21d8dd7f4d025c8df772e0d0026eab35",
+      "bytes_each": 14912,
+      "copies": 2,
+      "redundant_bytes": 14912,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/network_reference_addendum.html",
+        "Nous-Volition/studies/fluid-organization/network_reference_addendum.html"
+      ]
+    },
+    {
+      "sha": "cc3dcfac96c0ae55e77f99e283f12fd856af5ab1",
+      "bytes_each": 14286,
+      "copies": 2,
+      "redundant_bytes": 14286,
+      "paths": [
+        "My-Sources-Project-ALL/math/imports/hug-ns/latest-controls-review.json",
+        "My-Sources-Project-ALL/reports/support/fixed-cutoff-fields/latest-controls-review.json"
+      ]
+    },
+    {
+      "sha": "568ee7e6b0d754a42a017e57466601a54891794d",
+      "bytes_each": 6925,
+      "copies": 3,
+      "redundant_bytes": 13850,
+      "paths": [
+        "My-Sources-Project-ALL/math/imports/hug-ns/mirror-fluid/first-change-audit/source/diagnostics.py",
+        "My-Sources-Project-ALL/math/imports/hug-ns/mirror-fluid/methods-controls/diagnostics.py",
+        "My-Sources-Project-ALL/math/imports/hug-ns/mirror-fluid/model-layers/source/diagnostics.py"
+      ]
+    },
+    {
+      "sha": "34733cb89e49bdb00db870c13fbf1eab9e56277c",
+      "bytes_each": 13125,
+      "copies": 2,
+      "redundant_bytes": 13125,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-sweep/results/independent_validation.json",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-sweep/results/independent_validation.json"
+      ]
+    },
+    {
+      "sha": "19a2437b7e462ae0944886fad9397c6cae223ebb",
+      "bytes_each": 13095,
+      "copies": 2,
+      "redundant_bytes": 13095,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-sweep/audit/initial_independent_validation.json",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-sweep/audit/initial_independent_validation.json"
+      ]
+    },
+    {
+      "sha": "e13abcbd3efa9a96ee15a41cd3df0b7435228a47",
+      "bytes_each": 11903,
+      "copies": 2,
+      "redundant_bytes": 11903,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-sweep/manifest.json",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-sweep/manifest.json"
+      ]
+    },
+    {
+      "sha": "06de5b78ba3b85756ccf2d3abfca5ceef898e89d",
+      "bytes_each": 11860,
+      "copies": 2,
+      "redundant_bytes": 11860,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/recovery-network/results/network_regimes.csv",
+        "Nous-Volition/studies/fluid-organization/extensions/recovery-network/results/network_regimes.csv"
+      ]
+    },
+    {
+      "sha": "63aa29ea5b54853d2f73c9d3c0a60967f5af8556",
+      "bytes_each": 11740,
+      "copies": 2,
+      "redundant_bytes": 11740,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/recovery-network/results/recovery_runs.csv",
+        "Nous-Volition/studies/fluid-organization/extensions/recovery-network/results/recovery_runs.csv"
+      ]
+    },
+    {
+      "sha": "f380c40f002716eb3258fb3aa61ae4f9e15bcd3d",
+      "bytes_each": 11715,
+      "copies": 2,
+      "redundant_bytes": 11715,
+      "paths": [
+        "My-Sources-Project-ALL/math/results/hug-continued-0.24.csv",
+        "My-Sources-Project-ALL/reports/files/hug-continued-0.24.csv"
+      ]
+    },
+    {
+      "sha": "b026420324f52957f7daed9f775d7947c0d66166",
+      "bytes_each": 11518,
+      "copies": 2,
+      "redundant_bytes": 11518,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/references/oscillator_network_reference.png",
+        "Nous-Volition/studies/fluid-organization/references/oscillator_network_reference.png"
+      ]
+    },
+    {
+      "sha": "f76290f5d23935459b49d278a2ac9096a0e0e358",
+      "bytes_each": 11261,
+      "copies": 2,
+      "redundant_bytes": 11261,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/recovery-network/results/recurrence.json",
+        "Nous-Volition/studies/fluid-organization/extensions/recovery-network/results/recurrence.json"
+      ]
+    },
+    {
+      "sha": "538741c050a89a252545740317b04b907f7c900e",
+      "bytes_each": 10887,
+      "copies": 2,
+      "redundant_bytes": 10887,
+      "paths": [
+        "My-Sources-Project-ALL/math/results/hug-energy-balance.csv",
+        "My-Sources-Project-ALL/reports/files/hug-energy-balance.csv"
+      ]
+    },
+    {
+      "sha": "3611065d8bef4e93ba1e4a5e5e08ef15062b4cd1",
+      "bytes_each": 5203,
+      "copies": 3,
+      "redundant_bytes": 10406,
+      "paths": [
+        "My-Sources-Project-ALL/reports/hug-dynamics/hug_model.py",
+        "My-Sources-Project-ALL/reports/hug-stress/baseline/hug_model.py",
+        "Nous-Volition/studies/dynamics-fractals-sims/hug_source/hug_model.py"
+      ]
+    },
+    {
+      "sha": "eef921812cb0c2baed91a677dc17ae69d70e16b4",
+      "bytes_each": 10264,
+      "copies": 2,
+      "redundant_bytes": 10264,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-followups/fluid/recovery.py",
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/recovery-network/recovery.py"
+      ]
+    },
+    {
+      "sha": "c36735f0f4285fee86b7ca48069f2653d882f76a",
+      "bytes_each": 10247,
+      "copies": 2,
+      "redundant_bytes": 10247,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-followups/results/long_cycles.json",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-followups/results/long_cycles.json"
+      ]
+    },
+    {
+      "sha": "07f5867973e26ec90d4c47927242ae27babe08e8",
+      "bytes_each": 9888,
+      "copies": 2,
+      "redundant_bytes": 9888,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-memory-erasure/solver.py",
+        "My-Sources-Project-ALL/reports/fluid-memory-extension/reference_solver.py"
+      ]
+    },
+    {
+      "sha": "ea9b0bca014349ffef2e474d16a2637184749ce8",
+      "bytes_each": 4839,
+      "copies": 3,
+      "redundant_bytes": 9678,
+      "paths": [
+        "My-Sources-Project-ALL/reports/hug-dynamics/source/hug_envelope.py",
+        "My-Sources-Project-ALL/reports/hug-stress/baseline/source/hug_envelope.py",
+        "Nous-Volition/studies/dynamics-fractals-sims/hug_source/source/hug_envelope.py"
+      ]
+    },
+    {
+      "sha": "d2a7d877a0831a1d828fe74a8e7998c489875a18",
+      "bytes_each": 9630,
+      "copies": 2,
+      "redundant_bytes": 9630,
+      "paths": [
+        "My-Sources-Project-ALL/reports/matched-stretch/history-prediction/fresh-independent/PREREGISTRATION.md",
+        "My-Sources-Project-ALL/reports/matched-stretch/history-prediction/fresh-independent/README.md"
+      ]
+    },
+    {
+      "sha": "b763207f46990e16b8cb0d98c8ec9ac2d5b7a4f0",
+      "bytes_each": 2808,
+      "copies": 4,
+      "redundant_bytes": 8424,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start1-step0.005/xtbopt.log",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start1-step0.005/xtbopt.log",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start1-step0.005/xtbopt.log",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start1-step0.005/xtbopt.log"
+      ]
+    },
+    {
+      "sha": "ae8b628d6315c5c8e2221180c8f0d537dbc6ee5f",
+      "bytes_each": 4198,
+      "copies": 3,
+      "redundant_bytes": 8396,
+      "paths": [
+        "My-Sources-Project-ALL/reports/dynamics-reference-tests/stress/data/limit-cycle/euler_r0_T20_h0.0125.npz",
+        "My-Sources-Project-ALL/reports/dynamics-reference-tests/stress/data/limit-cycle/heun_r0_T20_h0.0125.npz",
+        "My-Sources-Project-ALL/reports/dynamics-reference-tests/stress/data/limit-cycle/rk4_r0_T20_h0.0125.npz"
+      ]
+    },
+    {
+      "sha": "c0ccf81da4ad38736381151e1bfc310f02cf954d",
+      "bytes_each": 2014,
+      "copies": 5,
+      "redundant_bytes": 8056,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-parser-failure/gfn2-H2O-start0-step0.005/g98.out",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start0-step0.005/g98.out",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start0-step0.005/g98.out",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start0-step0.005/g98.out",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start0-step0.005/g98.out"
+      ]
+    },
+    {
+      "sha": "dfedcf1c5135d632965a079f857e7942775453d5",
+      "bytes_each": 7779,
+      "copies": 2,
+      "redundant_bytes": 7779,
+      "paths": [
+        "My-Sources-Project-ALL/math/results/hug-boundary.csv",
+        "My-Sources-Project-ALL/reports/files/hug-boundary-results.csv"
+      ]
+    },
+    {
+      "sha": "5f4d34796a40734e2e69f7d94b8c903e41695eea",
+      "bytes_each": 7724,
+      "copies": 2,
+      "redundant_bytes": 7724,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/recovery-network/results/recovery_summary.json",
+        "Nous-Volition/studies/fluid-organization/extensions/recovery-network/results/recovery_summary.json"
+      ]
+    },
+    {
+      "sha": "a7b2e4782e86fcfd24c71c1cda54ce4e9c71174d",
+      "bytes_each": 7595,
+      "copies": 2,
+      "redundant_bytes": 7595,
+      "paths": [
+        "My-Sources-Project-ALL/math/results/hug-boundary.json",
+        "My-Sources-Project-ALL/reports/files/hug-boundary-results.json"
+      ]
+    },
+    {
+      "sha": "faa38eaf8a944b47227b9bb429e1a8e8aba656c5",
+      "bytes_each": 7429,
+      "copies": 2,
+      "redundant_bytes": 7429,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/results/prediction.json",
+        "Nous-Volition/studies/fluid-organization/results/prediction.json"
+      ]
+    },
+    {
+      "sha": "4df7565ed29122c2e98a2d9b38a525c06971f1e8",
+      "bytes_each": 7409,
+      "copies": 2,
+      "redundant_bytes": 7409,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-sweep/results/artifact_checks.json",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-sweep/results/artifact_checks.json"
+      ]
+    },
+    {
+      "sha": "4d888d9e48e122ddb1dda6ba09f017446fba9ff5",
+      "bytes_each": 6963,
+      "copies": 2,
+      "redundant_bytes": 6963,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-followups/results/summary.json",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-followups/results/summary.json"
+      ]
+    },
+    {
+      "sha": "9404d682a9899af06107090c052123e2fc46dc13",
+      "bytes_each": 6474,
+      "copies": 2,
+      "redundant_bytes": 6474,
+      "paths": [
+        "My-Sources-Project-ALL/math/results/hug-resolution.csv",
+        "My-Sources-Project-ALL/reports/files/hug-resolution.csv"
+      ]
+    },
+    {
+      "sha": "8c440aef48e93336ac919c685670a03ee2b3fb08",
+      "bytes_each": 6317,
+      "copies": 2,
+      "redundant_bytes": 6317,
+      "paths": [
+        "My-Sources-Project-ALL/math/results/hug-method-grid.csv",
+        "My-Sources-Project-ALL/reports/files/hug-method-grid.csv"
+      ]
+    },
+    {
+      "sha": "68e805ce03dd95b818e3e1316c16e69788adba14",
+      "bytes_each": 6289,
+      "copies": 2,
+      "redundant_bytes": 6289,
+      "paths": [
+        "My-Sources-Project-ALL/math/results/hug-method-interval.csv",
+        "My-Sources-Project-ALL/reports/files/hug-method-interval.csv"
+      ]
+    },
+    {
+      "sha": "4f23af84aef8dd91368cea0f480ad9248bd50b4c",
+      "bytes_each": 6185,
+      "copies": 2,
+      "redundant_bytes": 6185,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-followups/provenance.json",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-followups/provenance.json"
+      ]
+    },
+    {
+      "sha": "c9614a02e2b835511f73a1b84934cde811b1e59e",
+      "bytes_each": 6143,
+      "copies": 2,
+      "redundant_bytes": 6143,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-followups/results/noise.json",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-followups/results/noise.json"
+      ]
+    },
+    {
+      "sha": "4cd3cda8abfcf0d2c745ce6b4d07425a4a36ec31",
+      "bytes_each": 6061,
+      "copies": 2,
+      "redundant_bytes": 6061,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/recovery-network/results/network_forecast.json",
+        "Nous-Volition/studies/fluid-organization/extensions/recovery-network/results/network_forecast.json"
+      ]
+    },
+    {
+      "sha": "0c80f83c211af843ed618f5ddf7833be3ca86568",
+      "bytes_each": 2014,
+      "copies": 4,
+      "redundant_bytes": 6042,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start0-step0.00125/g98.out",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start0-step0.00125/g98.out",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start0-step0.00125/g98.out",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start0-step0.00125/g98.out"
+      ]
+    },
+    {
+      "sha": "e5c021ab7343508309a50f76f6bfeb2181d6821d",
+      "bytes_each": 2014,
+      "copies": 4,
+      "redundant_bytes": 6042,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start0-step0.0025/g98.out",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start0-step0.0025/g98.out",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start0-step0.0025/g98.out",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start0-step0.0025/g98.out"
+      ]
+    },
+    {
+      "sha": "17b04623f94e837d891699ed85261240d40f87d8",
+      "bytes_each": 2014,
+      "copies": 4,
+      "redundant_bytes": 6042,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start1-step0.005/g98.out",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start1-step0.005/g98.out",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start1-step0.005/g98.out",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start1-step0.005/g98.out"
+      ]
+    },
+    {
+      "sha": "bc1086e09cfaf7994e98d9cffaf614108da8af8d",
+      "bytes_each": 6035,
+      "copies": 2,
+      "redundant_bytes": 6035,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-followups/results/capacitance.csv",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-followups/results/capacitance.csv"
+      ]
+    },
+    {
+      "sha": "d5ccb42d0bb3276942f89aebe756ef691a8ba92a",
+      "bytes_each": 5919,
+      "copies": 2,
+      "redundant_bytes": 5919,
+      "paths": [
+        "My-Sources-Project-ALL/math/results/hug-time-384.csv",
+        "My-Sources-Project-ALL/reports/files/hug-time-384.csv"
+      ]
+    },
+    {
+      "sha": "4c1ec3b99239841cce92d1954aad8f7497ad9718",
+      "bytes_each": 5912,
+      "copies": 2,
+      "redundant_bytes": 5912,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/results/parameter_regimes.csv",
+        "Nous-Volition/studies/fluid-organization/results/parameter_regimes.csv"
+      ]
+    },
+    {
+      "sha": "40a1805936801e7f46fbb9ad3fbb8e23410137f3",
+      "bytes_each": 2936,
+      "copies": 3,
+      "redundant_bytes": 5872,
+      "paths": [
+        "My-Sources-Project-ALL/math/imports/hug-ns/mirror-fluid/dynamic-q/source/fluid_sources.py",
+        "My-Sources-Project-ALL/math/imports/hug-ns/mirror-fluid/source-attribution/source/fluid_sources.py",
+        "My-Sources-Project-ALL/math/imports/hug-ns/mirror-fluid/source/fluid_sources.py"
+      ]
+    },
+    {
+      "sha": "6797078e4a5767b344ac0aaa36e8ed6e79ce7359",
+      "bytes_each": 5870,
+      "copies": 2,
+      "redundant_bytes": 5870,
+      "paths": [
+        "My-Sources-Project-ALL/reports/navier-stokes-stress/solver.py",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vendor/ns_solver.py"
+      ]
+    },
+    {
+      "sha": "3806254c9fe99c2e840c3006b46c26293ec4a11a",
+      "bytes_each": 5805,
+      "copies": 2,
+      "redundant_bytes": 5805,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-memory-erasure/freeze-source/protocol.json",
+        "My-Sources-Project-ALL/reports/fluid-memory-erasure/protocol.json"
+      ]
+    },
+    {
+      "sha": "23765d7df4b0edd726e7db30ad96256f7c73e952",
+      "bytes_each": 5792,
+      "copies": 2,
+      "redundant_bytes": 5792,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-followups/README.md",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-followups/README.md"
+      ]
+    },
+    {
+      "sha": "6f25dddd56b64209e5bf934a6052429780f1bb6b",
+      "bytes_each": 5724,
+      "copies": 2,
+      "redundant_bytes": 5724,
+      "paths": [
+        "My-Sources-Project-ALL/math/results/hug-shape-0.4.csv",
+        "My-Sources-Project-ALL/reports/files/hug-shape-0.4.csv"
+      ]
+    },
+    {
+      "sha": "a0cf8f9d9783211c9feb50dbf9a4a8d8ff096eaa",
+      "bytes_each": 1423,
+      "copies": 5,
+      "redundant_bytes": 5692,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-parser-failure/gfn2-H2O-start0-step0.005/hessian",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start0-step0.005/hessian",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start0-step0.005/hessian",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start0-step0.005/hessian",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start0-step0.005/hessian"
+      ]
+    },
+    {
+      "sha": "ddb83831e18451fc9049216b8ac7eab84ac3a8cf",
+      "bytes_each": 5666,
+      "copies": 2,
+      "redundant_bytes": 5666,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-followups/circuit.py",
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-sweep/model.py"
+      ]
+    },
+    {
+      "sha": "e1c0247a3b20985a7c31252756d9e819fb41616c",
+      "bytes_each": 2828,
+      "copies": 3,
+      "redundant_bytes": 5656,
+      "paths": [
+        "My-Sources-Project-ALL/reports/hug-dynamics/source/pressure_envelope.py",
+        "My-Sources-Project-ALL/reports/hug-stress/baseline/source/pressure_envelope.py",
+        "Nous-Volition/studies/dynamics-fractals-sims/hug_source/source/pressure_envelope.py"
+      ]
+    },
+    {
+      "sha": "7a4d46dd8af33f5dc35e65e8c0d246c0c0824ce7",
+      "bytes_each": 5591,
+      "copies": 2,
+      "redundant_bytes": 5591,
+      "paths": [
+        "My-Sources-Project-ALL/math/results/hug-refinement.csv",
+        "My-Sources-Project-ALL/reports/files/hug-refinement.csv"
+      ]
+    },
+    {
+      "sha": "c9304474d548b6f07eca3faa518b0a23a25a7db1",
+      "bytes_each": 2693,
+      "copies": 3,
+      "redundant_bytes": 5386,
+      "paths": [
+        "My-Sources-Project-ALL/reports/dynamics-reference-tests/stress/data/limit-cycle/euler_r0_T20_h0.025.npz",
+        "My-Sources-Project-ALL/reports/dynamics-reference-tests/stress/data/limit-cycle/heun_r0_T20_h0.025.npz",
+        "My-Sources-Project-ALL/reports/dynamics-reference-tests/stress/data/limit-cycle/rk4_r0_T20_h0.025.npz"
+      ]
+    },
+    {
+      "sha": "e9443a059772a9ba5db4aea3b4cebc84de1a675f",
+      "bytes_each": 5207,
+      "copies": 2,
+      "redundant_bytes": 5207,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/recovery-network/results/network_history_prediction.json",
+        "Nous-Volition/studies/fluid-organization/extensions/recovery-network/results/network_history_prediction.json"
+      ]
+    },
+    {
+      "sha": "171de187ac448d8afcd873015b3162550b74ba3b",
+      "bytes_each": 5206,
+      "copies": 2,
+      "redundant_bytes": 5206,
+      "paths": [
+        "My-Sources-Project-ALL/reports/support/fixed-cutoff-run/grids-compared-reference.json",
+        "My-Sources-Project-ALL/reports/support/uploads/grids-compared.json"
+      ]
+    },
+    {
+      "sha": "3f5f656962b16823615e36fe4f66358d1e12e26c",
+      "bytes_each": 5166,
+      "copies": 2,
+      "redundant_bytes": 5166,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/recovery-network/results/verification.json",
+        "Nous-Volition/studies/fluid-organization/extensions/recovery-network/results/verification.json"
+      ]
+    },
+    {
+      "sha": "24ea481b58785fb269c01691dd2ca6f7c0a72203",
+      "bytes_each": 5052,
+      "copies": 2,
+      "redundant_bytes": 5052,
+      "paths": [
+        "My-Sources-Project-ALL/math/results/hug-longer-time.csv",
+        "My-Sources-Project-ALL/reports/files/hug-longer-time.csv"
+      ]
+    },
+    {
+      "sha": "501dbe3d9ab5d3c69c1baea59c0cf86d5e5aaae6",
+      "bytes_each": 4897,
+      "copies": 2,
+      "redundant_bytes": 4897,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/recovery-network/results/recovery_prediction.json",
+        "Nous-Volition/studies/fluid-organization/extensions/recovery-network/results/recovery_prediction.json"
+      ]
+    },
+    {
+      "sha": "e8f072efef609223533d409bc5303bf994e52b65",
+      "bytes_each": 2392,
+      "copies": 3,
+      "redundant_bytes": 4784,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-followups/fluid/protocol.json",
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/recovery-network/protocol.json",
+        "Nous-Volition/studies/fluid-organization/extensions/recovery-network/protocol.json"
+      ]
+    },
+    {
+      "sha": "d3bfdb5c6f8e6dec3f9e7f4c27072882aa81e9ed",
+      "bytes_each": 4650,
+      "copies": 2,
+      "redundant_bytes": 4650,
+      "paths": [
+        "My-Sources-Project-ALL/math/results/hug-grid-384.csv",
+        "My-Sources-Project-ALL/reports/files/hug-grid-384.csv"
+      ]
+    },
+    {
+      "sha": "f2afe45850afba22281b56139c3f900c87f2c4dd",
+      "bytes_each": 4643,
+      "copies": 2,
+      "redundant_bytes": 4643,
+      "paths": [
+        "My-Sources-Project-ALL/math/results/hug-shape-0.32.csv",
+        "My-Sources-Project-ALL/reports/files/hug-shape-0.32.csv"
+      ]
+    },
+    {
+      "sha": "e1819da8e7dc640c2e6b34d64268436a47b0a628",
+      "bytes_each": 4504,
+      "copies": 2,
+      "redundant_bytes": 4504,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/results/dynamics.json",
+        "Nous-Volition/studies/fluid-organization/results/dynamics.json"
+      ]
+    },
+    {
+      "sha": "a15a60696605ed15976afbc283b43a2a1223bac6",
+      "bytes_each": 4337,
+      "copies": 2,
+      "redundant_bytes": 4337,
+      "paths": [
+        "My-Sources-Project-ALL/math/imports/hug-ns/results/reverse-status.json",
+        "My-Sources-Project-ALL/reports/support/fixed-cutoff-fields/reverse-status.json"
+      ]
+    },
+    {
+      "sha": "29ac4bfc0630d259cada6b6f3abdc4b087983959",
+      "bytes_each": 4333,
+      "copies": 2,
+      "redundant_bytes": 4333,
+      "paths": [
+        "My-Sources-Project-ALL/math/results/hug-time-method.csv",
+        "My-Sources-Project-ALL/reports/files/hug-time-method.csv"
+      ]
+    },
+    {
+      "sha": "5d6e8db26125cd1f1e83f332df11f880ca94c4c8",
+      "bytes_each": 1423,
+      "copies": 4,
+      "redundant_bytes": 4269,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start0-step0.00125/hessian",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start0-step0.00125/hessian",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start0-step0.00125/hessian",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start0-step0.00125/hessian"
+      ]
+    },
+    {
+      "sha": "f54de065e304bca466680aa01e564384e86087c8",
+      "bytes_each": 1423,
+      "copies": 4,
+      "redundant_bytes": 4269,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start0-step0.0025/hessian",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start0-step0.0025/hessian",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start0-step0.0025/hessian",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start0-step0.0025/hessian"
+      ]
+    },
+    {
+      "sha": "be067d87bb84055b609a7139de1d8321aabc5410",
+      "bytes_each": 1423,
+      "copies": 4,
+      "redundant_bytes": 4269,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start1-step0.005/hessian",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start1-step0.005/hessian",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start1-step0.005/hessian",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start1-step0.005/hessian"
+      ]
+    },
+    {
+      "sha": "d41b6e3c0514013f976f5080b304a44161f53816",
+      "bytes_each": 4229,
+      "copies": 2,
+      "redundant_bytes": 4229,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-sweep/audit/initial_summary.json",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-sweep/audit/initial_summary.json"
+      ]
+    },
+    {
+      "sha": "a66acef3c922299ad98cafae8c3f05e28525210a",
+      "bytes_each": 4228,
+      "copies": 2,
+      "redundant_bytes": 4228,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-sweep/results/summary.json",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-sweep/results/summary.json"
+      ]
+    },
+    {
+      "sha": "2f4759534d87b7c2e200e6ee283a3e800856bbff",
+      "bytes_each": 4110,
+      "copies": 2,
+      "redundant_bytes": 4110,
+      "paths": [
+        "My-Sources-Project-ALL/reports/matched-stretch/history-prediction/full-history-refinement/per-run-comparisons-224.csv",
+        "My-Sources-Project-ALL/reports/matched-stretch/history-prediction/full-history-refinement/per-run-comparisons.csv"
+      ]
+    },
+    {
+      "sha": "bf463a0ac158b2a786a86b18890cdb67fa6a1356",
+      "bytes_each": 4021,
+      "copies": 2,
+      "redundant_bytes": 4021,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/results/parametric.json",
+        "Nous-Volition/studies/fluid-organization/results/parametric.json"
+      ]
+    },
+    {
+      "sha": "b93dc0e1f8b30aed19a133d1fcb48550c55b4d5b",
+      "bytes_each": 3976,
+      "copies": 2,
+      "redundant_bytes": 3976,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-sweep/results/reference_summary.json",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-sweep/results/reference_summary.json"
+      ]
+    },
+    {
+      "sha": "221aa3b1de68460149dbfa9f5bfc8b70e8178541",
+      "bytes_each": 3951,
+      "copies": 2,
+      "redundant_bytes": 3951,
+      "paths": [
+        "My-Sources-Project-ALL/math/initial_field.py",
+        "My-Sources-Project-ALL/reports/files/initial_field.py"
+      ]
+    },
+    {
+      "sha": "9663eae13cd054d58748d469ecb6a468092b10ee",
+      "bytes_each": 3948,
+      "copies": 2,
+      "redundant_bytes": 3948,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-followups/results/fluid_prediction.json",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-followups/results/fluid_prediction.json"
+      ]
+    },
+    {
+      "sha": "f09591cec782b050e32d6b2fbe464312a334707b",
+      "bytes_each": 3943,
+      "copies": 2,
+      "redundant_bytes": 3943,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/results/pendulum.json",
+        "Nous-Volition/studies/fluid-organization/results/pendulum.json"
+      ]
+    },
+    {
+      "sha": "810ac3aeda746daf7e229e4776ed32a26578a2fd",
+      "bytes_each": 328,
+      "copies": 13,
+      "redundant_bytes": 3936,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-parser-failure/gfn2-H2O-start0-step0.005/xtbrestart",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start0-step0.00125/xtbrestart",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start0-step0.0025/xtbrestart",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start0-step0.005/xtbrestart",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start0-step0.00125/xtbrestart",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start0-step0.0025/xtbrestart",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start0-step0.005/xtbrestart",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start0-step0.00125/xtbrestart",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start0-step0.0025/xtbrestart",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start0-step0.005/xtbrestart",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start0-step0.00125/xtbrestart",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start0-step0.0025/xtbrestart",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start0-step0.005/xtbrestart"
+      ]
+    },
+    {
+      "sha": "cc7e94cc419893a48bac06d53648a9318e641fd5",
+      "bytes_each": 3892,
+      "copies": 2,
+      "redundant_bytes": 3892,
+      "paths": [
+        "My-Sources-Project-ALL/math/imports/hug-ns/results/timestep-half.json",
+        "My-Sources-Project-ALL/reports/support/fixed-cutoff-fields/timestep-half.json"
+      ]
+    },
+    {
+      "sha": "c9dce50dd897aaebbb9959e7dddaaf4597b59443",
+      "bytes_each": 1914,
+      "copies": 3,
+      "redundant_bytes": 3828,
+      "paths": [
+        "My-Sources-Project-ALL/reports/dynamics-reference-tests/stress/data/limit-cycle/euler_r0_T20_h0.05.npz",
+        "My-Sources-Project-ALL/reports/dynamics-reference-tests/stress/data/limit-cycle/heun_r0_T20_h0.05.npz",
+        "My-Sources-Project-ALL/reports/dynamics-reference-tests/stress/data/limit-cycle/rk4_r0_T20_h0.05.npz"
+      ]
+    },
+    {
+      "sha": "c96096bf89cc16fc13b576c611f5a57a0025145b",
+      "bytes_each": 3778,
+      "copies": 2,
+      "redundant_bytes": 3778,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-followups/results/circuit_prediction.json",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-followups/results/circuit_prediction.json"
+      ]
+    },
+    {
+      "sha": "0bf0c03e485d9c674ec964169f4448664fb85e98",
+      "bytes_each": 312,
+      "copies": 13,
+      "redundant_bytes": 3744,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-parser-failure/gfn2-H2O-start0-step0.005/xtbopt.xyz",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start0-step0.00125/xtbopt.xyz",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start0-step0.0025/xtbopt.xyz",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start0-step0.005/xtbopt.xyz",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start0-step0.00125/xtbopt.xyz",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start0-step0.0025/xtbopt.xyz",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start0-step0.005/xtbopt.xyz",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start0-step0.00125/xtbopt.xyz",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start0-step0.0025/xtbopt.xyz",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start0-step0.005/xtbopt.xyz",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start0-step0.00125/xtbopt.xyz",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start0-step0.0025/xtbopt.xyz",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start0-step0.005/xtbopt.xyz"
+      ]
+    },
+    {
+      "sha": "c8ea60b0a84353bbd2f3b651418e6f11293b8d7c",
+      "bytes_each": 3738,
+      "copies": 2,
+      "redundant_bytes": 3738,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-followups/results/fluid_confirmation.json",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-followups/results/fluid_confirmation.json"
+      ]
+    },
+    {
+      "sha": "68e6b7db1319c77805ef8572232f6e3d94709ee0",
+      "bytes_each": 3684,
+      "copies": 2,
+      "redundant_bytes": 3684,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/results/phase_locking.json",
+        "Nous-Volition/studies/fluid-organization/results/phase_locking.json"
+      ]
+    },
+    {
+      "sha": "0eef1c1af7a8f59611e88af44893db76befbd3bf",
+      "bytes_each": 3591,
+      "copies": 2,
+      "redundant_bytes": 3591,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-followups/results/long_cycles.csv",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-followups/results/long_cycles.csv"
+      ]
+    },
+    {
+      "sha": "ce6c59576a696f4a0332d1005ee87e9cc5655366",
+      "bytes_each": 3554,
+      "copies": 2,
+      "redundant_bytes": 3554,
+      "paths": [
+        "My-Sources-Project-ALL/math/results/hug-shape.csv",
+        "My-Sources-Project-ALL/reports/files/hug-shape.csv"
+      ]
+    },
+    {
+      "sha": "00a70d941b2f8a6cf1d6e95ff83cd2b5bd2cf0fe",
+      "bytes_each": 3480,
+      "copies": 2,
+      "redundant_bytes": 3480,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-followups/fluid/common.py",
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/recovery-network/common.py"
+      ]
+    },
+    {
+      "sha": "2be633ef26e9f1c831dde1cc210ae97d2e762781",
+      "bytes_each": 1605,
+      "copies": 3,
+      "redundant_bytes": 3210,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-followups/restore_recordings.py",
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-sweep/restore_recordings.py",
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/recovery-network/restore_recordings.py"
+      ]
+    },
+    {
+      "sha": "0571fbdaeb58c0cf7b71c878366376ff48605baf",
+      "bytes_each": 193,
+      "copies": 17,
+      "redundant_bytes": 3088,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-parser-failure/gfn2-H2O-start0-step0.005/water.xyz",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn1-D2O-start0-step0.0025/water.xyz",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn1-H2O-start0-step0.0025/water.xyz",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start0-step0.00125/water.xyz",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start0-step0.0025/water.xyz",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start0-step0.005/water.xyz",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start0-step0.00125/water.xyz",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start0-step0.0025/water.xyz",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start0-step0.005/water.xyz",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn1-D2O-start0-step0.0025/water.xyz",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn1-H2O-start0-step0.0025/water.xyz",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start0-step0.00125/water.xyz",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start0-step0.0025/water.xyz",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start0-step0.005/water.xyz",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start0-step0.00125/water.xyz",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start0-step0.0025/water.xyz",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start0-step0.005/water.xyz"
+      ]
+    },
+    {
+      "sha": "d1561da79f2d7c64dd9a7ab1d957cde2f97a6514",
+      "bytes_each": 3070,
+      "copies": 2,
+      "redundant_bytes": 3070,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-followups/protocol.json",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-followups/protocol.json"
+      ]
+    },
+    {
+      "sha": "8ff0f34b6f2b62ec30965064309f812f23ac08fa",
+      "bytes_each": 2973,
+      "copies": 2,
+      "redundant_bytes": 2973,
+      "paths": [
+        "My-Sources-Project-ALL/math/imports/hug-ns/mirror-fluid/results/fluid-sources.json",
+        "My-Sources-Project-ALL/math/imports/hug-ns/mirror-fluid/source-attribution/reference-fluid-sources.json"
+      ]
+    },
+    {
+      "sha": "0787227cebea5721ed232073847672fa8a338564",
+      "bytes_each": 1482,
+      "copies": 3,
+      "redundant_bytes": 2964,
+      "paths": [
+        "My-Sources-Project-ALL/reports/dynamics-reference-tests/stress/data/limit-cycle/euler_r0_T20_h0.1.npz",
+        "My-Sources-Project-ALL/reports/dynamics-reference-tests/stress/data/limit-cycle/heun_r0_T20_h0.1.npz",
+        "My-Sources-Project-ALL/reports/dynamics-reference-tests/stress/data/limit-cycle/rk4_r0_T20_h0.1.npz"
+      ]
+    },
+    {
+      "sha": "8d4875ea1bfa66d400052506686ba1a7756d04fc",
+      "bytes_each": 738,
+      "copies": 5,
+      "redundant_bytes": 2952,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-parser-failure/gfn2-H2O-start0-step0.005/vibspectrum",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start0-step0.005/vibspectrum",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start0-step0.005/vibspectrum",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start0-step0.005/vibspectrum",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start0-step0.005/vibspectrum"
+      ]
+    },
+    {
+      "sha": "81ef3b115dfdf12e50501ee6c5ab3cdd28c42151",
+      "bytes_each": 2830,
+      "copies": 2,
+      "redundant_bytes": 2830,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/recovery-network/results/network_validation.json",
+        "Nous-Volition/studies/fluid-organization/extensions/recovery-network/results/network_validation.json"
+      ]
+    },
+    {
+      "sha": "04e4b658978fc50eea9bb117c1da2b35cb2c35f5",
+      "bytes_each": 2772,
+      "copies": 2,
+      "redundant_bytes": 2772,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/results/tests.xml",
+        "Nous-Volition/studies/fluid-organization/results/tests.xml"
+      ]
+    },
+    {
+      "sha": "39bc23c07ee09d7f9ed90da4f6a017de3330c9fe",
+      "bytes_each": 2755,
+      "copies": 2,
+      "redundant_bytes": 2755,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-sweep/README.txt",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-sweep/README.txt"
+      ]
+    },
+    {
+      "sha": "c231e93f6b38a93981b6e478e0f4044f3c8c5daa",
+      "bytes_each": 2708,
+      "copies": 2,
+      "redundant_bytes": 2708,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-memory-erasure/restore_recordings.py",
+        "My-Sources-Project-ALL/reports/fluid-memory-extension/restore_recordings.py"
+      ]
+    },
+    {
+      "sha": "0ab7798fd1140ad1e0f47748f75bbae60aeac189",
+      "bytes_each": 2680,
+      "copies": 2,
+      "redundant_bytes": 2680,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/results/prediction_sensitivity.json",
+        "Nous-Volition/studies/fluid-organization/results/prediction_sensitivity.json"
+      ]
+    },
+    {
+      "sha": "6a876b694a2b8c1a2fd66136497376ae08877978",
+      "bytes_each": 2606,
+      "copies": 2,
+      "redundant_bytes": 2606,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-sweep/protocol.json",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-sweep/protocol.json"
+      ]
+    },
+    {
+      "sha": "5ba8242726df6790031a05c916478afcaba69e24",
+      "bytes_each": 2523,
+      "copies": 2,
+      "redundant_bytes": 2523,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/recovery-network/README.txt",
+        "Nous-Volition/studies/fluid-organization/extensions/recovery-network/README.txt"
+      ]
+    },
+    {
+      "sha": "ee6bb62a052674ed97c796137546552398a88582",
+      "bytes_each": 2485,
+      "copies": 2,
+      "redundant_bytes": 2485,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/protocol_addendum.json",
+        "Nous-Volition/studies/fluid-organization/protocol_addendum.json"
+      ]
+    },
+    {
+      "sha": "aabd2cb60311953635c851168984abaaad3d66fa",
+      "bytes_each": 2405,
+      "copies": 2,
+      "redundant_bytes": 2405,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/results/bifurcations.json",
+        "Nous-Volition/studies/fluid-organization/results/bifurcations.json"
+      ]
+    },
+    {
+      "sha": "ed2faa1ccfc5763851266dadbd24db796710408f",
+      "bytes_each": 2368,
+      "copies": 2,
+      "redundant_bytes": 2368,
+      "paths": [
+        "My-Sources-Project-ALL/reports/hug-dynamics/tests/test_original_hug.py",
+        "Nous-Volition/studies/dynamics-fractals-sims/hug_source/tests/test_original_hug.py"
+      ]
+    },
+    {
+      "sha": "330e2a39eba9eeb35e48ab4a3200a06a580d30b3",
+      "bytes_each": 2356,
+      "copies": 2,
+      "redundant_bytes": 2356,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-followups/fluid_confirmation_protocol.json",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-followups/fluid_confirmation_protocol.json"
+      ]
+    },
+    {
+      "sha": "dc4e709da6d521d0560c7c783e2cacc4f998d94c",
+      "bytes_each": 2341,
+      "copies": 2,
+      "redundant_bytes": 2341,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-sweep/tests.xml",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-sweep/tests.xml"
+      ]
+    },
+    {
+      "sha": "01e693c3150ffaf9c6c4c91943c8f0d62e790619",
+      "bytes_each": 2320,
+      "copies": 2,
+      "redundant_bytes": 2320,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/results/relaxation.json",
+        "Nous-Volition/studies/fluid-organization/results/relaxation.json"
+      ]
+    },
+    {
+      "sha": "b806363d0c899971abc8f5e2da9daa23ebdd8678",
+      "bytes_each": 2310,
+      "copies": 2,
+      "redundant_bytes": 2310,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/protocol.json",
+        "Nous-Volition/studies/fluid-organization/protocol.json"
+      ]
+    },
+    {
+      "sha": "4bac1eee6505e1e31a69bf0324d9ba72b373ea72",
+      "bytes_each": 738,
+      "copies": 4,
+      "redundant_bytes": 2214,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start0-step0.00125/vibspectrum",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start0-step0.00125/vibspectrum",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start0-step0.00125/vibspectrum",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start0-step0.00125/vibspectrum"
+      ]
+    },
+    {
+      "sha": "9b3b422945abb360b6543b5532fecb1d8d0b0612",
+      "bytes_each": 738,
+      "copies": 4,
+      "redundant_bytes": 2214,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start0-step0.0025/vibspectrum",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start0-step0.0025/vibspectrum",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start0-step0.0025/vibspectrum",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start0-step0.0025/vibspectrum"
+      ]
+    },
+    {
+      "sha": "f9a72ddf4324e1f4acd1777295ed6fe708bbb052",
+      "bytes_each": 738,
+      "copies": 4,
+      "redundant_bytes": 2214,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start1-step0.005/vibspectrum",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start1-step0.005/vibspectrum",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start1-step0.005/vibspectrum",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start1-step0.005/vibspectrum"
+      ]
+    },
+    {
+      "sha": "cf464446daf53191c03bf7b6a4357871f09a9cb3",
+      "bytes_each": 2184,
+      "copies": 2,
+      "redundant_bytes": 2184,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start2-step0.005/xtbopt.log",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start2-step0.005/xtbopt.log"
+      ]
+    },
+    {
+      "sha": "98e044be84dab577bb789a851812155f03fe97be",
+      "bytes_each": 2176,
+      "copies": 2,
+      "redundant_bytes": 2176,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-sweep/audit/initial_protocol.json",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-sweep/audit/initial_protocol.json"
+      ]
+    },
+    {
+      "sha": "0c4489a6a6f6d48f722364d6520998aa7360ddaf",
+      "bytes_each": 2176,
+      "copies": 2,
+      "redundant_bytes": 2176,
+      "paths": [
+        "My-Sources-Project-ALL/reports/hug-dynamics/tests/test_original_pressure.py",
+        "Nous-Volition/studies/dynamics-fractals-sims/hug_source/tests/test_original_pressure.py"
+      ]
+    },
+    {
+      "sha": "e2b32ab372e2e539ebc7544332d22a66831c7c52",
+      "bytes_each": 360,
+      "copies": 7,
+      "redundant_bytes": 2160,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-parser-failure/gfn2-H2O-start0-step0.005/xtbtopo.mol",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start0-step0.00125/xtbtopo.mol",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start0-step0.0025/xtbtopo.mol",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start0-step0.005/xtbtopo.mol",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start0-step0.00125/xtbtopo.mol",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start0-step0.0025/xtbtopo.mol",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start0-step0.005/xtbtopo.mol"
+      ]
+    },
+    {
+      "sha": "99a378f5441248fad1712f448ca26371ca0131c2",
+      "bytes_each": 2074,
+      "copies": 2,
+      "redundant_bytes": 2074,
+      "paths": [
+        "My-Sources-Project-ALL/reports/dynamics-reference-tests/stress/convection-transition/data/initial-plan.json",
+        "My-Sources-Project-ALL/reports/dynamics-reference-tests/stress/convection-transition/data/rejected-boundary-run/plan.json"
+      ]
+    },
+    {
+      "sha": "ba34cba266d4a254af7db5df93020f82f2a909fd",
+      "bytes_each": 2074,
+      "copies": 2,
+      "redundant_bytes": 2074,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/recovery-network/results/tests.xml",
+        "Nous-Volition/studies/fluid-organization/extensions/recovery-network/results/tests.xml"
+      ]
+    },
+    {
+      "sha": "0b50ecf6f909211ff6592ed870d72e319ff8d879",
+      "bytes_each": 2014,
+      "copies": 2,
+      "redundant_bytes": 2014,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn1-D2O-start0-step0.0025/g98.out",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn1-H2O-start0-step0.0025/g98.out"
+      ]
+    },
+    {
+      "sha": "680394380b845f53bee0da9a5b972a1bd8e16e49",
+      "bytes_each": 2014,
+      "copies": 2,
+      "redundant_bytes": 2014,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start2-step0.005/g98.out",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start2-step0.005/g98.out"
+      ]
+    },
+    {
+      "sha": "ca59028b320167c3c73b4f49f93189a56fe30a0a",
+      "bytes_each": 2014,
+      "copies": 2,
+      "redundant_bytes": 2014,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn1-D2O-start0-step0.0025/g98.out",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn1-H2O-start0-step0.0025/g98.out"
+      ]
+    },
+    {
+      "sha": "83be714ab50f76299fbfbe23b94037561cebbbbd",
+      "bytes_each": 2014,
+      "copies": 2,
+      "redundant_bytes": 2014,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start2-step0.005/g98.out",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start2-step0.005/g98.out"
+      ]
+    },
+    {
+      "sha": "542c447b517ce2ddf8d8c246508057635da07206",
+      "bytes_each": 1973,
+      "copies": 2,
+      "redundant_bytes": 1973,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/results/numerical_controls.csv",
+        "Nous-Volition/studies/fluid-organization/results/numerical_controls.csv"
+      ]
+    },
+    {
+      "sha": "21b3947b205c0f4256fc1378f1415c783fd0ed4f",
+      "bytes_each": 1927,
+      "copies": 2,
+      "redundant_bytes": 1927,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-memory-erasure/freeze-source/freeze_models.py",
+        "My-Sources-Project-ALL/reports/fluid-memory-erasure/freeze_models.py"
+      ]
+    },
+    {
+      "sha": "a319c2df877b7ad0ee8bcca77b5dbf30cad6db6f",
+      "bytes_each": 1905,
+      "copies": 2,
+      "redundant_bytes": 1905,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-followups/results/noise.csv",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-followups/results/noise.csv"
+      ]
+    },
+    {
+      "sha": "62828bbce230b2c68087bfe4287dc74cd0ddb4ed",
+      "bytes_each": 1872,
+      "copies": 2,
+      "redundant_bytes": 1872,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start2-step0.005/xtbopt.log",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start2-step0.005/xtbopt.log"
+      ]
+    },
+    {
+      "sha": "4b89122e8dd72081e1be48b5cb26eaa843f7d322",
+      "bytes_each": 1870,
+      "copies": 2,
+      "redundant_bytes": 1870,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-followups/tests.xml",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-followups/tests.xml"
+      ]
+    },
+    {
+      "sha": "9aba0da5203214969001ef54c6e1d2996cd7e6f0",
+      "bytes_each": 360,
+      "copies": 6,
+      "redundant_bytes": 1800,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start0-step0.00125/xtbtopo.mol",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start0-step0.0025/xtbtopo.mol",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start0-step0.005/xtbtopo.mol",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start0-step0.00125/xtbtopo.mol",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start0-step0.0025/xtbtopo.mol",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start0-step0.005/xtbtopo.mol"
+      ]
+    },
+    {
+      "sha": "899d43ecca1a1543a529b568fb7d58b8b159d765",
+      "bytes_each": 1760,
+      "copies": 2,
+      "redundant_bytes": 1760,
+      "paths": [
+        "My-Sources-Project-ALL/math/imports/hug-ns/results/ladder-48.json",
+        "My-Sources-Project-ALL/reports/support/fixed-cutoff-fields/ladder-48.json"
+      ]
+    },
+    {
+      "sha": "d5c2d0ed1aaba7860e1cb67bd16557a72016f367",
+      "bytes_each": 1560,
+      "copies": 2,
+      "redundant_bytes": 1560,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn1-D2O-start0-step0.0025/xtbopt.log",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn1-H2O-start0-step0.0025/xtbopt.log"
+      ]
+    },
+    {
+      "sha": "bd509af65be8eb2e4281d6c7d07cdaf80854f368",
+      "bytes_each": 1537,
+      "copies": 2,
+      "redundant_bytes": 1537,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-followups/results/ramps.json",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-followups/results/ramps.json"
+      ]
+    },
+    {
+      "sha": "00a93141fb6c60e2aa8fd593a4fdaec68306832c",
+      "bytes_each": 1500,
+      "copies": 2,
+      "redundant_bytes": 1500,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-followups/results/ramps_refined.json",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-followups/results/ramps_refined.json"
+      ]
+    },
+    {
+      "sha": "8fa5e3b31a8bf2373e0b64db1013e6229cf213e2",
+      "bytes_each": 1489,
+      "copies": 2,
+      "redundant_bytes": 1489,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/recovery-network/results/learned_network_parameters.json",
+        "Nous-Volition/studies/fluid-organization/extensions/recovery-network/results/learned_network_parameters.json"
+      ]
+    },
+    {
+      "sha": "631a5e071e3b8acf0135e90cca0532a0f9d05d5e",
+      "bytes_each": 1431,
+      "copies": 2,
+      "redundant_bytes": 1431,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/results/weak_nonlinear.json",
+        "Nous-Volition/studies/fluid-organization/results/weak_nonlinear.json"
+      ]
+    },
+    {
+      "sha": "642456ec4089ddb6dbcb34f1b328cd72fdbcec1e",
+      "bytes_each": 1423,
+      "copies": 2,
+      "redundant_bytes": 1423,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn1-D2O-start0-step0.0025/hessian",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn1-H2O-start0-step0.0025/hessian"
+      ]
+    },
+    {
+      "sha": "3ffcf0a64426ab6b8c2acb54ba4f045b997bbefd",
+      "bytes_each": 1423,
+      "copies": 2,
+      "redundant_bytes": 1423,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start2-step0.005/hessian",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start2-step0.005/hessian"
+      ]
+    },
+    {
+      "sha": "2b70b8b4d7b9556cd3697478b6bc15c3f6fd6c43",
+      "bytes_each": 1423,
+      "copies": 2,
+      "redundant_bytes": 1423,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn1-D2O-start0-step0.0025/hessian",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn1-H2O-start0-step0.0025/hessian"
+      ]
+    },
+    {
+      "sha": "d510b8a2a7cd127f85c7cb43dfa107826214af5a",
+      "bytes_each": 1423,
+      "copies": 2,
+      "redundant_bytes": 1423,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start2-step0.005/hessian",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start2-step0.005/hessian"
+      ]
+    },
+    {
+      "sha": "2d6cff7da034dd0f7a9d8f55e894fdbf292ee1af",
+      "bytes_each": 693,
+      "copies": 3,
+      "redundant_bytes": 1386,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-parser-failure/version.txt",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/version.txt",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/version.txt"
+      ]
+    },
+    {
+      "sha": "5d403b38ee0064e9d3573e4d75f65da5f35b8bb0",
+      "bytes_each": 1310,
+      "copies": 2,
+      "redundant_bytes": 1310,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-sweep/results/regime_summary.csv",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-sweep/results/regime_summary.csv"
+      ]
+    },
+    {
+      "sha": "48cf31f9961c7ff78fb0baf62d7e6621b0a9c54f",
+      "bytes_each": 1257,
+      "copies": 2,
+      "redundant_bytes": 1257,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-sweep/audit/README.txt",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-sweep/audit/README.txt"
+      ]
+    },
+    {
+      "sha": "5b690f6b17d90cc5b92bed8ab41eaa00f8099230",
+      "bytes_each": 1248,
+      "copies": 2,
+      "redundant_bytes": 1248,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn1-D2O-start0-step0.0025/xtbopt.log",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn1-H2O-start0-step0.0025/xtbopt.log"
+      ]
+    },
+    {
+      "sha": "5ae7a0304196f9a692edcd9bc316165f3bedadbb",
+      "bytes_each": 1238,
+      "copies": 2,
+      "redundant_bytes": 1238,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-sweep/provenance.json",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-sweep/provenance.json"
+      ]
+    },
+    {
+      "sha": "c6db00d7b21f3161ce5635899ec20ee80007382f",
+      "bytes_each": 1226,
+      "copies": 2,
+      "redundant_bytes": 1226,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-sweep/results/reference_regimes.csv",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-sweep/results/reference_regimes.csv"
+      ]
+    },
+    {
+      "sha": "aadb5f3d3f1c26c5c8fde276a5110d75459e3c2f",
+      "bytes_each": 1213,
+      "copies": 2,
+      "redundant_bytes": 1213,
+      "paths": [
+        "My-Sources-Project-ALL/math/results/hug-method-refinement.csv",
+        "My-Sources-Project-ALL/reports/files/hug-method-refinement.csv"
+      ]
+    },
+    {
+      "sha": "df38c6b1797e2a037686973747e0cc969728cc0d",
+      "bytes_each": 100,
+      "copies": 13,
+      "redundant_bytes": 1200,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-parser-failure/gfn2-H2O-start0-step0.005/wbo",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start0-step0.00125/wbo",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start0-step0.0025/wbo",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start0-step0.005/wbo",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start0-step0.00125/wbo",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start0-step0.0025/wbo",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start0-step0.005/wbo",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start0-step0.00125/wbo",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start0-step0.0025/wbo",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start0-step0.005/wbo",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start0-step0.00125/wbo",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start0-step0.0025/wbo",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start0-step0.005/wbo"
+      ]
+    },
+    {
+      "sha": "b162dde5e44ed3851d1bf4b366f949dda4303e69",
+      "bytes_each": 1198,
+      "copies": 2,
+      "redundant_bytes": 1198,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-memory-erasure/freeze-source/production-amendment.json",
+        "My-Sources-Project-ALL/reports/fluid-memory-erasure/production-amendment.json"
+      ]
+    },
+    {
+      "sha": "63f2644a3c3e4e9310fd3893761564e9e291b4bc",
+      "bytes_each": 1061,
+      "copies": 2,
+      "redundant_bytes": 1061,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-sweep/results/refinement.json",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-sweep/results/refinement.json"
+      ]
+    },
+    {
+      "sha": "09fa6a257ff3fe8c0b16f02aea9f424ad3af9fd0",
+      "bytes_each": 1048,
+      "copies": 2,
+      "redundant_bytes": 1048,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-sweep/results/precision_diagnostic.csv",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-sweep/results/precision_diagnostic.csv"
+      ]
+    },
+    {
+      "sha": "abc165dd9a1a282df99df8acb9b03407969d0dda",
+      "bytes_each": 984,
+      "copies": 2,
+      "redundant_bytes": 984,
+      "paths": [
+        "My-Sources-Project-ALL/reports/molecular/isotope-mass/context/preceding_water_protocol.json",
+        "My-Sources-Project-ALL/reports/water-molecule-influence/data/md_protocol.json"
+      ]
+    },
+    {
+      "sha": "c4806bfaeee420de109b5682b320b76cd43eccdd",
+      "bytes_each": 328,
+      "copies": 4,
+      "redundant_bytes": 984,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start1-step0.005/xtbrestart",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start1-step0.005/xtbrestart",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start1-step0.005/xtbrestart",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start1-step0.005/xtbrestart"
+      ]
+    },
+    {
+      "sha": "6b5cf37e7d76ed230a50febf72a729145d5f7f91",
+      "bytes_each": 312,
+      "copies": 4,
+      "redundant_bytes": 936,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start1-step0.005/xtbopt.xyz",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start1-step0.005/xtbopt.xyz",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start1-step0.005/xtbopt.xyz",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start1-step0.005/xtbopt.xyz"
+      ]
+    },
+    {
+      "sha": "645cc30dd72c4a0e05e06c30983f9b4894e112c7",
+      "bytes_each": 844,
+      "copies": 2,
+      "redundant_bytes": 844,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-followups/results/fluid_runs.csv",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-followups/results/fluid_runs.csv"
+      ]
+    },
+    {
+      "sha": "5fde7730248afe3ad10dbd019567517486c93a3d",
+      "bytes_each": 783,
+      "copies": 2,
+      "redundant_bytes": 783,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-sweep/results/verification.json",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-sweep/results/verification.json"
+      ]
+    },
+    {
+      "sha": "9336320def25c8ac29bfeedd0d4ecb6c476e55e8",
+      "bytes_each": 782,
+      "copies": 2,
+      "redundant_bytes": 782,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-sweep/audit/initial_verification.json",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-sweep/audit/initial_verification.json"
+      ]
+    },
+    {
+      "sha": "2a4c16b532da987df68fe79114accecd51653415",
+      "bytes_each": 751,
+      "copies": 2,
+      "redundant_bytes": 751,
+      "paths": [
+        "My-Sources-Project-ALL/math/imports/hug-ns/results/matched-nostop.json",
+        "My-Sources-Project-ALL/reports/matched-stretch/unforced-growth-check/inputs/matched-nostop.json"
+      ]
+    },
+    {
+      "sha": "ded43ec7e3e6c3983dd68fae50171528ff38e4be",
+      "bytes_each": 750,
+      "copies": 2,
+      "redundant_bytes": 750,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-sweep/refinement_protocol.json",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-sweep/refinement_protocol.json"
+      ]
+    },
+    {
+      "sha": "445743f127d0b75d624f8a3f60fc490ae4bd1a3b",
+      "bytes_each": 738,
+      "copies": 2,
+      "redundant_bytes": 738,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn1-D2O-start0-step0.0025/vibspectrum",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn1-H2O-start0-step0.0025/vibspectrum"
+      ]
+    },
+    {
+      "sha": "031bee035bd817f32df60a247ca2cad62dfeacb4",
+      "bytes_each": 738,
+      "copies": 2,
+      "redundant_bytes": 738,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start2-step0.005/vibspectrum",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start2-step0.005/vibspectrum"
+      ]
+    },
+    {
+      "sha": "87b5bf3e49a05795ddb15c9d9ea12dcb47c9f9b3",
+      "bytes_each": 738,
+      "copies": 2,
+      "redundant_bytes": 738,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn1-D2O-start0-step0.0025/vibspectrum",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn1-H2O-start0-step0.0025/vibspectrum"
+      ]
+    },
+    {
+      "sha": "403ab574191970b7541641c2b8d81c00d948b482",
+      "bytes_each": 738,
+      "copies": 2,
+      "redundant_bytes": 738,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start2-step0.005/vibspectrum",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start2-step0.005/vibspectrum"
+      ]
+    },
+    {
+      "sha": "537fe037b1ee75772e1355b6a0265282d9612a99",
+      "bytes_each": 122,
+      "copies": 7,
+      "redundant_bytes": 732,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-parser-failure/gfn2-H2O-start0-step0.005/settings.inp",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start0-step0.005/settings.inp",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start1-step0.005/settings.inp",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start2-step0.005/settings.inp",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start0-step0.005/settings.inp",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start1-step0.005/settings.inp",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start2-step0.005/settings.inp"
+      ]
+    },
+    {
+      "sha": "3c3fb8dbaea1adb7f92785871b8151f145f48df6",
+      "bytes_each": 725,
+      "copies": 2,
+      "redundant_bytes": 725,
+      "paths": [
+        "My-Sources-Project-ALL/math/imports/hug-ns/results/fd-check.json",
+        "My-Sources-Project-ALL/reports/support/fixed-cutoff-fields/fd-check.json"
+      ]
+    },
+    {
+      "sha": "d529ea7b31f7bbdf57e4b0f5e73f0ceca4c57a1f",
+      "bytes_each": 346,
+      "copies": 3,
+      "redundant_bytes": 692,
+      "paths": [
+        "My-Sources-Project-ALL/math/imports/hug-ns/mirror-calibration/paired_verify.py",
+        "My-Sources-Project-ALL/math/imports/hug-ns/mirror-calibration/run_all.py",
+        "My-Sources-Project-ALL/math/imports/hug-ns/mirror-calibration/signed_calibration.py"
+      ]
+    },
+    {
+      "sha": "8f9a16aa89ce6d7788739811d423ba8b21ab8fa1",
+      "bytes_each": 674,
+      "copies": 2,
+      "redundant_bytes": 674,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/results/stress_extension.json",
+        "Nous-Volition/studies/fluid-organization/results/stress_extension.json"
+      ]
+    },
+    {
+      "sha": "ae502891d91686b45a785922f9475c30cb8bd9f4",
+      "bytes_each": 122,
+      "copies": 6,
+      "redundant_bytes": 610,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start0-step0.005/settings.inp",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start1-step0.005/settings.inp",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start2-step0.005/settings.inp",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start0-step0.005/settings.inp",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start1-step0.005/settings.inp",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start2-step0.005/settings.inp"
+      ]
+    },
+    {
+      "sha": "0cb7f842d0b22562468198c68d06458129d78041",
+      "bytes_each": 193,
+      "copies": 4,
+      "redundant_bytes": 579,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start1-step0.005/water.xyz",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start1-step0.005/water.xyz",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start1-step0.005/water.xyz",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start1-step0.005/water.xyz"
+      ]
+    },
+    {
+      "sha": "3e56c3dc3d42aad4986e4abc3672a714fb96de29",
+      "bytes_each": 193,
+      "copies": 4,
+      "redundant_bytes": 579,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start2-step0.005/water.xyz",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start2-step0.005/water.xyz",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start2-step0.005/water.xyz",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start2-step0.005/water.xyz"
+      ]
+    },
+    {
+      "sha": "318f86e64f4a4994b261f22b6c6cf36259a79ce6",
+      "bytes_each": 48,
+      "copies": 13,
+      "redundant_bytes": 576,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-parser-failure/gfn2-H2O-start0-step0.005/charges",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start0-step0.00125/charges",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start0-step0.0025/charges",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start0-step0.005/charges",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start0-step0.00125/charges",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start0-step0.0025/charges",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start0-step0.005/charges",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start0-step0.00125/charges",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start0-step0.0025/charges",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start0-step0.005/charges",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start0-step0.00125/charges",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start0-step0.0025/charges",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start0-step0.005/charges"
+      ]
+    },
+    {
+      "sha": "19668ffed2c204c2b34aa74d2ee35f36f3202b0d",
+      "bytes_each": 553,
+      "copies": 2,
+      "redundant_bytes": 553,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-followups/results/ramps_refined.csv",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-followups/results/ramps_refined.csv"
+      ]
+    },
+    {
+      "sha": "d39812ff18fdec9c7038b7189eccac0f31cadb14",
+      "bytes_each": 538,
+      "copies": 2,
+      "redundant_bytes": 538,
+      "paths": [
+        "My-Sources-Project-ALL/math/imports/hug-ns/results/budget-48.json",
+        "My-Sources-Project-ALL/reports/support/fixed-cutoff-fields/budget-48.json"
+      ]
+    },
+    {
+      "sha": "f6458ca73b586c66ec57c10fe2998755747fc5fe",
+      "bytes_each": 535,
+      "copies": 2,
+      "redundant_bytes": 535,
+      "paths": [
+        "My-Sources-Project-ALL/math/imports/hug-ns/results/finer-longer.json",
+        "My-Sources-Project-ALL/reports/support/fixed-cutoff-fields/finer-longer.json"
+      ]
+    },
+    {
+      "sha": "b49d27409788a8bc5c8ea8eda36cd7ed50def19c",
+      "bytes_each": 519,
+      "copies": 2,
+      "redundant_bytes": 519,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-sweep/results/final_verification.json",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-sweep/results/final_verification.json"
+      ]
+    },
+    {
+      "sha": "1e8b27d3d02398129e26145ba518fbc38625a52d",
+      "bytes_each": 502,
+      "copies": 2,
+      "redundant_bytes": 502,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-followups/results/ramps.csv",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-followups/results/ramps.csv"
+      ]
+    },
+    {
+      "sha": "46a30495fa7b02b7ef9db2e04cf0fd0a3aac57f8",
+      "bytes_each": 123,
+      "copies": 4,
+      "redundant_bytes": 369,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn1-D2O-start0-step0.0025/settings.inp",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start0-step0.0025/settings.inp",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn1-D2O-start0-step0.0025/settings.inp",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start0-step0.0025/settings.inp"
+      ]
+    },
+    {
+      "sha": "f42f82fbd9514d7439268b2f44567d54c96301d7",
+      "bytes_each": 123,
+      "copies": 4,
+      "redundant_bytes": 369,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn1-H2O-start0-step0.0025/settings.inp",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start0-step0.0025/settings.inp",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn1-H2O-start0-step0.0025/settings.inp",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start0-step0.0025/settings.inp"
+      ]
+    },
+    {
+      "sha": "1426da87ae283f6578d28e0bb67b4b71b3fd40af",
+      "bytes_each": 360,
+      "copies": 2,
+      "redundant_bytes": 360,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn1-D2O-start0-step0.0025/xtbtopo.mol",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn1-H2O-start0-step0.0025/xtbtopo.mol"
+      ]
+    },
+    {
+      "sha": "b90705ea6de09f09654fb8000910800c5863ab76",
+      "bytes_each": 360,
+      "copies": 2,
+      "redundant_bytes": 360,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start1-step0.005/xtbtopo.mol",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start1-step0.005/xtbtopo.mol"
+      ]
+    },
+    {
+      "sha": "4711336358cdb9df4e9f75c9b11feed5fe0dc8af",
+      "bytes_each": 360,
+      "copies": 2,
+      "redundant_bytes": 360,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start2-step0.005/xtbtopo.mol",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start2-step0.005/xtbtopo.mol"
+      ]
+    },
+    {
+      "sha": "44136c8f66d5c7c8c43f6b70ada5477b3e1feefb",
+      "bytes_each": 360,
+      "copies": 2,
+      "redundant_bytes": 360,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn1-D2O-start0-step0.0025/xtbtopo.mol",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn1-H2O-start0-step0.0025/xtbtopo.mol"
+      ]
+    },
+    {
+      "sha": "9d221552a0ed3400ec775865db41b6de7c84c820",
+      "bytes_each": 360,
+      "copies": 2,
+      "redundant_bytes": 360,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start1-step0.005/xtbtopo.mol",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start1-step0.005/xtbtopo.mol"
+      ]
+    },
+    {
+      "sha": "52d77a99300e0ad4507802a685cf902d4e621f79",
+      "bytes_each": 360,
+      "copies": 2,
+      "redundant_bytes": 360,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start2-step0.005/xtbtopo.mol",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start2-step0.005/xtbtopo.mol"
+      ]
+    },
+    {
+      "sha": "879c745598ec5b6204272129f0a98845cfd9017a",
+      "bytes_each": 328,
+      "copies": 2,
+      "redundant_bytes": 328,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start2-step0.005/xtbrestart",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start2-step0.005/xtbrestart"
+      ]
+    },
+    {
+      "sha": "a7991f3e421c51773ce5202af096de07b684b071",
+      "bytes_each": 328,
+      "copies": 2,
+      "redundant_bytes": 328,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start2-step0.005/xtbrestart",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start2-step0.005/xtbrestart"
+      ]
+    },
+    {
+      "sha": "e55b483fb2e8174190d9374c76e4eb3fba79b18e",
+      "bytes_each": 312,
+      "copies": 2,
+      "redundant_bytes": 312,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn1-D2O-start0-step0.0025/xtbopt.xyz",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn1-H2O-start0-step0.0025/xtbopt.xyz"
+      ]
+    },
+    {
+      "sha": "1529c18c8be337df91c9b4bfbd4cac282cb63aa6",
+      "bytes_each": 312,
+      "copies": 2,
+      "redundant_bytes": 312,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start2-step0.005/xtbopt.xyz",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start2-step0.005/xtbopt.xyz"
+      ]
+    },
+    {
+      "sha": "6121c71005369c5c4523fbc754b95e6f6b95a2f5",
+      "bytes_each": 312,
+      "copies": 2,
+      "redundant_bytes": 312,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn1-D2O-start0-step0.0025/xtbopt.xyz",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn1-H2O-start0-step0.0025/xtbopt.xyz"
+      ]
+    },
+    {
+      "sha": "6198345651cde3e5013ea21360640c688086eee3",
+      "bytes_each": 312,
+      "copies": 2,
+      "redundant_bytes": 312,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start2-step0.005/xtbopt.xyz",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start2-step0.005/xtbopt.xyz"
+      ]
+    },
+    {
+      "sha": "b5c92eb04758025193f1a268444ce38b61dbbf28",
+      "bytes_each": 100,
+      "copies": 4,
+      "redundant_bytes": 300,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start1-step0.005/wbo",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start1-step0.005/wbo",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start1-step0.005/wbo",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start1-step0.005/wbo"
+      ]
+    },
+    {
+      "sha": "f23634b230d10ca052228f540a954a39de91ab80",
+      "bytes_each": 23,
+      "copies": 12,
+      "redundant_bytes": 253,
+      "paths": [
+        "My-Sources-Project-ALL/math/imports/hug-ns/mirror-fluid/dynamic-q/requirements.txt",
+        "My-Sources-Project-ALL/math/imports/hug-ns/mirror-fluid/model-layers/requirements.txt",
+        "My-Sources-Project-ALL/reports/matched-stretch/central-response/requirements.txt",
+        "My-Sources-Project-ALL/reports/matched-stretch/central-response/tracked-patterns/requirements.txt",
+        "My-Sources-Project-ALL/reports/matched-stretch/completed-grid128-strain/requirements.txt",
+        "My-Sources-Project-ALL/reports/matched-stretch/completed-parameters/requirements.txt",
+        "My-Sources-Project-ALL/reports/matched-stretch/completed-spin-strain/requirements.txt",
+        "My-Sources-Project-ALL/reports/matched-stretch/completed-tilt-minus/requirements.txt",
+        "My-Sources-Project-ALL/reports/matched-stretch/completed-tilt-plus/requirements.txt",
+        "My-Sources-Project-ALL/reports/matched-stretch/marker-stress/requirements.txt",
+        "My-Sources-Project-ALL/reports/matched-stretch/periodic-start-check/requirements.txt",
+        "My-Sources-Project-ALL/reports/matched-stretch/requirements.txt"
+      ]
+    },
+    {
+      "sha": "4fcaf814eed65615a8e59946cdb705531ecae2ec",
+      "bytes_each": 225,
+      "copies": 2,
+      "redundant_bytes": 225,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/results/particle_controls.csv",
+        "Nous-Volition/studies/fluid-organization/results/particle_controls.csv"
+      ]
+    },
+    {
+      "sha": "428bf915b8b9ebc7a8d260c75c1b90abf56d2b1d",
+      "bytes_each": 205,
+      "copies": 2,
+      "redundant_bytes": 205,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/execution.json",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/execution.json"
+      ]
+    },
+    {
+      "sha": "da264c7b2573bd9fc003662e1312a5364290d795",
+      "bytes_each": 48,
+      "copies": 5,
+      "redundant_bytes": 192,
+      "paths": [
+        "My-Sources-Project-ALL/reports/clay-contact-stress/obstacle-only/requirements.txt",
+        "My-Sources-Project-ALL/reports/clay-contact-stress/requirements.txt",
+        "My-Sources-Project-ALL/reports/clay-hug/requirements.txt",
+        "My-Sources-Project-ALL/reports/hug-dynamics/requirements.txt",
+        "My-Sources-Project-ALL/reports/hug-stress/requirements.txt"
+      ]
+    },
+    {
+      "sha": "283b83f00b2e7efac87cff3ab23bdb47dd8b1d5e",
+      "bytes_each": 46,
+      "copies": 5,
+      "redundant_bytes": 184,
+      "paths": [
+        "My-Sources-Project-ALL/reports/clay-contact-stress/obstacle-only/requirements-lock.txt",
+        "My-Sources-Project-ALL/reports/clay-contact-stress/requirements-lock.txt",
+        "My-Sources-Project-ALL/reports/clay-hug/requirements-lock.txt",
+        "My-Sources-Project-ALL/reports/navier-stokes-stress/requirements.txt",
+        "My-Sources-Project-ALL/reports/water-molecule-influence/oscillator-extension/requirements.txt"
+      ]
+    },
+    {
+      "sha": "faa5e949436b03c3eab5513c67f7979d0a41951e",
+      "bytes_each": 60,
+      "copies": 4,
+      "redundant_bytes": 180,
+      "paths": [
+        "My-Sources-Project-ALL/reports/dynamics-reference-tests/requirements-lock.txt",
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-sweep/requirements-lock.txt",
+        "My-Sources-Project-ALL/reports/water-biology-study/requirements-lock.txt",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-sweep/requirements-lock.txt"
+      ]
+    },
+    {
+      "sha": "b7438746fa2342a2074afa0132f9312849b6f1ce",
+      "bytes_each": 86,
+      "copies": 3,
+      "redundant_bytes": 172,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/recovery-network/requirements-lock.txt",
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/requirements-lock.txt",
+        "Nous-Volition/studies/fluid-organization/extensions/recovery-network/requirements-lock.txt"
+      ]
+    },
+    {
+      "sha": "f0ab361875dd0b1cfbd69ab183d7892240a767a3",
+      "bytes_each": 48,
+      "copies": 4,
+      "redundant_bytes": 144,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start1-step0.005/charges",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start1-step0.005/charges",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start1-step0.005/charges",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start1-step0.005/charges"
+      ]
+    },
+    {
+      "sha": "f2d26e0d28324cc796ce438c57924b7ac1042062",
+      "bytes_each": 143,
+      "copies": 2,
+      "redundant_bytes": 143,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/results/environment.json",
+        "Nous-Volition/studies/fluid-organization/results/environment.json"
+      ]
+    },
+    {
+      "sha": "f2b7513278e0046d11bd8aa1c66146188e96bd29",
+      "bytes_each": 71,
+      "copies": 3,
+      "redundant_bytes": 142,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/recovery-network/requirements.txt",
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/requirements.txt",
+        "Nous-Volition/studies/fluid-organization/extensions/recovery-network/requirements.txt"
+      ]
+    },
+    {
+      "sha": "6355b0e0c17c6e98629ca816132d91055e860e21",
+      "bytes_each": 124,
+      "copies": 2,
+      "redundant_bytes": 124,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start0-step0.00125/settings.inp",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start0-step0.00125/settings.inp"
+      ]
+    },
+    {
+      "sha": "24291c3dd0f0f1f187b89c839afa87b4a5294408",
+      "bytes_each": 124,
+      "copies": 2,
+      "redundant_bytes": 124,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start0-step0.00125/settings.inp",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start0-step0.00125/settings.inp"
+      ]
+    },
+    {
+      "sha": "13689a86aed2498ef6c97a5fe348c24a664c601c",
+      "bytes_each": 60,
+      "copies": 3,
+      "redundant_bytes": 120,
+      "paths": [
+        "My-Sources-Project-ALL/reports/molecular/isotope-mass/requirements.txt",
+        "My-Sources-Project-ALL/reports/water-molecule-influence/driven-water-extension/requirements.txt",
+        "My-Sources-Project-ALL/reports/water-molecule-influence/exploratory-water-extension/requirements.txt"
+      ]
+    },
+    {
+      "sha": "7a91ce967613bb0d8092e126254ba2e61deb0abe",
+      "bytes_each": 112,
+      "copies": 2,
+      "redundant_bytes": 112,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn1-D2O-start0-step0.0025/xtbrestart",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn1-H2O-start0-step0.0025/xtbrestart"
+      ]
+    },
+    {
+      "sha": "2934e27e7289a369bdb9be4527db91be2e3d89e5",
+      "bytes_each": 112,
+      "copies": 2,
+      "redundant_bytes": 112,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn1-D2O-start0-step0.0025/xtbrestart",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn1-H2O-start0-step0.0025/xtbrestart"
+      ]
+    },
+    {
+      "sha": "44c1c50270c554f2684d702767ae198628e4a8a5",
+      "bytes_each": 100,
+      "copies": 2,
+      "redundant_bytes": 100,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn1-D2O-start0-step0.0025/wbo",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn1-H2O-start0-step0.0025/wbo"
+      ]
+    },
+    {
+      "sha": "bda6cb5a942f0705542d3b28eb6288f56a79c0d3",
+      "bytes_each": 100,
+      "copies": 2,
+      "redundant_bytes": 100,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start2-step0.005/wbo",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start2-step0.005/wbo"
+      ]
+    },
+    {
+      "sha": "f2e894c6460f75e2665f6133f235a42e45f026d6",
+      "bytes_each": 100,
+      "copies": 2,
+      "redundant_bytes": 100,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn1-D2O-start0-step0.0025/wbo",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn1-H2O-start0-step0.0025/wbo"
+      ]
+    },
+    {
+      "sha": "8cfa861f54ee65b2d00db2aba21200be263f6d4c",
+      "bytes_each": 100,
+      "copies": 2,
+      "redundant_bytes": 100,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start2-step0.005/wbo",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start2-step0.005/wbo"
+      ]
+    },
+    {
+      "sha": "bff68e700203a0c8d85eca9b0766db11295a6cf6",
+      "bytes_each": 92,
+      "copies": 2,
+      "redundant_bytes": 92,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-memory-erasure/requirements-gpu.txt",
+        "My-Sources-Project-ALL/reports/navier-stokes-stress/requirements-gpu.txt"
+      ]
+    },
+    {
+      "sha": "963e11f3973de929a6f3b0577a5587709ed3b692",
+      "bytes_each": 26,
+      "copies": 4,
+      "redundant_bytes": 78,
+      "paths": [
+        "My-Sources-Project-ALL/math/imports/hug-ns/mirror-fluid/first-change-audit/requirements.txt",
+        "My-Sources-Project-ALL/reports/matched-stretch/join-isolation/requirements.txt",
+        "My-Sources-Project-ALL/reports/matched-stretch/relationship-fractal-study/requirements.txt",
+        "My-Sources-Project-ALL/reports/matched-stretch/unforced-growth-check/requirements.txt"
+      ]
+    },
+    {
+      "sha": "cde368038130a4e89f97f4777b13d77b29996d61",
+      "bytes_each": 68,
+      "copies": 2,
+      "redundant_bytes": 68,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-followups/requirements.txt",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-followups/requirements.txt"
+      ]
+    },
+    {
+      "sha": "625449502ba4b4d7c229c6ccee42e3ec41cc780c",
+      "bytes_each": 9,
+      "copies": 8,
+      "redundant_bytes": 63,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-memory-erasure/.gitattributes",
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-followups/.gitattributes",
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-sweep/.gitattributes",
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/recovery-network/.gitattributes",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-followups/.gitattributes",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-sweep/.gitattributes",
+        "Nous-Volition/studies/fluid-organization/extensions/recovery-network/.gitattributes",
+        "Nous-Volition/studies/social-organization/.gitattributes"
+      ]
+    },
+    {
+      "sha": "2071785a8c59c8d89c7c443021bc97755cdecb3d",
+      "bytes_each": 50,
+      "copies": 2,
+      "redundant_bytes": 50,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/josephson-sweep/requirements.txt",
+        "Nous-Volition/studies/fluid-organization/extensions/josephson-sweep/requirements.txt"
+      ]
+    },
+    {
+      "sha": "3442eb3f4825bac302a43d688db70eb3b5986a66",
+      "bytes_each": 49,
+      "copies": 2,
+      "redundant_bytes": 49,
+      "paths": [
+        "My-Sources-Project-ALL/reports/water-molecule-influence/stability-extension/requirements.txt",
+        "My-Sources-Project-ALL/reports/water-molecule-influence/switching-extension/requirements.txt"
+      ]
+    },
+    {
+      "sha": "255dadc236ed474b7c1afca047e86d67fa5b3114",
+      "bytes_each": 48,
+      "copies": 2,
+      "redundant_bytes": 48,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn1-D2O-start0-step0.0025/charges",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn1-H2O-start0-step0.0025/charges"
+      ]
+    },
+    {
+      "sha": "c18e357609c52ff77893d09bea9f598ed388fbbb",
+      "bytes_each": 48,
+      "copies": 2,
+      "redundant_bytes": 48,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-D2O-start2-step0.005/charges",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/diagnostics/initial-vibrations/gfn2-H2O-start2-step0.005/charges"
+      ]
+    },
+    {
+      "sha": "31da4a93d90882a32636729e1fdb71c29c07eca5",
+      "bytes_each": 48,
+      "copies": 2,
+      "redundant_bytes": 48,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn1-D2O-start0-step0.0025/charges",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn1-H2O-start0-step0.0025/charges"
+      ]
+    },
+    {
+      "sha": "59651f5e743caee56e58e07db3e0b98919d38ab3",
+      "bytes_each": 48,
+      "copies": 2,
+      "redundant_bytes": 48,
+      "paths": [
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-D2O-start2-step0.005/charges",
+        "My-Sources-Project-ALL/reports/quantum-water-pilot/vibration-final/gfn2-H2O-start2-step0.005/charges"
+      ]
+    },
+    {
+      "sha": "f900d33694ff2290edc8cedaabebcbaeddf95521",
+      "bytes_each": 32,
+      "copies": 2,
+      "redundant_bytes": 32,
+      "paths": [
+        "Nous-Volition/studies/sims-recovery-entrainment/requirements.txt",
+        "Nous-Volition/studies/social-organization/requirements.txt"
+      ]
+    },
+    {
+      "sha": "fa1385d99a319b43c06f5309d1aae9fdd3adea46",
+      "bytes_each": 8,
+      "copies": 3,
+      "redundant_bytes": 16,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-memory-extension/.gitattributes",
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/.gitattributes",
+        "Nous-Volition/studies/sims-recovery-entrainment/.gitattributes"
+      ]
+    },
+    {
+      "sha": "d59d856f1cc6c05962ca6bd4f14dd3315acd207c",
+      "bytes_each": 13,
+      "copies": 2,
+      "redundant_bytes": 13,
+      "paths": [
+        "My-Sources-Project-ALL/math/imports/hug-ns/mirror-fluid/breathing-rerun/one-lean/requirements.txt",
+        "My-Sources-Project-ALL/math/imports/hug-ns/mirror-fluid/breathing-rerun/requirements.txt"
+      ]
+    },
+    {
+      "sha": "24ce15ab7ead32f98c7ac3edcd34bb2010ff4326",
+      "bytes_each": 6,
+      "copies": 2,
+      "redundant_bytes": 6,
+      "paths": [
+        "My-Sources-Project-ALL/math/imports/hug-ns/mirror-fluid/requirements.txt",
+        "My-Sources-Project-ALL/math/imports/hug-ns/requirements.txt"
+      ]
+    },
+    {
+      "sha": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "bytes_each": 1,
+      "copies": 2,
+      "redundant_bytes": 1,
+      "paths": [
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/extensions/recovery-network/vendor/__init__.py",
+        "My-Sources-Project-ALL/reports/fluid-organization-pilot/vendor/__init__.py"
+      ]
+    }
+  ],
+  "navigation": {
+    "markdown_files_checked": 178,
+    "source_bytes": "Every read Markdown file verified against its pinned Git blob SHA.",
+    "missing_inline_local_file_targets": {
+      "frozen_historical_links": 4,
+      "equation_parser_false_positives": 1,
+      "other_missing": 0
+    },
+    "punctuation_strings_repaired": 2,
+    "limits": "External URLs, all HTML links and all heading fragments were not exhaustively checked."
+  },
+  "disposition": "Historical evidence, null controls, recovery records, archive parts and study manifests preserved. Only current navigation/review documents and this inventory change."
+}
