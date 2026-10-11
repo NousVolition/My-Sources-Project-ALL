@@ -4,11 +4,12 @@
 
 ## Current published results
 
-**31/48 completed and verified results published through model time 0.40. Seventeen jobs remain.** Publication status: October 11, 2026 (UTC).
+**32/48 completed and verified results published through model time 0.40. Sixteen jobs remain.** Publication status: October 11, 2026 (UTC).
 
 | Read first | What it shows |
 | --- | --- |
-| [Third 128-grid 0.5% seed](completed-n128-halfpercent-seed303/README.md) | Latest verified completion: seed 303, saved-field checks, charts and separation from its baseline |
+| [First 128-grid 1% seed](completed-n128-onepercent-seed101/README.md) | Latest verified completion: seed 101, saved-field checks, charts and matched amplitude/grid comparisons |
+| [Third 128-grid 0.5% seed](completed-n128-halfpercent-seed303/README.md) | Earlier seed 303 completion and its saved-field checks |
 | [Second 128-grid 0.5% seed](completed-n128-halfpercent-seed202/README.md) | Earlier seed 202 completion and its saved-field checks |
 | [First 128-grid 0.5% seed](completed-n128-halfpercent-seed101/README.md) | Earlier seed 101 completion and its saved-field checks |
 | [All three 128-grid 0.1% seeds](completed-n128-three-seeds/README.md) | Three-seed comparison through 0.40 |
