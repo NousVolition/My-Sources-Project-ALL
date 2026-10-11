@@ -1,0 +1,69 @@
+{
+  "date": "2026-10-10",
+  "first_detached_launch_pids": [
+    35548,
+    16088,
+    33288,
+    32040,
+    35484,
+    7744
+  ],
+  "first_launch": "Processes did not initialize under the short-lived shell; no claims, data or numerical checkpoints were created. Recorded PIDs absent before retry.",
+  "retry": "Persistent shell waits for six disjoint jobs, keeping child processes alive. Each job claims a unique name before integrating; sequential controller later validates and reuses completed outputs. It refuses partial outputs/checkpoints rather than duplicating them.",
+  "parallel_assignments": [
+    {
+      "seed": 1024,
+      "n": 160,
+      "dt": 0.0025
+    },
+    {
+      "seed": 1025,
+      "n": 160,
+      "dt": 0.0025
+    },
+    {
+      "seed": 1026,
+      "n": 160,
+      "dt": 0.0025
+    },
+    {
+      "seed": 1027,
+      "n": 160,
+      "dt": 0.0025
+    },
+    {
+      "seed": 1024,
+      "n": 112,
+      "dt": 0.00125
+    },
+    {
+      "seed": 1024,
+      "n": 160,
+      "dt": 0.00125
+    }
+  ],
+  "resources_at_launch": {
+    "totalGiB": 63.7625617980957,
+    "freeGiB": 35.037105560302734
+  },
+  "unchanged_numerical_source": true,
+  "additional_disjoint_assignments": [
+    {
+      "seed": 1025,
+      "n": 112,
+      "dt": 0.0025
+    },
+    {
+      "seed": 1026,
+      "n": 112,
+      "dt": 0.0025
+    },
+    {
+      "seed": 1027,
+      "n": 112,
+      "dt": 0.0025
+    }
+  ],
+  "reserved_for_sequential_controller": "All grid56 and grid80 main jobs, and seed1024 grid112 main job. Helpers own other grid112 main jobs, all grid160 main jobs, and both half-step jobs. The controller must not integrate a partially written helper job; its existing checkpoint/output guards stop it before integration if it arrives early.",
+  "collector_guard": "The initial sequential collector stopped before integrating s1024_n160_dt0.0025 because the helper had an active saved checkpoint. Preserved run.log. All12 lower-grid pairs completed; no duplication or numerical branch failure. Completion coordinator owns cache verification/collection after helper completion."
+}

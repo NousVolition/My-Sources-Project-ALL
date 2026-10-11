@@ -1,0 +1,853 @@
+{
+  "version": 1,
+  "date": "2026-10-10",
+  "parent_commit": "8c85be766d3213811f3dcce504129ceaa04f702e",
+  "previous_mirror_direction_publication": "4290b8834435c4abc1b6091f772f25631ecaff01",
+  "independent_reused_states": 4,
+  "joint_pairs": 23,
+  "forward_fluid_evolutions": 46,
+  "local_tests_passed": 32,
+  "primary_horizon": 0.2,
+  "predeclared_screens_passed": 252,
+  "predeclared_screens_evaluated": 252,
+  "initial160_failed_screens": 4,
+  "scope": "Future responses from identical band-limited saved states; history predictor convergence not established; shorter .05 horizon reaches1.25% differences.",
+  "manifest_excludes_itself": true,
+  "publication_upload_note": "One detached raw blob response was unverified; retry of identical hash matched. No numerical archive failure.",
+  "files": [
+    {
+      "path": ".github/workflows/marker-history-prediction.yml",
+      "bytes": 1418,
+      "sha256": "1845fff1800bfe74fc786aff8585937a5fd4d0b1ddba273d54752886759fd39d",
+      "git_blob_sha": "8d6746007f4c1679aa1a5fc1a5a110fa1ef1db2f"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/README.md",
+      "bytes": 13260,
+      "sha256": "14a643c12e8dab7b02bb0afe54e91a6fdc7e9b8d15bdb7950b663b3f10da7544",
+      "git_blob_sha": "d8d544247e1e7776321fe79cd83e65c520ce1208"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/analysis-160.log",
+      "bytes": 25725,
+      "sha256": "d35e229939ac2b62005be067a3c4e1bfc71d645ff164652b46a8b2a9668a208c",
+      "git_blob_sha": "9ac756dbe46041c63b44590172102f67d6d75ee0"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/analysis-final.log",
+      "bytes": 31053,
+      "sha256": "7d3a0482d96c152cff8649a557131c6e3b7f1de337b8a4860243227d90ee28c1",
+      "git_blob_sha": "01d80f21f804eaf5ce5fe91c7c7524c7a5352578"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/analyze.py",
+      "bytes": 15486,
+      "sha256": "d22a986c95ab38058b87b5ead92d88d0c0ca351b8b5bd173abda8e51785a614d",
+      "git_blob_sha": "6821e7853d3c0be7fc495d259ed20c4be28379c2"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/build_report.py",
+      "bytes": 15582,
+      "sha256": "5d24e5267e9ae3cb9417d1c4a6ae80f34c2bfb526182bd3fe570d41c164cd7e0",
+      "git_blob_sha": "764f1ee74f6daf34866c86f604adf2f4fdaac9c4"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/completion.json",
+      "bytes": 1151,
+      "sha256": "2d16c19c8d933186dab1e327cbc0675f05e6be343fdf8e8a4a4226aba940890f",
+      "git_blob_sha": "cb3c7a90b9f9d1eda2f216f3a47d1b5cc0bbf183"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/convergence-160.png",
+      "bytes": 193842,
+      "sha256": "cd8389614903da41373d395078fa9022402421d7763db42d966eccc7ebecc60d",
+      "git_blob_sha": "e2ce333e137f5db647f067907428c4761e44b03e"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/convergence-160.svg",
+      "bytes": 116440,
+      "sha256": "a0e1fae66931309aa6be2202557695bc980e8a925df8bd4bd7d1dcc95548d2a5",
+      "git_blob_sha": "fc29ce999d89767d7d8a57455a2b0f6e89726aeb"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/convergence.png",
+      "bytes": 197300,
+      "sha256": "9318c53904f8cdae9cb216edf879d74c5558ea04d07ec4552bb7f8b333d0058b",
+      "git_blob_sha": "685212e0affcaa5ce18a195e1ad4f1d2cb25cbdd"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/convergence.svg",
+      "bytes": 121198,
+      "sha256": "d779f307ad553f86efadb045626829b9f779bdbb9fd1eb0908b233c97c00c616",
+      "git_blob_sha": "997e02749797566d55dfd2835b5113795e346de5"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/coordinate_completion.py",
+      "bytes": 4650,
+      "sha256": "73776e84da3c5e7cf1c280ee8796314525d01f7faae3b61b13fc3cd873a4f726",
+      "git_blob_sha": "95949f9b4a107057c162824d4bffee6a7efd9bae"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/coordinator.log",
+      "bytes": 208,
+      "sha256": "4b2e489bc30735ac5cad1ea41927b930915aba20ecd7a4cc88d1a1b2b4b8d2cf",
+      "git_blob_sha": "e9af91dbbeaecbd0e2638b7d991133e686743fd4"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/data-verification.json",
+      "bytes": 9311,
+      "sha256": "3fe13001bf6314182e12fd14be350c8e83cc9be13b2766cce5b5c36b82ba8fda",
+      "git_blob_sha": "9adc837480c58af15f1cec36f0d2080ea548a973"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/environment.json",
+      "bytes": 1118,
+      "sha256": "4d14ef51b5ca1b149b1c85c6c488387f60ba9330949bb76031af3c1b260693a0",
+      "git_blob_sha": "2691fc91293ae31315636452c081902fd7632025"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/execution.json",
+      "bytes": 4464,
+      "sha256": "ec6377507e0202e6f545fef8c3fd53ce2690be7378ba19c0fc1e373e7b43f6d2",
+      "git_blob_sha": "aabe4ac0f8574788e85cd954db275df9e2d839fe"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/extension_job.py",
+      "bytes": 1636,
+      "sha256": "ec2c2f434fecd65ae2d5b745499afb170cb3e02ba23a4f01b486f38b702a54a7",
+      "git_blob_sha": "fc9314d8bcdb3f92754eacff7edecea505106779"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/extension-claims/s1024_n224_dt0.00125.json",
+      "bytes": 1079,
+      "sha256": "9a16778437f99389fd3bd2284299db008348747594b026df3ed8ec945ee07369",
+      "git_blob_sha": "64c6f73af35a4e18e61deaa85d9d2808c681e3df"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/extension-claims/s1024_n224_dt0.0025.json",
+      "bytes": 1078,
+      "sha256": "b7ad36f38d69d5124bd308b899a1c073b4b139caf923f8fa57378b509d1b4471",
+      "git_blob_sha": "09b70e9f80a4be65f1871f0dede5c2db6b7b68b4"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/extension-claims/s1025_n224_dt0.0025.json",
+      "bytes": 1077,
+      "sha256": "22101a9f264ab551881d1d9ee04e65840b3cf76a62f9e2ddd45437eb7d0b276c",
+      "git_blob_sha": "6b114271d7cdcbe59841cc7d42dd04ccde1dce48"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/extension-claims/s1026_n224_dt0.0025.json",
+      "bytes": 1077,
+      "sha256": "1f9b1eb8d674c02993e5fed02924eb64fb927a90957f941e0aaab60af9b2ebb0",
+      "git_blob_sha": "e912c15d2ef72cab5ef5fa3e1b0712a5fe25905a"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/extension-claims/s1027_n224_dt0.0025.json",
+      "bytes": 1078,
+      "sha256": "421b5dcc048bd938b43d4e331b95228e3997b191724e6c3e8fc707992a6437ed",
+      "git_blob_sha": "0193c21282b8f18a8aa18bfd6faabe474ba8a6ea"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/extension-decision.json",
+      "bytes": 1005,
+      "sha256": "4b2b43fe289197ca64b3871c329f92b577fbb2a44b6a5193762f7cc41a20f2b1",
+      "git_blob_sha": "3db10ab3e12ea20df786c3e02cd1c079c76d5724"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/extension-execution.json",
+      "bytes": 1868,
+      "sha256": "be4f869ff7f562cbac5c5c52866b73c50c08359b03107eafd52f74645a2e834b",
+      "git_blob_sha": "36911285e91288fe446f4c11e8d00d7ac929cea3"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/grid-comparisons-160.csv",
+      "bytes": 12154,
+      "sha256": "1976947d92f131cc67906cc1568845f96eada7802e40987516f1a26cbc69a073",
+      "git_blob_sha": "6aa9ab0869c71d9b59041b929731cc2ef37d978d"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/grid-comparisons.csv",
+      "bytes": 16261,
+      "sha256": "595c531dbdd2df2d5bdf5d5c5a009fcf2899e6a06e4768bd965c88556fa36691",
+      "git_blob_sha": "8b0f6de4e4fc7762314ecd63527daa0addab4b41"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/input-verification.json",
+      "bytes": 13337,
+      "sha256": "36ee9ddae00c64bcf3866a1cf9dea003bfc9db13adeb9f55993603b54c990773",
+      "git_blob_sha": "510d3f5e82d2a63fa75fa217a662cbcd6a5d8d94"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/parallel_job.py",
+      "bytes": 1938,
+      "sha256": "ba3554584aa60e5c03ed0803ce126ab619278b7f463733d3859bc67934b27bda",
+      "git_blob_sha": "ae36b739ec5bd7e69967a6f10eb6872792db5ba3"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/parallel_next.py",
+      "bytes": 1505,
+      "sha256": "bbe9476dc5911c4ebeff002f893708dc3762c2c0805120436d417c85795f7b35",
+      "git_blob_sha": "7b76709fe65f4038c799adaf6344b2e436daeb72"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/parallel-claims/s1024_n112_dt0.00125.json",
+      "bytes": 1106,
+      "sha256": "796e337b7ad4a72f5781713877a2b0e072ef72bbb8b9cf8783d593b0f95be6c2",
+      "git_blob_sha": "a90ccddb0e3d3b3b41f53ae6bd4662240b3c37a5"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/parallel-claims/s1024_n160_dt0.00125.json",
+      "bytes": 1106,
+      "sha256": "9d198274520a4afa9aeb257620a02858f09f433017b6d978a02e94a9ada366b6",
+      "git_blob_sha": "b217190ee30d9c0b53d644bf8c368844e2358aa8"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/parallel-claims/s1024_n160_dt0.0025.json",
+      "bytes": 1104,
+      "sha256": "04123af75783a5e8e28976bf0f098fad0fc4d7488895c0123dfa76697dc05239",
+      "git_blob_sha": "eef542563ad6e240e811d34bb321db69ac475bf2"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/parallel-claims/s1025_n112_dt0.0025.json",
+      "bytes": 1104,
+      "sha256": "d27faf251b7b2a4d62f32cab0fe92d1dc6a65214c385916623654009cbd8b9c6",
+      "git_blob_sha": "88626be3c8cc1849fa91e0c0b5136f8f80754094"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/parallel-claims/s1025_n160_dt0.0025.json",
+      "bytes": 1105,
+      "sha256": "5edf4eb6fe2433375aca78fffb218bf20bd2f124bd5740dcf3e61d8d7dbdfbb8",
+      "git_blob_sha": "7c13f1603e7437e503debc19dfbedd69eec335ee"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/parallel-claims/s1026_n112_dt0.0025.json",
+      "bytes": 1104,
+      "sha256": "aa44f657e7127e19d05f036fda770c97eafe8fe35c40a794cba3eabb3d36adf9",
+      "git_blob_sha": "6a01c5004d4907e114917b056acffc2e11310176"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/parallel-claims/s1026_n160_dt0.0025.json",
+      "bytes": 1105,
+      "sha256": "6cbc43b14432e900399cee1842f81f4c45728bf8e2e090749766dbdb881b0d79",
+      "git_blob_sha": "271b679d4d15cfa85e18fd470afd0fcd07b98b6e"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/parallel-claims/s1027_n112_dt0.0025.json",
+      "bytes": 1105,
+      "sha256": "ad855bbaf895270645a926d74a4ba42c445de6cf1ea1bab42543642e87647c78",
+      "git_blob_sha": "63c746edc7919161627d557075c96225d2b540df"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/parallel-claims/s1027_n160_dt0.0025.json",
+      "bytes": 1105,
+      "sha256": "cd3880a048e2f9f32ce9a6dd1454b387dad6d0164a581121beab12d819eb86bc",
+      "git_blob_sha": "8c5d0fc890a90908e4e551074de9ab71cb3837fb"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/pilot.json",
+      "bytes": 1078,
+      "sha256": "90a0741bc6b1bdcf5c550c9ec3396cec0111de3c077a1fb7f4c54934fc4e47bf",
+      "git_blob_sha": "0315caadcacce8ca189e7c73302af4265cbd4373"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/pilot.log",
+      "bytes": 898,
+      "sha256": "4bc5d26f5ebadb6d20a8f86228e27356c91c4d315bcfd3b72a9697c72753c8e8",
+      "git_blob_sha": "567c8406b2a04d290d057fe081712cec0f578acb"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/protocol.json",
+      "bytes": 4614,
+      "sha256": "c84559c2a6abbaa0eefa3ec30de276162a42540d00eb66400f77bbf7c5757ac2",
+      "git_blob_sha": "f727aeb663904a6e4447b9adf0abb887c0abfb42"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/README-160.md",
+      "bytes": 12993,
+      "sha256": "59d9e6eca0f80f62596ef8e93c541fcf7fb42c1b1f6983f2747da1740ee683fc",
+      "git_blob_sha": "5c3a418782de4ff94e1d00f281eaba289f38d703"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/README.md",
+      "bytes": 13042,
+      "sha256": "52c1916a9f2163adc7beea6c79c1d043645d3086e59ac8bb7f1e9b17f2660e62",
+      "git_blob_sha": "c87c71b278f1906a07150b4f8ff3c5eb05d68042"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1024_n112_dt0.00125_endpoint-spectrum.npz",
+      "bytes": 7966116,
+      "sha256": "221b20322f42f46dd3735189b5bfe06b943482ee42a63b332124687e161921cf",
+      "git_blob_sha": "956cb7f92f0df91b0cbfe9a379613b0f6d541e91"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1024_n112_dt0.00125.json",
+      "bytes": 7669,
+      "sha256": "00773133826c442d43f616debf3be6aa573d8de0f9e910970ac929bdfd5b4cb2",
+      "git_blob_sha": "9ce8516a4d2275eee7add6f63e58bf6eadcd5329"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1024_n112_dt0.00125.npz",
+      "bytes": 3370833,
+      "sha256": "4ed0033e81e5edd2bcf8e65c61042ef425ee1de08cc18508e82ae6cfe376127c",
+      "git_blob_sha": "25cfb909c4ee9300af915cff8b5e3fa67df6de53"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1024_n112_dt0.0025_endpoint-spectrum.npz",
+      "bytes": 7965843,
+      "sha256": "867e5192bcf3d70a70d1e80c8da2efa104fb9364046c35bfa4fbd259c4c23a88",
+      "git_blob_sha": "06eb6149a43facdfa3e5bacf2d60a009b22dd429"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1024_n112_dt0.0025.json",
+      "bytes": 7668,
+      "sha256": "f408eb0e52decd0fe2c3ec2d62887debb8a5dea424f55b4fd099fd2a194ff86e",
+      "git_blob_sha": "4d5ecd1387a152e230b4e0fadf32c76a2f3d9b65"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1024_n112_dt0.0025.npz",
+      "bytes": 3370895,
+      "sha256": "afb562392ad78aaa82f7b61bc9a9393fe98dfb0eff6ca45b263bce905040c746",
+      "git_blob_sha": "b5af71e4e74d4f7e0f0c9735f6fd56d81123bc71"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1024_n160_dt0.00125_endpoint-spectrum.npz",
+      "bytes": 7965327,
+      "sha256": "8dd8daaccf92c39cee42942870c04b87a5743f6d91e8f6ca8741ab0dadb26b16",
+      "git_blob_sha": "4cac59386043867e37c68f58ff9e1c979b69a8f0"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1024_n160_dt0.00125.json",
+      "bytes": 7709,
+      "sha256": "80f1650c1ff6ddc73a121573daa1c07d7c0405f363be3689622d20fcae18a787",
+      "git_blob_sha": "490e1887f4816bb8f06225d9936c74caa5902964"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1024_n160_dt0.00125.npz",
+      "bytes": 3370673,
+      "sha256": "3fb733655157b028adadf960c6efa99c980d25baf0bd153dda6c449e04fa9634",
+      "git_blob_sha": "800290db68ef8043ff495b5d3caecbf91a78186a"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1024_n160_dt0.0025_endpoint-spectrum.npz",
+      "bytes": 7965272,
+      "sha256": "a73eed68aab863300dbf9267547bdfc7efa86922ce6f7652b0b179cdba3d787e",
+      "git_blob_sha": "61d086081cf84f32d89f9b6bde3c9c9033c82cdc"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1024_n160_dt0.0025.json",
+      "bytes": 7702,
+      "sha256": "2a48af80470e45ad5de107b1e18f9c41bb44b1584c34ad25818be785ac6b0047",
+      "git_blob_sha": "1dbd5011f3cc2a8b298998554a755a3e82704038"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1024_n160_dt0.0025.npz",
+      "bytes": 3370777,
+      "sha256": "149d237905ca92c24743a76144f9123511d955672fc349fb5d4942e5bba8b279",
+      "git_blob_sha": "f1a8a6694257e1cbf5ebcf70efeec6e8c0c03025"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1024_n224_dt0.00125_endpoint-spectrum.npz",
+      "bytes": 7966176,
+      "sha256": "4d9b0cfc21d7adb259ca376b62aebd4d4d7ef07bc04ab53757bebc47f692f311",
+      "git_blob_sha": "7effd98a98ad874425ae29e756a392c3503bb597"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1024_n224_dt0.00125.json",
+      "bytes": 7682,
+      "sha256": "133f95f2ae3131441640e4bb18d233e0fade7ce22483cfeb3c2caf4eb30c7300",
+      "git_blob_sha": "26e4716329c5ef46d6f17340ebda700fe59f034e"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1024_n224_dt0.00125.npz",
+      "bytes": 3370657,
+      "sha256": "2bc940a8f3f3588d975b8940ae5cfaad3e8036c8a446fa143e59f75bacabb884",
+      "git_blob_sha": "95797c4b690712c707b27c551ecda6ac8623a4c4"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1024_n224_dt0.0025_endpoint-spectrum.npz",
+      "bytes": 7965682,
+      "sha256": "3ffda46fa0925f6969641e62859f0f643bfe265b9fb354494c2378c41c959673",
+      "git_blob_sha": "22b49aceeebe6310e702f489cf0654e64b73bdd8"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1024_n224_dt0.0025.json",
+      "bytes": 7670,
+      "sha256": "46f04e4f16989fe9c1fdf2a83315008d4043ddaab1635b807897a30bb83093f6",
+      "git_blob_sha": "2cabd1a5ee1d1952655e77f11adfbb5e460a518c"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1024_n224_dt0.0025.npz",
+      "bytes": 3370834,
+      "sha256": "5ca4a3bc46badde55ca98e18b3b090df4cb85331c2c38c6f2c5fbc6609217e7c",
+      "git_blob_sha": "8a494b6a124733fc9a418a6edb144b6a3604d09c"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1024_n56_dt0.0025_endpoint-spectrum.npz",
+      "bytes": 2472440,
+      "sha256": "538ff6addcf2e368f452c49e3ca295e538106247ed753c10c73a255da4d0fc15",
+      "git_blob_sha": "401dcab330604a9a9c50adc2fa65e5186a0e68da"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1024_n56_dt0.0025.json",
+      "bytes": 7695,
+      "sha256": "e49739b3b3f7ff168553c0bda15f3751b6ce43dfff325a3d1a4574e4612a399d",
+      "git_blob_sha": "fa609d8d63b8278f4a057af48c04a1ab880932b8"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1024_n56_dt0.0025.npz",
+      "bytes": 3370599,
+      "sha256": "9c984c79e6742987743822d51ffd548238797ec7eed0c2206251e9c4bdcda9ab",
+      "git_blob_sha": "bd03084010cb4c09743163180fd1cf2fd1bd95a5"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1024_n80_dt0.0025_endpoint-spectrum.npz",
+      "bytes": 7139282,
+      "sha256": "7cbd65a88ff4f2e26ba8494be1f69f5c3380c1c9c72d16bd973b18d2dfe01fab",
+      "git_blob_sha": "bfde952e13274c9c89450f97d6d8a8a00f84fa74"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1024_n80_dt0.0025.json",
+      "bytes": 7698,
+      "sha256": "cefe808aef5987d44ee8daf762173819c70239f35c3a7cb8035557311859ff5d",
+      "git_blob_sha": "f9aaacf492cc2def430003f54edfda21847473d3"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1024_n80_dt0.0025.npz",
+      "bytes": 3370827,
+      "sha256": "d204cc04a3a43e3cc336ea9ecdb4bfb8623b8c1f02fd414f4ba2de31c7117af5",
+      "git_blob_sha": "df9ccc439cb0db3789cabdfdfa9bd0a55a17ad81"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1025_n112_dt0.0025_endpoint-spectrum.npz",
+      "bytes": 7961152,
+      "sha256": "bc156ef3f34fef20d2ccd5496e76295c6658002e4e5a99680a232915e96f3e03",
+      "git_blob_sha": "bb0d47571cede4f5812ced5ac9837e8086f03a2f"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1025_n112_dt0.0025.json",
+      "bytes": 7690,
+      "sha256": "0af5a15ed9a205760e249aa3f7a7c23c5a4ff51b9623740ccfe0214e888f3e87",
+      "git_blob_sha": "2e9db7ec79ecefa1863afa8089ef02165abc51e6"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1025_n112_dt0.0025.npz",
+      "bytes": 3372143,
+      "sha256": "7e7a072d22367cfa74f55fa5ebaade6034d9e1f7afe76b3175df8c0d74366f31",
+      "git_blob_sha": "f3282dc1cfc7e1900121382e80e768e656722e14"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1025_n160_dt0.0025_endpoint-spectrum.npz",
+      "bytes": 7960468,
+      "sha256": "a488c690d05a2413129fc9219ef0fad0929fdcd053196a6bc28622cafcae3f72",
+      "git_blob_sha": "48b65f74fc849ade5df2844d4785bcbbe00524b2"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1025_n160_dt0.0025.json",
+      "bytes": 7698,
+      "sha256": "6a423d56c186838d04d84476049fc65678202a52c0f8c1f363b7feb38a88eff0",
+      "git_blob_sha": "b841f50e85c3444ea1c0d744f1797e2ad6b3da2f"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1025_n160_dt0.0025.npz",
+      "bytes": 3371961,
+      "sha256": "5b4a62db5cf9e932e630de153875316ca3963a5c0958b6f383f54c2cd49df854",
+      "git_blob_sha": "4ca5aa44629d817336bc238582ecffe93cfaf7f1"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1025_n224_dt0.0025_endpoint-spectrum.npz",
+      "bytes": 7961183,
+      "sha256": "e338a713c21e110cac200327db70deb543fe82ea5d844f74c2c5f6179adf048f",
+      "git_blob_sha": "282cf47692975fab4a3711ed40d136394ed3155b"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1025_n224_dt0.0025.json",
+      "bytes": 7695,
+      "sha256": "1389b44fa34f90352a539c4af9ed1855974c982f9f04e339eacd48cf49a6c5b2",
+      "git_blob_sha": "b2987d96ab34c8f656e9d6c062abed0aca8d8be4"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1025_n224_dt0.0025.npz",
+      "bytes": 3372146,
+      "sha256": "db6f4e97e350e87d17274d3f2dd08f3d3e41f29b4c3c2f861d507d70a38caf00",
+      "git_blob_sha": "46295c7d4d1dfded2df3c5d489618ba6700bf6f5"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1025_n56_dt0.0025_endpoint-spectrum.npz",
+      "bytes": 2470321,
+      "sha256": "9d79b0fb4bbb1cb71cb9f2341a14fe584b4f44e0e02d5758c4fbff905de1a79d",
+      "git_blob_sha": "269da2200f6b18703a4dd6d2d328bfef29181302"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1025_n56_dt0.0025.json",
+      "bytes": 7698,
+      "sha256": "042d33d3f3cfca44ec6fb19ea87c993f947bc5de48d6206979f5eac136fb3345",
+      "git_blob_sha": "75f3fbce2de928dbd0316270918577eadf874b97"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1025_n56_dt0.0025.npz",
+      "bytes": 3371918,
+      "sha256": "a704f9a4eff39e7ad7c46667932979b26d6d2ac9c715b9d3f5e187656287c61e",
+      "git_blob_sha": "fcd1312071f38358ba33cde35160d829a7b111c1"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1025_n80_dt0.0025_endpoint-spectrum.npz",
+      "bytes": 7133375,
+      "sha256": "ad0e1abc41819268f2d5366b17274689eb1c61a3bf34bc20f1282da2828ee0f7",
+      "git_blob_sha": "56f9a4ee767249b14ea3bbc3b312532f06daec84"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1025_n80_dt0.0025.json",
+      "bytes": 7670,
+      "sha256": "312bdf2be97a114750f4497b473e5a87d885564fc050433c0400950fb345fce5",
+      "git_blob_sha": "0730c0d8bd70e105b1880fbc3d99cc52347069a2"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1025_n80_dt0.0025.npz",
+      "bytes": 3372124,
+      "sha256": "a215a246dfb784da882f1e55ae902babbc48bd0349ccc0c51a74cf73e1cb1496",
+      "git_blob_sha": "608f28150704dc4c61d4f6b6df15cffd15ba9e08"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1026_n112_dt0.0025_endpoint-spectrum.npz",
+      "bytes": 7955530,
+      "sha256": "57abe6a5d4dfe00492f24f427fff639fd3861b8722508155b7f3dd0d15684fec",
+      "git_blob_sha": "7681c973332db412ee270af9d3c6feb711bd0216"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1026_n112_dt0.0025.json",
+      "bytes": 7688,
+      "sha256": "7c952a761c4996adb857a6987a5a99882cdee3a27ff4157909fe00e5171f9dd0",
+      "git_blob_sha": "db5bf62647ecc7209cec806991fcfe23b917737b"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1026_n112_dt0.0025.npz",
+      "bytes": 3370229,
+      "sha256": "248209e6df388f9e140cb3dcb428e3d622c64905684e908e7435456d3d8a500a",
+      "git_blob_sha": "e869b9b2871b0c73c958ad777276382a134b6244"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1026_n160_dt0.0025_endpoint-spectrum.npz",
+      "bytes": 7954647,
+      "sha256": "3832783ce3bc56c6e142bd8c3f6e7bc51cacd3056da707b4e9d102b62a0dd38b",
+      "git_blob_sha": "8180a8246f009dfe17e2deb1ad44a69bd7d0d79c"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1026_n160_dt0.0025.json",
+      "bytes": 7688,
+      "sha256": "50a3234401ca6c4463008e9c76ce0cfa580372cf79b61e46010c93dcf185a42a",
+      "git_blob_sha": "1eac84ef915b27fcb7a51fe3731f617fb69462c4"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1026_n160_dt0.0025.npz",
+      "bytes": 3370095,
+      "sha256": "34c1c93afe16cc826363f66e279a7221cf894d7b123b65da470bd5b0f2b0fc22",
+      "git_blob_sha": "892c5febf28b8c1162ea155f26b1eb70d141c207"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1026_n224_dt0.0025_endpoint-spectrum.npz",
+      "bytes": 7955579,
+      "sha256": "e8abf076833aef8d58b140c61a2ec5c93e94553fac1ce5a2b147b0ea838fe4a4",
+      "git_blob_sha": "424e15e9914b94824246eb21062fb5aa2b1aa089"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1026_n224_dt0.0025.json",
+      "bytes": 7689,
+      "sha256": "859a3c4b363c4a0fd902e435cd8e7335d6768bd0a0306f2634d461927098a711",
+      "git_blob_sha": "4c7155ce70f5a735110c0ee31a09918dd12db430"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1026_n224_dt0.0025.npz",
+      "bytes": 3370295,
+      "sha256": "ffe46c083dda7e482e5800c30b7714a18aaf53f26b03577bcfcd5840b451521a",
+      "git_blob_sha": "a0ffd9469d1274798ad2b42335b2542dc700fb65"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1026_n56_dt0.0025_endpoint-spectrum.npz",
+      "bytes": 2469908,
+      "sha256": "30a8bc781b3e2ccdd30cacd491e7cd13cc3d2c84a238ff3c1f64287c007eaa98",
+      "git_blob_sha": "297e24f8b7ed782be4df79ce6bc161e79a68ad43"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1026_n56_dt0.0025.json",
+      "bytes": 7700,
+      "sha256": "a628bd0e94de18d10ab13621122d32a23e3235c32fe7b41a4517f919c05a986f",
+      "git_blob_sha": "ce5b7538f4cead0c47c9459db4819924207a8fb2"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1026_n56_dt0.0025.npz",
+      "bytes": 3370190,
+      "sha256": "60ef7be0b752903f4146e1902a2337ade1bf0c0f62f72bc36f079665828a2c85",
+      "git_blob_sha": "19866e0e173e604106db09be0450908cbec5b850"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1026_n80_dt0.0025_endpoint-spectrum.npz",
+      "bytes": 7129464,
+      "sha256": "35940a3ce75cf1b837335e5c69bccb332f5259722ecef02f9cdb45b0dd29d1f7",
+      "git_blob_sha": "1ed4cfade90a7de38d06ff5536612e28204c658f"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1026_n80_dt0.0025.json",
+      "bytes": 7689,
+      "sha256": "fdbf585f079b8a5d32973395f1cade79630d6457713a04c4241420d19d5218c7",
+      "git_blob_sha": "814731ebd2fd587d8dd5fc7a379016f535524908"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1026_n80_dt0.0025.npz",
+      "bytes": 3369986,
+      "sha256": "54309ed2b853e50bcd0abcf4d3f2ef846fd4d0834d0bf0b18b4df97d8ae56683",
+      "git_blob_sha": "a8f25472beeeca203123bc347b21da96508eca63"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1027_n112_dt0.0025_endpoint-spectrum.npz",
+      "bytes": 7947092,
+      "sha256": "1f03b54761b5a6a8e7696600e00483a2fdbf3ad93636982d8c82798d3c0de094",
+      "git_blob_sha": "42dbc55eaeefd9fb6c31621a3e6a84ff0b06ab09"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1027_n112_dt0.0025.json",
+      "bytes": 7686,
+      "sha256": "d2fc83c75b3786bba9181f38d11fd1bbd9f70059eb7c959abae55ac8e5667f4b",
+      "git_blob_sha": "7289abbe307cdc31587b759a524c1cdc76592e6b"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1027_n112_dt0.0025.npz",
+      "bytes": 3372770,
+      "sha256": "25b181e15012a42a2ccd748b90adabda374cbf9138fcf54166519f3ac414adee",
+      "git_blob_sha": "1a8810e486cf6d10a1fe4fa355d803404544a20e"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1027_n160_dt0.0025_endpoint-spectrum.npz",
+      "bytes": 7946565,
+      "sha256": "b1943f4586fb878996fe8bab2590d7175a6e6d63cd799978e896e6f3b1d5a6e0",
+      "git_blob_sha": "c2e30cc38406ba8be5bbaf387fe1a325d51011cb"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1027_n160_dt0.0025.json",
+      "bytes": 7704,
+      "sha256": "db718206337f2ac323b3943c3c1a987efb8789af27d9738a8bfeff24ca1082a0",
+      "git_blob_sha": "381ec2a77f8b28e2d4a9708180a2a133a1742c23"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1027_n160_dt0.0025.npz",
+      "bytes": 3372830,
+      "sha256": "04682245ccf1b6dafc17d318d32794d64247e8eceaefc6d0e651c2a00a358c73",
+      "git_blob_sha": "9a240b85c81c7b54c1b2add09bb3bd1c670deb04"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1027_n224_dt0.0025_endpoint-spectrum.npz",
+      "bytes": 7947055,
+      "sha256": "be6a2d3b444268ec23de21eb96752d61d69183fd2dd5412aa17dc743207a0a32",
+      "git_blob_sha": "feefaea888a2071a99eca8cdf94289dcb2a0d03e"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1027_n224_dt0.0025.json",
+      "bytes": 7672,
+      "sha256": "ce1884955d5704c9a10584e6166a98f3d8b324fcd8e0454bd50c45f5c4c48982",
+      "git_blob_sha": "95dd90b0e21855db44e1364ccec9864f7251e54e"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1027_n224_dt0.0025.npz",
+      "bytes": 3372805,
+      "sha256": "33e5cef194c194760464477ffc188a3aa3f529ebc1a1a4656f7feb027422eb89",
+      "git_blob_sha": "c5bcd5d361fa906b843e617d87858378e7f4ca0d"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1027_n56_dt0.0025_endpoint-spectrum.npz",
+      "bytes": 2464491,
+      "sha256": "e6ff913fece589ddb63519a3fde1d0250a838138bfb061bac708da3b36a87c8f",
+      "git_blob_sha": "e863ffb61e7960d8b7beab1bfff24b87fd1dfe83"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1027_n56_dt0.0025.json",
+      "bytes": 7698,
+      "sha256": "0ed2ae5c0c0d60fa40711640502ffd3247f1b6552e1aa4644f6deb5bf1fb7139",
+      "git_blob_sha": "a5cf97648b35cc6491dfe09feed5fd9e6950ea4d"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1027_n56_dt0.0025.npz",
+      "bytes": 3372633,
+      "sha256": "318e89db40f52851c4971557155c9e46585a2d0f2d7ca429cab59c6a05bd4e02",
+      "git_blob_sha": "9609ec1f41dece5d4f7de5cdf769f385061f2c82"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1027_n80_dt0.0025_endpoint-spectrum.npz",
+      "bytes": 7121100,
+      "sha256": "1ce55393a8ae6e352e836ed2b3f3abb4c2f5a68d670cc1c5d44566efa07ac887",
+      "git_blob_sha": "adf945b778a8f25f7bd9e248ab88756731261ffe"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1027_n80_dt0.0025.json",
+      "bytes": 7680,
+      "sha256": "4d81913df61d680747c99d4a4f7ffdd4f6c45bb338e5c6a72f1ec4a78b36b52d",
+      "git_blob_sha": "3e88e21a951de57db4795f1fe26401e67adfda12"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/recorded-data/s1027_n80_dt0.0025.npz",
+      "bytes": 3372785,
+      "sha256": "57be9747664fbebd681a0f9822f94e2bee3e92390b52415db40f43c3ecf0110e",
+      "git_blob_sha": "0668cd1b4aeac9d392b75d6ba7aa66b40c5234e3"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/report.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/results-160.json",
+      "bytes": 618918,
+      "sha256": "998f9846c45da8fd2c7a92b03ab7a9080d6f260cc232dff037a71ef466159391",
+      "git_blob_sha": "1842e3e37c56a0a93fd9fa8943e1d384fa9162fe"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/results.json",
+      "bytes": 794952,
+      "sha256": "6a830c263ab8309af1c5dc3df4dd84275c61a0c2b5ee1080fe860b5379bf3117",
+      "git_blob_sha": "90edaf8c9a746f13d0a2d27147a0866b419de4c7"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/run_refinement.py",
+      "bytes": 8575,
+      "sha256": "603bb09fa9e1f7374bc565c291b9e848c7b623c17854f061c99750ea6cb189ff",
+      "git_blob_sha": "4aa83683207d29faa336f6941b5bc1559184449b"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/run-verified-resume.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/run.log",
+      "bytes": 8288,
+      "sha256": "1c349e739149cb1a315ed958cb602a5577f8e9c6d88766e3fc578475d88142be",
+      "git_blob_sha": "73891d83ab3f25ca9901610dd95e078c8c00b1cf"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/s1024_n112_dt0.00125.log",
+      "bytes": 936,
+      "sha256": "2fd518df86921b158a72df3778eca594eb125c86e33f6cf74fcb569c037a488b",
+      "git_blob_sha": "9cf15b10b475ac71bddce4e245235c97221c696f"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/s1024_n160_dt0.00125.log",
+      "bytes": 936,
+      "sha256": "831bf95fcd6932735d8650086e4567fcf6fbb80e46d564be033c26bc43d2d6e1",
+      "git_blob_sha": "04fbd8ab0238700425b8843b8834f1737a259fc8"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/s1024_n160_dt0.0025.log",
+      "bytes": 917,
+      "sha256": "f8f9fc50ec243c5e93b7f57c281a5d7848f02e7e6dcfdb90bca42bb9a0fb56f4",
+      "git_blob_sha": "c4e6f84ef504a1dd2896f50801a8e4248eead169"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/s1024_n224_dt0.00125.log",
+      "bytes": 936,
+      "sha256": "a80e261a11700f0550466755412a4bad5a071371795563581a4a4873b661fe32",
+      "git_blob_sha": "e2ff604be69fbc72e5fe4890a7d8f989d5475acc"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/s1024_n224_dt0.0025.log",
+      "bytes": 917,
+      "sha256": "23b9df854142c1536953618b872c0f910812c495cafeb0a5f029cd355151764b",
+      "git_blob_sha": "db0d7c8750c60f76fd6e643d1c62f7cb924afa0a"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/s1025_n112_dt0.0025.log",
+      "bytes": 917,
+      "sha256": "d3d6d2aed8974bdf069c1390cc8d73730b55c2d31f470ba88faef54a196238b3",
+      "git_blob_sha": "6bbd46dfe16581f7fb19a98ae40252d3c2f5272e"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/s1025_n160_dt0.0025.log",
+      "bytes": 917,
+      "sha256": "42992d7513a4a5d15e2355c0a0d9787743f0cad94be46fd9b8074f454dbfd67f",
+      "git_blob_sha": "fd45e95cc2ca8e66d91953e1c1b9147e1269efc7"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/s1025_n224_dt0.0025.log",
+      "bytes": 917,
+      "sha256": "d63c79a1059bce01f8ea104962fb7433da026e1b4e6082177c0c7aad1e8a8823",
+      "git_blob_sha": "5e6d0a3ee0ae6d20771c27f2f3f75f805f4c128a"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/s1026_n112_dt0.0025.log",
+      "bytes": 917,
+      "sha256": "0d8da6a9e921f8fd17a60f15e5c57edbd0ea6e809e14794874525283d8f1bff2",
+      "git_blob_sha": "e22753bd6dc67ca993811b5640371311b29c63c0"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/s1026_n160_dt0.0025.log",
+      "bytes": 917,
+      "sha256": "26d9a10b16ddaf11d8a47408308eb7eeb3da71b2c41c301ccf4284c941c4137b",
+      "git_blob_sha": "2a08ed048431e4d37665aa8f27135124a7d95d81"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/s1026_n224_dt0.0025.log",
+      "bytes": 917,
+      "sha256": "1d7a87f37f3d7396aeba9ab48c83b9df5e264371b4e62f286322f723c5895ed2",
+      "git_blob_sha": "be262a02b974bce59af88276533e83c479e74313"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/s1027_n112_dt0.0025.log",
+      "bytes": 917,
+      "sha256": "3561febbedbc8bc0adea4f0d9cc3b735747ada38750afb3c1ff02da00ddddbd1",
+      "git_blob_sha": "51c4a644f43be68dcb4b436496a81cb03114b059"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/s1027_n160_dt0.0025.log",
+      "bytes": 917,
+      "sha256": "7975605787cd63fe6b64807dbc15bbc5a46f11172f2d6ffc589d648513a8d3f8",
+      "git_blob_sha": "4a2f4e8a3abd5bb5cb1b5b4ca6e5f8560445e8c6"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/s1027_n224_dt0.0025.log",
+      "bytes": 917,
+      "sha256": "ea009c8ad573b4483b15632e7308bc76388fab430344936ef031f50e6123f065",
+      "git_blob_sha": "11b638bfda78ead2299bf86f0adb88e3f49dd13b"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/scheduling-audit.json",
+      "bytes": 2083,
+      "sha256": "8c9ced6313b6b6562c45659b4af444cebe0e6ffbb619e682378defb199c37808",
+      "git_blob_sha": "84776050589d6a056e992ce84b1a572f157c28a8"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/targets-160.npz",
+      "bytes": 2707835,
+      "sha256": "1e3d621379021225280328bd18c9a213e5d0a849f41b2a76479fcffd3a975db0",
+      "git_blob_sha": "df027820d47df6cfd6003658460a9f6646ed51f2"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/targets.npz",
+      "bytes": 3460267,
+      "sha256": "0546261d386612ae672eca9e3357c0214a82014efc1f6c68e9e730a65e994527",
+      "git_blob_sha": "4514b5fadeaf2b0605a79fea01e22d708b453f5c"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/test_refinement.py",
+      "bytes": 1643,
+      "sha256": "1261aea718538536a32d330d8085cf77dfa456299782fa21957a8d2dad26b6c0",
+      "git_blob_sha": "c7cc2515c60380ae066560cc653852cafb2ac882"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/tests-transfer.xml",
+      "bytes": 781,
+      "sha256": "73b1bd31426e4e5ba97fd1dc1eed1f1c5373c1432220726352bb60ed7d148846",
+      "git_blob_sha": "3e9559e5ccdd33d6c4e6c452f5cb86f42da92e0a"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/tests.xml",
+      "bytes": 5650,
+      "sha256": "61c62b15171d202bf9f5b31c7863239c13da03736a23c69048124235155046fc",
+      "git_blob_sha": "989569bc04a9a80d1eb8b138ecf6199861c4a4c6"
+    },
+    {
+      "path": "reports/matched-stretch/history-prediction/spatial-convergence/verify_data.py",
+      "bytes": 4473,
+      "sha256": "5c1018c012956ff7dd87fb5d3ab3f363d552929cc62f8dfe856755e23fb9b090",
+      "git_blob_sha": "cd202bb7c622a0295b3d82737cf4499f3e60c39c"
+    }
+  ]
+}

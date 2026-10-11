@@ -100,3 +100,10 @@ The [paired physical intervention](velocity-reversal/README.md) adds nine verifi
 ## Arrangement mirrored in both motion directions — 2026-10-10
 
 The [four-cell mirror/direction experiment](mirror-direction/README.md) reuses nine verified full-state checkpoints and adds eighteen short joint branches plus two complete-state mirror controls. Reversing motion changes high-event labels in both clouds (18.0% original; 19.2% globally mirrored at grid 56). Mirroring finite neighborhoods around fixed centers changes their measured response with a direction-dependent interaction, while central pointwise targets remain exactly unchanged. Complete-state reflection preserves corresponding deformation within roundoff. The markers remain passive; spatial convergence remains unestablished. All 29 local tests pass.
+
+
+## Common-state arrangement/direction spatial convergence — 2026-10-10
+
+The [finer-grid study](spatial-convergence/README.md) completes 23 matched pairs (46 forward evolutions) across 56³, 80³, 112³, 160³ and 224³ for four reused saved states. All 252 frozen operational screens pass at the primary horizon 0.2: finest-pair pointwise relative RMS differences are 0.405–0.730%, and high-event Jaccard is at least 0.97826. Reversing motion still changes 18.75% of original-cloud and 19.34% of mirrored-cloud event labels; anchored arrangement, direction and interaction effects persist. The independent [data audit](spatial-convergence/data-verification.json) verifies matched centers, neighbors, offsets, initial tangents, times and archive hashes. All 32 analytic/regression tests pass.
+
+This establishes numerical stability at the chosen tolerances for future responses from the identical prepared state, over horizon 0.2. At horizon 0.05, pointwise differences still reach 1.25%. Full history-predictor spatial convergence and its out-of-sample incremental benefit remain unresolved. Passive marker arrangements measure a response without changing the fluid stress.

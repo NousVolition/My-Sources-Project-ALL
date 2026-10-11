@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "frozen_before_runs": true,
+  "date": "2026-10-10",
+  "question": "Spatial convergence of fixed-state mirrored arrangement and physical velocity reversal responses.",
+  "reference_grid": 56,
+  "reference_time": 0.3,
+  "seeds": [
+    1024,
+    1025,
+    1026,
+    1027
+  ],
+  "new_grids": [
+    56,
+    80,
+    112,
+    160
+  ],
+  "extension_grid": 224,
+  "dt": 0.0025,
+  "half_step_dt": 0.00125,
+  "time_control_seed": 1024,
+  "time_control_grids": [
+    112,
+    160
+  ],
+  "nu": 0.02,
+  "duration": 0.2,
+  "save_dt": 0.025,
+  "horizons": [
+    0.05,
+    0.1,
+    0.2
+  ],
+  "primary_horizon": 0.2,
+  "neighbors": 8,
+  "markers": 512,
+  "event_threshold": 1.0106081570657628,
+  "state": "For each seed reuse the verified grid56 dt.005 full t=.3 Fourier checkpoint and central positions. Prolong its band-limited field with exact Fourier mode copying and FFT normalization; same present continuum polynomial, marker locations and neighborhood offsets at every grid. A new grid56 dt.0025 continuation provides the same-state reference and separates time change from historical grid comparisons. Do not replay initial conditions or refine the original long matrix.",
+  "scope": "16 main pairs +2 half-step pairs; if frozen screens fail, four grid224 main pairs and one grid224 half-step pair. Maximum23 pairs46forward field branches. No automatic expansion beyond224 or duration .2.",
+  "dynamics": "Unchanged parent Navier-Stokes solver, joint Heun integration and trilinear velocity/exact-Jacobian sampler, zero force and mean, fixed viscosity. Normal/reversed fluid motion; original/global-mirrored cloud and anchored reflected neighbor probes. Markers passive.",
+  "coarse_reuse": "Previous mirror-direction grid56 .005 data are compared for time sensitivity at fixed branch state and matched positions; previous grid38 and grid56 comparisons are descriptive, not the common-state convergence ladder.",
+  "targets": "Pointwise forward FTLE for original and globally mirrored clouds; anchored finite-cloud log singular-value rate and mean neighbor-center log-distance rate, each at both motion signs. Primary .2. All saved horizons reported; no threshold for finite-cloud/pair targets.",
+  "screens": {
+    "finest_pair_relative_RMSE_max": 0.01,
+    "pointwise_event_Jaccard_min": 0.95,
+    "successive_RMS_difference_must_contract": true,
+    "time_error_fraction_of_finest_spatial_error_max": 0.1,
+    "effect_RMS_relative_drift_max": 0.05
+  },
+  "screen_scope": "Every seed and all four cells for the three primary target families. RMS differences across consecutive main grids must contract for each target/cell. Finest pointwise event Jaccard must pass at fixed training-only threshold. Temporal screen is on the prechosen control seed at the finest grid across all targets/cells; previous fine half-step control is also reported. Effect drift compares primary global direction RMS differences and anchored arrangement/direction/interaction RMS contrasts in both finite target families, each independent seed. Operational empirical stability screens for this finite interval, not proof of continuum solution or formal order of accuracy.",
+  "extension_rule": "Run stage56/80/112/160 with halfstep112/160, analyze against frozen screens. Extend to224 plus its halfstep only if any screen fails. Stop there and report any remaining failures; do not loosen tolerances, select seeds or tune thresholds after results.",
+  "provenance": "Check original full checkpoint/raw archive hashes, executed-source hashes and current GitHub source blobs before runs. Exact source bytes required for completed new cache reuse; old source analysis allows only LF/CRLF equivalence. Preserve partial/failure checkpoints. Exclusive PID lock; never duplicate live jobs.",
+  "numerical_checks": "Finite arrays, CFL<.5, spectral divergence<1e-10, relative energy residual<.005; energy and Fourier roundtrip invariance under prolongation. Record probe volume error/high-band energy, final shared-band Eulerian spectra, checkpoints each saved interval.",
+  "limits": "Four reused initial conditions, not new independent tests; two-sign branches and grids dependent. Fixed checkpoint convergence resolves spatial evolution/interpolation from the supplied t=.3 band-limited state, not continuum accuracy of its earlier preparation or history-predictor forecasts. Starting-location accumulated stretch is not exact Eulerian peak onset/location. Original nonsmooth periodic strain and noncentral maxima remain separate limitations. No material memory, marker force or asymptotic Lyapunov claim.",
+  "pilot_grid": 80
+}
