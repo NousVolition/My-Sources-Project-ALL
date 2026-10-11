@@ -1,0 +1,21 @@
+{
+  "phase": "Before any fresh fluid simulations or outcomes",
+  "analytic_test_first_failure": {
+    "grid": 38,
+    "velocity_RMS": 0.000008879235178402954,
+    "gradient_RMS": 0.00010130920594794655,
+    "gradient_limit": 0.0001
+  },
+  "resolution_change": "Analytic test finest grid increased to46; both analytic tolerances and contraction requirement unchanged. No fluid-study screen, existing numerical source or model changed.",
+  "later_checks": [
+    {
+      "failure": "Causality fixture initially mutated the present time because 12*.025 is marginally above .3 in binary floating point",
+      "repair": "Use >.3+1e-10 to modify only genuinely later snapshots; feature code unchanged",
+      "resolution": "7/7 fresh tests passed; after adding whole-run/budget/measurement checks, complete suite42 passed"
+    },
+    {
+      "change": "Archive and model loading accept only newline-equivalent source bytes for portability; active numerical source guards remain exact-byte comparisons",
+      "scope": "No active predecessor sources altered"
+    }
+  ]
+}

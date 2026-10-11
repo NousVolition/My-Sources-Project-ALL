@@ -1,0 +1,37 @@
+{
+  "phase": "prepared, not launched",
+  "authorized_by": "Latest user request to finish finer-grid checks then run fresh independent tests",
+  "predecessor_directory": "../full-history-refinement",
+  "predecessor_owner_session": 83809,
+  "predecessor_owner_pid": 2864,
+  "predecessor_current_stage": 160,
+  "predecessor_new_simulations_completed_at_review": 27,
+  "fresh_research_simulations_started": 0,
+  "python": "C:/Users/ziman/Documents/Codex/2026-10-05/ca/work/study-env/Scripts/python.exe",
+  "protocol_sha256": "d3b41638d63ce790c30be7162194c6298fdcb39e13108ecbd051caa8fc6c6ecd",
+  "followup_id": "finish-frozen-full-history-refinement",
+  "gates": [
+    "Finish bounded predecessor, audit and publish with successful checks",
+    "Publish preregistration/code/tests; launch-review.json records verified precursor/preregistration commits and completion checksum",
+    "Start controller.py only after checking claims/advancing checkpoints; it runs bounded pilot then train/validation then stops for model-lock publication",
+    "Independently verify/publish every model, fit manifest and test-lock before controller.py --test-phase; model-lock-publication.json records checks and lock checksum",
+    "Test phase64 fresh independent runs plus4 numerical controls and8 dependent viscosity variants; audit, score, independently verify, inspect plots and publish",
+    "A numerical-stop.json is a bounded numerical stop, not evidence of a null hypothesis; preserve/publish all failed screens"
+  ],
+  "implementation": [
+    "record_history.py separate recorder with4-point sampler",
+    "fit_models.py fits train/validation only; test claims prevent refitting",
+    "numeric_audit.py applies fixed screens and uses fresh train cutoff for final audits",
+    "analyze_test.py uses whole64-run bootstrap without exponential sign enumeration",
+    "build_report.py renders results/calibration/preselected location example",
+    "verify_completion.py independently reconstructs metrics, scores and hashes"
+  ],
+  "prohibitions": [
+    "No fresh research simulation before predecessor completion/verification/publication",
+    "No modifications to active predecessor numerical/features/models",
+    "No extra seeds, data-dependent outcomes, silent equations/sampler changes or test-based refitting",
+    "Do not modify track-matched-stretch-tests or other chats"
+  ],
+  "reporting": "Short updates on meaningful batches, failure, publication or final result; healthy unchanged progress stays quiet",
+  "status_updated_UTC": "2026-10-11T06:10:15.687Z"
+}

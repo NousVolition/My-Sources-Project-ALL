@@ -1,0 +1,310 @@
+{
+  "version": 1,
+  "phase": "Confirmatory study planned before new simulations; numerical pilot and fitting precede untouched test generation",
+  "question": "Do past changes of neighboring marker arrangements improve within-time spatial prediction of later strong deformation beyond full present local velocity gradient and current geometry?",
+  "predecessor": "../full-history-refinement/completion.json; finish, verify and publish its bounded matrix first",
+  "equations": "Unchanged parent3D unforced incompressible Navier–Stokes Flow, rotational nonlinearity, Fourier projection/dealiasing and joint Heun updates; periodic side6; no material-memory or marker-force term",
+  "initial_conditions": "Same smooth random low-Fourier-mode polynomial and RMS speed1 normalization; entirely new independent coefficients/phases and initial marker positions",
+  "base": {
+    "n": 80,
+    "nu": 0.02,
+    "dt": 0.0025,
+    "save_dt": 0.025,
+    "end": 1.2,
+    "markers": 512
+  },
+  "sampler": "Separate periodic4-point tensor Lagrange velocity and exact piecewise spatial Jacobian; old trilinear experiment unchanged. Interpolant is not exactly divergence-free and derivatives may jump at faces.",
+  "pilot": {
+    "seeds": [
+      50000,
+      50001,
+      50002,
+      50003
+    ],
+    "initial_grids": [
+      56,
+      80,
+      112
+    ],
+    "conditional_grid": 160,
+    "half_step_seeds": [
+      50000,
+      50001
+    ],
+    "half_step_grids": [
+      80,
+      112,
+      160
+    ],
+    "half_step_dt": 0.00125,
+    "max_histories": 22,
+    "event_cutoff": 1.0106081570657628,
+    "excluded_from_all_fits_and_confirmatory_scores": true,
+    "choose": "Smallest candidate80 or112 satisfying both adjacent-grid accuracy checks and its half-step checks. Grid112 requires conditional160 confirmation if80 cannot be used. Stop if no candidate passes; do not silently collect unresolved test data."
+  },
+  "train_seeds": [
+    51000,
+    51001,
+    51002,
+    51003,
+    51004,
+    51005,
+    51006,
+    51007,
+    51008,
+    51009,
+    51010,
+    51011,
+    51012,
+    51013,
+    51014,
+    51015,
+    51016,
+    51017,
+    51018,
+    51019,
+    51020,
+    51021,
+    51022,
+    51023,
+    51024,
+    51025,
+    51026,
+    51027,
+    51028,
+    51029,
+    51030,
+    51031
+  ],
+  "validation_seeds": [
+    52000,
+    52001,
+    52002,
+    52003,
+    52004,
+    52005,
+    52006,
+    52007,
+    52008,
+    52009,
+    52010,
+    52011,
+    52012,
+    52013,
+    52014,
+    52015
+  ],
+  "test_seeds": [
+    53000,
+    53001,
+    53002,
+    53003,
+    53004,
+    53005,
+    53006,
+    53007,
+    53008,
+    53009,
+    53010,
+    53011,
+    53012,
+    53013,
+    53014,
+    53015,
+    53016,
+    53017,
+    53018,
+    53019,
+    53020,
+    53021,
+    53022,
+    53023,
+    53024,
+    53025,
+    53026,
+    53027,
+    53028,
+    53029,
+    53030,
+    53031,
+    53032,
+    53033,
+    53034,
+    53035,
+    53036,
+    53037,
+    53038,
+    53039,
+    53040,
+    53041,
+    53042,
+    53043,
+    53044,
+    53045,
+    53046,
+    53047,
+    53048,
+    53049,
+    53050,
+    53051,
+    53052,
+    53053,
+    53054,
+    53055,
+    53056,
+    53057,
+    53058,
+    53059,
+    53060,
+    53061,
+    53062,
+    53063
+  ],
+  "anchors": [
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7
+  ],
+  "primary_lookback": 0.2,
+  "primary_horizon": 0.2,
+  "gap": 0.025,
+  "neighbors": 8,
+  "primary_event_quantile": 0.9,
+  "target": "log(sigma_max(M_end @ inv(M_start)))/horizon over strictly future interval[anchor+.025,anchor+.025+horizon]; predict at current material-marker locations, not exact Eulerian peak or first-onset time",
+  "primary_endpoint": {
+    "metric": "within-time spatial average precision",
+    "aggregation": "AP at each of five anchors; average within each independent run; equal-weight mean over64 test runs. No-positive-event anchor has AP0 and contributes equal zero A/B difference; report counts. Pooled AP is secondary.",
+    "comparison": "Fresh standardized logistic B_history minus A_full; identical regularization grid, training/validation runs and current inputs",
+    "useful_absolute_AP_gain": 0.005,
+    "CI": "Paired whole-run percentile bootstrap10000 draws,95% two-sided, seed84017",
+    "conclusion": "Useful benefit established only if lower95% bound exceeds.005 and numerical audits pass. A gain at least.005 is ruled out for this comparison if upper95% bound is below.005 and audits pass. Otherwise report detectable-small or unresolved evidence. No threshold/seed expansion after seeing test results."
+  },
+  "secondary_continuous": {
+    "metric": "Mean per-run relative RMSE reduction1-RMSE_B/RMSE_A",
+    "useful_gain": 0.01,
+    "interpretation": "Secondary descriptive endpoint; cannot substitute for strong-event location prediction."
+  },
+  "numeric_screens": {
+    "target_relative_RMS_max": 0.0025,
+    "event_Jaccard_min": 0.98,
+    "gradient_relative_RMS_max": 0.005,
+    "velocity_relative_RMS_max": 0.001,
+    "present_original_train_standardized_RMS_max": 0.005,
+    "history_original_train_standardized_RMS_max": 0.005,
+    "frozen_old_prediction_relative_RMS_max": 0.01,
+    "half_step_target_fraction_of_spatial_max": 0.1,
+    "half_step_target_relative_RMS_max": 0.00025,
+    "probe_volume_error_max": 0.005,
+    "new_model_probability_relative_RMS_max": 0.01,
+    "new_model_spatial_AP_contrast_macro_drift_max": 0.000625,
+    "new_model_spatial_AP_contrast_per_run_drift_max": 0.00125,
+    "new_model_RMSE_contrast_relative_validation_A_max": 0.0025
+  },
+  "models": {
+    "primary": "Ridge/logistic, train-only scaler, validation-only hyperparameter selection; no train+validation refit",
+    "ridge_alphas": [
+      0.1,
+      1,
+      10,
+      100,
+      1000
+    ],
+    "logistic_C": [
+      0.01,
+      0.1,
+      1,
+      10
+    ],
+    "matched_current": "31 present plus23 fixed quadratic current terms, chosen by seed513 before data",
+    "trees": "SecondaryA/B/matched-current all depth3,7leaves,80iterations,learning-rate.08,min-leaf40,l2 candidates1,10,early-stoppingfalse; same tuning budget",
+    "test_lock": "Freeze and hash all selected models, thresholds, scalers, protocol and feature code before any test trajectory is generated. No model selection using test data."
+  },
+  "controls": [
+    "Fully refitted shuffled historical rows within each run/anchor, seeds91/92/93",
+    "Fully refitted time-reversed causal histories",
+    "Fully refitted farthest-current-marker donor histories",
+    "Fully refitted mirrored histories and mirrored-reversed histories with current fluid inputs held fixed; diagnostic representation controls, not physical interventions",
+    "Training-only shuffled target labels",
+    "Consistent complete particle-ID relabeling; no ID supplied as predictor",
+    "Matched-current dimensions",
+    "Past-deformation-only, without past deformation, without neighbor exchange",
+    "Impoverished current baseline, separately interpreted"
+  ],
+  "observation_sensitivities": [
+    {
+      "name": "short_history",
+      "lookback": 0.1
+    },
+    {
+      "name": "long_history",
+      "lookback": 0.3
+    },
+    {
+      "name": "short_forecast",
+      "horizon": 0.1
+    },
+    {
+      "name": "long_forecast",
+      "horizon": 0.4
+    },
+    {
+      "name": "sparse_markers",
+      "count": 256
+    },
+    {
+      "name": "neighbors4",
+      "k": 4
+    },
+    {
+      "name": "neighbors16",
+      "k": 16
+    },
+    {
+      "name": "half_history_sampling",
+      "stride": 2
+    },
+    {
+      "name": "event_q80",
+      "quantile": 0.8
+    },
+    {
+      "name": "event_q95",
+      "quantile": 0.95
+    }
+  ],
+  "sensitivity_policy": "A/B only, all settings fitted and locked before test generation; exploratory intervals with no secondary-outcome selection of the primary conclusion",
+  "test_numerical_controls": {
+    "seeds": [
+      53000,
+      53001
+    ],
+    "finer_grid": "112 if primary80;160 if primary112",
+    "half_dt": 0.00125,
+    "rule": "Predetermined sensitivity audits after models freeze; do not refit/retune or choose a primary grid from test outcomes. If accuracy screens fail, withhold useful-benefit/exclusion claims."
+  },
+  "viscosity_controls": {
+    "seeds": [
+      53000,
+      53001,
+      53002,
+      53003
+    ],
+    "nu": [
+      0.01,
+      0.04
+    ],
+    "models": "Frozen primaryA/B; dependent variants of four test groups, not eight new independent observations; no broad Reynolds generalization claim"
+  },
+  "workers": 3,
+  "max_new_simulations": 194,
+  "simulation_budget_derivation": "At most22 pilot+96 train/validation if both candidate grids needed+64 untouched primary test+4 test numerical controls+8 viscosity variants. No automatically added seeds or time extension.",
+  "bootstrap": {
+    "unit": "entire independent seed/run, all anchors/markers together",
+    "replicates": 10000,
+    "seed": 84017,
+    "confidence": 0.95
+  },
+  "interpretation": "Numerically audited out-of-sample comparison within this initial-condition distribution, viscosity and fixed primary window. Higher-order sampling is a separate documented method improvement, not a silent alteration of the frozen predecessor. Predictive correlations do not establish material memory, causation, leadership or NS regularity."
+}
