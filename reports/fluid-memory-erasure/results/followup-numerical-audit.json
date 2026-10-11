@@ -1,0 +1,472 @@
+{
+  "gates": {
+    "divergence_rms": true,
+    "gradient_trace": true,
+    "energy_budget_relative": true,
+    "max_cfl": true,
+    "tail_enstrophy": true,
+    "tangent_volume_error": true,
+    "matched_grid": true,
+    "matched_half_step": true,
+    "delayed_grid": true,
+    "delayed_half_step": true
+  },
+  "all_passed": true,
+  "maxima": {
+    "energy": 0.14938362458925217,
+    "energy_budget_relative": 8.830059825620581e-10,
+    "divergence_rms": 4.95081708140824e-17,
+    "tail_enstrophy": 1.4978026575424381e-05,
+    "tangent_volume_error": 1.2837743090798881e-08,
+    "gradient_trace": 2.19824158875781e-14,
+    "max_cfl": 0.24463048140456733
+  },
+  "matched_half_step": [
+    {
+      "seed": 63000,
+      "response_ftle_rmse": 2.7697751795217354e-10
+    },
+    {
+      "seed": 63001,
+      "response_ftle_rmse": 1.2409852805198894e-09
+    }
+  ],
+  "delayed_grid": [
+    {
+      "seed": 63000,
+      "ftle_rmse": 8.799858710797983e-06,
+      "response_ftle_rmse": 2.681157062494604e-06,
+      "max_probe_response_field_relative_L2": 1.650468764695564e-05,
+      "primary_effect_difference": -4.146767402785426e-06
+    },
+    {
+      "seed": 63001,
+      "ftle_rmse": 1.2353480697429795e-05,
+      "response_ftle_rmse": 9.63746501418531e-06,
+      "max_probe_response_field_relative_L2": 1.4393217079738819e-05,
+      "primary_effect_difference": 4.7040830709228765e-06
+    }
+  ],
+  "delayed_half_step": [
+    {
+      "seed": 63000,
+      "ftle_rmse": 7.894640693147911e-10,
+      "response_ftle_rmse": 4.2638967575239326e-10,
+      "max_probe_response_field_relative_L2": 1.1296039401320475e-09,
+      "primary_effect_difference": -2.938829561649481e-11
+    },
+    {
+      "seed": 63001,
+      "ftle_rmse": 9.271944425563301e-10,
+      "response_ftle_rmse": 4.813990237963508e-10,
+      "max_probe_response_field_relative_L2": 8.509039262714973e-10,
+      "primary_effect_difference": 1.0830944648099194e-10
+    }
+  ],
+  "verified_auxiliary_recordings": [
+    {
+      "file": "matched-sham-data\\s63000-n32-dt0.01-nu0.12-p0.02-T0.8-gpu-matched-sham.npz",
+      "sha256": "0bfff7485005c88057eba327f53079edf73be51ff83df971ce8059a5dff32e0e",
+      "config": {
+        "seed": 63000,
+        "n": 32,
+        "dt": 0.01,
+        "backend": "gpu"
+      }
+    },
+    {
+      "file": "matched-sham-data\\s63000-n48-dt0.005-nu0.12-p0.02-T0.8-gpu-matched-sham.npz",
+      "sha256": "06de26c5fb4101a86c8a4334c3ea181478b7a2c91408b5c8ef354fd434afd387",
+      "config": {
+        "seed": 63000,
+        "n": 48,
+        "dt": 0.005,
+        "backend": "gpu"
+      }
+    },
+    {
+      "file": "matched-sham-data\\s63000-n48-dt0.01-nu0.12-p0.02-T0.8-gpu-matched-sham.npz",
+      "sha256": "08efdc52a89d034b866c08987467ce03299f4dcb793dd86152d48a9e9993c75d",
+      "config": {
+        "seed": 63000,
+        "n": 48,
+        "dt": 0.01,
+        "backend": "gpu"
+      }
+    },
+    {
+      "file": "matched-sham-data\\s63001-n32-dt0.01-nu0.12-p0.02-T0.8-gpu-matched-sham.npz",
+      "sha256": "c1f0a2c3f16b432801626f4cebb8afa17ac0d33174c283aff5ac5c541ec05ceb",
+      "config": {
+        "seed": 63001,
+        "n": 32,
+        "dt": 0.01,
+        "backend": "gpu"
+      }
+    },
+    {
+      "file": "matched-sham-data\\s63001-n48-dt0.005-nu0.12-p0.02-T0.8-gpu-matched-sham.npz",
+      "sha256": "642400877ee347ecf74a60a5d6e8c2573d52b1741e721138c2f651cc2f6d7c2a",
+      "config": {
+        "seed": 63001,
+        "n": 48,
+        "dt": 0.005,
+        "backend": "gpu"
+      }
+    },
+    {
+      "file": "matched-sham-data\\s63001-n48-dt0.01-nu0.12-p0.02-T0.8-gpu-matched-sham.npz",
+      "sha256": "5f723dba032b8a92101a1717bf0dc947a054ac366936ea8c6f42948340a0f3e3",
+      "config": {
+        "seed": 63001,
+        "n": 48,
+        "dt": 0.01,
+        "backend": "gpu"
+      }
+    },
+    {
+      "file": "matched-sham-data\\s63002-n32-dt0.01-nu0.12-p0.02-T0.8-gpu-matched-sham.npz",
+      "sha256": "667036519489060aff0a2ab77f5ae88bd60d66c2a53f2b3621c68c0641252720",
+      "config": {
+        "seed": 63002,
+        "n": 32,
+        "dt": 0.01,
+        "backend": "gpu"
+      }
+    },
+    {
+      "file": "matched-sham-data\\s63002-n48-dt0.01-nu0.12-p0.02-T0.8-gpu-matched-sham.npz",
+      "sha256": "3a88de44d90cc6cb1ffcd5f8121366ca5b86b2382148e5f325388f7a9fc6e69d",
+      "config": {
+        "seed": 63002,
+        "n": 48,
+        "dt": 0.01,
+        "backend": "gpu"
+      }
+    },
+    {
+      "file": "matched-sham-data\\s63003-n32-dt0.01-nu0.12-p0.02-T0.8-gpu-matched-sham.npz",
+      "sha256": "fe1438897a1111fcaf2841536ca4d6c58f45f5f3ed9a4bcec981f181e3d610f9",
+      "config": {
+        "seed": 63003,
+        "n": 32,
+        "dt": 0.01,
+        "backend": "gpu"
+      }
+    },
+    {
+      "file": "matched-sham-data\\s63003-n48-dt0.01-nu0.12-p0.02-T0.8-gpu-matched-sham.npz",
+      "sha256": "92050e30591fbcbae48b45e661b47e073bb537282dd4f11c37d864ac50ab3a25",
+      "config": {
+        "seed": 63003,
+        "n": 48,
+        "dt": 0.01,
+        "backend": "gpu"
+      }
+    },
+    {
+      "file": "matched-sham-data\\s63004-n32-dt0.01-nu0.12-p0.02-T0.8-gpu-matched-sham.npz",
+      "sha256": "29749ecce3c14d63266d767ea77c2665fd033c598c167efd480bc451d85e5cf6",
+      "config": {
+        "seed": 63004,
+        "n": 32,
+        "dt": 0.01,
+        "backend": "gpu"
+      }
+    },
+    {
+      "file": "matched-sham-data\\s63004-n48-dt0.01-nu0.12-p0.02-T0.8-gpu-matched-sham.npz",
+      "sha256": "4b055cf98eb35026f9f39cae637f1f23a5929d3afd73497fd4ca8289e5ce9e1e",
+      "config": {
+        "seed": 63004,
+        "n": 48,
+        "dt": 0.01,
+        "backend": "gpu"
+      }
+    },
+    {
+      "file": "matched-sham-data\\s63005-n32-dt0.01-nu0.12-p0.02-T0.8-gpu-matched-sham.npz",
+      "sha256": "2d80b1478c7d252424d8d35aacee259f50e999e7599470e117aa14f4e125b0ee",
+      "config": {
+        "seed": 63005,
+        "n": 32,
+        "dt": 0.01,
+        "backend": "gpu"
+      }
+    },
+    {
+      "file": "matched-sham-data\\s63005-n48-dt0.01-nu0.12-p0.02-T0.8-gpu-matched-sham.npz",
+      "sha256": "e67cb6e1419013edcec0d5e5f7dd6824dcdb721e92d27eba1aec2f698d28fbd3",
+      "config": {
+        "seed": 63005,
+        "n": 48,
+        "dt": 0.01,
+        "backend": "gpu"
+      }
+    },
+    {
+      "file": "matched-sham-data\\s63006-n32-dt0.01-nu0.12-p0.02-T0.8-gpu-matched-sham.npz",
+      "sha256": "397759b92556407e48a66a7c33f66794c0255443f66bf47bd9e5546bdbc3744c",
+      "config": {
+        "seed": 63006,
+        "n": 32,
+        "dt": 0.01,
+        "backend": "gpu"
+      }
+    },
+    {
+      "file": "matched-sham-data\\s63006-n48-dt0.01-nu0.12-p0.02-T0.8-gpu-matched-sham.npz",
+      "sha256": "e6d9e36e9efbc9e4b6c71011f8324ac6ea380b7a4e2b80b05fa0bb4d09ea6324",
+      "config": {
+        "seed": 63006,
+        "n": 48,
+        "dt": 0.01,
+        "backend": "gpu"
+      }
+    },
+    {
+      "file": "matched-sham-data\\s63007-n32-dt0.01-nu0.12-p0.02-T0.8-gpu-matched-sham.npz",
+      "sha256": "0c6df6a8e20b3e0b49f1495887d97018863ab6a193572d97b05e8963b95c21cb",
+      "config": {
+        "seed": 63007,
+        "n": 32,
+        "dt": 0.01,
+        "backend": "gpu"
+      }
+    },
+    {
+      "file": "matched-sham-data\\s63007-n48-dt0.01-nu0.12-p0.02-T0.8-gpu-matched-sham.npz",
+      "sha256": "c72835c3d8e79628aec8139d74624515816a443a67b3d8dc53ff235058d26ed7",
+      "config": {
+        "seed": 63007,
+        "n": 48,
+        "dt": 0.01,
+        "backend": "gpu"
+      }
+    },
+    {
+      "file": "matched-sham-data\\s63008-n32-dt0.01-nu0.12-p0.02-T0.8-gpu-matched-sham.npz",
+      "sha256": "dd2a43d0e46e4dc3dec569fabaffe382e4ce1e741e4eb00e281a304fc64d950c",
+      "config": {
+        "seed": 63008,
+        "n": 32,
+        "dt": 0.01,
+        "backend": "gpu"
+      }
+    },
+    {
+      "file": "matched-sham-data\\s63008-n48-dt0.01-nu0.12-p0.02-T0.8-gpu-matched-sham.npz",
+      "sha256": "1e348c2bb221a2aed0e42a4a77987fc22ef17c877fe99e9c10218d90285f51e1",
+      "config": {
+        "seed": 63008,
+        "n": 48,
+        "dt": 0.01,
+        "backend": "gpu"
+      }
+    },
+    {
+      "file": "matched-sham-data\\s63009-n32-dt0.01-nu0.12-p0.02-T0.8-gpu-matched-sham.npz",
+      "sha256": "c354be5c91609ddd8d29138bc3181fd7a123aee00b05f1bdefb9f44295362750",
+      "config": {
+        "seed": 63009,
+        "n": 32,
+        "dt": 0.01,
+        "backend": "gpu"
+      }
+    },
+    {
+      "file": "matched-sham-data\\s63009-n48-dt0.01-nu0.12-p0.02-T0.8-gpu-matched-sham.npz",
+      "sha256": "038d0d37cdeb7e211f255a0d5c3a17a830e2ae47f3bb6f5fbdf252edd3f72765",
+      "config": {
+        "seed": 63009,
+        "n": 48,
+        "dt": 0.01,
+        "backend": "gpu"
+      }
+    },
+    {
+      "file": "matched-sham-data\\s63010-n32-dt0.01-nu0.12-p0.02-T0.8-gpu-matched-sham.npz",
+      "sha256": "e2308a39d49d19ca26b88721e7dbf97636e802dcacdd09d84a27848c89559eb9",
+      "config": {
+        "seed": 63010,
+        "n": 32,
+        "dt": 0.01,
+        "backend": "gpu"
+      }
+    },
+    {
+      "file": "matched-sham-data\\s63010-n48-dt0.01-nu0.12-p0.02-T0.8-gpu-matched-sham.npz",
+      "sha256": "cb7b4cc55ba97a608ccf1345563f4dda6521e76d4d4cb1c15e70a3196dd005fb",
+      "config": {
+        "seed": 63010,
+        "n": 48,
+        "dt": 0.01,
+        "backend": "gpu"
+      }
+    },
+    {
+      "file": "matched-sham-data\\s63011-n32-dt0.01-nu0.12-p0.02-T0.8-gpu-matched-sham.npz",
+      "sha256": "bf711b3d949de5537349149561ec0027df0b8abe71a328c79f5d45fb8eb27ed0",
+      "config": {
+        "seed": 63011,
+        "n": 32,
+        "dt": 0.01,
+        "backend": "gpu"
+      }
+    },
+    {
+      "file": "matched-sham-data\\s63011-n48-dt0.01-nu0.12-p0.02-T0.8-gpu-matched-sham.npz",
+      "sha256": "aea0b0f439182a6743230386fb3ee3b3f19a0c8ce40fda7bbc9578ce4abe351a",
+      "config": {
+        "seed": 63011,
+        "n": 48,
+        "dt": 0.01,
+        "backend": "gpu"
+      }
+    },
+    {
+      "file": "delayed-probe-data\\s63000-n32-dt0.005-nu0.12-p0.02-T0.8-gpu-wait0.8.npz",
+      "sha256": "67941fb51a44df31151d0ecadf5cf8d53875644228579bc2317ee02f9b7b4f6e",
+      "config": {
+        "seed": 63000,
+        "n": 32,
+        "dt": 0.005,
+        "wait": 0.8,
+        "backend": "gpu",
+        "amplitude": 0.02
+      }
+    },
+    {
+      "file": "delayed-probe-data\\s63000-n32-dt0.01-nu0.12-p0.02-T0.8-gpu-wait0.4.npz",
+      "sha256": "461ca6a2952d87833947a2574db8deefb6a77b4be1940ab15636095eb8a88b8b",
+      "config": {
+        "seed": 63000,
+        "n": 32,
+        "dt": 0.01,
+        "wait": 0.4,
+        "backend": "gpu",
+        "amplitude": 0.02
+      }
+    },
+    {
+      "file": "delayed-probe-data\\s63000-n32-dt0.01-nu0.12-p0.02-T0.8-gpu-wait0.8.npz",
+      "sha256": "1df08ef894040cc2b720de36ea20175e7a71b98fc871c7d7bf2a668ffd6e0d06",
+      "config": {
+        "seed": 63000,
+        "n": 32,
+        "dt": 0.01,
+        "wait": 0.8,
+        "backend": "gpu",
+        "amplitude": 0.02
+      }
+    },
+    {
+      "file": "delayed-probe-data\\s63000-n48-dt0.01-nu0.12-p0.02-T0.8-gpu-wait0.8.npz",
+      "sha256": "d23a1a959921583d2b59d90774a6350f13881a9154f3176612d0e1e713521e85",
+      "config": {
+        "seed": 63000,
+        "n": 48,
+        "dt": 0.01,
+        "wait": 0.8,
+        "backend": "gpu",
+        "amplitude": 0.02
+      }
+    },
+    {
+      "file": "delayed-probe-data\\s63001-n32-dt0.005-nu0.12-p0.02-T0.8-gpu-wait0.8.npz",
+      "sha256": "a23a69bf6ae6564271ece6a0121a8687ec153d2c15e93c6796913c84a16fede4",
+      "config": {
+        "seed": 63001,
+        "n": 32,
+        "dt": 0.005,
+        "wait": 0.8,
+        "backend": "gpu",
+        "amplitude": 0.02
+      }
+    },
+    {
+      "file": "delayed-probe-data\\s63001-n32-dt0.01-nu0.12-p0.02-T0.8-gpu-wait0.4.npz",
+      "sha256": "c66f4f671eb7b32b745a3f5ad9c9b547aacaa54541e8e73c8807844828f83e12",
+      "config": {
+        "seed": 63001,
+        "n": 32,
+        "dt": 0.01,
+        "wait": 0.4,
+        "backend": "gpu",
+        "amplitude": 0.02
+      }
+    },
+    {
+      "file": "delayed-probe-data\\s63001-n32-dt0.01-nu0.12-p0.02-T0.8-gpu-wait0.8.npz",
+      "sha256": "2755f1e8f88379ca3764aec80da5f6417b60d04b782c0ed0c2599801aa6a0979",
+      "config": {
+        "seed": 63001,
+        "n": 32,
+        "dt": 0.01,
+        "wait": 0.8,
+        "backend": "gpu",
+        "amplitude": 0.02
+      }
+    },
+    {
+      "file": "delayed-probe-data\\s63001-n48-dt0.01-nu0.12-p0.02-T0.8-gpu-wait0.8.npz",
+      "sha256": "2f23dceff86c934ca60a3db5c26114ca7358c9182ec55d28f925829390785783",
+      "config": {
+        "seed": 63001,
+        "n": 48,
+        "dt": 0.01,
+        "wait": 0.8,
+        "backend": "gpu",
+        "amplitude": 0.02
+      }
+    },
+    {
+      "file": "delayed-probe-data\\s63002-n32-dt0.01-nu0.12-p0.02-T0.8-gpu-wait0.4.npz",
+      "sha256": "760f2046f5ab7e4cc8b60ba743300a1848b1b4946bff0dc23730437d52a64e78",
+      "config": {
+        "seed": 63002,
+        "n": 32,
+        "dt": 0.01,
+        "wait": 0.4,
+        "backend": "gpu",
+        "amplitude": 0.02
+      }
+    },
+    {
+      "file": "delayed-probe-data\\s63002-n32-dt0.01-nu0.12-p0.02-T0.8-gpu-wait0.8.npz",
+      "sha256": "58d08ce913d08ce9bad27c98feb782bd8d9eaf9fc7cd850437d52b491ce8e306",
+      "config": {
+        "seed": 63002,
+        "n": 32,
+        "dt": 0.01,
+        "wait": 0.8,
+        "backend": "gpu",
+        "amplitude": 0.02
+      }
+    },
+    {
+      "file": "delayed-probe-data\\s63003-n32-dt0.01-nu0.12-p0.02-T0.8-gpu-wait0.4.npz",
+      "sha256": "40cc13c8e4b98fe9893a347e818c43052643c9e35a2134accfe9d3b45f9be710",
+      "config": {
+        "seed": 63003,
+        "n": 32,
+        "dt": 0.01,
+        "wait": 0.4,
+        "backend": "gpu",
+        "amplitude": 0.02
+      }
+    },
+    {
+      "file": "delayed-probe-data\\s63003-n32-dt0.01-nu0.12-p0.02-T0.8-gpu-wait0.8.npz",
+      "sha256": "8b3c2e18533e8ed29c79fb2babc5a3cf440acee03693205e7ff2b3069cac1a13",
+      "config": {
+        "seed": 63003,
+        "n": 32,
+        "dt": 0.01,
+        "wait": 0.8,
+        "backend": "gpu",
+        "amplitude": 0.02
+      }
+    }
+  ]
+}

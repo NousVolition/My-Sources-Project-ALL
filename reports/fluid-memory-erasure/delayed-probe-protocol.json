@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-10",
+  "written_before_main_effects_examined": true,
+  "status": "Exploratory persistence follow-up; primary contrast unchanged",
+  "seeds": [63000,63001,63002,63003],
+  "waits": [0.4,0.8],
+  "n": 32,
+  "fine_seeds": [63000,63001],
+  "fine_n": 48,
+  "half_step_seeds": [63000,63001],
+  "dt": 0.01,
+  "end": 0.8,
+  "method": "Let every matched unprobed causal field evolve unforced for the waiting time. For wait 0.8 reuse its already-recorded complete unprobed endpoint. For wait 0.4 integrate from the recorded initial field. Then clone each waiting state with/without the same fixed probe. Observe from the same fixed initial center/neighborhood positions in every arm; resetting passive observation markers exerts no fluid force. This controls measurement location while assessing the evolved fluid structure.",
+  "interpretation": "Waiting tests persistence of the candidate's effect before a later disturbance; extending observation time alone is a separate test. A four-flow pilot is exploratory and cannot establish an asymptotic memory lifetime. Low coefficients and spectra, which were matched at erasure, need not remain matched after nonlinear evolution.",
+  "checks": "Hash-check reused full-field checkpoints; retain all waiting states, marker/tangent traces, response-field snapshots, energy/divergence/volume diagnostics and grid/time comparisons."
+}

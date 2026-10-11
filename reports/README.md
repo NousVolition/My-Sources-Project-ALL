@@ -1,5 +1,10 @@
 # Reports by topic
 
+## Completed fresh-flow memory tests
+
+- **[Structure erasure and delayed probes](fluid-memory-erasure/README.md):** 135 completed fluid configurations, fresh held-out flows, structure-erasure controls, delayed probes, frozen predictions, numerical verification and limits. [Exact raw recordings](https://github.com/NousVolition/My-Sources-Project-ALL/releases/tag/fluid-memory-erasure-2026-10-10).
+
+
 [Current repository review and priorities](../REPOSITORY-CURRENT-REVIEW.md).
 
 [Project home](../README.md) · [Current status](../STATUS.md) · [Mathematics and code](../math/README.md)

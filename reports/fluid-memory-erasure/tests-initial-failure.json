@@ -1,0 +1,9 @@
+{
+  "before_any_simulations": true,
+  "tests": 8,
+  "passed": 7,
+  "failed": "test_phase_reality_and_grid_independence",
+  "cause": "Normalizing the average of opposite high-band vectors amplified cancellation roundoff and broke conjugate symmetry of the common-reset field.",
+  "repair": "Construct a neutral divergence-free reference directly in Fourier space, then scale its per-mode power. Do not normalize a cancelling average.",
+  "policy": "Retained as execution history; no scientific trajectories generated with the failing reset implementation."
+}

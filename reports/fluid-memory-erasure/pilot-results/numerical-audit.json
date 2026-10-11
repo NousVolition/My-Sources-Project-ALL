@@ -1,0 +1,152 @@
+{
+  "scope": "pilot",
+  "grid": [
+    {
+      "seed": 60000,
+      "coarse_n": 24,
+      "fine_n": 32,
+      "ftle_rmse": 0.004136038102627165,
+      "response_ftle_rmse": 0.0006030064508102859,
+      "max_probe_response_field_relative_L2": 0.004814536470903732,
+      "primary_effect_difference": 6.107111036358914e-05
+    },
+    {
+      "seed": 60000,
+      "coarse_n": 32,
+      "fine_n": 48,
+      "ftle_rmse": 0.0004443688062867411,
+      "response_ftle_rmse": 7.153440137478052e-05,
+      "max_probe_response_field_relative_L2": 0.0003690150673321176,
+      "primary_effect_difference": -2.1456095903621408e-05
+    },
+    {
+      "seed": 60001,
+      "coarse_n": 24,
+      "fine_n": 32,
+      "ftle_rmse": 0.005669969105113425,
+      "response_ftle_rmse": 0.0004965379158913196,
+      "max_probe_response_field_relative_L2": 0.0031944616187648514,
+      "primary_effect_difference": 0.00015464431738980433
+    },
+    {
+      "seed": 60001,
+      "coarse_n": 32,
+      "fine_n": 48,
+      "ftle_rmse": 0.0004171420175968167,
+      "response_ftle_rmse": 6.521082612532278e-05,
+      "max_probe_response_field_relative_L2": 0.0003213648713396974,
+      "primary_effect_difference": -3.020840116156609e-05
+    }
+  ],
+  "time": [],
+  "maxima": {
+    "energy": 0.18000000000000005,
+    "energy_budget_relative": 5.626588778229191e-09,
+    "divergence_rms": 8.724849001840434e-17,
+    "tail_enstrophy": 0.0004610357995392882,
+    "tangent_volume_error": 1.2665705173553476e-07,
+    "gradient_trace": 3.064215547965432e-14,
+    "max_cfl": 0.3124360915730606
+  },
+  "gates": {
+    "divergence": true,
+    "gradient_trace": true,
+    "energy_budget": true,
+    "cfl": true,
+    "tail": true,
+    "volume": true,
+    "finest_ftle": true,
+    "finest_response": true,
+    "finest_response_fields": true,
+    "three_grid_decrease": true,
+    "single_executed_source": true
+  },
+  "all_passed": true,
+  "verified_recordings": [
+    {
+      "file": "s60000-n24-dt0.01-nu0.12-p0.02-T0.8-gpu.npz",
+      "sha256": "bec2475a6c7ee0c9599693e0f9eaff995d23b306acaf27695fcbc6c8ed22cd04",
+      "bytes": 10378815,
+      "config": {
+        "seed": 60000,
+        "n": 24,
+        "dt": 0.01,
+        "nu": 0.12,
+        "amplitude": 0.02,
+        "end": 0.8,
+        "backend": "gpu"
+      }
+    },
+    {
+      "file": "s60000-n32-dt0.01-nu0.12-p0.02-T0.8-gpu.npz",
+      "sha256": "942eec9fd7f0174f78530e42849e05a17606f61f5c0428c176a23f311e8b4915",
+      "bytes": 27759523,
+      "config": {
+        "seed": 60000,
+        "n": 32,
+        "dt": 0.01,
+        "nu": 0.12,
+        "amplitude": 0.02,
+        "end": 0.8,
+        "backend": "gpu"
+      }
+    },
+    {
+      "file": "s60000-n48-dt0.01-nu0.12-p0.02-T0.8-gpu.npz",
+      "sha256": "36c6b6aea673707a8a14c13fbdf9a10bb3faa927f7a0758c10c3dedd3a4e98bc",
+      "bytes": 87807412,
+      "config": {
+        "seed": 60000,
+        "n": 48,
+        "dt": 0.01,
+        "nu": 0.12,
+        "amplitude": 0.02,
+        "end": 0.8,
+        "backend": "gpu"
+      }
+    },
+    {
+      "file": "s60001-n24-dt0.01-nu0.12-p0.02-T0.8-gpu.npz",
+      "sha256": "8829f2d3cf28f6302ac9d5b83ddcc27741d041031366b8a4067e3b0b56f352f0",
+      "bytes": 10372541,
+      "config": {
+        "seed": 60001,
+        "n": 24,
+        "dt": 0.01,
+        "nu": 0.12,
+        "amplitude": 0.02,
+        "end": 0.8,
+        "backend": "gpu"
+      }
+    },
+    {
+      "file": "s60001-n32-dt0.01-nu0.12-p0.02-T0.8-gpu.npz",
+      "sha256": "13404d7fff100ef79abdb8482e17700ebfb7093e7afc5f7b356b0c68edaee67e",
+      "bytes": 27760514,
+      "config": {
+        "seed": 60001,
+        "n": 32,
+        "dt": 0.01,
+        "nu": 0.12,
+        "amplitude": 0.02,
+        "end": 0.8,
+        "backend": "gpu"
+      }
+    },
+    {
+      "file": "s60001-n48-dt0.01-nu0.12-p0.02-T0.8-gpu.npz",
+      "sha256": "5df6e59c1e87c434466dd583222681c88a6630787fad0f580490cc301c01efd7",
+      "bytes": 87826640,
+      "config": {
+        "seed": 60001,
+        "n": 48,
+        "dt": 0.01,
+        "nu": 0.12,
+        "amplitude": 0.02,
+        "end": 0.8,
+        "backend": "gpu"
+      }
+    }
+  ],
+  "count": 6
+}
