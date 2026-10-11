@@ -23,12 +23,12 @@
   ],
   "max_new_simulations": 44,
   "workers": 3,
-  "current_phase": "Stage160 complete and independently verified:36 archives including34 new;54/88 frozen screens pass, both160 half-step controls pass. Controller2864 in owned session83809 is running the final conditional224 stage. Fresh research remains unstarted pending final predecessor publication.",
+  "current_phase": "Bounded full-history matrix complete at224;46 archives independently verified,64/96 frozen screens pass, both224 half-step controls pass. Controller exited normally. Final publication/checks pending; fresh remains unstarted.",
   "provisional_scores": "Stage160: A RMSE .04431946616; B .04410868524; difference -.000210780919, whole-run95% CI[-.000802036017,.000427675058]. Event AP A .939644238, B .932354389, difference -.007289849, CI[-.018730769,.000185469]. Previously examined eight groups, exploratory only; spatial predictor stability unestablished.",
   "restart_rule": "Do not duplicate controller or simulations. Verify source hashes, per-job claims and advancing recovery/logs. Checkpoints preserved on failure; never silently restart or alter active numerical/model/feature sources.",
   "analysis_rules": "Controller performs stage analysis, snapshots, frozen extension decisions and final report. Read controller-failure.json/stage-failures.json if present; unrelated simulations finish before stage failure reported. Pipeline portability repair retained in pipeline-verification.json; numeric sources unchanged.",
   "completion_rule": "When completion.json exists, verify sources/results/report/raw archives, inspect final plot, preserve every stage failure and snapshots, publish with latest remote main as base preserving unrelated work, verify all GitHub checks and published hashes. Fresh independent confirmation remains separate from this numerical phase.",
-  "publication_cache": "publication-object-cache.json records154 verified Git objects, including the published112 stage and18 detached raw archive/metadata objects from nine completed160 histories.",
+  "publication_cache": "183 previously verified published objects; final224 objects prepared separately.",
   "previous_study": "spatial-convergence complete published38177c0cd63bbef8dbbfa806714149bd197af7be; do not restart it. Original48 matched/vortex matrices and other chats untouched.",
   "final_review_tasks": [
     "Run verify_completion.py; inspect final plot; update .github/workflows/marker-history-prediction.yml to include test_full_history.py; correct stage-snapshot README links to stage-specific copied images/results/arrays/CSV/execution before publication. Preserve final README/hash unchanged unless documented editorial fix.",
@@ -150,5 +150,15 @@
     "feature_diagnosis": "feature-drift-160.json",
     "editorial_review": "stage-editorial-review-160.json",
     "publication": "pending verified tree/commit and GitHub checks"
-  }
+  },
+  "bounded_completion": {
+    "records": 46,
+    "new_simulations": 44,
+    "completion": "completion.json",
+    "verification": "verification.json",
+    "report_sha256": "288cd937afaef506d6d4f236f35f8d8f09dae1af93b706a4ef4d8298e707a708",
+    "publication": "pending",
+    "original_numerical_report_sha256": "95eb3534ff903f5bd47a9c269c4c0980a16d1f2c6f5a564c03d9d7dcb4338459"
+  },
+  "array_delivery": "array-parts/README.md; restore_prediction_arrays.py reconstructs exact original archives before saved-data verification"
 }

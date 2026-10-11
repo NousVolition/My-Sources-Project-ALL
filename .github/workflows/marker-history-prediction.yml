@@ -30,3 +30,10 @@ jobs:
           OMP_NUM_THREADS: '1'
           OPENBLAS_NUM_THREADS: '1'
         run: python -m pytest reports/matched-stretch/history-prediction/test_history_prediction.py reports/matched-stretch/history-prediction/resolution-followup/test_analysis.py reports/matched-stretch/history-prediction/mirror-followup/test_chirality.py reports/matched-stretch/history-prediction/velocity-reversal/test_reversal.py reports/matched-stretch/history-prediction/mirror-direction/test_mirror_direction.py reports/matched-stretch/history-prediction/spatial-convergence/test_refinement.py reports/matched-stretch/history-prediction/full-history-refinement/test_full_history.py reports/matched-stretch/history-prediction/fresh-independent/test_fresh.py -q
+      - name: Restore and verify completed full-history evidence
+        env:
+          OMP_NUM_THREADS: '1'
+          OPENBLAS_NUM_THREADS: '1'
+        run: |
+          python -B reports/matched-stretch/history-prediction/full-history-refinement/restore_prediction_arrays.py
+          python -B reports/matched-stretch/history-prediction/full-history-refinement/verify_completion.py
