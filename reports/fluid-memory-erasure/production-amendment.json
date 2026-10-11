@@ -1,0 +1,10 @@
+{
+  "written_before_production": true,
+  "date": "2026-10-10",
+  "production_n": 32,
+  "reason": "The two independent pilot flows passed finest-pair screens, but 24-to-32 FTLE changes were 0.00414 and 0.00567, and response changes 0.000603 and 0.000497. Use the better-resolved 32-grid for all production flows rather than interpreting tiny effects on the coarse grid.",
+  "pilot_data": "pilot-data/ and pilot-results/numerical-audit.json; pilot seeds 60000 and 60001 are excluded from all model fitting and scientific effect inference",
+  "unchanged": "Equations, initial fields, forcing, marker evaluation, target horizons, interventions, seeds/splits, model classes, statistical units and numerical tolerances remain as in protocol.json.",
+  "production": "40 independent fresh flows at n=32; all 12 test flows at n=24 and n=48; all 12 test flows at n=32 half-step and two at n=48 half-step. Duration, probe-amplitude and viscosity sensitivity use n=32.",
+  "claim_gate": "The applicable production-to-finest effect change is n=32 to n=48; n=24 is a diagnostic, not part of the production-effect bias estimate. Predictions trained at n=32 are also evaluated frozen at n=48 without refitting."
+}
