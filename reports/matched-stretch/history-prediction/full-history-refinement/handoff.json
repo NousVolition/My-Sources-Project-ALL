@@ -23,14 +23,132 @@
   ],
   "max_new_simulations": 44,
   "workers": 3,
-  "current_phase": "Initial56/80/112 stage complete with both half-step controls;36/80 screens pass. Automatic160 extension is running (eight main runs plus two half-step controls). No numerical failures.",
-  "provisional_scores": "outputs/full-history-112-preview.json in task root: .5254% RMSE reduction;paired interval includes zero;event AP slightly worse.80→112 target changes1.185–1.969%, below neither the1% screen nor every event-overlap screen.",
+  "current_phase": "Stage160 complete and independently verified:36 archives including34 new;54/88 frozen screens pass, both160 half-step controls pass. Controller2864 in owned session83809 is running the final conditional224 stage. Fresh research remains unstarted pending final predecessor publication.",
+  "provisional_scores": "Stage160: A RMSE .04431946616; B .04410868524; difference -.000210780919, whole-run95% CI[-.000802036017,.000427675058]. Event AP A .939644238, B .932354389, difference -.007289849, CI[-.018730769,.000185469]. Previously examined eight groups, exploratory only; spatial predictor stability unestablished.",
   "restart_rule": "Do not duplicate controller or simulations. Verify source hashes, per-job claims and advancing recovery/logs. Checkpoints preserved on failure; never silently restart or alter active numerical/model/feature sources.",
   "analysis_rules": "Controller performs stage analysis, snapshots, frozen extension decisions and final report. Read controller-failure.json/stage-failures.json if present; unrelated simulations finish before stage failure reported. Pipeline portability repair retained in pipeline-verification.json; numeric sources unchanged.",
   "completion_rule": "When completion.json exists, verify sources/results/report/raw archives, inspect final plot, preserve every stage failure and snapshots, publish with latest remote main as base preserving unrelated work, verify all GitHub checks and published hashes. Fresh independent confirmation remains separate from this numerical phase.",
-  "publication_cache": "publication-object-cache.json records46 verified detached archive blobs; no report or branch update yet.",
+  "publication_cache": "publication-object-cache.json records154 verified Git objects, including the published112 stage and18 detached raw archive/metadata objects from nine completed160 histories.",
   "previous_study": "spatial-convergence complete published38177c0cd63bbef8dbbfa806714149bd197af7be; do not restart it. Original48 matched/vortex matrices and other chats untouched.",
   "final_review_tasks": [
-    "Run verify_completion.py; inspect final plot; update .github/workflows/marker-history-prediction.yml to include test_full_history.py; correct stage-snapshot README links to stage-specific copied images/results/arrays/CSV/execution before publication. Preserve final README/hash unchanged unless documented editorial fix."
-  ]
+    "Run verify_completion.py; inspect final plot; update .github/workflows/marker-history-prediction.yml to include test_full_history.py; correct stage-snapshot README links to stage-specific copied images/results/arrays/CSV/execution before publication. Preserve final README/hash unchanged unless documented editorial fix.",
+    "Run diagnose_feature_drift.py on final arrays; publish exact score decomposition and keep its causal/linear-score caveat. README112 links already repaired; later snapshot links still need stage-specific repair."
+  ],
+  "stage112_publication": {
+    "phase": "first completed stage112",
+    "commit": "cdb23b46d04fbdfe1947984e45ede13275475a59",
+    "base": "d049780e9291e090a9d85d1459fe0901b406dacc",
+    "tree": "9c503d01e3fff17f6a73c225f3b4b84373e58ac5",
+    "published_files": 136,
+    "unrelated_blobs_preserved": 5465,
+    "all_local_publication_hashes_match": true,
+    "local_git_head_and_index_preserved": true,
+    "bounded_matrix_complete": false,
+    "checks": [
+      {
+        "id": 38112638533,
+        "name": "Project checks",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 38112638573,
+        "name": "Marker history prediction tests",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 38112638538,
+        "name": "CodeQL Advanced",
+        "status": "completed",
+        "conclusion": "success"
+      }
+    ],
+    "report_url": "https://github.com/NousVolition/My-Sources-Project-ALL/blob/main/reports/matched-stretch/history-prediction/full-history-refinement/README-112.md"
+  },
+  "focused_followup": {
+    "automation_id": "finish-frozen-full-history-refinement",
+    "status": "ACTIVE",
+    "interval_minutes": 30,
+    "stop": "Delete only after both the bounded full-history phase and authorized fresh-independent phase complete or reach a documented numerical stop, with independent verification, publication and successful checks."
+  },
+  "last_ownership_verification": {
+    "updated_UTC": "2026-10-11T08:19:40.059174+00:00",
+    "controller_pid": 2864,
+    "controller_session": 83809,
+    "all9_frozen_sources_match": true,
+    "eight_main_histories_verified_in": "heartbeat-verification-20261011T0717.json",
+    "newly_verified_half_step": {
+      "seed": 1024,
+      "configuration": {
+        "nu": 0.02,
+        "dt": 0.00125,
+        "save_dt": 0.025,
+        "end": 1.2,
+        "markers": 512,
+        "n": 160
+      },
+      "sha256": "38f07307255641db8da96b83e6ca7b9bfb75d228342cf4b2750ee9e3909a5e6c",
+      "seconds": 5797.399939200004,
+      "saved_through": 1.2,
+      "maximum_CFL": 0.07604726916865646,
+      "maximum_energy_residual": 1.1794427656752757e-09,
+      "independently_verified": true
+    },
+    "remaining": {
+      "stage": 224,
+      "main_histories": 8,
+      "half_step_controls": 2,
+      "owner_pid": 2864,
+      "owned_session": 83809,
+      "initial_active_seeds": [
+        1024,
+        1025,
+        1026
+      ],
+      "last_verified_checkpoint_t": 0.1,
+      "last_verified_checkpoint_UTC": "2026-10-11T08:42:14.439412Z"
+    },
+    "stage160_complete": true,
+    "fresh_research_runs_started": 0,
+    "preregistration_checks": [
+      {
+        "id": 38117324188,
+        "name": "Marker history prediction tests",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 38117324157,
+        "name": "CodeQL Advanced",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 38117324193,
+        "name": "Project checks",
+        "status": "completed",
+        "conclusion": "success"
+      }
+    ]
+  },
+  "fresh_independent_authorized": {
+    "directory": "../fresh-independent",
+    "status": "Prepared next phase; no research simulations started",
+    "user_authorization": "Finish finer-grid checks, then fresh independent tests",
+    "followup_id": "finish-frozen-full-history-refinement",
+    "protocol_sha256": "d3b41638d63ce790c30be7162194c6298fdcb39e13108ecbd051caa8fc6c6ecd"
+  },
+  "stage160_verification": {
+    "stage": 160,
+    "verified_archives": 36,
+    "new_simulations": 34,
+    "screens_pass": 54,
+    "screens_total": 88,
+    "controls": "both160 half-step controls pass",
+    "verification": "verification-160.json",
+    "feature_diagnosis": "feature-drift-160.json",
+    "editorial_review": "stage-editorial-review-160.json",
+    "publication": "pending verified tree/commit and GitHub checks"
+  }
 }

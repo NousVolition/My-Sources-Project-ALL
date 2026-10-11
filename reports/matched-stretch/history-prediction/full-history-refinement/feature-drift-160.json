@@ -1,0 +1,604 @@
+{
+  "grids": [
+    112,
+    160
+  ],
+  "models_refitted": false,
+  "interpretation": "Exact decomposition of a fitted linear score change, not causal attribution. Group RMS values do not add; covariances matter. Event decomposition is of log odds, not probabilities.",
+  "models": {
+    "A_full": {
+      "continuous": {
+        "score": "continuous_prediction",
+        "total_RMS": 0.014858164070586334,
+        "group_order": [
+          "velocity_and_speed",
+          "velocity_gradient_and_summaries",
+          "present_neighbor_geometry",
+          "present_strain_geometry_alignment"
+        ],
+        "group_indices": {
+          "velocity_and_speed": [
+            0,
+            1,
+            2,
+            17
+          ],
+          "velocity_gradient_and_summaries": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16
+          ],
+          "present_neighbor_geometry": [
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            29,
+            30
+          ],
+          "present_strain_geometry_alignment": [
+            28
+          ]
+        },
+        "group_RMS": {
+          "velocity_and_speed": 8.42876874994165e-06,
+          "velocity_gradient_and_summaries": 0.014858030140419016,
+          "present_neighbor_geometry": 4.527691321668815e-05,
+          "present_strain_geometry_alignment": 3.955397322909268e-05
+        },
+        "uncentered_group_second_moment_matrix": [
+          [
+            7.104414263999293e-11,
+            -3.1520585083530927e-09,
+            -3.6382090317780415e-12,
+            -2.020939078342888e-12
+          ],
+          [
+            -3.1520585083530927e-09,
+            0.00022076105965359994,
+            -1.8612777698998195e-09,
+            5.2463464249375606e-09
+          ],
+          [
+            -3.6382090317780415e-12,
+            -1.8612777698998195e-09,
+            2.04999887043151e-09,
+            -8.01834728631152e-11
+          ],
+          [
+            -2.020939078342888e-12,
+            5.2463464249375606e-09,
+            -8.01834728631152e-11,
+            1.5645167982077801e-09
+          ]
+        ],
+        "feature_contribution_RMS": {
+          "u_0": 8.262846867819297e-07,
+          "u_1": 4.332347787763677e-09,
+          "u_2": 6.984643722628164e-07,
+          "J_00": 0.00033868028043635985,
+          "J_01": 6.339038475951905e-05,
+          "J_02": 9.064896077729449e-05,
+          "J_10": 3.985808897599371e-06,
+          "J_11": 0.000393457850981879,
+          "J_12": 8.255230896187698e-05,
+          "J_20": 2.4874837463675765e-05,
+          "J_21": 3.1116286012336e-05,
+          "J_22": 0.00026054689870857594,
+          "strain_eigen_0": 0.0029426143953053983,
+          "strain_eigen_1": 0.004302118838269721,
+          "strain_eigen_2": 0.010460261921200096,
+          "strain_norm": 0.0035090336993295816,
+          "rotation_norm": 0.00019774680739789927,
+          "speed": 8.339452663226283e-06,
+          "distance_mean": 6.297908674487118e-08,
+          "distance_std": 1.6529615046731892e-06,
+          "distance_min": 9.673712748970822e-07,
+          "distance_max": 2.320431512038373e-06,
+          "shape_00": 1.487972907948044e-05,
+          "shape_01": 8.616042199407062e-06,
+          "shape_02": 1.2081225729611186e-05,
+          "shape_11": 6.063382826898717e-06,
+          "shape_12": 4.0588865897668886e-05,
+          "shape_22": 9.537613947947159e-06,
+          "strain_alignment": 3.9553973229092706e-05,
+          "angle_cos_mean": 4.933320459996722e-06,
+          "angle_cos_std": 2.9945938990060263e-06
+        },
+        "exact_reconstruction_max_error": 2.7755575615628914e-17
+      },
+      "event": {
+        "score": "log_odds",
+        "total_RMS": 0.3775524035654839,
+        "group_order": [
+          "velocity_and_speed",
+          "velocity_gradient_and_summaries",
+          "present_neighbor_geometry",
+          "present_strain_geometry_alignment"
+        ],
+        "group_indices": {
+          "velocity_and_speed": [
+            0,
+            1,
+            2,
+            17
+          ],
+          "velocity_gradient_and_summaries": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16
+          ],
+          "present_neighbor_geometry": [
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            29,
+            30
+          ],
+          "present_strain_geometry_alignment": [
+            28
+          ]
+        },
+        "group_RMS": {
+          "velocity_and_speed": 0.000329748220794754,
+          "velocity_gradient_and_summaries": 0.37742807760150265,
+          "present_neighbor_geometry": 0.005154792343640648,
+          "present_strain_geometry_alignment": 0.007354396798869383
+        },
+        "uncentered_group_second_moment_matrix": [
+          [
+            1.0873388911730582e-07,
+            -3.1247856540782717e-06,
+            -5.158398480210017e-09,
+            -1.5835153509139635e-08
+          ],
+          [
+            -3.1247856540782717e-06,
+            0.142451953761966,
+            -1.5823174995235012e-05,
+            2.7476389610462313e-05
+          ],
+          [
+            -5.158398480210017e-09,
+            -1.5823174995235012e-05,
+            2.6571884106056248e-05,
+            -1.959482490300153e-06
+          ],
+          [
+            -1.5835153509139635e-08,
+            2.7476389610462313e-05,
+            -1.959482490300153e-06,
+            5.408715227522022e-05
+          ]
+        ],
+        "feature_contribution_RMS": {
+          "u_0": 4.38517224193326e-05,
+          "u_1": 1.4653906907432693e-05,
+          "u_2": 1.2910552638464867e-05,
+          "J_00": 0.011840079654985954,
+          "J_01": 0.0019394107773621088,
+          "J_02": 0.0012295796886768158,
+          "J_10": 0.0026172947984579075,
+          "J_11": 0.012057735184828697,
+          "J_12": 0.0040950262806555915,
+          "J_20": 0.0021905269595593243,
+          "J_21": 0.0003178039167277011,
+          "J_22": 0.007560489532746846,
+          "strain_eigen_0": 0.07856577289845595,
+          "strain_eigen_1": 0.0961798269533241,
+          "strain_eigen_2": 0.28333321391196925,
+          "strain_norm": 0.06569332773122351,
+          "rotation_norm": 0.00955533897160151,
+          "speed": 0.0003273719918803102,
+          "distance_mean": 8.07877990174015e-06,
+          "distance_std": 0.00034941407447897164,
+          "distance_min": 0.00020604207825660397,
+          "distance_max": 0.0005059850837366862,
+          "shape_00": 0.0010879251248908201,
+          "shape_01": 0.0011269459441680606,
+          "shape_02": 0.0021792161065797705,
+          "shape_11": 0.001186466111079516,
+          "shape_12": 0.002420541784068693,
+          "shape_22": 0.0001643740435677519,
+          "strain_alignment": 0.0073543967988694,
+          "angle_cos_mean": 0.0007400080373307881,
+          "angle_cos_std": 0.0034119607021440303
+        },
+        "exact_reconstruction_max_error": 8.881784197001252e-16
+      }
+    },
+    "B_history": {
+      "continuous": {
+        "score": "continuous_prediction",
+        "total_RMS": 0.01460812355869385,
+        "group_order": [
+          "velocity_and_speed",
+          "velocity_gradient_and_summaries",
+          "present_neighbor_geometry",
+          "present_strain_geometry_alignment",
+          "past_descriptors"
+        ],
+        "group_indices": {
+          "velocity_and_speed": [
+            0,
+            1,
+            2,
+            17
+          ],
+          "velocity_gradient_and_summaries": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16
+          ],
+          "present_neighbor_geometry": [
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            29,
+            30
+          ],
+          "present_strain_geometry_alignment": [
+            28
+          ],
+          "past_descriptors": [
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52,
+            53
+          ]
+        },
+        "group_RMS": {
+          "velocity_and_speed": 9.54454097773886e-06,
+          "velocity_gradient_and_summaries": 0.01455096580307387,
+          "present_neighbor_geometry": 5.138401241756972e-05,
+          "present_strain_geometry_alignment": 0.0002385230863072711,
+          "past_descriptors": 0.0003870168904516227
+        },
+        "uncentered_group_second_moment_matrix": [
+          [
+            9.109826247573626e-11,
+            -3.437599813801298e-09,
+            -1.7672226551019974e-12,
+            -1.3813266654613715e-11,
+            -1.5146090216423384e-10
+          ],
+          [
+            -3.437599813801298e-09,
+            0.00021173060580222526,
+            -1.681981224032589e-09,
+            3.367191146873692e-08,
+            7.113312291078804e-07
+          ],
+          [
+            -1.7672226551019974e-12,
+            -1.681981224032589e-09,
+            2.640316732128957e-09,
+            -5.53394550165128e-10,
+            -9.490899748418775e-10
+          ],
+          [
+            -1.3813266654613715e-11,
+            3.367191146873692e-08,
+            -5.53394550165128e-10,
+            5.6893262701545916e-08,
+            -9.583357297230194e-09
+          ],
+          [
+            -1.5146090216423384e-10,
+            7.113312291078804e-07,
+            -9.490899748418775e-10,
+            -9.583357297230194e-09,
+            1.4978207349484333e-07
+          ]
+        ],
+        "feature_contribution_RMS": {
+          "u_0": 5.561018508136607e-07,
+          "u_1": 2.495321675107258e-07,
+          "u_2": 6.903102846466442e-07,
+          "J_00": 0.0003222481050832618,
+          "J_01": 5.6182883463632666e-05,
+          "J_02": 6.93211341903185e-05,
+          "J_10": 6.1006664916392934e-06,
+          "J_11": 0.0003903754649371302,
+          "J_12": 7.461713304084491e-05,
+          "J_20": 1.3468406258292575e-05,
+          "J_21": 2.307085313939384e-05,
+          "J_22": 0.0002595327615955589,
+          "strain_eigen_0": 0.0032733974686917455,
+          "strain_eigen_1": 0.004259239169757999,
+          "strain_eigen_2": 0.010862972001334893,
+          "strain_norm": 0.0024698016801380125,
+          "rotation_norm": 0.00016416662907054195,
+          "speed": 9.484214741057479e-06,
+          "distance_mean": 6.304575447000889e-07,
+          "distance_std": 1.5196588677511378e-06,
+          "distance_min": 1.041034662590141e-06,
+          "distance_max": 2.0275067109278095e-06,
+          "shape_00": 1.224782924458033e-05,
+          "shape_01": 1.177250278669645e-05,
+          "shape_02": 1.3623424975088028e-05,
+          "shape_11": 5.7625951328660355e-06,
+          "shape_12": 4.0188493516578016e-05,
+          "shape_22": 6.955802392214976e-06,
+          "strain_alignment": 0.0002385230863072717,
+          "angle_cos_mean": 2.3667350086934516e-06,
+          "angle_cos_std": 2.476019659879951e-05,
+          "distance_log_change_mean": 0.00011718988034514897,
+          "distance_log_change_std": 0.0017975243039726882,
+          "distance_log_change_max": 0.00016021062214676378,
+          "distance_log_path": 1.9622759658318363e-05,
+          "distance_rate_std": 0.0020398077785588934,
+          "distance_midpoint_curvature": 6.197375381757368e-05,
+          "angle_endpoint_change": 0.0026270696188062654,
+          "angle_path": 0.0026060245763976247,
+          "angle_path_std": 2.6741185501714914e-05,
+          "neighbor_endpoint_exchange": 3.0992957322631145e-05,
+          "neighbor_exchange_mean": 2.9627028085718382e-05,
+          "neighbor_exchange_max": 0.00010661508015104315,
+          "strain_alignment_change": 0.00011774714548107074,
+          "velocity_alignment_change": 9.936698553735464e-05,
+          "strain_shape_change": 0.0001328501419211609,
+          "past_log_singular_0": 5.5496126400305484e-05,
+          "past_log_singular_1": 8.233360266783195e-05,
+          "past_log_singular_2": 1.8076831620549142e-05,
+          "past_log_volume": 7.041901112736508e-05,
+          "past_log_condition": 3.0737867755164024e-05,
+          "shape_eigen_change_0": 2.5230852416047982e-05,
+          "shape_eigen_change_1": 2.7656790157843348e-05,
+          "shape_eigen_change_2": 1.8709202745708708e-06
+        },
+        "exact_reconstruction_max_error": 5.551115123125783e-17
+      },
+      "event": {
+        "score": "log_odds",
+        "total_RMS": 0.3780459149490312,
+        "group_order": [
+          "velocity_and_speed",
+          "velocity_gradient_and_summaries",
+          "present_neighbor_geometry",
+          "present_strain_geometry_alignment",
+          "past_descriptors"
+        ],
+        "group_indices": {
+          "velocity_and_speed": [
+            0,
+            1,
+            2,
+            17
+          ],
+          "velocity_gradient_and_summaries": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16
+          ],
+          "present_neighbor_geometry": [
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            29,
+            30
+          ],
+          "present_strain_geometry_alignment": [
+            28
+          ],
+          "past_descriptors": [
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52,
+            53
+          ]
+        },
+        "group_RMS": {
+          "velocity_and_speed": 0.00039680215025272213,
+          "velocity_gradient_and_summaries": 0.3768662319925946,
+          "present_neighbor_geometry": 0.006083346718078869,
+          "present_strain_geometry_alignment": 0.010912105694719877,
+          "past_descriptors": 0.015278541095807091
+        },
+        "uncentered_group_second_moment_matrix": [
+          [
+            1.5745194644518388e-07,
+            -3.6569497810827176e-06,
+            -2.787684042844227e-09,
+            -2.810135263971517e-08,
+            -1.8478768123142108e-07
+          ],
+          [
+            -3.6569497810827176e-06,
+            0.14202815681629616,
+            -1.7454537186189397e-05,
+            4.421664927415966e-05,
+            0.0002376068461171676
+          ],
+          [
+            -2.787684042844227e-09,
+            -1.7454537186189397e-05,
+            3.7007107292360936e-05,
+            -2.8685166226717108e-06,
+            7.966109954292905e-06
+          ],
+          [
+            -2.810135263971517e-08,
+            4.421664927415966e-05,
+            -2.8685166226717108e-06,
+            0.00011907405069273795,
+            -1.5151642334665307e-05
+          ],
+          [
+            -1.8478768123142108e-07,
+            0.0002376068461171676,
+            7.966109954292905e-06,
+            -1.5151642334665307e-05,
+            0.00023343381801626612
+          ]
+        ],
+        "feature_contribution_RMS": {
+          "u_0": 2.1317304112075592e-05,
+          "u_1": 1.2818943121348977e-05,
+          "u_2": 1.6178889674779584e-06,
+          "J_00": 0.012109052468735748,
+          "J_01": 0.0017097246402964683,
+          "J_02": 0.0010685027447886995,
+          "J_10": 0.0026578753940799046,
+          "J_11": 0.013312114654257592,
+          "J_12": 0.00309330603395512,
+          "J_20": 0.0017618554695236265,
+          "J_21": 0.0005398152953287114,
+          "J_22": 0.009154424384424095,
+          "strain_eigen_0": 0.07531262019997985,
+          "strain_eigen_1": 0.10149005046755478,
+          "strain_eigen_2": 0.29079184503952693,
+          "strain_norm": 0.058227877477116864,
+          "rotation_norm": 0.0041351604575815505,
+          "speed": 0.00039580121276148425,
+          "distance_mean": 4.957687331300857e-05,
+          "distance_std": 0.00029652139983091436,
+          "distance_min": 0.00018527004133832495,
+          "distance_max": 0.0003954929444121697,
+          "shape_00": 0.001183978271129421,
+          "shape_01": 0.0010842181620708085,
+          "shape_02": 0.0026725613105006477,
+          "shape_11": 0.0012423956133665486,
+          "shape_12": 0.0024382914361238983,
+          "shape_22": 0.00012227299919187278,
+          "strain_alignment": 0.01091210569471991,
+          "angle_cos_mean": 0.0006616626548442911,
+          "angle_cos_std": 0.004495601533614326,
+          "distance_log_change_mean": 0.002336536997917257,
+          "distance_log_change_std": 0.045421110270049636,
+          "distance_log_change_max": 0.002982799502430155,
+          "distance_log_path": 0.0016078524659177177,
+          "distance_rate_std": 0.04793538022347247,
+          "distance_midpoint_curvature": 0.0017839134603147655,
+          "angle_endpoint_change": 0.03825088707217426,
+          "angle_path": 0.03952318354756294,
+          "angle_path_std": 0.0008335307289987062,
+          "neighbor_endpoint_exchange": 0.0090096212221818,
+          "neighbor_exchange_mean": 0.010787946680831979,
+          "neighbor_exchange_max": 0.006708961089305473,
+          "strain_alignment_change": 0.003672724620054846,
+          "velocity_alignment_change": 0.002684161314391673,
+          "strain_shape_change": 0.0016247171646535355,
+          "past_log_singular_0": 0.001962956819874704,
+          "past_log_singular_1": 0.0068472715227716205,
+          "past_log_singular_2": 0.0016429125970740483,
+          "past_log_volume": 0.00013378211392379256,
+          "past_log_condition": 0.00022423565136668505,
+          "shape_eigen_change_0": 0.0008885598979980831,
+          "shape_eigen_change_1": 0.00230407038139923,
+          "shape_eigen_change_2": 0.001977118052139365
+        },
+        "exact_reconstruction_max_error": 8.881784197001252e-16
+      }
+    }
+  }
+}
