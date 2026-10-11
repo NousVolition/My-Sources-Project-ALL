@@ -32,7 +32,8 @@ def main(stage):
                 if stage=='controls':
                     jobs += [base+['--label','half','--dt',str(p['regimes'][regime]['dt']/2)],base+['--label','fine','--n',str(p['fine_grid'][regime]),'--dt',str(min(.005,p['regimes'][regime]['dt']))]]
                 else:jobs.append(base)
-    with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:list(pool.map(one,jobs))
-    save('results/batch_'+stage+'.json',{'stage':stage,'jobs':jobs,'completed':len(jobs)})
+    workers=min(8,max(1,(os.cpu_count() or 2)//2))
+    with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as pool:list(pool.map(one,jobs))
+    save('results/batch_'+stage+'.json',{'stage':stage,'jobs':jobs,'completed':len(jobs),'workers':workers})
 if __name__=='__main__':
     ap=argparse.ArgumentParser();ap.add_argument('stage',choices=['screen','screen_cubic','train','validation','calibration','test','controls']);main(ap.parse_args().stage)

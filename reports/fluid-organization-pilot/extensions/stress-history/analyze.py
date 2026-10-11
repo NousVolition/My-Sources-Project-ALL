@@ -14,7 +14,16 @@ def interval(v,seed=17):
 def main():
     p=read_protocol();m=verify_freeze();summary=json.loads((ROOT/'results/prediction_summary.json').read_text(encoding='utf-8'));figs=ROOT/'results/figures';figs.mkdir(exist_ok=True)
     plt.rcParams.update({'font.size':10,'axes.spines.top':False,'axes.spines.right':False,'figure.dpi':130})
-    arrays={};regimes=[];responses=[];controls=[];descriptive={}
+    arrays={};regimes=[];responses=[];controls=[];descriptive={};strength_rows=[]
+    with (ROOT/'results/predictions.csv').open(encoding='utf-8') as f:prediction_rows=list(csv.DictReader(f))
+    for i,regime in enumerate(p['regimes']):
+        for j,strength in enumerate(p['kick_rms_over_baseline_rms']):
+            rows=[r for r in prediction_rows if r['regime']==regime and float(r['relative_strength'])==strength]
+            error={name:np.array([float(r[name])-float(r['observed']) for r in rows]) for name in ['present','history']};rms={name:float(np.sqrt(np.mean(v*v))) for name,v in error.items()}
+            rng=np.random.default_rng(3500+10*i+j);idx=rng.integers(0,len(rows),(4000,len(rows)));a=np.sqrt(np.mean(error['history'][idx]**2,axis=1));b=np.sqrt(np.mean(error['present'][idx]**2,axis=1));lo,hi=np.quantile(100*(1-a/b),[.025,.975])
+            strength_rows.append({'regime':regime,'relative_strength':strength,'independent_fields':len(rows),'strong_present_rmse':rms['present'],'history_rmse':rms['history'],'error_reduction_percent':100*(1-rms['history']/rms['present']),'descriptive_reduction_ci95_low':float(lo),'descriptive_reduction_ci95_high':float(hi)})
+    table('prediction_by_strength.csv',strength_rows)
+    save('results/strength_prediction_scope.json',{'scope':'Descriptive strength breakdown; pooled per-strength RMSE across fields, distinct from the primary mean per-field RMSE across both strengths. Unadjusted paired 95% intervals, conditional on frozen models. Four comparisons are not additional confirmatory tests.'})
     for regime,c in p['regimes'].items():
         ee=[];rr=[];ss=[];tr=[];mm=[];diag=[];spectra=[];grad=[]
         for seed in p['splits']['test']:
@@ -36,6 +45,12 @@ def main():
                     _,a0,h0=inputs(z,p['history_lags']);y=target(z);pr=predict(m['models'][regime]['present'],a0);hr=predict(m['models'][regime]['history'],np.c_[a0,h0]);errors=[float(np.sqrt(np.mean((v-y)**2))) for v in [pr,hr]]
                 controls.append({'regime':regime,'seed':seed,'settings':label,'present_rmse':errors[0],'history_rmse':errors[1],'history_minus_present':errors[1]-errors[0],'target_weak':float(y[0]),'target_strong':float(y[1])})
     table('parameter_regimes.csv',regimes);table('response_regimes.csv',responses);table('prediction_refinements.csv',controls);save('results/flow_summary.json',descriptive)
+    refinements={}
+    for regime in p['regimes']:
+        group=[q for q in controls if q['regime']==regime];means={label:float(np.mean([q['history_minus_present'] for q in group if q['settings']==label])) for label in ['base','half','fine']};base={q['seed']:q for q in group if q['settings']=='base'}
+        drift=max(abs(q['history_minus_present']-base[q['seed']]['history_minus_present']) for q in group if q['settings']=='fine')
+        refinements[regime]={'mean_history_minus_present_on_four_fields':means,'maximum_grid_contrast_drift':float(drift),'primary_mean_contrast':summary[regime]['contrasts']['history_vs_present']['mean_rmse_difference'],'drift_exceeds_primary_contrast_magnitude':drift>abs(summary[regime]['contrasts']['history_vs_present']['mean_rmse_difference']),'coarse_fine_mean_sign_changed':means['base']*means['fine']<0,'scope':'Descriptive dependent four-field checks; not an independent significance test or ensemble continuum proof'}
+    save('results/refinement_forecast_summary.json',refinements)
     fig,axs=plt.subplots(2,3,figsize=(12,7),constrained_layout=True)
     colors=['#287eaf','#d35d24']
     for row,(regime,a) in enumerate(arrays.items()):
@@ -47,7 +62,7 @@ def main():
     axs[0,0].legend(fontsize=8);fig.suptitle('Independent held-out flows: mean response and pointwise 95% intervals');fig.savefig(figs/'disturbance.png');plt.close(fig)
     fig,axs=plt.subplots(1,3,figsize=(12,4),constrained_layout=True)
     for regime,a in arrays.items():
-        s=a['spectra'][:,0].mean(0);axs[0].semilogy(np.arange(1,len(s)+1),np.maximum(s,1e-15),label=regime)
+        s=a['spectra'][:,0].mean(0);positive=s>0;axs[0].semilogy(np.arange(1,len(s)+1)[positive],s[positive],label=regime)
         axs[1].plot(time,a['stretch'].mean(0),label=regime)
         for j,strength in enumerate(p['kick_rms_over_baseline_rms']):axs[2].plot(time,(a['marker'][:,:,j+1]-a['marker'][:,:,0]).mean(0),label=f'{regime}, {strength}')
     axs[0].set(xlabel='Fourier shell |k| in box modes',ylabel='Kinetic energy per shell',title='Spectrum before impulse');axs[0].legend();axs[1].set(xlabel='Time after impulse',ylabel='Enstrophy production',title='Baseline vortex stretching');axs[1].legend();axs[2].set(xlabel='Time after impulse',ylabel='Excess mean log neighbor length',title='Passive-marker deformation');axs[2].legend(fontsize=8);fig.savefig(figs/'flow_scales.png');plt.close(fig)
@@ -57,9 +72,13 @@ def main():
             for col,label in enumerate(['production','dissipation']):axs[col].plot(time,a['transfer'][:,:,j,col].mean(0),label=f'{regime}, {strength}')
     for ax,title in zip(axs,['Energy transferred from baseline','Viscous perturbation-energy loss']):ax.set(xlabel='Time after impulse',ylabel='Integral / initial perturbation energy',title=title);ax.legend(fontsize=8)
     fig.savefig(figs/'energy_budget.png');plt.close(fig)
-    fig,axs=plt.subplots(1,2,figsize=(10,4),constrained_layout=True)
+    fig,axs=plt.subplots(1,2,figsize=(11,5),constrained_layout=True)
     for ax,(regime,s) in zip(axs,summary.items()):
-        means=s['mean_field_rmse'];names=list(means);ax.bar(np.arange(len(names)),list(means.values()),color=['#aaa','#287eaf','#d35d24']+['#9a9a9a']*3+['#54634c']);ax.set_xticks(np.arange(len(names)),['Global present','Strong present','With history']+['Shuffled '+str(j+1) for j in range(p['shuffled_controls'])]+['Training prior'],rotation=40,ha='right');ax.set(ylabel='Mean independent-field RMSE (model time)',title=regime);q=s['contrasts']['history_vs_present'];ax.text(.02,.96,f'History improvement: {q["relative_improvement_percent"]:+.1f}%\n97.5% interval [{q["relative_improvement_interval"][0]:+.1f}, {q["relative_improvement_interval"][1]:+.1f}]%',transform=ax.transAxes,va='top',fontsize=9)
+        means=s['mean_field_rmse'];values=[means['conventional'],means['present'],means['history'],s['contrasts']['history_vs_shuffled_mean']['null_mean_field_rmse'],means['prior_by_strength']]
+        ax.bar(np.arange(5),values,color=['#aaa','#287eaf','#d35d24','#9a9a9a','#54634c']);ax.set_xticks(np.arange(5),['Global present','Richer present','With history','Expected shuffled','Training prior'],rotation=30,ha='right');ax.set(ylabel='Mean independent-field RMSE (model time)',title=regime,ylim=(0,1.6*max(values)))
+        q=s['contrasts']['history_vs_present'];null=s['contrasts']['history_vs_shuffled_mean']
+        ax.text(.02,.96,f'History vs richer present: {q["relative_improvement_percent"]:+.1f}%\n97.5% interval [{q["relative_improvement_interval"][0]:+.1f}, {q["relative_improvement_interval"][1]:+.1f}]%\nHistory vs expected shuffled: {null["relative_improvement_percent"]:+.1f}%\n97.5% interval [{null["relative_improvement_interval"][0]:+.1f}, {null["relative_improvement_interval"][1]:+.1f}]%',transform=ax.transAxes,va='top',fontsize=9)
+    fig.suptitle('History does not clearly beat the null controls in either regime')
     fig.savefig(figs/'prediction.png');plt.close(fig)
     save('results/descriptive_scope.json',{'response_intervals':'Descriptive pointwise 95% intervals; no additional confirmatory claims.','primary_intervals':'97.5% per regime; Bonferroni protection for two history-versus-present comparisons.','refinement_scope':'Four prechosen held-out initial fields per regime. Dependent numerical controls, not independent validation samples.'})
 if __name__=='__main__':main()

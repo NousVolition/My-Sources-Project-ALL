@@ -1,0 +1,30 @@
+name: Stronger fluid history checks
+on:
+  push:
+    paths:
+      - 'reports/fluid-organization-pilot/extensions/stress-history/**'
+      - '.github/workflows/stress-fluid-history.yml'
+  pull_request:
+    paths:
+      - 'reports/fluid-organization-pilot/extensions/stress-history/**'
+      - '.github/workflows/stress-fluid-history.yml'
+permissions:
+  contents: read
+jobs:
+  physical-and-prediction-checks:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: reports/fluid-organization-pilot/extensions/stress-history
+    env:
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements.txt
+      - run: python -m pytest test_study.py -q
+      - run: python restore_recordings.py
+      - run: python audit.py
