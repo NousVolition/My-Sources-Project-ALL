@@ -1,0 +1,130 @@
+{
+  "reviewed_UTC": "2026-10-11T21:20:42.783396+00:00",
+  "method": "Read-only independent NumPy RMS reconstruction from parent causal descriptors; no numeric_audit script or controller decision rerun",
+  "seed": 50000,
+  "comparison": "56 to80",
+  "reconstructed_standardized_history_RMS": 0.011944842838966659,
+  "saved_RMS": 0.011944842838966659,
+  "bound": 0.005,
+  "matches_saved_failure": true,
+  "top_feature_RMS": [
+    {
+      "feature": "neighbor_exchange_max",
+      "standardized_RMS": 0.04097315972903501,
+      "fraction_of_total_squared_RMS": 0.5115760419412347
+    },
+    {
+      "feature": "neighbor_endpoint_exchange",
+      "standardized_RMS": 0.027155292619453073,
+      "fraction_of_total_squared_RMS": 0.22470889183366116
+    },
+    {
+      "feature": "neighbor_exchange_mean",
+      "standardized_RMS": 0.021728649569116354,
+      "fraction_of_total_squared_RMS": 0.14387215728410271
+    },
+    {
+      "feature": "distance_log_change_max",
+      "standardized_RMS": 0.00977799363487139,
+      "fraction_of_total_squared_RMS": 0.02913471568956894
+    },
+    {
+      "feature": "past_log_singular_0",
+      "standardized_RMS": 0.007589023567393567,
+      "fraction_of_total_squared_RMS": 0.01755024109723233
+    },
+    {
+      "feature": "distance_log_change_std",
+      "standardized_RMS": 0.006921012183076187,
+      "fraction_of_total_squared_RMS": 0.014596559818948853
+    }
+  ],
+  "largest_rows": [
+    {
+      "anchor": 0.6,
+      "particle": 109,
+      "standardized_row_RMS": 0.6036535788012806
+    },
+    {
+      "anchor": 0.7,
+      "particle": 44,
+      "standardized_row_RMS": 0.013816610088520495
+    },
+    {
+      "anchor": 0.7,
+      "particle": 471,
+      "standardized_row_RMS": 0.01085724617412718
+    },
+    {
+      "anchor": 0.6,
+      "particle": 145,
+      "standardized_row_RMS": 0.007687370605796463
+    },
+    {
+      "anchor": 0.7,
+      "particle": 77,
+      "standardized_row_RMS": 0.00670140029626711
+    }
+  ],
+  "interpretation": "Feature stability diagnostic only; dimensionless training-scale normalization, not fluid-power units or evidence for/against predictive benefit. Preserve failure; no tolerance relaxation or fresh fitting.",
+  "current_neighbor_selection_for_largest_row": [
+    {
+      "grid": 56,
+      "anchor": 0.6,
+      "particle": 109,
+      "eight_neighbors": [
+        257,
+        6,
+        334,
+        450,
+        488,
+        77,
+        461,
+        494
+      ],
+      "ninth_neighbor": 19,
+      "eighth_distance": 1.1103237394571663,
+      "ninth_distance": 1.1103370289549164,
+      "distance_margin": 1.3289497750035295e-05
+    },
+    {
+      "grid": 80,
+      "anchor": 0.6,
+      "particle": 109,
+      "eight_neighbors": [
+        257,
+        6,
+        334,
+        450,
+        488,
+        77,
+        461,
+        19
+      ],
+      "ninth_neighbor": 494,
+      "eighth_distance": 1.1103340499144994,
+      "ninth_distance": 1.1103400079340122,
+      "distance_margin": 5.958019512863899e-06
+    },
+    {
+      "grid": 112,
+      "anchor": 0.6,
+      "particle": 109,
+      "eight_neighbors": [
+        257,
+        6,
+        334,
+        450,
+        488,
+        77,
+        461,
+        19
+      ],
+      "ninth_neighbor": 494,
+      "eighth_distance": 1.1103336677532156,
+      "ninth_distance": 1.1103445208782796,
+      "distance_margin": 1.0853125063992053e-05
+    }
+  ],
+  "largest_row_fraction_of_total_squared_history_difference": 0.9976419764993454
+}

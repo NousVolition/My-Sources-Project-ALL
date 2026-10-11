@@ -1,5 +1,7 @@
 # Causal marker history prediction pilot
 
+Latest fresh independent study: [the complete initial accuracy pilot](fresh-independent/pilot-initial/README.md) passes 115/116 frozen screens. One coarse-pair history comparison fails; the predefined finer pilot is underway. No fresh confirmation result exists. [Frozen preregistration](fresh-independent/PREREGISTRATION.md).
+
 
 
 
