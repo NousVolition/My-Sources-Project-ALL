@@ -1,19 +1,20 @@
 # Roadmap — quench & switching diagnostics
 
-## Phase 0–2 ✓
-## Phase 3 ✓ (real data)
+## Phase 0–3 ✓
+Protocol, switching identity on existing data, controls, and real-data diagnostics from central-response.
 
-Diagnostics now run on published saved fields from central-response/measurements.json.
+## Hug quench pilot ✓
+N=32 hug-inspired compact field evolved with centered advection+viscosity.
+- Checkpoint at t=0.10, max_grad ≈ 2.67
+- Control (nu=0.01) final ≈ 2.57
+- Quench (nu×2) final ≈ 2.38
+- Neither crossed 1.5× on this interval
 
-### Real peak-vorticity results (1.5× band)
-| Case | Source | W0 | Final W | First arrival | Sustained (0.02) |
-|------|--------|----|---------|---------------|------------------|
-| aligned | fd4-n112-base | 80 | 135.35 | **0.36** | **0.36** |
-| compressive | fd4-n112-base | 80 | 111.80 | null | null |
+See hug_quench_pilot.json.
 
-### Real switching identity
-Global-max marker changes on nearly every sample (3–4 changes out of 5) across all 6 Fourier runs.
+## Next
+- Wire the same branching logic to a real saved hugged-ring velocity array (from hug-continued-0.4 or earlier).
+- Add energy-budget residual and half-step control on that production runner.
+- Record first-arrival / sustained-residence for peak vorticity and core width.
 
-See real_data_diagnostics.json.
-
-No synthetic series remain.
+The diagnostic machinery is exercised on a real compact field. The production checkpoint wiring is the remaining mechanical step.

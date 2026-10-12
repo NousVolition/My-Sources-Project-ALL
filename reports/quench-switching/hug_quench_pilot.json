@@ -1,0 +1,18 @@
+{
+  "pilot": "N=32 hug-inspired compact field, advection+viscosity, no full projection",
+  "checkpoint_time": 0.1,
+  "checkpoint_max_grad": 2.6729,
+  "threshold_1.5x": 4.0093,
+  "control": {
+    "final_max_grad": 2.5665,
+    "first_arrival": null,
+    "note": "decays slowly"
+  },
+  "quench_nu_x2": {
+    "final_max_grad": 2.3765,
+    "first_arrival": null,
+    "note": "decays faster"
+  },
+  "observation": "Both branches decay. The ×2 viscosity quench reduces the final max gradient more (2.38 vs 2.57). Neither crossed the 1.5× absolute band on this short interval and this field.",
+  "note": "Real evolution of a compact initial field using centered updates. Demonstrates checkpoint copy, viscosity change, and timing diagnostic. Production version uses the saved hugged-ring FFT checkpoints."
+}
