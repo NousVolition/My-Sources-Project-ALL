@@ -1,6 +1,6 @@
 # Stationary fluid history experiment — protocol registration
 
-**Status: Models frozen; independent test integrations have not started. There is no held-out prediction result in this commit.**
+**Status: Models frozen; the independent test and refinement workflow is being launched. Results remain pending. There is no held-out prediction result in this commit.**
 
 This study tests whether causal histories of partial observations improve prediction of the response to localized impulses in a continuously forced, three dimensional incompressible fluid. It extends the [completed transient-flow experiment](../stress-history/README.md).
 
@@ -21,3 +21,4 @@ The independent prediction result, ensemble stationarity assessment, final resol
 Use Python 3.12 and install requirements.txt. Run the two test files with pytest. Calibration is run with `python pipeline.py calibration --workers 8`; it refuses to freeze a model until the required screening, stationarity and numerical gates pass. Confirmation verifies the frozen source and model hashes before integrating new test fields. This freeze release includes the exact calibration and screening observations required to verify the model hashes. Run `python restore_recordings.py` before checking or using the frozen models. The full result audit additionally requires the later completed test observations and result manifest.
 
 The protocol can be developed during calibration. The final frozen source and model commit must precede all held-out integrations. Git history records intermediate changes; only the final pre-test freeze is the confirmatory specification.
+

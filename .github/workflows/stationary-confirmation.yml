@@ -1,0 +1,88 @@
+name: Stationary independent confirmation
+on:
+  push:
+    paths:
+      - 'reports/fluid-organization-pilot/extensions/stationary-history/confirmation_launch.json'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  independent-runs:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      max-parallel: 16
+      matrix:
+        group: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+    defaults:
+      run:
+        working-directory: reports/fluid-organization-pilot/extensions/stationary-history
+    env:
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+      NUMBA_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: reports/fluid-organization-pilot/extensions/stationary-history
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements.txt
+      - run: python restore_recordings.py
+      - run: python cloud_confirm.py base ${{ matrix.group }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: stationary-confirmation-base-${{ matrix.group }}
+          path: |
+            reports/fluid-organization-pilot/extensions/stationary-history/confirmation_base_*.zip
+            reports/fluid-organization-pilot/extensions/stationary-history/data/logs/330*.log
+          retention-days: 7
+  refinement:
+    needs: independent-runs
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix:
+        include:
+          - {group: 0, base_group: 0}
+          - {group: 1, base_group: 0}
+          - {group: 2, base_group: 0}
+          - {group: 3, base_group: 0}
+          - {group: 4, base_group: 1}
+          - {group: 5, base_group: 1}
+          - {group: 6, base_group: 1}
+          - {group: 7, base_group: 1}
+    defaults:
+      run:
+        working-directory: reports/fluid-organization-pilot/extensions/stationary-history
+    env:
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+      NUMBA_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: reports/fluid-organization-pilot/extensions/stationary-history
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements.txt
+      - run: python restore_recordings.py
+      - uses: actions/download-artifact@v4
+        with:
+          name: stationary-confirmation-base-${{ matrix.base_group }}
+          path: reports/fluid-organization-pilot/extensions/stationary-history/downloaded-base
+      - run: python cloud_confirm.py control ${{ matrix.group }} --download-directory downloaded-base
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: stationary-confirmation-control-${{ matrix.group }}
+          path: |
+            reports/fluid-organization-pilot/extensions/stationary-history/confirmation_control_*.zip
+            reports/fluid-organization-pilot/extensions/stationary-history/data/logs/330*.log
+          retention-days: 7
