@@ -1,0 +1,55 @@
+{
+  "accepted": true,
+  "selected": "workflow-smoke-48x5.json",
+  "selected_mesh": [
+    48,
+    5
+  ],
+  "checks": [
+    {
+      "coarse": "workflow-smoke-24x3.json",
+      "fine": "workflow-smoke-48x5.json",
+      "coarse_mesh": [
+        24,
+        3
+      ],
+      "fine_mesh": [
+        48,
+        5
+      ],
+      "tolerance": 0.05,
+      "gap_floor": 0.01,
+      "refines_both_axes": true,
+      "complete": true,
+      "passed": true,
+      "shared_start": 0.0,
+      "shared_end": 0.02,
+      "errors": {
+        "gap_arclength_rms": {
+          "maximum_scaled": 0.01113736131991782,
+          "maximum_absolute": 0.005072251234136016,
+          "final_scaled": 0.01106944404619174
+        },
+        "surface_gap_rms": {
+          "maximum_scaled": 0.010432374067134622,
+          "maximum_absolute": 0.004752290925760905,
+          "final_scaled": 0.010360469085083732
+        }
+      },
+      "energy_passed": true,
+      "geometry_passed": true,
+      "input_sha256": [
+        {
+          "metadata": "51032371fbb33ec0d293b30c02adca2e55547a8669b1b1b4c73e1b41f7f059da",
+          "states": "44557f3830585c67701c2c57848dbb523ee4e8a79a5664dc043adc437fb3d9bc"
+        },
+        {
+          "metadata": "a77940d996e6471d8326476f691e9a9c3f5430d5d1fc9758357c6392bb5a2b5d",
+          "states": "dc93b3919077b2c004a33fc3fc4b1f5942a6aaf64a3ee9c24ac78ae6067a3226"
+        }
+      ]
+    }
+  ],
+  "scope": "Agreement of two gap statistics at saved times; not exact error or a fixed-coarse-mesh repair",
+  "driver_sha256": "4547388ffe5f53e34d530e1910676f70a3e75b95d08dcda6a05577dcc0cd8999"
+}

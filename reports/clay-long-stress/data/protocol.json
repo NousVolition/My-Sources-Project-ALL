@@ -1,0 +1,58 @@
+{
+  "declared_before_launch": true,
+  "forcing": {
+    "alpha": 128,
+    "rho": 500,
+    "viscosity": 0.01875
+  },
+  "continuations": [
+    {
+      "mesh": [
+        24,
+        3
+      ],
+      "from": 0.5,
+      "end": 1.5,
+      "both_directions": true,
+      "seconds_budget": 2400
+    },
+    {
+      "mesh": [
+        48,
+        5
+      ],
+      "from": 0.1,
+      "end": 0.5,
+      "both_directions": true,
+      "seconds_budget": 2400
+    },
+    {
+      "mesh": [
+        72,
+        7
+      ],
+      "from": 0.1,
+      "end": 0.5,
+      "both_directions": true,
+      "seconds_budget": 2400
+    }
+  ],
+  "controls": {
+    "fresh_standard_24": {
+      "end": 0.2,
+      "both_directions": true
+    },
+    "hard_radau_24": {
+      "start": 0.5,
+      "end": 0.6,
+      "rtol": 2e-10,
+      "both_directions": true
+    }
+  },
+  "targets": {
+    "gap_relative": 0.05,
+    "physical_state_scaled": 0.0001,
+    "energy_scaled": 0.001
+  },
+  "interpretation": "Coarse-start refinement increases actual degrees of freedom. It does not make the fixed 24-point mesh accurate; incomplete extensions remain explicit."
+}

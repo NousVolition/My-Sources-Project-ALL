@@ -1,0 +1,98 @@
+{
+  "accepted": true,
+  "selected": "mesh72-one.json",
+  "selected_mesh": [
+    72,
+    7
+  ],
+  "checks": [
+    {
+      "coarse": "mesh24-one.json",
+      "fine": "mesh48-one.json",
+      "coarse_mesh": [
+        24,
+        3
+      ],
+      "fine_mesh": [
+        48,
+        5
+      ],
+      "tolerance": 0.05,
+      "gap_floor": 0.01,
+      "refines_both_axes": true,
+      "complete": true,
+      "passed": false,
+      "shared_start": 0.0,
+      "shared_end": 0.2,
+      "errors": {
+        "gap_arclength_rms": {
+          "maximum_scaled": 0.28763143107688377,
+          "maximum_absolute": 0.049088806639450366,
+          "final_scaled": 0.28763143107688377
+        },
+        "surface_gap_rms": {
+          "maximum_scaled": 0.30505717021095663,
+          "maximum_absolute": 0.05358524838194989,
+          "final_scaled": 0.30505717021095663
+        }
+      },
+      "energy_passed": true,
+      "geometry_passed": true,
+      "input_sha256": [
+        {
+          "metadata": "111e97faa55089985c492d15d5090d811a8918dca1bd8deda7401e302bf6e5bb",
+          "states": "fa55e2f08ae512ed906cf5c2e63dc248c036864ca48319f1430b614a61e38b12"
+        },
+        {
+          "metadata": "4c060dd5a264709d2ea5ea8f1f663fb2c0f3c15145bb525d827f03fc1e2188de",
+          "states": "2abace91c63c87a18b48d940dc746bae895bce98bf29bd99157bc6ee9721f69c"
+        }
+      ]
+    },
+    {
+      "coarse": "mesh48-one.json",
+      "fine": "mesh72-one.json",
+      "coarse_mesh": [
+        48,
+        5
+      ],
+      "fine_mesh": [
+        72,
+        7
+      ],
+      "tolerance": 0.05,
+      "gap_floor": 0.01,
+      "refines_both_axes": true,
+      "complete": true,
+      "passed": true,
+      "shared_start": 0.0,
+      "shared_end": 0.2,
+      "errors": {
+        "gap_arclength_rms": {
+          "maximum_scaled": 0.008076832805142743,
+          "maximum_absolute": 0.011469843567592175,
+          "final_scaled": 0.007651803285823954
+        },
+        "surface_gap_rms": {
+          "maximum_scaled": 0.021230719119597327,
+          "maximum_absolute": 0.014649964060739373,
+          "final_scaled": 0.021230719119597327
+        }
+      },
+      "energy_passed": true,
+      "geometry_passed": true,
+      "input_sha256": [
+        {
+          "metadata": "4c060dd5a264709d2ea5ea8f1f663fb2c0f3c15145bb525d827f03fc1e2188de",
+          "states": "2abace91c63c87a18b48d940dc746bae895bce98bf29bd99157bc6ee9721f69c"
+        },
+        {
+          "metadata": "3cf4ab25753d2c606a5c0e7c812e027b912e1ec86c553b91cece2b16791e57da",
+          "states": "20d1a49cb46dd4a2c30412437c0c574985ab7c0afee7bc2bb37f05d4e360e68d"
+        }
+      ]
+    }
+  ],
+  "scope": "Agreement of two gap statistics at saved times; not exact error or a fixed-coarse-mesh repair",
+  "driver_sha256": "5752a0a1d7ea7f17abd40b3f4286756ab2ca0f508e284d0cd39ec66b9d2fb1cb"
+}
