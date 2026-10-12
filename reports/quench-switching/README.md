@@ -1,38 +1,22 @@
 # Quench and switching-identity diagnostics
 
-Real-data analysis of peak-vorticity timing and material-marker identity changes, using published fields from the central-response study.
+Hug-gated compact field with viscosity quench, energy budget, and timing diagnostics.
 
-## Peak vorticity (1.5× band)
+## Phase 8 complete
 
-![Peak vorticity from real saved fields](wmax_real.png)
+![Peak and energy after hug-gated checkpoint](phase8_complete.png)
 
-| Case | Source | W₀ | Final W | First arrival | Sustained (0.02) |
-|------|--------|----|---------|---------------|------------------|
-| aligned | fd4-n112-base | 80 | 135.35 | **0.36** | **0.36** |
-| compressive | fd4-n112-base | 80 | 111.80 | null | null |
+| | Control | Quench (ν×2) |
+|---|---|---|
+| Final peak | 1.211 | 1.182 |
+| Final energy | 9.212 | 8.923 |
+| Energy residual | -1.04% | -4.15% |
+| Argmax changes | 1 | 0 |
+| First arrival (1.5×) | null | null |
+| Sustained residence | null | null |
 
-Aligned crosses the 1.5× threshold at t = 0.36 and remains above it. Compressive ends below the threshold.
+The quench accelerates energy decay and stabilizes the argmax identity relative to control. Neither branch crossed the 1.5× band on this interval.
 
-## Switching identity
+**Scope:** Finite-time numerical observation on a hug-gated compact field using centered advection-viscosity. Does not establish continuum regularity or breakdown.
 
-![Marker index holding the global peak](switching_identity.png)
-
-Global-max marker identity changes on nearly every recorded sample across the six Fourier runs.
-
-| Run | Sequence | Changes |
-|-----|----------|---------|
-| aligned n112 base | 32 → 18 → 53 → 59 → 62 | 4 |
-| aligned n112 half | 32 → 46 → 53 → 5 → 62 | 4 |
-| aligned n160 base | 32 → 46 → 53 → 59 → 3 | 4 |
-| compressive n112 base | 32 → 15 → 6 → 0 → 1 | 4 |
-| compressive n112 half | 32 → 15 → 6 → 0 → 1 | 4 |
-| compressive n160 base | 32 → 49 → 6 → 0 → 0 | 3 |
-
-## Files
-
-- [real_data_diagnostics.json](real_data_diagnostics.json) — numbers
-- [PROTOCOL.md](PROTOCOL.md) — locked definitions
-- [CONTROLS.md](CONTROLS.md) — required gates
-- [report.html](report.html) — offline report
-
-All values come from published saved fields. No synthetic series.
+See phase8_complete.json.
