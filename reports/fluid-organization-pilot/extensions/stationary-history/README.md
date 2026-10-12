@@ -1,6 +1,6 @@
 # Stationary fluid history experiment — protocol registration
 
-**Status: Calibration integrations are running. Models are not yet frozen and independent test integrations have not started. There is no held-out prediction result in this commit.**
+**Status: Models frozen; independent test integrations have not started. There is no held-out prediction result in this commit.**
 
 This study tests whether causal histories of partial observations improve prediction of the response to localized impulses in a continuously forced, three dimensional incompressible fluid. It extends the [completed transient-flow experiment](../stress-history/README.md).
 
@@ -18,6 +18,6 @@ The independent prediction result, ensemble stationarity assessment, final resol
 
 ## Execution
 
-Use Python 3.12 and install requirements.txt. Run the two test files with pytest. Calibration is run with `python pipeline.py calibration --workers 8`; it refuses to freeze a model until the required screening, stationarity and numerical gates pass. Confirmation verifies the frozen source and model hashes before integrating new test fields. Raw calibration recordings are not included in this intermediate registration, so the frozen-data audit requires the completed release.
+Use Python 3.12 and install requirements.txt. Run the two test files with pytest. Calibration is run with `python pipeline.py calibration --workers 8`; it refuses to freeze a model until the required screening, stationarity and numerical gates pass. Confirmation verifies the frozen source and model hashes before integrating new test fields. This freeze release includes the exact calibration and screening observations required to verify the model hashes. Run `python restore_recordings.py` before checking or using the frozen models. The full result audit additionally requires the later completed test observations and result manifest.
 
 The protocol can be developed during calibration. The final frozen source and model commit must precede all held-out integrations. Git history records intermediate changes; only the final pre-test freeze is the confirmatory specification.

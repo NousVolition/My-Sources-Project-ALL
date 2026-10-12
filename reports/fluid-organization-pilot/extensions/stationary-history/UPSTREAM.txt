@@ -15,6 +15,14 @@ direct comparison with the retained NumPy reference validate the changes.
 This extension uses Eulerian field histories. It does not execute marker
 tracking or reinterpret passive markers as material molecules.
 
+screen_original_solver.py and screen_optimized_solver.py preserve the NumPy
+implementations used in early screening. numpy_solver_reference.py preserves
+the later diagnostic extension. numexpr_solver_reference.py is an unused
+optimization trial, requiring optional numexpr if run manually; it is not a
+dependency of the independent experiment. Screening provenance identifies the
+actual executed module for every retained case, including the first driver's
+incorrect completion-time source hash and filename bug.
+
 Physics references:
 https://arxiv.org/abs/1406.6317
 https://doi.org/10.1088/1751-8113/48/25/25FT01

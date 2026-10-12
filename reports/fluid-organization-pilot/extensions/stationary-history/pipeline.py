@@ -11,4 +11,4 @@ if __name__=='__main__':
   run('batch.py','calibration','--workers',a.workers);run('forecast.py','freeze')
  else:
   run('batch.py','test','--workers',a.workers);run('batch.py','controls','--workers',a.workers)
-  run('checks.py');run('forecast.py','evaluate');run('analyze.py');run('report.py');run('manifest.py');run('audit.py')
+  run('checks.py');run('forecast.py','evaluate');run('analyze.py');run('environment.py');run('execution_summary.py');run('report.py');run('manifest.py');run('audit.py')
