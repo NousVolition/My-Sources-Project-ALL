@@ -1,5 +1,7 @@
 {
   "purpose": "Accelerate the last sixteen calibration fields; no test integration or model fitting",
+  "execution_revision": 2,
+  "revision_note": "Include the original reference solver required by the optimized-backend comparison test. No integration was started in the first hosted attempt.",
   "groups": {
     "0": [310016, 310017], "1": [310018, 310019],
     "2": [310020, 310021], "3": [310022, 310023],
@@ -9,4 +11,3 @@
   "selection_policy": "Use hosted completed artifacts for these listed seeds if retrieved and verified before the local queued run starts. Otherwise retain the local run. No selection based on prediction or physical outcomes; duplicate same-seed realizations are never counted as independent.",
   "limits": {"groups": 8, "workers_per_group": 2, "timeout_minutes_per_group": 90, "standard_public_runner": "ubuntu-latest"}
 }
-
