@@ -1,0 +1,24 @@
+{
+  "phase": 8,
+  "description": "Hug-gated compact field, real evolution, viscosity quench",
+  "grid": 32,
+  "checkpoint_time": 0.08,
+  "checkpoint_peak": 1.1862,
+  "checkpoint_argmax": [8, 19, 16],
+  "threshold_1.5x": 1.7793,
+  "control": {
+    "final_peak": 1.2113,
+    "first_arrival": null,
+    "argmax_changes": 1
+  },
+  "quench_nu_x2": {
+    "final_peak": 1.1823,
+    "first_arrival": null,
+    "argmax_changes": 0
+  },
+  "observation": "Quench reduces the final peak relative to control (1.182 vs 1.211). Argmax identity is more stable under the higher viscosity. Neither crossed 1.5× on this interval.",
+  "controls": {
+    "no_new_projection": true,
+    "source": "HugGatedField + centered advection-viscosity"
+  }
+}

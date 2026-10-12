@@ -1,20 +1,22 @@
 # Roadmap — quench & switching diagnostics
 
-## Phase 0–3 ✓
-Protocol, switching identity on existing data, controls, and real-data diagnostics from central-response.
+## Done
+- Protocol, switching identity, controls, real-data diagnostics, hug continuation to 0.40, one-picture sketch.
 
-## Hug quench pilot ✓
-N=32 hug-inspired compact field evolved with centered advection+viscosity.
-- Checkpoint at t=0.10, max_grad ≈ 2.67
-- Control (nu=0.01) final ≈ 2.57
-- Quench (nu×2) final ≈ 2.38
-- Neither crossed 1.5× on this interval
+## Phase 8 — hug-gated quench ✓ (pilot)
+N=32 hug-gated compact field, real evolution:
+- Checkpoint peak 1.186 at index (8,19,16)
+- Control final 1.211 (1 argmax change)
+- Quench ν×2 final 1.182 (0 argmax changes)
+- Neither crossed 1.5×
 
-See hug_quench_pilot.json.
+See phase8_hug_quench.json.
 
-## Next
-- Wire the same branching logic to a real saved hugged-ring velocity array (from hug-continued-0.4 or earlier).
-- Add energy-budget residual and half-step control on that production runner.
-- Record first-arrival / sustained-residence for peak vorticity and core width.
+## Still required for “really good”
+- Load actual saved hugged-ring velocity array (0.32/0.40 checkpoint)
+- Full FFT projection + energy-budget residual + half-step on that run
+- Core width + sustained-residence on the same series
+- Figures and HTML matching the other studies
+- Explicit scope statement
 
-The diagnostic machinery is exercised on a real compact field. The production checkpoint wiring is the remaining mechanical step.
+Phase 8 machinery is exercised on a hug-gated field. Production array restart is the remaining mechanical step.
