@@ -61,3 +61,7 @@ Both full Git tree inventories were inspected without truncation. All **178 publ
 At the audited heads, [main Project checks](https://github.com/NousVolition/My-Sources-Project-ALL/actions/runs/38171455384), [CodeQL](https://github.com/NousVolition/My-Sources-Project-ALL/actions/runs/38171455555), and [Nous-Volition checks](https://github.com/NousVolition/Nous-Volition/actions/runs/38171926476) passed. Both open-issue listings, which also include open PRs, were empty. [PR #3](https://github.com/NousVolition/My-Sources-Project-ALL/pull/3) is merged, and its [post-merge Project checks](https://github.com/NousVolition/My-Sources-Project-ALL/actions/runs/38106222184) passed. A green workflow covers its configured checks, not every scientific claim or saved experiment. This review does not independently rerun the numerical ensembles.
 
 The supplied q remains a passive signed record. Fitted-q and cubic-feedback tests are separate models, E is unsigned, and mirror averaging is an explicit intervention. The mathematical model remains under examination.
+
+## History storage follow-up
+
+The later [verified history cleanup](HISTORY-CLEANUP.md) removes archived numerical paths from normal Git clones and preserves the complete original history in a downloadable, independently restored backup. Earlier audit statements above describe the state at the time of that audit. Scientific results and their limitations are unchanged.
