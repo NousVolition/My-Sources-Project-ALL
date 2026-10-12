@@ -1,0 +1,20 @@
+This experiment extends the completed stress-history study in
+NousVolition/My-Sources-Project-ALL, source commit
+f9def0b18963f44df2a9df970928dda1b5dcb2ed.
+
+Upstream folder:
+reports/fluid-organization-pilot/extensions/stress-history
+
+The new solver retains periodic Fourier projection, rotational advection,
+strict two-thirds dealiasing, the localized curl impulse and RK4 integration.
+It replaces fixed forcing with large-scale constant-power negative damping,
+includes forcing-difference work in the perturbation budget, and uses fused
+double-precision Numba kernels without fast-math. Analytical tests and a
+direct comparison with the retained NumPy reference validate the changes.
+
+This extension uses Eulerian field histories. It does not execute marker
+tracking or reinterpret passive markers as material molecules.
+
+Physics references:
+https://arxiv.org/abs/1406.6317
+https://doi.org/10.1088/1751-8113/48/25/25FT01
