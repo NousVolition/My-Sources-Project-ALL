@@ -45,7 +45,12 @@ def analyze():
  refinement=[]
  for seed in p['refinement_seeds']:
   for label in ['base','half','fine']:
-   with np.load(ROOT/'data/runs'/f'{label}_{seed}.npz') as z:c,a,h=inputs(z);y=target(z)
+   with np.load(ROOT/'data/runs'/f'{label}_{seed}.npz') as z:
+    selected={k:z[k] for k in z.files}
+    if label=='base':
+     ids=[int(np.flatnonzero(z['events']==t)[0]) for t in p['refinement_events']]
+     for k in ['history','events','initial_rates','response_time','energy_ratio']:selected[k]=selected[k][ids]
+    c,a,h=inputs(selected);y=target(selected)
    row=dict(seed=seed,label=label)
    for name,x in [('global_present',c),('present',a),('history',np.c_[a,h])]:row[name+'_rmse']=float(np.sqrt(np.mean((predict(m['models'][name],x)-y)**2)))
    row['history_minus_present']=row['history_rmse']-row['present_rmse'];refinement.append(row)
@@ -62,7 +67,7 @@ def analyze():
  for values,a,title in [(e,ax[0,0],'Kinetic energy'),(d,ax[0,1],'Dissipation')]:
   avg,ci=band(values);a.plot(times,avg,color='#176b87');a.fill_between(times,*ci,color='#176b87',alpha=.18);a.axvspan(20,32,color='#d8e3eb',alpha=.25);a.axvspan(32,44,color='#f3ddbf',alpha=.25);a.set(xlabel='Baseline time',ylabel=title,title=title+' across independent runs')
  ax[0,1].axhline(p['power'],color='#c46b22',ls='--',label='Input power');ax[0,1].legend()
- relam=np.array([[q['re_lambda'] for q in m['baseline']] for m in metadata]);avg,ci=band(relam);ax[1,0].plot(times,avg,color='#176b87');ax[1,0].fill_between(times,*ci,color='#176b87',alpha=.18);ax[1,0].axhline(19.752,color='#777',ls=':',label='Earlier transient mean');ax[1,0].set(xlabel='Baseline time',ylabel='Approximate Taylor Reynolds number',title='Higher Reynolds number with sustained forcing');ax[1,0].legend()
+ relam=np.array([[q['re_lambda'] for q in m['baseline']] for m in metadata]);avg,ci=band(relam);ax[1,0].plot(times,avg,color='#176b87');ax[1,0].fill_between(times,*ci,color='#176b87',alpha=.18);ax[1,0].axhline(p['upstream']['previous_measured_re_lambda'],color='#777',ls=':',label='Earlier stationary mean');ax[1,0].set(xlabel='Baseline time',ylabel='Approximate Taylor Reynolds number',title='Higher Reynolds number with sustained forcing');ax[1,0].legend()
  spectra=np.array([z['spectra'][(times>=20)&(times<44)].mean(0) for z in data]);avg,ci=band(spectra);k=np.arange(len(avg))*2*np.pi/6;mask=(k>0)&(avg>1e-18);ax[1,1].loglog(k[mask],avg[mask],color='#176b87');ax[1,1].fill_between(k[mask],ci[0,mask],ci[1,mask],alpha=.18,color='#176b87');ax[1,1].set(xlabel='Physical wavenumber',ylabel='Energy per shell',title='Spectrum during the assessment windows')
  fig.suptitle('Stationarity diagnostics · shading is a 95% bootstrap interval across runs',fontsize=12);fig.savefig(folder/'stationarity.png');plt.close(fig)
  labels=['global_present','present','history','training_prior','event_prior'];names=['Global\ncurrent','Richer\ncurrent','Matched\nhistory','Strength\nprior','Time and\nstrength prior'];values=[r['mean_run_rmse'][k] for k in labels];values.append(r['contrasts']['wrong_history']['null_mean_run_rmse']);names.append('Wrong\nhistory')

@@ -1,0 +1,33 @@
+name: Higher Reynolds fluid audit
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - reports/fluid-organization-pilot/extensions/higher-re-history/**
+      - .github/workflows/higher-re-fluid-audit.yml
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: reports/fluid-organization-pilot/extensions/higher-re-history
+    env:
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+      NUMBA_NUM_THREADS: '1'
+      MPLBACKEND: Agg
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements.txt
+      - run: python -m pytest test_solver.py test_design.py -q -p no:cacheprovider
+      - if: ${{ hashFiles('reports/fluid-organization-pilot/extensions/higher-re-history/recordings.json') != '' }}
+        run: python restore_recordings.py
+      - if: ${{ hashFiles('reports/fluid-organization-pilot/extensions/higher-re-history/manifest.json') != '' }}
+        run: python audit.py
