@@ -43,3 +43,9 @@ jobs:
         run: |
           python -B reports/matched-stretch/history-prediction/full-history-refinement/restore_prediction_arrays.py
           python -B reports/matched-stretch/history-prediction/full-history-refinement/verify_completion.py
+
+      - name: Verify completed fresh pilot evidence
+        env:
+          OMP_NUM_THREADS: '1'
+          OPENBLAS_NUM_THREADS: '1'
+        run: python -B reports/matched-stretch/history-prediction/fresh-independent/pilot-complete/reproduce_evidence.py

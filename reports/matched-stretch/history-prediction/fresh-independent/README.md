@@ -1,9 +1,11 @@
 # Fresh independent marker-history study
 
-The initial 16-history accuracy pilot is complete: 115/116 frozen screens pass. Candidate grid 80 fails one standardized marker-history stability comparison between 56 and 80. The preregistered conditional 160 stage is running to assess candidate 112. No fresh predictors have been fitted and no untouched test trajectories have been generated.
+**All22 pilot histories are complete. Candidate grid112 passes116/116 independently reproduced accuracy screens.** The pilot gate permits training and fitting. Candidate80's original115/116 result and failed neighbor-history screen remain preserved.
 
-Read the [initial pilot report and exact failure evidence](pilot-initial/README.md), [all frozen screen outcomes](pilot-initial/pilot-audit-80.json), [independent verification](pilot-initial/verification.json), [feature diagnosis](pilot-initial/feature-diagnosis.json) and [preregistered protocol](protocol.json). The immutable [preregistration](PREREGISTRATION.md) preserves the design published before new simulations.
+Read the [completed pilot report](pilot-complete/README.md), [exact screens](pilot-complete/pilot-audit-112.json), [independent review](pilot-complete/verification.json), [initial failure evidence](pilot-initial/README.md) and [preregistered protocol](protocol.json).
 
-A numerical accuracy failure is not a statistical null result. The study will assess whether past neighbor arrangements improve within-time prediction of future strong-deformation locations beyond full present velocity-gradient and current geometry. Independent confirmation requires all pilot/model accuracy gates and independently published, checked model locks before generating 64 untouched test runs.
+Training preparation was interrupted after six completed runs, with three verified partial checkpoints at time1.1. The original controller is no longer running after a machine reboot; its records are preserved and it has not been restarted. Checkpoint continuation requires review under the no-restart instruction. No numerical gate has stopped this stage.
 
-The bounded study has at most 194 new histories. No tolerances, seeds or equations were changed after observing this pilot. The earlier eight-group [full-history refinement](../full-history-refinement/README.md) remains exploratory and did not establish full predictor spatial convergence.
+No fresh prediction-benefit result exists. The64 untouched tests remain absent and require completed fitting, a passing fitted-model numerical audit and independently published, checked model locks. The primary endpoint is within-time spatial AP B-A, with useful absolute gain0.005 and paired whole-run uncertainty; the secondary1% relative RMSE threshold cannot replace it.
+
+The bounded study permits at most194 histories. No tolerances, seeds or equations changed. The earlier eight-group [full-history refinement](../full-history-refinement/README.md) remains exploratory and did not establish full predictor spatial convergence. Historical publication bytes remain preserved through the repository's documented numerical-data migration.
