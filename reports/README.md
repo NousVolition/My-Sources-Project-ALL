@@ -21,7 +21,7 @@ Published status checked October 11, 2026 (UTC). Each study has its own starting
 
 | Study | Published results | Start reading |
 | --- | --- | --- |
-| Matched-stretch controls | **34/48 complete**, through 0.40; 14 remain | [Current study page](matched-stretch/README.md) ; [Latest 128-grid 1% seed](matched-stretch/completed-n128-onepercent-seed303/README.md) |
+| Matched-stretch controls | **35/48 complete**, through 0.40; 13 remain (October 13) | [Current study page](matched-stretch/README.md) ; [Latest 128-grid viscosity 0.01](matched-stretch/completed-n128-viscosity0p01/README.md) |
 | Three vortex surroundings | **48/48 complete**, through 0.40 | [Final matrix and charts](study/final-matrix/README.md) · [Study page](study/README.md) |
 | Separate smooth-start stress suite | **39/39 complete** | [Results and numerical limits](navier-stokes-stress/README.md) |
 | Earlier hugged ring | Saved evolution, grid and timestep comparisons | [Construction and results](../math/notes/hug-boundary.md) |
@@ -182,3 +182,4 @@ Full restart arrays for the two 48-run fluid matrices remain in the local calcul
 ## Gas return selection: speed, direction and forecast limits
 
 [Completed return-selection experiment](water-molecule-influence/gas-return-selection-extension/README.md): nine gas damping trajectories, three finer recording checks, past-only predictions, separate-start tuning and evaluation, and simple baselines. Short-horizon improvements and longer-horizon failures are both retained.
+

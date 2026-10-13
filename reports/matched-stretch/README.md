@@ -4,11 +4,12 @@
 
 ## Current published results
 
-**34/48 completed and verified results published through model time 0.40. Fourteen jobs remain.** Publication status: October 11, 2026 (UTC).
+**35/48 completed and verified results published through model time 0.40. Thirteen jobs remain.** Publication status: October 13, 2026 (UTC).
 
 | Read first | What it shows |
 | --- | --- |
-| [Third 128-grid 1% seed](completed-n128-onepercent-seed303/README.md) | Latest verified completion: seed 303, saved-field checks, charts and matched amplitude/grid comparisons |
+| [128-grid viscosity 0.01](completed-n128-viscosity0p01/README.md) | Latest verified completion: unperturbed viscosity control, all 41 fields remeasured, budgets and resolution limits |
+| [Third 128-grid 1% seed](completed-n128-onepercent-seed303/README.md) | Earlier verified completion: seed 303, saved-field checks, charts and matched amplitude/grid comparisons |
 | [Second 128-grid 1% seed](completed-n128-onepercent-seed202/README.md) | Earlier seed 202 completion and its saved-field checks |
 | [First 128-grid 1% seed](completed-n128-onepercent-seed101/README.md) | Earlier seed 101 completion and its saved-field checks |
 | [Third 128-grid 0.5% seed](completed-n128-halfpercent-seed303/README.md) | Earlier seed 303 completion and its saved-field checks |
@@ -118,4 +119,5 @@ Finite-amplitude perturbation rates and recurrence diagnostics are in the analys
 Source is preserved in numerics.py and run_suite.py. To reproduce the matrix, copy those files, protocol.json, requirements.txt and reproduce.py into a fresh directory, install the requirements, and run `python reproduce.py`. Generated arrays and restart files remain local; the published JSON files are measurement records, not restart checkpoints.
 
 </details>
+
 
