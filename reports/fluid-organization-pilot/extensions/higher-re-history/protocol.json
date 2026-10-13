@@ -1,0 +1,214 @@
+{
+  "title": "Independent history prediction at increased Reynolds number",
+  "status": "Prospective pilot design; higher Reynolds number not yet measured",
+  "created_utc": "2026-10-13T22:28:23.657771+00:00",
+  "n": 128,
+  "fine_n": 160,
+  "nu": 0.01,
+  "power": 0.2,
+  "spin_dt": 0.01,
+  "response_dt": 0.005,
+  "events": [
+    32.0,
+    36.0,
+    40.0,
+    44.0
+  ],
+  "horizon": 1.5,
+  "save_dt": 0.05,
+  "baseline_save_dt": 0.5,
+  "strengths": [
+    0.25,
+    0.75
+  ],
+  "impulse_width": 1.0,
+  "initial_speed": 1.4,
+  "history_lags": [
+    0.5,
+    1.0,
+    2.0
+  ],
+  "splits": {
+    "train": [
+      410000,
+      410001,
+      410002,
+      410003,
+      410004,
+      410005,
+      410006,
+      410007,
+      410008,
+      410009,
+      410010,
+      410011,
+      410012,
+      410013,
+      410014,
+      410015,
+      410016,
+      410017,
+      410018,
+      410019,
+      410020,
+      410021,
+      410022,
+      410023
+    ],
+    "validation": [
+      420000,
+      420001,
+      420002,
+      420003,
+      420004,
+      420005,
+      420006,
+      420007
+    ],
+    "test": [
+      430000,
+      430001,
+      430002,
+      430003,
+      430004,
+      430005,
+      430006,
+      430007,
+      430008,
+      430009,
+      430010,
+      430011,
+      430012,
+      430013,
+      430014,
+      430015,
+      430016,
+      430017,
+      430018,
+      430019,
+      430020,
+      430021,
+      430022,
+      430023,
+      430024,
+      430025,
+      430026,
+      430027,
+      430028,
+      430029,
+      430030,
+      430031
+    ]
+  },
+  "refinement_seeds": [
+    430000,
+    430001,
+    430002,
+    430003
+  ],
+  "response_pilot": {
+    "seed": 400000,
+    "baseline_time": 44.0,
+    "source_grid": 128,
+    "description": "Separate pilot field outside prediction splits; baseline and response controls must pass before calibration.",
+    "case": 0
+  },
+  "stationarity_windows": [
+    [
+      20.0,
+      32.0
+    ],
+    [
+      32.0,
+      44.0
+    ]
+  ],
+  "bootstrap_replicates": 10000,
+  "shuffled_models": 3,
+  "model_grid": {
+    "bandwidth_factors": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "ridge": [
+      0.001,
+      0.1,
+      1.0,
+      10.0
+    ]
+  },
+  "gates": {
+    "cfl_max": 1.0,
+    "diffusion_max": 1.0,
+    "budget_relative_max": 5e-05,
+    "keta_min": 1.5,
+    "tail_energy_max": 0.005,
+    "divergence_max": 1e-08,
+    "step_curve_change": 0.005,
+    "grid_curve_change": 0.02,
+    "stationarity_relative_drift": 0.15,
+    "power_relative_mismatch": 0.1,
+    "mean_re_lambda_min": 50.0,
+    "spin_turnovers_min": 10.0,
+    "spectral_total_variation_max": 0.1,
+    "flux_fraction_min": 0.05,
+    "pilot_grid_statistics_relative_max": 0.15
+  },
+  "inference": {
+    "target": "Integral from 0 to 1.5 of E_delta(t)/E_delta(0), model time units",
+    "unit": "One independently initialized baseline run, with all four times and both strengths kept together",
+    "primary": "Mean run RMSE of history minus richer present model; paired 95% run bootstrap",
+    "support": "Require upper 95% difference limits below zero against richer present, global present, wrong-run history expectation, strength prior, and event-strength prior, AND all stationarity/numerical gates. This is a joint intersection-union claim; individual comparisons are not simultaneous intervals.",
+    "null": "Three models trained with whole-run history derangements. Average run RMSE over every different test-run donor; resample run nodes in both roles, excluding equal original seeds.",
+    "limitation": "Conditional on one calibration ensemble and candidate model family. This does not prove physical memory beyond the complete current field, high-Reynolds asymptotic universality, or marker-history prediction."
+  },
+  "refinement_design": "Four predeclared test runs at the final intervention time 44. Restart controls from each base checkpoint at time 42. Half uses n128 and half of both steps; fine uses n160 with those same smaller steps. Full-field pilots at 128 and 160 compare long-run statistics separately. Other intervention times have numerical diagnostics but no matched restart controls.",
+  "sources": [
+    {
+      "title": "Earlier completed transient history study",
+      "url": "https://github.com/NousVolition/My-Sources-Project-ALL/tree/f9def0b18963f44df2a9df970928dda1b5dcb2ed/reports/fluid-organization-pilot/extensions/stress-history"
+    },
+    {
+      "title": "Energy transfer and dissipation in forced isotropic turbulence",
+      "url": "https://arxiv.org/abs/1406.6317"
+    },
+    {
+      "title": "Self organization under negative damping",
+      "url": "https://doi.org/10.1088/1751-8113/48/25/25FT01"
+    }
+  ],
+  "pilot_selection": "Prospective primary viscosity 0.01 and 128/160 grids. Proceed only if the paired pilots and response checks pass. All attempted cases retained. Any changed viscosity, steps or stationarity window requires an updated recorded design before held-out simulations.",
+  "upstream": {
+    "repository": "NousVolition/My-Sources-Project-ALL",
+    "commit": "2bf9ddadee3b008f4840b0b0663e4d996c591e87",
+    "extension": "reports/fluid-organization-pilot/extensions/stationary-history",
+    "previous_measured_re_lambda": 29.197672698311
+  },
+  "refinement_events": [
+    44.0
+  ],
+  "pilot_end": 44.0,
+  "pilot_cases": [
+    {
+      "n": 128,
+      "dt": 0.01,
+      "seed": 400000
+    },
+    {
+      "n": 160,
+      "dt": 0.005,
+      "seed": 400000
+    },
+    {
+      "n": 128,
+      "dt": 0.01,
+      "seed": 400001
+    },
+    {
+      "n": 160,
+      "dt": 0.005,
+      "seed": 400001
+    }
+  ]
+}

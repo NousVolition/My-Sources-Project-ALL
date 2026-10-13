@@ -1,0 +1,308 @@
+name: Higher Reynolds independent history experiment
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [reports/fluid-organization-pilot/extensions/higher-re-history/cloud_launch.json]
+permissions:
+  contents: read
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    defaults:
+      run:
+        working-directory: reports/fluid-organization-pilot/extensions/higher-re-history
+    env:
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+      NUMBA_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: reports/fluid-organization-pilot/extensions/higher-re-history
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements.txt
+      - run: python -m pytest test_solver.py test_design.py -q -p no:cacheprovider --junitxml=linux-tests.xml
+      - uses: actions/upload-artifact@v4
+        with:
+          name: higher-re-tests
+          path: reports/fluid-organization-pilot/extensions/higher-re-history/linux-tests.xml
+          retention-days: 30
+  pilots:
+    needs: tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    defaults:
+      run:
+        working-directory: reports/fluid-organization-pilot/extensions/higher-re-history
+    env:
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+      NUMBA_NUM_THREADS: '1'
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        case: [0, 1, 2, 3]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: reports/fluid-organization-pilot/extensions/higher-re-history
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements.txt
+      - run: python cloud_stage.py pilot ${{ matrix.case }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: higher-re-pilot-${{ matrix.case }}
+          path: |
+            reports/fluid-organization-pilot/extensions/higher-re-history/higher_re_*.zip
+            reports/fluid-organization-pilot/extensions/higher-re-history/data/logs/*.log
+            reports/fluid-organization-pilot/extensions/higher-re-history/data/pilot/*progress.json
+          retention-days: 30
+  pilot-review:
+    needs: pilots
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    defaults:
+      run:
+        working-directory: reports/fluid-organization-pilot/extensions/higher-re-history
+    env:
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+      NUMBA_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: reports/fluid-organization-pilot/extensions/higher-re-history
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements.txt
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: higher-re-pilot-*
+          path: reports/fluid-organization-pilot/extensions/higher-re-history/downloaded/higher-re-pilot-all
+      - run: python cloud_stage.py pilot-review
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: higher-re-pilot-verified
+          path: |
+            reports/fluid-organization-pilot/extensions/higher-re-history/higher_re_*.zip
+            reports/fluid-organization-pilot/extensions/higher-re-history/data/logs/*.log
+            reports/fluid-organization-pilot/extensions/higher-re-history/data/pilot/*progress.json
+          retention-days: 30
+  calibration:
+    needs: pilot-review
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    defaults:
+      run:
+        working-directory: reports/fluid-organization-pilot/extensions/higher-re-history
+    env:
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+      NUMBA_NUM_THREADS: '1'
+    strategy:
+      fail-fast: false
+      max-parallel: 16
+      matrix:
+        index: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: reports/fluid-organization-pilot/extensions/higher-re-history
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements.txt
+      - uses: actions/download-artifact@v4
+        with:
+          name: higher-re-pilot-verified
+          path: reports/fluid-organization-pilot/extensions/higher-re-history/downloaded/higher-re-pilot-verified
+      - run: python cloud_stage.py calibration ${{ matrix.index }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: higher-re-calibration-${{ matrix.index }}
+          path: |
+            reports/fluid-organization-pilot/extensions/higher-re-history/higher_re_*.zip
+            reports/fluid-organization-pilot/extensions/higher-re-history/data/logs/*.log
+            reports/fluid-organization-pilot/extensions/higher-re-history/data/pilot/*progress.json
+          retention-days: 30
+  freeze:
+    needs: calibration
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    defaults:
+      run:
+        working-directory: reports/fluid-organization-pilot/extensions/higher-re-history
+    env:
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+      NUMBA_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: reports/fluid-organization-pilot/extensions/higher-re-history
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements.txt
+      - uses: actions/download-artifact@v4
+        with:
+          name: higher-re-pilot-verified
+          path: reports/fluid-organization-pilot/extensions/higher-re-history/downloaded/higher-re-pilot-verified
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: higher-re-calibration-*
+          path: reports/fluid-organization-pilot/extensions/higher-re-history/downloaded/higher-re-calibration-all
+      - run: python cloud_stage.py freeze
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: higher-re-frozen-models
+          path: |
+            reports/fluid-organization-pilot/extensions/higher-re-history/higher_re_*.zip
+            reports/fluid-organization-pilot/extensions/higher-re-history/data/logs/*.log
+            reports/fluid-organization-pilot/extensions/higher-re-history/data/pilot/*progress.json
+          retention-days: 30
+  confirmation:
+    needs: freeze
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    defaults:
+      run:
+        working-directory: reports/fluid-organization-pilot/extensions/higher-re-history
+    env:
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+      NUMBA_NUM_THREADS: '1'
+    strategy:
+      fail-fast: false
+      max-parallel: 16
+      matrix:
+        index: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: reports/fluid-organization-pilot/extensions/higher-re-history
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements.txt
+      - uses: actions/download-artifact@v4
+        with:
+          name: higher-re-frozen-models
+          path: reports/fluid-organization-pilot/extensions/higher-re-history/downloaded/higher-re-frozen-models
+      - run: python cloud_stage.py test ${{ matrix.index }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: higher-re-test-${{ matrix.index }}
+          path: |
+            reports/fluid-organization-pilot/extensions/higher-re-history/higher_re_*.zip
+            reports/fluid-organization-pilot/extensions/higher-re-history/data/logs/*.log
+            reports/fluid-organization-pilot/extensions/higher-re-history/data/pilot/*progress.json
+          retention-days: 30
+  refinement:
+    needs: confirmation
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    defaults:
+      run:
+        working-directory: reports/fluid-organization-pilot/extensions/higher-re-history
+    env:
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+      NUMBA_NUM_THREADS: '1'
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix:
+        include:
+          - {index: 0, base: 0}
+          - {index: 1, base: 0}
+          - {index: 2, base: 1}
+          - {index: 3, base: 1}
+          - {index: 4, base: 2}
+          - {index: 5, base: 2}
+          - {index: 6, base: 3}
+          - {index: 7, base: 3}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: reports/fluid-organization-pilot/extensions/higher-re-history
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements.txt
+      - uses: actions/download-artifact@v4
+        with:
+          name: higher-re-frozen-models
+          path: reports/fluid-organization-pilot/extensions/higher-re-history/downloaded/higher-re-frozen-models
+      - uses: actions/download-artifact@v4
+        with:
+          name: higher-re-test-${{ matrix.base }}
+          path: reports/fluid-organization-pilot/extensions/higher-re-history/downloaded/higher-re-test-${{ matrix.base }}
+      - run: python cloud_stage.py control ${{ matrix.index }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: higher-re-control-${{ matrix.index }}
+          path: |
+            reports/fluid-organization-pilot/extensions/higher-re-history/higher_re_*.zip
+            reports/fluid-organization-pilot/extensions/higher-re-history/data/logs/*.log
+            reports/fluid-organization-pilot/extensions/higher-re-history/data/pilot/*progress.json
+          retention-days: 30
+  evaluate:
+    needs: refinement
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    defaults:
+      run:
+        working-directory: reports/fluid-organization-pilot/extensions/higher-re-history
+    env:
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+      NUMBA_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: reports/fluid-organization-pilot/extensions/higher-re-history
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements.txt
+      - uses: actions/download-artifact@v4
+        with:
+          name: higher-re-frozen-models
+          path: reports/fluid-organization-pilot/extensions/higher-re-history/downloaded/higher-re-frozen-models
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: higher-re-pilot-*
+          path: reports/fluid-organization-pilot/extensions/higher-re-history/downloaded/higher-re-pilot-all
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: higher-re-test-*
+          path: reports/fluid-organization-pilot/extensions/higher-re-history/downloaded/higher-re-test-all
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: higher-re-control-*
+          path: reports/fluid-organization-pilot/extensions/higher-re-history/downloaded/higher-re-control-all
+      - run: python cloud_stage.py evaluate
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: higher-re-completed-recordings
+          path: |
+            reports/fluid-organization-pilot/extensions/higher-re-history/higher_re_*.zip
+            reports/fluid-organization-pilot/extensions/higher-re-history/data/logs/*.log
+            reports/fluid-organization-pilot/extensions/higher-re-history/data/pilot/*progress.json
+          retention-days: 30
