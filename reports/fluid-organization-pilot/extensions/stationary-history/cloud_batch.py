@@ -19,4 +19,3 @@ if __name__=='__main__':
    log=ROOT/'data/logs'/f'{seed}.log';z.write(log,log.relative_to(ROOT).as_posix())
   p=ROOT/f'data/cloud/group_{a.group}_environment.json';z.write(p,p.relative_to(ROOT).as_posix())
  print(json.dumps(dict(archive=target.name,size=target.stat().st_size,sha256=hashlib.sha256(target.read_bytes()).hexdigest())))
-

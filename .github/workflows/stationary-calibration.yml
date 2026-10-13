@@ -1,8 +1,5 @@
 name: Stationary calibration integrations
 on:
-  push:
-    paths:
-      - 'reports/fluid-organization-pilot/extensions/stationary-history/cloud_calibration.json'
   workflow_dispatch:
 permissions:
   contents: read
@@ -64,4 +61,3 @@ jobs:
             reports/fluid-organization-pilot/extensions/stationary-history/calibration_group_*.zip
             reports/fluid-organization-pilot/extensions/stationary-history/data/logs/*.log
           retention-days: 7
-

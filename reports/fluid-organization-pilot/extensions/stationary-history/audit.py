@@ -45,6 +45,14 @@ def audit():
     for j,t in enumerate(p['events']):
      times=np.array([t]+[t-lag for lag in p['history_lags']]);idx=[int(np.argmin(abs(z['baseline_time']-tt))) for tt in times]
      assert np.allclose(z['baseline_time'][idx],times,atol=1e-10);assert np.array_equal(z['history'][j],z['baseline_features'][idx])
+ # Matched controls must use the frozen solver and the exact saved base checkpoint.
+ physical_sources={name:m['source_sha256'][name] for name in ['solver.py','kernels.py','simulate.py','common.py']}
+ for seed in p['refinement_seeds']:
+  base=read(f'data/runs/base_{seed}.json');checkpoint=ROOT/'data/runs'/base['checkpoints']['path']
+  assert digest(checkpoint)==base['checkpoints']['sha256']
+  for label in ['half','fine']:
+   control=read(f'data/runs/{label}_{seed}.json');assert control['source_sha256']==physical_sources
+   assert control['checkpoint_sha256']==base['checkpoints']['sha256']
  from checks import verify_all
  numerical=verify_all(write=False);close(numerical,read('results/numerical_checks.json'));assert numerical['all_passed']
  print(json.dumps(dict(manifest_files_verified=len(manifest['files']),independent_test_runs=n,frozen_forecasts_rebuilt=True,all_history_times_causal=True)))
