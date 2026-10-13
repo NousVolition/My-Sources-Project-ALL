@@ -26,10 +26,12 @@ def verify():
     saved=read(HERE/'pilot-audit-112.json')
     assert sha(FRESH/'protocol.json')==v['protocol_sha256']
     assert sha(HERE/'pilot-audit-112.json')==v['pilot_audit_sha256']
-    assert rh.sources()==v['source_hashes']
+    assert rh.sources().keys()==v['source_hashes'].keys()
+    for rel,digest in v['source_hashes'].items():
+        assert rh.source_hash_matches((FRESH.parent.parent/rel).read_bytes(),digest),rel
     inventory=read(HERE/'source-inventory.json')
-    for rel,digest in inventory['fresh_implementation'].items():assert sha(FRESH/rel)==digest,rel
-    for rel,digest in inventory['predecessor'].items():assert sha(FRESH.parent/rel)==digest,rel
+    for rel,digest in inventory['fresh_implementation'].items():assert rh.source_hash_matches((FRESH/rel).read_bytes(),digest),rel
+    for rel,digest in inventory['predecessor'].items():assert rh.source_hash_matches((FRESH.parent/rel).read_bytes(),digest),rel
     for e in v['pilot_archives']:
         path=FRESH/'recorded-data'/(e['name']+'.npz')
         m=rh.validate(path,e['config'])
