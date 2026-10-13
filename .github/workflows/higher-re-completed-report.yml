@@ -1,0 +1,49 @@
+name: Higher Reynolds completed report
+on:
+  workflow_run:
+    workflows: [Higher Reynolds independent history experiment]
+    types: [completed]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  report:
+    if: ${{ github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_sha == '3a6825e9e5f103f6632ac42bfe359a46751dfc1f' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    defaults:
+      run:
+        working-directory: reports/fluid-organization-pilot/extensions/higher-re-history
+    env:
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+      NUMBA_NUM_THREADS: '1'
+      MPLBACKEND: Agg
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 813d994d9c22929ae8611d0848d0136f024d970a
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements.txt
+      - run: python -m pytest test_solver.py test_design.py -q -p no:cacheprovider
+      - uses: actions/download-artifact@v4
+        with:
+          name: higher-re-completed-recordings
+          path: reports/fluid-organization-pilot/extensions/higher-re-history/downloaded
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: ${{ github.event.workflow_run.id }}
+      - run: python finish_recordings.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: higher-re-finished-report
+          path: |
+            reports/fluid-organization-pilot/extensions/higher-re-history/higher_re_finished_snapshot.zip
+            reports/fluid-organization-pilot/extensions/higher-re-history/README.md
+            reports/fluid-organization-pilot/extensions/higher-re-history/report.html
+            reports/fluid-organization-pilot/extensions/higher-re-history/manifest.json
+            reports/fluid-organization-pilot/extensions/higher-re-history/results/*.json
+            reports/fluid-organization-pilot/extensions/higher-re-history/results/figures/*.png
+          retention-days: 30
