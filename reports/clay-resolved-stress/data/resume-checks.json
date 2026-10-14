@@ -1,0 +1,74 @@
+{
+  "all_passed": true,
+  "preservation_checks": [
+    {
+      "name": "control168-resume-tight",
+      "all_state_and_work_values_preserved": true,
+      "clock_preserved": true,
+      "passed": true
+    },
+    {
+      "name": "extend168-one",
+      "all_state_and_work_values_preserved": true,
+      "clock_preserved": true,
+      "passed": true
+    },
+    {
+      "name": "resume-check-144-one",
+      "all_state_and_work_values_preserved": true,
+      "clock_preserved": true,
+      "passed": true
+    }
+  ],
+  "independent_tail_check": {
+    "a": "shared144-one",
+    "b": "resume-check-144-one",
+    "start": 0.495,
+    "end": 0.5,
+    "samples": 2,
+    "coarse_mesh": [
+      144,
+      13
+    ],
+    "fine_mesh": [
+      144,
+      13
+    ],
+    "gap_arclength_rms": {
+      "maximum_scaled": 4.404074366948962e-11,
+      "maximum_absolute": 1.2160862594701172e-12,
+      "time_of_maximum": 0.5,
+      "final_scaled": 4.404074366948962e-11,
+      "coarse_final": 0.027612754876483844,
+      "fine_final": 0.027612754875267757
+    },
+    "surface_gap_rms": {
+      "maximum_scaled": 5.868885495843333e-11,
+      "maximum_absolute": 1.6487401721665407e-12,
+      "time_of_maximum": 0.5,
+      "final_scaled": 5.868885495843333e-11,
+      "coarse_final": 0.028092900657842215,
+      "fine_final": 0.028092900659490955
+    },
+    "imprint": {
+      "maximum_scaled": 2.8184569393500906e-09,
+      "maximum_absolute": 1.5540595477148145e-09,
+      "time_of_maximum": 0.5,
+      "final_scaled": 2.8184569393500906e-09,
+      "coarse_final": 0.5513866547463081,
+      "fine_final": 0.5513866563003677
+    },
+    "state_scaled": 3.042824836541058e-08,
+    "lorenz_scaled": 0.0,
+    "drive_agreement_passed": true,
+    "same_physics": true,
+    "gap_target_met": true,
+    "complete": true,
+    "same_requested_end": true,
+    "refines_both_axes": false,
+    "geometry_energy_passed": true,
+    "full_mesh_check_passed": false
+  },
+  "tail_check_passed": true,
+  "source_sha256": "ffb62007517c4883f25495791c8f88e2e69e144849424b2ab67a0cdd70ac688e"
+}

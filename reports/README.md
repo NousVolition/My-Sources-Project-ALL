@@ -75,6 +75,8 @@ These studies use separate molecular or toy models. Their own reports state the 
 
 ## Moldable hug and reciprocal drive
 
+**[Finest-mesh Lorenz stress](clay-resolved-stress/README.md)** — matched refinement under the strongest forcing, longer checkpoint continuations, temporal controls and influence in both directions. Completed intervals and remaining limits are reported. [Playback](clay-resolved-stress/report.html) · [numerical audit](clay-resolved-stress/analysis.json).
+
 **[Coarse-start refinement and longer Lorenz forcing](clay-long-stress/README.md)** — reject the under-resolved coarse result, select a checked finer solution, and inspect longer one-way and reciprocal tests. Requested and completed intervals are reported separately. [Recorded playback](clay-long-stress/report.html) · [numerical audit](clay-long-stress/analysis.json).
 
 **[Mesh refinement and accuracy](clay-mesh-accuracy/README.md)** — repaired surface integration and cell protection, independent solver and contact-sampling checks, stronger reciprocal Lorenz forcing, and retained failed alternatives. [Computed playback](clay-mesh-accuracy/report.html) · [raw comparisons](clay-mesh-accuracy/analysis.json).

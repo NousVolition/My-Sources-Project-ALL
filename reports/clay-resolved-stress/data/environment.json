@@ -1,0 +1,34 @@
+{
+  "python": "3.12.14",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "matplotlib": "3.11.2",
+  "platform": "Windows",
+  "machine": "AMD64",
+  "logical_cpus": 24,
+  "libraries": [
+    {
+      "owner": "numpy",
+      "filename": "libscipy_openblas64_-ed4f167a5330424524f45258e7ca2c8d.dll",
+      "sha256": "ed4f167a5330424524f45258e7ca2c8d7f03c0cba1f30ee4985553ac1f88ecf8",
+      "threads": 24
+    },
+    {
+      "owner": "scipy",
+      "filename": "libscipy_openblas-197ee2fc9b4d071f7e048078cac74115.dll",
+      "sha256": "197ee2fc9b4d071f7e048078cac741151a6585d871061cf5f88c0c73e31963a5",
+      "threads": 1
+    }
+  ],
+  "profiles": {
+    "run_case_and_replay": {
+      "numpy": 24,
+      "scipy": 1
+    },
+    "workflow_and_checks": {
+      "numpy": 1,
+      "scipy": 1
+    }
+  },
+  "note": "The original run_case imports NumPy before experiment sets the SciPy thread environment. Explicit replay subprocess profiles preserve this distinction."
+}
