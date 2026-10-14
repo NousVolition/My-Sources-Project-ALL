@@ -49,3 +49,9 @@ jobs:
           OMP_NUM_THREADS: '1'
           OPENBLAS_NUM_THREADS: '1'
         run: python -B reports/matched-stretch/history-prediction/fresh-independent/pilot-complete/reproduce_evidence.py
+
+      - name: Verify frozen fresh model lock
+        env:
+          OMP_NUM_THREADS: '1'
+          OPENBLAS_NUM_THREADS: '1'
+        run: python -B -u reports/matched-stretch/history-prediction/fresh-independent/model-lock/verify_evidence.py
