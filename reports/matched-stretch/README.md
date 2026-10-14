@@ -1,5 +1,7 @@
 # Matched-stretch numerical controls
 
+**Completed viscosity 0.01 disturbance comparison:** [Verified seed-202 result](completed-n128-viscosity0p01-disturbance-seed202/README.md) — 41 paired outputs through 0.40; disturbance 233.791945× its starting size and still growing instantaneously. Single-seed finite-time result with known resolution limits.
+
 [Project home](../../README.md) · [All reports](../README.md) · [Current status](../../STATUS.md)
 
 ## Current published results

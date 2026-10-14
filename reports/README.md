@@ -1,5 +1,7 @@
 # Reports by topic
 
+**Completed viscosity 0.01 disturbance comparison:** [Verified seed-202 result](matched-stretch/completed-n128-viscosity0p01-disturbance-seed202/README.md) — 41 paired outputs through 0.40; disturbance 233.791945× its starting size and still growing instantaneously. Single-seed finite-time result with known resolution limits.
+
 **Large numerical data:** [verified release downloads and restore instructions](../DATA-RELEASES.md). Reports and figures remain available here.
 
 ## Completed fresh-flow memory tests
