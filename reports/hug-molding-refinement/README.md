@@ -86,4 +86,6 @@ python -B reports/hug-molding-refinement/verify_publication.py --restored-root s
 
 The restore tool checks the ZIP's size and SHA-256, exact member inventory and every file hash before extraction. It refuses conflicting files. The verifier works on a temporary copy because the original verifier refreshes its local audit receipt. The download and all original results remain unchanged.
 
+**Platform rounding:** the original Windows verifier requires bitwise equality when rebuilding trigonometric starting coordinates. The publication wrapper allows at most eight floating-point epsilons times the coordinate scale for that reconstruction on other platforms and reports the measured difference. Mesh connectivity and all archived file hashes remain exact; the solver controls and scientific acceptance thresholds are unchanged. The original verifier is preserved byte-for-byte in the release, and this compatibility adjustment is applied only to its disposable copy.
+
 [All reports](../README.md) · [Related molding and reciprocal-drive studies](../README.md#moldable-hug-and-reciprocal-drive)
