@@ -8,7 +8,7 @@ from pathlib import Path
 import os
 os.environ.setdefault('OMP_NUM_THREADS', '1')
 os.environ.setdefault('OPENBLAS_NUM_THREADS', '1')
-import argparse, datetime, hashlib, json, sys, warnings
+import argparse, copy, datetime, hashlib, json, sys, warnings
 import numpy as np
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import precision_recall_curve
@@ -32,19 +32,54 @@ def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def reconcile_boundary(validation, reference_validation, prob, reference_prob, event, group, threshold, exact=False):
+    """Verify binary metrics from their masks before resolving threshold roundoff."""
+    assert prob.shape == reference_prob.shape == event.shape == group.shape
+    assert np.isfinite(prob).all() and np.isfinite(reference_prob).all()
+    assert np.max(abs(prob-reference_prob)) <= (0. if exact else 1e-12)
+    changed=(prob>=threshold)!=(reference_prob>=threshold)
+    if not changed.any(): return validation, None
+    assert not exact
+    assert np.all(abs(prob[changed]-threshold)<=1e-12)
+    assert np.all(abs(reference_prob[changed]-threshold)<=1e-12)
+    def binary_metrics(mask, labels):
+        tp=int(np.count_nonzero(mask & (labels==1)))
+        return {'precision':float(tp/max(int(mask.sum()),1)),
+                'recall':float(tp/max(int(np.count_nonzero(labels==1)),1))}
+    for values, probability in [(validation,prob),(reference_validation,reference_prob)]:
+        pooled=binary_metrics(probability>=threshold,event)
+        per={str(g):binary_metrics(probability[group==g]>=threshold,event[group==g]) for g in np.unique(group)}
+        macro={k:float(np.mean([v[k] for v in per.values()])) for k in pooled}
+        for k in pooled:
+            assert values['pooled'][k]==pooled[k], ('pooled',k)
+            assert values['macro'][k]==macro[k], ('macro',k)
+            for g in per: assert values['per_run'][g][k]==per[g][k], (g,k)
+    checked=copy.deepcopy(validation);changes=[]
+    for scope, a, b in [('pooled',checked['pooled'],reference_validation['pooled']),
+                       ('macro',checked['macro'],reference_validation['macro'])]+[
+                       ('per_run.'+g,checked['per_run'][g],reference_validation['per_run'][g]) for g in checked['per_run']]:
+        for key in ['precision','recall']:
+            if a[key]!=b[key]:
+                changes.append({'metric':'validation.'+scope+'.'+key,'host_value':a[key],'reference_value':b[key]})
+                a[key]=b[key]
+    return checked, {'locked_threshold':threshold,'boundary_rows':int(changed.sum()),
+                     'maximum_probability_difference':float(np.max(abs(prob-reference_prob))),
+                     'row_indices':np.flatnonzero(changed).tolist(),'metric_changes':changes}
+
+
 def verify(refit=False, pretest=False, exact=False):
-    differences = []
-    def same(a, b):
+    differences = []; boundary_records = []
+    def same(a, b, path='root'):
         if isinstance(a, dict):
             assert a.keys() == b.keys()
-            for k in a: same(a[k], b[k])
+            for k in a: same(a[k], b[k],path+'.'+str(k))
         elif isinstance(a, list):
             assert len(a) == len(b)
-            for x, y in zip(a, b): same(x, y)
+            for i,(x, y) in enumerate(zip(a, b)): same(x, y,path+'.'+str(i))
         elif isinstance(a, (float, np.floating)):
             assert np.isfinite(a) and np.isfinite(b)
             differences.append(float(abs(a-b)))
-            assert a == b if exact else abs(a-b) <= 1e-12
+            assert (a == b if exact else abs(a-b) <= 1e-12), (path,a,b,abs(a-b))
         else:
             assert a == b
 
@@ -58,6 +93,12 @@ def verify(refit=False, pretest=False, exact=False):
     assert sha(audit_path) == lock['model_numeric_audit_sha256']
     assert sha(F/'protocol.json') == lock['protocol_sha256']
     m, models = fm.load_models(mp)
+    reference_manifest=read(HERE/'validation-reference.json')
+    assert reference_manifest['manifest_sha256']==sha(mp)
+    assert reference_manifest['all_original_validation_metrics_exact']
+    assert rh.source_hash_matches((HERE/'export_validation_reference.py').read_bytes(),reference_manifest['export_code_sha256'])
+    references={(r['case'],r['model']):r for r in reference_manifest['files']}
+    assert len(references)==39
     assert m['training_only_scalers'] and m['no_train_validation_refit'] and m['test_absent_at_freeze']
     assert m['sources'] == lock['sources']
     inventory = read(F/'pilot-complete/source-inventory.json')
@@ -127,7 +168,24 @@ def verify(refit=False, pretest=False, exact=False):
             same(float(thresholds[np.argmax(f1)]),info['decision_threshold'])
             validation=summarize(d['target'][va],event[va],pred,prob,d['group'][va],info['decision_threshold'])
             validation['spatial']=spatial_scores(event[va],prob,d['group'][va],d['anchor'][va])
-            same(validation,info['validation'])
+            reference=references[(case['name'],name)];reference_path=HERE/reference['path']
+            assert sha(reference_path)==reference['sha256'] and reference['model_sha256']==info['sha256']
+            with np.load(reference_path,allow_pickle=False) as saved:
+                reference_prob=saved['probability']
+            assert len(reference_prob)==reference['rows']==len(prob)
+            if exact:np.testing.assert_array_equal(prob,reference_prob)
+            else:np.testing.assert_allclose(prob,reference_prob,rtol=0,atol=1e-12)
+            differences.append(float(np.max(abs(prob-reference_prob))))
+            threshold=info['decision_threshold']
+            reference_validation=summarize(d['target'][va],event[va],pred,reference_prob,d['group'][va],threshold)
+            reference_validation['spatial']=spatial_scores(event[va],reference_prob,d['group'][va],d['anchor'][va])
+            same(reference_validation,info['validation'],case['name']+'.'+name+'.reference_validation')
+            checked,record=reconcile_boundary(validation,reference_validation,prob,reference_prob,event[va],d['group'][va],threshold,exact)
+            if record is not None:
+                record.update({'case':case['name'],'model':name})
+                boundary_records.append(record);print('Verified decision-boundary roundoff '+json.dumps(record),flush=True)
+            # All other live metrics and every scientific gate retain the original bounds.
+            same(checked,info['validation'],case['name']+'.'+name+'.live_validation')
             if refit:
                 perm=None
                 if name=='B_permuted_labels':
@@ -169,6 +227,8 @@ def verify(refit=False, pretest=False, exact=False):
             'in_memory_refit_verified':refit,'test_absence_checked':pretest,
             'reconstruction_max_absolute_difference':max(differences,default=0.),
             'reconstruction_tolerance':0. if exact else 1e-12,
+            'validation_reference_sha256':sha(HERE/'validation-reference.json'),
+            'verified_decision_boundary_roundoff':boundary_records,
             'numerical_screens_passed':sum(x['pass'] for x in rebuilt['screens']),
             'numerical_screens_total':len(rebuilt['screens']),
             'protocol_sha256':sha(F/'protocol.json'),'manifest_sha256':sha(mp),

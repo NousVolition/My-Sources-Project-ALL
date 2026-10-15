@@ -54,4 +54,6 @@ jobs:
         env:
           OMP_NUM_THREADS: '1'
           OPENBLAS_NUM_THREADS: '1'
-        run: python -B -u reports/matched-stretch/history-prediction/fresh-independent/model-lock/verify_evidence.py
+        run: |
+          python -B -u reports/matched-stretch/history-prediction/fresh-independent/model-lock/test_reporting_roundoff.py
+          python -B -u reports/matched-stretch/history-prediction/fresh-independent/model-lock/verify_evidence.py
