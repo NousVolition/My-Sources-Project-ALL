@@ -57,3 +57,12 @@ jobs:
         run: |
           python -B -u reports/matched-stretch/history-prediction/fresh-independent/model-lock/test_reporting_roundoff.py
           python -B -u reports/matched-stretch/history-prediction/fresh-independent/model-lock/verify_evidence.py
+
+      - name: Verify final fresh test evidence
+        env:
+          OMP_NUM_THREADS: '1'
+          OPENBLAS_NUM_THREADS: '1'
+        run: |
+          python -B -u reports/matched-stretch/history-prediction/fresh-independent/final-complete/restore_arrays.py
+          python -B -u reports/matched-stretch/history-prediction/fresh-independent/final-complete/verify_evidence.py
+          python -B -u reports/matched-stretch/history-prediction/fresh-independent/final-complete/verify_particle_labels.py
