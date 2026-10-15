@@ -1,0 +1,87 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Molding refinement</title><style>body{font:17px/1.6 system-ui;background:#f4f5f1;color:#253944;margin:0}main{max-width:1100px;padding:36px;margin:25px auto;background:white}h1{line-height:1.2;font-size:36px}.lead{font-size:21px}h2{margin-top:32px}img{width:100%;height:auto}table{width:100%;border-collapse:collapse;font-size:13px}td,th{text-align:left;padding:8px;border-bottom:1px solid #ccc}th{background:#edf3ef}pre{white-space:pre-wrap;font-size:12px}a{color:#28694f}li{margin:8px 0}@media(max-width:650px){main{padding:16px;margin:0}table{display:block;overflow-x:auto}}</style></head><body><main><nav><a href="README.md">GitHub reading guide</a> · <a href="https://github.com/NousVolition/My-Sources-Project-ALL/releases/download/hug-unloading-refinement-2026-10-15/hug-unloading-refinement-complete.zip">Download complete offline package</a></nav><h1>Refining the unloading shape and its zigzags</h1><p class="lead">The bounded comparison has finished. 4 of 4 new integrations completed.</p><p>This is the same dimensionless molding model, with feedback off. The object, wall, material coefficients and model interval are unchanged. New data are kept separately from the original experiment.</p>
+<section class="findings"><h2>What the refinement found</h2><ul><li><b>The finer gap comparison passes:</b> 72 x 7 versus 108 x 10 differs by at most 4.59% during unloading, below the original 5% limit. At t=1.2 the gap difference is 0.18%. The earlier 48-to-72 failure remains part of the record.</li><li><b>The zigzag detail still depends on the mesh:</b> endpoint short-wave RMS falls from 0.0460 to 0.0299 to 0.0182; its strongest short-wave modes are 18, 34 and 38. Overall gap agreement does not validate the individual teeth.</li><li><b>Tighter unloading integration barely changes the result.</b> Time integration error in this unloading interval is unlikely to explain the zigzags.</li><li><b>Holding the written spring lengths fixed keeps corrugations.</b> Continued internal reshaping after release changes the pattern, but is not required for it to persist.</li></ul></section><h2>What each control tests</h2><ul><li><b>108 x 10 mesh:</b> fresh loading to 0.2 and unloading to 1.2, compared with saved 48 x 5 and 72 x 7 histories. Internal rest lengths are not interpolated from a coarse mesh.</li><li><b>Tighter integration:</b> the identical 72 x 7 unloading checkpoint, with tenfold tighter tolerances and half the maximum step.</li><li><b>Written rest lengths held fixed:</b> the identical loaded checkpoint, disabling only subsequent rest-length evolution. This keeps the already-written imprint and elastic/contact forces.</li></ul>
+<img src="figures/refinement.png" alt="Gap, imprint and corrugation metrics over the saved histories"><h2>Spatial refinement</h2><table><tr><th>Phase</th><th>Meshes</th><th>Observable</th><th>Largest difference (%)</th><th>Original 5% limit</th></tr><tr><td>load</td><td>48 to 72</td><td>gap</td><td>0.807683</td><td>pass</td></tr><tr><td>load</td><td>48 to 72</td><td>imprint</td><td>1.5816</td><td>pass</td></tr><tr><td>load</td><td>72 to 108</td><td>gap</td><td>4.58851</td><td>pass</td></tr><tr><td>load</td><td>72 to 108</td><td>imprint</td><td>1.35273</td><td>pass</td></tr><tr><td>unload</td><td>48 to 72</td><td>gap</td><td>9.1514</td><td>fail / unresolved</td></tr><tr><td>unload</td><td>48 to 72</td><td>imprint</td><td>2.73658</td><td>pass</td></tr><tr><td>unload</td><td>72 to 108</td><td>gap</td><td>4.58851</td><td>pass</td></tr><tr><td>unload</td><td>72 to 108</td><td>imprint</td><td>2.13587</td><td>pass</td></tr></table>
+<p>Differences use |coarse &minus; fine| / max(floor, |fine|) at every saved time; the floors are 0.01 for gap and 0.001 for imprint.</p><p>The largest 72-to-108 gap difference occurs at t=0.20, the inherited loading endpoint. The unloading imprint difference reaches 2.14%. All four new 72-to-108 gap/imprint comparisons pass their original limits. Across both mesh pairs, 7 of 8 comparisons pass; the historical 48-to-72 unloading gap still fails at 9.15%.</p><p>This supports improved agreement for these aggregate measurements over the tested interval. It does not establish a convergence order or a mesh-independent corrugated shape. The fixed k &ge; 12 band also changes: its endpoint RMS is 0.03167 at 72 points and 0.02792 at 108 points. The strongest modes in the mesh-relative short-wave bands have only 2.67, 2.12 and 2.84 nodes per wavelength. These are poorly resolved details in material-node coordinates.</p><p>At t=1.2 the fine mesh retains 28.6% of its loaded rest-length imprint. It is fading over the recorded interval; no permanent free shape has been demonstrated.</p><img src="figures/mesh-difference.png" alt="Whole unloading relative differences and the original five percent limit"><img src="figures/shapes.png" alt="Raw saved endpoint meshes"><table><tr><th>Endpoint</th><th>Gap</th><th>Imprint</th><th>Grid-band radial RMS</th><th>Common-band RMS</th><th>Turn roughness</th></tr><tr><td>case-unload-n48-plastic1-feedback0</td><td>0.381876</td><td>0.182918</td><td>0.0460171</td><td>0.0460171</td><td>0.772055</td></tr><tr><td>case-unload-n72-plastic1-feedback0</td><td>0.360107</td><td>0.187706</td><td>0.0298952</td><td>0.03167</td><td>0.773636</td></tr><tr><td>unload-n108</td><td>0.360751</td><td>0.183824</td><td>0.0182107</td><td>0.0279153</td><td>0.644944</td></tr><tr><td>fixed-rest-unload-n72</td><td>0.699892</td><td>0.633644</td><td>0.0247503</td><td>0.0330745</td><td>0.440548</td></tr><tr><td>case-unload-n72-plastic0-feedback0</td><td>0.42893</td><td>0</td><td>9.8637e-08</td><td>4.83354e-06</td><td>0.00106488</td></tr></table>
+<h2>Time integration and material memory</h2><p><b>Completed fixed-memory control:</b> at t=1.2, the short-wave radial RMS is 0.0247503 with written rest lengths held fixed, versus 0.0298952 with continued evolution. The common-band RMS is 0.0330745 versus 0.03167. Corrugations persist in both cases, but their shape and spectrum differ. Continued rest-length evolution after release is therefore not required for corrugations to remain in this loaded 72 x 7 state. This does not separate the earlier written memory from the earlier deformed geometry.</p><p>The fixed-rest imprint remains 0.633644 by construction; the evolving case falls to 0.187706. Locking an internal variable does not lock the positions: the fixed-rest shape continues to relax mechanically. This finite interval does not establish a permanent equilibrium.</p><p><b>Completed temporal control:</b> tighter unloading integration reproduces the original gap and corrugation histories within 8 parts in a billion under the declared relative measures. Unloading integration error is unlikely to explain the pattern. Both controls begin at the same saved loaded state, so this does not independently validate the earlier loading integration.</p><img src="figures/controls.png" alt="Original, tighter and fixed-rest histories alongside the earlier elastic control"><section id="unloading-accuracy-summary"><h3>More precise repeat: all three checks passed</h3><p>We repeated the release and relaxation from the same saved 72 x 7 starting state, using ten times stricter numerical tolerances and half the maximum time step.</p><table><tr><th>What we checked</th><th>Result</th><th>How close were the two calculations?</th></tr><tr><th scope="row">Gap between the material and the object</th><td>Passed</td><td>The largest relative difference was about 6.3 parts per billion.</td></tr><tr><th scope="row">Strength of the small zigzags</th><td>Passed</td><td>The largest relative difference was about 7.2 parts per billion.</td></tr><tr><th scope="row">Mesh positions and stored spring lengths</th><td>Passed</td><td>The largest normalized difference used only 0.029% of the allowed limit.</td></tr></table><p><b>In plain language:</b> Making the unloading calculation more precise gave essentially the same result, including the zigzags. Numerical timing error during unloading is therefore unlikely to explain them.</p><p>These checks measure agreement between two calculations. They cover unloading from the saved state; the earlier loading stage and the effect of mesh size need their own checks. The separate mesh comparison above still shows that individual zigzags depend on resolution.</p><p><a href="https://github.com/NousVolition/My-Sources-Project-ALL/releases/download/hug-unloading-refinement-2026-10-15/hug-unloading-analysis.json">Detailed numerical values</a></p></section>
+<h2>Where the short waves appear</h2><img src="figures/spectrum.png" alt="Saved endpoint radial spectra as discrete mode samples"><p>The spectral diagnostics use material-node order. The shortest-wave band starts at a quarter of the angular node count; its cutoff changes with the mesh. The common band starts at mode 12 for every mesh. A changing grid-band RMS alone does not prove convergence of one fixed physical wavelength. Dots represent separate Fourier modes, with display values clipped below 10<sup>-24</sup>; this plotting floor is not applied to the stored power or RMS calculations.</p>
+<img src="figures/history.png" alt="Saved mesh during outward wall loading, at unloading and after relaxation"><p>The initial negative drive X pushes the material outward. At t=0.01 the nearest wall clearance is already 0.0284, inside the wall force's 0.04 activation distance, and short waves are visible in the numerical diagnostics. Later X changes sign and the material moves inward. Thus corrugations and imprint are already present before the unloading switch. The square wall is an active mechanical boundary in this mesh experiment.</p>
+<p>Small corrugations are already present in the earlier elastic and plastic loading histories. The earlier purely elastic history largely loses them during unloading, while the plastic history retains them. The control with fixed written rest lengths tests whether continued rest-length evolution is necessary after release.</p>
+<h2>What explains the zigzags?</h2><p>The evidence points to short spatial scales in the spring mesh and its loaded material state. The shape first spreads toward the square wall, then is pulled inward, with corrugations present before release. During that history, the springs acquire different preferred lengths. On release the positions relax under elastic, area and contact forces. Keeping those preferred lengths fixed still allows a corrugated shape, while allowing them to evolve changes its size and spectrum. The earlier elastic-only history has a different loaded state and largely smooths out; it is supporting context, not a matched-state test of memory alone.</p><p>The source model assigns evolving preferred lengths to individual springs. Its spring, area, contact and cell-quality energies contain no explicit bending or curvature penalty linking adjacent elements. Compressed springs have a negative transverse contribution to their own stiffness; other energy terms also act, so that observation alone does not prove instability of the complete system. The role of the square wall has not been isolated by a separate boundary intervention.</p><p>These tests identify numerical sensitivity and dependence on model mechanisms. They cannot establish that the corrugations are physical clay wrinkles. The material remains dimensionless, and a finite retained imprint does not establish permanent free shape. Choosing a physically justified bending or material length scale would be a new model study; it was not added to this refinement.</p><h2>Verification</h2><p>All four requested runs reached their endpoints, with no integration failures. The saved states are finite and pass geometry checks; the recorded swept-step safeguards also pass. The frozen inputs and 11 numerical manifest entries match their hashes. Same-checkpoint controls, fixed rest lengths, the fresh fine-grid start, and continuity across fine-grid unloading were checked. Removing preload changes potential energy by -1.2900535413; this is accounted for as switching work.</p><p>Separate material and combined energy budgets were recomputed from saved states and work records. Each scaled residual is below the declared 0.001 limit:</p><table><tr><th>Run</th><th>Material residual</th><th>Combined residual</th><th>Budget check</th></tr><tr><td>tight-unload-n72</td><td>9.39e-09</td><td>1.1e-08</td><td>pass</td></tr><tr><td>fixed-rest-unload-n72</td><td>6.2e-08</td><td>4.41e-08</td><td>pass</td></tr><tr><td>load-n108</td><td>5.58e-08</td><td>6.8e-09</td><td>pass</td></tr><tr><td>unload-n108</td><td>7.4e-08</td><td>1.17e-07</td><td>pass</td></tr></table><p>Four directional Jacobian checks pass (largest relative error 2.10 &times; 10<sup>-8</sup>). No extra integrations, altered equations or relaxed accuracy limits were used to obtain these results.</p>
+<details><summary>Saved verification and failures</summary><pre>[
+  {
+    &quot;name&quot;: &quot;tight-unload-n72&quot;,
+    &quot;complete&quot;: true,
+    &quot;finite&quot;: true,
+    &quot;geometry&quot;: true,
+    &quot;material_budget&quot;: 9.388787840358075e-09,
+    &quot;combined_budget&quot;: 1.1040020797658958e-08,
+    &quot;failure&quot;: null,
+    &quot;recomputed_material_budget&quot;: 9.388787840358075e-09,
+    &quot;recomputed_combined_budget&quot;: 1.1040020797658958e-08,
+    &quot;budget_records_match&quot;: true,
+    &quot;budgets_pass&quot;: true,
+    &quot;saved_geometry&quot;: true,
+    &quot;saved_times_match&quot;: true,
+    &quot;same_unloading_checkpoint&quot;: true,
+    &quot;matched_parameters&quot;: true,
+    &quot;record_source_hashes_match&quot;: true
+  },
+  {
+    &quot;name&quot;: &quot;fixed-rest-unload-n72&quot;,
+    &quot;complete&quot;: true,
+    &quot;finite&quot;: true,
+    &quot;geometry&quot;: true,
+    &quot;material_budget&quot;: 6.203484447476328e-08,
+    &quot;combined_budget&quot;: 4.4082751340585246e-08,
+    &quot;failure&quot;: null,
+    &quot;recomputed_material_budget&quot;: 6.203484447476328e-08,
+    &quot;recomputed_combined_budget&quot;: 4.4082751340585246e-08,
+    &quot;budget_records_match&quot;: true,
+    &quot;budgets_pass&quot;: true,
+    &quot;saved_geometry&quot;: true,
+    &quot;saved_times_match&quot;: true,
+    &quot;same_unloading_checkpoint&quot;: true,
+    &quot;matched_parameters&quot;: true,
+    &quot;record_source_hashes_match&quot;: true,
+    &quot;recomputed_locked_rest_change&quot;: 0.0,
+    &quot;locked_rest_record_matches&quot;: true,
+    &quot;rest_lengths_locked&quot;: true
+  },
+  {
+    &quot;name&quot;: &quot;load-n108&quot;,
+    &quot;complete&quot;: true,
+    &quot;finite&quot;: true,
+    &quot;geometry&quot;: true,
+    &quot;material_budget&quot;: 5.576273088213245e-08,
+    &quot;combined_budget&quot;: 6.8028618614591584e-09,
+    &quot;failure&quot;: null,
+    &quot;recomputed_material_budget&quot;: 5.576273088213245e-08,
+    &quot;recomputed_combined_budget&quot;: 6.8028618614591584e-09,
+    &quot;budget_records_match&quot;: true,
+    &quot;budgets_pass&quot;: true,
+    &quot;saved_geometry&quot;: true,
+    &quot;saved_times_match&quot;: true,
+    &quot;matched_parameters&quot;: true,
+    &quot;same_physical_start&quot;: true,
+    &quot;record_source_hashes_match&quot;: true
+  },
+  {
+    &quot;name&quot;: &quot;unload-n108&quot;,
+    &quot;complete&quot;: true,
+    &quot;finite&quot;: true,
+    &quot;geometry&quot;: true,
+    &quot;material_budget&quot;: 7.399289249955314e-08,
+    &quot;combined_budget&quot;: 1.1667893219758626e-07,
+    &quot;failure&quot;: null,
+    &quot;recomputed_material_budget&quot;: 7.399289249955314e-08,
+    &quot;recomputed_combined_budget&quot;: 1.1667893219758626e-07,
+    &quot;budget_records_match&quot;: true,
+    &quot;budgets_pass&quot;: true,
+    &quot;saved_geometry&quot;: true,
+    &quot;saved_times_match&quot;: true,
+    &quot;same_unloading_checkpoint&quot;: true,
+    &quot;switch_energy_match&quot;: true,
+    &quot;matched_parameters&quot;: true,
+    &quot;record_source_hashes_match&quot;: true
+  }
+]</pre></details><p><a href="https://github.com/NousVolition/My-Sources-Project-ALL/releases/download/hug-unloading-refinement-2026-10-15/hug-unloading-analysis.json">All diagnostics</a> · <a href="protocol.json">Frozen protocol</a> · <a href="results/progress.json">Progress</a> · <a href="final-verification.json">Final verification record</a> · <a href="results/manifest.json">Numerical file hashes</a> · <a href="https://github.com/NousVolition/My-Sources-Project-ALL/releases/download/hug-unloading-refinement-2026-10-15/hug-unloading-refinement-complete.zip">Original comparison and all saved files (ZIP)</a></p></main></body></html>

@@ -61,6 +61,8 @@ Download the repository and open `reports/dynamics-reference-tests/stress/report
 
 ## Material response and molecular studies
 
+- [HUG unloading refinement and zigzags](reports/hug-molding-refinement/README.md): four completed controls, preserved earlier mesh failure, simple accuracy explanation and complete data download.
+
 **[The hug: finest-mesh Lorenz stress](reports/clay-resolved-stress/README.md)** — sparse derivative assembly, actual finer-mesh gap comparisons, extended strongest-forcing runs in both directions, independent accuracy controls and recorded results. [Playback](reports/clay-resolved-stress/report.html).
 
 **[The hug: coarse-start refinement and longer Lorenz forcing](reports/clay-long-stress/README.md)** — automatic selection of an actual finer mesh, angular/radial error diagnosis, and longer hardest-forcing tests in both directions. Includes exact continuations, accuracy controls, completed times and retained limits. [Recorded playback](reports/clay-long-stress/report.html).

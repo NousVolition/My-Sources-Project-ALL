@@ -1,5 +1,9 @@
 # Numerical data downloads
 
+## HUG unloading refinement — October 15, 2026
+
+[Report and verification instructions](reports/hug-molding-refinement/README.md) · [Release](https://github.com/NousVolition/My-Sources-Project-ALL/releases/tag/hug-unloading-refinement-2026-10-15) · [Separate file catalog](reports/hug-molding-refinement/data-release.json). The 16.9 MB ZIP preserves all 156 original refinement and parent-comparison files plus a start page and a historical-link context notice. This new catalog leaves the dated migration inventory below unchanged.
+
 **[Open the verified data release](https://github.com/NousVolition/My-Sources-Project-ALL/releases/tag/numerical-data-2026-10-11)**
 
 The 11 October 2026 storage migration moves **1,846 numerical files (1,818,570,776 bytes)** out of the current source tree. Their contents and original paths are preserved in release ZIP archives. No simulation, coefficient, numerical result or evidence level was changed by this move. Summary JSON/CSV, figures, interactive reports and numerical source remain in the repository.

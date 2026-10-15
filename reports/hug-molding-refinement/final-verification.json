@@ -1,0 +1,136 @@
+{
+  "checked_utc": "2026-10-15T22:03:57.961822+00:00",
+  "status": "complete; bounded refinement verified",
+  "new_integrations_complete": 4,
+  "new_integration_failures": [],
+  "frozen_input_hashes_checked": 34,
+  "numerical_manifest_entries": 11,
+  "new_saved_states": 324,
+  "total_saved_states_with_geometry_checks": 812,
+  "source_and_data_hashes_match": true,
+  "numerical_manifest_complete": true,
+  "controls_and_solver_settings_match": true,
+  "switching_work_recomputed": -1.2900535412668512,
+  "switching_work_from_removed_preload": -1.290053541266851,
+  "energy_budgets": [
+    {
+      "name": "tight-unload-n72",
+      "material": 9.388787840358075e-09,
+      "combined": 1.1040020797658958e-08
+    },
+    {
+      "name": "fixed-rest-unload-n72",
+      "material": 6.203484447476328e-08,
+      "combined": 4.4082751340585246e-08
+    },
+    {
+      "name": "load-n108",
+      "material": 5.576273088213245e-08,
+      "combined": 6.8028618614591584e-09
+    },
+    {
+      "name": "unload-n108",
+      "material": 7.399289249955314e-08,
+      "combined": 1.1667893219758626e-07
+    }
+  ],
+  "temporal": {
+    "gap": {
+      "available": true,
+      "key": "gap",
+      "max_relative": 6.302083361660603e-09,
+      "time_of_max": 0.9600000000000006,
+      "endpoint_relative": 6.209525790566768e-09,
+      "limit": 0.001,
+      "passed": true
+    },
+    "corrugation": {
+      "available": true,
+      "key": "grid_band_radial_rms",
+      "max_relative": 7.15429652397544e-09,
+      "time_of_max": 0.23,
+      "endpoint_relative": 2.678403666600352e-09,
+      "limit": 0.01,
+      "passed": true
+    },
+    "material_state": {
+      "max_scaled": 2.8797027012972265e-08,
+      "limit": 0.0001,
+      "passed": true
+    }
+  },
+  "new_mesh_checks": [
+    {
+      "phase": "load",
+      "coarse": 72,
+      "fine": 108,
+      "available": true,
+      "key": "gap",
+      "max_relative": 0.045885143941705224,
+      "time_of_max": 0.2,
+      "endpoint_relative": 0.045885143941705224,
+      "limit": 0.05,
+      "passed": true
+    },
+    {
+      "phase": "load",
+      "coarse": 72,
+      "fine": 108,
+      "available": true,
+      "key": "imprint",
+      "max_relative": 0.01352730510802862,
+      "time_of_max": 0.15000000000000002,
+      "endpoint_relative": 0.01318280048471546,
+      "limit": 0.05,
+      "passed": true
+    },
+    {
+      "phase": "unload",
+      "coarse": 72,
+      "fine": 108,
+      "available": true,
+      "key": "gap",
+      "max_relative": 0.045885143941705224,
+      "time_of_max": 0.2,
+      "endpoint_relative": 0.0017854377091124517,
+      "limit": 0.05,
+      "passed": true
+    },
+    {
+      "phase": "unload",
+      "coarse": 72,
+      "fine": 108,
+      "available": true,
+      "key": "imprint",
+      "max_relative": 0.021358737424664563,
+      "time_of_max": 0.24000000000000002,
+      "endpoint_relative": 0.02111843894510587,
+      "limit": 0.05,
+      "passed": true
+    }
+  ],
+  "historical_mesh_failures_preserved": [
+    {
+      "phase": "unload",
+      "coarse": 48,
+      "fine": 72,
+      "available": true,
+      "key": "gap",
+      "max_relative": 0.09151403282145441,
+      "time_of_max": 0.32000000000000006,
+      "endpoint_relative": 0.060451589995542516,
+      "limit": 0.05,
+      "passed": false
+    }
+  ],
+  "report_links_checked": 13,
+  "missing_report_links": [],
+  "report_manifest_entries": 10,
+  "limits": [
+    "Aggregate gap/imprint checks pass at the finer pair; individual corrugations remain mesh sensitive.",
+    "The tighter test validates unloading from the saved state, not the earlier loading integration.",
+    "Fixed rest lengths preserve earlier memory and deformation; these two initial-state contributions have not been isolated.",
+    "No calibrated physical clay, permanent free shape, or full-system instability claim."
+  ],
+  "publication_authorized": false
+}

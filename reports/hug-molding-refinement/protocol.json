@@ -1,0 +1,143 @@
+{
+  "created_utc": "2026-10-14T01:51:41.520097+00:00",
+  "authorization": "User requested a refinement of the failed unloading case and investigation of the zigzag pattern.",
+  "purpose": "Separate temporal error, spatial resolution and continued rest-length evolution; investigate source of corrugations without smoothing saved geometry.",
+  "parent": "C:\\Users\\ziman\\Documents\\Codex\\2026-10-05\\ca\\outputs\\hug-molding-isolation-20261013",
+  "scope": "Local dimensionless molding model; no publication; no changes to original files or unrelated studies.",
+  "main_meshes": [
+    [
+      48,
+      5
+    ],
+    [
+      72,
+      7
+    ],
+    [
+      108,
+      10
+    ]
+  ],
+  "loading": {
+    "start": 0.0,
+    "end": 0.2,
+    "initial": [
+      -8.0,
+      8.0,
+      27.0
+    ]
+  },
+  "unloading": {
+    "start": 0.2,
+    "end": 1.2,
+    "alpha": 0.0,
+    "preload": 0.0,
+    "fixed_object_and_wall": true
+  },
+  "primary_solver": {
+    "method": "BDF",
+    "rtol": 2e-09,
+    "atol": 2e-11,
+    "max_step": 0.01,
+    "record_step": 0.01,
+    "max_rhs": 4000000,
+    "max_steps": 200000,
+    "max_seconds": 5400
+  },
+  "tighter_solver": {
+    "method": "BDF",
+    "rtol": 2e-10,
+    "atol": 2e-12,
+    "max_step": 0.005,
+    "record_step": 0.01,
+    "max_rhs": 4000000,
+    "max_steps": 200000,
+    "max_seconds": 1800
+  },
+  "cases": [
+    {
+      "name": "tight-unload-n72",
+      "role": "Temporal control",
+      "source": "case-unload-n72-plastic1-feedback0",
+      "change": "Same saved t=.2 state, tenfold tighter tolerance and half maximum step; unchanged equations."
+    },
+    {
+      "name": "fixed-rest-unload-n72",
+      "role": "Mechanism control",
+      "source": "case-unload-n72-plastic1-feedback0",
+      "change": "Same saved t=.2 state, including the written rest lengths; plastic=False disables further rest-length evolution, not the existing imprint."
+    },
+    {
+      "name": "load-n108",
+      "role": "Spatial refinement",
+      "source": "case-load-n72-plastic1-feedback0",
+      "change": "angles=108, layers=10; fresh identical physical initial geometry and drive."
+    },
+    {
+      "name": "unload-n108",
+      "role": "Spatial refinement",
+      "source": "load-n108",
+      "change": "Continue new fine loading endpoint to 1.2; remove preload and drive coupling as in parent."
+    }
+  ],
+  "gates": {
+    "scaled_energy": 0.001,
+    "spatial_gap_relative": 0.05,
+    "gap_floor": 0.01,
+    "spatial_imprint_relative": 0.05,
+    "imprint_floor": 0.001,
+    "tight_material_state_scaled": 0.0001,
+    "tight_gap_relative": 0.001,
+    "tight_corrugation_relative": 0.01,
+    "corrugation_floor": 1e-08,
+    "locked_rest_change": 1e-12,
+    "jacobian_direction_relative": 5e-05
+  },
+  "diagnostics": [
+    "Whole saved-time gap and imprint comparisons; no Richardson order claim from three spring meshes.",
+    "Radial high harmonics in material node order: grid-relative k>=ceil(n/4) and common k>=12, with correct Nyquist weight. These are node-label harmonics, not literal polar-angle wavelengths.",
+    "Boundary signed-turn roughness after removing Fourier modes 0 through 4; per-layer maxima and means.",
+    "Compressed bond fractions and weighted negative transverse spring stiffness; cell-shape activation and contact history.",
+    "Frozen-rest control tests whether continued plastic evolution is required after unloading; it cannot establish that earlier plastic deformation was unnecessary.",
+    "Local directional energy curvature is a diagnostic of the given state, not proof of a global instability or calibrated physical buckling."
+  ],
+  "limitations": [
+    "No measured clay coefficients, curvature/bending calibration or physical wrinkle validation.",
+    "Do not relax gates, add meshes, change equations or extend horizons automatically after failure.",
+    "Fine loading is necessary to preserve its own history; interpolating coarse internal variables would confound refinement."
+  ],
+  "sources_sha256": {
+    "solver/analytic_spatial.py": "8d977b776446dce9e8e12ac98936f09a73b6f96b84e3a3845c808690fdfef7b2",
+    "solver/cell_hug.py": "219a042e39e5d4d6c3f2958f474d4f4da63e79744cc68bcfe518c231a0b6f8e4",
+    "solver/check_jacobian.py": "6afad637afa5c7627fdad815a7dadaa3dddd92c35aad71d10c0baf2c25197c74",
+    "solver/clay_hug.py": "a9997ea7951fc460b9f08c60f9872daa9f15295f3b447c42826e99fa04d9dcfc",
+    "solver/contact_hug.py": "e3600838e3bdf001f6fe29cae5c8a7797ebf73af24ce1d664a1548b10be289e7",
+    "solver/diagnose.py": "fae1e006b27b2d46a4d01295ce9e791c42c2675bb269fcf30fae915183586918",
+    "solver/experiment.py": "67c0a3ee24eddb7f8aea15f3bda0256ec8567e5eb6858e5249d0fa01cf330f08",
+    "solver/implicit_solver.py": "74e59ba19bfde945d8aedaacfb049880510b08d74acf8f0808e3ab365f06754d",
+    "solver/jacobian.py": "f9bcbb41998dab726bf80dc94e5c5e1bdc30686056ae04160d5f496e9ab8b041",
+    "solver/mesh_hug.py": "76c144b4222658cae0ef8db5ee5e23424cc97b4050604a291a1732ab291de5a5",
+    "solver/numerical_jacobian.py": "9261bdc564962942670b07780748533986232aaa945ad1d44245d4df4990df54",
+    "solver/self_contact.py": "6a9b87bfb47bf6da804aac05e7b3c471070b25314a8144d27f464b5f3f882a11",
+    "solver/suite.py": "14f4a110628f981e53e907c307694b4a5cb3bf098a03cde62083c1c66112ea6b",
+    "solver/validate.py": "c6be81f160964d928f0edb795d19821e7094655da39e62e4232646214a985acf",
+    "parents/case-load-n48-plastic0-feedback0.json": "ec96d013a16a624051cbc344859e13e3450078c0240bccff900e9396f46356bd",
+    "parents/case-load-n48-plastic0-feedback0.npz": "a887402d79da36656c7873ac6451eecd0b668239247c9c2f68cd6716a5d95152",
+    "parents/case-load-n48-plastic1-feedback0.json": "4c2b0de0e564ed784ea5a0a096fb1c8faf3e4f6373d9a804453c9bf3b3c4e7f2",
+    "parents/case-load-n48-plastic1-feedback0.npz": "2abace91c63c87a18b48d940dc746bae895bce98bf29bd99157bc6ee9721f69c",
+    "parents/case-load-n72-plastic0-feedback0.json": "af06976ddbc7ce46cec245c495210f6debb80bd0e9c788c3171a9c6e72331293",
+    "parents/case-load-n72-plastic0-feedback0.npz": "2e90f8eedec16ac20eb6a75c224a2b3fb1eec2b1c6e992401a0f92b4504ae4e3",
+    "parents/case-load-n72-plastic1-feedback0.json": "1f8090d9ac9887318c8e1dd98a887b76ec4b5e069dc06e3dbb330c705629efe1",
+    "parents/case-load-n72-plastic1-feedback0.npz": "20d1a49cb46dd4a2c30412437c0c574985ab7c0afee7bc2bb37f05d4e360e68d",
+    "parents/case-unload-n48-plastic0-feedback0.json": "cff72a048614cc33b5629540619b4e5bc898a241bab83b5796e2b58399bacb73",
+    "parents/case-unload-n48-plastic0-feedback0.npz": "3dbd02c403ae14edf4abbb589aaf347e768558ebe44e6e77850f6a9f79e8496b",
+    "parents/case-unload-n48-plastic1-feedback0.json": "486f40a69f4c03bac2189c96025f55f7efebe5871d435fb8eb7ae7df73ffd8ee",
+    "parents/case-unload-n48-plastic1-feedback0.npz": "ce7431d10a803d2e3c4e9f4f6017f96f5cf66ebad5b0e045039476bf310ed015",
+    "parents/case-unload-n72-plastic0-feedback0.json": "4ac21e3d6372e5f1147bee1f5a1ac73e1348e8f10ac9dfefd8beb4c73a7fc3c0",
+    "parents/case-unload-n72-plastic0-feedback0.npz": "e475958e711c38df5bf3d99b13d040b9def11e5495b2efac1e4e2d9015834e88",
+    "parents/case-unload-n72-plastic1-feedback0.json": "788cb83d86dfcb073622535d156728b0e1670ae5538153b2d91c3ada044e002f",
+    "parents/case-unload-n72-plastic1-feedback0.npz": "d8031af7ac923377b0142be5c69fe6f872e0bc3048fdb6b00b3dae4e48095517",
+    "parents/parent-final-verification.json": "fc099e7c7a14bd699624e0459b020320bd044df7293561d53120301448519b0c",
+    "parents/parent-protocol.json": "158ddcc3ae7b68c11279732e21cb335ca789bce8a99d9796f9b6099289fea72a"
+  }
+}

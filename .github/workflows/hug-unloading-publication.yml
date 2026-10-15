@@ -1,0 +1,31 @@
+name: HUG unloading publication
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'reports/hug-molding-refinement/**'
+      - 'tools/restore_numerical_data.py'
+      - '.github/workflows/hug-unloading-publication.yml'
+  pull_request:
+    paths:
+      - 'reports/hug-molding-refinement/**'
+      - 'tools/restore_numerical_data.py'
+      - '.github/workflows/hug-unloading-publication.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  saved-results:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install saved-state verification dependencies
+        run: python -m pip install numpy==2.3.5 scipy==1.18.1
+      - name: Restore and verify the exact release archive
+        run: python tools/restore_numerical_data.py --catalog reports/hug-molding-refinement/data-release.json --destination scratch/hug-unloading-publication
+      - name: Verify completed results and preserve the earlier failed mesh check
+        run: python -B reports/hug-molding-refinement/verify_publication.py --restored-root scratch/hug-unloading-publication

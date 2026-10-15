@@ -89,6 +89,8 @@ These studies use separate molecular or toy models. Their own reports state the 
 
 ## Moldable hug and reciprocal drive
 
+**[Unloading refinement and the zigzag pattern](hug-molding-refinement/README.md)** — four completed controls; finer-pair gap agreement improves, while individual zigzags remain mesh sensitive. Includes the plain-language accuracy summary and a verified complete release download.
+
 **[Finest-mesh Lorenz stress](clay-resolved-stress/README.md)** — matched refinement under the strongest forcing, longer checkpoint continuations, temporal controls and influence in both directions. Completed intervals and remaining limits are reported. [Playback](clay-resolved-stress/report.html) · [numerical audit](clay-resolved-stress/analysis.json).
 
 **[Coarse-start refinement and longer Lorenz forcing](clay-long-stress/README.md)** — reject the under-resolved coarse result, select a checked finer solution, and inspect longer one-way and reciprocal tests. Requested and completed intervals are reported separately. [Recorded playback](clay-long-stress/report.html) · [numerical audit](clay-long-stress/analysis.json).
