@@ -1,0 +1,57 @@
+{
+  "job": "pair-n128-nu0.1-a0.001-s202",
+  "created_utc": "2026-10-11T22:49:46.684658+00:00",
+  "original_study": "C:\\Users\\ziman\\Documents\\Codex\\2026-10-05\\ca\\work\\matched-stretch-study",
+  "viscosity01_directory": "C:\\Users\\ziman\\Documents\\Codex\\2026-10-09\\referenced-chatgpt-conversation-this-is-an\\outputs\\viscosity-disturbance0p01",
+  "grid": 128,
+  "viscosity": 0.1,
+  "amplitude": 0.001,
+  "seed": 202,
+  "end_time": 0.4,
+  "output_dt": 0.01,
+  "dt": 4.878048780487805e-05,
+  "steps_per_output": 205,
+  "method": "Frozen supplied Flow.step Heun, identical time step to viscosity 0.01 pair",
+  "domain_side": 6,
+  "external_force": 0,
+  "mean_velocity": [
+    0.5203188902456848,
+    0.5203188902456848,
+    -1.0406377804913696
+  ],
+  "reference_initial_l2": 184.30770667965749,
+  "original_source_hashes": {
+    "numerics.py": "22b169971aaf2efd56d47f685495a575e1622edd56c199b07a785fc97e952f46",
+    "run_suite.py": "270da92c7e69e123aa1aa79e449e894dc3acca4a06e41a54b9419b61efff0d07"
+  },
+  "source_hashes": {
+    "run_pair.py": "827b2973f38edb76bf9e848026c14d5735a25d265e004c259f1903ed5429c246",
+    "build_report.py": "2ac50213447bef670eaeb056a7817c156d2e35b3fa710f6468ab90f1d50d8841",
+    "verify_saved.py": "ad391d7a601d795298200d06fef7a2c48e04f44b0de602bad6be04e380687c33",
+    "diagnostics.py": "f39efdb9b2c1124ab056b290b66dbcc7e7461eaf08517cc1eb86cdef266bf8ef"
+  },
+  "initial_hashes": {
+    "initial-reference.npy": "a6a2337be12ffa0a0b00cfbb6530f4f4db76dc28e1016fe87baa9e56b812c403",
+    "initial-disturbed.npy": "fe55d9858410a1224c6f09099a29c52ab75102a54ffd7a95118ef169cd8a4776"
+  },
+  "new_trajectories": 2,
+  "original_matrix_changes": 0,
+  "workers": 1,
+  "execution": "One process advances reference and disturbed fields sequentially at each common step",
+  "comparison": "D(t)/D(0), paired L2 difference with fixed initial-reference normalization; track both net change since start and instantaneous difference-energy rate",
+  "hard_stops": {
+    "nonfinite": true,
+    "speed_cfl": 0.5,
+    "scaled_divergence": 1e-10,
+    "mean_drift": 1e-10,
+    "relative_energy_budget": 0.005,
+    "relative_difference_energy_budget": 0.005
+  },
+  "limitations": [
+    "Raw strain is nonsmooth across periodic joins",
+    "Initial maxima lie outside the central tube",
+    "Single grid and step; initial resolution failures and no convergence proof",
+    "One finite-amplitude seed over finite time does not establish physical or asymptotic stability"
+  ],
+  "publication": "Local higher-viscosity test authorized; no new GitHub publication instruction for this pair"
+}

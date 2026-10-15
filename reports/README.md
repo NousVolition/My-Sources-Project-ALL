@@ -1,5 +1,9 @@
 # Reports by topic
 
+**Completed October 15, 2026:** [Viscosity 0.1 disturbed/reference pair](matched-stretch/completed-n128-viscosity0p1-disturbance-seed202/README.md) — 41 independently verified paired outputs through 0.40; D/D(0)=7.042633, instantaneous rate positive. Raw-strain, initial-peak and resolution limits remain.
+
+**Completed October 15, 2026:** [Seven completed grid-128 parameter runs](matched-stretch/completed-n128-parameter-batch-20261015/README.md) — 287 saved fields independently remeasured; original matrix continues. Raw-strain, initial-peak and resolution limits remain.
+
 **Completed viscosity 0.01 disturbance comparison:** [Verified seed-202 result](matched-stretch/completed-n128-viscosity0p01-disturbance-seed202/README.md) — 41 paired outputs through 0.40; disturbance 233.791945× its starting size and still growing instantaneously. Single-seed finite-time result with known resolution limits.
 
 **Large numerical data:** [verified release downloads and restore instructions](../DATA-RELEASES.md). Reports and figures remain available here.
