@@ -1,5 +1,7 @@
 # Matched-stretch numerical controls
 
+**Completed October 15, 2026:** [Grid-128 strain-axis tilt -5 degrees](completed-n128-angle-minus5/README.md) — all 41 saved fields independently remeasured through 0.40; original matrix continues. Raw-strain, initial-peak and resolution limits remain.
+
 **Completed October 15, 2026:** [Grid-128 strain factor 1.1](completed-n128-strain1p1/README.md) — all 41 saved fields independently remeasured through 0.40; original matrix continues. Raw-strain, initial-peak and resolution limits remain.
 
 **Completed October 15, 2026:** [Grid-256 baseline](completed-n256-baseline/README.md) — all 41 saved fields independently remeasured through 0.40; 38 spatial screens fail and the original half-step control continues. Raw-strain, initial-peak and resolution limits remain.
