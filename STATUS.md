@@ -1,5 +1,7 @@
 # Current status and project history
 
+**Completed October 15, 2026:** [Grid-256 baseline](reports/matched-stretch/completed-n256-baseline/README.md) — all 41 saved fields independently remeasured through 0.40; 38 spatial screens fail and the original half-step control continues. Raw-strain, initial-peak and resolution limits remain.
+
 **Completed October 15, 2026:** [Grid-128 strain factor 0.9](reports/matched-stretch/completed-n128-strain0p9/README.md) — all 41 saved fields independently remeasured through 0.40; original matrix continues. Raw-strain, initial-peak and resolution limits remain.
 
 **Completed October 15, 2026:** [Viscosity 0.1 disturbed/reference pair](reports/matched-stretch/completed-n128-viscosity0p1-disturbance-seed202/README.md) — 41 independently verified paired outputs through 0.40; D/D(0)=7.042633, instantaneous rate positive. Raw-strain, initial-peak and resolution limits remain.
