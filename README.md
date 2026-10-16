@@ -61,6 +61,8 @@ Download the repository and open `reports/dynamics-reference-tests/stress/report
 
 ## Material response and molecular studies
 
+**[The hug: material length and longer Lorenz tests](reports/clay-gap-refinement/README.md)** — a separately tested constitutive revision, preserved original-model extensions, mesh and independent time comparisons, and stronger forcing in both directions. [Saved-state viewer](reports/clay-gap-refinement/report.html).
+
 - [HUG unloading refinement and zigzags](reports/hug-molding-refinement/README.md): four completed controls, preserved earlier mesh failure, simple accuracy explanation and complete data download.
 
 **[The hug: finest-mesh Lorenz stress](reports/clay-resolved-stress/README.md)** — sparse derivative assembly, actual finer-mesh gap comparisons, extended strongest-forcing runs in both directions, independent accuracy controls and recorded results. [Playback](reports/clay-resolved-stress/report.html).

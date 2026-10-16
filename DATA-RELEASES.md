@@ -1,5 +1,10 @@
 # Numerical data downloads
 
+## Hug gap refinement and reciprocal Lorenz tests — October 15, 2026
+
+[Results and reproduction](reports/clay-gap-refinement/README.md) · [Verified raw-array release](https://github.com/NousVolition/My-Sources-Project-ALL/releases/tag/hug-gap-refinement-2026-10-15) · [File catalog](reports/clay-gap-refinement/data-release.json). Code, summaries and the saved-state viewer remain in the source tree. Restore this study with `python reports/clay-gap-refinement/restore_data.py`; the helper verifies every byte and refuses conflicting files. This separate addition leaves the dated migration catalog unchanged.
+
+
 ## HUG unloading refinement — October 15, 2026
 
 [Report and verification instructions](reports/hug-molding-refinement/README.md) · [Release](https://github.com/NousVolition/My-Sources-Project-ALL/releases/tag/hug-unloading-refinement-2026-10-15) · [Separate file catalog](reports/hug-molding-refinement/data-release.json). The 16.9 MB ZIP preserves all 156 original refinement and parent-comparison files plus a start page and a historical-link context notice. This new catalog leaves the dated migration inventory below unchanged.
