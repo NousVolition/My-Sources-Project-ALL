@@ -82,7 +82,7 @@ def main_analysis():
                 values=[]
                 for level,file in enumerate(files):
                     a,m=read(file);v=measurements(a,m);rows[level].append(v);values.append(v)
-                    numeric=dict(config=m['config'],screens=basic_screens(m),work_error=m['work_audit']['equal_work_error'],rms_error=m['work_audit']['equal_rms_error'],endpoint_resolution=endpoint_resolution(a,regime),field_stats=m['field_stats'],work_audit=m['work_audit'],matching=m['matching'])
+                    numeric=dict(config=m['config'],screens=basic_screens(m),work_error=m['work_audit']['equal_work_error'],rms_error=m['work_audit']['equal_rms_error'],reset_error=max(x['reset'] for x in v.values()),intervention_checks=m['intervention_checks'],endpoint_resolution=endpoint_resolution(a,regime),field_stats=m['field_stats'],work_audit=m['work_audit'],matching=m['matching'])
                     numerical.append(numeric)
                     if level==1:
                         for horizon in a['time'][1:]:
@@ -93,7 +93,7 @@ def main_analysis():
                 grid.append(dict(seed=seed,regime=regime,layout=layout,**comparison(*files)))
                 if seed in seeds[:2]:
                     half=filename(seed,regime,layout,cfg['grids'][-1],cfg['dt']/2)
-                    a,m=read(half);numerical.append(dict(config=m['config'],screens=basic_screens(m),work_error=m['work_audit']['equal_work_error'],rms_error=m['work_audit']['equal_rms_error'],endpoint_resolution=endpoint_resolution(a,regime)))
+                    a,m=read(half);hv=measurements(a,m);numerical.append(dict(config=m['config'],screens=basic_screens(m),work_error=m['work_audit']['equal_work_error'],rms_error=m['work_audit']['equal_rms_error'],reset_error=max(x['reset'] for x in hv.values()),intervention_checks=m['intervention_checks'],endpoint_resolution=endpoint_resolution(a,regime)))
                     steps.append(dict(seed=seed,regime=regime,layout=layout,**comparison(files[1],half)))
             key=regime+'/'+layout;groups[key]={label:summarize(v,P['probe_methods']) for label,v in zip(['coarse','fine'],rows)}
             claims[key]={method:claim(groups[key]['coarse'][method]['attenuation'],groups[key]['fine'][method]['attenuation'],[a[method]['attenuation']-b[method]['attenuation'] for a,b in zip(*rows)]) for method in P['probe_methods']}
@@ -119,11 +119,11 @@ def common_analysis():
                 vals=[]
                 for level,file in enumerate(files):
                     a,m=read(file);v=common_measure(a,m);rows[level].append(v);vals.append(v)
-                    numerical.append(dict(config=m['config'],screens=basic_screens(m),audit=m['audit'],endpoint_resolution=endpoint_resolution(a,regime)))
+                    numerical.append(dict(config=m['config'],screens=basic_screens(m),audit=m['audit'],reset_error=v['reset'],endpoint_resolution=endpoint_resolution(a,regime)))
                 per.append(dict(seed=seed,regime=regime,layout=layout,coarse=vals[0],fine=vals[1]));grid.append(dict(seed=seed,regime=regime,layout=layout,**common_comparison(*files)))
                 if (regime=='smooth' and seed in seeds[:2]) or (regime!='smooth' and seed==seeds[0]):
                     half=path('common-probe-data',seed,regime,cfg['grids'][-1],cfg['dt']/2,layout)
-                    a,m=read(half);numerical.append(dict(config=m['config'],screens=basic_screens(m),audit=m['audit'],endpoint_resolution=endpoint_resolution(a,regime)))
+                    a,m=read(half);numerical.append(dict(config=m['config'],screens=basic_screens(m),audit=m['audit'],reset_error=common_measure(a,m)['reset'],endpoint_resolution=endpoint_resolution(a,regime)))
                     steps.append(dict(seed=seed,regime=regime,layout=layout,**common_comparison(files[1],half)))
             key=regime+'/'+layout
             groups[key]={level:{metric:interval([v[metric] for v in rs]) for metric in METRICS} for level,rs in zip(['coarse','fine'],rows)}
@@ -195,7 +195,8 @@ def all_results():
                 work=all((r.get('work_error',r.get('audit',{}).get('work_error',0)))<g['work_error'] for r in nums),
                 rms=all((r.get('rms_error',r.get('audit',{}).get('rms_error',0)))<g['rms_error'] for r in nums),
                 grid_ftle=all(r['response_ftle_rmse']<g['response_ftle_grid_rmse'] for r in grids),grid_field=all(r['response_field_relative']<g['response_field_grid_relative'] for r in grids),
-                half_step=all(r['response_ftle_rmse']<g['response_ftle_step_rmse'] for r in steps))
+                half_step=all(r['response_ftle_rmse']<g['response_ftle_step_rmse'] for r in steps),reset=all(r['reset_error']<1e-12 for r in nums),
+                modal_controls=all(all(value<1e-12 for check in r.get('intervention_checks',{}).values() for value in check.values()) for r in nums))
     for regime,result in c['regimes'].items():
         nums=[r for r in c['numerical'] if r['config']['regime']==regime]
         checks['unforced/'+regime]=dict(trajectory=all(all(r['screens'].values()) and r['endpoint_resolution']['passed'] for r in nums),grid_ftle=all(r['response_ftle_rmse']<g['response_ftle_grid_rmse'] for r in result['grid']),grid_field=all(r['response_field_relative']<g['response_field_grid_relative'] for r in result['grid']),half_step=all(r['response_ftle_rmse']<g['response_ftle_step_rmse'] for r in result['half_step']))
@@ -212,9 +213,31 @@ def all_results():
         for method,r in v.items():r['numerically_qualified']=all(checks['main/'+regime].values()) and regime_control_pass(regime);r['physical_claim_passed']=r['effect_resolution_passed'] and r['numerically_qualified']
     for key,r in b['claims'].items():
         regime=key.split('/')[0];r['numerically_qualified']=all(checks['common/'+regime].values()) and regime_control_pass(regime);r['physical_claim_passed']=r['effect_resolution_passed'] and r['numerically_qualified']
+    # Separate existence of a history-conditioned response from positive
+    # attenuation and from specificity relative to an intact rearrangement.
+    memory_cells={}
+    for key,group in b['groups'].items():
+        rows=[r for r in b['per_flow'] if r['regime']+'/'+r['layout']==key]
+        qualifiers={}
+        for metric in ['retained','attenuation','specificity']:
+            r=claim(group['coarse'][metric],group['fine'][metric],[v['coarse'][metric]-v['fine'][metric] for v in rows])
+            r['numerically_qualified']=b['claims'][key]['numerically_qualified']
+            r['qualified_positive']=r['effect_resolution_passed'] and r['numerically_qualified'] and group['fine'][metric]['mean']>0
+            qualifiers[metric]=r
+        memory_cells[key]=qualifiers
+    primary=a['claims']['smooth/coincident']['equal_work_equal_rms']
+    primary_positive=primary['physical_claim_passed'] and a['groups']['smooth/coincident']['fine']['equal_work_equal_rms']['attenuation']['mean']>0
+    strict=memory_cells['smooth/coincident']
+    assessment=dict(primary_individual_probe_positive_attenuation=primary_positive,
+        identical_common_probe_history_response_qualified=strict['retained']['qualified_positive'],
+        identical_common_probe_positive_attenuation_qualified=strict['attenuation']['qualified_positive'],
+        identical_common_probe_scrambling_specificity_qualified=strict['specificity']['qualified_positive'],
+        common_probe_cells=memory_cells,
+        scope='Finite-window history dependence at matched low modes/modal powers; not memory beyond the complete present fluid state',
+        missing=['Stationary high-Reynolds-number turbulence and larger domains','Long retention/response windows with larger independent ensembles','Independent external software/laboratory replication','Full spatial support mapping for localized versus collective response','Carrier specificity where intact translations have comparable effects','Real-water molecular/isotope evidence, outside this fluid study'])
     # Save augmented claims too, so report and machine-readable files agree.
     dump(ROOT/'results'/'main-analysis.json',a);dump(ROOT/'results'/'common-analysis.json',b)
-    result=dict(checks=checks,all_numerical_checks_passed=all(all(v.values()) for v in checks.values()),main_claims=a['claims'],common_claims=b['claims'],
+    result=dict(checks=checks,all_numerical_checks_passed=all(all(v.values()) for v in checks.values()),main_claims=a['claims'],common_claims=b['claims'],memory_assessment=assessment,
         independent_statistical_units='Whole fresh initial-flow seeds; layouts/methods/markers/grids remain paired',exploratory_intervals_unadjusted=True,
         inference_safeguard_sha256=digest(ROOT/'inference-safeguard.json'),request_id='2300ecd1-d208-4695-9b39-62b93d705892')
     dump(ROOT/'results'/'extension-summary.json',result);print(json.dumps(result,indent=2));return result

@@ -16,9 +16,17 @@ def construct(s,states,center):
     preferred=s.cpu(xp.stack([s.inner(span[2],q) for q in orth]))
     u,singular,vh=np.linalg.svd(constraints,full_matrices=True)
     rank=int(np.sum(singular>min(max(singular[0],1e-300)*1e-9,1e-10)));null=vh[rank:]
-    projected=null.T@(null@preferred);alignment=float(np.linalg.norm(projected));fallback=False
+    projected=null.T@(null@preferred);alignment=float(np.linalg.norm(projected));fallback=False;fallback_basis_index=None
     if alignment<1e-6:
-        projected=null[0];fallback=True
+        # Select a fixed physical basis direction, never an arbitrary SVD
+        # vector whose orientation can depend on the order of state labels.
+        fallback=True
+        for candidate in range(len(span)):
+            anchor=s.cpu(xp.stack([s.inner(span[candidate],q) for q in orth]))
+            proposed=null.T@(null@anchor)
+            if np.linalg.norm(proposed)>=1e-6:
+                projected=proposed;fallback_basis_index=candidate;break
+        else:raise RuntimeError('No label-independent feasible common impulse')
     pulse=xp.einsum('i,icxyz->cxyz',xp.asarray(projected),orth)
     pulse*=DESIGN['strength']/xp.sqrt(s.inner(pulse,pulse))
     linear=s.cpu(s.inner(states,pulse));norm=float(s.cpu(xp.sqrt(s.inner(pulse,pulse))))
@@ -30,7 +38,7 @@ def construct(s,states,center):
     localization=dict(energy_fraction_radius2=float(s.cpu(xp.sum(energy*(radius2<4))/xp.sum(energy))),
                       rms_periodic_radius=float(s.cpu(xp.sqrt(xp.sum(energy*radius2)/xp.sum(energy)))),
                       preferred_energy_fraction_radius2=float(s.cpu(xp.sum(reference_energy*(radius2<4))/xp.sum(reference_energy))))
-    audit=dict(span_dimension=len(span),retained_span_dimension=int(keep.sum()),constraint_rank=rank,null_dimension=len(null),preferred_projection_norm=alignment,fallback=fallback,
+    audit=dict(span_dimension=len(span),retained_span_dimension=int(keep.sum()),constraint_rank=rank,null_dimension=len(null),preferred_projection_norm=alignment,fallback=fallback,fallback_basis_index=fallback_basis_index,
                linear_work=linear.tolist(),increments=increments.tolist(),rms=norm,work_error=float(abs(increments-DESIGN['energy_increment']).max()),rms_error=abs(norm-DESIGN['strength']),
                preferred_cosine=float(s.cpu(s.inner(pulse,span[2])))/norm,localization=localization,
                gram_eigenvalues=eig.tolist(),constraint_singular_values=singular.tolist())
@@ -40,7 +48,7 @@ def construct(s,states,center):
 def run_one(seed,regime,layout,n,dt=None):
     cfg=P['regimes'][regime];dt=cfg['dt'] if dt is None else dt;parent=filename(seed,regime,layout,n,dt)
     a,m=read(parent);folder=ROOT/'common-probe-data';folder.mkdir(exist_ok=True);stem=f'{regime}-{layout}-s{seed}-n{n}-dt{dt:g}'
-    raw=folder/(stem+'.npz');mp=raw.with_suffix('.json');src={f:digest(ROOT/f) for f in ['common_probe.py','common-probe-protocol.json','corrected_solver.py','corrected_observation.py','final_experiment.py']}
+    raw=folder/(stem+'.npz');mp=raw.with_suffix('.json');src={f:digest(ROOT/f) for f in ['common_probe.py','common-probe-protocol.json','common-identity-amendment.json','corrected_solver.py','corrected_observation.py','final_experiment.py']}
     if mp.exists():
         old=json.loads(mp.read_text())
         if old['sources']!=src or old['parent_raw_sha256']!=m['raw_sha256'] or old['raw_sha256']!=digest(raw):raise RuntimeError('Common-probe cache mismatch')

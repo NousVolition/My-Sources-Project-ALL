@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-11",
+  "before_production_effects": true,
+  "overrides": {
+    "smooth": {
+      "dt": 0.005
+    },
+    "forced_nu004": {
+      "grids": [
+        48,
+        64
+      ]
+    },
+    "forced_nu002": {
+      "grids": [
+        80,
+        96
+      ]
+    }
+  },
+  "reason": "New corrected integer-wave solver and spinup. All six two-grid pilots pass the unchanged gates after fixing the grid-dependent reset degeneracy; use 48/64 moderate and 80/96 lower viscosity. No pilot effect sizes inspected. Extra n=96 moderate audits retained.",
+  "correction_sha256": "d7d4b5857e296611495f260ba65d6e09aa1c3e03e7a63cfda0440afee3e5c1c4",
+  "qualification_sha256": "4b934dc5d835b2428781191963664d38f03b4dd1d0ecb7923762dfaddf3e0045"
+}

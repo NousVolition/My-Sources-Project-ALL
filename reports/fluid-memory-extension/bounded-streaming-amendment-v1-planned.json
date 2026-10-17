@@ -1,0 +1,21 @@
+{
+  "time_utc": "2026-10-11T22:46:15.757801+00:00",
+  "before_fresh_memory_effects_inspected": true,
+  "reason": "Fit 128-cubed starting fields and integration batches within available 10 GiB GPU; resource scheduling only",
+  "n": 128,
+  "batch": 6,
+  "storage": "Normalized retained complex128 starting coefficients held on CPU and unpacked per independent batch; binary normalization is exact at this grid size",
+  "original_source_sha256": "0dda7bef4abef6f73c26330fbd781ce4c7e3b6b43fb16a415ba231a0b805d88b",
+  "sources": {
+    "create_bounded_version.py": "eac3aa7c53b67dab28c4e72c0e29da8825298a0d18b869acf84e7b33022679e3",
+    "bounded_final_experiment.py": "ea9fc8e3cb31942501f65363bef4f39ecde6e8072c7c08940b9bca64776ba970",
+    "validate_bounded_streaming.py": "8e994f2661905a5719ce178dbc82c184b02af9a55075d3e60837bef898d3a947",
+    "refinement_gpu_pipeline.py": "40ba870af0daf48569ed1b6089b2d82afc7540b275068a4f72b02cea7632bbcc",
+    "validate_refined_observation.py": "476d1b8638e571da8631ee3d5b45942e61804429df477a6017078f122994ecb6",
+    "final_analysis.py": "c6368aa206bd24f0255968db25e5fc07de69e2587ca4e8a97d810980deb547af",
+    "report_extension.py": "337aa3dcbf90bcebbc0a162a69897bbb6c03ebeff80a9a6bc2d1ab41eeaeb2b5"
+  },
+  "qualification": "Broad-spectrum seven-branch input packing and one coupled GPU step compared as a whole batch and six-plus-one streamed batches; unchanged 1e-11 error ceiling",
+  "independent_source": "Original corrected 96-cubed spinup verified and reused; does not claim a 128-cubed spinup",
+  "documentation_updated_time_utc": "2026-10-11T22:56:52.727050+00:00"
+}

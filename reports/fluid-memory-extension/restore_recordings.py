@@ -12,7 +12,7 @@ def sha(path):
 
 def main():
     root=Path(__file__).resolve().parent
-    ap=argparse.ArgumentParser();ap.add_argument('--parts',type=Path,default=root);ap.add_argument('--out',type=Path,default=root);ap.add_argument('--download',action='store_true');args=ap.parse_args()
+    ap=argparse.ArgumentParser();ap.add_argument('--parts',type=Path,default=root);ap.add_argument('--out',type=Path,default=root);ap.add_argument('--archive',type=Path,help='Optional separate destination for the joined archive');ap.add_argument('--download',action='store_true');args=ap.parse_args()
     manifest=json.loads((root/'raw-recordings.json').read_text())
     args.parts.mkdir(parents=True,exist_ok=True);args.out.mkdir(parents=True,exist_ok=True)
     if args.download:
@@ -21,7 +21,10 @@ def main():
         for part in manifest['parts']:
             path=args.parts/part['file']
             if not path.exists():urllib.request.urlretrieve(base+part['file'],path)
-    combined=args.parts/manifest.get('archive_name','fluid-memory-recordings.tar.xz')
+    for part in manifest['parts']:
+        if sha(args.parts/part['file'])!=part['sha256']:raise RuntimeError('Part checksum failed: '+part['file'])
+    combined=args.archive or args.parts/manifest.get('archive_name','fluid-memory-recordings.tar.xz')
+    combined.parent.mkdir(parents=True,exist_ok=True)
     if not combined.exists() or sha(combined)!=manifest['archive_sha256']:
         with combined.open('wb') as out:
             for part in manifest['parts']:

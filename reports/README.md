@@ -29,7 +29,7 @@
 
 Start with a study's **README** for its question, results, charts and limitations. Open its data and verification files when you want the supporting detail.
 
-The [equal-work and independent-solver follow-up](fluid-memory-extension/README.md) is a separate **in-progress snapshot** with failed pilots and partial corrected qualification; no completed production result is claimed there.
+The [equal-work and independent-solver follow-up](fluid-memory-extension/README.md) has completed all 266 GPU configurations, 14 second-solver comparisons, and exact restoration/reanalysis of 331 recordings. The primary identical-probe test supports finite-window history-dependent response and phase-scrambling attenuation beyond the intact-translation control; the moved-probe smooth-flow attenuation remains uncertain. **Full raw-data upload is still in progress**; see [publication status](fluid-memory-extension/publication-status.json).
 
 ## Fluid calculations
 

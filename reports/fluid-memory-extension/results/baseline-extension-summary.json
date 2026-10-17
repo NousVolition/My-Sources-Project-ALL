@@ -1,0 +1,565 @@
+{
+  "checks": {
+    "main/smooth": {
+      "trajectory": true,
+      "endpoint_resolution": true,
+      "work": true,
+      "rms": true,
+      "grid_ftle": true,
+      "grid_field": true,
+      "half_step": true,
+      "reset": true,
+      "modal_controls": true
+    },
+    "main/forced_nu004": {
+      "trajectory": true,
+      "endpoint_resolution": true,
+      "work": true,
+      "rms": true,
+      "grid_ftle": false,
+      "grid_field": true,
+      "half_step": true,
+      "reset": true,
+      "modal_controls": true
+    },
+    "main/forced_nu002": {
+      "trajectory": true,
+      "endpoint_resolution": true,
+      "work": true,
+      "rms": true,
+      "grid_ftle": false,
+      "grid_field": true,
+      "half_step": true,
+      "reset": true,
+      "modal_controls": true
+    },
+    "common/smooth": {
+      "trajectory": true,
+      "endpoint_resolution": true,
+      "work": true,
+      "rms": true,
+      "grid_ftle": true,
+      "grid_field": true,
+      "half_step": true,
+      "reset": true,
+      "modal_controls": true
+    },
+    "common/forced_nu004": {
+      "trajectory": true,
+      "endpoint_resolution": true,
+      "work": true,
+      "rms": true,
+      "grid_ftle": true,
+      "grid_field": true,
+      "half_step": true,
+      "reset": true,
+      "modal_controls": true
+    },
+    "common/forced_nu002": {
+      "trajectory": true,
+      "endpoint_resolution": true,
+      "work": true,
+      "rms": true,
+      "grid_ftle": true,
+      "grid_field": true,
+      "half_step": true,
+      "reset": true,
+      "modal_controls": true
+    },
+    "unforced/forced_nu004": {
+      "trajectory": true,
+      "grid_ftle": true,
+      "grid_field": true,
+      "half_step": true
+    },
+    "unforced/forced_nu002": {
+      "trajectory": true,
+      "grid_ftle": false,
+      "grid_field": true,
+      "half_step": true
+    },
+    "controls": {
+      "translation": true,
+      "independent_solver": true,
+      "moderate_finest_ftle": true,
+      "moderate_finest_field": true
+    }
+  },
+  "all_numerical_checks_passed": false,
+  "main_claims": {
+    "smooth/coincident": {
+      "fixed_rms": {
+        "ci_excludes_zero_on_both": true,
+        "same_sign": true,
+        "mean_absolute_grid_change": 3.134387135710938e-05,
+        "relative_grid_change": 0.00038087364750379206,
+        "effect_resolution_passed": true,
+        "numerically_qualified": true,
+        "physical_claim_passed": true
+      },
+      "equal_work_fixed_shape": {
+        "ci_excludes_zero_on_both": true,
+        "same_sign": true,
+        "mean_absolute_grid_change": 0.00012328815760448766,
+        "relative_grid_change": 0.0006072943896773546,
+        "effect_resolution_passed": true,
+        "numerically_qualified": true,
+        "physical_claim_passed": true
+      },
+      "equal_work_equal_rms": {
+        "ci_excludes_zero_on_both": true,
+        "same_sign": true,
+        "mean_absolute_grid_change": 2.0440038027959295e-05,
+        "relative_grid_change": 0.0003312908608289634,
+        "effect_resolution_passed": true,
+        "numerically_qualified": true,
+        "physical_claim_passed": true
+      }
+    },
+    "smooth/writer_moved": {
+      "fixed_rms": {
+        "ci_excludes_zero_on_both": true,
+        "same_sign": true,
+        "mean_absolute_grid_change": 1.284936162591942e-05,
+        "relative_grid_change": 0.0005519476820163049,
+        "effect_resolution_passed": true,
+        "numerically_qualified": true,
+        "physical_claim_passed": true
+      },
+      "equal_work_fixed_shape": {
+        "ci_excludes_zero_on_both": true,
+        "same_sign": true,
+        "mean_absolute_grid_change": 2.6200128606162923e-05,
+        "relative_grid_change": 0.000621433669946448,
+        "effect_resolution_passed": true,
+        "numerically_qualified": true,
+        "physical_claim_passed": true
+      },
+      "equal_work_equal_rms": {
+        "ci_excludes_zero_on_both": true,
+        "same_sign": true,
+        "mean_absolute_grid_change": 1.429539978537028e-05,
+        "relative_grid_change": 0.0007987142154266976,
+        "effect_resolution_passed": true,
+        "numerically_qualified": true,
+        "physical_claim_passed": true
+      }
+    },
+    "smooth/probe_moved": {
+      "fixed_rms": {
+        "ci_excludes_zero_on_both": false,
+        "same_sign": true,
+        "mean_absolute_grid_change": 1.9978821310906794e-05,
+        "relative_grid_change": 0.0028467313992120986,
+        "effect_resolution_passed": false,
+        "numerically_qualified": true,
+        "physical_claim_passed": false
+      },
+      "equal_work_fixed_shape": {
+        "ci_excludes_zero_on_both": true,
+        "same_sign": true,
+        "mean_absolute_grid_change": 3.270412048306194e-05,
+        "relative_grid_change": 0.0013084471423830861,
+        "effect_resolution_passed": true,
+        "numerically_qualified": true,
+        "physical_claim_passed": true
+      },
+      "equal_work_equal_rms": {
+        "ci_excludes_zero_on_both": false,
+        "same_sign": true,
+        "mean_absolute_grid_change": 8.71134810235489e-06,
+        "relative_grid_change": 0.004162351240962573,
+        "effect_resolution_passed": false,
+        "numerically_qualified": true,
+        "physical_claim_passed": false
+      }
+    },
+    "forced_nu004/coincident": {
+      "fixed_rms": {
+        "ci_excludes_zero_on_both": true,
+        "same_sign": true,
+        "mean_absolute_grid_change": 0.00032309966691380747,
+        "relative_grid_change": 0.004365216267314537,
+        "effect_resolution_passed": true,
+        "numerically_qualified": false,
+        "physical_claim_passed": false
+      },
+      "equal_work_fixed_shape": {
+        "ci_excludes_zero_on_both": true,
+        "same_sign": true,
+        "mean_absolute_grid_change": 0.0008025667915313658,
+        "relative_grid_change": 0.0038204625153990157,
+        "effect_resolution_passed": true,
+        "numerically_qualified": false,
+        "physical_claim_passed": false
+      },
+      "equal_work_equal_rms": {
+        "ci_excludes_zero_on_both": true,
+        "same_sign": true,
+        "mean_absolute_grid_change": 0.00022724417701684013,
+        "relative_grid_change": 0.0035424701843106226,
+        "effect_resolution_passed": true,
+        "numerically_qualified": false,
+        "physical_claim_passed": false
+      }
+    },
+    "forced_nu004/writer_moved": {
+      "fixed_rms": {
+        "ci_excludes_zero_on_both": true,
+        "same_sign": true,
+        "mean_absolute_grid_change": 0.000242345075247093,
+        "relative_grid_change": 0.006588616094550647,
+        "effect_resolution_passed": true,
+        "numerically_qualified": false,
+        "physical_claim_passed": false
+      },
+      "equal_work_fixed_shape": {
+        "ci_excludes_zero_on_both": true,
+        "same_sign": true,
+        "mean_absolute_grid_change": 0.0004628341679641804,
+        "relative_grid_change": 0.004109045099060491,
+        "effect_resolution_passed": true,
+        "numerically_qualified": false,
+        "physical_claim_passed": false
+      },
+      "equal_work_equal_rms": {
+        "ci_excludes_zero_on_both": true,
+        "same_sign": true,
+        "mean_absolute_grid_change": 0.00020678620316524812,
+        "relative_grid_change": 0.0063633229732548684,
+        "effect_resolution_passed": true,
+        "numerically_qualified": false,
+        "physical_claim_passed": false
+      }
+    },
+    "forced_nu004/probe_moved": {
+      "fixed_rms": {
+        "ci_excludes_zero_on_both": true,
+        "same_sign": true,
+        "mean_absolute_grid_change": 0.0001234879577658712,
+        "relative_grid_change": 0.004075813202468612,
+        "effect_resolution_passed": true,
+        "numerically_qualified": false,
+        "physical_claim_passed": false
+      },
+      "equal_work_fixed_shape": {
+        "ci_excludes_zero_on_both": true,
+        "same_sign": true,
+        "mean_absolute_grid_change": 0.00011610022662442263,
+        "relative_grid_change": 0.0024920569644450784,
+        "effect_resolution_passed": true,
+        "numerically_qualified": false,
+        "physical_claim_passed": false
+      },
+      "equal_work_equal_rms": {
+        "ci_excludes_zero_on_both": true,
+        "same_sign": true,
+        "mean_absolute_grid_change": 0.00018996292010607305,
+        "relative_grid_change": 0.00926032346294121,
+        "effect_resolution_passed": true,
+        "numerically_qualified": false,
+        "physical_claim_passed": false
+      }
+    },
+    "forced_nu002/coincident": {
+      "fixed_rms": {
+        "ci_excludes_zero_on_both": true,
+        "same_sign": true,
+        "mean_absolute_grid_change": 0.00040609827255422455,
+        "relative_grid_change": 0.00673614085840388,
+        "effect_resolution_passed": true,
+        "numerically_qualified": false,
+        "physical_claim_passed": false
+      },
+      "equal_work_fixed_shape": {
+        "ci_excludes_zero_on_both": true,
+        "same_sign": true,
+        "mean_absolute_grid_change": 0.0013418187687596877,
+        "relative_grid_change": 0.006145972155571659,
+        "effect_resolution_passed": true,
+        "numerically_qualified": false,
+        "physical_claim_passed": false
+      },
+      "equal_work_equal_rms": {
+        "ci_excludes_zero_on_both": true,
+        "same_sign": true,
+        "mean_absolute_grid_change": 0.0005967635965079343,
+        "relative_grid_change": 0.01279254764128614,
+        "effect_resolution_passed": true,
+        "numerically_qualified": false,
+        "physical_claim_passed": false
+      }
+    },
+    "forced_nu002/writer_moved": {
+      "fixed_rms": {
+        "ci_excludes_zero_on_both": true,
+        "same_sign": true,
+        "mean_absolute_grid_change": 0.00018443443174788292,
+        "relative_grid_change": 0.006168942141290239,
+        "effect_resolution_passed": true,
+        "numerically_qualified": false,
+        "physical_claim_passed": false
+      },
+      "equal_work_fixed_shape": {
+        "ci_excludes_zero_on_both": true,
+        "same_sign": true,
+        "mean_absolute_grid_change": 0.0005351768751728813,
+        "relative_grid_change": 0.004782595624229848,
+        "effect_resolution_passed": true,
+        "numerically_qualified": false,
+        "physical_claim_passed": false
+      },
+      "equal_work_equal_rms": {
+        "ci_excludes_zero_on_both": true,
+        "same_sign": true,
+        "mean_absolute_grid_change": 0.00019728393581001404,
+        "relative_grid_change": 0.006737364562267376,
+        "effect_resolution_passed": true,
+        "numerically_qualified": false,
+        "physical_claim_passed": false
+      }
+    },
+    "forced_nu002/probe_moved": {
+      "fixed_rms": {
+        "ci_excludes_zero_on_both": true,
+        "same_sign": true,
+        "mean_absolute_grid_change": 0.0002704952304029406,
+        "relative_grid_change": 0.011627306892100757,
+        "effect_resolution_passed": true,
+        "numerically_qualified": false,
+        "physical_claim_passed": false
+      },
+      "equal_work_fixed_shape": {
+        "ci_excludes_zero_on_both": true,
+        "same_sign": true,
+        "mean_absolute_grid_change": 0.0008830219699686725,
+        "relative_grid_change": 0.010437922062893203,
+        "effect_resolution_passed": true,
+        "numerically_qualified": false,
+        "physical_claim_passed": false
+      },
+      "equal_work_equal_rms": {
+        "ci_excludes_zero_on_both": true,
+        "same_sign": true,
+        "mean_absolute_grid_change": 0.0002814571089154285,
+        "relative_grid_change": 0.011503235396979516,
+        "effect_resolution_passed": true,
+        "numerically_qualified": false,
+        "physical_claim_passed": false
+      }
+    }
+  },
+  "common_claims": {
+    "smooth/coincident": {
+      "ci_excludes_zero_on_both": true,
+      "same_sign": true,
+      "mean_absolute_grid_change": 1.516743075372117e-05,
+      "relative_grid_change": 0.001111417982314157,
+      "effect_resolution_passed": true,
+      "numerically_qualified": true,
+      "physical_claim_passed": true
+    },
+    "smooth/writer_moved": {
+      "ci_excludes_zero_on_both": true,
+      "same_sign": true,
+      "mean_absolute_grid_change": 9.163607434960804e-06,
+      "relative_grid_change": 0.0007891531627372281,
+      "effect_resolution_passed": true,
+      "numerically_qualified": true,
+      "physical_claim_passed": true
+    },
+    "smooth/probe_moved": {
+      "ci_excludes_zero_on_both": false,
+      "same_sign": true,
+      "mean_absolute_grid_change": 2.4761675837099055e-05,
+      "relative_grid_change": 0.008857899470147458,
+      "effect_resolution_passed": false,
+      "numerically_qualified": true,
+      "physical_claim_passed": false
+    },
+    "forced_nu004/coincident": {
+      "ci_excludes_zero_on_both": true,
+      "same_sign": true,
+      "mean_absolute_grid_change": 9.802298448237379e-05,
+      "relative_grid_change": 0.004940868049295047,
+      "effect_resolution_passed": true,
+      "numerically_qualified": true,
+      "physical_claim_passed": true
+    },
+    "forced_nu002/coincident": {
+      "ci_excludes_zero_on_both": true,
+      "same_sign": true,
+      "mean_absolute_grid_change": 0.00023797290880488414,
+      "relative_grid_change": 0.008460938091687803,
+      "effect_resolution_passed": true,
+      "numerically_qualified": true,
+      "physical_claim_passed": true
+    }
+  },
+  "memory_assessment": {
+    "primary_individual_probe_positive_attenuation": true,
+    "identical_common_probe_history_response_qualified": true,
+    "identical_common_probe_positive_attenuation_qualified": true,
+    "identical_common_probe_scrambling_specificity_qualified": true,
+    "common_probe_cells": {
+      "smooth/coincident": {
+        "retained": {
+          "ci_excludes_zero_on_both": true,
+          "same_sign": true,
+          "mean_absolute_grid_change": 1.3569606825312172e-05,
+          "relative_grid_change": 0.0004560976540281456,
+          "effect_resolution_passed": true,
+          "numerically_qualified": true,
+          "qualified_positive": true
+        },
+        "attenuation": {
+          "ci_excludes_zero_on_both": true,
+          "same_sign": true,
+          "mean_absolute_grid_change": 1.516743075372117e-05,
+          "relative_grid_change": 0.001111417982314157,
+          "effect_resolution_passed": true,
+          "numerically_qualified": true,
+          "qualified_positive": true
+        },
+        "specificity": {
+          "ci_excludes_zero_on_both": true,
+          "same_sign": true,
+          "mean_absolute_grid_change": 2.4187225650423643e-05,
+          "relative_grid_change": 0.0022198985582466612,
+          "effect_resolution_passed": true,
+          "numerically_qualified": true,
+          "qualified_positive": true
+        }
+      },
+      "smooth/writer_moved": {
+        "retained": {
+          "ci_excludes_zero_on_both": true,
+          "same_sign": true,
+          "mean_absolute_grid_change": 9.477839944410388e-06,
+          "relative_grid_change": 0.0003472612322558109,
+          "effect_resolution_passed": true,
+          "numerically_qualified": true,
+          "qualified_positive": true
+        },
+        "attenuation": {
+          "ci_excludes_zero_on_both": true,
+          "same_sign": true,
+          "mean_absolute_grid_change": 9.163607434960804e-06,
+          "relative_grid_change": 0.0007891531627372281,
+          "effect_resolution_passed": true,
+          "numerically_qualified": true,
+          "qualified_positive": true
+        },
+        "specificity": {
+          "ci_excludes_zero_on_both": true,
+          "same_sign": true,
+          "mean_absolute_grid_change": 2.2799384213504324e-05,
+          "relative_grid_change": 0.0012039677679586142,
+          "effect_resolution_passed": true,
+          "numerically_qualified": true,
+          "qualified_positive": true
+        }
+      },
+      "smooth/probe_moved": {
+        "retained": {
+          "ci_excludes_zero_on_both": true,
+          "same_sign": true,
+          "mean_absolute_grid_change": 2.568929585761051e-05,
+          "relative_grid_change": 0.000853078642423959,
+          "effect_resolution_passed": true,
+          "numerically_qualified": true,
+          "qualified_positive": true
+        },
+        "attenuation": {
+          "ci_excludes_zero_on_both": false,
+          "same_sign": true,
+          "mean_absolute_grid_change": 2.4761675837099055e-05,
+          "relative_grid_change": 0.008857899470147458,
+          "effect_resolution_passed": false,
+          "numerically_qualified": true,
+          "qualified_positive": false
+        },
+        "specificity": {
+          "ci_excludes_zero_on_both": true,
+          "same_sign": true,
+          "mean_absolute_grid_change": 2.3800572905041586e-05,
+          "relative_grid_change": 0.002055725692146201,
+          "effect_resolution_passed": true,
+          "numerically_qualified": true,
+          "qualified_positive": true
+        }
+      },
+      "forced_nu004/coincident": {
+        "retained": {
+          "ci_excludes_zero_on_both": true,
+          "same_sign": true,
+          "mean_absolute_grid_change": 9.908601957928347e-05,
+          "relative_grid_change": 0.0026075176026256167,
+          "effect_resolution_passed": true,
+          "numerically_qualified": true,
+          "qualified_positive": true
+        },
+        "attenuation": {
+          "ci_excludes_zero_on_both": true,
+          "same_sign": true,
+          "mean_absolute_grid_change": 9.802298448237379e-05,
+          "relative_grid_change": 0.004940868049295047,
+          "effect_resolution_passed": true,
+          "numerically_qualified": true,
+          "qualified_positive": true
+        },
+        "specificity": {
+          "ci_excludes_zero_on_both": true,
+          "same_sign": true,
+          "mean_absolute_grid_change": 8.000061369514786e-05,
+          "relative_grid_change": 0.004691863499765323,
+          "effect_resolution_passed": true,
+          "numerically_qualified": true,
+          "qualified_positive": true
+        }
+      },
+      "forced_nu002/coincident": {
+        "retained": {
+          "ci_excludes_zero_on_both": true,
+          "same_sign": true,
+          "mean_absolute_grid_change": 0.00022320360967944576,
+          "relative_grid_change": 0.0048159438763191245,
+          "effect_resolution_passed": true,
+          "numerically_qualified": true,
+          "qualified_positive": true
+        },
+        "attenuation": {
+          "ci_excludes_zero_on_both": true,
+          "same_sign": true,
+          "mean_absolute_grid_change": 0.00023797290880488414,
+          "relative_grid_change": 0.008460938091687803,
+          "effect_resolution_passed": true,
+          "numerically_qualified": true,
+          "qualified_positive": true
+        },
+        "specificity": {
+          "ci_excludes_zero_on_both": true,
+          "same_sign": true,
+          "mean_absolute_grid_change": 0.00019651395216320564,
+          "relative_grid_change": 0.007214303934677807,
+          "effect_resolution_passed": true,
+          "numerically_qualified": true,
+          "qualified_positive": true
+        }
+      }
+    },
+    "scope": "Finite-window history dependence at matched low modes/modal powers; not memory beyond the complete present fluid state",
+    "missing": [
+      "Stationary high-Reynolds-number turbulence and larger domains",
+      "Long retention/response windows with larger independent ensembles",
+      "Independent external software/laboratory replication",
+      "Full spatial support mapping for localized versus collective response",
+      "Carrier specificity where intact translations have comparable effects",
+      "Real-water molecular/isotope evidence, outside this fluid study"
+    ]
+  },
+  "independent_statistical_units": "Whole fresh initial-flow seeds; layouts/methods/markers/grids remain paired",
+  "exploratory_intervals_unadjusted": true,
+  "inference_safeguard_sha256": "127656c38a57860b5580f053689a3bccbdfae71419c2c86113199ccfbacc7537",
+  "request_id": "2300ecd1-d208-4695-9b39-62b93d705892"
+}

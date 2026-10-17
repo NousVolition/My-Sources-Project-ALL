@@ -1,0 +1,22 @@
+{
+  "time_utc": "2026-10-11T23:25:40.023327+00:00",
+  "before_fresh_memory_effects_inspected": true,
+  "status": "Final resource plan; earlier six-branch version was superseded before any physical runs",
+  "n": 128,
+  "batch": 8,
+  "storage": "Retained complex128 starting coefficients and probe basis on CPU; preparation arrays released before readout. Binary normalization is exact at 128.",
+  "equations_or_precision_changed": false,
+  "observation_window_changed": false,
+  "original_source_sha256": "0dda7bef4abef6f73c26330fbd781ce4c7e3b6b43fb16a415ba231a0b805d88b",
+  "sources": {
+    "create_bounded_version_v2.py": "cac885253293b119818cce04419a5f98a3a1fd541c3612d62d7893a1fa311ee2",
+    "bounded_final_experiment_v2.py": "6b227d96a5343df50c16ef8daebc5f47aa130a5764f162d7f23f6a0f042a492c",
+    "validate_bounded_streaming.py": "ec5881ab96b703af4a3e855d4f12c158daa166c17badf9d9592ed272b3052fb3",
+    "refinement_gpu_pipeline.py": "309e84d16934a046d760bb5c18fc0314e5d42aeae542d1fdd2d2e6e187452bd3",
+    "safe_common_probe.py": "03d71e5f58f0dd8d534fcd37658032b707cfb843839e4ad029823bb0d25c343a",
+    "safe_unforced_readout.py": "d45131eee7726eb7876dce2f07181f3ffadd8a93e0a488a1f4754590746e123a",
+    "safe_common_unforced.py": "10892797b61945d565ff6d30a2701bde10bdfb9d382b603dc5b038303ec10920"
+  },
+  "qualification": "Broad-spectrum eight-branch input packing; original full batch compared with actual v2 evolution on batches of six and two; unchanged 1e-11 error ceiling",
+  "control_streaming": "128-cubed common and forcing-off readouts use eight-branch batches. Common starting fields and impulse are packed exactly on CPU, and temporary construction fields released before evolution."
+}

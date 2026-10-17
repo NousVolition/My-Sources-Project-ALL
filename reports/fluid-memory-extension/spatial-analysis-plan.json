@@ -1,0 +1,10 @@
+{
+  "date": "2026-10-11",
+  "before_fresh_effects_inspected": true,
+  "purpose": "Describe whether the saved history-conditioned velocity response is concentrated near the probe or extends outside it, while measuring the input's own extent too.",
+  "scope": "All finer-grid common-pulse flow/layout conditions and the four finer-grid common-pulse forcing-off conditions; no new simulations or effect-based selection.",
+  "definition": "For each arm, contrast = (probed minus unprobed endpoint velocity for history 0) minus the same for history 1. Report volume RMS, cumulative squared-field fraction inside radii 0.5, 1, 1.5, 2, 2.5, 3, fraction outside radius 2 and RMS minimum-periodic-distance radius. Analyze input impulse by the same measures.",
+  "numerics": "Evaluate all saved Fourier polynomials on a common 128-cubed quadrature grid; verify Parseval consistency. This is postprocessing, not a 128-cubed evolution. No collective/local binary threshold is imposed.",
+  "uncertainty": "Bootstrap whole independent flow seeds within each declared regime/layout. Average the four scramble footprints within each flow before inference. Intervals remain descriptive and unadjusted.",
+  "limits": "One endpoint does not establish long-lived collective memory. Existing impulse tails, ordinary advection, nonlocal pressure projection and sustaining-forcing feedback must be distinguished from a specific history carrier."
+}

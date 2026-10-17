@@ -1,0 +1,8 @@
+{
+  "date": "2026-10-11",
+  "before_common_probe_outcomes": true,
+  "before_fresh_production_effects_inspected": true,
+  "reason": "A fallback using the first arbitrary nullspace SVD vector can change when molecular-style labels or state rows are permuted. The user explicitly requested persistence under identity reassignment.",
+  "correction": "When the preferred physical curl has almost zero nullspace projection, scan the fixed original physical basis in its declared order and choose the first whose projection norm is at least 1e-6. Preserve the same work and strength gates; report fallback basis index. No future response is used.",
+  "validation": "Permutation invariance for generic states and a forced degenerate-preference example. The fluid evolution implementation and production matrix are unchanged."
+}
