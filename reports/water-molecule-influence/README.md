@@ -1,10 +1,10 @@
 # Positional influence among identical water molecules
 
-A reproducible experiment asking whether identical molecules can acquire unequal, temporary influence scores solely through their positions and interactions.
+A reproducible simulation study asking whether identical modeled molecules can acquire unequal, temporary response scores through their positions and interactions. It compares a toy particle network with rigid TIP3P water simulations; no new laboratory water measurements were collected.
 
-**Result:** unequal response scores emerged, and the highest-scoring identity changed with position exchanges and molecular motion. These results describe reciprocal coupling and transient roles; they do not establish a permanent or directional hierarchy.
+**Simulation result:** unequal response scores emerged, and the highest-scoring identity changed with position exchanges and molecular motion. Here “influence” means the response to the specified perturbation; “leader” names the highest score at a particular observation time. These scores describe reciprocal coupling and temporary rankings within the model.
 
-![Experimental results](results.png)
+![Simulated response scores and controls](results.png)
 
 ## Broad controlled exploration
 

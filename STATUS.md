@@ -22,9 +22,9 @@
 
 ## Current numerical status
 
-Publication counts checked October 11, 2026 (UTC).
+Publication counts checked October 17, 2026 (UTC).
 
-- **[Matched-stretch controls](reports/matched-stretch/README.md): 35/48 completed and verified results published through model time 0.40.** Thirteen jobs remain. The [128-grid viscosity-0.01 control](reports/matched-stretch/completed-n128-viscosity0p01/README.md) is complete, with all 41 fields remeasured (October 13, 2026). The [128-grid timestep screen fails](reports/matched-stretch/completed-timestep128/README.md); the raw strain has nonsmooth periodic joins, initial maxima lie outside the central tube, and peak spatial resolution remains inadequate.
+- **[Matched-stretch controls](reports/matched-stretch/README.md): 47/48 completed and verified original-matrix results published through model time 0.40.** The 256³ half-step baseline is the one remaining run. The latest published completion is the [128-grid +5-degree strain-axis tilt](reports/matched-stretch/completed-n128-angle-plus5/README.md), with all 41 fields remeasured. Separate viscosity/disturbance follow-ups are outside this 48-job count. The [128-grid timestep screen fails](reports/matched-stretch/completed-timestep128/README.md); the raw strain has nonsmooth periodic joins, initial maxima lie outside the central tube, and peak spatial resolution remains inadequate.
 - **[Separate vortex controls](reports/study/README.md): 48/48 completed and verified results published through 0.40.** The [final matrix report](reports/study/final-matrix/README.md) includes all timestep controls and charts. Small timestep differences coexist with 5.19–24.21% finest-grid global-W curve differences; spatial convergence is not established. This study has different starting data and its own numerical method.
 - **[Separate smooth-start stress suite](reports/navier-stokes-stress/README.md): 39/39 completed runs published in a parallel study.** Its protocol, raw-data release and numerical limitations are linked in that report. It uses different starting fields from the two matrices above.
 - **[Cross-repository review and connections](REPOSITORY-CURRENT-REVIEW.md):** current checks, related measurements, and the remaining work.

@@ -1,8 +1,8 @@
 # Finite-time response: does the snapshot leader stay influential?
 
-This follow-up tests all 216 molecules in each of three saved water states with paired, momentum-balanced velocity impulses. It follows the motion of the other molecules for 5–200 femtoseconds.
+This simulation follow-up tests all 216 modeled molecules in each of three saved rigid TIP3P water states with paired, momentum-balanced velocity impulses. It follows the calculated motion of the other molecules for 5–200 femtoseconds.
 
-**Finding:** the original force ranking predicts the very early response, but loses predictive value over the measured interval. The original force leaders rank **104, 69, 209 out of 216** by 200 fs. This supports temporary, observation-time-dependent roles, not a permanent hierarchy.
+**Finding in the simulations:** the original force ranking predicts the very early response, but loses predictive value over the recorded interval. The original highest-scoring molecules rank **104, 69, 209 out of 216** by 200 fs. “Leader” denotes the highest score under the specified response measure and observation time; it does not identify an assigned controller or a permanent hierarchy.
 
 ![Finite-time response results](finite_time_results.png)
 

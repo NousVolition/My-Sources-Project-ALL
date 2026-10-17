@@ -2,11 +2,13 @@
 
 **Model status: being examined and tested.**
 
-The signed asymmetry coordinate q integrates directional contributions from multiple sources; E measures the resulting unsigned magnitude of broken mirror symmetry.
+The experiments distinguish three signed quantities: the supplied passive record `q_record`, the measured fluid projection `q_fluid`, and the fitted reduced-model prediction `q_model`. The equations below propose a model for the signed coordinate; they are not additional terms in the Navier–Stokes solver. The unsigned mismatch E is measured directly from the full velocity field and is not determined by q alone.
+
+In the supplied four tests, `dq_record/dt = -0.2*q_record + 0.8*D`, where D is the saved signed fluid measurement. This record does not act back on the fluid. The [later dynamic-q experiment](dynamic-q/README.md) fits a separate model to `q_fluid`; its coefficients are model-test results, not established physical coefficients.
 
 ```text
 E(t) = norm[u(t) - M[u(t)]] / norm[u(t)]
-q(t) = signed collective asymmetry
+q(t) = q_model(t), the proposed signed reduced coordinate
 
 dq/dt = -gamma*q
         + w_AB*D_AB + w_C*D_C + w_D*D_D + w_cross*D_cross
@@ -18,8 +20,8 @@ dq/dt = -gamma*q
 | D_AB | A–B directional mismatch |
 | D_C | C's differential influence on A versus B |
 | D_D | D's differential influence on A versus B |
-| D_cross | Competition between alternative pairings |
-| w_* | Coupling weights to be fitted from measurements |
+| D_cross | Proposed competition between pairings; the completed test uses a C–D interaction feature and does not establish that interpretation |
+| w_* | Reduced-model weights fitted to the stated fluid measurements; not uniquely identified physical couplings |
 | -gamma*q | Return toward neutrality when inputs disappear |
 | -g*q³ | Cubic damping of large q |
 
@@ -58,12 +60,12 @@ The JSON column named `D` is a signed measurement, distinct from the surrounding
 | Part | Evidence or remaining check |
 | --- | --- |
 | E is unsigned | Implemented as the normalized norm of the field's mirror difference. |
-| Opposite signed starts | Completed runs preserve opposite D and q and equal E. |
+| Opposite signed starts | Completed reflected runs preserve opposite signed D and q_record and equal E. |
 | Zero-break control | E remains at numerical roundoff. |
 | Changes in surrounding sources | Five source configurations were evolved to time 0.5. |
-| q integrates a fluid measurement | The executed rule is dq/dt = -0.2q + 0.8D. q is recorded after each step and does not force the fluid. |
+| q_record integrates a fluid measurement | The executed rule is dq_record/dt = -0.2*q_record + 0.8D. It is recorded after each step and does not force the fluid. |
 | Separate source weights and cross term | [Dynamic test completed](dynamic-q/README.md): four explicit interaction features fitted from 10 training starts, with independent AB bias and independently shaped D. This is a six-template implementation; its weights are not unique causal contributions. |
-| Cubic feedback and branch selection | Cubic damping was fitted and compared with the linear model on four unseen starts. This does not establish branch selection: nonnegative linear and cubic damping cannot create two isolated stable branches under constant inputs. |
+| Cubic damping and branch selection | Cubic damping was fitted in the reduced predictor and compared with the linear model on four unseen starts. No fitted term forces the fluid. This does not establish branch selection: nonnegative linear and cubic damping cannot create two isolated stable branches under constant inputs. |
 | Prediction on held-out runs | Four complete starts withheld from fitting, with reflected and half-step controls, plus 49- and 65-grid repeats. Both measured-input predictions and forecasts with inputs frozen at time 0.1 are reported. |
 
 The new source-addition test measures an interaction contrast relative to the fixed A–B background. It does not uniquely decompose the evolving fluid or establish competition between pairings. Its 33³ results pass the time-step comparison; spatial convergence is not established.

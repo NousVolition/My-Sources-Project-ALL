@@ -40,7 +40,7 @@ html=f'''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewpo
 <p>FOLLOW-UP TO THE IDENTICAL-WATER-MOLECULE EXPERIMENT</p>
 <h1>A snapshot leader can lose its lead as influence spreads</h1>
 <p class="lead">The original force ranking predicts the response to a tiny impulse extremely well at 5 femtoseconds. By 200 femtoseconds its rank correlation is {late_rho} in the three tested states. The original highest-ranked molecules have fallen to ranks {late_ranks} out of 216.</p>
-<p>This follow-up directly changes molecular velocities and follows the resulting motion. It strengthens the evidence for roles that depend on the current state and observation time. It does not establish a lasting hierarchy, nor does it validate this water model against physical experiments.</p>
+<p>This simulation follow-up changes velocities in three saved rigid TIP3P water states and follows the calculated motion. “Leader” denotes the highest score under the specified response measure and observation time; it does not identify an assigned controller or a permanent hierarchy. These results have not been validated against laboratory water measurements.</p>
 <img src="{image}" alt="Rank correlations, leader ranks, response scatter, and response dispersion at four observation times">
 {summary_table}
 {detail_table}
@@ -83,9 +83,9 @@ python response-extension/build_followup.py</pre>
 (R/'report.html').write_text(html,encoding='utf-8')
 readme=f'''# Finite-time response: does the snapshot leader stay influential?
 
-This follow-up tests all 216 molecules in each of three saved water states with paired, momentum-balanced velocity impulses. It follows the motion of the other molecules for 5–200 femtoseconds.
+This simulation follow-up tests all 216 modeled molecules in each of three saved rigid TIP3P water states with paired, momentum-balanced velocity impulses. It follows the calculated motion of the other molecules for 5–200 femtoseconds.
 
-**Finding:** the original force ranking predicts the very early response, but loses predictive value over the measured interval. The original force leaders rank **{late_ranks} out of 216** by 200 fs. This supports temporary, observation-time-dependent roles, not a permanent hierarchy.
+**Finding in the simulations:** the original force ranking predicts the very early response, but loses predictive value over the recorded interval. The original highest-scoring molecules rank **{late_ranks} out of 216** by 200 fs. “Leader” denotes the highest score under the specified response measure and observation time; it does not identify an assigned controller or a permanent hierarchy.
 
 ![Finite-time response results](finite_time_results.png)
 
