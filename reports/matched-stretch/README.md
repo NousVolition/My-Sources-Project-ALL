@@ -20,11 +20,13 @@
 
 ## Current published results
 
-**35/48 completed and verified results published through model time 0.40. Thirteen jobs remain.** Publication status: October 13, 2026 (UTC).
+**47/48 original-matrix runs have completed and verified results published through model time 0.40.** Status checked October 17, 2026 (UTC). The remaining run is the 256³ half-step baseline control. The separate viscosity/disturbance comparisons are additional studies and are not added to this 48-job count.
 
 | Read first | What it shows |
 | --- | --- |
-| [128-grid viscosity 0.01](completed-n128-viscosity0p01/README.md) | Latest verified completion: unperturbed viscosity control, all 41 fields remeasured, budgets and resolution limits |
+| [128-grid strain-axis tilt +5 degrees](completed-n128-angle-plus5/README.md) | Latest published original-matrix completion: all 41 fields remeasured through 0.40, with grid comparisons and resolution limits |
+| [256-grid baseline](completed-n256-baseline/README.md) | Completed ordinary-step result; the matching half-step control remains unfinished |
+| [128-grid viscosity 0.01](completed-n128-viscosity0p01/README.md) | Earlier verified unperturbed viscosity control, all 41 fields remeasured, budgets and resolution limits |
 | [Third 128-grid 1% seed](completed-n128-onepercent-seed303/README.md) | Earlier verified completion: seed 303, saved-field checks, charts and matched amplitude/grid comparisons |
 | [Second 128-grid 1% seed](completed-n128-onepercent-seed202/README.md) | Earlier seed 202 completion and its saved-field checks |
 | [First 128-grid 1% seed](completed-n128-onepercent-seed101/README.md) | Earlier seed 101 completion and its saved-field checks |

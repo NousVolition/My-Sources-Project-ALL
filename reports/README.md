@@ -33,11 +33,11 @@ The [equal-work and independent-solver follow-up](fluid-memory-extension/README.
 
 ## Fluid calculations
 
-Published status checked October 11, 2026 (UTC). Each study has its own starting field and protocol.
+Published status checked October 17, 2026 (UTC). Each study has its own starting field and protocol.
 
 | Study | Published results | Start reading |
 | --- | --- | --- |
-| Matched-stretch controls | **35/48 complete**, through 0.40; 13 remain (October 13) | [Current study page](matched-stretch/README.md) ; [Latest 128-grid viscosity 0.01](matched-stretch/completed-n128-viscosity0p01/README.md) |
+| Matched-stretch controls | **47/48 complete**, through 0.40; the 256³ half-step baseline remains | [Current study page](matched-stretch/README.md) · [Latest 128-grid +5-degree tilt](matched-stretch/completed-n128-angle-plus5/README.md) |
 | Three vortex surroundings | **48/48 complete**, through 0.40 | [Final matrix and charts](study/final-matrix/README.md) · [Study page](study/README.md) |
 | Separate smooth-start stress suite | **39/39 complete** | [Results and numerical limits](navier-stokes-stress/README.md) |
 | Earlier hugged ring | Saved evolution, grid and timestep comparisons | [Construction and results](../math/notes/hug-boundary.md) |

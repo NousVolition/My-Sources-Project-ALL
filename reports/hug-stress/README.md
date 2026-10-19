@@ -2,7 +2,7 @@
 
 **Two-way tests added:** [compare the hug and Lorenz drive in both directions](two-way-report.html). A proposed imprint-dependent return resistance changes the Lorenz drive, which changes the pressure received by the hug. The completed work includes 84 integrations, matched controls, three initial states, independent numerical methods, refinement and opening-threshold tests. Strong return resistance substantially reduces finite-time fluctuations and imprint; weak effects remain sensitive to numerical phase drift. See the report for definitions and limits.
 
-**The user's intended meaning:** “breathable” describes a clay-like form that yields and molds easily around what presses into it. It does not specify a valve or opening-and-closing cycle. The inherited permanent-opening threshold is part of the current reduced code, not a defining property of the hug. The new return-resistance law is an explicit test proposal; general molding and contact are not implemented.
+**The user's intended meaning:** “breathable” describes a clay-like form that yields and molds easily around what presses into it. It does not specify a valve or opening-and-closing cycle. The inherited permanent-opening threshold belongs to this reduced experiment. Its return-resistance law is an explicit modeling choice, and this experiment has no general molding or contact mesh. The separate [molding and unloading study](../hug-molding-refinement/README.md) and [later material-length revision](../clay-gap-refinement/README.md) implement material meshes with their own equations and numerical limits.
 
 The playback timing bug (`sample is not iterable`) is repaired. Playback now uses one animation clock and validates saved sample indexes. The previous one-way data remain unchanged.
 

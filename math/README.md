@@ -4,11 +4,13 @@
 
 ## Current studies
 
-The active [matched-stretch controls](../reports/matched-stretch/README.md) and [separate vortex controls](../reports/study/README.md) have their own starting fields, protocols and completion indexes. Read the [current status](../STATUS.md) and [cross-repository review](../REPOSITORY-REVIEW.md) before comparing their results with the earlier ring below.
+The [matched-stretch controls](../reports/matched-stretch/README.md) have one original-matrix run remaining as of October 17, 2026. The [separate vortex matrix](../reports/study/final-matrix/README.md) is complete at 48/48 runs. These studies have different starting fields and protocols. Read the [current status](../STATUS.md) and [current cross-repository review](../REPOSITORY-CURRENT-REVIEW.md) before comparing their results with the earlier ring below.
 
 ## Hug dynamics extension
 
-**New: [Lorenz-driven hug and harder stress tests](../reports/hug-stress/README.md).** The Lorenz system now drives pressure, imprint and lean through an explicit one-way connection. Five playable modes and 84 new driven configurations accompany 224 earlier stress configurations, including missed-pulse, stiff-solver and square-guide limits. Raw results, failed trials, independent checks and code are included. [Open the Lorenz playback](../reports/hug-stress/lorenz-report.html).
+**[Lorenz-driven hug and harder stress tests](../reports/hug-stress/README.md).** The earlier one-way experiment uses Lorenz motion to prescribe pressure, imprint and lean. Five playable modes and 84 driven configurations accompany 224 earlier stress configurations, including missed-pulse, stiff-solver and square-guide limits. The later [two-way experiment](../reports/hug-stress/two-way-report.html) lets an assumed return resistance alter the Lorenz drive. Lorenz is an oscillator here; this coupling does not solve a surrounding Navier–Stokes fluid.
+
+**[Molding and unloading](../reports/hug-molding-refinement/README.md)** use a separate 2-D material mesh with evolving preferred spring lengths. The finer unloading comparison improves overall gap agreement while individual zigzags remain mesh sensitive. A later [material-length revision](../reports/clay-gap-refinement/README.md) tests different constitutive equations and longer reciprocal driving; its passing gap checks do not resolve the original model's failed checks. These dimensionless material models are separate from the smooth initial fluid gate described below.
 
 [Play and inspect the hug dynamics study](../reports/hug-dynamics/README.md): the existing pressure, imprint and opening model with added damping, lean and buckling; 81 configurations at two time steps and 272 passing scientific checks. Includes runnable code, complete trajectories, seven charts, and checks based on the supplied pendulum, stability, uniqueness and numerical-method pages. This reduced model has not yet been coupled to an evolving fluid boundary.
 
