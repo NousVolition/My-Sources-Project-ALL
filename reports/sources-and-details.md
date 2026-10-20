@@ -1,6 +1,6 @@
 # Sources and details
 
-[Back to the finished tests](README.md)
+[Back to current results](README.md)
 
 This page keeps the detailed navigation from the earlier reports index: supporting files, older test reports, viewers, dated progress updates and unfinished follow-ups. Dates and completion counts below belong to their stated publication snapshots.
 
@@ -211,3 +211,10 @@ Full restart arrays for the two 48-run fluid matrices remain in the local calcul
 
 [Completed return-selection experiment](water-molecule-influence/gas-return-selection-extension/README.md): nine gas damping trajectories, three finer recording checks, past-only predictions, separate-start tuning and evaluation, and simple baselines. Short-horizon improvements and longer-horizon failures are both retained.
 
+
+## Earlier page layouts
+
+The previous navigation remains available here. These are dated snapshots, not the current results menu.
+
+- [Previous project overview](https://github.com/NousVolition/My-Sources-Project-ALL/blob/f454f038fcc7606366627110d462cbc2265831f7/README.md).
+- [Previous complete test list](https://github.com/NousVolition/My-Sources-Project-ALL/blob/f454f038fcc7606366627110d462cbc2265831f7/reports/README.md).
