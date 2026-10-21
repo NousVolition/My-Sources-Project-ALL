@@ -1,0 +1,9 @@
+{
+  "observed_utc": "2026-10-21T02:07:08.9221876Z",
+  "worker_pid": 43024,
+  "prior_affinity": 16777215,
+  "applied_affinity": 1,
+  "fft_workers": 1,
+  "blas_pool_threads_observed_in_matching_import_sequence": 24,
+  "note": "The frozen runner imports NumPy and SciPy before model.py sets thread environment variables. The FFT worker setting is effective, but the preinitialized BLAS pool is not one thread. The live worker was restricted to one logical CPU before independent integration. No numerical source or saved run was edited or restarted. Reproduction should set OMP_NUM_THREADS, OPENBLAS_NUM_THREADS and MKL_NUM_THREADS to 1 before starting Python."
+}

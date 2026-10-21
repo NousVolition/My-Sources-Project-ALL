@@ -1,0 +1,52 @@
+{
+  "status": "report_verified_with_spatial_resolution_failures",
+  "pid": 43024,
+  "protocol": "protocol.json",
+  "freeze": "freeze.json",
+  "summary": "results/summary.json",
+  "stdout": "run.log",
+  "stderr": "run.err",
+  "next": "No further integrations authorized by this bounded test. Report and supporting evidence ready for delivery.",
+  "analysis": {
+    "pid": 43128,
+    "started_utc": "2026-10-21T02:15:23.986733+00:00",
+    "stdout": "analysis.log",
+    "stderr": "analysis.err",
+    "completed_utc": "2026-10-21T02:15:26.015093+00:00"
+  },
+  "analysis_attempts": [
+    {
+      "stdout": "analysis.log",
+      "started_utc": "2026-10-21T02:12:03.4319074Z",
+      "frozen_hashes_verified": true,
+      "pid": 44680,
+      "stderr": "analysis.err",
+      "outcome": "Detached launch exited before any analysis output; no live analyzer found. Reporting restarted under a retained execution session."
+    },
+    {
+      "pid": 23072,
+      "started_utc": "2026-10-21T02:13:57.660857+00:00",
+      "stdout": "analysis.log",
+      "stderr": "analysis-reporting-error.err",
+      "outcome": "Analysis data and charts written; final console serialization failed on an ndarray inside the retained failed-screen details. Reporting serialization and chart layout corrected; numerical files and screens unchanged."
+    }
+  ],
+  "review": {
+    "utc": "2026-10-21T02:20:01.095295+00:00",
+    "report": "README.md",
+    "details": "METHODS.md",
+    "charts_inspected": [
+      "comparison",
+      "timeline",
+      "spatial"
+    ],
+    "frozen_hashes_matched": true,
+    "passed_screens": 29,
+    "failed_screens": [
+      "full_band_fields_n24-dt0.01_vs_n32-dt0.01",
+      "full_band_fields_n32-dt0.01_vs_n48-dt0.01"
+    ],
+    "independent_saved_field_audit_passed": true,
+    "resource_deviation": "execution-resource-note.json"
+  }
+}

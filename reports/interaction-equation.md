@@ -1,6 +1,6 @@
 # Working equation: an active, asymmetric guard
 
-**Working draft — the local two-SIMS example has a [completed comparison](sims-active-guard/README.md). The general framework and fluid extension remain provisional.**  
+**Working draft — completed comparisons cover the [local two-SIMS example](sims-active-guard/README.md) and a [bounded Navier–Stokes realization](sims-navier-stokes-guard/README.md). The coupled laws remain provisional; the fluid test retains two failed spatial-resolution screens.**  
 [Connected tests](README.md) · [Sources and earlier equation audit](sources-and-details.md)
 
 ## The question
@@ -184,7 +184,7 @@ The spatial integral of momentum is also constant in this setting. A changing gu
 
 Unequal abstract influence is not permission to assign unmatched internal mechanical forces. For a closed physical pair, interaction forces balance; unequal masses can still give unequal accelerations. The directed x_i equations above describe abstract internal responses and do not claim to conserve mass or momentum by summing those states.
 
-Initial fields, a domain, boundary conditions and numerical parameter values remain to be selected for this fluid extension. The optional closure is not a calibrated model of water, smoke, isotopes or people. The completed SIMS comparison tests the local interaction equations only; it does not run this fluid extension.
+The [completed Navier–Stokes SIMS comparison](sims-navier-stokes-guard/README.md) selects a two-dimensional periodic domain, one smooth starting pattern and fixed parameters for this optional closure. It compares shared and directional evolving guards, equal and unequal weights, frozen guards and controls disabling individual feedback paths. The sampled averaged responses are stable under grid and time-step refinement, while two detailed-field spatial screens failed and remain reported. The optional closure is not a calibrated model of water, smoke, isotopes or people.
 
 </details>
 
@@ -202,7 +202,8 @@ Initial fields, a domain, boundary conditions and numerical parameter values rem
 This draft follows the user's clarification that the guard stays inside the interaction, relationships may be asymmetric, and earlier labels are placeholders. The initial PDF remains an unchanged source. The prior [equation audit](framework-audit.md) remains available with neutral wording.
 
 **Completed:** structural revision, algebraic limit checks and conservation accounting for the optional fluid closure, followed by the [bounded two-SIMS comparison](sims-active-guard/README.md). Its active-guard runs passed step-refinement and independent-solver checks for the chosen local equations.  
-**Not yet established:** calibrated response laws, physical time scales, a numerical test of the fluid closure, or validation of the whole framework.
+**Also completed:** the [bounded Navier–Stokes comparison](sims-navier-stokes-guard/README.md), with the guard continuously coupled to transport, strain, influence and viscous stress. Conservation and averaged-response screens passed; detailed spatial resolution did not pass every screen.  
+**Not yet established:** calibrated response laws, physical time scales, fully resolved spatial guard fields, or validation of the whole framework.
 
 No frozen solver, existing experiment, saved result or active study was changed.
 

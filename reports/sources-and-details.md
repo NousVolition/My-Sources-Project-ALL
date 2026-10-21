@@ -2,9 +2,11 @@
 
 [Back to connected tests](README.md)
 
+- **[Navier–Stokes SIMS sources and results](sims-navier-stokes-guard/METHODS.md)** — coupled equations, saved fields, controls and all numerical screens, including the two spatial-resolution failures.
+
 - **[Active guard SIMS comparison sources and results](sims-active-guard/METHODS.md)** — equations, full trajectories, matched comparisons and numerical checks for the finished test.
 
-- **[Working equation: an active, asymmetric guard](interaction-equation.md)** — a provisional structure and explicit example, now tested in a bounded local SIMS comparison.
+- **[Working equation: an active, asymmetric guard](interaction-equation.md)** — a provisional structure and explicit example, now tested in bounded local and Navier–Stokes SIMS comparisons, with their limits retained.
 - **[Which tests connect, and where the equation changed the question](framework-audit.md)** — the original definitions, evidence, missing pieces and source links.
 - **[Work without a demonstrated connection yet](archive/not-yet-connected/README.md)** — preserved fluid-growth, molecule, mirror and other branches.
 - **[Complete earlier results index](archive/not-yet-connected/previous-results-index.md)** — all earlier report links, supporting files, restarts and publication snapshots.

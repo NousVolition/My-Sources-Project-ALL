@@ -1,0 +1,152 @@
+{
+  "title": "Navier–Stokes SIMS with an active relationship guard",
+  "version": 1,
+  "authorization": "User requested the Navier–Stokes version with equal and unequal influence and the guard participating throughout.",
+  "source_equation": "https://github.com/NousVolition/My-Sources-Project-ALL/blob/75dfdd5cf200ca56a8725e50e5db23d234f79789/reports/interaction-equation.md",
+  "scope": "2D incompressible periodic fluid coupled to two abstract internal SIMS fields. No material identification or physical second calibration.",
+  "domain": {
+    "dimension": 2,
+    "side": 6.283185307179586,
+    "density": 1,
+    "boundary": "periodic"
+  },
+  "lambda": 1,
+  "tau": 0.6,
+  "theta": -0.4,
+  "beta": 2,
+  "chi": 0.5,
+  "mu": 0.02,
+  "a": 0.04,
+  "diffusivity_x": 0.02,
+  "diffusivity_g": 0.015,
+  "baseline": [
+    -0.55,
+    0.35
+  ],
+  "initial": "psi=sin(x)sin(y)+0.25cos(2x+y)+0.15sin(x-2y); (u,v)=(psi_y,-psi_x). xA=-0.55+0.15cos(x)+0.1sin(y); xB=0.35+0.1sin(x)-0.15cos(y). Guards both 0.5. Same finite trigonometric fields on every grid.",
+  "weights": {
+    "equal": [
+      1,
+      1
+    ],
+    "B_to_A_stronger": [
+      1.5,
+      0.5
+    ],
+    "A_to_B_stronger": [
+      0.5,
+      1.5
+    ]
+  },
+  "weight_order": [
+    "A receives B",
+    "B receives A"
+  ],
+  "modes": {
+    "shared": "Both guards evolve toward the mean of the two directional sigmoid targets. Exactly equal guards; equal realized gains at equal weights. Explicit modified-rule control.",
+    "directional": "Draft: target_AB=sigmoid(theta+beta*(xB-xA)+chi*D:D), target_BA=sigmoid(theta-beta*(xB-xA)+chi*D:D). Guard-dependent viscosity mu+a*(gAB+gBA).",
+    "frozen": "Diagnostic: guards fixed at 0.5. SIMS still interact through them; not active-guard evidence.",
+    "no_feedback": "Diagnostic: directional guards evolve, but viscosity is fixed at its common initial value mu+a. Disables guard-to-flow stress feedback, retaining advection and strain-to-guard.",
+    "no_strain": "Diagnostic: directional guards evolve with guard-dependent viscosity but chi=0. Disables the explicit strain-to-guard term; advection still couples flow and SIMS/guards."
+  },
+  "pulses": [
+    "none",
+    "A",
+    "B"
+  ],
+  "pulse": {
+    "onset": 0.5,
+    "duration": 0.5,
+    "amplitude": 0.8,
+    "temporal": "sin(pi*(t-onset)/duration)^2, zero outside",
+    "profile": "((1+cos(x-pi/2))/2)^2*((1+cos(y-pi/3))/2)^2",
+    "sign": "positive only in this bounded test",
+    "peak_temporal_area": 0.2
+  },
+  "time": {
+    "end": 4,
+    "output_dt": 0.05,
+    "field_times": [
+      0,
+      1,
+      1.5,
+      2.5,
+      4
+    ],
+    "units": "dimensionless model time"
+  },
+  "batches": [
+    {
+      "n": 24,
+      "dt": 0.01
+    },
+    {
+      "n": 32,
+      "dt": 0.01
+    },
+    {
+      "n": 48,
+      "dt": 0.01
+    },
+    {
+      "n": 48,
+      "dt": 0.005
+    }
+  ],
+  "method": "Fourier collocation with strict 2/3 truncation for quadratic products, Leray pressure projection, RK4 on velocity, SIMS states and guards together; full divergence of variable symmetric viscous stress. Nonpolynomial reaction resolution is assessed by grid refinement.",
+  "independent": {
+    "method": "DOP853 with a separately implemented curl-form momentum equation and conservative scalar transport",
+    "n": 24,
+    "rtol": 1e-9,
+    "atol": 1e-11,
+    "max_step": 0.025,
+    "cases": "directional / all three weights / pulse B",
+    "limit": 2e-7
+  },
+  "relabel": {
+    "n": 32,
+    "dt": 0.01,
+    "cases": "all nine directional cases; reverse k and pulse recipient, exchange participant baselines and initial states"
+  },
+  "hard_limits": {
+    "guard_tolerance": 1e-8,
+    "CFL": 0.5,
+    "divergence": 1e-10,
+    "energy_relative": 0.00001,
+    "mean_drift": 1e-11
+  },
+  "screens": {
+    "state_time_rms": 0.00001,
+    "state_grid_rms": 0.002,
+    "response_grid_relative": 0.05,
+    "response_time_relative": 0.01,
+    "response_absolute_floor": 1e-7,
+    "relabel_max": 1e-11,
+    "shared_weight_flow_null": 1e-11,
+    "feedback_disabled_flow_null": 1e-11
+  },
+  "measurements": "Peak sampled spatial RMS change in the unperturbed SIM and fluid velocity, subtracting each case's own no-pulse counterpart. Also guard response, energy, dissipation, momentum, realized-gain differences, full-band field differences at five saved times and control contrasts.",
+  "expected": {
+    "conditions": 45,
+    "primary_active_conditions": 18,
+    "diagnostic_conditions": 27,
+    "batch_trajectories": 180,
+    "relabel_trajectories": 9,
+    "independent_trajectories": 3
+  },
+  "resources": {
+    "threads": 1,
+    "max_batch_seconds": 1200,
+    "max_total_seconds": 5400,
+    "max_storage_GiB": 2
+  },
+  "interpretation": [
+    "Changing weights tests imposed influence while other parameters and total configured weight stay fixed; realized gains are not fixed.",
+    "Shared versus directional guards change a response law, not just a weight.",
+    "The viscosity closure is a proposed assumption. More transmission increases viscous resistance here; this mapping is not supplied by the original framework.",
+    "No mechanical forcing: the guard changes dissipation but supplies no kinetic energy.",
+    "All conditions use one chosen smooth spatial initial pattern. A/B relabelings are controls, not independent samples.",
+    "No irreversible memory, rupture threshold, molecular chemistry, three-dimensional turbulence or continuum theorem is tested.",
+    "Keep every failed screen and failed run. No automatic retries, horizon extension, added cases or changes after freezing."
+  ]
+}
