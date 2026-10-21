@@ -1,8 +1,8 @@
 # Tests connected to the original framework
 
-**Starting question:** How do imposed common weightings and context-dependent boundaries shape the actions available to a participant, and how much autonomous intent can remain near that boundary?
+**Starting question:** How do participants change through an interaction when the boundary regulating that interaction also changes, and influence can differ in each direction?
 
-This wording returns to the two parts of the supplied *True B-Lister Mathematical Framework*: the Shibboleth law and the Border Gate. Your later “guard” description adds reciprocal, potentially unequal relationships.
+The original document is a provisional starting point. The guard remains part of the evolving relationship, and each direction may have its own response. [Working equation and assumptions](interaction-equation.md) — a draft, not a completed test.
 
 **These completed studies test parts of that question. None implements or validates the whole framework.** The connection is assessed from the actual rules and controls, not from names such as water, smoke or hug.
 

@@ -2,6 +2,7 @@
 
 [Back to connected tests](README.md)
 
+- **[Working equation: an active, asymmetric guard](interaction-equation.md)** — a provisional structure and explicit example; no new test results.
 - **[Which tests connect, and where the equation changed the question](framework-audit.md)** — the original definitions, evidence, missing pieces and source links.
 - **[Work without a demonstrated connection yet](archive/not-yet-connected/README.md)** — preserved fluid-growth, molecule, mirror and other branches.
 - **[Complete earlier results index](archive/not-yet-connected/previous-results-index.md)** — all earlier report links, supporting files, restarts and publication snapshots.

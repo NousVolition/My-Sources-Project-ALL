@@ -1,6 +1,6 @@
 # The original framework and its tests
 
-Imposed rules, changing boundaries, and room for individual action.
+Ongoing interaction, changing boundaries, and individual responses.
 
 ## [Tests connected to the framework](reports/README.md)
 
