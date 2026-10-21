@@ -1,220 +1,69 @@
-# Sources and details
+# Sources, equation audit and archive
 
-[Back to current results](README.md)
+[Back to connected tests](README.md)
 
-This page keeps the detailed navigation from the earlier reports index: supporting files, older test reports, viewers, dated progress updates and unfinished follow-ups. Dates and completion counts below belong to their stated publication snapshots.
+- **[Which tests connect, and where the equation changed the question](framework-audit.md)** — the original definitions, evidence, missing pieces and source links.
+- **[Work without a demonstrated connection yet](archive/not-yet-connected/README.md)** — preserved fluid-growth, molecule, mirror and other branches.
+- **[Complete earlier results index](archive/not-yet-connected/previous-results-index.md)** — all earlier report links, supporting files, restarts and publication snapshots.
+- [Numerical downloads and restoration](../DATA-RELEASES.md).
 
-## Completed matched-stretch controls
-
-**Completed October 16, 2026:** [Grid-128 strain-axis tilt +5 degrees](matched-stretch/completed-n128-angle-plus5/README.md) — all 41 saved fields independently remeasured through 0.40; original matrix continues. Raw-strain, initial-peak and resolution limits remain.
-
-**Completed October 15, 2026:** [Grid-128 strain-axis tilt -5 degrees](matched-stretch/completed-n128-angle-minus5/README.md) — all 41 saved fields independently remeasured through 0.40; original matrix continues. Raw-strain, initial-peak and resolution limits remain.
-
-**Completed October 15, 2026:** [Grid-128 strain factor 1.1](matched-stretch/completed-n128-strain1p1/README.md) — all 41 saved fields independently remeasured through 0.40; original matrix continues. Raw-strain, initial-peak and resolution limits remain.
-
-**Completed October 15, 2026:** [Grid-256 baseline](matched-stretch/completed-n256-baseline/README.md) — all 41 saved fields independently remeasured through 0.40; 38 spatial screens fail and the original half-step control continues. Raw-strain, initial-peak and resolution limits remain.
-
-**Completed October 15, 2026:** [Grid-128 strain factor 0.9](matched-stretch/completed-n128-strain0p9/README.md) — all 41 saved fields independently remeasured through 0.40; original matrix continues. Raw-strain, initial-peak and resolution limits remain.
-
-**Completed October 15, 2026:** [Viscosity 0.1 disturbed/reference pair](matched-stretch/completed-n128-viscosity0p1-disturbance-seed202/README.md) — 41 independently verified paired outputs through 0.40; D/D(0)=7.042633, instantaneous rate positive. Raw-strain, initial-peak and resolution limits remain.
-
-**Completed October 15, 2026:** [Seven completed grid-128 parameter runs](matched-stretch/completed-n128-parameter-batch-20261015/README.md) — 287 saved fields independently remeasured; original matrix continues. Raw-strain, initial-peak and resolution limits remain.
-
-**Completed viscosity 0.01 disturbance comparison:** [Verified seed-202 result](matched-stretch/completed-n128-viscosity0p01-disturbance-seed202/README.md) — 41 paired outputs through 0.40; disturbance 233.791945× its starting size and still growing instantaneously. Single-seed finite-time result with known resolution limits.
-
-**Large numerical data:** [verified release downloads and restore instructions](../DATA-RELEASES.md). Reports and figures remain available here.
-
-## Completed fresh-flow memory tests
-
-- **[Structure erasure and delayed probes](fluid-memory-erasure/README.md):** 135 completed fluid configurations, fresh held-out flows, structure-erasure controls, delayed probes, frozen predictions, numerical verification and limits. [Exact raw recordings](https://github.com/NousVolition/My-Sources-Project-ALL/releases/tag/fluid-memory-erasure-2026-10-10).
-
-
-[Current repository review and priorities](../REPOSITORY-CURRENT-REVIEW.md).
-
-[Project home](../README.md) · [Current status](../STATUS.md) · [Mathematics and code](../math/README.md)
-
-Start with a study's **README** for its question, results, charts and limitations. Open its data and verification files when you want the supporting detail.
-
-The [equal-work and independent-solver follow-up](fluid-memory-extension/README.md) has completed all 266 GPU configurations, 14 second-solver comparisons, and exact restoration/reanalysis of 331 recordings. The primary identical-probe test supports finite-window history-dependent response and phase-scrambling attenuation beyond the intact-translation control; the moved-probe smooth-flow attenuation remains uncertain. **Full raw-data upload is still in progress**; see [publication status](fluid-memory-extension/publication-status.json).
-
-## Fluid calculations
-
-Published status checked October 17, 2026 (UTC). Each study has its own starting field and protocol.
-
-| Study | Published results | Start reading |
-| --- | --- | --- |
-| Matched-stretch controls | **47/48 complete**, through 0.40; the 256³ half-step baseline remains | [Current study page](matched-stretch/README.md) · [Latest 128-grid +5-degree tilt](matched-stretch/completed-n128-angle-plus5/README.md) |
-| Three vortex surroundings | **48/48 complete**, through 0.40 | [Final matrix and charts](study/final-matrix/README.md) · [Study page](study/README.md) |
-| Separate smooth-start stress suite | **39/39 complete** | [Results and numerical limits](navier-stokes-stress/README.md) |
-| Earlier hugged ring | Saved evolution, grid and timestep comparisons | [Construction and results](../math/notes/hug-boundary.md) |
-
-**Numerical limits:** the matched-stretch field has nonsmooth periodic joins and initial maxima outside the central tube; its spatial and timestep screens remain inadequate. The completed vortex matrix also lacks established spatial convergence. These computations do not resolve the Navier–Stokes existence and smoothness problem.
+The original reference is the user-supplied *True_B_Lister_Mathematical_Framework.pdf*, pages 1–3. The document remains local; this page does not publish the uploaded file. The audit summarizes the mathematical definitions needed for this comparison.
 
 <details>
-<summary>Earlier fluid controls and starting-field comparisons</summary>
+<summary>Links retained for earlier bookmarks</summary>
 
-- [Original 48/64/80 replay: fixed and moving cutoff measurements](support/fixed-cutoff-run/README.md).
-- [Three completed 0.1% perturbation seeds](matched-stretch/completed-seeds/README.md).
-- [Three completed 0.5% perturbation seeds](matched-stretch/completed-halfpercent/README.md).
-- [Separate periodic starting field: five initial grids](matched-stretch/periodic-start-check/README.md). The 256-grid width check passes; the large change in starting energy is reported.
-- [First completed 128-grid 0.1% seed](matched-stretch/completed-n128-seed101/README.md): saved-field checks, baseline separation and resolution limits.
+<a id="completed-matched-stretch-controls"></a>
+[Completed matched-stretch controls](archive/not-yet-connected/previous-results-index.md#completed-matched-stretch-controls)
 
-</details>
+<a id="completed-fresh-flow-memory-tests"></a>
+[Completed fresh-flow memory tests](archive/not-yet-connected/previous-results-index.md#completed-fresh-flow-memory-tests)
 
-## Heating-driven transition: decay to growth
+<a id="fluid-calculations"></a>
+[Fluid calculations](archive/not-yet-connected/previous-results-index.md#fluid-calculations)
 
-[Completed convection benchmark](dynamics-reference-tests/stress/convection-transition/README.md): 79 full-inertia Boussinesq runs, 12 separate modal comparisons, 20 final checks and 15 independent tests. At 5% below the ideal critical heating, the disturbance falls to 0.104 times its initial size; at 5% above, it grows to 9.08 times over the same interval. Grid/time refinement, energy budgets, rejected numerical controls and all raw records are included. This is a thermally driven bounded layer, distinct from the existing unforced fluid model. [Illustrated offline report](dynamics-reference-tests/stress/convection-transition/report.html) · [Publication inventory](convection-transition-publication.json).
+<a id="heating-driven-transition-decay-to-growth"></a>
+[Heating-driven transition](archive/not-yet-connected/previous-results-index.md#heating-driven-transition-decay-to-growth)
 
-## Water, biological particles and dynamics tests
+<a id="water-biological-particles-and-dynamics-tests"></a>
+[Water, particles and dynamics](archive/not-yet-connected/previous-results-index.md#water-biological-particles-and-dynamics-tests)
 
-| Study | Completed work and limits |
-| --- | --- |
-| [Water/biology three-question study](water-biology-study/README.md) | Solute and particulate transport, buoyancy, controlled material properties and stochastic freezing; code, figures, full raw outputs and uncertainty. Model predictions and published evidence are distinguished. |
-| [Dynamics reference benchmarks](dynamics-reference-tests/README.md) | Exact solutions, Euler/Heun/RK4 convergence, fixed points, Lorenz dynamics and waterwheel conservation. |
-| [Expanded dynamics and pond-vibration tests](dynamics-reference-tests/stress/README.md) | Long-run Lorenz statistics, aliasing, amplitude/phase errors, adaptive and alternating steps, limit cycles and a moving-bed pond pilot. Ground inputs are synthetic; no real footstep, rock or concert strength has been calibrated. |
+<a id="organization-transport-and-response"></a>
+[Organization, transport and response](archive/not-yet-connected/previous-results-index.md#organization-transport-and-response)
 
-For the illustrated offline views, download the repository and open [water/biology](water-biology-study/report.html), [baseline dynamics](dynamics-reference-tests/report.html), or [expanded stress results](dynamics-reference-tests/stress/report.html). GitHub itself displays HTML source. [Checksummed publication inventory](water-dynamics-publication.json).
+<a id="molecular-water"></a>
+[Molecular water](archive/not-yet-connected/previous-results-index.md#molecular-water)
 
-## Organization, transport and response
+<a id="moldable-hug-and-reciprocal-drive"></a>
+[Moldable hug and reciprocal drive](archive/not-yet-connected/previous-results-index.md#moldable-hug-and-reciprocal-drive)
 
-| Question | Report |
-| --- | --- |
-| Can transported material change the fluid itself? | [Coupled material feedback](water-biology-study/coupled-feedback/README.md): 30 completed pairs; assumed concentration-dependent viscosity; physical calibration and a frozen-viscosity control remain unresolved |
-| How does a disturbance change organized fluid? | [Fluid organization pilot](fluid-organization-pilot/README.md): paired disturbances, history targets and numerical controls |
-| Does past marker geometry predict later deformation? | [Marker-history prediction](matched-stretch/history-prediction/README.md): whole-run holdouts; [full-history refinement](matched-stretch/history-prediction/full-history-refinement/FINAL-REVIEW.md) retains 32 predictor-drift screen failures at grid 224 |
-| Which moving labels separate fastest? | [Marker stress and changing roles](matched-stretch/marker-stress/README.md) |
-| How do peaks compare with a changing reference? | [Peak and reference viewer](visuals/peak-and-reference.html) |
+<a id="mirror-fluid-and-reduced-models"></a>
+[Mirror-fluid and reduced models](archive/not-yet-connected/previous-results-index.md#mirror-fluid-and-reduced-models)
 
-## Molecular water
+<a id="completed-mirror-tests--october-8"></a>
+[Completed mirror tests](archive/not-yet-connected/previous-results-index.md#completed-mirror-tests--october-8)
 
-These studies use separate molecular or toy models. Their own reports state the applicable methods and limitations.
+<a id="completed-comparisons"></a>
+[Completed comparisons](archive/not-yet-connected/previous-results-index.md#completed-comparisons)
 
-| Study | Report |
-| --- | --- |
-| Quantum water and observable fluid behavior | [Vibrational predictions, molecular controls and measured-property fluid tests](quantum-water-pilot/README.md): completed raw-data package; bulk quantum transport remains unvalidated |
-| One heavy water molecule | [Isotope placement, identity controls and raw-data provenance](molecular/isotope-mass/README.md) |
-| Identical water molecules | [Positional influence and follow-up experiments](water-molecule-influence/README.md) |
+<a id="measurements-and-definitions"></a>
+[Measurements and definitions](archive/not-yet-connected/previous-results-index.md#measurements-and-definitions)
 
-## Moldable hug and reciprocal drive
+<a id="additional-controls"></a>
+[Additional controls](archive/not-yet-connected/previous-results-index.md#additional-controls)
 
-**[Material length and longer Lorenz tests](clay-gap-refinement/README.md)** — a proposed gradient regularization, original and revised model histories, full-interval gap comparisons, stronger forcing and nontrivial reciprocal feedback. [Saved-state viewer](clay-gap-refinement/report.html) · [numerical audit](clay-gap-refinement/analysis.json).
+<a id="visuals-and-conversation-studies"></a>
+[Visuals and conversation studies](archive/not-yet-connected/previous-results-index.md#visuals-and-conversation-studies)
 
-**[Unloading refinement and the zigzag pattern](hug-molding-refinement/README.md)** — four completed controls; finer-pair gap agreement improves, while individual zigzags remain mesh sensitive. Includes the plain-language accuracy summary and a verified complete release download.
+<a id="earlier-experiments"></a>
+[Earlier experiments](archive/not-yet-connected/previous-results-index.md#earlier-experiments)
 
-**[Finest-mesh Lorenz stress](clay-resolved-stress/README.md)** — matched refinement under the strongest forcing, longer checkpoint continuations, temporal controls and influence in both directions. Completed intervals and remaining limits are reported. [Playback](clay-resolved-stress/report.html) · [numerical audit](clay-resolved-stress/analysis.json).
+<a id="data-verification-and-history"></a>
+[Data, verification and history](archive/not-yet-connected/previous-results-index.md#data-verification-and-history)
 
-**[Coarse-start refinement and longer Lorenz forcing](clay-long-stress/README.md)** — reject the under-resolved coarse result, select a checked finer solution, and inspect longer one-way and reciprocal tests. Requested and completed intervals are reported separately. [Recorded playback](clay-long-stress/report.html) · [numerical audit](clay-long-stress/analysis.json).
+<a id="gas-return-selection-speed-direction-and-forecast-limits"></a>
+[Gas return selection](archive/not-yet-connected/previous-results-index.md#gas-return-selection-speed-direction-and-forecast-limits)
 
-**[Mesh refinement and accuracy](clay-mesh-accuracy/README.md)** — repaired surface integration and cell protection, independent solver and contact-sampling checks, stronger reciprocal Lorenz forcing, and retained failed alternatives. [Computed playback](clay-mesh-accuracy/report.html) · [raw comparisons](clay-mesh-accuracy/analysis.json).
-
-[Cell protection and harder reciprocal tests](clay-cell-stress/README.md): resistance to cell compression and long, narrow triangles; matched Lorenz drive/reaction, parameter and mesh checks, fading-imprint controls and recorded computation limits. [Computed playback and charts](clay-cell-stress/report.html).
-
-[Repaired contact and harder reciprocal stress tests](clay-contact-stress/README.md): whole-edge object barriers, square-wall protection and material self-contact; matched one-way/two-way Lorenz runs, sustained comparisons, independent integration and retained earlier failures. [Recorded molding and illustrated offline report](clay-contact-stress/report.html).
-
-[Computed molding and stress results](clay-hug/README.md): a filled 2-D yielding mesh around circular, tilted elliptical and concave objects; reciprocal work coupling to Lorenz, unloading, time/mesh/contact checks and preserved numerical failures. [Interactive offline report](clay-hug/report.html). The material is dimensionless and not calibrated physical clay.
-
-## Mirror-fluid and reduced models
-
-[Four reproduced fluid tests](../math/imports/hug-ns/mirror-fluid/README.md) · [Signed calibration](../math/imports/hug-ns/mirror-calibration/README.md) · [Definitions and controls](../math/imports/hug-ns/mirror-fluid/methods-controls/README.md)
-
-The supplied q is a passive signed record, E is unsigned, and mirror averaging is an explicit intervention. The later fitted q and cubic-feedback experiments are separate model tests; their coefficients are not established physical constants.
-
-<details>
-<summary>Mirror-fluid reports, source controls and earlier completed comparisons</summary>
-
-### Completed mirror tests — October 8
-
-- **[Separate C and D contributions](../math/imports/hug-ns/mirror-fluid/source-attribution/README.md):** ten new fluid controls and [chart](../math/imports/hug-ns/mirror-fluid/source-attribution/source-effects.png).
-
-- **[Four reproduced fluid tests](../math/imports/hug-ns/mirror-fluid/README.md):** [charts](files/fluid-tests-completed.png), [HTML report](files/fluid-tests-completed.html), code and result tables.
-- **[Signed mirror calibration](../math/imports/hug-ns/mirror-calibration/README.md):** 20 completed runs, [charts](files/mirror-calibration.png) and [HTML report](files/mirror-calibration.html).
-- [Files and hashes for this addition](verified-mirror-publication.json).
-
-![Reproduced fluid tests](files/fluid-tests-completed.png)
-
-### Completed comparisons
-
-- [Dynamic source weights and cubic term: 26 runs, four unseen starts](../math/imports/hug-ns/mirror-fluid/dynamic-q/README.md).
-- [Four additional 65-grid controls for the dynamic q model](../math/imports/hug-ns/mirror-fluid/dynamic-q/GRID65.md).
-
-- [Breathing rerun: six reproduced cases with prescribed per-step driving](../math/imports/hug-ns/mirror-fluid/breathing-rerun/README.md).
-
-- [Breathing run followed through every step: actual-fluid animations and the changing E/D measurements](../math/imports/hug-ns/mirror-fluid/breathing-rerun/timeline/README.md).
-
-- [Reproduced one-lean ball and breathing-fluid series](../math/imports/hug-ns/mirror-fluid/breathing-rerun/one-lean/README.md).
-
-### Measurements and definitions
-
-- [Corrected fluid dashboard, explicit definitions, 516 saved-field checks and completed controls](../math/imports/hug-ns/mirror-fluid/methods-controls/README.md).
-- [Norms, signs, reflection, numerical methods and evidence categories](../math/imports/hug-ns/mirror-fluid/methods-controls/METHODS.md).
-
-### Additional controls
-
-- [Four reduced-model layers: 46 completed runs and plots](../math/imports/hug-ns/mirror-fluid/model-layers/README.md). All 17 driven fluid comparisons are complete: [prediction scores and numerical controls](../math/imports/hug-ns/mirror-fluid/model-layers/FLUID.md). The tested scalar mappings fail the unseen-run prediction check.
-- [All 22 numerical controls completed](../math/imports/hug-ns/mirror-fluid/methods-controls/README.md), including grid, timestep, translation, rotation and initial-shape checks.
+<a id="earlier-page-layouts"></a>
+[Earlier page layouts](archive/not-yet-connected/previous-results-index.md#earlier-page-layouts)
 
 </details>
-
-## Visuals and conversation studies
-
-[Conversation study and source records](../language/conversation-study/README.md) · [Conversation report guide](../language/README.md)
-
-**Interactive controls:** [download the project](https://github.com/NousVolition/My-Sources-Project-ALL/archive/refs/heads/main.zip), extract it, and open `reports/index.html`. GitHub's file viewer displays HTML source. Older viewers retain the snapshot date shown in their report.
-
-<details>
-<summary>Browse the interactive viewers and earlier illustrations</summary>
-
-Earlier interactive-viewer snapshot: 2026-10-08T20:40:59.597392+00:00. That display retains its historical data. The [final matrix report](study/final-matrix/README.md) contains all 48 completed records and current numerical conclusions.
-
-![Vortex viewer](files/adversarial-vortex-study-visual-preview.png)
-
-| Report | Purpose |
-| --- | --- |
-| [Vortex shapes and movement](files/adversarial-vortex-study.html) | Rotate the 3D field and play saved times. Aligned, reverse and departing surroundings. |
-| [Flow results and controls](files/change-influence-result.html) | Imported results, fixed thresholds, and what each numerical check measured. |
-| [Hugged-ring calculations](files/hug-boundary-results.html) | The earlier ring calculation, grid comparisons, energy and time-step checks. |
-| [Peak and reference](visuals/peak-and-reference.html) | Compare the largest spin with its changing reference. |
-| [Norm, Entropy and the hug](visuals/norm-entropy-mirror.html) | The earlier mirror and timed-envelope illustration; this is a separate prototype. |
-| [Flip and join](visuals/flow-edge-seam.html) | The illustrated join between flipped copies. |
-| [Why the corner matters](visuals/why-the-corner-matters.html) | Explore the difference between a tall smooth peak and a corner. |
-| [People in context](visuals/people-in-context.html) | The A/B/C conversation illustration. |
-| [Conversation without words](visuals/conversation-without-words.html) | Inspect categories, reply order and lengths. |
-| [Conversation study](../language/conversation-study/README.md) | Source-linked observations and conversation patterns. |
-
-## Earlier experiments
-
-- [Earlier test using a different starting flow](files/hidden-flow-results.html)
-
-</details>
-
-## Data, verification and history
-
-| File or folder | How to use it |
-| --- | --- |
-| `README.md` | Read the formatted explanation, figures and limitations |
-| `result.json`, `measurements.json`, `comparisons.json` | Inspect saved measurements and comparison values |
-| `verify.py`, `plot.py`, `compare.py` | Inspect or reproduce the checks and charts |
-| `verification.json`, manifests and hash lists | Check the stated verification scope and file identity |
-| `completed-…` folders | Read a dated batch; use the study's main README for subsequent completions |
-
-- [Original report inventory and source hashes](manifest.json) and [verification of that saved snapshot](numerical-progress-verification.json) describe their dated publication scope.
-- [Vortex protocol](study/protocol.json), [saved comparisons](study/comparisons.json), and [run measurements](study/runs) provide the supporting records.
-- [Adaptive peak-spin audit](matched-stretch/adaptive-peak/README.md) records the failed initial six-cell width screen.
-- [Project history](../STATUS.md) and [review of both repositories](../REPOSITORY-REVIEW.md) retain earlier findings and dates.
-- [Earlier math notes and code](../math/README.md).
-
-Full restart arrays for the two 48-run fluid matrices remain in the local calculation workspace; the published JSON files are measurement records. Other studies state their own raw-data release arrangements.
-
-**Seeing orange/red lines and minus signs?** You are viewing a commit or pull request diff. Those lines show the previous version. Return to the **Code** tab and open the README to read the current report.
-
-## Gas return selection: speed, direction and forecast limits
-
-[Completed return-selection experiment](water-molecule-influence/gas-return-selection-extension/README.md): nine gas damping trajectories, three finer recording checks, past-only predictions, separate-start tuning and evaluation, and simple baselines. Short-horizon improvements and longer-horizon failures are both retained.
-
-
-## Earlier page layouts
-
-The previous navigation remains available here. These are dated snapshots, not the current results menu.
-
-- [Previous project overview](https://github.com/NousVolition/My-Sources-Project-ALL/blob/f454f038fcc7606366627110d462cbc2265831f7/README.md).
-- [Previous complete test list](https://github.com/NousVolition/My-Sources-Project-ALL/blob/f454f038fcc7606366627110d462cbc2265831f7/reports/README.md).

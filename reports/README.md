@@ -1,56 +1,20 @@
-# Current results
+# Tests connected to the original framework
 
-Choose a topic to open its finished reports. Each report keeps its sources, checks and remaining limits.
+**Starting question:** How do imposed common weightings and context-dependent boundaries shape the actions available to a participant, and how much autonomous intent can remain near that boundary?
 
-<details>
-<summary><strong>Fluid motion</strong></summary>
+This wording returns to the two parts of the supplied *True B-Lister Mathematical Framework*: the Shibboleth law and the Border Gate. Your later “guard” description adds reciprocal, potentially unequal relationships.
 
-- [Vortex surroundings](study/final-matrix/README.md) — final 48-run report; peak estimates still depend on grid size.
-- [Smooth-start stress tests](navier-stokes-stress/README.md) — final 39-run report, including unresolved late-time results.
-- [Completed matched-stretch controls](sources-and-details.md#completed-matched-stretch-controls) — finished controls from the continuing matrix; spatial accuracy remains unresolved.
+**These completed studies test parts of that question. None implements or validates the whole framework.** The connection is assessed from the actual rules and controls, not from names such as water, smoke or hug.
 
-</details>
+| Part of the question | Finished study | What it actually tests |
+| --- | --- | --- |
+| Shared rules and different local responses | [Coordination with freedom to refuse](../models/decentralized_coordination/README.md) | Hierarchy, local coordination, refusal and position. A common update rule can leave disagreement. |
+| Classification and changing group boundaries | [Abstract SIMS populations](https://github.com/NousVolition/Nous-Volition/blob/0ae1701cfe7570fb54c29d689a69650172c55927/studies/social-organization/README.md) | Cooperation, group transitions, memory and assigned classification penalties. Material names are symbolic labels. |
+| Unequal access under constraints | [Community power](https://github.com/NousVolition/Nous-Volition/blob/0ae1701cfe7570fb54c29d689a69650172c55927/studies/community-power/README.md) | How network access, budgets and priorities change fulfillment. Its objective is collective fulfillment, not the PDF's individual autonomy. |
+| Roles, expectations and room to refuse | [Adaptable roles](https://github.com/NousVolition/Nous-Volition/blob/0ae1701cfe7570fb54c29d689a69650172c55927/studies/adaptable-roles/README.md) | Assigned roles, learned expectations, budgets and handoffs; changing a label and changing access have different consequences. |
+| A boundary that retains an imprint | [Moldable hug refinement](hug-molding-refinement/README.md) | Deformation and retained rest-length changes. Individual zigzags remain mesh sensitive; this is a mechanical component model. |
+| Reciprocal influence | [Material changes the flow that transports it](water-biology-study/coupled-feedback/README.md) | A controlled two-way feedback mechanism under an assumed viscosity law. It has no autonomy objective or enforcement gate. |
 
-<details>
-<summary><strong>Fluid memory</strong></summary>
+The SIMS links open the separate Nous-Volition repository. Its files were inspected and linked, not reorganized.
 
-[Fresh-flow memory and erasure](fluid-memory-erasure/README.md) — completed prediction and erasure tests. History helps predict ordinary deformation; prediction of the disturbance response does not improve.
-
-</details>
-
-<details>
-<summary><strong>Moldable materials</strong></summary>
-
-- [Hug unloading and zigzags](hug-molding-refinement/README.md) — completed refinement of the earlier unloading test. Overall agreement improves; individual zigzags remain mesh sensitive.
-- [Separate material revision and longer forcing](clay-gap-refinement/README.md) — a changed material model, with its own comparisons and remaining imprint limits.
-
-</details>
-
-<details>
-<summary><strong>Water and molecules</strong></summary>
-
-- [Water, particles and freezing](water-biology-study/README.md) — completed transport and freezing simulations.
-- [Material feedback into fluid](water-biology-study/coupled-feedback/README.md) — completed paired comparisons using an assumed material law.
-- [Gas return selection](water-molecule-influence/gas-return-selection-extension/README.md) — completed prediction tests; short-horizon gains coexist with failed longer-horizon comparisons.
-- [Molecular study reports and sources](sources-and-details.md#molecular-water) — the separate isotope, positional-influence and quantum-water experiments.
-
-</details>
-
-<details>
-<summary><strong>Dynamics and heating</strong></summary>
-
-- [Heating: decay to growth](dynamics-reference-tests/stress/convection-transition/README.md) — completed convection benchmark.
-- [Dynamics stress tests](dynamics-reference-tests/stress/README.md) — completed accuracy, conservation and stability checks. Pond inputs are synthetic.
-
-</details>
-
-<details>
-<summary><strong>Mirror-fluid controls</strong></summary>
-
-[Completed mirror tests and controls](sources-and-details.md#mirror-fluid-and-reduced-models) — reproduced fluid tests, signed calibration and separate reduced-model comparisons, with failed predictions retained.
-
-</details>
-
----
-
-[Sources and history](sources-and-details.md) · [Home](../README.md)
+[Sources, equation audit and archive](sources-and-details.md)

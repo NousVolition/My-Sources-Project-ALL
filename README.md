@@ -1,7 +1,7 @@
-# hug-ns
+# The original framework and its tests
 
-Experiments in fluid motion, memory and material response.
+Imposed rules, changing boundaries, and room for individual action.
 
-## [Current results](reports/README.md)
+## [Tests connected to the framework](reports/README.md)
 
-[Sources and history](reports/sources-and-details.md)
+[Sources, equation audit and archive](reports/sources-and-details.md)
