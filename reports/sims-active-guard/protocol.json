@@ -1,0 +1,119 @@
+{
+  "title": "Equal and unequal influence with an evolving guard",
+  "status": "Frozen before integrations",
+  "version": 1,
+  "authorization": "User requested SIMS comparison with equal and unequal influence and guard active throughout.",
+  "equation_source": "https://github.com/NousVolition/My-Sources-Project-ALL/blob/36edc2e4c9c0ee49d5b99272dfcd8bed55054557/reports/interaction-equation.md",
+  "model": "Two abstract SIMS; the documented local ODE example, plus a labeled shared-target control. No fluid PDE.",
+  "seed": 20261020,
+  "base_pairs": 6,
+  "include_exact_relabel": true,
+  "baseline_sampling": {
+    "A": [
+      -0.8,
+      -0.25
+    ],
+    "B": [
+      0.25,
+      0.8
+    ],
+    "initial_offset": [
+      -0.2,
+      0.2
+    ]
+  },
+  "lambda": 1,
+  "tau": 0.6,
+  "theta": -0.4,
+  "beta": 2,
+  "guard_initial": [
+    0.5,
+    0.5
+  ],
+  "weights": {
+    "equal": [
+      1,
+      1
+    ],
+    "B_to_A_stronger": [
+      1.5,
+      0.5
+    ],
+    "A_to_B_stronger": [
+      0.5,
+      1.5
+    ]
+  },
+  "weight_order": [
+    "A_receives_B",
+    "B_receives_A"
+  ],
+  "guard_modes": {
+    "shared": "Both derivatives use the average of sigmoid(theta+beta*(xB-xA)) and sigmoid(theta-beta*(xB-xA)); both guards evolve and remain equal from equal starts. This explicitly changes the draft response law to supply an exactly equal-transmission control.",
+    "directional": "Draft response law: A receives target sigmoid(theta+beta*(xB-xA)); B receives sigmoid(theta+beta*(xA-xB)). Equal weights mean equal configured strengths, not necessarily equal realized gains.",
+    "frozen": "Diagnostic control only: both guards remain at initial .5; not counted among active-guard comparisons."
+  },
+  "disturbances": [
+    "none",
+    "A_positive",
+    "B_positive",
+    "A_negative",
+    "B_negative"
+  ],
+  "pulse": {
+    "onset": 2,
+    "duration": 0.5,
+    "amplitude": 0.8,
+    "shape": "sin(pi*(t-onset)/duration)^2 on the pulse interval; zero outside",
+    "signed_area_magnitude": 0.2
+  },
+  "time": {
+    "start": 0,
+    "end": 12,
+    "output_dt": 0.02,
+    "steps": [
+      0.01,
+      0.005,
+      0.0025
+    ],
+    "units": "dimensionless model time, not calibrated seconds"
+  },
+  "expected": {
+    "active_trajectories": 360,
+    "frozen_controls": 180,
+    "total": 540,
+    "independent_solver_checks": 90
+  },
+  "comparisons": {
+    "primary": "Peak sampled absolute deviation of the unperturbed receiver from its own matched no-pulse trajectory, for A-to-B and B-to-A pulses. Report positive and negative disturbances separately, and pooled mean/range over the fixed synthetic starts.",
+    "own_baseline": "Subtract undisturbed trajectory of same initial pair, guard rule and weights.",
+    "adaptation": "For each active rule and weight compare receiver response to same-weight frozen-guard response.",
+    "unequal": "Keep kAB+kBA=2; change ratio from 1:1 to 3:1 and reverse it. Holding sum fixed does not hold realized gain or response fixed.",
+    "no_success_target": "No required direction or size of scientific effect; numerical screens only."
+  },
+  "verification": {
+    "finite": true,
+    "guard_interval_tolerance": 2e-12,
+    "equal_transmission_tolerance": 1e-12,
+    "relabel_max_abs": 1e-12,
+    "half_step_max_abs": 0.00001,
+    "independent_max_abs": 1e-7,
+    "analytic_max_abs": 1e-8,
+    "independent": "DOP853, rtol 1e-11, atol 1e-13, max_step .025; all modes/weights/pulses for cases 0 and 6. Separate handwritten scalar RHS.",
+    "bounds": "Check all RK4 intermediate states; no guard clipping.",
+    "fixed_guard": "Exact matrix exponential for all no-pulse frozen trajectories."
+  },
+  "resources": {
+    "threads": 1,
+    "max_elapsed_seconds": 300,
+    "maximum_step_count": 100000
+  },
+  "limits": [
+    "This tests consequences of an assumed abstract response law, not people, molecules or Navier-Stokes.",
+    "Shared-target and directional-target rules are distinct models; never describe their difference as a weight-only intervention.",
+    "This is a finite deterministic set of synthetic starts; ranges are not population confidence intervals.",
+    "Guard memory relaxes on the chosen time scale; no irreversible memory or rupture is implemented.",
+    "No new studies, thresholds, horizons or automatic retries are authorized by this protocol."
+  ],
+  "publication": "One completed report entry; source, raw trajectories, numerical verification and historical source link behind one details link."
+}

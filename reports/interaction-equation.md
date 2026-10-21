@@ -1,6 +1,6 @@
 # Working equation: an active, asymmetric guard
 
-**Working draft — not a completed test or an established physical law.**  
+**Working draft — the local two-SIMS example has a [completed comparison](sims-active-guard/README.md). The general framework and fluid extension remain provisional.**  
 [Connected tests](README.md) · [Sources and earlier equation audit](sources-and-details.md)
 
 ## The question
@@ -184,7 +184,7 @@ The spatial integral of momentum is also constant in this setting. A changing gu
 
 Unequal abstract influence is not permission to assign unmatched internal mechanical forces. For a closed physical pair, interaction forces balance; unequal masses can still give unequal accelerations. The directed x_i equations above describe abstract internal responses and do not claim to conserve mass or momentum by summing those states.
 
-Initial fields, a domain, boundary conditions and numerical parameter values remain to be selected. The optional closure is not a calibrated model of water, smoke, isotopes or people, and no new simulation was launched.
+Initial fields, a domain, boundary conditions and numerical parameter values remain to be selected for this fluid extension. The optional closure is not a calibrated model of water, smoke, isotopes or people. The completed SIMS comparison tests the local interaction equations only; it does not run this fluid extension.
 
 </details>
 
@@ -201,8 +201,8 @@ Initial fields, a domain, boundary conditions and numerical parameter values rem
 
 This draft follows the user's clarification that the guard stays inside the interaction, relationships may be asymmetric, and earlier labels are placeholders. The initial PDF remains an unchanged source. The prior [equation audit](framework-audit.md) remains available with neutral wording.
 
-**Completed here:** structural revision, a clearly labeled example, algebraic limit checks and conservation accounting for the optional fluid closure.  
-**Not yet established:** calibrated response laws, chosen physical scales, numerical convergence or a new experimental result.
+**Completed:** structural revision, algebraic limit checks and conservation accounting for the optional fluid closure, followed by the [bounded two-SIMS comparison](sims-active-guard/README.md). Its active-guard runs passed step-refinement and independent-solver checks for the chosen local equations.  
+**Not yet established:** calibrated response laws, physical time scales, a numerical test of the fluid closure, or validation of the whole framework.
 
 No frozen solver, existing experiment, saved result or active study was changed.
 
