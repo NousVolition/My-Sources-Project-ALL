@@ -2,7 +2,7 @@
 
 [Back to connected tests](README.md)
 
-- **[Navier–Stokes SIMS sources and results](sims-navier-stokes-guard/METHODS.md)** — coupled equations, saved fields, controls and all numerical screens, including the two spatial-resolution failures.
+- **[Navier–Stokes SIMS sources and results](sims-navier-stokes-guard/refinement/METHODS.md)** — latest 64² refinement, unchanged equations, saved fields and all checks; original evidence and both earlier failures remain linked.
 
 - **[Active guard SIMS comparison sources and results](sims-active-guard/METHODS.md)** — equations, full trajectories, matched comparisons and numerical checks for the finished test.
 

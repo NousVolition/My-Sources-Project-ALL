@@ -8,7 +8,7 @@ The original document is a provisional starting point. The guard remains part of
 
 | Part of the question | Finished study | What it actually tests |
 | --- | --- | --- |
-| An evolving guard inside fluid motion | [Navier–Stokes SIMS: equal and unequal influence](sims-navier-stokes-guard/README.md) | Two-dimensional flow with continuous guard feedback. Averaged responses are stable under refinement; detailed spatial fields failed two accuracy screens. |
+| An evolving guard inside fluid motion | [Navier–Stokes SIMS: equal and unequal influence](sims-navier-stokes-guard/refinement/README.md) | Two-dimensional flow with continuous guard feedback. The 64² refinement passes the unchanged detailed-field tolerance; both older failures remain preserved. |
 | An evolving guard and unequal influence | [Equal and unequal influence with an active guard](sims-active-guard/README.md) | Two abstract SIMS with the guard updating throughout. Compares equal settings, unequal settings, reversed influence and frozen controls. |
 | Shared rules and different local responses | [Coordination with freedom to refuse](../models/decentralized_coordination/README.md) | Hierarchy, local coordination, refusal and position. A common update rule can leave disagreement. |
 | Classification and changing group boundaries | [Abstract SIMS populations](https://github.com/NousVolition/Nous-Volition/blob/0ae1701cfe7570fb54c29d689a69650172c55927/studies/social-organization/README.md) | Cooperation, group transitions, memory and assigned classification penalties. Material names are symbolic labels. |

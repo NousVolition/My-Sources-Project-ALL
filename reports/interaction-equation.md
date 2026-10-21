@@ -1,6 +1,6 @@
 # Working equation: an active, asymmetric guard
 
-**Working draft — completed comparisons cover the [local two-SIMS example](sims-active-guard/README.md) and a [bounded Navier–Stokes realization](sims-navier-stokes-guard/README.md). The coupled laws remain provisional; the fluid test retains two failed spatial-resolution screens.**  
+**Working draft — completed comparisons cover the [local two-SIMS example](sims-active-guard/README.md) and a [bounded Navier–Stokes realization](sims-navier-stokes-guard/refinement/README.md). The coupled laws remain provisional. The 64² refinement passes the unchanged detailed-field tolerance; both older failures remain preserved.**  
 [Connected tests](README.md) · [Sources and earlier equation audit](sources-and-details.md)
 
 ## The question
@@ -184,7 +184,7 @@ The spatial integral of momentum is also constant in this setting. A changing gu
 
 Unequal abstract influence is not permission to assign unmatched internal mechanical forces. For a closed physical pair, interaction forces balance; unequal masses can still give unequal accelerations. The directed x_i equations above describe abstract internal responses and do not claim to conserve mass or momentum by summing those states.
 
-The [completed Navier–Stokes SIMS comparison](sims-navier-stokes-guard/README.md) selects a two-dimensional periodic domain, one smooth starting pattern and fixed parameters for this optional closure. It compares shared and directional evolving guards, equal and unequal weights, frozen guards and controls disabling individual feedback paths. The sampled averaged responses are stable under grid and time-step refinement, while two detailed-field spatial screens failed and remain reported. The optional closure is not a calibrated model of water, smoke, isotopes or people.
+The [completed Navier–Stokes SIMS comparison](sims-navier-stokes-guard/refinement/README.md) selects a two-dimensional periodic domain, one smooth starting pattern and fixed parameters for this optional closure. It compares shared and directional evolving guards, equal and unequal weights, frozen guards and controls disabling individual feedback paths. The original sampled averaged responses were stable under grid and time-step refinement. The 64² refinement passes the unchanged detailed-field tolerance; both older failures remain preserved. The optional closure is not a calibrated model of water, smoke, isotopes or people.
 
 </details>
 
@@ -202,8 +202,8 @@ The [completed Navier–Stokes SIMS comparison](sims-navier-stokes-guard/README.
 This draft follows the user's clarification that the guard stays inside the interaction, relationships may be asymmetric, and earlier labels are placeholders. The initial PDF remains an unchanged source. The prior [equation audit](framework-audit.md) remains available with neutral wording.
 
 **Completed:** structural revision, algebraic limit checks and conservation accounting for the optional fluid closure, followed by the [bounded two-SIMS comparison](sims-active-guard/README.md). Its active-guard runs passed step-refinement and independent-solver checks for the chosen local equations.  
-**Also completed:** the [bounded Navier–Stokes comparison](sims-navier-stokes-guard/README.md), with the guard continuously coupled to transport, strain, influence and viscous stress. Conservation and averaged-response screens passed; detailed spatial resolution did not pass every screen.  
-**Not yet established:** calibrated response laws, physical time scales, fully resolved spatial guard fields, or validation of the whole framework.
+**Also completed:** the [bounded Navier–Stokes comparison](sims-navier-stokes-guard/refinement/README.md), with the guard continuously coupled to transport, strain, influence and viscous stress. Conservation and averaged-response screens passed in the original comparison. The 64² refinement passes the unchanged detailed-field tolerance; both older failures remain preserved.  
+**Not yet established:** calibrated response laws, physical time scales, continuum convergence of the spatial guard fields, or validation of the whole framework.
 
 No frozen solver, existing experiment, saved result or active study was changed.
 

@@ -1,0 +1,207 @@
+{
+  "title": "64-grid refinement of the continuously coupled SIMS guard",
+  "version": 1,
+  "authorization": "User requested a finer grid to assess the two failed spatial checks, preserving the equations, equal and unequal influence, and continuous guard participation.",
+  "source_equation": "https://github.com/NousVolition/My-Sources-Project-ALL/blob/75dfdd5cf200ca56a8725e50e5db23d234f79789/reports/interaction-equation.md",
+  "scope": "2D incompressible periodic fluid coupled to two abstract internal SIMS fields. No material identification or physical second calibration.",
+  "domain": {
+    "dimension": 2,
+    "side": 6.283185307179586,
+    "density": 1,
+    "boundary": "periodic"
+  },
+  "lambda": 1,
+  "tau": 0.6,
+  "theta": -0.4,
+  "beta": 2,
+  "chi": 0.5,
+  "mu": 0.02,
+  "a": 0.04,
+  "diffusivity_x": 0.02,
+  "diffusivity_g": 0.015,
+  "baseline": [
+    -0.55,
+    0.35
+  ],
+  "initial": "psi=sin(x)sin(y)+0.25cos(2x+y)+0.15sin(x-2y); (u,v)=(psi_y,-psi_x). xA=-0.55+0.15cos(x)+0.1sin(y); xB=0.35+0.1sin(x)-0.15cos(y). Guards both 0.5. Same finite trigonometric fields on every grid.",
+  "weights": {
+    "equal": [
+      1,
+      1
+    ],
+    "B_to_A_stronger": [
+      1.5,
+      0.5
+    ],
+    "A_to_B_stronger": [
+      0.5,
+      1.5
+    ]
+  },
+  "weight_order": [
+    "A receives B",
+    "B receives A"
+  ],
+  "modes": {
+    "shared": "Both guards evolve toward the mean of the two directional sigmoid targets. Exactly equal guards; equal realized gains at equal weights. Explicit modified-rule control.",
+    "directional": "Draft: target_AB=sigmoid(theta+beta*(xB-xA)+chi*D:D), target_BA=sigmoid(theta-beta*(xB-xA)+chi*D:D). Guard-dependent viscosity mu+a*(gAB+gBA).",
+    "frozen": "Diagnostic: guards fixed at 0.5. SIMS still interact through them; not active-guard evidence.",
+    "no_feedback": "Diagnostic: directional guards evolve, but viscosity is fixed at its common initial value mu+a. Disables guard-to-flow stress feedback, retaining advection and strain-to-guard.",
+    "no_strain": "Diagnostic: directional guards evolve with guard-dependent viscosity but chi=0. Disables the explicit strain-to-guard term; advection still couples flow and SIMS/guards."
+  },
+  "pulses": [
+    "none",
+    "A",
+    "B"
+  ],
+  "pulse": {
+    "onset": 0.5,
+    "duration": 0.5,
+    "amplitude": 0.8,
+    "temporal": "sin(pi*(t-onset)/duration)^2, zero outside",
+    "profile": "((1+cos(x-pi/2))/2)^2*((1+cos(y-pi/3))/2)^2",
+    "sign": "positive only in this bounded test",
+    "peak_temporal_area": 0.2
+  },
+  "time": {
+    "end": 4,
+    "output_dt": 0.05,
+    "field_times": [
+      0,
+      1,
+      1.5,
+      2.5,
+      4
+    ],
+    "units": "dimensionless model time"
+  },
+  "batches": [
+    {
+      "n": 64,
+      "dt": 0.005
+    },
+    {
+      "n": 64,
+      "dt": 0.0025
+    }
+  ],
+  "method": "Fourier collocation with strict 2/3 truncation for quadratic products, Leray pressure projection, RK4 on velocity, SIMS states and guards together; full divergence of variable symmetric viscous stress. Nonpolynomial reaction resolution is assessed by grid refinement.",
+  "independent": {
+    "method": "DOP853 with a separately implemented curl-form momentum equation and conservative scalar transport",
+    "n": 24,
+    "rtol": 1e-09,
+    "atol": 1e-11,
+    "max_step": 0.025,
+    "cases": "directional / all three weights / pulse B",
+    "limit": 2e-07,
+    "execution": "Reused from the original study; the identical numerical source is not reintegrated for these controls."
+  },
+  "relabel": {
+    "n": 32,
+    "dt": 0.01,
+    "cases": "all nine directional cases; reverse k and pulse recipient, exchange participant baselines and initial states",
+    "execution": "Reused from the original study."
+  },
+  "hard_limits": {
+    "guard_tolerance": 1e-08,
+    "CFL": 0.5,
+    "divergence": 1e-10,
+    "energy_relative": 1e-05,
+    "mean_drift": 1e-11
+  },
+  "screens": {
+    "state_time_rms": 1e-05,
+    "state_grid_rms": 0.002,
+    "response_grid_relative": 0.05,
+    "response_time_relative": 0.01,
+    "response_absolute_floor": 1e-07,
+    "relabel_max": 1e-11,
+    "shared_weight_flow_null": 1e-11,
+    "feedback_disabled_flow_null": 1e-11
+  },
+  "measurements": "Peak sampled spatial RMS change in the unperturbed SIM and fluid velocity, subtracting each case's own no-pulse counterpart. Also guard response, energy, dissipation, momentum, realized-gain differences, full-band field differences at five saved times and control contrasts.",
+  "expected": {
+    "conditions": 45,
+    "primary_active_conditions": 18,
+    "diagnostic_conditions": 27,
+    "batch_trajectories": 90,
+    "reused_independent_checks": 3,
+    "reused_relabel_trajectories": 9
+  },
+  "resources": {
+    "threads": 1,
+    "max_batch_seconds": 3600,
+    "max_total_seconds": 7200,
+    "max_storage_GiB": 1,
+    "minimum_free_RAM_GiB": 20
+  },
+  "interpretation": [
+    "Changing weights tests imposed influence while other parameters and total configured weight stay fixed; realized gains are not fixed.",
+    "Shared versus directional guards change a response law, not just a weight.",
+    "The viscosity closure is a proposed assumption. More transmission increases viscous resistance here; this mapping is not supplied by the original framework.",
+    "No mechanical forcing: the guard changes dissipation but supplies no kinetic energy.",
+    "All conditions use one chosen smooth spatial initial pattern. A/B relabelings are controls, not independent samples.",
+    "No irreversible memory, rupture threshold, molecular chemistry, three-dimensional turbulence or continuum theorem is tested.",
+    "Keep every failed screen and failed run. No automatic retries, horizon extension, added cases or changes after freezing."
+  ],
+  "refinement": {
+    "parent_directory": "C:\\Users\\ziman\\Documents\\Codex\\2026-10-05\\ca\\outputs\\sims-navier-stokes-guard-20261020",
+    "parent_commit": "2d99c8c4fe36f4ca1e8b25339ab0358211bffbd3",
+    "parent_protocol_sha256": "ba767c26ec3324f0441e158475910e12b9d225ab1f99859b534f51c280a3ebae",
+    "parent_model_sha256": "60948e928f31d57e8384f2f7ccd68d4ab9664d6aee3398f82407324bb0f42e30",
+    "comparison": "Compare 48 at step .005 with 64 at step .005, and 64 at .005 with .0025. Retain 24-to-32 and 32-to-48 failures unchanged.",
+    "same_model_keys": [
+      "version",
+      "source_equation",
+      "scope",
+      "domain",
+      "lambda",
+      "tau",
+      "theta",
+      "beta",
+      "chi",
+      "mu",
+      "a",
+      "diffusivity_x",
+      "diffusivity_g",
+      "baseline",
+      "initial",
+      "weights",
+      "weight_order",
+      "modes",
+      "pulses",
+      "pulse",
+      "time",
+      "method",
+      "hard_limits",
+      "screens",
+      "measurements",
+      "interpretation"
+    ],
+    "max_new_trajectories": 90,
+    "no_automatic_expansion": true,
+    "no_automatic_retry": true,
+    "stopping_rule": "Complete these two batches and report all checks, even if the new spatial screen fails. No further grids or longer time interval are authorized by this protocol.",
+    "parent_file_hashes": {
+      "protocol.json": "ba767c26ec3324f0441e158475910e12b9d225ab1f99859b534f51c280a3ebae",
+      "model.py": "60948e928f31d57e8384f2f7ccd68d4ab9664d6aee3398f82407324bb0f42e30",
+      "freeze.json": "7e37002cefa0c86bb18d43e6ab1aeb18f35a527526eb03200aa5f82499c05a63",
+      "preflight.json": "a1a8685eb9130f4b7c0e0bbc1e7e0f25cee4453bc50737676d7ae8eba7f72c5c",
+      "results/cases.json": "32e1157ee2ec1b9c8d3fa6bd780cd0312d7dd68acbc2a477b207ee0f699dcce4",
+      "results/summary.json": "3fb66421d08289a5173ae568fc5628cf5436e92cefc9cced00275ed8a1d8d731",
+      "results/verification.json": "3e8f72ace527356a4d6497a6533e3a0d7964facc78bd8f108fea2343aed01a5a",
+      "results/analysis.json": "c81f908e2b3ee3b3a9d541b1575710603721ebf1f158078f6c2de3e808420560",
+      "results/independent.json": "2057000640661810d5dc9c93d5c408dbb7f176f879c131f40812d60ac8b683d7",
+      "results/relabel.json": "fc40d92d67467d64b8bde43cd2fe5dc9bbf739c849ee156980f190885d635e92",
+      "results/saved-field-audit.json": "b790620343e2aac400008c2e8a41f7f2c234f691a486e2e7d18b66dda2116259",
+      "results/n24-dt0.01.json": "27e67acec29b92c13fb11f966e192dbd3e5a718925893a95e8ee8bca098ba2b3",
+      "results/n24-dt0.01.npz": "e59fb2c59cb7fccec7163e25cab7ec90d4ff07d116eea0e33af86a93fa627094",
+      "results/n32-dt0.01.json": "8703a643757a4ec0a5feabaf4de7f24d8d0ab922f5e05e700c426add5955ef83",
+      "results/n32-dt0.01.npz": "2f8a87b3e1135af1f99697a2bee90489e4a476d0392c583fe1e2418ed0c9f505",
+      "results/n48-dt0.01.json": "1825e4c62c9f96a719aee2bd80b0c956341dc9c927607d4133a1497c97c92b3e",
+      "results/n48-dt0.01.npz": "f1c2d1fe28be09e22a4e3e6da579a3336b29fbb31c4fe7d1f30e81d8777d9c2c",
+      "results/n48-dt0.005.json": "efecac79ac006aabed3c34fb03fac64acba8fbe7fcddfb6ece796463cd341204",
+      "results/n48-dt0.005.npz": "d6c7fba9c9cb29df6cb6a5a747aa19048abc4c027f324038995670bfffac7216"
+    }
+  }
+}
