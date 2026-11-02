@@ -1,5 +1,10 @@
 # Matched-stretch numerical controls
 
+**Completed November 2, 2026:** [Final 48-run matrix](final-matrix/README.md). The final report is independently verified through t=0.40; spatial and finest timestep convergence remain unestablished.
+
+<details>
+<summary>Earlier dated publications</summary>
+
 **Completed October 16, 2026:** [Grid-128 strain-axis tilt +5 degrees](completed-n128-angle-plus5/README.md) — all 41 saved fields independently remeasured through 0.40; original matrix continues. Raw-strain, initial-peak and resolution limits remain.
 
 **Completed October 15, 2026:** [Grid-128 strain-axis tilt -5 degrees](completed-n128-angle-minus5/README.md) — all 41 saved fields independently remeasured through 0.40; original matrix continues. Raw-strain, initial-peak and resolution limits remain.
@@ -16,16 +21,22 @@
 
 **Completed viscosity 0.01 disturbance comparison:** [Verified seed-202 result](completed-n128-viscosity0p01-disturbance-seed202/README.md) — 41 paired outputs through 0.40; disturbance 233.791945× its starting size and still growing instantaneously. Single-seed finite-time result with known resolution limits.
 
+
+</details>
+
 [Project home](../../README.md) · [All reports](../README.md) · [Current status](../../STATUS.md)
 
 ## Current published results
 
-**47/48 original-matrix runs have completed and verified results published through model time 0.40.** Status checked October 17, 2026 (UTC). The remaining run is the 256³ half-step baseline control. The separate viscosity/disturbance comparisons are additional studies and are not added to this 48-job count.
+**Final report:** [All 48 matched-stretch controls](final-matrix/README.md).
+
+**48/48 original-matrix runs have completed and verified results published through model time 0.40.** [Read the final matrix report](final-matrix/README.md), including the 256-grid half-step control, complete comparisons and all limits. Final review completed November 2, 2026 (UTC). Spatial convergence and the finest timestep screen fail; verified measurements do not establish physical stability.
 
 | Read first | What it shows |
 | --- | --- |
-| [128-grid strain-axis tilt +5 degrees](completed-n128-angle-plus5/README.md) | Latest published original-matrix completion: all 41 fields remeasured through 0.40, with grid comparisons and resolution limits |
-| [256-grid baseline](completed-n256-baseline/README.md) | Completed ordinary-step result; the matching half-step control remains unfinished |
+| [Final 48-run matrix](final-matrix/README.md) | All original runs complete through 0.40, final half-step control, independent verification and complete comparisons |
+| [128-grid strain-axis tilt +5 degrees](completed-n128-angle-plus5/README.md) | Earlier verified completion: all 41 fields remeasured through 0.40, with grid comparisons and resolution limits |
+| [256-grid baseline](completed-n256-baseline/README.md) | Completed ordinary-step result; the matching half-step control is now included in the final matrix report |
 | [128-grid viscosity 0.01](completed-n128-viscosity0p01/README.md) | Earlier verified unperturbed viscosity control, all 41 fields remeasured, budgets and resolution limits |
 | [Third 128-grid 1% seed](completed-n128-onepercent-seed303/README.md) | Earlier verified completion: seed 303, saved-field checks, charts and matched amplitude/grid comparisons |
 | [Second 128-grid 1% seed](completed-n128-onepercent-seed202/README.md) | Earlier seed 202 completion and its saved-field checks |

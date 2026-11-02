@@ -1,0 +1,403 @@
+{
+  "created_epoch": 1791497365.1682956,
+  "end_time": 0.4,
+  "output_dt": 0.01,
+  "domain_side": 6,
+  "baseline_viscosity": 0.001,
+  "external_force": 0,
+  "initial_source": "../fixed-cutoff-run/source/grids_compared.py:build",
+  "initial_audit": "initial-audit.json",
+  "implementation_validation": "implementation-check.json",
+  "time_method": "Heun, same as supplied; output intervals are divided into equal steps with starting speed CFL <= 0.04",
+  "integrals": "Wmax is trapezoid-integrated at every accepted step; energy/enstrophy rates use both Heun stages",
+  "perturbation_norm": "L2(delta u0)/L2(u0); zero-mean divergence-free modes, seeds 101,202,303 at n64 and n128",
+  "parameter_design": "One factor at a time at n64 and n128; radius +/-10% at fixed analytic tube spin, spin +/-10%, strain +/-10%, strain-axis tilt +/-5 degrees",
+  "resolution_screen": "Flags, not proof: outer 20% of retained component modes carry <0.1% energy and <1% enstrophy; minimum transverse half-peak chord >=6 cells",
+  "convergence_screen": "Report actual relative errors; exploratory screens: <5% finest grid curve difference and <1% dt-halving difference; require errors decrease with refinement",
+  "hard_stops_per_job": "Nonfinite fields, speed CFL>0.5, scaled divergence>1e-10, energy budget residual>0.5%; preserve evidence and continue unrelated jobs",
+  "publication": "Local calculations and factual reports. No conjectures or speculative project connections are authorized for GitHub.",
+  "jobs": [
+    {
+      "id": "baseline-n64-base",
+      "n": 64,
+      "family": "convergence",
+      "nu": 0.001,
+      "half": false
+    },
+    {
+      "id": "baseline-n64-half",
+      "n": 64,
+      "family": "convergence",
+      "nu": 0.001,
+      "half": true
+    },
+    {
+      "id": "baseline-n128-base",
+      "n": 128,
+      "family": "convergence",
+      "nu": 0.001,
+      "half": false
+    },
+    {
+      "id": "baseline-n128-half",
+      "n": 128,
+      "family": "convergence",
+      "nu": 0.001,
+      "half": true
+    },
+    {
+      "id": "baseline-n256-base",
+      "n": 256,
+      "family": "convergence",
+      "nu": 0.001,
+      "half": false
+    },
+    {
+      "id": "baseline-n256-half",
+      "n": 256,
+      "family": "convergence",
+      "nu": 0.001,
+      "half": true
+    },
+    {
+      "id": "perturb-n64-a0.001-s101",
+      "n": 64,
+      "family": "perturbation",
+      "nu": 0.001,
+      "amplitude": 0.001,
+      "seed": 101,
+      "dependency": "baseline-n64-base"
+    },
+    {
+      "id": "perturb-n64-a0.001-s202",
+      "n": 64,
+      "family": "perturbation",
+      "nu": 0.001,
+      "amplitude": 0.001,
+      "seed": 202,
+      "dependency": "baseline-n64-base"
+    },
+    {
+      "id": "perturb-n64-a0.001-s303",
+      "n": 64,
+      "family": "perturbation",
+      "nu": 0.001,
+      "amplitude": 0.001,
+      "seed": 303,
+      "dependency": "baseline-n64-base"
+    },
+    {
+      "id": "perturb-n64-a0.005-s101",
+      "n": 64,
+      "family": "perturbation",
+      "nu": 0.001,
+      "amplitude": 0.005,
+      "seed": 101,
+      "dependency": "baseline-n64-base"
+    },
+    {
+      "id": "perturb-n64-a0.005-s202",
+      "n": 64,
+      "family": "perturbation",
+      "nu": 0.001,
+      "amplitude": 0.005,
+      "seed": 202,
+      "dependency": "baseline-n64-base"
+    },
+    {
+      "id": "perturb-n64-a0.005-s303",
+      "n": 64,
+      "family": "perturbation",
+      "nu": 0.001,
+      "amplitude": 0.005,
+      "seed": 303,
+      "dependency": "baseline-n64-base"
+    },
+    {
+      "id": "perturb-n64-a0.01-s101",
+      "n": 64,
+      "family": "perturbation",
+      "nu": 0.001,
+      "amplitude": 0.01,
+      "seed": 101,
+      "dependency": "baseline-n64-base"
+    },
+    {
+      "id": "perturb-n64-a0.01-s202",
+      "n": 64,
+      "family": "perturbation",
+      "nu": 0.001,
+      "amplitude": 0.01,
+      "seed": 202,
+      "dependency": "baseline-n64-base"
+    },
+    {
+      "id": "perturb-n64-a0.01-s303",
+      "n": 64,
+      "family": "perturbation",
+      "nu": 0.001,
+      "amplitude": 0.01,
+      "seed": 303,
+      "dependency": "baseline-n64-base"
+    },
+    {
+      "id": "viscosity-n64-nu0.01",
+      "n": 64,
+      "family": "viscosity",
+      "nu": 0.01
+    },
+    {
+      "id": "viscosity-n64-nu0.002",
+      "n": 64,
+      "family": "viscosity",
+      "nu": 0.002
+    },
+    {
+      "id": "viscosity-n64-nu0.0005",
+      "n": 64,
+      "family": "viscosity",
+      "nu": 0.0005
+    },
+    {
+      "id": "viscosity-n64-nu0.0",
+      "n": 64,
+      "family": "viscosity",
+      "nu": 0.0
+    },
+    {
+      "id": "radius-n64-v0.18",
+      "n": 64,
+      "family": "radius",
+      "nu": 0.001,
+      "radius": 0.18
+    },
+    {
+      "id": "radius-n64-v0.22",
+      "n": 64,
+      "family": "radius",
+      "nu": 0.001,
+      "radius": 0.22
+    },
+    {
+      "id": "spin_factor-n64-v0.9",
+      "n": 64,
+      "family": "spin_factor",
+      "nu": 0.001,
+      "spin_factor": 0.9
+    },
+    {
+      "id": "spin_factor-n64-v1.1",
+      "n": 64,
+      "family": "spin_factor",
+      "nu": 0.001,
+      "spin_factor": 1.1
+    },
+    {
+      "id": "strain_factor-n64-v0.9",
+      "n": 64,
+      "family": "strain_factor",
+      "nu": 0.001,
+      "strain_factor": 0.9
+    },
+    {
+      "id": "strain_factor-n64-v1.1",
+      "n": 64,
+      "family": "strain_factor",
+      "nu": 0.001,
+      "strain_factor": 1.1
+    },
+    {
+      "id": "angle_degrees-n64-v-5.0",
+      "n": 64,
+      "family": "angle_degrees",
+      "nu": 0.001,
+      "angle_degrees": -5.0
+    },
+    {
+      "id": "angle_degrees-n64-v5.0",
+      "n": 64,
+      "family": "angle_degrees",
+      "nu": 0.001,
+      "angle_degrees": 5.0
+    },
+    {
+      "id": "perturb-n128-a0.001-s101",
+      "n": 128,
+      "family": "perturbation",
+      "nu": 0.001,
+      "amplitude": 0.001,
+      "seed": 101,
+      "dependency": "baseline-n128-base"
+    },
+    {
+      "id": "perturb-n128-a0.001-s202",
+      "n": 128,
+      "family": "perturbation",
+      "nu": 0.001,
+      "amplitude": 0.001,
+      "seed": 202,
+      "dependency": "baseline-n128-base"
+    },
+    {
+      "id": "perturb-n128-a0.001-s303",
+      "n": 128,
+      "family": "perturbation",
+      "nu": 0.001,
+      "amplitude": 0.001,
+      "seed": 303,
+      "dependency": "baseline-n128-base"
+    },
+    {
+      "id": "perturb-n128-a0.005-s101",
+      "n": 128,
+      "family": "perturbation",
+      "nu": 0.001,
+      "amplitude": 0.005,
+      "seed": 101,
+      "dependency": "baseline-n128-base"
+    },
+    {
+      "id": "perturb-n128-a0.005-s202",
+      "n": 128,
+      "family": "perturbation",
+      "nu": 0.001,
+      "amplitude": 0.005,
+      "seed": 202,
+      "dependency": "baseline-n128-base"
+    },
+    {
+      "id": "perturb-n128-a0.005-s303",
+      "n": 128,
+      "family": "perturbation",
+      "nu": 0.001,
+      "amplitude": 0.005,
+      "seed": 303,
+      "dependency": "baseline-n128-base"
+    },
+    {
+      "id": "perturb-n128-a0.01-s101",
+      "n": 128,
+      "family": "perturbation",
+      "nu": 0.001,
+      "amplitude": 0.01,
+      "seed": 101,
+      "dependency": "baseline-n128-base"
+    },
+    {
+      "id": "perturb-n128-a0.01-s202",
+      "n": 128,
+      "family": "perturbation",
+      "nu": 0.001,
+      "amplitude": 0.01,
+      "seed": 202,
+      "dependency": "baseline-n128-base"
+    },
+    {
+      "id": "perturb-n128-a0.01-s303",
+      "n": 128,
+      "family": "perturbation",
+      "nu": 0.001,
+      "amplitude": 0.01,
+      "seed": 303,
+      "dependency": "baseline-n128-base"
+    },
+    {
+      "id": "viscosity-n128-nu0.01",
+      "n": 128,
+      "family": "viscosity",
+      "nu": 0.01
+    },
+    {
+      "id": "viscosity-n128-nu0.002",
+      "n": 128,
+      "family": "viscosity",
+      "nu": 0.002
+    },
+    {
+      "id": "viscosity-n128-nu0.0005",
+      "n": 128,
+      "family": "viscosity",
+      "nu": 0.0005
+    },
+    {
+      "id": "viscosity-n128-nu0.0",
+      "n": 128,
+      "family": "viscosity",
+      "nu": 0.0
+    },
+    {
+      "id": "radius-n128-v0.18",
+      "n": 128,
+      "family": "radius",
+      "nu": 0.001,
+      "radius": 0.18
+    },
+    {
+      "id": "radius-n128-v0.22",
+      "n": 128,
+      "family": "radius",
+      "nu": 0.001,
+      "radius": 0.22
+    },
+    {
+      "id": "spin_factor-n128-v0.9",
+      "n": 128,
+      "family": "spin_factor",
+      "nu": 0.001,
+      "spin_factor": 0.9
+    },
+    {
+      "id": "spin_factor-n128-v1.1",
+      "n": 128,
+      "family": "spin_factor",
+      "nu": 0.001,
+      "spin_factor": 1.1
+    },
+    {
+      "id": "strain_factor-n128-v0.9",
+      "n": 128,
+      "family": "strain_factor",
+      "nu": 0.001,
+      "strain_factor": 0.9
+    },
+    {
+      "id": "strain_factor-n128-v1.1",
+      "n": 128,
+      "family": "strain_factor",
+      "nu": 0.001,
+      "strain_factor": 1.1
+    },
+    {
+      "id": "angle_degrees-n128-v-5.0",
+      "n": 128,
+      "family": "angle_degrees",
+      "nu": 0.001,
+      "angle_degrees": -5.0
+    },
+    {
+      "id": "angle_degrees-n128-v5.0",
+      "n": 128,
+      "family": "angle_degrees",
+      "nu": 0.001,
+      "angle_degrees": 5.0
+    }
+  ],
+  "source_hashes": {
+    "numerics.py": "22b169971aaf2efd56d47f685495a575e1622edd56c199b07a785fc97e952f46",
+    "run_suite.py": "270da92c7e69e123aa1aa79e449e894dc3acca4a06e41a54b9419b61efff0d07"
+  },
+  "implementation_revisions": [
+    {
+      "reason": "Retry temporary Windows PermissionError when atomically writing JSON metadata; no numerical code, initial field, integration method or job matrix changed.",
+      "old": {
+        "numerics.py": "22b169971aaf2efd56d47f685495a575e1622edd56c199b07a785fc97e952f46",
+        "run_suite.py": "daa49005b06f39bc4f7c72a7c743535a0e82e59a8e3307178a6de221664a80e5"
+      },
+      "new": {
+        "numerics.py": "22b169971aaf2efd56d47f685495a575e1622edd56c199b07a785fc97e952f46",
+        "run_suite.py": "270da92c7e69e123aa1aa79e449e894dc3acca4a06e41a54b9419b61efff0d07"
+      },
+      "epoch": 1791498715.8970466
+    }
+  ]
+}

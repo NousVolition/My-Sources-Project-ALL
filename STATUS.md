@@ -1,5 +1,7 @@
 # Current status and project history
 
+**Completed November 2, 2026:** [Final matched-stretch matrix](reports/matched-stretch/final-matrix/README.md) — all 48 original runs reach 0.40; saved-field and report verification passed. Spatial convergence and finest timestep screens fail.
+
 **Completed October 16, 2026:** [Grid-128 strain-axis tilt +5 degrees](reports/matched-stretch/completed-n128-angle-plus5/README.md) — all 41 saved fields independently remeasured through 0.40; original matrix continues. Raw-strain, initial-peak and resolution limits remain.
 
 **Completed October 15, 2026:** [Grid-128 strain-axis tilt -5 degrees](reports/matched-stretch/completed-n128-angle-minus5/README.md) — all 41 saved fields independently remeasured through 0.40; original matrix continues. Raw-strain, initial-peak and resolution limits remain.
@@ -22,9 +24,9 @@
 
 ## Current numerical status
 
-Publication counts checked October 17, 2026 (UTC).
+Matched-stretch count updated November 2, 2026 (UTC); other dated study records are preserved.
 
-- **[Matched-stretch controls](reports/matched-stretch/README.md): 47/48 completed and verified original-matrix results published through model time 0.40.** The 256³ half-step baseline is the one remaining run. The latest published completion is the [128-grid +5-degree strain-axis tilt](reports/matched-stretch/completed-n128-angle-plus5/README.md), with all 41 fields remeasured. Separate viscosity/disturbance follow-ups are outside this 48-job count. The [128-grid timestep screen fails](reports/matched-stretch/completed-timestep128/README.md); the raw strain has nonsmooth periodic joins, initial maxima lie outside the central tube, and peak spatial resolution remains inadequate.
+- **[Matched-stretch controls](reports/matched-stretch/final-matrix/README.md): 48/48 original-matrix runs complete, independently verified and published through model time 0.40.** Final review: November 2, 2026 (UTC). The 256-grid half-step W curve differs by 7.4987% from its base-step control; the finest-grid W difference is 46.7880%. Spatial and finest timestep convergence are not established. Raw-strain joins, initial maxima outside the central tube and all resolution failures remain explicit.
 - **[Separate vortex controls](reports/study/README.md): 48/48 completed and verified results published through 0.40.** The [final matrix report](reports/study/final-matrix/README.md) includes all timestep controls and charts. Small timestep differences coexist with 5.19–24.21% finest-grid global-W curve differences; spatial convergence is not established. This study has different starting data and its own numerical method.
 - **[Separate smooth-start stress suite](reports/navier-stokes-stress/README.md): 39/39 completed runs published in a parallel study.** Its protocol, raw-data release and numerical limitations are linked in that report. It uses different starting fields from the two matrices above.
 - **[Cross-repository review and connections](REPOSITORY-CURRENT-REVIEW.md):** current checks, related measurements, and the remaining work.
