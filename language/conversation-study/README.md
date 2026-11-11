@@ -1,4 +1,6 @@
-# Conversation study
+# Human and AI conversation: confusion, context and word paths
+
+<a id="conversation-study"></a>
 
 **What changes between a question, an answer, and the next attempt to be understood?**
 

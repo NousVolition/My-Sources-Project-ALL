@@ -1,4 +1,6 @@
-# Math & fluid experiments
+# Navier–Stokes, Hug and fluid memory studies
+
+<a id="math--fluid-experiments"></a>
 
 [← Project home](../README.md) · [Done & next](../STATUS.md)
 

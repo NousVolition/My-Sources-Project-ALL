@@ -236,7 +236,7 @@ def plot_results(output, stability, a, b, summary):
         ax.spines[["top", "right"]].set_visible(False)
     fig.suptitle("Representation changes the grouping", fontsize=17, fontweight="bold")
     fig.savefig(output / "study-overview.svg", metadata={"Date": None})
-    fig.savefig(output / "study-overview.png", dpi=160, metadata={"Software": "Nous Volition study"})
+    fig.savefig(output / "study-overview.png", dpi=160, metadata={"Software": "NousVolition study"})
     plt.close(fig)
 
 

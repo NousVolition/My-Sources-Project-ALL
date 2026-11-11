@@ -1,4 +1,6 @@
-# Earlier work & provenance
+# Navier–Stokes framework and earlier source archive
+
+<a id="earlier-work--provenance"></a>
 
 [← Project home](../README.md)
 

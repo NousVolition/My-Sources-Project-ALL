@@ -19,7 +19,7 @@ def main():
     grid=[c for c in a['comparisons'] if c['kind']=='grid' and any(c['coarse'].startswith('kida-n'+str(n)+'-') for n in [96,128,192]) and '-e0-' in c['coarse']]
     tim=[c for c in a['comparisons'] if c['kind']=='time'];failed_local=sum(r['last_local_prefix']<r['last_t'] for r in rows)
     maxbudget=max(r['max_energy_residual'] for r in rows);maxdiv=max(r['max_divergence'] for r in rows)
-    body=f'''<header><div class="eyebrow">NOUS VOLITION · COMPUTATIONAL FLUID DYNAMICS</div>
+    body=f'''<header><div class="eyebrow">NousVolition · COMPUTATIONAL FLUID DYNAMICS</div>
     <h1>Push the flow.<br>Test the apparent failure.</h1>
     <p class="lede">A stress test of the actual three-dimensional incompressible Navier–Stokes equations, with molecular experiments kept separate.</p>
     <p>{v['completed_runs']} / {v['planned_runs']} planned runs completed · up to {max(r['settings']['n'] for r in rows)}³ grid points · {v['verified_fields']} saved fields verified</p></header>

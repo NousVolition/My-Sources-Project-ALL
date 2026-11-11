@@ -6,6 +6,18 @@
 
 Start with [Navier–Stokes SIMS and guard feedback](reports/sims-navier-stokes-guard/refinement/README.md), [equal and unequal influence with an active guard](reports/sims-active-guard/README.md), or [moldable Hug refinement](reports/hug-molding-refinement/README.md).
 
+## Find a specific study
+
+| Question | Where to start |
+| --- | --- |
+| How does an evolving guard change SIMS interaction? | [SIMS guard and asymmetric-influence tests](reports/README.md) |
+| How does the Hug boundary deform and retain an imprint? | [Moldable Hug and reciprocal drive](reports/clay-hug/README.md) |
+| How are fluid memory and matched-stretch runs compared? | [Matched-stretch numerical controls](reports/matched-stretch/README.md) |
+| How do wording, confusion and context change through a conversation? | [Human and AI conversation studies](language/README.md) |
+| Where are the Diachronic Adaptation and boundary papers? | [Working papers and source limits](papers/README.md) |
+
+[Browse all 144 README guides](sims-fluid-language-index.md)
+
 ## [Tests connected to the framework](reports/README.md)
 
 [Sources, equation audit and archive](reports/sources-and-details.md)

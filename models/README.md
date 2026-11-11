@@ -1,4 +1,6 @@
-# Small descriptive models
+# Threshold rules and decentralized coordination models
+
+<a id="small-descriptive-models"></a>
 
 [← Project home](../README.md)
 
