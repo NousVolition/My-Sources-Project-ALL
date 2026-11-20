@@ -10,6 +10,8 @@ Start with [Navier–Stokes SIMS and guard feedback](reports/sims-navier-stokes-
 
 **Why the stretch bands bunch together:** A [separate diagnostic addition](reports/quantum-water-pilot/stretch-gap-mechanism/README.md) traces the saved H₂O gap of 8.13 cm⁻¹ to a near-cancellation between shared-oxygen motion and calculated bond coupling, with bending included. We found the cancellation in the saved model; which xTB approximation or parameter causes that balance remains open. The original position and gap results are unchanged. This is a reanalysis of saved calculations, with no tuning or new Lean check.
 
+**Separate molecular vibration comparison (MP2):** The [MP2/cc-pVTZ study and diagram](reports/quantum-water-pilot/stretch-gap-mp2/README.md) measure the spacing between two vibration frequencies. All **36 numerical controls and six solver follow-up controls passed**, but the H2O gap of **121.152 cm^-1** narrowly missed the predeclared **101-121 cm^-1** pass interval by **0.152 cm^-1**. The published xTB position and gap results are unchanged. This is a numerical molecular study, with no new Lean check; it does not test empty layers in a lattice projection.
+
 ## Find a specific study
 
 | Question | Where to start |

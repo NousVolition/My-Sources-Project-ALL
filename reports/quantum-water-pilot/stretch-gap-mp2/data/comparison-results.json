@@ -1,0 +1,694 @@
+{
+  "label": "Separate preregistered MP2/cc-pVTZ comparison",
+  "completed_at_utc": "2026-11-20T09:08:08.720525+00:00",
+  "protocol_sha256": "9200ba3350ed7bf74ab663423e1402df23dd60e305ddc546580cf07f845a6806",
+  "analyzer_sha256": "c26b0fd53ac860192671933404baef84a9634f6117e06eb207e0ce5c17fcaf50",
+  "run_started_at_utc": "2026-11-20T09:04:50.331399+00:00",
+  "registered_at_utc": "2026-11-20T08:59:51.083024+00:00",
+  "versions": {
+    "pyscf": "2.15.1",
+    "numpy": "2.5.5",
+    "scipy": "1.18.1",
+    "h5py": "3.16.0",
+    "matplotlib": "3.11.2"
+  },
+  "energy_gradient_evaluations": 91,
+  "primary_method": "all-electron RMP2/cc-pVTZ, no density fitting, unscaled harmonic frequencies",
+  "primary_reported_step_bohr": 0.00125,
+  "primary_H2O_outcome": "FAIL",
+  "H2O_absolute_gap_error_cm1": 10.152087234107512,
+  "H2O_gap_reference_cm1": 111.0,
+  "H2O_absolute_gap_error_limit_cm1": 10.0,
+  "H2O_numerical_validity_passes": true,
+  "numerical_checks": [
+    {
+      "name": "all recorded RHF solves converged",
+      "value": 0.0,
+      "limit": 0.0,
+      "passes": true,
+      "scope": "global"
+    },
+    {
+      "name": "stationarity at both optimized geometries",
+      "value": 8.854100386201935e-08,
+      "limit": 5e-07,
+      "passes": true,
+      "scope": "global"
+    },
+    {
+      "name": "starting-geometry agreement: bond length",
+      "value": 1.0871871936046773e-07,
+      "limit": 1e-05,
+      "passes": true,
+      "scope": "global"
+    },
+    {
+      "name": "starting-geometry agreement: angle",
+      "value": 2.1575563091680294e-07,
+      "limit": 1e-05,
+      "passes": true,
+      "scope": "global"
+    },
+    {
+      "name": "starting-geometry agreement: energy",
+      "value": 5.684341886080802e-14,
+      "limit": 1e-08,
+      "passes": true,
+      "scope": "global"
+    },
+    {
+      "name": "step 0.005: Hessian antisymmetry",
+      "value": 7.3060313774409025e-06,
+      "limit": 1e-05,
+      "passes": true,
+      "scope": "global"
+    },
+    {
+      "name": "step 0.005: nonpositive internal modes",
+      "value": 0.0,
+      "limit": 0.0,
+      "passes": true,
+      "scope": "H2O"
+    },
+    {
+      "name": "step 0.005: independent PySCF imaginary modes",
+      "value": 0.0,
+      "limit": 0.0,
+      "passes": true,
+      "scope": "H2O"
+    },
+    {
+      "name": "step 0.005: mode assignment unresolved",
+      "value": 0.0,
+      "limit": 0.0,
+      "passes": true,
+      "scope": "H2O"
+    },
+    {
+      "name": "step 0.005: independent mode calculation agreement",
+      "value": 4.056677425978705e-06,
+      "limit": 0.1,
+      "passes": true,
+      "scope": "H2O"
+    },
+    {
+      "name": "step 0.005: nonpositive internal modes",
+      "value": 0.0,
+      "limit": 0.0,
+      "passes": true,
+      "scope": "D2O"
+    },
+    {
+      "name": "step 0.005: independent PySCF imaginary modes",
+      "value": 0.0,
+      "limit": 0.0,
+      "passes": true,
+      "scope": "D2O"
+    },
+    {
+      "name": "step 0.005: mode assignment unresolved",
+      "value": 0.0,
+      "limit": 0.0,
+      "passes": true,
+      "scope": "D2O"
+    },
+    {
+      "name": "step 0.005: independent mode calculation agreement",
+      "value": 2.971324647660367e-06,
+      "limit": 0.1,
+      "passes": true,
+      "scope": "D2O"
+    },
+    {
+      "name": "step 0.0025: Hessian antisymmetry",
+      "value": 1.8391208537194004e-06,
+      "limit": 1e-05,
+      "passes": true,
+      "scope": "global"
+    },
+    {
+      "name": "step 0.0025: nonpositive internal modes",
+      "value": 0.0,
+      "limit": 0.0,
+      "passes": true,
+      "scope": "H2O"
+    },
+    {
+      "name": "step 0.0025: independent PySCF imaginary modes",
+      "value": 0.0,
+      "limit": 0.0,
+      "passes": true,
+      "scope": "H2O"
+    },
+    {
+      "name": "step 0.0025: mode assignment unresolved",
+      "value": 0.0,
+      "limit": 0.0,
+      "passes": true,
+      "scope": "H2O"
+    },
+    {
+      "name": "step 0.0025: independent mode calculation agreement",
+      "value": 4.056658781337319e-06,
+      "limit": 0.1,
+      "passes": true,
+      "scope": "H2O"
+    },
+    {
+      "name": "step 0.0025: nonpositive internal modes",
+      "value": 0.0,
+      "limit": 0.0,
+      "passes": true,
+      "scope": "D2O"
+    },
+    {
+      "name": "step 0.0025: independent PySCF imaginary modes",
+      "value": 0.0,
+      "limit": 0.0,
+      "passes": true,
+      "scope": "D2O"
+    },
+    {
+      "name": "step 0.0025: mode assignment unresolved",
+      "value": 0.0,
+      "limit": 0.0,
+      "passes": true,
+      "scope": "D2O"
+    },
+    {
+      "name": "step 0.0025: independent mode calculation agreement",
+      "value": 2.9713114599871915e-06,
+      "limit": 0.1,
+      "passes": true,
+      "scope": "D2O"
+    },
+    {
+      "name": "step 0.00125: Hessian antisymmetry",
+      "value": 4.724078789819508e-07,
+      "limit": 1e-05,
+      "passes": true,
+      "scope": "global"
+    },
+    {
+      "name": "step 0.00125: nonpositive internal modes",
+      "value": 0.0,
+      "limit": 0.0,
+      "passes": true,
+      "scope": "H2O"
+    },
+    {
+      "name": "step 0.00125: independent PySCF imaginary modes",
+      "value": 0.0,
+      "limit": 0.0,
+      "passes": true,
+      "scope": "H2O"
+    },
+    {
+      "name": "step 0.00125: mode assignment unresolved",
+      "value": 0.0,
+      "limit": 0.0,
+      "passes": true,
+      "scope": "H2O"
+    },
+    {
+      "name": "step 0.00125: independent mode calculation agreement",
+      "value": 4.056654688611161e-06,
+      "limit": 0.1,
+      "passes": true,
+      "scope": "H2O"
+    },
+    {
+      "name": "step 0.00125: nonpositive internal modes",
+      "value": 0.0,
+      "limit": 0.0,
+      "passes": true,
+      "scope": "D2O"
+    },
+    {
+      "name": "step 0.00125: independent PySCF imaginary modes",
+      "value": 0.0,
+      "limit": 0.0,
+      "passes": true,
+      "scope": "D2O"
+    },
+    {
+      "name": "step 0.00125: mode assignment unresolved",
+      "value": 0.0,
+      "limit": 0.0,
+      "passes": true,
+      "scope": "D2O"
+    },
+    {
+      "name": "step 0.00125: independent mode calculation agreement",
+      "value": 2.971308731503086e-06,
+      "limit": 0.1,
+      "passes": true,
+      "scope": "D2O"
+    },
+    {
+      "name": "last two steps: maximum frequency change",
+      "value": 0.01181529053610575,
+      "limit": 1.0,
+      "passes": true,
+      "scope": "H2O"
+    },
+    {
+      "name": "last two steps: gap change",
+      "value": 0.00022716938474331982,
+      "limit": 0.5,
+      "passes": true,
+      "scope": "H2O"
+    },
+    {
+      "name": "last two steps: maximum frequency change",
+      "value": 0.00865053141410499,
+      "limit": 1.0,
+      "passes": true,
+      "scope": "D2O"
+    },
+    {
+      "name": "last two steps: gap change",
+      "value": 2.5887484298436902e-06,
+      "limit": 0.5,
+      "passes": true,
+      "scope": "D2O"
+    }
+  ],
+  "all_numerical_checks_pass": true,
+  "primary_results": {
+    "H2O": {
+      "frequencies_sorted_cm1": [
+        1650.4435852980046,
+        3871.826724666951,
+        3992.9788119010586
+      ],
+      "bend_cm1": 1650.4435852980046,
+      "symmetric_stretch_cm1": 3871.826724666951,
+      "antisymmetric_stretch_cm1": 3992.9788119010586,
+      "gap_cm1": 121.15208723410751,
+      "internal_eigenvalues": [
+        0.10308436819763359,
+        0.5673137003002089,
+        0.6033724226756445
+      ],
+      "mode_bond_changes": [
+        [
+          -0.05181171048621702,
+          -0.05181171049046368
+        ],
+        [
+          -0.7192428176216106,
+          -0.7192428177109804
+        ],
+        [
+          -0.7312734854507279,
+          0.7312734853625276
+        ]
+      ],
+      "antisymmetric_scores": [
+        1.6794954864957964e-21,
+        3.8598546360242276e-21,
+        1.0
+      ],
+      "modes_identified": true,
+      "independent_pyscf_frequencies_cm1": [
+        1650.4435836212404,
+        3871.826720733381,
+        3992.978807844404
+      ],
+      "independent_max_frequency_difference_cm1": 4.056654688611161e-06,
+      "native_imaginary_modes": 0
+    },
+    "D2O": {
+      "frequencies_sorted_cm1": [
+        1207.8543929178486,
+        2791.3090794714076,
+        2924.670231121685
+      ],
+      "bend_cm1": 1207.8543929178486,
+      "symmetric_stretch_cm1": 2791.3090794714076,
+      "antisymmetric_stretch_cm1": 2924.670231121685,
+      "gap_cm1": 133.3611516502774,
+      "internal_eigenvalues": [
+        0.055210364156255576,
+        0.29485418875888847,
+        0.3237019045514825
+      ],
+      "mode_bond_changes": [
+        [
+          -0.0319016868114092,
+          -0.031901686815157704
+        ],
+        [
+          -0.5206810196108116,
+          -0.5206810196793833
+        ],
+        [
+          0.5356236255305518,
+          -0.5356236254636693
+        ]
+      ],
+      "antisymmetric_scores": [
+        3.451660673630706e-21,
+        4.335971283545953e-21,
+        1.0
+      ],
+      "modes_identified": true,
+      "independent_pyscf_frequencies_cm1": [
+        1207.854391690732,
+        2791.3090766355863,
+        2924.6702281503763
+      ],
+      "independent_max_frequency_difference_cm1": 2.971308731503086e-06,
+      "native_imaginary_modes": 0
+    }
+  },
+  "all_steps": [
+    {
+      "step_bohr": 0.005,
+      "isotopes": {
+        "H2O": {
+          "frequencies_sorted_cm1": [
+            1650.3845070204075,
+            3871.8497397911965,
+            3993.0006911479045
+          ],
+          "bend_cm1": 1650.3845070204075,
+          "symmetric_stretch_cm1": 3871.8497397911965,
+          "antisymmetric_stretch_cm1": 3993.0006911479045,
+          "gap_cm1": 121.15095135670799,
+          "internal_eigenvalues": [
+            0.10307698843866853,
+            0.5673204448345247,
+            0.6033790349673522
+          ],
+          "mode_bond_changes": [
+            [
+              -0.051813484019748945,
+              -0.05181348401805097
+            ],
+            [
+              -0.719242689898099,
+              -0.7192426899123497
+            ],
+            [
+              -0.7312734854135754,
+              0.7312734853996797
+            ]
+          ],
+          "antisymmetric_scores": [
+            2.6848315841856023e-22,
+            9.81436499069562e-23,
+            1.0
+          ],
+          "modes_identified": true,
+          "independent_pyscf_frequencies_cm1": [
+            1650.3845053437046,
+            3871.849735857603,
+            3993.000687091227
+          ],
+          "independent_max_frequency_difference_cm1": 4.056677425978705e-06,
+          "native_imaginary_modes": 0
+        },
+        "D2O": {
+          "frequencies_sorted_cm1": [
+            1207.8111389567937,
+            2791.3252693162426,
+            2924.686407968325
+          ],
+          "bend_cm1": 1207.8111389567937,
+          "symmetric_stretch_cm1": 2791.3252693162426,
+          "antisymmetric_stretch_cm1": 2924.686407968325,
+          "gap_cm1": 133.36113865208245,
+          "internal_eigenvalues": [
+            0.05520640999721784,
+            0.2948576091306731,
+            0.3237054854615579
+          ],
+          "mode_bond_changes": [
+            [
+              -0.03190362183319534,
+              -0.031903621832108486
+            ],
+            [
+              -0.520680901080905,
+              -0.5206809010880634
+            ],
+            [
+              0.5356236255005575,
+              -0.5356236254936638
+            ]
+          ],
+          "antisymmetric_scores": [
+            2.9013592843354576e-22,
+            4.7252720502627533e-23,
+            1.0000000000000002
+          ],
+          "modes_identified": true,
+          "independent_pyscf_frequencies_cm1": [
+            1207.8111377297218,
+            2791.3252664804054,
+            2924.6864049970004
+          ],
+          "independent_max_frequency_difference_cm1": 2.971324647660367e-06,
+          "native_imaginary_modes": 0
+        }
+      }
+    },
+    {
+      "step_bohr": 0.0025,
+      "isotopes": {
+        "H2O": {
+          "frequencies_sorted_cm1": [
+            1650.4317700074685,
+            3871.8313277606367,
+            3992.9831878253594
+          ],
+          "bend_cm1": 1650.4317700074685,
+          "symmetric_stretch_cm1": 3871.8313277606367,
+          "antisymmetric_stretch_cm1": 3992.9831878253594,
+          "gap_cm1": 121.15186006472277,
+          "internal_eigenvalues": [
+            0.10308289227029964,
+            0.5673150492240372,
+            0.6033737451537332
+          ],
+          "mode_bond_changes": [
+            [
+              -0.051812065184421274,
+              -0.05181206518332393
+            ],
+            [
+              -0.7192427921184551,
+              -0.7192427921119348
+            ],
+            [
+              -0.7312734854033821,
+              0.7312734854098729
+            ]
+          ],
+          "antisymmetric_scores": [
+            1.1214092531193059e-22,
+            2.0546101694806873e-23,
+            1.0
+          ],
+          "modes_identified": true,
+          "independent_pyscf_frequencies_cm1": [
+            1650.4317683307165,
+            3871.831323827062,
+            3992.9831837687007
+          ],
+          "independent_max_frequency_difference_cm1": 4.056658781337319e-06,
+          "native_imaginary_modes": 0
+        },
+        "D2O": {
+          "frequencies_sorted_cm1": [
+            1207.8457423864345,
+            2791.3123174885345,
+            2924.6734665500635
+          ],
+          "bend_cm1": 1207.8457423864345,
+          "symmetric_stretch_cm1": 2791.3123174885345,
+          "antisymmetric_stretch_cm1": 2924.6734665500635,
+          "gap_cm1": 133.36114906152898,
+          "internal_eigenvalues": [
+            0.055209573336961366,
+            0.2948548728418328,
+            0.3237026207449845
+          ],
+          "mode_bond_changes": [
+            [
+              -0.03190207381280624,
+              -0.031902073812616366
+            ],
+            [
+              -0.5206809959328268,
+              -0.5206809959348222
+            ],
+            [
+              0.5356236254980746,
+              -0.5356236254961463
+            ]
+          ],
+          "antisymmetric_scores": [
+            8.85608620704319e-24,
+            3.671623688444971e-24,
+            1.0000000000000002
+          ],
+          "modes_identified": true,
+          "independent_pyscf_frequencies_cm1": [
+            1207.8457411593283,
+            2791.3123146527105,
+            2924.673463578752
+          ],
+          "independent_max_frequency_difference_cm1": 2.9713114599871915e-06,
+          "native_imaginary_modes": 0
+        }
+      }
+    },
+    {
+      "step_bohr": 0.00125,
+      "isotopes": {
+        "H2O": {
+          "frequencies_sorted_cm1": [
+            1650.4435852980046,
+            3871.826724666951,
+            3992.9788119010586
+          ],
+          "bend_cm1": 1650.4435852980046,
+          "symmetric_stretch_cm1": 3871.826724666951,
+          "antisymmetric_stretch_cm1": 3992.9788119010586,
+          "gap_cm1": 121.15208723410751,
+          "internal_eigenvalues": [
+            0.10308436819763359,
+            0.5673137003002089,
+            0.6033724226756445
+          ],
+          "mode_bond_changes": [
+            [
+              -0.05181171048621702,
+              -0.05181171049046368
+            ],
+            [
+              -0.7192428176216106,
+              -0.7192428177109804
+            ],
+            [
+              -0.7312734854507279,
+              0.7312734853625276
+            ]
+          ],
+          "antisymmetric_scores": [
+            1.6794954864957964e-21,
+            3.8598546360242276e-21,
+            1.0
+          ],
+          "modes_identified": true,
+          "independent_pyscf_frequencies_cm1": [
+            1650.4435836212404,
+            3871.826720733381,
+            3992.978807844404
+          ],
+          "independent_max_frequency_difference_cm1": 4.056654688611161e-06,
+          "native_imaginary_modes": 0
+        },
+        "D2O": {
+          "frequencies_sorted_cm1": [
+            1207.8543929178486,
+            2791.3090794714076,
+            2924.670231121685
+          ],
+          "bend_cm1": 1207.8543929178486,
+          "symmetric_stretch_cm1": 2791.3090794714076,
+          "antisymmetric_stretch_cm1": 2924.670231121685,
+          "gap_cm1": 133.3611516502774,
+          "internal_eigenvalues": [
+            0.055210364156255576,
+            0.29485418875888847,
+            0.3237019045514825
+          ],
+          "mode_bond_changes": [
+            [
+              -0.0319016868114092,
+              -0.031901686815157704
+            ],
+            [
+              -0.5206810196108116,
+              -0.5206810196793833
+            ],
+            [
+              0.5356236255305518,
+              -0.5356236254636693
+            ]
+          ],
+          "antisymmetric_scores": [
+            3.451660673630706e-21,
+            4.335971283545953e-21,
+            1.0
+          ],
+          "modes_identified": true,
+          "independent_pyscf_frequencies_cm1": [
+            1207.854391690732,
+            2791.3090766355863,
+            2924.6702281503763
+          ],
+          "independent_max_frequency_difference_cm1": 2.971308731503086e-06,
+          "native_imaginary_modes": 0
+        }
+      }
+    }
+  ],
+  "optimized_geometries": [
+    {
+      "start": 0,
+      "r_angstrom": 0.9575327432440958,
+      "angle_deg": 103.66145702858034,
+      "optimizer_success": true,
+      "optimizer_message": "Optimization terminated successfully.",
+      "max_cartesian_gradient_Eh_per_bohr": 4.413536203173862e-11
+    },
+    {
+      "start": 1,
+      "r_angstrom": 0.9575326857126271,
+      "angle_deg": 103.6614693904674,
+      "optimizer_success": false,
+      "optimizer_message": "Desired error not necessarily achieved due to precision loss.",
+      "max_cartesian_gradient_Eh_per_bohr": 8.854100386201935e-08
+    }
+  ],
+  "historical_xTB_diagnostic": {
+    "D2O": {
+      "isotope": "D2O",
+      "predicted_gap_cm1": "54.6675848803566",
+      "observed_gap_cm1": "116.59",
+      "signed_gap_error_cm1": "-61.9224151196434",
+      "absolute_relative_gap_error_percent": "53.11125750033742173428252852",
+      "largest_band_position_error_percent": "4.274876032129004608216713484",
+      "historical_5_percent_position_check_passes": true
+    },
+    "H2O": {
+      "isotope": "H2O",
+      "predicted_gap_cm1": "8.1299390581431",
+      "observed_gap_cm1": "99.14",
+      "signed_gap_error_cm1": "-91.0100609418569",
+      "absolute_relative_gap_error_percent": "91.79953695971040952188823885",
+      "largest_band_position_error_percent": "3.443074935242752055387278235",
+      "historical_5_percent_position_check_passes": true
+    }
+  },
+  "historical_xTB_harmonic_diagnostic": {
+    "comparison": "predicted harmonic gap against harmonic reference gap",
+    "predicted_gap_cm1": "8.1299390581431",
+    "reference_symmetric_stretch_cm1": "3832",
+    "reference_antisymmetric_stretch_cm1": "3943",
+    "reference_gap_cm1": "111",
+    "signed_gap_error_cm1": "-102.8700609418569",
+    "absolute_relative_gap_error_percent": "92.67573057824945945945945946",
+    "reference": "https://cccbdb.nist.gov/exp2x.asp?casno=7732185&charge=0"
+  },
+  "historical_results_regraded": false,
+  "D2O_status": "diagnostic only; harmonic prediction compared with a fundamental reference is not a like-for-like test",
+  "physical_parameters_tuned": false,
+  "lean_run": false,
+  "published_to_github": false
+}

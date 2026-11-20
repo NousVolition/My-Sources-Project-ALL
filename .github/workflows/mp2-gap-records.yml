@@ -1,0 +1,27 @@
+name: MP2 recorded gap verification
+
+on:
+  pull_request:
+    paths:
+      - 'reports/quantum-water-pilot/stretch-gap-mp2/**'
+      - '.github/workflows/mp2-gap-records.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'reports/quantum-water-pilot/stretch-gap-mp2/**'
+      - '.github/workflows/mp2-gap-records.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-recorded-mp2:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v3
+        with:
+          python-version: '3.12'
+      - name: Verify records while retaining the failed physical gap test
+        run: python reports/quantum-water-pilot/stretch-gap-mp2/verify_recorded_results.py

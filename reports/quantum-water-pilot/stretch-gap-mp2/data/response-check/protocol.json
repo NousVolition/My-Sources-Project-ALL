@@ -1,0 +1,38 @@
+{
+  "label": "Numerical response-solver validation; same registered MP2 method and geometry",
+  "written_before_followup_calculations_utc": "2026-11-20T09:09:10.249851+00:00",
+  "parent_protocol_sha256": "9200ba3350ed7bf74ab663423e1402df23dd60e305ddc546580cf07f845a6806",
+  "parent_results_sha256": "d5798960e472ee4e2c8c0318b8d22066306c535acacbca8b352116f8692ba54a",
+  "parent_hessians_sha256": "5e2f65da17829e10e6925444cf70b7fe7c0e3d81edb3147edcf945d5e326ea09",
+  "parent_optimizations_sha256": "5dd95e66c9f9afa41b2d72b7bc3550a21a2802ce045884cc5815fd060ff444d8",
+  "observed_solver_warning": {
+    "count": 91,
+    "maximum_reported_preconditioned_response_residual": 1.024e-08,
+    "requested_tolerance": 1e-09
+  },
+  "reason": "All 36 registered numerical controls passed, but the MP2 gradient response solver reported true residuals above its own tolerance. Verify their effect before finalizing the narrowly failed gap.",
+  "equation": "Use the same PySCF MP2 fvind callback and solve x + fvind(x)/(epsilon_a-epsilon_i) = -h1/(epsilon_a-epsilon_i). This is the unshifted field-independent CPHF equation in the installed source.",
+  "numerical_change_only": "Replace that iterative linear solve in memory with SciPy GMRES, checking its true residual directly; do not edit installed libraries, physical model, basis, geometry, SCF controls, masses or the gap pass mark.",
+  "solver": {
+    "method": "scipy.sparse.linalg.gmres",
+    "rtol": 0.0,
+    "atol": 1e-12,
+    "restart": 50,
+    "maxiter": 100
+  },
+  "evaluation_plan": "One stationary-geometry gradient and the 18 displacements of the already designated 0.00125-bohr Hessian, all at the saved primary geometry.",
+  "step_bohr": 0.00125,
+  "validation_limits": {
+    "maximum_true_preconditioned_response_residual": 1e-10,
+    "maximum_primary_geometry_gradient_Eh_per_bohr": 5e-07,
+    "maximum_absolute_frequency_change_cm1": 0.1,
+    "maximum_absolute_gap_change_cm1": 0.1,
+    "note": "The 0.1 cm^-1 agreement bound matches the original independently computed mode-frequency agreement limit. This is a numerical verification bound, not a replacement physical gap pass mark."
+  },
+  "bounded_work": {
+    "maximum_gradient_evaluations": 19,
+    "maximum_wall_seconds": 600,
+    "if_not_validated": "Retain the original result and warnings; report the unresolved numerical scope without retrying methods or moving the gap criterion."
+  },
+  "reporting": "Keep all original runs and the primary 121.152... result intact. Save this numerical follow-up separately and report both."
+}
