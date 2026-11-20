@@ -6,6 +6,8 @@
 
 Start with [Navier–Stokes SIMS and guard feedback](reports/sims-navier-stokes-guard/refinement/README.md), [equal and unequal influence with an active guard](reports/sims-active-guard/README.md), or [moldable Hug refinement](reports/hug-molding-refinement/README.md).
 
+**Stretch-band gap diagnostic:** The band positions pass the 5% rule; the gap between the two stretch bands is **8 against 99 for H₂O** and **55 against 117 for D₂O**, in cm⁻¹. No pass mark was set for the gap beforehand, so this is a diagnostic, not a failed test. The original position result is unchanged. [Gap check, results and the H₂O harmonic comparison](reports/quantum-water-pilot/stretch-gap-diagnostic.md).
+
 ## Find a specific study
 
 | Question | Where to start |
