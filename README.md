@@ -8,6 +8,8 @@ Start with [Navier–Stokes SIMS and guard feedback](reports/sims-navier-stokes-
 
 **Stretch-band gap diagnostic:** The band positions pass the 5% rule; the gap between the two stretch bands is **8 against 99 for H₂O** and **55 against 117 for D₂O**, in cm⁻¹. No pass mark was set for the gap beforehand, so this is a diagnostic, not a failed test. The original position result is unchanged. [Gap check, results and the H₂O harmonic comparison](reports/quantum-water-pilot/stretch-gap-diagnostic.md).
 
+**Why the stretch bands bunch together:** A [separate diagnostic addition](reports/quantum-water-pilot/stretch-gap-mechanism/README.md) traces the saved H₂O gap of 8.13 cm⁻¹ to a near-cancellation between shared-oxygen motion and calculated bond coupling, with bending included. We found the cancellation in the saved model; which xTB approximation or parameter causes that balance remains open. The original position and gap results are unchanged. This is a reanalysis of saved calculations, with no tuning or new Lean check.
+
 ## Find a specific study
 
 | Question | Where to start |
