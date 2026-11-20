@@ -1,0 +1,152 @@
+{
+  "label": "Separate response-solver verification",
+  "protocol_sha256": "d8d158d6dccbef9e7e3d3b35726ca5e27746466d4f181bd229e54f6a2335d6ec",
+  "runner_sha256": "ae6ce4a34e48d18a62d4e86305b73e7acbec874f336599f457225fbeb1e7b97f",
+  "started_at_utc": "2026-11-20T09:10:44.873964+00:00",
+  "finished_at_utc": "2026-11-20T09:11:01.095467+00:00",
+  "elapsed_seconds": 16.218296863,
+  "evaluation_count": 19,
+  "evaluations": [
+    {
+      "file": "evaluations/baseline.json",
+      "sha256": "8357929f0c25ef1a5d7abcb42db237284585232e0b79569952dbe1d26400c705"
+    },
+    {
+      "file": "evaluations/axis-0-plus.json",
+      "sha256": "761dc2b12c982680d58fc641f3f41f21b559f50cbb75b1a3d15793c8f0bd9cbc"
+    },
+    {
+      "file": "evaluations/axis-0-minus.json",
+      "sha256": "943b69f96cf72e8d8871404834faf4a70da31786c8d42e402773901ea746f7a5"
+    },
+    {
+      "file": "evaluations/axis-1-plus.json",
+      "sha256": "c30163e444af3b7b007e34c6620a9002d379d1c1e001c62639e651a92a3f21ca"
+    },
+    {
+      "file": "evaluations/axis-1-minus.json",
+      "sha256": "f4331d4e012b608e410ba771c1cb017fe5b997fb85ace215c4695dd7d90f0611"
+    },
+    {
+      "file": "evaluations/axis-2-plus.json",
+      "sha256": "dd70dbe08065ed50a1ca907a6375f0cb525b40b19e4f86ce6c9c0c98cb8ee949"
+    },
+    {
+      "file": "evaluations/axis-2-minus.json",
+      "sha256": "d39c473f67307ad7ac5cc4f015f35c0c679f96e6b28a1844b64265386435a4a1"
+    },
+    {
+      "file": "evaluations/axis-3-plus.json",
+      "sha256": "fea57b2d81a8063c4be7627cd91553b49de554c01aa56822b251320b70f5bd87"
+    },
+    {
+      "file": "evaluations/axis-3-minus.json",
+      "sha256": "d116964ffac824dd0e930c2506c525b118d9226a078a5e827ceaaf22b0c8d34c"
+    },
+    {
+      "file": "evaluations/axis-4-plus.json",
+      "sha256": "74da729e48ca9dd6514e368a7c5bf131e7a51c56e96eabe806c37ccc4ef33f22"
+    },
+    {
+      "file": "evaluations/axis-4-minus.json",
+      "sha256": "f0b56c4a26fd91e04e7939af388a8e408ae84a060f04a8725f19fe1111fb15f0"
+    },
+    {
+      "file": "evaluations/axis-5-plus.json",
+      "sha256": "17b4b75f3e79f63ff90f3e6ffa73c65455764b76684b51cfc31b1d231f2426df"
+    },
+    {
+      "file": "evaluations/axis-5-minus.json",
+      "sha256": "85eee00ab8bf438ba02923ae5807c0d36f29a9b8291c273cc4975373921237a1"
+    },
+    {
+      "file": "evaluations/axis-6-plus.json",
+      "sha256": "8a3b25bb02baec15bac7d9b726bc52ec6dfdd5f87b165e6e20a2e41d82aef5c8"
+    },
+    {
+      "file": "evaluations/axis-6-minus.json",
+      "sha256": "fc2fbfb3ad209dd352dc7bc4bc77ce6c73330cbcd9110ff6931ded8eae4bccd1"
+    },
+    {
+      "file": "evaluations/axis-7-plus.json",
+      "sha256": "9e911f88d05baa11bb95dd9d77e5e5e6053a3035c5724637378da43a479f6581"
+    },
+    {
+      "file": "evaluations/axis-7-minus.json",
+      "sha256": "ba4eb1ac23f99f4fa9fd60c9827be9a0b15afd4b4654560935a309ed20b011f3"
+    },
+    {
+      "file": "evaluations/axis-8-plus.json",
+      "sha256": "1d40361ccaa47fac70ac05ffce6f7a2697879e4cffef3355abb7ae577cc015f4"
+    },
+    {
+      "file": "evaluations/axis-8-minus.json",
+      "sha256": "b1a9963a463bdec011c6387da3fe1da87e5f3f84e9fc3bf6bb27051f3eace9c5"
+    }
+  ],
+  "numerical_checks": [
+    {
+      "name": "maximum true response residual",
+      "value": 7.285811077900741e-13,
+      "limit": 1e-10,
+      "passes": true
+    },
+    {
+      "name": "baseline stationarity",
+      "value": 9.748237772555512e-10,
+      "limit": 5e-07,
+      "passes": true
+    },
+    {
+      "name": "H2O frequency change",
+      "value": 0.0003750218911591219,
+      "limit": 0.1,
+      "passes": true
+    },
+    {
+      "name": "H2O gap change",
+      "value": 0.00038145729013194796,
+      "limit": 0.1,
+      "passes": true
+    },
+    {
+      "name": "D2O frequency change",
+      "value": 0.0002767802038761147,
+      "limit": 0.1,
+      "passes": true
+    },
+    {
+      "name": "D2O gap change",
+      "value": 0.0002812805059875245,
+      "limit": 0.1,
+      "passes": true
+    }
+  ],
+  "all_validation_checks_pass": true,
+  "results": {
+    "H2O": {
+      "frequencies_cm1": [
+        1650.443575757934,
+        3871.826718231552,
+        3992.97918692295
+      ],
+      "gap_cm1": 121.15246869139764,
+      "primary_gap_cm1": 121.15208723410751,
+      "gap_change_cm1": 0.00038145729013194796
+    },
+    "D2O": {
+      "frequencies_cm1": [
+        1207.8543858903595,
+        2791.3090749711055,
+        2924.670507901889
+      ],
+      "gap_cm1": 133.3614329307834,
+      "primary_gap_cm1": 133.3611516502774,
+      "gap_change_cm1": 0.0002812805059875245
+    }
+  },
+  "original_primary_result_preserved": true,
+  "physical_method_and_gap_rule_unchanged": true,
+  "H2O_original_outcome": "FAIL",
+  "H2O_followup_gap_inside_original_interval": false
+}
