@@ -1,0 +1,517 @@
+{
+  "label": "Separate diagnostic addition: source of the small stretch-band gap",
+  "source_repository": "NousVolition/My-Sources-Project-ALL",
+  "source_commit": "f571de5d8ba4caa1b6393b3954ad7cb04dd4f97a",
+  "original_study_commit": "3469351c1ef9e0fdd0e121179a06d5b7fb0db639",
+  "scope": "Post-processing saved matrices; no new xTB or Lean run; no parameter changes or alternative-method comparison.",
+  "gap_acceptance_criterion": null,
+  "gap_classification": "diagnostic only",
+  "component_convention": "Algebraic decomposition of squared-frequency difference in r1, r2, angle coordinates, then divide by the full frequency sum. Components are not separate simulations or unique causal attributions.",
+  "constants": {
+    "basis": "CODATA 2018",
+    "bohr_angstrom": 0.529177210903,
+    "frequency_conversion_cm1": 5140.487143715828
+  },
+  "input_sha256": {
+    "protocol.json": "995a79335366cbbdc541aca9ba861faf51ac8459f59e14f88beeb82d7f62dec6",
+    "vibration_comparison.csv": "bb1e20d80a5621718196291b53ac3431b6380209c6612a0978c82567d29b8cab",
+    "vibration-final/runs.json": "5a0d845646880ef4783518d090c0a862533138e4fd4eb1f94255783cfc997258",
+    "normal_modes.py": "57e11aea29e0e501d617c05ee214450a2c4bc570881a56c09a7cf9068edc9b67",
+    "run_vibrations.py": "09121f7abe32892608d19c32cba4b09f06e9951fe0d8f794c28850322db58c84",
+    "vibration-final/gfn2-H2O-start0-step0.005/hessian": "4961450a61c6aee98fcba2b833577d69c2bc75c31656266d8055c0f5a5944552",
+    "vibration-final/gfn2-H2O-start0-step0.005/xtbopt.xyz": "e22e44df68d73c1b993b1abb61e1458bbb30a9318560824cf024840898f64707",
+    "vibration-final/gfn2-H2O-start0-step0.005/settings.inp": "396cd2e998e2b8568bf69e94f3f6eefeaf814ed77af3a6ba3869663b3f52133b",
+    "vibration-final/gfn2-D2O-start0-step0.005/hessian": "4961450a61c6aee98fcba2b833577d69c2bc75c31656266d8055c0f5a5944552",
+    "vibration-final/gfn2-D2O-start0-step0.005/xtbopt.xyz": "e22e44df68d73c1b993b1abb61e1458bbb30a9318560824cf024840898f64707",
+    "vibration-final/gfn2-D2O-start0-step0.005/settings.inp": "2c778367befcf8b78178c9caa1965d690cd64d52ee61484359f23e7e764c8c47",
+    "vibration-final/gfn2-H2O-start1-step0.005/hessian": "6e2a53830266798a632f198fadb4f23df414fa1896ac37bcf55cd92ba8cbbfc4",
+    "vibration-final/gfn2-H2O-start1-step0.005/xtbopt.xyz": "f8cc669b46f4a5cdfcbb480315b2dc2a98a28a2286923fb032091d6d96ad5acd",
+    "vibration-final/gfn2-H2O-start1-step0.005/settings.inp": "396cd2e998e2b8568bf69e94f3f6eefeaf814ed77af3a6ba3869663b3f52133b",
+    "vibration-final/gfn2-D2O-start1-step0.005/hessian": "6e2a53830266798a632f198fadb4f23df414fa1896ac37bcf55cd92ba8cbbfc4",
+    "vibration-final/gfn2-D2O-start1-step0.005/xtbopt.xyz": "f8cc669b46f4a5cdfcbb480315b2dc2a98a28a2286923fb032091d6d96ad5acd",
+    "vibration-final/gfn2-D2O-start1-step0.005/settings.inp": "2c778367befcf8b78178c9caa1965d690cd64d52ee61484359f23e7e764c8c47",
+    "vibration-final/gfn2-H2O-start2-step0.005/hessian": "800223165e1ea15c9e1d4d6d104c0bcd112a96384e5cf41073bd31aca05b8e0f",
+    "vibration-final/gfn2-H2O-start2-step0.005/xtbopt.xyz": "7a3ccfc81f077c1ab0d8d334e6886f169325abbb3699e5833083931b44cf2d7f",
+    "vibration-final/gfn2-H2O-start2-step0.005/settings.inp": "396cd2e998e2b8568bf69e94f3f6eefeaf814ed77af3a6ba3869663b3f52133b",
+    "vibration-final/gfn2-D2O-start2-step0.005/hessian": "800223165e1ea15c9e1d4d6d104c0bcd112a96384e5cf41073bd31aca05b8e0f",
+    "vibration-final/gfn2-D2O-start2-step0.005/xtbopt.xyz": "7a3ccfc81f077c1ab0d8d334e6886f169325abbb3699e5833083931b44cf2d7f",
+    "vibration-final/gfn2-D2O-start2-step0.005/settings.inp": "2c778367befcf8b78178c9caa1965d690cd64d52ee61484359f23e7e764c8c47",
+    "vibration-final/gfn2-H2O-start0-step0.0025/hessian": "441e1d5275b3de58ef2085d1be92bbbd9445bd0aa8622f5e047c37f5f3c01e24",
+    "vibration-final/gfn2-H2O-start0-step0.0025/xtbopt.xyz": "e22e44df68d73c1b993b1abb61e1458bbb30a9318560824cf024840898f64707",
+    "vibration-final/gfn2-H2O-start0-step0.0025/settings.inp": "cbbc05ec432ee2cd368ff47d2bda8f876625c0fedb6e2ed4a040c133558d60c1",
+    "vibration-final/gfn2-D2O-start0-step0.0025/hessian": "441e1d5275b3de58ef2085d1be92bbbd9445bd0aa8622f5e047c37f5f3c01e24",
+    "vibration-final/gfn2-D2O-start0-step0.0025/xtbopt.xyz": "e22e44df68d73c1b993b1abb61e1458bbb30a9318560824cf024840898f64707",
+    "vibration-final/gfn2-D2O-start0-step0.0025/settings.inp": "a99203530432745ddbcbcec01420795e387e2ddc809b3ee43da32509a1159dbe",
+    "vibration-final/gfn2-H2O-start0-step0.00125/hessian": "c8428507f3ae59df824b5f701f9182d38c26bf03258cefec6b367ab99edcf866",
+    "vibration-final/gfn2-H2O-start0-step0.00125/xtbopt.xyz": "e22e44df68d73c1b993b1abb61e1458bbb30a9318560824cf024840898f64707",
+    "vibration-final/gfn2-H2O-start0-step0.00125/settings.inp": "7afa81fa4cdce6717ba6a62bc0ec7632566b4c28ff71184c17f50fb5a820d9e0",
+    "vibration-final/gfn2-D2O-start0-step0.00125/hessian": "c8428507f3ae59df824b5f701f9182d38c26bf03258cefec6b367ab99edcf866",
+    "vibration-final/gfn2-D2O-start0-step0.00125/xtbopt.xyz": "e22e44df68d73c1b993b1abb61e1458bbb30a9318560824cf024840898f64707",
+    "vibration-final/gfn2-D2O-start0-step0.00125/settings.inp": "368f563cf932c03345d2fcca461480ca6d2788f76e32ebe37f398fe17ea32628"
+  },
+  "published_gap_result_sha256": "f212da052e8ac7a07cbb6eceb1ebdf5e6d237eead395f3b8a36f871ad402c112",
+  "published_gap_manifest_sha256": "73ecada483d083e9311962969b3f4fc7ccaed222a6ca51dafacd95b400a63084",
+  "numerical_consistency_checks_passed": true,
+  "checks_note": "Checks above concern data reproduction and algebra, not a new scientific gap pass mark.",
+  "primary_H_D_hessian_max_difference": 0.0,
+  "saved_run_gap_ranges_cm1": {
+    "H2O": {
+      "minimum": 8.127356814434279,
+      "maximum": 8.1630994551615
+    },
+    "D2O": {
+      "minimum": 54.66599269112248,
+      "maximum": 54.702980772373394
+    }
+  },
+  "primary_mechanism": {
+    "H2O": {
+      "tag": "gfn2-H2O-start0-step0.00125",
+      "internal_coordinate_order": [
+        "r1_bohr",
+        "r2_bohr",
+        "angle_radians"
+      ],
+      "F_energy_units": "Eh with coordinates in bohr and radians",
+      "F": [
+        [
+          0.47821457952666224,
+          0.008090438238707398,
+          0.025868878958996255
+        ],
+        [
+          0.008090438238707424,
+          0.47821457887543317,
+          0.025868879048244208
+        ],
+        [
+          0.02586887895899628,
+          0.025868879048244194,
+          0.1400758283778128
+        ]
+      ],
+      "G": [
+        [
+          1.054755594567036,
+          -0.01850764573056991,
+          -0.0329452553337453
+        ],
+        [
+          -0.018507645730569913,
+          1.0547555945670362,
+          -0.03294525533769588
+        ],
+        [
+          -0.0329452553337453,
+          -0.032945255337695885,
+          0.653305250463874
+        ]
+      ],
+      "F_symmetric_antisymmetric_angle": [
+        [
+          0.486305017439755,
+          3.2561457530406114e-10,
+          0.03658411953030832
+        ],
+        [
+          3.2561451373394246e-10,
+          0.4701241409623402,
+          -6.310783350028814e-11
+        ],
+        [
+          0.03658411953030833,
+          -6.310780633997551e-11,
+          0.1400758283778128
+        ]
+      ],
+      "G_symmetric_antisymmetric_angle": [
+        [
+          1.036247948836466,
+          -1.5473867101055731e-16,
+          -0.04659162691162063
+        ],
+        [
+          -6.752922091915906e-17,
+          1.0732632402976057,
+          2.7934791651902917e-12
+        ],
+        [
+          -0.04659162691162063,
+          2.793484071729225e-12,
+          0.653305250463874
+        ]
+      ],
+      "angle_deg": 107.21920377799965,
+      "bond_lengths_A": [
+        0.9592044478515513,
+        0.9592044479665724
+      ],
+      "gap_components_cm1": {
+        "mass_geometry": 64.12134331474631,
+        "bond_force_coupling": -61.82334605753931,
+        "bend_and_small_numerical_remainder": 5.831941801101461
+      },
+      "bend_only_component_cm1": 5.8319417858014475,
+      "asymmetry_and_reconstruction_remainder_cm1": 1.5300013700425552e-08,
+      "stretch_force_constant_ratio_symmetric_over_antisymmetric": 1.0344183058634102,
+      "stretch_kinetic_factor_ratio_symmetric_over_antisymmetric": 0.9655114513650205,
+      "cancelled_fraction_of_mass_geometry_stretch_term": 0.9641617418099456,
+      "published_csv_reproduction_max_cm1": 7.40615178074222e-08
+    },
+    "D2O": {
+      "tag": "gfn2-D2O-start0-step0.00125",
+      "internal_coordinate_order": [
+        "r1_bohr",
+        "r2_bohr",
+        "angle_radians"
+      ],
+      "F_energy_units": "Eh with coordinates in bohr and radians",
+      "F": [
+        [
+          0.47821457952666224,
+          0.008090438238707398,
+          0.025868878958996255
+        ],
+        [
+          0.008090438238707424,
+          0.47821457887543317,
+          0.025868879048244208
+        ],
+        [
+          0.02586887895899628,
+          0.025868879048244194,
+          0.1400758283778128
+        ]
+      ],
+      "G": [
+        [
+          0.5590191100308602,
+          -0.01850764573056991,
+          -0.0329452553337453
+        ],
+        [
+          -0.018507645730569913,
+          0.5590191100308602,
+          -0.03294525533769587
+        ],
+        [
+          -0.0329452553337453,
+          -0.03294525533769588,
+          0.35154587211771793
+        ]
+      ],
+      "F_symmetric_antisymmetric_angle": [
+        [
+          0.486305017439755,
+          3.2561457530406114e-10,
+          0.03658411953030832
+        ],
+        [
+          3.2561451373394246e-10,
+          0.4701241409623402,
+          -6.310783350028814e-11
+        ],
+        [
+          0.03658411953030833,
+          -6.310780633997551e-11,
+          0.1400758283778128
+        ]
+      ],
+      "G_symmetric_antisymmetric_angle": [
+        [
+          0.5405114643002902,
+          -4.895999001902347e-17,
+          -0.04659162691162062
+        ],
+        [
+          -1.0028513947195858e-18,
+          0.5775267557614301,
+          2.7934742586513587e-12
+        ],
+        [
+          -0.04659162691162063,
+          2.7934791651902917e-12,
+          0.35154587211771793
+        ]
+      ],
+      "angle_deg": 107.21920377799965,
+      "bond_lengths_A": [
+        0.9592044478515513,
+        0.9592044479665724
+      ],
+      "gap_components_cm1": {
+        "mass_geometry": 88.21462258512413,
+        "bond_force_coupling": -45.078067735892205,
+        "bend_and_small_numerical_remainder": 11.531030032232398
+      },
+      "bend_only_component_cm1": 11.531030022018761,
+      "asymmetry_and_reconstruction_remainder_cm1": 1.021363615905102e-08,
+      "stretch_force_constant_ratio_symmetric_over_antisymmetric": 1.0344183058634102,
+      "stretch_kinetic_factor_ratio_symmetric_over_antisymmetric": 0.9359072266490273,
+      "cancelled_fraction_of_mass_geometry_stretch_term": 0.5110044844594035,
+      "published_csv_reproduction_max_cm1": 5.432821126305498e-08
+    }
+  },
+  "saved_run_reanalysis": [
+    {
+      "tag": "gfn2-H2O-start0-step0.005",
+      "isotope": "H2O",
+      "start": 0,
+      "hessian_step_bohr": 0.005,
+      "frequency_cm1": {
+        "bend": 1539.624271032577,
+        "symmetric stretch": 3643.3446035445572,
+        "antisymmetric stretch": 3651.476066009853
+      },
+      "gap_cm1": 8.131462465295954,
+      "saved_frequency_reproduction_max_cm1": 7.406106306007132e-08,
+      "internal_coordinate_frequency_reproduction_max_cm1": 1.0833127817022614e-07,
+      "relative_hessian_reconstruction_error": 1.7187994239533429e-10,
+      "coordinate_jacobian_check_max": 1.607747268650428e-11,
+      "bond_changes_for_mode_assignment": {
+        "symmetric stretch": [
+          0.7184934328246503,
+          0.7184936973098283
+        ],
+        "antisymmetric stretch": [
+          0.7325515751033519,
+          -0.7325513156845755
+        ]
+      }
+    },
+    {
+      "tag": "gfn2-D2O-start0-step0.005",
+      "isotope": "D2O",
+      "start": 0,
+      "hessian_step_bohr": 0.005,
+      "frequency_cm1": {
+        "bend": 1127.9121713452787,
+        "symmetric stretch": 2623.8900647450782,
+        "antisymmetric stretch": 2678.5600396196264
+      },
+      "gap_cm1": 54.66997487454819,
+      "saved_frequency_reproduction_max_cm1": 5.4329120757756755e-08,
+      "internal_coordinate_frequency_reproduction_max_cm1": 6.611662684008479e-08,
+      "relative_hessian_reconstruction_error": 1.7187994239533429e-10,
+      "coordinate_jacobian_check_max": 1.607747268650428e-11,
+      "bond_changes_for_mode_assignment": {
+        "symmetric stretch": [
+          -0.5192088259750964,
+          -0.5192088469531768
+        ],
+        "antisymmetric stretch": [
+          0.5373670894045868,
+          -0.5373670691308442
+        ]
+      }
+    },
+    {
+      "tag": "gfn2-H2O-start1-step0.005",
+      "isotope": "H2O",
+      "start": 1,
+      "hessian_step_bohr": 0.005,
+      "frequency_cm1": {
+        "bend": 1539.6300461516919,
+        "symmetric stretch": 3643.154686651638,
+        "antisymmetric stretch": 3651.3042270579276
+      },
+      "gap_cm1": 8.149540406289816,
+      "saved_frequency_reproduction_max_cm1": 7.405787982861511e-08,
+      "internal_coordinate_frequency_reproduction_max_cm1": 1.0477288014953956e-07,
+      "relative_hessian_reconstruction_error": 1.610045314155854e-10,
+      "coordinate_jacobian_check_max": 1.646183189762951e-11,
+      "bond_changes_for_mode_assignment": {
+        "symmetric stretch": [
+          0.7184927094619451,
+          0.7184927412447412
+        ],
+        "antisymmetric stretch": [
+          0.7325525513867902,
+          -0.732552520212871
+        ]
+      }
+    },
+    {
+      "tag": "gfn2-D2O-start1-step0.005",
+      "isotope": "D2O",
+      "start": 1,
+      "hessian_step_bohr": 0.005,
+      "frequency_cm1": {
+        "bend": 1127.9175623058295,
+        "symmetric stretch": 2623.750590328117,
+        "antisymmetric stretch": 2678.4374084506844
+      },
+      "gap_cm1": 54.686818122567274,
+      "saved_frequency_reproduction_max_cm1": 5.4326392273651436e-08,
+      "internal_coordinate_frequency_reproduction_max_cm1": 6.351638148771599e-08,
+      "relative_hessian_reconstruction_error": 1.610045314155854e-10,
+      "coordinate_jacobian_check_max": 1.646183189762951e-11,
+      "bond_changes_for_mode_assignment": {
+        "symmetric stretch": [
+          -0.5192074964445259,
+          -0.519207498776749
+        ],
+        "antisymmetric stretch": [
+          0.5373685668605778,
+          -0.5373685646067856
+        ]
+      }
+    },
+    {
+      "tag": "gfn2-H2O-start2-step0.005",
+      "isotope": "H2O",
+      "start": 2,
+      "hessian_step_bohr": 0.005,
+      "frequency_cm1": {
+        "bend": 1539.5939859128544,
+        "symmetric stretch": 3643.203506393291,
+        "antisymmetric stretch": 3651.3666058484523
+      },
+      "gap_cm1": 8.1630994551615,
+      "saved_frequency_reproduction_max_cm1": 7.406015356536955e-08,
+      "internal_coordinate_frequency_reproduction_max_cm1": 4.4059129322704393e-07,
+      "relative_hessian_reconstruction_error": 1.545104631679182e-10,
+      "coordinate_jacobian_check_max": 1.507877156470272e-11,
+      "bond_changes_for_mode_assignment": {
+        "symmetric stretch": [
+          0.7184920338829643,
+          0.7184920730628608
+        ],
+        "antisymmetric stretch": [
+          0.7325535828736773,
+          -0.7325535444504285
+        ]
+      }
+    },
+    {
+      "tag": "gfn2-D2O-start2-step0.005",
+      "isotope": "D2O",
+      "start": 2,
+      "hessian_step_bohr": 0.005,
+      "frequency_cm1": {
+        "bend": 1127.8921496949267,
+        "symmetric stretch": 2623.78341204446,
+        "antisymmetric stretch": 2678.4863928168334
+      },
+      "gap_cm1": 54.702980772373394,
+      "saved_frequency_reproduction_max_cm1": 5.432730176835321e-08,
+      "internal_coordinate_frequency_reproduction_max_cm1": 2.470724211889319e-07,
+      "relative_hessian_reconstruction_error": 1.545104631679182e-10,
+      "coordinate_jacobian_check_max": 1.507877156470272e-11,
+      "bond_changes_for_mode_assignment": {
+        "symmetric stretch": [
+          0.5192062431178945,
+          0.5192062463326813
+        ],
+        "antisymmetric stretch": [
+          0.5373699684886866,
+          -0.5373699653853384
+        ]
+      }
+    },
+    {
+      "tag": "gfn2-H2O-start0-step0.0025",
+      "isotope": "H2O",
+      "start": 0,
+      "hessian_step_bohr": 0.0025,
+      "frequency_cm1": {
+        "bend": 1539.67473484487,
+        "symmetric stretch": 3643.315365495449,
+        "antisymmetric stretch": 3651.4427223098833
+      },
+      "gap_cm1": 8.127356814434279,
+      "saved_frequency_reproduction_max_cm1": 7.406015356536955e-08,
+      "internal_coordinate_frequency_reproduction_max_cm1": 3.140285116387531e-07,
+      "relative_hessian_reconstruction_error": 1.7100672673773155e-10,
+      "coordinate_jacobian_check_max": 1.607747268650428e-11,
+      "bond_changes_for_mode_assignment": {
+        "symmetric stretch": [
+          0.7184936424757838,
+          0.7184938185202928
+        ],
+        "antisymmetric stretch": [
+          0.732551531727524,
+          -0.7325513590604167
+        ]
+      }
+    },
+    {
+      "tag": "gfn2-D2O-start0-step0.0025",
+      "isotope": "D2O",
+      "start": 0,
+      "hessian_step_bohr": 0.0025,
+      "frequency_cm1": {
+        "bend": 1127.9488913726136,
+        "symmetric stretch": 2623.8695874901405,
+        "antisymmetric stretch": 2678.535580181263
+      },
+      "gap_cm1": 54.66599269112248,
+      "saved_frequency_reproduction_max_cm1": 5.432866601040587e-08,
+      "internal_coordinate_frequency_reproduction_max_cm1": 1.738781065796502e-07,
+      "relative_hessian_reconstruction_error": 1.7100672673773155e-10,
+      "coordinate_jacobian_check_max": 1.607747268650428e-11,
+      "bond_changes_for_mode_assignment": {
+        "symmetric stretch": [
+          -0.5192089599994075,
+          -0.5192089741953001
+        ],
+        "antisymmetric stretch": [
+          0.5373670861262572,
+          -0.5373670724091735
+        ]
+      }
+    },
+    {
+      "tag": "gfn2-H2O-start0-step0.00125",
+      "isotope": "H2O",
+      "start": 0,
+      "hessian_step_bohr": 0.00125,
+      "frequency_cm1": {
+        "bend": 1539.6870714213426,
+        "symmetric stretch": 3643.3059614792755,
+        "antisymmetric stretch": 3651.435900537584
+      },
+      "gap_cm1": 8.129939058308537,
+      "saved_frequency_reproduction_max_cm1": 7.40615178074222e-08,
+      "internal_coordinate_frequency_reproduction_max_cm1": 1.52826942212414e-08,
+      "relative_hessian_reconstruction_error": 1.5187846372343197e-10,
+      "coordinate_jacobian_check_max": 1.607747268650428e-11,
+      "bond_changes_for_mode_assignment": {
+        "symmetric stretch": [
+          0.7184936686882775,
+          0.718493895077625
+        ],
+        "antisymmetric stretch": [
+          0.7325515564224501,
+          -0.7325513343654841
+        ]
+      }
+    },
+    {
+      "tag": "gfn2-D2O-start0-step0.00125",
+      "isotope": "D2O",
+      "start": 0,
+      "hessian_step_bohr": 0.00125,
+      "frequency_cm1": {
+        "bend": 1127.9578532734936,
+        "symmetric stretch": 2623.862991150747,
+        "antisymmetric stretch": 2678.5305760322112
+      },
+      "gap_cm1": 54.667584881464336,
+      "saved_frequency_reproduction_max_cm1": 5.432821126305498e-08,
+      "internal_coordinate_frequency_reproduction_max_cm1": 1.0108578862855211e-08,
+      "relative_hessian_reconstruction_error": 1.5187846372343197e-10,
+      "coordinate_jacobian_check_max": 1.607747268650428e-11,
+      "bond_changes_for_mode_assignment": {
+        "symmetric stretch": [
+          -0.5192089971590312,
+          -0.5192090152054596
+        ],
+        "antisymmetric stretch": [
+          0.5373670879893968,
+          -0.5373670705460339
+        ]
+      }
+    }
+  ]
+}
